@@ -4,12 +4,16 @@
  * Purpose: Definition of the Class RoomType
  ***********************************************************************/
 
-public class RoomType
-{
-    private EnumConstant General;
-    private EnumConstant Operating;
-    private EnumConstant Exam;
-    private EnumConstant Emergency;
-    private EnumConstant Patient;
+using System;
 
+namespace Model
+{
+   public enum RoomType
+   {
+      General,
+      Operating,
+      Exam,
+      Emergency,
+      Patient
+   }
 }
