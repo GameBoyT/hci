@@ -1,8 +1,3 @@
-/***********************************************************************
- * Module:  Room.cs
- * Author:  Wombat
- * Purpose: Definition of the Class Room
- ***********************************************************************/
 
 using System;
 using System.Collections.Generic;

@@ -1,0 +1,29 @@
+﻿<Window x:Class="Hospital.RoomForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital"
+        mc:Ignorable="d"
+        Title="RoomForm" Height="450" Width="800">
+    <Grid RenderTransformOrigin="0.485,0.506">
+            <Label Content="Id" HorizontalAlignment="Left" Height="27" Margin="33,21,0,0" VerticalAlignment="Top" Width="57" RenderTransformOrigin="8.278,3.051"/>
+            <Label Content="Name" HorizontalAlignment="Left" Height="27" Margin="33,75,0,0" VerticalAlignment="Top" Width="57"/>
+            <Label Content="Floor" HorizontalAlignment="Left" Height="27" Margin="33,123,0,0" VerticalAlignment="Top" Width="57"/>
+            <Label Content="Detail" HorizontalAlignment="Left" Height="27" Margin="33,174,0,0" VerticalAlignment="Top" Width="57"/>
+            <Label Content="Room Type" HorizontalAlignment="Left" Height="27" Margin="33,246,0,0" VerticalAlignment="Top" Width="68"/>
+            <TextBox Name="id" HorizontalAlignment="Left" Height="18" Margin="119,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="113"/>
+            <TextBox Name="name" HorizontalAlignment="Left" Height="18" Margin="119,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="113"/>
+            <TextBox Name="floor" HorizontalAlignment="Left" Height="18" Margin="119,127,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="113"/>
+            <TextBox Name="detail" HorizontalAlignment="Left" Height="43" Margin="119,178,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="113"/>
+            <ComboBox Name="type" HorizontalAlignment="Left" Height="27" Margin="119,246,0,0" VerticalAlignment="Top" Width="113" RenderTransformOrigin="0.663,2.722">
+                <ComboBoxItem IsSelected="True">General</ComboBoxItem>
+                <ComboBoxItem>Exam</ComboBoxItem>
+                <ComboBoxItem>Emergency</ComboBoxItem>
+                <ComboBoxItem>Patient</ComboBoxItem>
+            </ComboBox>
+            <Button Content="Accpet" HorizontalAlignment="Left" Height="36" Margin="604,342,0,0" VerticalAlignment="Top" Width="87" Click="dodato"/>
+            <Button Content="Cancle" HorizontalAlignment="Left" Height="36" Margin="119,342,0,0" VerticalAlignment="Top" Width="87" Click="ponisteno"/>
+
+    </Grid>
+</Window>

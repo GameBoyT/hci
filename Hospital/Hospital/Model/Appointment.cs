@@ -11,9 +11,9 @@ namespace Model
 {
    public class Appointment
    {
-      private int id;
-      private DateTime timeStart;
-      private Double duration;
+      public int id;
+      public string timeStart;
+      public Double duration;
       
       public Boolean SetAppointment(int id, DateTime time, Double duration)
       {
