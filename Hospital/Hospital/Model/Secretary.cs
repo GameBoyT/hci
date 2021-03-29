@@ -1,65 +1,20 @@
 /***********************************************************************
- * Module:  Director.cs
- * Author:  Wombat
- * Purpose: Definition of the Class Director
+ * Module:  Secretary.cs
+ * Author:  Vladimir
+ * Purpose: Definition of the Class Secretary
  ***********************************************************************/
 
 using System;
 
 namespace Model
 {
-   public class Director
+   public class Secretary
    {
-      public Director GetDirector(int id)
+      public Secretary GetSecretary()
       {
          throw new NotImplementedException();
       }
       
-      public System.Collections.ArrayList room;
-      
-      public System.Collections.ArrayList Room
-      {
-         get
-         {
-            if (room == null)
-               room = new System.Collections.ArrayList();
-            return room;
-         }
-         set
-         {
-            RemoveAllRoom();
-            if (value != null)
-            {
-               foreach (Room oRoom in value)
-                  AddRoom(oRoom);
-            }
-         }
-      }
-      
-      public void AddRoom(Room newRoom)
-      {
-         if (newRoom == null)
-            return;
-         if (this.room == null)
-            this.room = new System.Collections.ArrayList();
-         if (!this.room.Contains(newRoom))
-            this.room.Add(newRoom);
-      }
-      
-      public void RemoveRoom(Room oldRoom)
-      {
-         if (oldRoom == null)
-            return;
-         if (this.room != null)
-            if (this.room.Contains(oldRoom))
-               this.room.Remove(oldRoom);
-      }
-      
-      public void RemoveAllRoom()
-      {
-         if (room != null)
-            room.Clear();
-      }
       public System.Collections.ArrayList user;
       
       public System.Collections.ArrayList User
