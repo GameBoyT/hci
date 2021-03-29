@@ -13,6 +13,8 @@ namespace Hospital
         public MainWindow()
         {
             InitializeComponent();
+            var new_window = new Pacijent();
+            new_window.Show();
         }
 
         private void roomOptions(object sender, RoutedEventArgs e)
