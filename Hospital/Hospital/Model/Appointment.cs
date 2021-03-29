@@ -30,30 +30,17 @@ namespace Model
          throw new NotImplementedException();
       }
       
-      public Doctor doctor;
+      public Room room;
       
-      public Doctor Doctor
+      public Room Room
       {
          get
          {
-            return doctor;
+            return room;
          }
          set
          {
-            if (this.doctor == null || !this.doctor.Equals(value))
-            {
-               if (this.doctor != null)
-               {
-                  Doctor oldDoctor = this.doctor;
-                  this.doctor = null;
-                  oldDoctor.RemoveAppointment(this);
-               }
-               if (value != null)
-               {
-                  this.doctor = value;
-                  this.doctor.AddAppointment(this);
-               }
-            }
+            this.room = value;
          }
       }
       public Patient patient;
@@ -82,17 +69,30 @@ namespace Model
             }
          }
       }
-      public Room room;
+      public Doctor doctor;
       
-      public Room Room
+      public Doctor Doctor
       {
          get
          {
-            return room;
+            return doctor;
          }
          set
          {
-            this.room = value;
+            if (this.doctor == null || !this.doctor.Equals(value))
+            {
+               if (this.doctor != null)
+               {
+                  Doctor oldDoctor = this.doctor;
+                  this.doctor = null;
+                  oldDoctor.RemoveAppointment(this);
+               }
+               if (value != null)
+               {
+                  this.doctor = value;
+                  this.doctor.AddAppointment(this);
+               }
+            }
          }
       }
    
