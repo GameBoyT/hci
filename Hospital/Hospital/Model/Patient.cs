@@ -21,17 +21,17 @@ namespace Model
          throw new NotImplementedException();
       }
       
-      public Boolean CreatePatient()
+      public Boolean CreatePatient(int id, String firstName, String lastName, String password, String username)
       {
          throw new NotImplementedException();
       }
       
-      public Boolean DeletePatient()
+      public Boolean DeletePatient(int id)
       {
          throw new NotImplementedException();
       }
       
-      public Boolean UpdatePatient()
+      public Boolean UpdatePatient(int id, String firstName, String lastName, String password, String username)
       {
          throw new NotImplementedException();
       }

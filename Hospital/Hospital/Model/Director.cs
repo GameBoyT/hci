@@ -1,16 +1,16 @@
 /***********************************************************************
- * Module:  Secretary.cs
- * Author:  Vladimir
- * Purpose: Definition of the Class Secretary
+ * Module:  Director.cs
+ * Author:  Wombat
+ * Purpose: Definition of the Class Director
  ***********************************************************************/
 
 using System;
 
 namespace Model
 {
-   public class Secretary
+   public class Director
    {
-      public Secretary GetSecretary()
+      public Director GetDirector(int id)
       {
          throw new NotImplementedException();
       }
@@ -60,50 +60,50 @@ namespace Model
          if (user != null)
             user.Clear();
       }
-      public System.Collections.ArrayList appointment;
+      public System.Collections.ArrayList room;
       
-      public System.Collections.ArrayList Appointment
+      public System.Collections.ArrayList Room
       {
          get
          {
-            if (appointment == null)
-               appointment = new System.Collections.ArrayList();
-            return appointment;
+            if (room == null)
+               room = new System.Collections.ArrayList();
+            return room;
          }
          set
          {
-            RemoveAllAppointment();
+            RemoveAllRoom();
             if (value != null)
             {
-               foreach (Appointment oAppointment in value)
-                  AddAppointment(oAppointment);
+               foreach (Room oRoom in value)
+                  AddRoom(oRoom);
             }
          }
       }
       
-      public void AddAppointment(Appointment newAppointment)
+      public void AddRoom(Room newRoom)
       {
-         if (newAppointment == null)
+         if (newRoom == null)
             return;
-         if (this.appointment == null)
-            this.appointment = new System.Collections.ArrayList();
-         if (!this.appointment.Contains(newAppointment))
-            this.appointment.Add(newAppointment);
+         if (this.room == null)
+            this.room = new System.Collections.ArrayList();
+         if (!this.room.Contains(newRoom))
+            this.room.Add(newRoom);
       }
       
-      public void RemoveAppointment(Appointment oldAppointment)
+      public void RemoveRoom(Room oldRoom)
       {
-         if (oldAppointment == null)
+         if (oldRoom == null)
             return;
-         if (this.appointment != null)
-            if (this.appointment.Contains(oldAppointment))
-               this.appointment.Remove(oldAppointment);
+         if (this.room != null)
+            if (this.room.Contains(oldRoom))
+               this.room.Remove(oldRoom);
       }
       
-      public void RemoveAllAppointment()
+      public void RemoveAllRoom()
       {
-         if (appointment != null)
-            appointment.Clear();
+         if (room != null)
+            room.Clear();
       }
    
    }
