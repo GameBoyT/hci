@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Hospital.Model;
+using Model;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +23,19 @@ namespace Hospital
         public Add_new_appointment()
         {
             InitializeComponent();
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Appointment appoinetment = new Appointment(idTextBox.Text, timeStartTextBox.Text, durationTextBox.Text);
+            var pac = new Pacijent();
+            pac.createAppointment(appoinetment);
+
+            //MessageBox.Show("Novi termin je uspjesno zakazan", "Uspjesno");
+            
+            
+           
         }
     }
 }

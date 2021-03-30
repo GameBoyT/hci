@@ -30,7 +30,7 @@ namespace Hospital
         {
             InitializeComponent();
             appoinemnts = storage.GetAll();
-            
+            lvDataBinding.Items.Clear();
             lvDataBinding.ItemsSource = appoinemnts;
             
             
@@ -42,5 +42,28 @@ namespace Hospital
             storage.deleteAppointment(app);
             lvDataBinding.Items.Refresh();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var pacijent_win = new Pacijent();
+            var add_new = new Add_new_appointment();
+            add_new.Show();
+            pacijent_win.Hide();
+            
+        }
+
+        public void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void createAppointment(Appointment app)
+        {
+            storage.createAppointment(app);
+            lvDataBinding.Items.Refresh();
+        }
+
+       
+       
     }
 }

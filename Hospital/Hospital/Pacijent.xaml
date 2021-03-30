@@ -11,20 +11,23 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
-                        <TextBlock  Text="JMBG: " />
+                        <TextBlock  Text="id: " />
                         <TextBlock Text="{Binding id}" FontWeight="Bold"  TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
                         <TextBlock Text=", " />
-                        <TextBlock Text="First name: " FontWeight="Bold" />
+                        <TextBlock Text="Pocetak termina: " FontWeight="Bold" />
                         <TextBlock Text="{Binding timeStart}"  />
-                        <TextBlock Text="Last name: " FontWeight="Bold" />
+                        <TextBlock Text="Trajanje: " FontWeight="Bold" />
                         <TextBlock Text="{Binding duration}" />
 
                     </WrapPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <Button Content="Button"/>
+
+
         </ListView>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="75,373,0,0" VerticalAlignment="Top" Height="27" Width="103" Click="Button_Click"/>
-
-
+        <Button Content="Obrisi" HorizontalAlignment="Left" Margin="107,275,0,0" VerticalAlignment="Top" Height="27" Width="103" Click="Button_Click"/>
+        <Button Content="Dodaj novi termin" HorizontalAlignment="Left" Margin="107,337,0,0" VerticalAlignment="Top" Height="27" Width="103" Click="Button_Click_1"/>
+        
     </Grid>
 </Window>

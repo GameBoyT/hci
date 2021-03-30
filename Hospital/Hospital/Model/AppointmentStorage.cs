@@ -42,9 +42,22 @@ namespace Hospital.Model
         }
 
  
+        public void createAppointment(Appointment adding_app)
+        {
+            appointments.Add(adding_app);
+            string line = "";
+            foreach (Appointment appointment in appointments)
+            {
+                line += appointment.id + "," + appointment.timeStart + "," + appointment.duration;
+                line += '\n';
+            }
+            File.WriteAllText(@"d:\appointment.txt", line);
+        }
 
 
-        public void deleteAppointment(Appointment delApp)
+    
+
+    public void deleteAppointment(Appointment delApp)
         {
             appointments.Remove(delApp);
             string line = "";
@@ -52,7 +65,7 @@ namespace Hospital.Model
                 line += appointment.id + "," + appointment.timeStart + "," + appointment.duration;
                 line += '\n';
             }
-            File.WriteAllText(@"d:\proba.txt",line);
+            File.WriteAllText(@"d:\appointment.txt",line);
         }
 
     }

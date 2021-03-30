@@ -25,6 +25,11 @@ namespace Hospital
             InitializeComponent();
             var new_window = new Pacijent();
             new_window.Show();
+            App.Current.MainWindow.Hide();
+
+
+
+            
         }
     }
 }
