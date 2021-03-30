@@ -9,12 +9,17 @@
     <Grid>
         <Label Content="Unesi vrijeme" HorizontalAlignment="Left" Margin="46,80,0,0" VerticalAlignment="Top" Width="116"/>
         <DatePicker/>
-        <DatePicker HorizontalAlignment="Left" Margin="167,80,0,0" VerticalAlignment="Top"/>
-        <Label Content="Izaberi doktora" HorizontalAlignment="Left" Margin="46,128,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
-        <ComboBox HorizontalAlignment="Left" Margin="167,130,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Izaberi doktora" HorizontalAlignment="Left" Margin="46,134,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
+        <ComboBox HorizontalAlignment="Left" Margin="167,138,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.498,1.454"/>
         <RadioButton Content="vrijeme" HorizontalAlignment="Left" Margin="167,178,0,0" VerticalAlignment="Top"/>
         <RadioButton Content="doktor" HorizontalAlignment="Left" Margin="233,178,0,0" VerticalAlignment="Top"/>
         <Label Content="Izaberi prioritet" HorizontalAlignment="Left" Margin="46,172,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="timeStartTextBox" HorizontalAlignment="Left" Margin="167,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Dodaj novi termin" HorizontalAlignment="Left" Margin="92,239,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Label Content="Unesi id" HorizontalAlignment="Left" Margin="46,49,0,0" VerticalAlignment="Top" Width="83"/>
+        <TextBox x:Name="idTextBox" HorizontalAlignment="Left" Margin="167,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="durationTextBox" HorizontalAlignment="Left" Margin="167,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="unesi trajanje" HorizontalAlignment="Left" Margin="47,108,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.142,-0.368"/>
 
 
 

@@ -11,11 +11,18 @@ namespace Model
 {
    public class Appointment
    {
-      public int id;
-      public string timeStart;
-      public Double duration;
-      
-      public Boolean SetAppointment(int id, DateTime time, Double duration)
+      public string id { get; set; }
+      public string timeStart{ get; set; }
+    public string duration{ get; set; }
+
+
+public Appointment(string id, string timeStart, string duration)
+        {
+            this.id = id;
+            this.timeStart = timeStart;
+            this.duration = duration;
+        }
+      public Boolean SetAppointment(string id, string time, string duration)
       {
          throw new NotImplementedException();
       }
