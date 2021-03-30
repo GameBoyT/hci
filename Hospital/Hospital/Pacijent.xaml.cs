@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using Hospital.Model;
+
 namespace Hospital
 {
     /// <summary>
@@ -21,44 +23,24 @@ namespace Hospital
     public partial class Pacijent : Window
     {
 
-
-        public ObservableCollection<Appointment>Appointments
-        {
-            get;
-            set;
-        }
+        Appointment app = new Appointment("nemanja", "nemanja", "emsad");
+        private AppointmentStorage storage = new AppointmentStorage();
+        List<Appointment> appoinemnts = new List<Appointment>();
         public Pacijent()
         {
             InitializeComponent();
+            appoinemnts = storage.GetAll();
             
-            this.DataContext = this;
-            Appointments = new ObservableCollection<Appointment>();
-            Appointments.Add(new Appointment { id = 0, timeStart = "12:15", duration = 45 });
-            Appointment test = new Appointment { id = 0, timeStart = "12:15", duration = 45 };
+            lvDataBinding.ItemsSource = appoinemnts;
             
-            Appointments.Add(new Appointment { id = 0, timeStart = "12:15", duration = 45 });
-            Appointments.Add(new Appointment { id = 0, timeStart = "12:15", duration = 45 });
-            Appointments.Add(new Appointment { id = 0, timeStart = "12:15", duration = 45 });
-            Appointments.Add(new Appointment { id = 0, timeStart = "12:15", duration = 45 });
-            Debug.WriteLine(Appointments);
-        }
-
-        int colNum = 0;
-
-        private void generateColumns(object sender, DataGridAutoGeneratingColumnEventArgs e)
-        {
-            colNum++;
-            if (colNum == 3)
-                e.Column.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var new_appointment_wnd = new Add_new_appointment();
-            new_appointment_wnd.Show();
-
+            Appointment app = (Appointment)lvDataBinding.SelectedItems[0];
+            storage.deleteAppointment(app);
+            lvDataBinding.Items.Refresh();
         }
-
-        
     }
 }

@@ -7,32 +7,24 @@
         mc:Ignorable="d"
         Title="Pacijent" Height="450" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dgrMain" ItemsSource="{Binding Path=Appointments}" IsReadOnly="True"/>
-        <Grid Grid.Column="0" Grid.Row="1" DataContext="{Binding ElementName=dgrMain,Path=SelectedItem}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="0">Indeks:</TextBlock>
-            <TextBlock Grid.Column="0" Grid.Row="1">Ime:</TextBlock>
-            <TextBlock Grid.Column="0" Grid.Row="2">Prezime:</TextBlock>
+        <ListView Name="lvDataBinding" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock  Text="JMBG: " />
+                        <TextBlock Text="{Binding id}" FontWeight="Bold"  TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
+                        <TextBlock Text=", " />
+                        <TextBlock Text="First name: " FontWeight="Bold" />
+                        <TextBlock Text="{Binding timeStart}"  />
+                        <TextBlock Text="Last name: " FontWeight="Bold" />
+                        <TextBlock Text="{Binding duration}" />
 
-            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=id}"></TextBox>
-            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Path=timeStart}"></TextBox>
-            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Path=duration}" Margin="0,0,0,169"></TextBox>
-            <Button Content="Add new appointments" Grid.Column="1" HorizontalAlignment="Left" Margin="592,93,0,0" Grid.Row="2" VerticalAlignment="Top" Height="30" Width="106" Click="Button_Click"/>
-        </Grid>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="75,373,0,0" VerticalAlignment="Top" Height="27" Width="103" Click="Button_Click"/>
+
+
     </Grid>
 </Window>
