@@ -32,7 +32,7 @@ namespace Hospital
             var pac = new Pacijent();
             pac.createAppointment(appoinetment);
 
-            //MessageBox.Show("Novi termin je uspjesno zakazan", "Uspjesno");
+            MessageBox.Show("Termin dodaje u fajl samo iz nekog razloga nece da refreshuje kao kod brisanja", "Uspjesno");
             
             
            
