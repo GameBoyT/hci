@@ -8,12 +8,12 @@ namespace Hospital.Model
 {
     class AppointmentStorage
     {
-        private readonly string appointmentDirectory = Directory.GetCurrentDirectory() + "\\appointment.txt";
+        private readonly string fileLocation = Directory.GetCurrentDirectory() + "\\appointment.txt";
 
         private List<Appointment> appointments;
         public AppointmentStorage()
         {
-            using (StreamReader r = new StreamReader(appointmentDirectory))
+            using (StreamReader r = new StreamReader(fileLocation))
             {
                 string json = r.ReadToEnd();
                 if (json != "")
@@ -27,28 +27,30 @@ namespace Hospital.Model
             return appointments;
         }
 
-
-        public void CreateAppointment(Appointment adding_app)
+        public void WriteAppointmentsToJson()
         {
-            appointments.Add(adding_app);
             string json = JsonConvert.SerializeObject(appointments);
-            File.WriteAllText(appointmentDirectory, json);
+            File.WriteAllText(fileLocation, json);
+        }
+
+        public void CreateAppointment(Appointment appointmentToAdd)
+        {
+            appointments.Add(appointmentToAdd);
+            WriteAppointmentsToJson();
         }
 
 
-        public void DeleteAppointment(Appointment delApp)
+        public void DeleteAppointment(Appointment appointmentToDelete)
         {
-            appointments.Remove(delApp);
-            string json = JsonConvert.SerializeObject(appointments);
-            File.WriteAllText(appointmentDirectory, json);
+            appointments.Remove(appointmentToDelete);
+            WriteAppointmentsToJson();
         }
 
         public void UpdateAppointment(String id, Appointment updatedAppointment)
         {
             int index = appointments.FindIndex(e => e.Id == id);
             appointments[index] = updatedAppointment;
-            string json = JsonConvert.SerializeObject(appointments);
-            File.WriteAllText(appointmentDirectory, json);
+            WriteAppointmentsToJson();
         }
 
     }
