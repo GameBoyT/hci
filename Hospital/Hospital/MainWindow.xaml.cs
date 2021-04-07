@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Model;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Hospital
 {
@@ -19,7 +16,7 @@ namespace Hospital
 
 
 
-            
+
         }
 
         private void roomOptions(object sender, RoutedEventArgs e)

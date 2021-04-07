@@ -12,12 +12,12 @@
                 <DataTemplate>
                     <WrapPanel>
                         <TextBlock  Text="id: " />
-                        <TextBlock Text="{Binding id}" FontWeight="Bold"  TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
+                        <TextBlock Text="{Binding Id}" FontWeight="Bold"  TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
                         <TextBlock Text=", " />
                         <TextBlock Text="Pocetak termina: " FontWeight="Bold" />
-                        <TextBlock Text="{Binding timeStart}"  />
+                        <TextBlock Text="{Binding TimeStart}"  />
                         <TextBlock Text="Trajanje: " FontWeight="Bold" />
-                        <TextBlock Text="{Binding duration}" />
+                        <TextBlock Text="{Binding Duration}" />
 
                     </WrapPanel>
                 </DataTemplate>
