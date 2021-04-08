@@ -13,6 +13,8 @@ namespace Hospital.Model
         private List<Appointment> appointments;
         public AppointmentStorage()
         {
+            appointments = new List<Appointment>();
+
             using (StreamReader r = new StreamReader(fileLocation))
             {
                 string json = r.ReadToEnd();
@@ -46,9 +48,9 @@ namespace Hospital.Model
             WriteAppointmentsToJson();
         }
 
-        public void UpdateAppointment(String id, Appointment updatedAppointment)
+        public void UpdateAppointment(Appointment updatedAppointment)
         {
-            int index = appointments.FindIndex(e => e.Id == id);
+            int index = appointments.FindIndex(appointment => appointment.Id == updatedAppointment.Id);
             appointments[index] = updatedAppointment;
             WriteAppointmentsToJson();
         }
