@@ -1,8 +1,6 @@
-using System;
-
 namespace Model
 {
-   public class Director : Employee
-   {
-   }
+    public class Director : Employee
+    {
+    }
 }
