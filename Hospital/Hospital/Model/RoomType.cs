@@ -4,14 +4,16 @@
  * Purpose: Definition of the Class RoomType
  ***********************************************************************/
 
+using System;
+
 namespace Model
 {
-    public enum RoomType
-    {
-        General,
-        Operating,
-        Exam,
-        Emergency,
-        Patient
-    }
+   public enum RoomType
+   {
+      General,
+      Operating,
+      Exam,
+      Emergency,
+      Patient
+   }
 }

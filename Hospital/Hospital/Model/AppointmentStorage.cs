@@ -1,27 +1,39 @@
 ﻿using Model;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Text;
 
 namespace Hospital.Model
 {
     class AppointmentStorage
     {
-        private readonly string fileLocation = Directory.GetCurrentDirectory() + "\\appointment.txt";
-
+        
         private List<Appointment> appointments;
         public AppointmentStorage()
         {
-            appointments = new List<Appointment>();
+            string[] lines = System.IO.File.ReadAllLines(@"d:\appointment.txt");
+            string[] temp_app;
+            this.appointments  = new List<Appointment>();
 
-            using (StreamReader r = new StreamReader(fileLocation))
+            foreach (string line in lines)
             {
-                string json = r.ReadToEnd();
-                if (json != "")
+                temp_app = line.Split(',');
+                int i = 0;
+                String id = ""; String timeStart = ""; String duration = "";
+                foreach (String attr in temp_app)
                 {
-                    appointments = JsonConvert.DeserializeObject<List<Appointment>>(json);
+                    Console.WriteLine("\t" + attr);
+                    if (i == 0) { id = attr; }
+                    if (i == 1) { timeStart = attr; }
+                    if (i == 2) { duration = attr; }
+                   
+                    i++;
                 }
+                Appointment appointment = new Appointment(id, timeStart, duration);
+                appointments.Add(appointment);
+                Debug.WriteLine(appointment.timeStart);
             }
         }
         public List<Appointment> GetAll()
@@ -29,30 +41,31 @@ namespace Hospital.Model
             return appointments;
         }
 
-        public void WriteAppointmentsToJson()
+ 
+        public void createAppointment(Appointment adding_app)
         {
-            string json = JsonConvert.SerializeObject(appointments);
-            File.WriteAllText(fileLocation, json);
+            appointments.Add(adding_app);
+            string line = "";
+            foreach (Appointment appointment in appointments)
+            {
+                line += appointment.id + "," + appointment.timeStart + "," + appointment.duration;
+                line += '\n';
+            }
+            File.WriteAllText(@"d:\appointment.txt", line);
         }
 
-        public void CreateAppointment(Appointment appointmentToAdd)
-        {
-            appointments.Add(appointmentToAdd);
-            WriteAppointmentsToJson();
-        }
 
+    
 
-        public void DeleteAppointment(Appointment appointmentToDelete)
+    public void deleteAppointment(Appointment delApp)
         {
-            appointments.Remove(appointmentToDelete);
-            WriteAppointmentsToJson();
-        }
-
-        public void UpdateAppointment(Appointment updatedAppointment)
-        {
-            int index = appointments.FindIndex(appointment => appointment.Id == updatedAppointment.Id);
-            appointments[index] = updatedAppointment;
-            WriteAppointmentsToJson();
+            appointments.Remove(delApp);
+            string line = "";
+            foreach(Appointment appointment in appointments){
+                line += appointment.id + "," + appointment.timeStart + "," + appointment.duration;
+                line += '\n';
+            }
+            File.WriteAllText(@"d:\appointment.txt",line);
         }
 
     }
