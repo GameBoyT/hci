@@ -1,17 +1,5 @@
-﻿using Hospital.Model;
-using Model;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
+﻿using Model;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Hospital
 {
@@ -23,7 +11,7 @@ namespace Hospital
         public Add_new_appointment()
         {
             InitializeComponent();
-            
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -33,9 +21,9 @@ namespace Hospital
             pac.createAppointment(appoinetment);
 
             MessageBox.Show("Termin dodaje u fajl samo iz nekog razloga nece da refreshuje kao kod brisanja", "Uspjesno");
-            
-            
-           
+
+
+
         }
     }
 }

@@ -1,19 +1,7 @@
-﻿using Model;
-using System;
+﻿using Hospital.Model;
+using Model;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
-using Hospital.Model;
 
 namespace Hospital
 {
@@ -32,14 +20,14 @@ namespace Hospital
             appoinemnts = storage.GetAll();
             lvDataBinding.Items.Clear();
             lvDataBinding.ItemsSource = appoinemnts;
-            
-            
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Appointment app = (Appointment)lvDataBinding.SelectedItems[0];
-            storage.deleteAppointment(app);
+            storage.DeleteAppointment(app);
             lvDataBinding.Items.Refresh();
         }
 
@@ -49,7 +37,7 @@ namespace Hospital
             var add_new = new Add_new_appointment();
             add_new.Show();
             pacijent_win.Hide();
-            
+
         }
 
         public void Button_Click_2(object sender, RoutedEventArgs e)
@@ -59,11 +47,11 @@ namespace Hospital
 
         public void createAppointment(Appointment app)
         {
-            storage.createAppointment(app);
+            storage.CreateAppointment(app);
             lvDataBinding.Items.Refresh();
         }
 
-       
-       
+
+
     }
 }
