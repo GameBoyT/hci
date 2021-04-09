@@ -1,49 +1,19 @@
-/***********************************************************************
- * Module:  Patient.cs
- * Author:  Vladimir
- * Purpose: Definition of the Class Patient
- ***********************************************************************/
-
 using System;
-using System.Collections.Generic;
 
 namespace Model
 {
    public class Patient
    {
-      public Patient GetPatient(int id)
-      {
-         throw new NotImplementedException();
-      }
+      private MedicalRecord patientRecord;
       
-      public List<Patient> GetAll()
-      {
-         throw new NotImplementedException();
-      }
+      public System.Collections.Generic.List<Appointment> appointment;
       
-      public Boolean CreatePatient(int id, String firstName, String lastName, String password, String username)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Boolean DeletePatient(int id)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Boolean UpdatePatient(int id, String firstName, String lastName, String password, String username)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public System.Collections.ArrayList appointment;
-      
-      public System.Collections.ArrayList Appointment
+      public System.Collections.Generic.List<Appointment> Appointment
       {
          get
          {
             if (appointment == null)
-               appointment = new System.Collections.ArrayList();
+               appointment = new System.Collections.Generic.List<Appointment>();
             return appointment;
          }
          set
@@ -62,7 +32,7 @@ namespace Model
          if (newAppointment == null)
             return;
          if (this.appointment == null)
-            this.appointment = new System.Collections.ArrayList();
+            this.appointment = new System.Collections.Generic.List<Appointment>();
          if (!this.appointment.Contains(newAppointment))
          {
             this.appointment.Add(newAppointment);
@@ -96,18 +66,7 @@ namespace Model
          }
       }
       public User user;
-      
-      public User User
-      {
-         get
-         {
-            return user;
-         }
-         set
-         {
-            this.user = value;
-         }
-      }
+      public MedicalRecord medicalRecord;
    
    }
 }

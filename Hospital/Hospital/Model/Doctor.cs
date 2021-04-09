@@ -1,36 +1,19 @@
-/***********************************************************************
- * Module:  Doctor.cs
- * Author:  Wombat
- * Purpose: Definition of the Class Doctor
- ***********************************************************************/
-
 using System;
-using System.Collections.Generic;
 
 namespace Model
 {
-   public class Doctor
+   public class Doctor : Employee
    {
-      private String type;
+      private String specialization;
       
-      public Doctor GetDoctor(int id)
-      {
-         throw new NotImplementedException();
-      }
+      public System.Collections.Generic.List<Appointment> appointment;
       
-      public List<Doctor> GetAllDoctors()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public System.Collections.ArrayList appointment;
-      
-      public System.Collections.ArrayList Appointment
+      public System.Collections.Generic.List<Appointment> Appointment
       {
          get
          {
             if (appointment == null)
-               appointment = new System.Collections.ArrayList();
+               appointment = new System.Collections.Generic.List<Appointment>();
             return appointment;
          }
          set
@@ -49,7 +32,7 @@ namespace Model
          if (newAppointment == null)
             return;
          if (this.appointment == null)
-            this.appointment = new System.Collections.ArrayList();
+            this.appointment = new System.Collections.Generic.List<Appointment>();
          if (!this.appointment.Contains(newAppointment))
          {
             this.appointment.Add(newAppointment);
@@ -82,19 +65,7 @@ namespace Model
             tmpAppointment.Clear();
          }
       }
-      public User user;
-      
-      public User User
-      {
-         get
-         {
-            return user;
-         }
-         set
-         {
-            this.user = value;
-         }
-      }
+      public Room room;
    
    }
 }

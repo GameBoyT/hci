@@ -13,9 +13,9 @@ namespace Hospital
         public MainWindow()
         {
             InitializeComponent();
-            var new_window = new Pacijent();
-            new_window.Show();
-            App.Current.MainWindow.Hide();
+            //var new_window = new Pacijent();
+            //new_window.Show();
+            //App.Current.MainWindow.Hide();
 
 
 
@@ -24,8 +24,8 @@ namespace Hospital
 
         private void roomOptions(object sender, RoutedEventArgs e)
         {
-            RoomOptions room = new RoomOptions();
-            room.Show();
+            //RoomOptions room = new RoomOptions();
+            //room.Show();
         }
     }
 }

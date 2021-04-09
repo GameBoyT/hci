@@ -1,55 +1,33 @@
-/***********************************************************************
- * Module:  Appointment.cs
- * Author:  Vladimir
- * Purpose: Definition of the Class Appointment
- ***********************************************************************/
-
 using System;
-using System.Collections.Generic;
 
 namespace Model
 {
    public class Appointment
    {
-      public string id { get; set; }
-      public string timeStart{ get; set; }
-    public string duration{ get; set; }
-
-
-public Appointment(string id, string timeStart, string duration)
-        {
-            this.id = id;
-            this.timeStart = timeStart;
-            this.duration = duration;
-        }
-      public Boolean SetAppointment(string id, string time, string duration)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Appointment GetAppointment(int id)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Appointment> GetAllAppointments()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Room room;
-      
-      public Room Room
+      public int Id
       {
          get
-         {
-            return room;
-         }
+         ;
          set
-         {
-            this.room = value;
-         }
+         ;
       }
+      
+      public DateTime StartTime
+      {
+         get
+         ;
+         set
+         ;
+      }
+      
+      public Double DurationInMinutes
+      {
+         get
+         ;
+         set
+         ;
+      }
+      
       public Patient patient;
       
       public Patient Patient

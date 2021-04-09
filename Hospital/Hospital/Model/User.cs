@@ -1,29 +1,71 @@
-/***********************************************************************
- * Module:  User.cs
- * Author:  Wombat
- * Purpose: Definition of the Class User
- ***********************************************************************/
-
 using System;
 
 namespace Model
 {
    public class User
    {
-      private int id;
-      private String firstName;
-      private String lastName;
-      private String password;
-      private String username;
-      
-      public String GetFirstName(int id)
+      public String jmbg
       {
-         throw new NotImplementedException();
+         get
+         ;
+         set
+         ;
       }
       
-      public String GetLastName(int id)
+      public String firstName
       {
-         throw new NotImplementedException();
+         get
+         ;
+         set
+         ;
+      }
+      
+      public String lastName
+      {
+         get
+         ;
+         set
+         ;
+      }
+      
+      public String username
+      {
+         get
+         ;
+         set
+         ;
+      }
+      
+      public String password
+      {
+         get
+         ;
+         set
+         ;
+      }
+      
+      public String email
+      {
+         get
+         ;
+         set
+         ;
+      }
+      
+      public String address
+      {
+         get
+         ;
+         set
+         ;
+      }
+      
+      public DateTime dateOfBirth
+      {
+         get
+         ;
+         set
+         ;
       }
    
    }

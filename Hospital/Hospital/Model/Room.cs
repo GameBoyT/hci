@@ -1,6 +1,4 @@
-
 using System;
-using System.Collections.Generic;
 
 namespace Model
 {
@@ -8,34 +6,11 @@ namespace Model
    {
       private int id;
       private String name;
-      private String detail;
-      private int floor;
       private RoomType roomType;
+      private int floor;
+      private String detail;
       
-      public Room GetRoom(int id)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Room> GetAllRooms()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Boolean CreateRoom(int id, String name, String detail, int floor, RoomType roomType)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Boolean UpdateRoom(String name, String detail, int floor, RoomType roomType)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Boolean DeleteRoom(int id)
-      {
-         throw new NotImplementedException();
-      }
+      public Doctor doctor;
    
    }
 }
