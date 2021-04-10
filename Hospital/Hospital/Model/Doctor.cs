@@ -1,100 +1,71 @@
-/***********************************************************************
- * Module:  Doctor.cs
- * Author:  Wombat
- * Purpose: Definition of the Class Doctor
- ***********************************************************************/
-
 using System;
-using System.Collections.Generic;
 
 namespace Model
 {
-   public class Doctor
-   {
-      private String type;
-      
-      public Doctor GetDoctor(int id)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Doctor> GetAllDoctors()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public System.Collections.ArrayList appointment;
-      
-      public System.Collections.ArrayList Appointment
-      {
-         get
-         {
-            if (appointment == null)
-               appointment = new System.Collections.ArrayList();
-            return appointment;
-         }
-         set
-         {
-            RemoveAllAppointment();
-            if (value != null)
+    public class Doctor : Employee
+    {
+        private String specialization;
+
+        public System.Collections.Generic.List<Appointment> appointment;
+
+        public System.Collections.Generic.List<Appointment> Appointment
+        {
+            get
             {
-               foreach (Appointment oAppointment in value)
-                  AddAppointment(oAppointment);
+                if (appointment == null)
+                    appointment = new System.Collections.Generic.List<Appointment>();
+                return appointment;
             }
-         }
-      }
-      
-      public void AddAppointment(Appointment newAppointment)
-      {
-         if (newAppointment == null)
-            return;
-         if (this.appointment == null)
-            this.appointment = new System.Collections.ArrayList();
-         if (!this.appointment.Contains(newAppointment))
-         {
-            this.appointment.Add(newAppointment);
-            newAppointment.Doctor = this;
-         }
-      }
-      
-      public void RemoveAppointment(Appointment oldAppointment)
-      {
-         if (oldAppointment == null)
-            return;
-         if (this.appointment != null)
-            if (this.appointment.Contains(oldAppointment))
+            set
             {
-               this.appointment.Remove(oldAppointment);
-               oldAppointment.Doctor = null;
+                RemoveAllAppointment();
+                if (value != null)
+                {
+                    foreach (Appointment oAppointment in value)
+                        AddAppointment(oAppointment);
+                }
             }
-      }
-      
-      public void RemoveAllAppointment()
-      {
-         if (appointment != null)
-         {
-            System.Collections.ArrayList tmpAppointment = new System.Collections.ArrayList();
-            foreach (Appointment oldAppointment in appointment)
-               tmpAppointment.Add(oldAppointment);
-            appointment.Clear();
-            foreach (Appointment oldAppointment in tmpAppointment)
-               oldAppointment.Doctor = null;
-            tmpAppointment.Clear();
-         }
-      }
-      public User user;
-      
-      public User User
-      {
-         get
-         {
-            return user;
-         }
-         set
-         {
-            this.user = value;
-         }
-      }
-   
-   }
+        }
+
+        public void AddAppointment(Appointment newAppointment)
+        {
+            if (newAppointment == null)
+                return;
+            if (this.appointment == null)
+                this.appointment = new System.Collections.Generic.List<Appointment>();
+            if (!this.appointment.Contains(newAppointment))
+            {
+                this.appointment.Add(newAppointment);
+                newAppointment.Doctor = this;
+            }
+        }
+
+        public void RemoveAppointment(Appointment oldAppointment)
+        {
+            if (oldAppointment == null)
+                return;
+            if (this.appointment != null)
+                if (this.appointment.Contains(oldAppointment))
+                {
+                    this.appointment.Remove(oldAppointment);
+                    oldAppointment.Doctor = null;
+                }
+        }
+
+        public void RemoveAllAppointment()
+        {
+            if (appointment != null)
+            {
+                System.Collections.ArrayList tmpAppointment = new System.Collections.ArrayList();
+                foreach (Appointment oldAppointment in appointment)
+                    tmpAppointment.Add(oldAppointment);
+                appointment.Clear();
+                foreach (Appointment oldAppointment in tmpAppointment)
+                    oldAppointment.Doctor = null;
+                tmpAppointment.Clear();
+            }
+        }
+        public Room room;
+
+    }
 }

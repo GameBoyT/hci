@@ -1,71 +1,72 @@
-﻿using Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Text;
 
-namespace Hospital.Model
+namespace Model
 {
-    class AppointmentStorage
+    public class AppointmentStorage
     {
-        
+        private readonly string fileLocation = Directory.GetCurrentDirectory() + "\\appointment.json";
+
         private List<Appointment> appointments;
         public AppointmentStorage()
         {
-            string[] lines = System.IO.File.ReadAllLines(@"d:\appointment.txt");
-            string[] temp_app;
-            this.appointments  = new List<Appointment>();
+            appointments = new List<Appointment>();
 
-            foreach (string line in lines)
+            using (StreamReader r = new StreamReader(fileLocation))
             {
-                temp_app = line.Split(',');
-                int i = 0;
-                String id = ""; String timeStart = ""; String duration = "";
-                foreach (String attr in temp_app)
+                string json = r.ReadToEnd();
+                if (json != "")
                 {
-                    Console.WriteLine("\t" + attr);
-                    if (i == 0) { id = attr; }
-                    if (i == 1) { timeStart = attr; }
-                    if (i == 2) { duration = attr; }
-                   
-                    i++;
+                    appointments = JsonConvert.DeserializeObject<List<Appointment>>(json);
                 }
-                Appointment appointment = new Appointment(id, timeStart, duration);
-                appointments.Add(appointment);
-                Debug.WriteLine(appointment.timeStart);
             }
         }
+
         public List<Appointment> GetAll()
         {
             return appointments;
         }
 
- 
-        public void createAppointment(Appointment adding_app)
+        public void WriteAppointmentsToJson()
         {
-            appointments.Add(adding_app);
-            string line = "";
-            foreach (Appointment appointment in appointments)
-            {
-                line += appointment.id + "," + appointment.timeStart + "," + appointment.duration;
-                line += '\n';
-            }
-            File.WriteAllText(@"d:\appointment.txt", line);
+            string json = JsonConvert.SerializeObject(appointments);
+            File.WriteAllText(fileLocation, json);
         }
 
-
-    
-
-    public void deleteAppointment(Appointment delApp)
+        public Appointment GetById(int id)
         {
-            appointments.Remove(delApp);
-            string line = "";
-            foreach(Appointment appointment in appointments){
-                line += appointment.id + "," + appointment.timeStart + "," + appointment.duration;
-                line += '\n';
-            }
-            File.WriteAllText(@"d:\appointment.txt",line);
+            throw new NotImplementedException();
+        }
+
+        public void Save(Appointment appointment)
+        {
+            appointments.Add(appointment);
+            WriteAppointmentsToJson();
+        }
+
+        public void Delete(int id)
+        {
+            //appointments.Remove(appointmentToDelete);
+            WriteAppointmentsToJson();
+        }
+
+        public void Update(Appointment appointment)
+        {
+            int index = appointments.FindIndex(app => app.Id == appointment.Id);
+            appointments[index] = appointment;
+            WriteAppointmentsToJson();
+        }
+
+        public List<Appointment> GetAppointmentsForDoctor(String jmbg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Appointment> GetAppointmentsForPatient(String jmbg)
+        {
+            throw new NotImplementedException();
         }
 
     }
