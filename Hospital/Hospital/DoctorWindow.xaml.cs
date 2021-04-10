@@ -10,43 +10,17 @@ namespace Hospital
     {
         private AppointmentStorage appointmentStorage = new AppointmentStorage();
         private PatientStorage patientStorage = new PatientStorage();
+        private DoctorStorage doctorStorage = new DoctorStorage();
         List<Appointment> appointments = new List<Appointment>();
         List<Appointment> appointmentsToShow = new List<Appointment>();
+        private Doctor Doctor;
         public DoctorWindow()
         {
             InitializeComponent();
-            User doctorUser = new User("12345678910", "Djordje", "Tovilovc", "djole", "sifra", "email", "adresa", DateTime.Now);
-            Doctor doctor = new Doctor(doctorUser);
-            Room room = new Room(1, "336", 0, 3, "detalji");
-            doctor.Room = room;
+            Doctor = doctorStorage.GetByJmbg("1");
             appointment_date.SelectedDate = DateTime.Today;
-            appointments = appointmentStorage.GetAppointmentsForDoctor(doctor.User.Jmbg);
-
-            appointmentsToShow = appointments.FindAll(appointment => appointment.StartTime.Date == appointment_date.SelectedDate);
-            appointmentsDataGrid.ItemsSource = appointmentsToShow;
-
-
-
-            //User user = new User("111111111111", "Nemanja", "Markovic", "nemanja", "sifra", "email", "adresa", DateTime.Now);
-            //User user2 = new User("222222222222", "Zarko", "Zarkovic", "zarko", "sifra", "email", "adresa", DateTime.Now);
-            //User user3 = new User("333333333333", "Pero", "Peric", "pero", "sifra", "email", "adresa", DateTime.Now);
-            //Patient patient = new Patient(user);
-            //Patient patient2 = new Patient(user2);
-            //Patient patient3 = new Patient(user3);
-            //patientStorage.Save(patient);
-            //patientStorage.Save(patient2);
-            //patientStorage.Save(patient3);
-
-
-
-            //Appointment newAppointment = new Appointment(1, DateTime.Now, 30, patient, doctor);
-            //Appointment newAppointment2 = new Appointment(2, DateTime.Now, 30, patient2, doctor);
-            //Appointment newAppointment3 = new Appointment(3, DateTime.Now, 30, patient3, doctor);
-            //appointmentStorage.Save(newAppointment);
-            //appointmentStorage.Save(newAppointment2);
-            //appointmentStorage.Save(newAppointment3);
-
-
+            new_appointment_date.SelectedDate = DateTime.Today;
+            WindowUpdate();
         }
         private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -59,9 +33,7 @@ namespace Hospital
             addNewAppointmentButton.Visibility = Visibility.Collapsed;
             updateAppointmentButton.Visibility = Visibility.Visible;
             cancelUpdateButton.Visibility = Visibility.Visible;
-
             title.Content = "Edit appointment";
-
 
             Appointment appointment = (Appointment)appointmentsDataGrid.SelectedItems[0];
             idTextBox.Text = appointment.Id.ToString();
@@ -69,37 +41,32 @@ namespace Hospital
             durationTextBox.Text = appointment.DurationInMinutes.ToString();
             startTimeTextBox.Text = appointment.StartTime.ToString("HH:mm");
             patientJmbg.Text = appointment.Patient.User.Jmbg;
-
-
         }
 
-        private void Update_Appointment_Click(object sender, RoutedEventArgs e)
+        private void WindowUpdate()
+        {
+            appointments = appointmentStorage.GetAppointmentsForDoctor(Doctor.User.Jmbg);
+            appointmentsToShow = appointments.FindAll(appointment => appointment.StartTime.Date == appointment_date.SelectedDate);
+            appointmentsDataGrid.ItemsSource = appointmentsToShow;
+        }
+
+        private Appointment CreateAppointmentFromData()
         {
             int id = Int32.Parse(idTextBox.Text);
-            DateTime pickedDate = new DateTime();
-            pickedDate = new_appointment_date.SelectedDate.Value;
+            DateTime pickedDate = new_appointment_date.SelectedDate.Value;
             int hours = Int32.Parse(startTimeTextBox.Text.Split(':')[0]);
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
             Patient patient = patientStorage.GetByJmbg(patientJmbg.Text);
+            return new Appointment(id, appointmentDateTime, duration, patient, Doctor);
+        }
 
-            User doctorUser = new User("12345678910", "Djordje", "Tovilovc", "djole", "sifra", "email", "adresa", DateTime.Now);
-            Doctor doctor = new Doctor(doctorUser);
-
-            Room room = new Room(1, "336", 0, 3, "detalji");
-
-            doctor.Room = room;
-
-            Appointment appointment = new Appointment(id, appointmentDateTime, duration, patient, doctor);
+        private void Update_Appointment_Click(object sender, RoutedEventArgs e)
+        {
+            Appointment appointment = CreateAppointmentFromData();
             appointmentStorage.Update(appointment);
-
-
-            appointments = appointmentStorage.GetAppointmentsForDoctor(doctor.User.Jmbg);
-
-            appointmentsToShow = appointments.FindAll(appointment => appointment.StartTime.Date == appointment_date.SelectedDate);
-            appointmentsDataGrid.ItemsSource = appointmentsToShow;
-
+            WindowUpdate();
             ChangeToNewAppointment();
         }
 
@@ -127,38 +94,14 @@ namespace Hospital
         {
             Appointment app = (Appointment)appointmentsDataGrid.SelectedItems[0];
             appointmentStorage.Delete(app.Id);
-            appointments = appointmentStorage.GetAppointmentsForDoctor("12345678910");
-            appointmentsToShow = appointments.FindAll(appointment => appointment.StartTime.Date == appointment_date.SelectedDate);
-            appointmentsDataGrid.ItemsSource = appointmentsToShow;
-
+            WindowUpdate();
         }
 
         private void New_Appointment_Click(object sender, RoutedEventArgs e)
         {
-            int id = Int32.Parse(idTextBox.Text);
-            DateTime pickedDate = new DateTime();
-            pickedDate = appointment_date.SelectedDate.Value;
-            int hours = Int32.Parse(startTimeTextBox.Text.Split(':')[0]);
-            int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
-            DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
-            double duration = Convert.ToDouble(durationTextBox.Text);
-            Patient patient = patientStorage.GetByJmbg(patientJmbg.Text);
-
-            User doctorUser = new User("12345678910", "Djordje", "Tovilovc", "djole", "sifra", "email", "adresa", DateTime.Now);
-            Doctor doctor = new Doctor(doctorUser);
-
-            Room room = new Room(1, "336", 0, 3, "detalji");
-
-            doctor.Room = room;
-
-            Appointment appointment = new Appointment(id, appointmentDateTime, duration, patient, doctor);
+            Appointment appointment = CreateAppointmentFromData();
             appointmentStorage.Save(appointment);
-
-
-            appointments = appointmentStorage.GetAppointmentsForDoctor(doctor.User.Jmbg);
-
-            appointmentsToShow = appointments.FindAll(appointment => appointment.StartTime.Date == appointment_date.SelectedDate);
-            appointmentsDataGrid.ItemsSource = appointmentsToShow;
+            WindowUpdate();
         }
     }
 }
