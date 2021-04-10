@@ -41,6 +41,11 @@ namespace Hospital
             durationTextBox.Text = appointment.DurationInMinutes.ToString();
             startTimeTextBox.Text = appointment.StartTime.ToString("HH:mm");
             patientJmbg.Text = appointment.Patient.User.Jmbg;
+
+            idTextBox.IsReadOnly = true;
+            idTextBox.IsEnabled = false;
+            patientJmbg.IsReadOnly = true;
+            patientJmbg.IsEnabled = false;
         }
 
         private void WindowUpdate()
@@ -88,6 +93,11 @@ namespace Hospital
             cancelUpdateButton.Visibility = Visibility.Collapsed;
 
             title.Content = "New appointment";
+
+            idTextBox.IsReadOnly = false;
+            idTextBox.IsEnabled = true;
+            patientJmbg.IsReadOnly = false;
+            patientJmbg.IsEnabled = true;
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
