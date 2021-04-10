@@ -45,58 +45,58 @@ namespace Model
             ;
         }
 
-        public Patient patient;
+        //public Patient patient;
 
-        public Patient Patient
-        {
-            get
-            {
-                return patient;
-            }
-            set
-            {
-                if (this.patient == null || !this.patient.Equals(value))
-                {
-                    if (this.patient != null)
-                    {
-                        Patient oldPatient = this.patient;
-                        this.patient = null;
-                        oldPatient.RemoveAppointment(this);
-                    }
-                    if (value != null)
-                    {
-                        this.patient = value;
-                        this.patient.AddAppointment(this);
-                    }
-                }
-            }
-        }
-        public Doctor doctor;
+        public Patient Patient { get; set; }
+        //{
+        //    get
+        //    {
+        //        return patient;
+        //    }
+        //    set
+        //    {
+        //        if (this.patient == null || !this.patient.Equals(value))
+        //        {
+        //            if (this.patient != null)
+        //            {
+        //                Patient oldPatient = this.patient;
+        //                this.patient = null;
+        //                oldPatient.RemoveAppointment(this);
+        //            }
+        //            if (value != null)
+        //            {
+        //                this.patient = value;
+        //                this.patient.AddAppointment(this);
+        //            }
+        //        }
+        //    }
+        //}
+        //public Doctor doctor;
 
-        public Doctor Doctor
-        {
-            get
-            {
-                return doctor;
-            }
-            set
-            {
-                if (this.doctor == null || !this.doctor.Equals(value))
-                {
-                    if (this.doctor != null)
-                    {
-                        Doctor oldDoctor = this.doctor;
-                        this.doctor = null;
-                        oldDoctor.RemoveAppointment(this);
-                    }
-                    if (value != null)
-                    {
-                        this.doctor = value;
-                        this.doctor.AddAppointment(this);
-                    }
-                }
-            }
-        }
+        public Doctor Doctor { get; set; }
+        //{
+        //    get
+        //    {
+        //        return doctor;
+        //    }
+        //    set
+        //    {
+        //        if (this.doctor == null || !this.doctor.Equals(value))
+        //        {
+        //            if (this.doctor != null)
+        //            {
+        //                Doctor oldDoctor = this.doctor;
+        //                this.doctor = null;
+        //                oldDoctor.RemoveAppointment(this);
+        //            }
+        //            if (value != null)
+        //            {
+        //                this.doctor = value;
+        //                this.doctor.AddAppointment(this);
+        //            }
+        //        }
+        //    }
+        //}
 
     }
 }

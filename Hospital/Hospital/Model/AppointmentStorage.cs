@@ -29,7 +29,7 @@ namespace Model
             return appointments;
         }
 
-        public void WriteAppointmentsToJson()
+        public void WriteToJson()
         {
             string json = JsonConvert.SerializeObject(appointments);
             File.WriteAllText(fileLocation, json);
@@ -43,25 +43,26 @@ namespace Model
         public void Save(Appointment appointment)
         {
             appointments.Add(appointment);
-            WriteAppointmentsToJson();
+            WriteToJson();
         }
 
         public void Delete(int id)
         {
-            //appointments.Remove(appointmentToDelete);
-            WriteAppointmentsToJson();
+            int index = appointments.FindIndex(app => app.Id == id);
+            appointments.RemoveAt(index);
+            WriteToJson();
         }
 
         public void Update(Appointment appointment)
         {
             int index = appointments.FindIndex(app => app.Id == appointment.Id);
             appointments[index] = appointment;
-            WriteAppointmentsToJson();
+            WriteToJson();
         }
 
         public List<Appointment> GetAppointmentsForDoctor(String jmbg)
         {
-            throw new NotImplementedException();
+            return appointments.FindAll(appointment => appointment.Doctor.User.Jmbg == jmbg);
         }
 
         public List<Appointment> GetAppointmentsForPatient(String jmbg)

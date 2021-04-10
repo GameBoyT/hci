@@ -7,7 +7,7 @@ namespace Hospital
         public MainWindow()
         {
             InitializeComponent();
-            
+
 
 
 
@@ -25,6 +25,8 @@ namespace Hospital
             //var new_window = new Pacijent();
             //new_window.Show();
             //App.Current.MainWindow.Hide();
+
+
         }
 
         private void Button_Click_Doctor(object sender, RoutedEventArgs e)
