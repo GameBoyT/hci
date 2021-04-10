@@ -1,25 +1,48 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Model
 {
     public class PatientStorage
     {
-        private String fileLocation;
+        private readonly string fileLocation = Directory.GetCurrentDirectory() + "\\patients.json";
+        private List<Patient> patients;
 
+        public PatientStorage()
+        {
+            patients = new List<Patient>();
+
+            using (StreamReader r = new StreamReader(fileLocation))
+            {
+                string json = r.ReadToEnd();
+                if (json != "")
+                {
+                    patients = JsonConvert.DeserializeObject<List<Patient>>(json);
+                }
+            }
+        }
         public List<Patient> GetAll()
         {
-            throw new NotImplementedException();
+            return patients;
+        }
+
+        public void WriteToJson()
+        {
+            string json = JsonConvert.SerializeObject(patients);
+            File.WriteAllText(fileLocation, json);
         }
 
         public Patient GetByJmbg(String jmbg)
         {
-            throw new NotImplementedException();
+            return patients.Find(patient => patient.User.Jmbg == jmbg);
         }
 
         public void Save(Patient patient)
         {
-            throw new NotImplementedException();
+            patients.Add(patient);
+            WriteToJson();
         }
 
         public void Delete(String jmbg)

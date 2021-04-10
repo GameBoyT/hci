@@ -4,7 +4,18 @@ namespace Model
 {
     public class User
     {
-        public String jmbg
+        public User(string jmbg, string firstName, string lastName, string username, string password, string email, string address, DateTime dateOfBirth)
+        {
+            this.Jmbg = jmbg;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Username = username;
+            this.Password = password;
+            this.Email = email;
+            this.Address = address;
+            this.DateOfBirth = dateOfBirth;
+        }
+        public String Jmbg
         {
             get
             ;
@@ -12,7 +23,7 @@ namespace Model
             ;
         }
 
-        public String firstName
+        public String FirstName
         {
             get
             ;
@@ -20,7 +31,7 @@ namespace Model
             ;
         }
 
-        public String lastName
+        public String LastName
         {
             get
             ;
@@ -28,7 +39,7 @@ namespace Model
             ;
         }
 
-        public String username
+        public String Username
         {
             get
             ;
@@ -36,7 +47,7 @@ namespace Model
             ;
         }
 
-        public String password
+        public String Password
         {
             get
             ;
@@ -44,7 +55,7 @@ namespace Model
             ;
         }
 
-        public String email
+        public String Email
         {
             get
             ;
@@ -52,7 +63,7 @@ namespace Model
             ;
         }
 
-        public String address
+        public String Address
         {
             get
             ;
@@ -60,7 +71,7 @@ namespace Model
             ;
         }
 
-        public DateTime dateOfBirth
+        public DateTime DateOfBirth
         {
             get
             ;

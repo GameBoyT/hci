@@ -6,6 +6,11 @@ namespace Model
 
         public System.Collections.Generic.List<Appointment> appointment;
 
+        public Patient(User patient)
+        {
+            this.User = patient;
+        }
+
         public System.Collections.Generic.List<Appointment> Appointment
         {
             get
@@ -63,7 +68,7 @@ namespace Model
                 tmpAppointment.Clear();
             }
         }
-        public User user;
+        public User User { get; set; }
         public MedicalRecord medicalRecord;
 
     }
