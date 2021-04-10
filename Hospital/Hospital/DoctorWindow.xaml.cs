@@ -81,7 +81,7 @@ namespace Hospital
             try
             {
                 Appointment appointment = CreateAppointmentFromData();
-                if (AppointmentTimeIsScheduled(appointment))
+                if (AppointmentTimeIsInvalid(appointment))
                     return;
                 appointmentStorage.Update(appointment);
                 WindowUpdate();
@@ -132,22 +132,41 @@ namespace Hospital
             }
         }
 
-        private bool AppointmentTimeIsScheduled(Appointment appointment)
+        private bool AppointmentTimeIsInvalid(Appointment appointment)
         {
+            if (DateTime.Now.Date > appointment.StartTime.Date)
+            {
+                MessageBox.Show("You can't chose a date before today!");
+                return true;
+            }
+
             foreach (Appointment app in appointments)
             {
                 if (app.Id != appointment.Id)
                 {
+                    DateTime endTime = app.StartTime.AddMinutes(app.DurationInMinutes);
+                    DateTime appointmentEndTime = appointment.StartTime.AddMinutes(appointment.DurationInMinutes);
 
-                DateTime endTime = app.StartTime.AddMinutes(app.DurationInMinutes);
-                DateTime appointmentEndTime = appointment.StartTime.AddMinutes(appointment.DurationInMinutes);
-
-                if ((app.StartTime.Ticks <= appointment.StartTime.Ticks && endTime.Ticks >= appointment.StartTime.Ticks) ||
-                        (app.StartTime.Ticks <= appointmentEndTime.Ticks && endTime.Ticks >= appointmentEndTime.Ticks))
-                {
-                    MessageBox.Show("There is an appointment at that time!");
-                    return true;
+                    if ((app.StartTime.Ticks <= appointment.StartTime.Ticks && endTime.Ticks >= appointment.StartTime.Ticks) ||
+                            (app.StartTime.Ticks <= appointmentEndTime.Ticks && endTime.Ticks >= appointmentEndTime.Ticks))
+                    {
+                        MessageBox.Show("There is an appointment at that time!");
+                        return true;
+                    }
                 }
+                else
+                {
+                    if (DateTime.Now.AddDays(1).Ticks > app.StartTime.Ticks)
+                    {
+                        MessageBox.Show("You can't update an appointment that is less then 24h away!");
+                        return true;
+                    }
+
+                    if (app.StartTime.AddDays(2).Ticks < appointment.StartTime.Ticks)
+                    {
+                        MessageBox.Show("You can't update an appointment to a date over 2 days later!");
+                        return true;
+                    }
                 }
             }
             return false;
@@ -167,7 +186,7 @@ namespace Hospital
                     MessageBox.Show("You have to enter a valid patient jmbg!");
                     return;
                 }
-                if (AppointmentTimeIsScheduled(appointment))
+                if (AppointmentTimeIsInvalid(appointment))
                     return;
 
                 appointmentStorage.Save(appointment);
