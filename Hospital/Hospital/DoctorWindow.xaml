@@ -14,7 +14,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id"
                             Binding="{Binding Id}" />
-                <DataGridTextColumn Header="Start time"
+                <DataGridTextColumn x:Name="start_time_column" Header="Start time"
                             Binding="{Binding StartTime , StringFormat=t}" />
                 <DataGridTextColumn Header="Duration"
                             Binding="{Binding DurationInMinutes}" />

@@ -9,7 +9,7 @@ namespace Model
     {
         private readonly string fileLocation = Directory.GetCurrentDirectory() + "\\doctors.json";
         private List<Doctor> doctors;
-        
+
         public DoctorStorage()
         {
             doctors = new List<Doctor>();

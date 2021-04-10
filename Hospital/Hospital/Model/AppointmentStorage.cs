@@ -37,7 +37,15 @@ namespace Model
 
         public Appointment GetById(int id)
         {
-            throw new NotImplementedException();
+            return appointments.Find(app => app.Id == id);
+        }
+
+        public bool UniqueId(int id)
+        {
+            if (appointments.FindIndex(app => app.Id == id) == -1)
+                return true;
+            else
+                return false;
         }
 
         public void Save(Appointment appointment)

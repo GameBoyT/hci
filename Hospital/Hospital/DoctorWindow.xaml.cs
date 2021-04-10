@@ -30,22 +30,31 @@ namespace Hospital
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            addNewAppointmentButton.Visibility = Visibility.Collapsed;
-            updateAppointmentButton.Visibility = Visibility.Visible;
-            cancelUpdateButton.Visibility = Visibility.Visible;
-            title.Content = "Edit appointment";
+            try
+            {
+                Appointment appointment = (Appointment)appointmentsDataGrid.SelectedItems[0];
 
-            Appointment appointment = (Appointment)appointmentsDataGrid.SelectedItems[0];
-            idTextBox.Text = appointment.Id.ToString();
-            new_appointment_date.SelectedDate = appointment.StartTime.Date;
-            durationTextBox.Text = appointment.DurationInMinutes.ToString();
-            startTimeTextBox.Text = appointment.StartTime.ToString("HH:mm");
-            patientJmbg.Text = appointment.Patient.User.Jmbg;
+                addNewAppointmentButton.Visibility = Visibility.Collapsed;
+                updateAppointmentButton.Visibility = Visibility.Visible;
+                cancelUpdateButton.Visibility = Visibility.Visible;
+                title.Content = "Edit appointment";
 
-            idTextBox.IsReadOnly = true;
-            idTextBox.IsEnabled = false;
-            patientJmbg.IsReadOnly = true;
-            patientJmbg.IsEnabled = false;
+                idTextBox.Text = appointment.Id.ToString();
+                new_appointment_date.SelectedDate = appointment.StartTime.Date;
+                durationTextBox.Text = appointment.DurationInMinutes.ToString();
+                startTimeTextBox.Text = appointment.StartTime.ToString("HH:mm");
+                patientJmbg.Text = appointment.Patient.User.Jmbg;
+
+                idTextBox.IsReadOnly = true;
+                idTextBox.IsEnabled = false;
+                patientJmbg.IsReadOnly = true;
+                patientJmbg.IsEnabled = false;
+            }
+            catch
+            {
+                MessageBox.Show("You have to select an appointment to update!");
+            }
+
         }
 
         private void WindowUpdate()
@@ -69,10 +78,19 @@ namespace Hospital
 
         private void Update_Appointment_Click(object sender, RoutedEventArgs e)
         {
-            Appointment appointment = CreateAppointmentFromData();
-            appointmentStorage.Update(appointment);
-            WindowUpdate();
-            ChangeToNewAppointment();
+            try
+            {
+                Appointment appointment = CreateAppointmentFromData();
+                if (AppointmentTimeIsScheduled(appointment))
+                    return;
+                appointmentStorage.Update(appointment);
+                WindowUpdate();
+                ChangeToNewAppointment();
+            }
+            catch
+            {
+                MessageBox.Show("You have to fill in all input boxes!");
+            }
         }
 
         private void Cancel_Update_Click(object sender, RoutedEventArgs e)
@@ -102,16 +120,64 @@ namespace Hospital
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            Appointment app = (Appointment)appointmentsDataGrid.SelectedItems[0];
-            appointmentStorage.Delete(app.Id);
-            WindowUpdate();
+            try
+            {
+                Appointment app = (Appointment)appointmentsDataGrid.SelectedItems[0];
+                appointmentStorage.Delete(app.Id);
+                WindowUpdate();
+            }
+            catch
+            {
+                MessageBox.Show("You have to select an appointment to delete!");
+            }
         }
 
+        private bool AppointmentTimeIsScheduled(Appointment appointment)
+        {
+            foreach (Appointment app in appointments)
+            {
+                if (app.Id != appointment.Id)
+                {
+
+                DateTime endTime = app.StartTime.AddMinutes(app.DurationInMinutes);
+                DateTime appointmentEndTime = appointment.StartTime.AddMinutes(appointment.DurationInMinutes);
+
+                if ((app.StartTime.Ticks <= appointment.StartTime.Ticks && endTime.Ticks >= appointment.StartTime.Ticks) ||
+                        (app.StartTime.Ticks <= appointmentEndTime.Ticks && endTime.Ticks >= appointmentEndTime.Ticks))
+                {
+                    MessageBox.Show("There is an appointment at that time!");
+                    return true;
+                }
+                }
+            }
+            return false;
+        }
         private void New_Appointment_Click(object sender, RoutedEventArgs e)
         {
-            Appointment appointment = CreateAppointmentFromData();
-            appointmentStorage.Save(appointment);
-            WindowUpdate();
+            try
+            {
+                Appointment appointment = CreateAppointmentFromData();
+                if (appointmentStorage.UniqueId(appointment.Id) == false)
+                {
+                    MessageBox.Show("You have to enter a unique id!");
+                    return;
+                }
+                if (appointment.Patient == null)
+                {
+                    MessageBox.Show("You have to enter a valid patient jmbg!");
+                    return;
+                }
+                if (AppointmentTimeIsScheduled(appointment))
+                    return;
+
+                appointmentStorage.Save(appointment);
+                ChangeToNewAppointment();
+                WindowUpdate();
+            }
+            catch
+            {
+                MessageBox.Show("You have to fill in all input boxes!");
+            }
         }
     }
 }
