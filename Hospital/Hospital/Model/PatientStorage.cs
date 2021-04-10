@@ -36,7 +36,7 @@ namespace Model
 
         public Patient GetByJmbg(String jmbg)
         {
-            return patients.Find(patinet => patinet.User.Jmbg == jmbg);
+            return patients.Find(patient => patient.User.Jmbg == jmbg);
         }
 
         public void Save(Patient patient)

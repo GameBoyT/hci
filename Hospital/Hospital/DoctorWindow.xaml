@@ -12,7 +12,7 @@
         <TextBox HorizontalAlignment="Left" Margin="33,332,0,0" Text="Appointments date" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" Height="18"/>
         <DataGrid x:Name="appointmentsDataGrid"
               AutoGenerateColumns="False"
-              IsReadOnly="True" Margin="33,55,378,143">
+              IsReadOnly="True" Margin="33,66,378,132">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id"
                             Binding="{Binding Id}" />
@@ -28,7 +28,22 @@
                             Binding="{Binding Doctor.Room.Name}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="352,328,0,0" VerticalAlignment="Top" Click="Delete_Click"/>
-        <Button Content="Add new appointment" HorizontalAlignment="Left" Margin="500,271,0,0" VerticalAlignment="Top" Click="Add_Click"/>
+        <Button Content="Delete" HorizontalAlignment="Center" Margin="0,330,0,0" VerticalAlignment="Top" Click="Delete_Click"/>
+        <Label Content="Start time" HorizontalAlignment="Left" Margin="509,116,0,0" VerticalAlignment="Top" Width="116"/>
+        <DatePicker x:Name="new_appointment_date" HorizontalAlignment="Left" Margin="637,86,0,0" VerticalAlignment="Top"/>
+
+        <Label Content="Patients jmbg" HorizontalAlignment="Left" Margin="509,181,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
+        <TextBox x:Name="startTimeTextBox" HorizontalAlignment="Left" Margin="637,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="addNewAppointmentButton" Content="Add new appointment" HorizontalAlignment="Left" Margin="626,267,0,0" VerticalAlignment="Top" Click="New_Appointment_Click"/>
+        <Label Content="Appointment id" HorizontalAlignment="Left" Margin="509,51,0,0" VerticalAlignment="Top" Width="106"/>
+        <TextBox x:Name="idTextBox" HorizontalAlignment="Left" Margin="637,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="durationTextBox" HorizontalAlignment="Left" Margin="637,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Duration in minutes" HorizontalAlignment="Left" Margin="509,147,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.142,-0.368"/>
+        <Label Content="Select date" HorizontalAlignment="Left" Margin="509,84,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
+        <TextBox x:Name="patientJmbg" HorizontalAlignment="Left" Margin="637,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="title" Content="New appointment" HorizontalAlignment="Left" Margin="571,13,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="309,330,0,0" VerticalAlignment="Top" Click="Update_Click"/>
+        <Button x:Name="updateAppointmentButton" Content="Update appointment" Visibility="Hidden" HorizontalAlignment="Left" Margin="485,267,0,0" VerticalAlignment="Top" Click="Update_Appointment_Click"/>
+        <Button x:Name="cancelUpdateButton" Content="Cancel update" Visibility="Hidden" HorizontalAlignment="Left" Margin="624,267,0,0" VerticalAlignment="Top" Click="Cancel_Update_Click"/>
     </Grid>
 </Window>
