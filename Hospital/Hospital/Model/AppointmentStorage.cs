@@ -7,7 +7,7 @@ namespace Model
 {
     public class AppointmentStorage
     {
-        private readonly string fileLocation = Directory.GetCurrentDirectory() + "\\appointment.json";
+        private readonly string fileLocation = Directory.GetCurrentDirectory() + "\\appointments.json";
 
         private List<Appointment> appointments;
         public AppointmentStorage()

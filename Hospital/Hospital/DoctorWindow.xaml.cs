@@ -147,8 +147,8 @@ namespace Hospital
                     DateTime endTime = app.StartTime.AddMinutes(app.DurationInMinutes);
                     DateTime appointmentEndTime = appointment.StartTime.AddMinutes(appointment.DurationInMinutes);
 
-                    if ((app.StartTime.Ticks <= appointment.StartTime.Ticks && endTime.Ticks >= appointment.StartTime.Ticks) ||
-                            (app.StartTime.Ticks <= appointmentEndTime.Ticks && endTime.Ticks >= appointmentEndTime.Ticks))
+                    if ((app.StartTime.Ticks < appointment.StartTime.Ticks && endTime.Ticks > appointment.StartTime.Ticks) ||
+                            (app.StartTime.Ticks < appointmentEndTime.Ticks && endTime.Ticks > appointmentEndTime.Ticks))
                     {
                         MessageBox.Show("There is an appointment at that time!");
                         return true;
