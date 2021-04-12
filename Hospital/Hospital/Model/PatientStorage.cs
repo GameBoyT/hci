@@ -7,7 +7,7 @@ namespace Model
 {
     public class PatientStorage
     {
-        private readonly string fileLocation = Directory.GetCurrentDirectory() + "\\patients.json";
+        private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\patients.json";
         private List<Patient> patients;
 
         public PatientStorage()

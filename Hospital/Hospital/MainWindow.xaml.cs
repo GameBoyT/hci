@@ -7,11 +7,6 @@ namespace Hospital
         public MainWindow()
         {
             InitializeComponent();
-
-
-
-
-
         }
 
         //private void roomOptions(object sender, RoutedEventArgs e)
