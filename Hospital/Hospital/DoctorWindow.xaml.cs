@@ -134,9 +134,9 @@ namespace Hospital
 
         private bool AppointmentTimeIsInvalid(Appointment appointment)
         {
-            if (DateTime.Now.Date > appointment.StartTime.Date)
+            if (DateTime.Now.Ticks > appointment.StartTime.Ticks)
             {
-                MessageBox.Show("You can't chose a date before today!");
+                MessageBox.Show("You can't chose a date and time in the past!");
                 return true;
             }
 
@@ -158,7 +158,7 @@ namespace Hospital
                 {
                     if (DateTime.Now.AddDays(1).Ticks > app.StartTime.Ticks)
                     {
-                        MessageBox.Show("You can't update an appointment that is less then 24h away!");
+                        MessageBox.Show("You can't update an appointment that is less than 24h away!");
                         return true;
                     }
 
