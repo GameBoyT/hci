@@ -1,10 +1,8 @@
-using System;
-
 namespace Model
 {
-    public class Employee
+    public class Medicine
     {
-        public Double salary
+        public int id
         {
             get
             ;
@@ -12,15 +10,13 @@ namespace Model
             ;
         }
 
-        public int annualLeave
+        public string name
         {
             get
             ;
             set
             ;
         }
-
-        public User user;
 
     }
 }

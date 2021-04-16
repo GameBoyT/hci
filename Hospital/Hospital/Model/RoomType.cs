@@ -6,6 +6,7 @@ namespace Model
         operating,
         exam,
         emergency,
-        patients
+        patients,
+        warehouse
     }
 }

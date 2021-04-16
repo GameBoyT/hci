@@ -4,15 +4,7 @@ namespace Model
 {
     public class Room
     {
-        public Room(int id, String name, RoomType roomType, int floor, string detail)
-        {
-            Id = id;
-            Name = name;
-            RoomType = roomType;
-            Floor = floor;
-            Detail = detail;
-        }
-        public int Id
+        public int id
         {
             get
             ;
@@ -20,7 +12,7 @@ namespace Model
             ;
         }
 
-        public String Name
+        public String name
         {
             get
             ;
@@ -28,7 +20,7 @@ namespace Model
             ;
         }
 
-        public RoomType RoomType
+        public RoomType roomType
         {
             get
             ;
@@ -36,7 +28,7 @@ namespace Model
             ;
         }
 
-        public int Floor
+        public int floor
         {
             get
             ;
@@ -44,7 +36,7 @@ namespace Model
             ;
         }
 
-        public String Detail
+        public String detail
         {
             get
             ;
@@ -52,7 +44,67 @@ namespace Model
             ;
         }
 
-        public Doctor Doctor { get; set; }
+        public DynamicEquipment[] dynamicEquipment;
+        public System.Collections.Generic.List<Appointment> appointment;
+
+        public System.Collections.Generic.List<Appointment> Appointment
+        {
+            get
+            {
+                if (appointment == null)
+                    appointment = new System.Collections.Generic.List<Appointment>();
+                return appointment;
+            }
+            set
+            {
+                RemoveAllAppointment();
+                if (value != null)
+                {
+                    foreach (Appointment oAppointment in value)
+                        AddAppointment(oAppointment);
+                }
+            }
+        }
+
+        public void AddAppointment(Appointment newAppointment)
+        {
+            if (newAppointment == null)
+                return;
+            if (this.appointment == null)
+                this.appointment = new System.Collections.Generic.List<Appointment>();
+            if (!this.appointment.Contains(newAppointment))
+            {
+                this.appointment.Add(newAppointment);
+                newAppointment.Room = this;
+            }
+        }
+
+        public void RemoveAppointment(Appointment oldAppointment)
+        {
+            if (oldAppointment == null)
+                return;
+            if (this.appointment != null)
+                if (this.appointment.Contains(oldAppointment))
+                {
+                    this.appointment.Remove(oldAppointment);
+                    oldAppointment.Room = null;
+                }
+        }
+
+        public void RemoveAllAppointment()
+        {
+            if (appointment != null)
+            {
+                System.Collections.ArrayList tmpAppointment = new System.Collections.ArrayList();
+                foreach (Appointment oldAppointment in appointment)
+                    tmpAppointment.Add(oldAppointment);
+                appointment.Clear();
+                foreach (Appointment oldAppointment in tmpAppointment)
+                    oldAppointment.Room = null;
+                tmpAppointment.Clear();
+            }
+        }
+        public StaticEquipment[] staticEquipment;
 
     }
 }

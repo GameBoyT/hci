@@ -1,23 +1,24 @@
+using Model;
 using System;
 using System.Collections.Generic;
 
-namespace Model
+namespace Repository
 {
-    public class RoomStorage
+    public class StaticEquipmentRepository
     {
         private String fileLocation;
 
-        public List<Room> GetAll()
+        public List<StaticEquipment> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Room GetById(int id)
+        public StaticEquipment GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Save(Room room)
+        public void Save(int quantity, String type, String description, int name)
         {
             throw new NotImplementedException();
         }
@@ -27,7 +28,7 @@ namespace Model
             throw new NotImplementedException();
         }
 
-        public void Update(Room room)
+        public void Update(int quantity, String type, String description, int name)
         {
             throw new NotImplementedException();
         }
