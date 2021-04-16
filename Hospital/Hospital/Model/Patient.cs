@@ -2,6 +2,9 @@ namespace Model
 {
     public class Patient
     {
+        public User User { get; set; }
+        public MedicalRecord MedicalRecord { get; set; }
+
         public System.Collections.Generic.List<Appointment> appointment;
 
         public System.Collections.Generic.List<Appointment> Appointment
@@ -61,8 +64,6 @@ namespace Model
                 tmpAppointment.Clear();
             }
         }
-        public User User;
-        public MedicalRecord MedicalRecord;
         public System.Collections.Generic.List<Notification> notification;
 
         public System.Collections.Generic.List<Notification> Notification

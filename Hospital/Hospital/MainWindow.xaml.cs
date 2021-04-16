@@ -15,9 +15,9 @@ namespace Hospital
             //var s = patientController.GetAll();
             //MessageBox.Show(s[0].User.FirstName);
 
-            AppointmentController patientController = new AppointmentController();
-            var s = patientController.GetAll();
-            MessageBox.Show(s[0].Doctor.User.FirstName);
+            //AppointmentController patientController = new AppointmentController();
+            //var s = patientController.GetAll();
+            //MessageBox.Show(s[0].Doctor.User.FirstName);
 
         }
 
@@ -38,9 +38,9 @@ namespace Hospital
 
         private void Button_Click_Doctor(object sender, RoutedEventArgs e)
         {
-            //DoctorWindow doctorWindow = new DoctorWindow();
-            //doctorWindow.Show();
-            //App.Current.MainWindow.Hide();
+            DoctorWindow doctorWindow = new DoctorWindow();
+            doctorWindow.Show();
+            App.Current.MainWindow.Hide();
         }
 
         private void Button_Click_Director(object sender, RoutedEventArgs e)

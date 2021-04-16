@@ -79,7 +79,7 @@ namespace Repository
 
         public List<Appointment> GetAppointmentsForPatient(String jmbg)
         {
-            throw new NotImplementedException();
+            return appointments.FindAll(appointment => appointment.Patient.User.Jmbg == jmbg);
         }
 
     }
