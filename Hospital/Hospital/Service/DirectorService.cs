@@ -1,23 +1,23 @@
+using Model;
 using System;
 using System.Collections.Generic;
 
-namespace Model
-{
-    public class DirectorStorage
-    {
-        private String fileLocation;
 
+namespace Service
+{
+    public class DirectorService
+    {
         public List<Director> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Director GetByJmbg(String jmbg)
+        public Model.Director GetByJmbg(String jmbg)
         {
             throw new NotImplementedException();
         }
 
-        public void Save(Director director)
+        public void Save(Model.Director director)
         {
             throw new NotImplementedException();
         }
@@ -27,10 +27,12 @@ namespace Model
             throw new NotImplementedException();
         }
 
-        public void Update(Director director)
+        public void Update(Model.Director director)
         {
             throw new NotImplementedException();
         }
+
+        public Repository.DirectorRepository directorRepository;
 
     }
 }

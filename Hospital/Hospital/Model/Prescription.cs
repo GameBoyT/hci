@@ -2,9 +2,9 @@ using System;
 
 namespace Model
 {
-    public class User
+    public class Prescription
     {
-        public String Jmbg
+        public int interval
         {
             get
             ;
@@ -12,7 +12,7 @@ namespace Model
             ;
         }
 
-        public String FirstName
+        public DateTime startDate
         {
             get
             ;
@@ -20,7 +20,7 @@ namespace Model
             ;
         }
 
-        public String LastName
+        public DateTime endDate
         {
             get
             ;
@@ -28,7 +28,7 @@ namespace Model
             ;
         }
 
-        public String Username
+        public String description
         {
             get
             ;
@@ -36,7 +36,7 @@ namespace Model
             ;
         }
 
-        public String Password
+        public int quantity
         {
             get
             ;
@@ -44,28 +44,18 @@ namespace Model
             ;
         }
 
-        public String Email
-        {
-            get
-            ;
-            set
-            ;
-        }
+        public Medicine medicine;
 
-        public String Address
+        public Medicine Medicine
         {
             get
-            ;
+            {
+                return medicine;
+            }
             set
-            ;
-        }
-
-        public DateTime DateOfBirth
-        {
-            get
-            ;
-            set
-            ;
+            {
+                this.medicine = value;
+            }
         }
 
     }

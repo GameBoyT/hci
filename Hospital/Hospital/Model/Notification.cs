@@ -2,9 +2,9 @@ using System;
 
 namespace Model
 {
-    public class Employee
+    public class Notification
     {
-        public Double salary
+        public int id
         {
             get
             ;
@@ -12,7 +12,7 @@ namespace Model
             ;
         }
 
-        public int annualLeave
+        public String notificationText
         {
             get
             ;
@@ -20,7 +20,13 @@ namespace Model
             ;
         }
 
-        public User user;
+        public int reciver
+        {
+            get
+            ;
+            set
+            ;
+        }
 
     }
 }

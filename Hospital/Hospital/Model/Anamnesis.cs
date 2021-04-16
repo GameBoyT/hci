@@ -2,9 +2,9 @@ using System;
 
 namespace Model
 {
-    public class Appointment
+    public class Anamnesis
     {
-        public int Id
+        public int id
         {
             get
             ;
@@ -12,7 +12,7 @@ namespace Model
             ;
         }
 
-        public DateTime StartTime
+        public String type
         {
             get
             ;
@@ -20,7 +20,7 @@ namespace Model
             ;
         }
 
-        public Double DurationInMinutes
+        public String name
         {
             get
             ;
@@ -28,15 +28,13 @@ namespace Model
             ;
         }
 
-        public Doctor Doctor { get; set; }
-
-
-        public Patient Patient { get; set; }
-
-
-        public Room Room { get; set; }
-
-
+        public String description
+        {
+            get
+            ;
+            set
+            ;
+        }
 
     }
 }

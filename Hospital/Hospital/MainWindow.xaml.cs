@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Controller;
+using System.Windows;
 
 namespace Hospital
 {
@@ -7,6 +8,9 @@ namespace Hospital
         public MainWindow()
         {
             InitializeComponent();
+            //DoctorController _doctorController = new DoctorController();
+            //var k = _doctorController.GetAll();
+            //MessageBox.Show(k[0].User.FirstName);
         }
 
         //private void roomOptions(object sender, RoutedEventArgs e)
@@ -26,9 +30,9 @@ namespace Hospital
 
         private void Button_Click_Doctor(object sender, RoutedEventArgs e)
         {
-            DoctorWindow doctorWindow = new DoctorWindow();
-            doctorWindow.Show();
-            App.Current.MainWindow.Hide();
+            //DoctorWindow doctorWindow = new DoctorWindow();
+            //doctorWindow.Show();
+            //App.Current.MainWindow.Hide();
         }
 
         private void Button_Click_Director(object sender, RoutedEventArgs e)

@@ -1,10 +1,8 @@
-using System;
-
 namespace Model
 {
-    public class Appointment
+    public class StaticEquipment
     {
-        public int Id
+        public int id
         {
             get
             ;
@@ -12,7 +10,7 @@ namespace Model
             ;
         }
 
-        public DateTime StartTime
+        public int quantity
         {
             get
             ;
@@ -20,7 +18,7 @@ namespace Model
             ;
         }
 
-        public Double DurationInMinutes
+        public string description
         {
             get
             ;
@@ -28,15 +26,15 @@ namespace Model
             ;
         }
 
-        public Doctor Doctor { get; set; }
+        public string name
+        {
+            get
+            ;
+            set
+            ;
+        }
 
-
-        public Patient Patient { get; set; }
-
-
-        public Room Room { get; set; }
-
-
+        public Room room;
 
     }
 }

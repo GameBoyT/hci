@@ -1,23 +1,22 @@
+using Model;
 using System;
 using System.Collections.Generic;
 
-namespace Model
+namespace Service
 {
-    public class SecretaryStorage
+    public class MedicineService
     {
-        private String fileLocation;
-
-        public List<Secretary> GetAll()
+        public List<Medicine> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Secretary GetByJmbg(String jmbg)
+        public Medicine GetByJmbg(String jmbg)
         {
             throw new NotImplementedException();
         }
 
-        public void Save(Secretary secretary)
+        public void Save(Medicine medicine)
         {
             throw new NotImplementedException();
         }
@@ -27,10 +26,12 @@ namespace Model
             throw new NotImplementedException();
         }
 
-        public void Update(Secretary secretary)
+        public void Update(Medicine medicine)
         {
             throw new NotImplementedException();
         }
+
+        public Repository.MedicineRepository medicineRepository;
 
     }
 }
