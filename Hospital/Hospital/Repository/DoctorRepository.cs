@@ -13,6 +13,11 @@ namespace Repository
 
         public DoctorRepository()
         {
+            if (!File.Exists(fileLocation))
+            {
+                Directory.CreateDirectory(fileLocation);
+            }
+
             using (StreamReader r = new StreamReader(fileLocation))
             {
                 string json = r.ReadToEnd();
@@ -35,7 +40,7 @@ namespace Repository
 
         public Doctor GetByJmbg(String jmbg)
         {
-            return doctors.Find(doctor => doctor.User.Jmbg == jmbg);
+            return doctors.Find(obj => obj.User.Jmbg == jmbg);
         }
 
         public void Save(Doctor doctor)
@@ -46,12 +51,16 @@ namespace Repository
 
         public void Delete(String jmbg)
         {
-            throw new NotImplementedException();
+            int index = doctors.FindIndex(obj => obj.User.Jmbg == jmbg);
+            doctors.RemoveAt(index);
+            WriteToJson();
         }
 
         public void Update(Doctor doctor)
         {
-            throw new NotImplementedException();
+            int index = doctors.FindIndex(obj => obj.User.Jmbg == doctor.User.Jmbg);
+            doctors[index] = doctor;
+            WriteToJson();
         }
     }
 }

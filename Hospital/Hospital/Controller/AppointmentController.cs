@@ -7,9 +7,7 @@ namespace Controller
     public class AppointmentController
     {
 
-        private Service.AppointmentService appointmentService;
-
-
+        private Service.AppointmentService appointmentService = new Service.AppointmentService();
 
         public List<Appointment> GetAll()
         {
@@ -46,7 +44,7 @@ namespace Controller
             return appointmentService.GetAppointmentsForPatient(jmbg);
         }
 
-        
+
 
     }
 }

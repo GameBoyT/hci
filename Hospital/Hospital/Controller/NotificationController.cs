@@ -1,5 +1,4 @@
 using Model;
-using System;
 using System.Collections.Generic;
 
 namespace Controller
@@ -8,12 +7,9 @@ namespace Controller
     {
         private Service.NotificationService notificationService = new Service.NotificationService();
 
-
-
-
         public List<Notification> GetAll()
         {
-           return notificationService.GetAll();
+            return notificationService.GetAll();
         }
 
         public Notification GetById(int id)
@@ -28,7 +24,7 @@ namespace Controller
         public void Delete(int id)
         {
             notificationService.Delete(id);
-            
+
         }
 
         public void Update(Notification notification)

@@ -1,36 +1,66 @@
 using Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Repository
 {
     public class PatientRepository
     {
-        private String fileLocation;
+        private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\patients.json";
+        private List<Patient> patients = new List<Patient>();
+
+        public PatientRepository()
+        {
+            if (!File.Exists(fileLocation))
+            {
+                Directory.CreateDirectory(fileLocation);
+            }
+
+            using (StreamReader r = new StreamReader(fileLocation))
+            {
+                string json = r.ReadToEnd();
+                if (json != "")
+                {
+                    patients = JsonConvert.DeserializeObject<List<Patient>>(json);
+                }
+            }
+        }
+        public void WriteToJson()
+        {
+            string json = JsonConvert.SerializeObject(patients);
+            File.WriteAllText(fileLocation, json);
+        }
 
         public List<Patient> GetAll()
         {
-            throw new NotImplementedException();
+            return patients;
         }
 
-        public Model.Patient GetByJmbg(String jmbg)
+        public Patient GetByJmbg(String jmbg)
         {
-            throw new NotImplementedException();
+            return patients.Find(obj => obj.User.Jmbg == jmbg);
         }
 
-        public void Save(Model.Patient patient)
+        public void Save(Patient patient)
         {
-            throw new NotImplementedException();
+            patients.Add(patient);
+            WriteToJson();
         }
 
         public void Delete(String jmbg)
         {
-            throw new NotImplementedException();
+            int index = patients.FindIndex(obj => obj.User.Jmbg == jmbg);
+            patients.RemoveAt(index);
+            WriteToJson();
         }
 
-        public void Update(Model.Patient patient)
+        public void Update(Patient patient)
         {
-            throw new NotImplementedException();
+            int index = patients.FindIndex(obj => obj.User.Jmbg == patient.User.Jmbg);
+            patients[index] = patient;
+            WriteToJson();
         }
 
     }
