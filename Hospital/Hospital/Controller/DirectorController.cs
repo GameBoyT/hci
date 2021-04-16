@@ -7,12 +7,12 @@ namespace Controller
     public class DirectorController
     {
 
-        private Service.DirectorService directorService;
-        
-        
+        private Service.DirectorService directorService = new Service.DirectorService();
+
+
         public List<Director> GetAll()
         {
-           return directorService.GetAll();
+            return directorService.GetAll();
         }
 
         public Model.Director GetByJmbg(String jmbg)
@@ -35,7 +35,7 @@ namespace Controller
             directorService.Update(director);
         }
 
-        
+
 
     }
 }

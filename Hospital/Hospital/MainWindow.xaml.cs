@@ -8,9 +8,17 @@ namespace Hospital
         public MainWindow()
         {
             InitializeComponent();
-            //DoctorController _doctorController = new DoctorController();
-            //var k = _doctorController.GetAll();
+            //DoctorController doctorController = new DoctorController();
+            //var k = doctorController.GetAll();
             //MessageBox.Show(k[0].User.FirstName);
+            //PatientController patientController = new PatientController();
+            //var s = patientController.GetAll();
+            //MessageBox.Show(s[0].User.FirstName);
+
+            //AppointmentController patientController = new AppointmentController();
+            //var s = patientController.GetAll();
+            //MessageBox.Show(s[0].Doctor.User.FirstName);
+
         }
 
         //private void roomOptions(object sender, RoutedEventArgs e)
@@ -30,9 +38,9 @@ namespace Hospital
 
         private void Button_Click_Doctor(object sender, RoutedEventArgs e)
         {
-            //DoctorWindow doctorWindow = new DoctorWindow();
-            //doctorWindow.Show();
-            //App.Current.MainWindow.Hide();
+            DoctorWindow doctorWindow = new DoctorWindow();
+            doctorWindow.Show();
+            App.Current.MainWindow.Hide();
         }
 
         private void Button_Click_Director(object sender, RoutedEventArgs e)

@@ -1,7 +1,7 @@
 using Model;
 using System;
 using System.Collections.Generic;
- 
+
 
 namespace Controller
 {
@@ -13,7 +13,7 @@ namespace Controller
 
         public List<Patient> GetAll()
         {
-            return patientService.GetAll();  
+            return patientService.GetAll();
         }
 
         public Model.Patient GetByJmbg(String jmbg)
