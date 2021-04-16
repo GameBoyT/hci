@@ -4,7 +4,7 @@ namespace Model
 {
     public class Employee
     {
-        public Double salary
+        public Double Salary
         {
             get
             ;
@@ -12,7 +12,7 @@ namespace Model
             ;
         }
 
-        public int annualLeave
+        public int AnnualLeave
         {
             get
             ;
@@ -20,7 +20,7 @@ namespace Model
             ;
         }
 
-        public User user;
+        public User User;
 
     }
 }

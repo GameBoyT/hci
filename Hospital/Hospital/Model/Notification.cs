@@ -4,7 +4,7 @@ namespace Model
 {
     public class Notification
     {
-        public int id
+        public int Id
         {
             get
             ;
@@ -12,7 +12,7 @@ namespace Model
             ;
         }
 
-        public String notificationText
+        public String NotificationText
         {
             get
             ;
@@ -20,7 +20,7 @@ namespace Model
             ;
         }
 
-        public int reciver
+        public int Receiver
         {
             get
             ;

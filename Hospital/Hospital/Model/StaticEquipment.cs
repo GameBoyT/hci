@@ -2,7 +2,7 @@ namespace Model
 {
     public class StaticEquipment
     {
-        public int id
+        public int Id
         {
             get
             ;
@@ -10,7 +10,7 @@ namespace Model
             ;
         }
 
-        public int quantity
+        public int Quantity
         {
             get
             ;
@@ -18,7 +18,7 @@ namespace Model
             ;
         }
 
-        public string description
+        public string Description
         {
             get
             ;
@@ -26,7 +26,7 @@ namespace Model
             ;
         }
 
-        public string name
+        public string Name
         {
             get
             ;
@@ -34,7 +34,7 @@ namespace Model
             ;
         }
 
-        public Room room;
+        public Room Room { get; set; }
 
     }
 }

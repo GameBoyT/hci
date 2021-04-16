@@ -9,8 +9,6 @@ namespace Controller
     {
         private Service.DoctorService doctorService = new DoctorService();
 
-        
-
         public List<Doctor> GetAll()
         {
             return doctorService.GetAll();

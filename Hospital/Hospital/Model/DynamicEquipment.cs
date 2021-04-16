@@ -2,7 +2,7 @@ namespace Model
 {
     public class DynamicEquipment
     {
-        public int id
+        public int Id
         {
             get
             ;
@@ -10,7 +10,7 @@ namespace Model
             ;
         }
 
-        public int quantity
+        public int Quantity
         {
             get
             ;
@@ -18,7 +18,7 @@ namespace Model
             ;
         }
 
-        public string type
+        public string Type
         {
             get
             ;
@@ -26,7 +26,7 @@ namespace Model
             ;
         }
 
-        public string description
+        public string Description
         {
             get
             ;
@@ -34,7 +34,7 @@ namespace Model
             ;
         }
 
-        public string name
+        public string Name
         {
             get
             ;
