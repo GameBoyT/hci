@@ -7,32 +7,33 @@ namespace Service
 {
     public class DirectorService
     {
+        private Repository.DirectorRepository directorRepository = new Repository.DirectorRepository();
+
         public List<Director> GetAll()
         {
-            throw new NotImplementedException();
+            return directorRepository.GetAll();
         }
 
         public Model.Director GetByJmbg(String jmbg)
         {
-            throw new NotImplementedException();
+            return directorRepository.GetByJmbg(jmbg);
         }
 
         public void Save(Model.Director director)
         {
-            throw new NotImplementedException();
+            directorRepository.Save(director);
         }
 
         public void Delete(String jmbg)
         {
-            throw new NotImplementedException();
+            directorRepository.Delete(jmbg);
         }
 
         public void Update(Model.Director director)
         {
-            throw new NotImplementedException();
+            directorRepository.Update(director);
         }
 
-        public Repository.DirectorRepository directorRepository;
 
     }
 }

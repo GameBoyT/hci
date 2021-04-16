@@ -6,32 +6,35 @@ namespace Service
 {
     public class NotificationService
     {
+        private Repository.NotificationRepository notificationRepository = new Repository.NotificationRepository();
+
+
+
         public List<Notification> GetAll()
         {
-            throw new NotImplementedException();
+            return notificationRepository.GetAll();
         }
 
-        public Notification GetByJmbg(String jmbg)
+        public Notification GetById(int id)
         {
-            throw new NotImplementedException();
+            return notificationRepository.GetById(id);
         }
-
         public void Save(Notification notification)
         {
-            throw new NotImplementedException();
+            notificationRepository.Save(notification);
         }
 
-        public void Delete(String jmbg)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            notificationRepository.Delete(id);
+
         }
 
         public void Update(Notification notification)
         {
-            throw new NotImplementedException();
+            notificationRepository.Update(notification);
         }
 
-        public Repository.NotificationRepository notificationRepository;
 
     }
 }

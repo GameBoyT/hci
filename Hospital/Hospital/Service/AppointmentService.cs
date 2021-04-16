@@ -1,47 +1,51 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using Repository;
 
 namespace Service
 {
     public class AppointmentService
     {
+        private AppointmentRepository appointmentRepository = new AppointmentRepository();
+
+
         public List<Appointment> GetAll()
         {
-            throw new NotImplementedException();
+            return appointmentRepository.GetAll();
         }
 
         public Appointment GetById(int id)
         {
-            throw new NotImplementedException();
+            return appointmentRepository.GetById(id);
         }
 
         public void Save(Appointment appointment)
         {
-            throw new NotImplementedException();
+            appointmentRepository.Save(appointment);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            appointmentRepository.Delete(id);
         }
 
         public void Update(Appointment appointment)
         {
-            throw new NotImplementedException();
+            appointmentRepository.Update(appointment);
         }
 
         public List<Appointment> GetAppointmentsForDoctor(String jmbg)
         {
-            throw new NotImplementedException();
+            return appointmentRepository.GetAppointmentsForDoctor(jmbg);
         }
 
         public List<Appointment> GetAppointmentsForPatient(String jmbg)
         {
-            throw new NotImplementedException();
+            return appointmentRepository.GetAppointmentsForPatient(jmbg);
         }
 
-        public Repository.AppointmentRepository appointmentRepository;
+
 
     }
 }

@@ -6,32 +6,33 @@ namespace Controller
 {
     public class SecretaryController
     {
+        private Service.SecretaryService secretaryService = new Service.SecretaryService();
+
         public List<Secretary> GetAll()
         {
-            throw new NotImplementedException();
+            return secretaryService.GetAll();
         }
 
         public Model.Secretary GetByJmbg(String jmbg)
         {
-            throw new NotImplementedException();
+            return GetByJmbg(jmbg);
         }
 
         public void Save(Model.Secretary secretary)
         {
-            throw new NotImplementedException();
+            secretaryService.Save(secretary);
         }
 
         public void Delete(String jmbg)
         {
-            throw new NotImplementedException();
+            secretaryService.Delete(jmbg);
         }
 
         public void Update(Model.Secretary secretary)
         {
-            throw new NotImplementedException();
+            secretaryService.Update(secretary);
         }
 
-        public Service.SecretaryService secretaryService;
 
     }
 }

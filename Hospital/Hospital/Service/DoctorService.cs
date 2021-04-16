@@ -6,31 +6,30 @@ namespace Service
 {
     public class DoctorService
     {
-        private Repository.DoctorRepository _doctorRepository = new Repository.DoctorRepository();
-
+        private Repository.DoctorRepository doctorRepository = new Repository.DoctorRepository();
         public List<Doctor> GetAll()
         {
-            return _doctorRepository.GetAll();
+            return doctorRepository.GetAll();
         }
 
         public Model.Doctor GetByJmbg(String jmbg)
         {
-            throw new NotImplementedException();
+            return doctorRepository.GetByJmbg(jmbg);
         }
 
         public void Save(Model.Doctor doctor)
         {
-            throw new NotImplementedException();
+            doctorRepository.Save(doctor);
         }
 
         public void Delete(String jmbg)
         {
-            throw new NotImplementedException();
+            doctorRepository.Delete(jmbg);
         }
 
         public void Update(Model.Doctor doctor)
         {
-            throw new NotImplementedException();
+            doctorRepository.Update(doctor);
         }
 
 
