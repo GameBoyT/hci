@@ -6,42 +6,47 @@ namespace Controller
 {
     public class AppointmentController
     {
+
+        private Service.AppointmentService appointmentService;
+
+
+
         public List<Appointment> GetAll()
         {
-            throw new NotImplementedException();
+            return appointmentService.GetAll();
         }
 
         public Appointment GetById(int id)
         {
-            throw new NotImplementedException();
+            return appointmentService.GetById(id);
         }
 
         public void Save(Appointment appointment)
         {
-            throw new NotImplementedException();
+            appointmentService.Save(appointment);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            appointmentService.Delete(id);
         }
 
         public void Update(Appointment appointment)
         {
-            throw new NotImplementedException();
+            appointmentService.Update(appointment);
         }
 
         public List<Appointment> GetAppointmentsForDoctor(String jmbg)
         {
-            throw new NotImplementedException();
+            return appointmentService.GetAppointmentsForDoctor(jmbg);
         }
 
         public List<Appointment> GetAppointmentsForPatient(String jmbg)
         {
-            throw new NotImplementedException();
+            return appointmentService.GetAppointmentsForPatient(jmbg);
         }
 
-        public Service.AppointmentService appointmentService;
+        
 
     }
 }

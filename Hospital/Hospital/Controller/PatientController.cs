@@ -1,37 +1,41 @@
 using Model;
 using System;
 using System.Collections.Generic;
+ 
 
 namespace Controller
 {
+
+
     public class PatientController
     {
+        private Service.PatientService patientService = new Service.PatientService();
+
         public List<Patient> GetAll()
         {
-            throw new NotImplementedException();
+            return patientService.GetAll();  
         }
 
         public Model.Patient GetByJmbg(String jmbg)
         {
-            throw new NotImplementedException();
+            return patientService.GetByJmbg(jmbg);
         }
 
         public void Save(Model.Patient patient)
         {
-            throw new NotImplementedException();
+            patientService.Save(patient);
         }
 
         public void Delete(String jmbg)
         {
-            throw new NotImplementedException();
+            patientService.Delete(jmbg);
         }
 
         public void Update(Model.Patient patient)
         {
-            throw new NotImplementedException();
+            patientService.Update(patient);
         }
 
-        public Service.PatientService patientService;
 
     }
 }

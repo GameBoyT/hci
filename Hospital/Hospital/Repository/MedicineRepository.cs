@@ -13,7 +13,7 @@ namespace Repository
             throw new NotImplementedException();
         }
 
-        public Medicine GetByJmbg(String jmbg)
+        public Medicine GetById(int id)
         {
             throw new NotImplementedException();
         }
@@ -23,7 +23,7 @@ namespace Repository
             throw new NotImplementedException();
         }
 
-        public void Delete(String jmbg)
+        public void Delete(int id)
         {
             throw new NotImplementedException();
         }

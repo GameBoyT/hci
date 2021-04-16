@@ -6,32 +6,36 @@ namespace Controller
 {
     public class DirectorController
     {
+
+        private Service.DirectorService directorService;
+        
+        
         public List<Director> GetAll()
         {
-            throw new NotImplementedException();
+           return directorService.GetAll();
         }
 
         public Model.Director GetByJmbg(String jmbg)
         {
-            throw new NotImplementedException();
+            return directorService.GetByJmbg(jmbg);
         }
 
         public void Save(Model.Director director)
         {
-            throw new NotImplementedException();
+            directorService.Save(director);
         }
 
         public void Delete(String jmbg)
         {
-            throw new NotImplementedException();
+            directorService.Delete(jmbg);
         }
 
         public void Update(Model.Director director)
         {
-            throw new NotImplementedException();
+            directorService.Update(director);
         }
 
-        public Service.DirectorService directorService;
+        
 
     }
 }

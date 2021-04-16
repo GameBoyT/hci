@@ -6,14 +6,17 @@ namespace Controller
 {
     public class RoomController
     {
+        public Service.RoomService roomService;
+
+
         public List<Room> GetAll()
         {
-            throw new NotImplementedException();
+            return roomService.GetAll();
         }
 
         public Room GetById(int id)
         {
-            throw new NotImplementedException();
+            return roomService.GetById(id);
         }
 
         public void Save(int id, String name, RoomType roomType, int floor, String detail)
@@ -23,7 +26,7 @@ namespace Controller
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            roomService.Delete(id);
         }
 
         public void Update(String name, RoomType roomType, int floor, String detail)
@@ -31,7 +34,6 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-        public Service.RoomService roomService;
 
     }
 }

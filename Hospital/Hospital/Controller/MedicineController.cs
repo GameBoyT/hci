@@ -6,32 +6,35 @@ namespace Controller
 {
     public class MedicineController
     {
+        private Service.MedicineService medicineService = new Service.MedicineService();
+
+
         public List<Medicine> GetAll()
         {
-            throw new NotImplementedException();
+            return medicineService.GetAll();
         }
 
-        public Medicine GetByJmbg(String jmbg)
+        public Medicine GetById(int id)
         {
-            throw new NotImplementedException();
+            return medicineService.GetById(id);
         }
 
         public void Save(Medicine medicine)
         {
-            throw new NotImplementedException();
+            medicineService.Save(medicine);
         }
 
-        public void Delete(String jmbg)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            medicineService.Delete(id);
         }
 
         public void Update(Medicine medicine)
         {
-            throw new NotImplementedException();
+            medicineService.Update(medicine);
         }
 
-        public Service.MedicineService medicineService;
+        
 
     }
 }

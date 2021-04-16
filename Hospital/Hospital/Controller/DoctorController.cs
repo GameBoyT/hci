@@ -16,22 +16,22 @@ namespace Controller
 
         public Model.Doctor GetByJmbg(String jmbg)
         {
-            throw new NotImplementedException();
+            return doctorService.GetByJmbg(jmbg);
         }
 
         public void Save(Model.Doctor doctor)
         {
-            throw new NotImplementedException();
+            doctorService.Save(doctor);
         }
 
         public void Delete(String jmbg)
         {
-            throw new NotImplementedException();
+            doctorService.Delete(jmbg);
         }
 
         public void Update(Model.Doctor doctor)
         {
-            throw new NotImplementedException();
+            doctorService.Update(doctor);
         }
 
 

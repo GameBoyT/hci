@@ -6,32 +6,34 @@ namespace Service
 {
     public class SecretaryService
     {
+        public Repository.SecretaryRepository secretaryRepository = new Repository.SecretaryRepository();
+
+
         public List<Secretary> GetAll()
         {
-            throw new NotImplementedException();
+            return secretaryRepository.GetAll();
         }
 
         public Model.Secretary GetByJmbg(String jmbg)
         {
-            throw new NotImplementedException();
+            return GetByJmbg(jmbg);
         }
 
         public void Save(Model.Secretary secretary)
         {
-            throw new NotImplementedException();
+            secretaryRepository.Save(secretary);
         }
 
         public void Delete(String jmbg)
         {
-            throw new NotImplementedException();
+            secretaryRepository.Delete(jmbg);
         }
 
         public void Update(Model.Secretary secretary)
         {
-            throw new NotImplementedException();
+            secretaryRepository.Update(secretary);
         }
 
-        public Repository.SecretaryRepository secretaryRepository;
 
     }
 }

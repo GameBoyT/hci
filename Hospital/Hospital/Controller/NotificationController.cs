@@ -6,32 +6,36 @@ namespace Controller
 {
     public class NotificationController
     {
+        private Service.NotificationService notificationService = new Service.NotificationService();
+
+
+
+
         public List<Notification> GetAll()
         {
-            throw new NotImplementedException();
+           return notificationService.GetAll();
         }
 
-        public Notification GetByJmbg(String jmbg)
+        public Notification GetById(int id)
         {
-            throw new NotImplementedException();
+            return notificationService.GetById(id);
         }
-
         public void Save(Notification notification)
         {
-            throw new NotImplementedException();
+            notificationService.Save(notification);
         }
 
-        public void Delete(String jmbg)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            notificationService.Delete(id);
+            
         }
 
         public void Update(Notification notification)
         {
-            throw new NotImplementedException();
+            notificationService.Update(notification);
         }
 
-        public Service.NotificationService notificationService;
 
     }
 }

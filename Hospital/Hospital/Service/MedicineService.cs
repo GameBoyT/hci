@@ -6,32 +6,34 @@ namespace Service
 {
     public class MedicineService
     {
+        private Repository.MedicineRepository medicineRepository = new Repository.MedicineRepository();
+
+
+
+
         public List<Medicine> GetAll()
         {
-            throw new NotImplementedException();
+            return medicineRepository.GetAll();
         }
 
-        public Medicine GetByJmbg(String jmbg)
+        public Medicine GetById(int id)
         {
-            throw new NotImplementedException();
+            return medicineRepository.GetById(id);
         }
 
         public void Save(Medicine medicine)
         {
-            throw new NotImplementedException();
+            medicineRepository.Save(medicine);
         }
 
-        public void Delete(String jmbg)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            medicineRepository.Delete(id);
         }
 
         public void Update(Medicine medicine)
         {
-            throw new NotImplementedException();
+            medicineRepository.Update(medicine);
         }
-
-        public Repository.MedicineRepository medicineRepository;
-
     }
 }
