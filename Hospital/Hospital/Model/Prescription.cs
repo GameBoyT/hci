@@ -4,7 +4,7 @@ namespace Model
 {
     public class Prescription
     {
-        public int interval
+        public int Interval
         {
             get
             ;
@@ -12,7 +12,7 @@ namespace Model
             ;
         }
 
-        public DateTime startDate
+        public DateTime StartDate
         {
             get
             ;
@@ -20,7 +20,7 @@ namespace Model
             ;
         }
 
-        public DateTime endDate
+        public DateTime EndDate
         {
             get
             ;
@@ -28,7 +28,7 @@ namespace Model
             ;
         }
 
-        public String description
+        public String Description
         {
             get
             ;
@@ -36,7 +36,7 @@ namespace Model
             ;
         }
 
-        public int quantity
+        public int Quantity
         {
             get
             ;
@@ -44,19 +44,7 @@ namespace Model
             ;
         }
 
-        public Medicine medicine;
-
-        public Medicine Medicine
-        {
-            get
-            {
-                return medicine;
-            }
-            set
-            {
-                this.medicine = value;
-            }
-        }
+        public Medicine Medicine { get; set; }
 
     }
 }

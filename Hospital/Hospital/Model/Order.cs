@@ -4,7 +4,7 @@ namespace Model
 {
     public class Order
     {
-        public long id
+        public long Id
         {
             get
             ;
@@ -12,7 +12,7 @@ namespace Model
             ;
         }
 
-        public string supplier
+        public string Supplier
         {
             get
             ;
@@ -20,7 +20,7 @@ namespace Model
             ;
         }
 
-        public DateTime date
+        public DateTime Date
         {
             get
             ;

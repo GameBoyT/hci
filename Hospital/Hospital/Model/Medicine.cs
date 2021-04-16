@@ -2,7 +2,7 @@ namespace Model
 {
     public class Medicine
     {
-        public int id
+        public int Id
         {
             get
             ;
@@ -10,7 +10,7 @@ namespace Model
             ;
         }
 
-        public string name
+        public string Name
         {
             get
             ;

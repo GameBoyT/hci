@@ -7,12 +7,7 @@ namespace Controller
 {
     public class DoctorController
     {
-        public Service.DoctorService doctorService;
-
-        public DoctorController()
-        {
-            doctorService = new DoctorService();
-        }
+        private Service.DoctorService doctorService = new DoctorService();
 
         public List<Doctor> GetAll()
         {

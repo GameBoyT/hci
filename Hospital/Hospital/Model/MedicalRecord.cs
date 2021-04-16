@@ -5,7 +5,7 @@ namespace Model
 {
     public class MedicalRecord
     {
-        private List<String> alergies;
+        private List<String> Alergies { get; set; }
 
         public System.Collections.Generic.List<Prescription> prescription;
 

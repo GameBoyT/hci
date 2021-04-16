@@ -4,7 +4,7 @@ namespace Model
 {
     public class Anamnesis
     {
-        public int id
+        public int Id
         {
             get
             ;
@@ -12,7 +12,7 @@ namespace Model
             ;
         }
 
-        public String type
+        public String Type
         {
             get
             ;
@@ -20,7 +20,7 @@ namespace Model
             ;
         }
 
-        public String name
+        public String Name
         {
             get
             ;
@@ -28,7 +28,7 @@ namespace Model
             ;
         }
 
-        public String description
+        public String Description
         {
             get
             ;

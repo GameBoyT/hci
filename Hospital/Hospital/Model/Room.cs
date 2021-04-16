@@ -4,7 +4,7 @@ namespace Model
 {
     public class Room
     {
-        public int id
+        public int Id
         {
             get
             ;
@@ -12,7 +12,7 @@ namespace Model
             ;
         }
 
-        public String name
+        public String Name
         {
             get
             ;
@@ -20,7 +20,7 @@ namespace Model
             ;
         }
 
-        public RoomType roomType
+        public RoomType RoomType
         {
             get
             ;
@@ -28,7 +28,7 @@ namespace Model
             ;
         }
 
-        public int floor
+        public int Floor
         {
             get
             ;
@@ -36,7 +36,7 @@ namespace Model
             ;
         }
 
-        public String detail
+        public String Detail
         {
             get
             ;
