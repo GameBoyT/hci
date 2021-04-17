@@ -4,6 +4,18 @@ namespace Model
 {
     public class User
     {
+        public User(string jmbg, string firstName, string lastName, string username, string password, string email, string address, DateTime dateOfBirth)
+        {
+            this.Jmbg = jmbg;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Username = username;
+            this.Password = password;
+            this.Email = email;
+            this.Address = address;
+            this.DateOfBirth = dateOfBirth;
+        }
+
         public String Jmbg
         {
             get

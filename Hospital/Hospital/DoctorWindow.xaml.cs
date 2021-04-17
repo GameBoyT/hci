@@ -21,8 +21,34 @@ namespace Hospital
         public DoctorWindow()
         {
             InitializeComponent();
-            Doctor = doctorController.GetByJmbg("1");
+
+
+            // DATA TO GENERATE
+
+            //DateTime date = new DateTime(1985, 4, 26);
+            //User doctorUser = new User("1", "Djordje", "Tovilovic", "djoleusername", "djolesifra", "djoleemail", "djoleadresa", date);
+            //Doctor doctor = new Doctor(doctorUser);
             //roomController.Save("336", RoomType.exam, 3, "detalji");
+            //doctorController.Save(doctor);
+
+
+            //DateTime date1 = new DateTime(1985, 4, 26);
+            //DateTime date2 = new DateTime(1998, 6, 12);
+            //DateTime date3 = new DateTime(1973, 8, 9);
+
+            //User user = new User("2", "Nemanja", "Markovic", "nemanja", "sifra", "email", "adresa", date1);
+            //Doctor doctor2 = new Doctor(user);
+            //doctorController.Save(doctor2);
+
+
+            //User user2 = new User("3", "Zarko", "Zarkovic", "zarko", "sifra", "email", "adresa", date2);
+            //User user3 = new User("4", "Pero", "Peric", "pero", "sifra", "email", "adresa", date3);
+            //Patient patient2 = new Patient(user2);
+            //Patient patient3 = new Patient(user3);
+            //patientController.Save(patient2);
+            //patientController.Save(patient3);
+
+            Doctor = doctorController.GetByJmbg("2");
             appointment_date.SelectedDate = DateTime.Today;
             new_appointment_date.SelectedDate = DateTime.Today;
             appointmentType = AppointmentType.examination;
