@@ -2,7 +2,13 @@ namespace Model
 {
     public class Patient
     {
+        public Patient(User user)
+        {
+            this.User = user;
+        }
+
         public User User { get; set; }
+
         public MedicalRecord MedicalRecord { get; set; }
 
         public System.Collections.Generic.List<Appointment> Appointments { get; set; }

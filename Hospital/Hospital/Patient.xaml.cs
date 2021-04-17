@@ -22,6 +22,7 @@ namespace Hospital
     {
         DoctorController doctorController = new DoctorController();
         AppointmentController appointmentController = new AppointmentController();
+        RoomController roomController = new RoomController();
         List<Doctor> doctors = new List<Doctor>();
         private Patient Patient;
         PatientController patientController = new PatientController();
@@ -37,14 +38,14 @@ namespace Hospital
         }
         private Appointment CreateAppointmentFromData()
         {
-            int id = Int32.Parse(idTextBox.Text);
+            //int id = Int32.Parse(idTextBox.Text);
             DateTime pickedDate = new_appointment_date.SelectedDate.Value;
             int hours = Int32.Parse(startTimeTextBox.Text.Split(':')[0]);
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
             Doctor doctor = (Doctor)doctorsDataGrid.SelectedItems[0];
-            return new Appointment(id, appointmentDateTime, duration, Patient, doctor);
+            return new Appointment(appointmentController.GenerateNewId() , AppointmentType.examination, appointmentDateTime, duration, Patient, doctor, roomController.GetById(1));
         }
 
 
