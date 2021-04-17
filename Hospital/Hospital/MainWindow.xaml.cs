@@ -56,7 +56,9 @@ namespace Hospital
 
         private void Button_Click_Secretary(object sender, RoutedEventArgs e)
         {
-
+            SecretaryFun secretaryFun = new SecretaryFun();
+            secretaryFun.Show();
+            Close();
         }
     }
 }
