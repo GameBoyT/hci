@@ -44,7 +44,7 @@ namespace Model
 
         public Room Room { get; set; }
 
-
+        public AppointmentType AppointmentType { get; set; }
 
     }
 }

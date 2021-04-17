@@ -44,6 +44,10 @@ namespace Controller
             return appointmentService.GetAppointmentsForPatient(jmbg);
         }
 
+        public bool AppointmentTimeIsInvalid(Appointment appointment)
+        {
+            return appointmentService.AppointmentTimeIsInvalid(appointment);
+        }
 
 
     }
