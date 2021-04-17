@@ -26,12 +26,16 @@ namespace Hospital
         List<Doctor> doctors = new List<Doctor>();
         private Patient Patient;
         PatientController patientController = new PatientController();
+        Doctor doctor;
         public PatientWindow()
         {
             InitializeComponent();
-            timeDataGrid.Opacity = 0;
-            Patient = patientController.GetByJmbg("2");
-            doctorsDataGrid.AutoGenerateColumns = false;
+
+            timeDataGrid.Visibility = Visibility.Collapsed;
+            Patient = patientController.GetByJmbg("3");
+            
+            List<Appointment> apps = new List<Appointment>();
+
             doctors = doctorController.GetAll();
             doctorsDataGrid.ItemsSource = doctors; 
 
@@ -44,7 +48,6 @@ namespace Hospital
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
-            Doctor doctor = (Doctor)doctorsDataGrid.SelectedItems[0];
             return new Appointment(appointmentController.GenerateNewId() , AppointmentType.examination, appointmentDateTime, duration, Patient, doctor, roomController.GetById(1));
         }
 
@@ -52,10 +55,12 @@ namespace Hospital
 
         private void New_Appointment_Click(object sender, RoutedEventArgs e)
         {
-            Doctor doctor = (Doctor)doctorsDataGrid.SelectedItems[0];
+            doctor = (Doctor)doctorsDataGrid.SelectedItems[0];
             Appointment newAppointment = CreateAppointmentFromData();
             List<Appointment> doctorsAppointments = appointmentController.GetAppointmentsForDoctor(doctor.User.Jmbg);
             bool error = false;
+
+
             foreach (Appointment app in doctorsAppointments)
             {
                 DateTime newAppEnd = newAppointment.StartTime.AddMinutes(newAppointment.DurationInMinutes);
@@ -74,7 +79,7 @@ namespace Hospital
                 if (doctorRadioButton.IsChecked == true)
                 {
                     MessageBox.Show("Doktor je zauzet, izaberi drugi termin", "greska");
-                    timeDataGrid.Opacity = 100;
+                    timeDataGrid.Visibility = Visibility.Visible;
                     List<Appointment> appointments = new List<Appointment>();
                     timeDataGrid.ItemsSource = doctorsAppointments;
 
@@ -106,7 +111,15 @@ namespace Hospital
 
         private void timeRadioButton_Click(object sender, RoutedEventArgs e)
         {
-            timeDataGrid.Opacity = 0;
+            timeDataGrid.Visibility = Visibility.Collapsed;
+        }
+
+        private void showAppointments_Click(object sender, RoutedEventArgs e)
+        {
+            var new_window = new PatientAppointments();
+            new_window.Show();
+            App.Current.MainWindow.Hide();
+
         }
     }
 }
