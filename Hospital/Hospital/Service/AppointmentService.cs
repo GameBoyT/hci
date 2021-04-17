@@ -61,7 +61,8 @@ namespace Service
         {
             List<Appointment> appointments = appointmentRepository.GetAll();
 
-            if (AppointmentTimeInFuture(appointment)) {
+            if (AppointmentTimeInFuture(appointment))
+            {
                 return true;
             }
 

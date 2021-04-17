@@ -55,7 +55,7 @@ namespace Repository
             try
             {
                 int maxId = rooms.Max(obj => obj.Id);
-                return maxId ;
+                return maxId;
             }
             catch
             {

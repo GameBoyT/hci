@@ -133,7 +133,7 @@ namespace Hospital
             }
         }
 
-        
+
         private void New_Appointment_Click(object sender, RoutedEventArgs e)
         {
             try

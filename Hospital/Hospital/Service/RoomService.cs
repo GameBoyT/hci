@@ -25,8 +25,8 @@ namespace Service
 
         public void Save(String name, RoomType roomType, int floor, String detail)
         {
-            //int id = GenerateNewId();
-            Room room = new Room(1, name, roomType, floor, detail);
+            int id = GenerateNewId();
+            Room room = new Room(id, name, roomType, floor, detail);
             roomRepository.Save(room);
         }
 
