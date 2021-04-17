@@ -82,7 +82,7 @@ namespace Hospital
             try
             {
                 Appointment appointment = CreateAppointmentFromData();
-                if (AppointmentTimeIsInvalid(appointment))
+                if (appointmentController.AppointmentTimeIsInvalid(appointment))
                     return;
                 appointmentController.Update(appointment);
                 WindowUpdate();
@@ -133,45 +133,7 @@ namespace Hospital
             }
         }
 
-        private bool AppointmentTimeIsInvalid(Appointment appointment)
-        {
-            if (DateTime.Now.Ticks > appointment.StartTime.Ticks)
-            {
-                MessageBox.Show("You can't chose a date and time in the past!");
-                return true;
-            }
-
-            foreach (Appointment app in appointments)
-            {
-                if (app.Id != appointment.Id)
-                {
-                    DateTime endTime = app.StartTime.AddMinutes(app.DurationInMinutes);
-                    DateTime appointmentEndTime = appointment.StartTime.AddMinutes(appointment.DurationInMinutes);
-
-                    if ((app.StartTime.Ticks < appointment.StartTime.Ticks && endTime.Ticks > appointment.StartTime.Ticks) ||
-                            (app.StartTime.Ticks < appointmentEndTime.Ticks && endTime.Ticks > appointmentEndTime.Ticks))
-                    {
-                        MessageBox.Show("There is an appointment at that time!");
-                        return true;
-                    }
-                }
-                else
-                {
-                    if (DateTime.Now.AddDays(1).Ticks > app.StartTime.Ticks)
-                    {
-                        MessageBox.Show("You can't update an appointment that is less than 24h away!");
-                        return true;
-                    }
-
-                    if (app.StartTime.AddDays(2).Ticks < appointment.StartTime.Ticks)
-                    {
-                        MessageBox.Show("You can't update an appointment to a date over 2 days later!");
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
+        
         private void New_Appointment_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -187,8 +149,14 @@ namespace Hospital
                     MessageBox.Show("You have to enter a valid patient jmbg!");
                     return;
                 }
-                if (AppointmentTimeIsInvalid(appointment))
+
+                //TODO: treba refaktorisati AppointmentTimeIsInvalid da moze izbaciti error za svaku gresku posebno
+                if (appointmentController.AppointmentTimeIsInvalid(appointment))
+                {
+                    MessageBox.Show("Appointment time is invalid!");
                     return;
+
+                }
 
                 appointmentController.Save(appointment);
                 ChangeToNewAppointment();
