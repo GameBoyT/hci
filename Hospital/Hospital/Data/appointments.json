@@ -1,1 +1,549 @@
-[{"Id":1,"StartTime":"2021-04-13T08:30:00","DurationInMinutes":30.0,"Doctor":{"User":{"Jmbg":"1","FirstName":"Djordje","LastName":"Tovilovic","Username":"djoleusername","Password":"djolesifra","Email":"djoleemail","Address":"djoleadresa","DateOfBirth":"1985-04-26T00:00:00"},"Specialization":null,"Appointment":[],"Notification":null,"Salary":0.0,"AnnualLeave":0},"Patient":{"appointment":[],"notification":[],"User":{"Jmbg":"2","FirstName":"Nemanja","LastName":"Markovic","Username":"nemanja","Password":"sifra","Email":"email","Address":"adresa","DateOfBirth":"2021-04-10T20:25:03.6734101+02:00"},"MedicalRecord":null,"Appointment":[],"Notification":[]},"Room":null,"AppointmentType":0},{"Id":2,"StartTime":"2021-04-13T10:00:00","DurationInMinutes":15.0,"Doctor":{"User":{"Jmbg":"1","FirstName":"Djordje","LastName":"Tovilovic","Username":"djoleusername","Password":"djolesifra","Email":"djoleemail","Address":"djoleadresa","DateOfBirth":"1985-04-26T00:00:00"},"Specialization":null,"Appointment":[],"Notification":null,"Salary":0.0,"AnnualLeave":0},"Patient":{"appointment":[],"notification":[],"User":{"Jmbg":"3","FirstName":"Zarko","LastName":"Zarkovic","Username":"zarko","Password":"sifra","Email":"email","Address":"adresa","DateOfBirth":"2021-04-10T20:25:03.6734164+02:00"},"MedicalRecord":null,"Appointment":[],"Notification":[]},"Room":null,"AppointmentType":0},{"Id":3,"StartTime":"2021-04-14T18:15:00","DurationInMinutes":45.0,"Doctor":{"User":{"Jmbg":"1","FirstName":"Djordje","LastName":"Tovilovic","Username":"djoleusername","Password":"djolesifra","Email":"djoleemail","Address":"djoleadresa","DateOfBirth":"1985-04-26T00:00:00"},"Specialization":null,"Appointment":[],"Notification":null,"Salary":0.0,"AnnualLeave":0},"Patient":{"appointment":[],"notification":[],"User":{"Jmbg":"3","FirstName":"Zarko","LastName":"Zarkovic","Username":"zarko","Password":"sifra","Email":"email","Address":"adresa","DateOfBirth":"2021-04-10T20:25:03.6734164+02:00"},"MedicalRecord":null,"Appointment":[],"Notification":[]},"Room":null,"AppointmentType":0},{"Id":4,"StartTime":"2021-04-14T20:00:00","DurationInMinutes":30.0,"Doctor":{"User":{"Jmbg":"1","FirstName":"Djordje","LastName":"Tovilovic","Username":"djoleusername","Password":"djolesifra","Email":"djoleemail","Address":"djoleadresa","DateOfBirth":"1985-04-26T00:00:00"},"Specialization":null,"Appointment":[],"Notification":null,"Salary":0.0,"AnnualLeave":0},"Patient":{"appointment":[],"notification":[],"User":{"Jmbg":"2","FirstName":"Nemanja","LastName":"Markovic","Username":"nemanja","Password":"sifra","Email":"email","Address":"adresa","DateOfBirth":"2021-04-10T20:25:03.6734101+02:00"},"MedicalRecord":null,"Appointment":[],"Notification":[]},"Room":null,"AppointmentType":0},{"Id":22,"StartTime":"2021-04-16T22:00:00","DurationInMinutes":11.0,"Doctor":{"User":{"Jmbg":"1","FirstName":"Djordje","LastName":"Tovilovic","Username":"djoleusername","Password":"djolesifra","Email":"djoleemail","Address":"djoleadresa","DateOfBirth":"1985-04-26T00:00:00"},"Specialization":null,"Appointment":[],"Notification":null,"Salary":0.0,"AnnualLeave":0},"Patient":{"appointment":[],"notification":[],"User":{"Jmbg":"2","FirstName":"Nemanja","LastName":"Markovic","Username":"nemanja","Password":"sifra","Email":"email","Address":"adresa","DateOfBirth":"2021-04-10T20:25:03.6734101+02:00"},"MedicalRecord":null,"Appointment":[],"Notification":[]},"Room":null,"AppointmentType":0},{"Id":151,"StartTime":"2021-04-17T15:30:00","DurationInMinutes":2.0,"Doctor":{"User":{"Jmbg":"1","FirstName":"Djordje","LastName":"Tovilovic","Username":"djoleusername","Password":"djolesifra","Email":"djoleemail","Address":"djoleadresa","DateOfBirth":"1985-04-26T00:00:00"},"Specialization":null,"Appointment":[],"Notification":null,"Salary":0.0,"AnnualLeave":0},"Patient":{"appointment":[],"notification":null,"User":{"Jmbg":"2","FirstName":"Nemanja","LastName":"Markovic","Username":"nemanja","Password":"sifra","Email":"email","Address":"adresa","DateOfBirth":"2021-04-10T20:25:03.6734101+02:00"},"MedicalRecord":null,"Appointment":[],"Notification":[]},"Room":null,"AppointmentType":0}]
+[
+  {
+    "Id": 1,
+    "StartTime": "2021-04-13T08:30:00",
+    "DurationInMinutes": 30.0,
+    "Doctor": {
+      "Specialization": null,
+      "Appointment": [],
+      "Notification": null,
+      "Salary": 0.0,
+      "AnnualLeave": 0,
+      "User": {
+        "Jmbg": "1",
+        "FirstName": "Djordje",
+        "LastName": "Tovilovic",
+        "Username": "djoleusername",
+        "Password": "djolesifra",
+        "Email": "djoleemail",
+        "Address": "djoleadresa",
+        "DateOfBirth": "1985-04-26T00:00:00"
+      }
+    },
+    "Patient": {
+      "User": {
+        "Jmbg": "2",
+        "FirstName": "Nemanja",
+        "LastName": "Markovic",
+        "Username": "nemanja",
+        "Password": "sifra",
+        "Email": "email",
+        "Address": "adresa",
+        "DateOfBirth": "2021-04-10T20:25:03.6734101+02:00"
+      },
+      "MedicalRecord": null,
+      "appointments": null,
+      "notifications": null
+    },
+    "Room": null,
+    "AppointmentType": 0
+  },
+  {
+    "Id": 2,
+    "StartTime": "2021-04-13T10:00:00",
+    "DurationInMinutes": 15.0,
+    "Doctor": {
+      "Specialization": null,
+      "Appointment": [],
+      "Notification": null,
+      "Salary": 0.0,
+      "AnnualLeave": 0,
+      "User": {
+        "Jmbg": "1",
+        "FirstName": "Djordje",
+        "LastName": "Tovilovic",
+        "Username": "djoleusername",
+        "Password": "djolesifra",
+        "Email": "djoleemail",
+        "Address": "djoleadresa",
+        "DateOfBirth": "1985-04-26T00:00:00"
+      }
+    },
+    "Patient": {
+      "User": {
+        "Jmbg": "3",
+        "FirstName": "Zarko",
+        "LastName": "Zarkovic",
+        "Username": "zarko",
+        "Password": "sifra",
+        "Email": "email",
+        "Address": "adresa",
+        "DateOfBirth": "2021-04-10T20:25:03.6734164+02:00"
+      },
+      "MedicalRecord": null,
+      "appointments": null,
+      "notifications": null
+    },
+    "Room": null,
+    "AppointmentType": 0
+  },
+  {
+    "Id": 3,
+    "StartTime": "2021-04-14T18:15:00",
+    "DurationInMinutes": 45.0,
+    "Doctor": {
+      "Specialization": null,
+      "Appointment": [],
+      "Notification": null,
+      "Salary": 0.0,
+      "AnnualLeave": 0,
+      "User": {
+        "Jmbg": "1",
+        "FirstName": "Djordje",
+        "LastName": "Tovilovic",
+        "Username": "djoleusername",
+        "Password": "djolesifra",
+        "Email": "djoleemail",
+        "Address": "djoleadresa",
+        "DateOfBirth": "1985-04-26T00:00:00"
+      }
+    },
+    "Patient": {
+      "User": {
+        "Jmbg": "3",
+        "FirstName": "Zarko",
+        "LastName": "Zarkovic",
+        "Username": "zarko",
+        "Password": "sifra",
+        "Email": "email",
+        "Address": "adresa",
+        "DateOfBirth": "2021-04-10T20:25:03.6734164+02:00"
+      },
+      "MedicalRecord": null,
+      "appointments": null,
+      "notifications": null
+    },
+    "Room": null,
+    "AppointmentType": 0
+  },
+  {
+    "Id": 4,
+    "StartTime": "2021-04-14T20:00:00",
+    "DurationInMinutes": 30.0,
+    "Doctor": {
+      "Specialization": null,
+      "Appointment": [],
+      "Notification": null,
+      "Salary": 0.0,
+      "AnnualLeave": 0,
+      "User": {
+        "Jmbg": "1",
+        "FirstName": "Djordje",
+        "LastName": "Tovilovic",
+        "Username": "djoleusername",
+        "Password": "djolesifra",
+        "Email": "djoleemail",
+        "Address": "djoleadresa",
+        "DateOfBirth": "1985-04-26T00:00:00"
+      }
+    },
+    "Patient": {
+      "User": {
+        "Jmbg": "2",
+        "FirstName": "Nemanja",
+        "LastName": "Markovic",
+        "Username": "nemanja",
+        "Password": "sifra",
+        "Email": "email",
+        "Address": "adresa",
+        "DateOfBirth": "2021-04-10T20:25:03.6734101+02:00"
+      },
+      "MedicalRecord": null,
+      "appointments": null,
+      "notifications": null
+    },
+    "Room": null,
+    "AppointmentType": 0
+  },
+  {
+    "Id": 22,
+    "StartTime": "2021-04-16T22:00:00",
+    "DurationInMinutes": 11.0,
+    "Doctor": {
+      "Specialization": null,
+      "Appointment": [],
+      "Notification": null,
+      "Salary": 0.0,
+      "AnnualLeave": 0,
+      "User": {
+        "Jmbg": "1",
+        "FirstName": "Djordje",
+        "LastName": "Tovilovic",
+        "Username": "djoleusername",
+        "Password": "djolesifra",
+        "Email": "djoleemail",
+        "Address": "djoleadresa",
+        "DateOfBirth": "1985-04-26T00:00:00"
+      }
+    },
+    "Patient": {
+      "User": {
+        "Jmbg": "2",
+        "FirstName": "Nemanja",
+        "LastName": "Markovic",
+        "Username": "nemanja",
+        "Password": "sifra",
+        "Email": "email",
+        "Address": "adresa",
+        "DateOfBirth": "2021-04-10T20:25:03.6734101+02:00"
+      },
+      "MedicalRecord": null,
+      "appointments": null,
+      "notifications": null
+    },
+    "Room": null,
+    "AppointmentType": 0
+  },
+  {
+    "Id": 1111,
+    "StartTime": "2021-04-17T15:50:00",
+    "DurationInMinutes": 30.0,
+    "Doctor": {
+      "Specialization": null,
+      "Appointment": [],
+      "Notification": null,
+      "Salary": 0.0,
+      "AnnualLeave": 0,
+      "User": {
+        "Jmbg": "1",
+        "FirstName": "Djordje",
+        "LastName": "Tovilovic",
+        "Username": "djoleusername",
+        "Password": "djolesifra",
+        "Email": "djoleemail",
+        "Address": "djoleadresa",
+        "DateOfBirth": "1985-04-26T00:00:00"
+      }
+    },
+    "Patient": {
+      "User": {
+        "Jmbg": "2",
+        "FirstName": "Nemanja",
+        "LastName": "Markovic",
+        "Username": "nemanja",
+        "Password": "sifra",
+        "Email": "email",
+        "Address": "adresa",
+        "DateOfBirth": "2021-04-10T20:25:03.6734101+02:00"
+      },
+      "MedicalRecord": null,
+      "appointments": null,
+      "notifications": null
+    },
+    "Room": null,
+    "AppointmentType": 0
+  },
+  {
+    "Id": 1233,
+    "StartTime": "2021-04-17T12:22:00",
+    "DurationInMinutes": 10.0,
+    "Doctor": {
+      "Specialization": null,
+      "Appointment": [],
+      "Notification": null,
+      "Salary": 0.0,
+      "AnnualLeave": 0,
+      "User": {
+        "Jmbg": "1",
+        "FirstName": "Djordje",
+        "LastName": "Tovilovic",
+        "Username": "djoleusername",
+        "Password": "djolesifra",
+        "Email": "djoleemail",
+        "Address": "djoleadresa",
+        "DateOfBirth": "1985-04-26T00:00:00"
+      }
+    },
+    "Patient": {
+      "User": {
+        "Jmbg": "2",
+        "FirstName": "Nemanja",
+        "LastName": "Markovic",
+        "Username": "nemanja",
+        "Password": "sifra",
+        "Email": "email",
+        "Address": "adresa",
+        "DateOfBirth": "2021-04-10T20:25:03.6734101+02:00"
+      },
+      "MedicalRecord": null,
+      "appointments": null,
+      "notifications": null
+    },
+    "Room": null,
+    "AppointmentType": 0
+  },
+  {
+    "Id": 12333,
+    "StartTime": "2021-04-27T12:40:00",
+    "DurationInMinutes": 20.0,
+    "Doctor": {
+      "Specialization": null,
+      "Appointment": [],
+      "Notification": null,
+      "Salary": 0.0,
+      "AnnualLeave": 0,
+      "User": {
+        "Jmbg": "1",
+        "FirstName": "Djordje",
+        "LastName": "Tovilovic",
+        "Username": "djoleusername",
+        "Password": "djolesifra",
+        "Email": "djoleemail",
+        "Address": "djoleadresa",
+        "DateOfBirth": "1985-04-26T00:00:00"
+      }
+    },
+    "Patient": {
+      "User": {
+        "Jmbg": "2",
+        "FirstName": "Nemanja",
+        "LastName": "Markovic",
+        "Username": "nemanja",
+        "Password": "sifra",
+        "Email": "email",
+        "Address": "adresa",
+        "DateOfBirth": "2021-04-10T20:25:03.6734101+02:00"
+      },
+      "MedicalRecord": null,
+      "appointments": null,
+      "notifications": null
+    },
+    "Room": null,
+    "AppointmentType": 0
+  },
+  {
+    "Id": 12333,
+    "StartTime": "2021-04-27T12:40:00",
+    "DurationInMinutes": 20.0,
+    "Doctor": {
+      "Specialization": null,
+      "Appointment": [],
+      "Notification": null,
+      "Salary": 0.0,
+      "AnnualLeave": 0,
+      "User": {
+        "Jmbg": "1",
+        "FirstName": "Djordje",
+        "LastName": "Tovilovic",
+        "Username": "djoleusername",
+        "Password": "djolesifra",
+        "Email": "djoleemail",
+        "Address": "djoleadresa",
+        "DateOfBirth": "1985-04-26T00:00:00"
+      }
+    },
+    "Patient": {
+      "User": {
+        "Jmbg": "2",
+        "FirstName": "Nemanja",
+        "LastName": "Markovic",
+        "Username": "nemanja",
+        "Password": "sifra",
+        "Email": "email",
+        "Address": "adresa",
+        "DateOfBirth": "2021-04-10T20:25:03.6734101+02:00"
+      },
+      "MedicalRecord": null,
+      "appointments": null,
+      "notifications": null
+    },
+    "Room": null,
+    "AppointmentType": 0
+  },
+  {
+    "Id": 123,
+    "StartTime": "2021-04-23T12:00:00",
+    "DurationInMinutes": 45.0,
+    "Doctor": {
+      "Specialization": null,
+      "Appointment": [],
+      "Notification": null,
+      "Salary": 0.0,
+      "AnnualLeave": 0,
+      "User": {
+        "Jmbg": "1",
+        "FirstName": "Djordje",
+        "LastName": "Tovilovic",
+        "Username": "djoleusername",
+        "Password": "djolesifra",
+        "Email": "djoleemail",
+        "Address": "djoleadresa",
+        "DateOfBirth": "1985-04-26T00:00:00"
+      }
+    },
+    "Patient": {
+      "User": {
+        "Jmbg": "2",
+        "FirstName": "Nemanja",
+        "LastName": "Markovic",
+        "Username": "nemanja",
+        "Password": "sifra",
+        "Email": "email",
+        "Address": "adresa",
+        "DateOfBirth": "2021-04-10T20:25:03.6734101+02:00"
+      },
+      "MedicalRecord": null,
+      "appointments": null,
+      "notifications": null
+    },
+    "Room": null,
+    "AppointmentType": 0
+  },
+  {
+    "Id": 123,
+    "StartTime": "2021-04-18T12:00:00",
+    "DurationInMinutes": 120.0,
+    "Doctor": {
+      "Specialization": null,
+      "Appointment": [],
+      "Notification": null,
+      "Salary": 0.0,
+      "AnnualLeave": 0,
+      "User": {
+        "Jmbg": "2",
+        "FirstName": "Nemanja",
+        "LastName": "Markovic",
+        "Username": "asd",
+        "Password": "asddd",
+        "Email": "nemanja@nesto.com",
+        "Address": "nemanjaadresa",
+        "DateOfBirth": "1985-04-26T00:00:00"
+      }
+    },
+    "Patient": {
+      "User": {
+        "Jmbg": "2",
+        "FirstName": "Nemanja",
+        "LastName": "Markovic",
+        "Username": "nemanja",
+        "Password": "sifra",
+        "Email": "email",
+        "Address": "adresa",
+        "DateOfBirth": "2021-04-10T20:25:03.6734101+02:00"
+      },
+      "MedicalRecord": null,
+      "appointments": null,
+      "notifications": null
+    },
+    "Room": null,
+    "AppointmentType": 0
+  },
+  {
+    "Id": 12222333,
+    "StartTime": "2021-04-24T15:00:00",
+    "DurationInMinutes": 10.0,
+    "Doctor": {
+      "Specialization": null,
+      "Appointment": [],
+      "Notification": null,
+      "Salary": 0.0,
+      "AnnualLeave": 0,
+      "User": {
+        "Jmbg": "2",
+        "FirstName": "Nemanja",
+        "LastName": "Markovic",
+        "Username": "asd",
+        "Password": "asddd",
+        "Email": "nemanja@nesto.com",
+        "Address": "nemanjaadresa",
+        "DateOfBirth": "1985-04-26T00:00:00"
+      }
+    },
+    "Patient": {
+      "User": {
+        "Jmbg": "2",
+        "FirstName": "Nemanja",
+        "LastName": "Markovic",
+        "Username": "nemanja",
+        "Password": "sifra",
+        "Email": "email",
+        "Address": "adresa",
+        "DateOfBirth": "2021-04-10T20:25:03.6734101+02:00"
+      },
+      "MedicalRecord": null,
+      "appointments": null,
+      "notifications": null
+    },
+    "Room": null,
+    "AppointmentType": 0
+  },
+  {
+    "Id": 123113,
+    "StartTime": "2021-04-18T15:00:00",
+    "DurationInMinutes": 100.0,
+    "Doctor": {
+      "Specialization": null,
+      "Appointment": [],
+      "Notification": null,
+      "Salary": 0.0,
+      "AnnualLeave": 0,
+      "User": {
+        "Jmbg": "2",
+        "FirstName": "Nemanja",
+        "LastName": "Markovic",
+        "Username": "asd",
+        "Password": "asddd",
+        "Email": "nemanja@nesto.com",
+        "Address": "nemanjaadresa",
+        "DateOfBirth": "1985-04-26T00:00:00"
+      }
+    },
+    "Patient": {
+      "User": {
+        "Jmbg": "2",
+        "FirstName": "Nemanja",
+        "LastName": "Markovic",
+        "Username": "nemanja",
+        "Password": "sifra",
+        "Email": "email",
+        "Address": "adresa",
+        "DateOfBirth": "2021-04-10T20:25:03.6734101+02:00"
+      },
+      "MedicalRecord": null,
+      "appointments": null,
+      "notifications": null
+    },
+    "Room": null,
+    "AppointmentType": 0
+  },
+  {
+    "Id": 131,
+    "StartTime": "2021-04-23T14:00:00",
+    "DurationInMinutes": 30.0,
+    "Doctor": {
+      "Specialization": null,
+      "Appointment": [],
+      "Notification": null,
+      "Salary": 0.0,
+      "AnnualLeave": 0,
+      "User": {
+        "Jmbg": "1",
+        "FirstName": "Djordje",
+        "LastName": "Tovilovic",
+        "Username": "djoleusername",
+        "Password": "djolesifra",
+        "Email": "djoleemail",
+        "Address": "djoleadresa",
+        "DateOfBirth": "1985-04-26T00:00:00"
+      }
+    },
+    "Patient": {
+      "User": {
+        "Jmbg": "2",
+        "FirstName": "Nemanja",
+        "LastName": "Markovic",
+        "Username": "nemanja",
+        "Password": "sifra",
+        "Email": "email",
+        "Address": "adresa",
+        "DateOfBirth": "2021-04-10T20:25:03.6734101+02:00"
+      },
+      "MedicalRecord": null,
+      "appointments": null,
+      "notifications": null
+    },
+    "Room": null,
+    "AppointmentType": 0
+  }
+
+]

@@ -36,9 +36,9 @@ namespace Hospital
 
         private void Button_Click_Patient(object sender, RoutedEventArgs e)
         {
-            //var new_window = new Pacijent();
-            //new_window.Show();
-            //App.Current.MainWindow.Hide();
+            var new_window = new PatientWindow();
+            new_window.Show();
+            App.Current.MainWindow.Hide();
 
 
         }
