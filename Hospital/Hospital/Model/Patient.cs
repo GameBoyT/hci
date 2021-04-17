@@ -7,6 +7,6 @@ namespace Model
 
         public System.Collections.Generic.List<Appointment> Appointments { get; set; }
 
-        public System.Collections.Generic.List<Notification> notification { get; set; }
+        public System.Collections.Generic.List<Notification> Notifications { get; set; }
     }
 }
