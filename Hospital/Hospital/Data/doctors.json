@@ -1,1 +1,56 @@
-[{"Specialization":null,"Appointments":null,"Notifications":null,"Salary":0.0,"AnnualLeave":0,"User":{"Jmbg":"1","FirstName":"Djordje","LastName":"Tovilovic","Username":"djoleusername","Password":"djolesifra","Email":"djoleemail","Address":"djoleadresa","DateOfBirth":"1985-04-26T00:00:00"}},{"Specialization":null,"Appointments":null,"Notifications":null,"Salary":0.0,"AnnualLeave":0,"User":{"Jmbg":"2","FirstName":"Nemanja","LastName":"Markovic","Username":"nemanja","Password":"sifra","Email":"email","Address":"adresa","DateOfBirth":"1985-04-26T00:00:00"}}]
+[
+  {
+    "Room": {
+      "Appointments": null,
+      "Detail": "detalji",
+      "DynamicEquipments": null,
+      "Floor": 3,
+      "Id": 1,
+      "Name": "336",
+      "RoomType": 2,
+      "StaticEquipments": null
+    },
+    "Specialization": null,
+    "Appointments": null,
+    "Notifications": null,
+    "Salary": 0.0,
+    "AnnualLeave": 0,
+    "User": {
+      "Jmbg": "1",
+      "FirstName": "Djordje",
+      "LastName": "Tovilovic",
+      "Username": "djoleusername",
+      "Password": "djolesifra",
+      "Email": "djoleemail",
+      "Address": "djoleadresa",
+      "DateOfBirth": "1985-04-26T00:00:00"
+    }
+  },
+  {
+    "Room": {
+      "Id": 2,
+      "Name": "7",
+      "RoomType": 2,
+      "Floor": 0,
+      "Detail": "detaljiSoba7",
+      "Appointments": null,
+      "DynamicEquipments": null,
+      "StaticEquipments": null
+    },
+    "Specialization": null,
+    "Appointments": null,
+    "Notifications": null,
+    "Salary": 0.0,
+    "AnnualLeave": 0,
+    "User": {
+      "Jmbg": "2",
+      "FirstName": "Nemanja",
+      "LastName": "Markovic",
+      "Username": "nemanja",
+      "Password": "sifra",
+      "Email": "email",
+      "Address": "adresa",
+      "DateOfBirth": "1985-04-26T00:00:00"
+    }
+  }
+]
