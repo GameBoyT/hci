@@ -6,32 +6,46 @@ namespace Service
 {
     public class RoomService
     {
+        public Repository.RoomRepository roomRepository = new Repository.RoomRepository();
+
         public List<Room> GetAll()
         {
-            throw new NotImplementedException();
+            return roomRepository.GetAll();
         }
 
         public Room GetById(int id)
         {
-            throw new NotImplementedException();
+            return roomRepository.GetById(id);
         }
 
-        public void Save(int id, String name, RoomType roomType, int floor, String detail)
+        public Room GetByName(String name)
         {
-            throw new NotImplementedException();
+            return roomRepository.GetByName(name);
+        }
+
+        public void Save(String name, RoomType roomType, int floor, String detail)
+        {
+            int id = GenerateNewId();
+            Room room = new Room(id, name, roomType, floor, detail);
+            roomRepository.Save(room);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            roomRepository.Delete(id);
         }
 
         public void Update(String name, RoomType roomType, int floor, String detail)
         {
+            //appointmentRepository.Update(appointment);
+
             throw new NotImplementedException();
         }
 
-        public Repository.RoomRepository roomRepository;
+        public int GenerateNewId()
+        {
+            return roomRepository.GenerateNewId();
+        }
 
     }
 }

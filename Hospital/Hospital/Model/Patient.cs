@@ -5,13 +5,8 @@ namespace Model
         public User User { get; set; }
         public MedicalRecord MedicalRecord { get; set; }
 
-        public System.Collections.Generic.List<Appointment> appointments { get; set; }
+        public System.Collections.Generic.List<Appointment> Appointments { get; set; }
 
-        public System.Collections.Generic.List<Notification> notifications { get; set; }
-
-       
-     
-
-
+        public System.Collections.Generic.List<Notification> Notifications { get; set; }
     }
 }

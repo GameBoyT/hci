@@ -12,15 +12,20 @@ namespace Hospital
         private AppointmentController appointmentController = new AppointmentController();
         private PatientController patientController = new PatientController();
         private DoctorController doctorController = new DoctorController();
+        private RoomController roomController = new RoomController();
         List<Appointment> appointments = new List<Appointment>();
         List<Appointment> appointmentsToShow = new List<Appointment>();
         private Doctor Doctor;
+        private AppointmentType appointmentType;
+
         public DoctorWindow()
         {
             InitializeComponent();
             Doctor = doctorController.GetByJmbg("1");
+            //roomController.Save("336", RoomType.exam, 3, "detalji");
             appointment_date.SelectedDate = DateTime.Today;
             new_appointment_date.SelectedDate = DateTime.Today;
+            appointmentType = AppointmentType.examination;
             WindowUpdate();
         }
         private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -40,14 +45,11 @@ namespace Hospital
                 cancelUpdateButton.Visibility = Visibility.Visible;
                 title.Content = "Edit appointment";
 
-                idTextBox.Text = appointment.Id.ToString();
                 new_appointment_date.SelectedDate = appointment.StartTime.Date;
                 durationTextBox.Text = appointment.DurationInMinutes.ToString();
                 startTimeTextBox.Text = appointment.StartTime.ToString("HH:mm");
                 patientJmbg.Text = appointment.Patient.User.Jmbg;
 
-                idTextBox.IsReadOnly = true;
-                idTextBox.IsEnabled = false;
                 patientJmbg.IsReadOnly = true;
                 patientJmbg.IsEnabled = false;
             }
@@ -67,14 +69,15 @@ namespace Hospital
 
         private Appointment CreateAppointmentFromData()
         {
-            int id = Int32.Parse(idTextBox.Text);
+            int id = appointmentController.GenerateNewId();
             DateTime pickedDate = new_appointment_date.SelectedDate.Value;
             int hours = Int32.Parse(startTimeTextBox.Text.Split(':')[0]);
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
             Patient patient = patientController.GetByJmbg(patientJmbg.Text);
-            return new Appointment(id, appointmentDateTime, duration, patient, Doctor);
+            Room room = roomController.GetByName("336");
+            return new Appointment(id, appointmentType, appointmentDateTime, duration, patient, Doctor, room);
         }
 
         private void Update_Appointment_Click(object sender, RoutedEventArgs e)
@@ -101,7 +104,6 @@ namespace Hospital
 
         private void ChangeToNewAppointment()
         {
-            idTextBox.Clear();
             new_appointment_date.SelectedDate = DateTime.Today;
             durationTextBox.Clear();
             startTimeTextBox.Clear();
@@ -113,8 +115,6 @@ namespace Hospital
 
             title.Content = "New appointment";
 
-            idTextBox.IsReadOnly = false;
-            idTextBox.IsEnabled = true;
             patientJmbg.IsReadOnly = false;
             patientJmbg.IsEnabled = true;
         }
@@ -133,17 +133,12 @@ namespace Hospital
             }
         }
 
-        
+
         private void New_Appointment_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 Appointment appointment = CreateAppointmentFromData();
-                //if (appointmentController.UniqueId(appointment.Id) == false)
-                //{
-                //    MessageBox.Show("You have to enter a unique id!");
-                //    return;
-                //}
                 if (appointment.Patient == null)
                 {
                     MessageBox.Show("You have to enter a valid patient jmbg!");
@@ -166,6 +161,17 @@ namespace Hospital
             {
                 MessageBox.Show("You have to fill in all input boxes!");
             }
+        }
+
+        private void TypeButton_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton radioButton = sender as RadioButton;
+            if (radioButton == null)
+                return;
+            if (radioButton.Content.ToString() == "Examination")
+                appointmentType = AppointmentType.examination;
+            else
+                appointmentType = AppointmentType.operation;
         }
     }
 }

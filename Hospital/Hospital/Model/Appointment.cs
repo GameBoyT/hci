@@ -4,14 +4,17 @@ namespace Model
 {
     public class Appointment
     {
-        public Appointment(int id, DateTime startTime, Double durationInMinutes, Patient patient, Doctor doctor)
+        public Appointment(int id, AppointmentType appointmentType, DateTime startTime, Double durationInMinutes, Patient patient, Doctor doctor, Room room)
         {
             this.Id = id;
+            this.AppointmentType = appointmentType;
             this.StartTime = startTime;
             this.DurationInMinutes = durationInMinutes;
             this.Patient = patient;
             this.Doctor = doctor;
+            this.Room = room;
         }
+
         public int Id
         {
             get

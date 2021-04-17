@@ -57,6 +57,10 @@ namespace Controller
             return appointmentService.AppointmentIsTaken(appointment);
         }
 
+        public int GenerateNewId()
+        {
+            return appointmentService.GenerateNewId();
+        }
 
     }
 }

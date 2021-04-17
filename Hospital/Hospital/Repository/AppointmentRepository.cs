@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Repository
 {
@@ -43,6 +44,18 @@ namespace Repository
             return appointments.Find(obj => obj.Id == id);
         }
 
+        public int GenerateNewId()
+        {
+            try
+            {
+                int maxId = appointments.Max(obj => obj.Id);
+                return maxId + 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
         public bool UniqueId(int id)
         {
             if (appointments.FindIndex(obj => obj.Id == id) == -1)
