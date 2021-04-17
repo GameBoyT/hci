@@ -49,6 +49,10 @@ namespace Controller
             return appointmentService.AppointmentTimeIsInvalid(appointment);
         }
 
+        public int GenerateNewId()
+        {
+            return appointmentService.GenerateNewId();
+        }
 
     }
 }

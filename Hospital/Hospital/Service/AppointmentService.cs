@@ -45,6 +45,11 @@ namespace Service
             return appointmentRepository.GetAppointmentsForPatient(jmbg);
         }
 
+        public int GenerateNewId()
+        {
+            return appointmentRepository.GenerateNewId();
+        }
+
         public bool AppointmentTimeInFuture(Appointment appointment)
         {
             if (DateTime.Now.Ticks > appointment.StartTime.Ticks)
@@ -78,10 +83,14 @@ namespace Service
                 {
                     //Provera da li je vreme updeta u narednih 24h
                     if (DateTime.Now.AddDays(1).Ticks > app.StartTime.Ticks)
+                    {
                         return true;
+                    }
                     //Provera da li pomera pregled za datum preko 2 dana kasnije
                     if (app.StartTime.AddDays(2).Ticks < appointment.StartTime.Ticks)
+                    {
                         return true;
+                    }
                 }
             }
             return false;

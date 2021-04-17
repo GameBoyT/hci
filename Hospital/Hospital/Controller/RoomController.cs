@@ -6,7 +6,7 @@ namespace Controller
 {
     public class RoomController
     {
-        public Service.RoomService roomService;
+        public Service.RoomService roomService = new Service.RoomService();
 
 
         public List<Room> GetAll()
@@ -19,9 +19,14 @@ namespace Controller
             return roomService.GetById(id);
         }
 
-        public void Save(int id, String name, RoomType roomType, int floor, String detail)
+        public Room GetByName(String name)
         {
-            throw new NotImplementedException();
+            return roomService.GetByName(name);
+        }
+
+        public void Save(String name, RoomType roomType, int floor, String detail)
+        {
+            roomService.Save(name, roomType, floor, detail);
         }
 
         public void Delete(int id)

@@ -33,8 +33,7 @@
         <Label Content="Patients jmbg" HorizontalAlignment="Left" Margin="509,181,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
         <TextBox x:Name="startTimeTextBox" HorizontalAlignment="Left" Margin="637,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="addNewAppointmentButton" Content="Add new appointment" HorizontalAlignment="Left" Margin="626,254,0,0" VerticalAlignment="Top" Click="New_Appointment_Click" Height="33" Width="131"/>
-        <Label Content="Appointment id" HorizontalAlignment="Left" Margin="509,51,0,0" VerticalAlignment="Top" Width="106"/>
-        <TextBox x:Name="idTextBox" HorizontalAlignment="Left" Margin="637,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Appointment type" HorizontalAlignment="Left" Margin="509,58,0,0" VerticalAlignment="Top" Width="106"/>
         <TextBox x:Name="durationTextBox" HorizontalAlignment="Left" Margin="637,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Duration in minutes" HorizontalAlignment="Left" Margin="509,147,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.142,-0.368"/>
         <Label Content="Select date" HorizontalAlignment="Left" Margin="509,84,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
@@ -46,6 +45,8 @@
         <Label Content="Appointments" HorizontalAlignment="Left" Margin="185,21,0,0" VerticalAlignment="Top" Width="91"/>
         <Label Content="Appointments date:" HorizontalAlignment="Left" Margin="33,320,0,0" VerticalAlignment="Top" Width="122"/>
         <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="351" Margin="21,13,0,0" VerticalAlignment="Top" Width="437"/>
-        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="289" Margin="477,13,0,0" VerticalAlignment="Top" Width="305"/>
+        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="289" Margin="180,86,0,0" VerticalAlignment="Top" Width="306"/>
+        <RadioButton Content="Examination" GroupName="type" HorizontalAlignment="Left" Margin="637,61,0,0" VerticalAlignment="Top" IsChecked="True" Checked="TypeButton_Checked"/>
+        <RadioButton Content="Operation" GroupName="type" HorizontalAlignment="Left" Margin="726,61,0,0" VerticalAlignment="Top" Checked="TypeButton_Checked"/>
     </Grid>
 </Window>
