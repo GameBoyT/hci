@@ -15,7 +15,7 @@ namespace Repository
         {
             if (!File.Exists(fileLocation))
             {
-                Directory.CreateDirectory(fileLocation);
+                File.Create(fileLocation).Close();
             }
 
             using (StreamReader r = new StreamReader(fileLocation))
@@ -27,16 +27,15 @@ namespace Repository
                 }
             }
         }
-
-        public List<Appointment> GetAll()
-        {
-            return appointments;
-        }
-
         public void WriteToJson()
         {
             string json = JsonConvert.SerializeObject(appointments);
             File.WriteAllText(fileLocation, json);
+        }
+
+        public List<Appointment> GetAll()
+        {
+            return appointments;
         }
 
         public Appointment GetById(int id)

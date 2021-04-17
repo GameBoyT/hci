@@ -7,9 +7,6 @@ namespace Service
     {
         private Repository.MedicineRepository medicineRepository = new Repository.MedicineRepository();
 
-
-
-
         public List<Medicine> GetAll()
         {
             return medicineRepository.GetAll();

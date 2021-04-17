@@ -8,6 +8,10 @@ namespace Hospital
         public MainWindow()
         {
             InitializeComponent();
+
+
+            // Test-ovi kontrolera
+
             //DoctorController doctorController = new DoctorController();
             //var k = doctorController.GetAll();
             //MessageBox.Show(k[0].User.FirstName);
@@ -19,6 +23,9 @@ namespace Hospital
             //var s = patientController.GetAll();
             //MessageBox.Show(s[0].Doctor.User.FirstName);
 
+
+            //StaticEquipmentController patientController = new StaticEquipmentController();
+            //var s = patientController.GetAll();
         }
 
         //private void roomOptions(object sender, RoutedEventArgs e)
