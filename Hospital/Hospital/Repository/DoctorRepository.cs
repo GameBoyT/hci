@@ -15,7 +15,7 @@ namespace Repository
         {
             if (!File.Exists(fileLocation))
             {
-                Directory.CreateDirectory(fileLocation);
+                File.Create(fileLocation).Close();
             }
 
             using (StreamReader r = new StreamReader(fileLocation))

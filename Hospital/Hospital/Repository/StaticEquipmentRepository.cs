@@ -1,36 +1,66 @@
 using Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Repository
 {
     public class StaticEquipmentRepository
     {
-        private String fileLocation;
+        private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\staticEquipment.json";
+        private List<StaticEquipment> staticEquipments = new List<StaticEquipment>();
+
+        public StaticEquipmentRepository()
+        {
+            if (!File.Exists(fileLocation))
+            {
+                File.Create(fileLocation).Close();
+            }
+
+            using (StreamReader r = new StreamReader(fileLocation))
+            {
+                string json = r.ReadToEnd();
+                if (json != "")
+                {
+                    staticEquipments = JsonConvert.DeserializeObject<List<StaticEquipment>>(json);
+                }
+            }
+        }
+        public void WriteToJson()
+        {
+            string json = JsonConvert.SerializeObject(staticEquipments);
+            File.WriteAllText(fileLocation, json);
+        }
 
         public List<StaticEquipment> GetAll()
         {
-            throw new NotImplementedException();
+            return staticEquipments;
         }
 
-        public StaticEquipment GetById(int id)
+        public Model.StaticEquipment GetById(int id)
         {
-            throw new NotImplementedException();
+            return staticEquipments.Find(obj => obj.Id == id);
         }
 
-        public void Save(int quantity, String type, String description, int name)
+        public void Save(Model.StaticEquipment staticEquipment)
         {
-            throw new NotImplementedException();
+            staticEquipments.Add(staticEquipment);
+            WriteToJson();
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            int index = staticEquipments.FindIndex(obj => obj.Id == id);
+            staticEquipments.RemoveAt(index);
+            WriteToJson();
         }
 
-        public void Update(int quantity, String type, String description, int name)
+        public void Update(StaticEquipment staticEquipment)
         {
-            throw new NotImplementedException();
+            int index = staticEquipments.FindIndex(obj => obj.Id == staticEquipment.Id);
+            staticEquipments[index] = staticEquipment;
+            WriteToJson();
         }
 
     }
