@@ -20,7 +20,7 @@ namespace Model
             ;
         }
 
-        public User User;
+        public User User { get; set; }
 
     }
 }

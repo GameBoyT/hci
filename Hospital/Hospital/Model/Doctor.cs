@@ -9,5 +9,9 @@ namespace Model
         public System.Collections.Generic.List<Appointment> Appointment { get; set; }
 
         public System.Collections.Generic.List<Notification> Notification { get; set; }
+
+        
+
+
     }
 }

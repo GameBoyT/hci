@@ -48,6 +48,14 @@ namespace Controller
         {
             return appointmentService.AppointmentTimeIsInvalid(appointment);
         }
+        public bool AppoinementTimeInFuture(Appointment appointment)
+        {
+            return appointmentService.AppointmentTimeInFuture(appointment);
+        }
+        public bool AppointmentIsTaken(Appointment appointment)
+        {
+            return appointmentService.AppointmentIsTaken(appointment);
+        }
 
 
     }
