@@ -124,55 +124,60 @@ namespace Hospital
 
         private void New_Appointment_Click(object sender, RoutedEventArgs e)
         {
-            doctor = (Doctor)doctorsDataGrid.SelectedItems[0];
-            Appointment newAppointment = CreateAppointmentFromData();
-            List<Appointment> doctorsAppointments = appointmentController.GetAppointmentsForDoctor(doctor.User.Jmbg);
-            bool error = false;
-
-
-            foreach (Appointment app in doctorsAppointments)
+            try
             {
-                DateTime newAppEnd = newAppointment.StartTime.AddMinutes(newAppointment.DurationInMinutes);
-                DateTime newAppStart = newAppointment.StartTime;
-                DateTime doctorsAppEndTime = app.StartTime.AddMinutes(app.DurationInMinutes);
-                DateTime doctorAppStartTime = app.StartTime;
-                if((newAppStart < doctorsAppEndTime && newAppStart > doctorAppStartTime)||
-                    (newAppEnd > doctorAppStartTime && newAppStart < doctorsAppEndTime))
+                doctor = (Doctor)doctorsDataGrid.SelectedItems[0];
+                Appointment newAppointment = CreateAppointmentFromData();
+                List<Appointment> doctorsAppointments = appointmentController.GetAppointmentsForDoctor(doctor.User.Jmbg);
+                bool error = false;
+
+
+                foreach (Appointment app in doctorsAppointments)
                 {
-                    error = true;
+                    DateTime newAppEnd = newAppointment.StartTime.AddMinutes(newAppointment.DurationInMinutes);
+                    DateTime newAppStart = newAppointment.StartTime;
+                    DateTime doctorsAppEndTime = app.StartTime.AddMinutes(app.DurationInMinutes);
+                    DateTime doctorAppStartTime = app.StartTime;
+                    if ((newAppStart.Ticks <= doctorsAppEndTime.Ticks && newAppStart.Ticks >= doctorAppStartTime.Ticks) ||
+                        (newAppEnd.Ticks >= doctorAppStartTime.Ticks && newAppEnd.Ticks <= doctorsAppEndTime.Ticks))
+                    {
+                        error = true;
+                    }
                 }
-            }
-            
-            if (error == true)
-            {
-                if (doctorRadioButton.IsChecked == true)
+
+                if (error == true)
                 {
-                    MessageBox.Show("Doktor je zauzet, izaberi drugi termin", "greska");
-                    timeDataGrid.Visibility = Visibility.Visible;
-                    List<Appointment> appointments = new List<Appointment>();
-                    timeDataGrid.ItemsSource = doctorsAppointments;
+                    if (doctorRadioButton.IsChecked == true)
+                    {
+                        MessageBox.Show("Doktor je zauzet, izaberi drugi termin", "greska");
+                        timeDataGrid.Visibility = Visibility.Visible;
+                        timeDataGrid.ItemsSource = doctorsAppointments;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Termin je zauzet, izaberi drugog doktora", "greska");
+
+
+                        timeDataGrid.ItemsSource = doctorsAppointments;
+
+                    }
+                }
+                else if (appointmentController.AppointmentValidationWithoutOverlaping(newAppointment))
+                {
+                    MessageBox.Show("Provjeri ulazne podatke", "greska");
 
                 }
                 else
                 {
-                    MessageBox.Show("Termin je zauzet, izaberi drugog doktora", "greska");
-                    List<Appointment> appointments = new List<Appointment>();
-                    
-                   
-                    timeDataGrid.ItemsSource = doctorsAppointments;
-                    
+                    appointmentController.Save(newAppointment);
                 }
-            } else if (appointmentController.AppointmentTimeIsInvalid(newAppointment))
-            {
-                MessageBox.Show("Provjeri ulazne podatke", "greska");
 
             }
-            else
+            catch
             {
-                appointmentController.Save(newAppointment);
+                MessageBox.Show("Unesi podatke u sva polja","greska");
             }
-
-
         }
         
 

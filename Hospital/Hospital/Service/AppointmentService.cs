@@ -79,6 +79,44 @@ namespace Service
             return false;
         }
 
+
+        public bool AppointmentValidationWithoutOverlaping(Appointment appointment)
+        {
+            List<Appointment> appointments = appointmentRepository.GetAll();
+
+            if (AppointmentTimeInFuture(appointment))
+            {
+                return true;
+            }
+
+            foreach (Appointment app in appointments)
+            {
+                if (app.Id != appointment.Id)
+                {
+                    DateTime endTime = app.StartTime.AddMinutes(app.DurationInMinutes);
+                    DateTime appointmentEndTime = appointment.StartTime.AddMinutes(appointment.DurationInMinutes);
+
+                    
+                }
+                else
+                {
+                    //Provera da li je vreme updeta u narednih 24h
+                    if (DateTime.Now.AddDays(1).Ticks > app.StartTime.Ticks)
+                    {
+                        return true;
+                    }
+                    //Provera da li pomera pregled za datum preko 2 dana kasnije
+                    if (app.StartTime.AddDays(2).Ticks < appointment.StartTime.Ticks)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+
+
         public bool AppointmentTimeIsInvalid(Appointment appointment)
         {
             List<Appointment> appointments = appointmentRepository.GetAll();
@@ -96,8 +134,8 @@ namespace Service
                     DateTime appointmentEndTime = appointment.StartTime.AddMinutes(appointment.DurationInMinutes);
 
                     //Provera da li postoji pregled u tom terminu
-                    if ((app.StartTime.Ticks < appointment.StartTime.Ticks && endTime.Ticks > appointment.StartTime.Ticks) ||
-                            (app.StartTime.Ticks < appointmentEndTime.Ticks && endTime.Ticks > appointmentEndTime.Ticks))
+                    if ((appointment.StartTime.Ticks >= app.StartTime.Ticks && appointment.StartTime.Ticks <= endTime.Ticks)||
+                        appointmentEndTime.Ticks >= app.StartTime.Ticks && appointmentEndTime.Ticks <= endTime.Ticks)
                     {
                         return true;
                     }
@@ -110,7 +148,7 @@ namespace Service
                         return true;
                     }
                     //Provera da li pomera pregled za datum preko 2 dana kasnije
-                    if (app.StartTime.AddDays(2).Ticks < appointment.StartTime.Ticks)
+                    if (app.StartTime.AddDays(2).Ticks < appointment.StartTime.Ticks || app.StartTime.AddDays(-2).Ticks > appointment.StartTime.Ticks)
                     {
                         return true;
                     }

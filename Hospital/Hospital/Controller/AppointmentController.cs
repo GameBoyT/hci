@@ -61,6 +61,10 @@ namespace Controller
         {
             return appointmentService.GenerateNewId();
         }
+        public bool AppointmentValidationWithoutOverlaping(Appointment appointment)
+        {
+           return appointmentService.AppointmentValidationWithoutOverlaping(appointment);
+        }
 
     }
 }
