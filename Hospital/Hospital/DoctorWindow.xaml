@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital"
         mc:Ignorable="d"
-        Title="DoctorWindow" Height="450" Width="830">
+        Title="DoctorWindow" Height="450" Width="850">
     <Grid>
         <DatePicker x:Name="appointment_date" SelectedDateChanged="DatePicker_SelectedDateChanged" HorizontalAlignment="Left" Margin="160,322,0,0" VerticalAlignment="Top"/>
         <DataGrid x:Name="appointmentsDataGrid"
@@ -26,27 +26,33 @@
                             Binding="{Binding Room.Name}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Delete" HorizontalAlignment="Center" Margin="0,318,0,0" VerticalAlignment="Top" Click="Delete_Click" Height="28" Width="62"/>
+        <Button Content="Delete" HorizontalAlignment="Center" Margin="0,354,0,0" VerticalAlignment="Top" Click="Delete_Click" Height="28" Width="62"/>
         <Label Content="Start time" HorizontalAlignment="Left" Margin="509,116,0,0" VerticalAlignment="Top" Width="116"/>
         <DatePicker x:Name="new_appointment_date" HorizontalAlignment="Left" Margin="637,86,0,0" VerticalAlignment="Top"/>
 
         <Label Content="Patients jmbg" HorizontalAlignment="Left" Margin="509,181,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
         <TextBox x:Name="startTimeTextBox" HorizontalAlignment="Left" Margin="637,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="addNewAppointmentButton" Content="Add new appointment" HorizontalAlignment="Left" Margin="626,254,0,0" VerticalAlignment="Top" Click="New_Appointment_Click" Height="33" Width="131"/>
+        <Button x:Name="addNewAppointmentButton" Content="Add new appointment" HorizontalAlignment="Left" Margin="632,311,0,0" VerticalAlignment="Top" Click="New_Appointment_Click" Height="33" Width="130"/>
         <Label Content="Appointment type" HorizontalAlignment="Left" Margin="509,58,0,0" VerticalAlignment="Top" Width="106"/>
         <TextBox x:Name="durationTextBox" HorizontalAlignment="Left" Margin="637,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Duration in minutes" HorizontalAlignment="Left" Margin="509,147,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.142,-0.368"/>
         <Label Content="Select date" HorizontalAlignment="Left" Margin="509,84,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
         <TextBox x:Name="patientJmbg" HorizontalAlignment="Left" Margin="637,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="title" Content="New appointment" HorizontalAlignment="Left" Margin="571,13,0,0" VerticalAlignment="Top" Width="106"/>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="300,318,0,0" VerticalAlignment="Top" Click="Update_Click" Height="28" Width="66"/>
-        <Button x:Name="updateAppointmentButton" Content="Update appointment" Visibility="Collapsed" HorizontalAlignment="Left" Margin="493,254,0,0" VerticalAlignment="Top" Click="Update_Appointment_Click" Height="33" Width="122"/>
-        <Button x:Name="cancelUpdateButton" Content="Cancel update" Visibility="Collapsed" HorizontalAlignment="Left" Margin="626,254,0,0" VerticalAlignment="Top" Click="Cancel_Update_Click" Height="33" Width="131"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="300,354,0,0" VerticalAlignment="Top" Click="Update_Click" Height="28" Width="66"/>
+        <Button x:Name="updateAppointmentButton" Content="Update appointment" Visibility="Collapsed" HorizontalAlignment="Left" Margin="632,311,0,0" VerticalAlignment="Top" Click="Update_Appointment_Click" Height="33" Width="122"/>
+        <Button x:Name="cancelUpdateButton" Content="Cancel update" Visibility="Collapsed" HorizontalAlignment="Left" Margin="496,311,0,0" VerticalAlignment="Top" Click="Cancel_Update_Click" Height="33" Width="131"/>
         <Label Content="Appointments" HorizontalAlignment="Left" Margin="185,21,0,0" VerticalAlignment="Top" Width="91"/>
         <Label Content="Appointments date:" HorizontalAlignment="Left" Margin="33,320,0,0" VerticalAlignment="Top" Width="122"/>
-        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="351" Margin="21,13,0,0" VerticalAlignment="Top" Width="437"/>
-        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="289" Margin="180,86,0,0" VerticalAlignment="Top" Width="306"/>
-        <RadioButton Content="Examination" GroupName="type" HorizontalAlignment="Left" Margin="637,61,0,0" VerticalAlignment="Top" IsChecked="True" Checked="TypeButton_Checked"/>
-        <RadioButton Content="Operation" GroupName="type" HorizontalAlignment="Left" Margin="726,61,0,0" VerticalAlignment="Top" Checked="TypeButton_Checked"/>
+        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="381" Margin="16,17,0,0" VerticalAlignment="Top" Width="452"/>
+        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="347" Margin="492,17,0,0" VerticalAlignment="Top" Width="320"/>
+        <RadioButton x:Name="examinationRadioButton" Content="Examination" GroupName="appointmentTypeGroup" HorizontalAlignment="Left" Margin="637,61,0,0" VerticalAlignment="Top" Checked="TypeButton_Checked"/>
+        <RadioButton x:Name="operationRadioButton" Content="Operation" GroupName="appointmentTypeGroup" HorizontalAlignment="Left" Margin="726,61,0,0" VerticalAlignment="Top" Checked="TypeButton_Checked"/>
+        <Label Content="Equipment needed" HorizontalAlignment="Left" Margin="509,218,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.529,-0.638"/>
+        <TextBox x:Name="equipmentName" HorizontalAlignment="Left" Margin="637,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="findButton" Content="Find" HorizontalAlignment="Left" Margin="772,221,0,0" VerticalAlignment="Top" Click="FindButton_Click"/>
+        <Label Content="Room" HorizontalAlignment="Left" Margin="509,260,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.529,-0.638"/>
+        <ComboBox x:Name="rooms" ItemsSource="{Binding Path=roomsToShow}" DisplayMemberPath="Name" HorizontalAlignment="Left" Margin="637,262,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="View Patient" HorizontalAlignment="Left" Margin="300,318,0,0" VerticalAlignment="Top" Click="View_Click" Height="28" Width="111"/>
     </Grid>
 </Window>

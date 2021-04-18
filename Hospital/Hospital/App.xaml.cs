@@ -1,11 +1,14 @@
-﻿using System.Windows;
+﻿using Controller;
+using System.Windows;
 
 namespace Hospital
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
+        public readonly AppointmentController appointmentController = new AppointmentController();
+        public readonly PatientController patientController = new PatientController();
+        public readonly DoctorController doctorController = new DoctorController();
+        public readonly RoomController roomController = new RoomController();
+        public readonly StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
     }
 }

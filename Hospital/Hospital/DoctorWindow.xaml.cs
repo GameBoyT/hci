@@ -9,19 +9,17 @@ namespace Hospital
 {
     public partial class DoctorWindow : Window
     {
-        private AppointmentController appointmentController = new AppointmentController();
-        private PatientController patientController = new PatientController();
-        private DoctorController doctorController = new DoctorController();
-        private RoomController roomController = new RoomController();
-        private StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
+        App app;
         List<Appointment> appointments = new List<Appointment>();
         List<Appointment> appointmentsToShow = new List<Appointment>();
+        List<Room> roomsToShow = new List<Room>();
         private Doctor Doctor;
         private AppointmentType appointmentType;
 
         public DoctorWindow()
         {
             InitializeComponent();
+            app = Application.Current as App;
 
 
             // DATA TO GENERATE
@@ -63,10 +61,11 @@ namespace Hospital
             //MessageBox.Show(roomsWitheRendgen[0].Name);
 
 
-            Doctor = doctorController.GetByJmbg("1");
+            Doctor = app.doctorController.GetByJmbg("1");
             appointment_date.SelectedDate = DateTime.Today;
             new_appointment_date.SelectedDate = DateTime.Today;
             appointmentType = AppointmentType.examination;
+            rooms.IsEnabled = false;
             WindowUpdate();
         }
         private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -86,6 +85,7 @@ namespace Hospital
                 cancelUpdateButton.Visibility = Visibility.Visible;
                 title.Content = "Edit appointment";
 
+                appointmentType = appointment.AppointmentType;
                 new_appointment_date.SelectedDate = appointment.StartTime.Date;
                 durationTextBox.Text = appointment.DurationInMinutes.ToString();
                 startTimeTextBox.Text = appointment.StartTime.ToString("HH:mm");
@@ -93,6 +93,8 @@ namespace Hospital
 
                 patientJmbg.IsReadOnly = true;
                 patientJmbg.IsEnabled = false;
+                examinationRadioButton.IsEnabled = false;
+                operationRadioButton.IsEnabled = false;
             }
             catch
             {
@@ -103,22 +105,30 @@ namespace Hospital
 
         private void WindowUpdate()
         {
-            appointments = appointmentController.GetAppointmentsForDoctor(Doctor.User.Jmbg);
+            appointments = app.appointmentController.GetAppointmentsForDoctor(Doctor.User.Jmbg);
             appointmentsToShow = appointments.FindAll(appointment => appointment.StartTime.Date == appointment_date.SelectedDate);
             appointmentsDataGrid.ItemsSource = appointmentsToShow;
+            rooms.ItemsSource = roomsToShow;
+            rooms.SelectedIndex = 0;
         }
 
         private Appointment CreateAppointmentFromData()
         {
-            int id = appointmentController.GenerateNewId();
+            int id = app.appointmentController.GenerateNewId();
             DateTime pickedDate = new_appointment_date.SelectedDate.Value;
             int hours = Int32.Parse(startTimeTextBox.Text.Split(':')[0]);
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
-            Patient patient = patientController.GetByJmbg(patientJmbg.Text);
-            //Room room = roomController.GetByName("336");
-            return new Appointment(id, appointmentType, appointmentDateTime, duration, patient, Doctor, Doctor.Room);
+            Patient patient = app.patientController.GetByJmbg(patientJmbg.Text);
+            if (appointmentType == AppointmentType.examination)
+            {
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patient, Doctor, Doctor.Room);
+            }
+            else
+            {
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patient, Doctor, (Room)rooms.SelectedItem);
+            }
         }
 
         private void Update_Appointment_Click(object sender, RoutedEventArgs e)
@@ -126,9 +136,9 @@ namespace Hospital
             try
             {
                 Appointment appointment = CreateAppointmentFromData();
-                if (appointmentController.AppointmentTimeIsInvalid(appointment))
+                if (app.appointmentController.AppointmentTimeIsInvalid(appointment))
                     return;
-                appointmentController.Update(appointment);
+                app.appointmentController.Update(appointment);
                 WindowUpdate();
                 ChangeToNewAppointment();
             }
@@ -158,14 +168,16 @@ namespace Hospital
 
             patientJmbg.IsReadOnly = false;
             patientJmbg.IsEnabled = true;
+            examinationRadioButton.IsEnabled = true;
+            operationRadioButton.IsEnabled = true;
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                Appointment app = (Appointment)appointmentsDataGrid.SelectedItems[0];
-                appointmentController.Delete(app.Id);
+                Appointment appointment = (Appointment)appointmentsDataGrid.SelectedItems[0];
+                app.appointmentController.Delete(appointment.Id);
                 WindowUpdate();
             }
             catch
@@ -187,14 +199,14 @@ namespace Hospital
                 }
 
                 //TODO: treba refaktorisati AppointmentTimeIsInvalid da moze izbaciti error za svaku gresku posebno
-                if (appointmentController.AppointmentTimeIsInvalid(appointment))
+                if (app.appointmentController.AppointmentTimeIsInvalid(appointment))
                 {
                     MessageBox.Show("Appointment time is invalid!");
                     return;
 
                 }
 
-                appointmentController.Save(appointment);
+                app.appointmentController.Save(appointment);
                 ChangeToNewAppointment();
                 WindowUpdate();
             }
@@ -210,9 +222,39 @@ namespace Hospital
             if (radioButton == null)
                 return;
             if (radioButton.Content.ToString() == "Examination")
+            {
                 appointmentType = AppointmentType.examination;
+                roomsToShow.Clear();
+                rooms.SelectedIndex = -1;
+                roomsToShow.Add(Doctor.Room);
+                rooms.IsEnabled = false;
+                equipmentName.IsEnabled = false;
+                findButton.IsEnabled = false;
+                WindowUpdate();
+            }
             else
+            {
                 appointmentType = AppointmentType.operation;
+                roomsToShow.Clear();
+                rooms.SelectedIndex = -1;
+                rooms.IsEnabled = true;
+                equipmentName.IsEnabled = true;
+                findButton.IsEnabled = true;
+                WindowUpdate();
+            }
+        }
+
+        private void FindButton_Click(object sender, RoutedEventArgs e)
+        {
+            roomsToShow = app.staticEquipmentController.GetAllRoomsWithEquipmentName(equipmentName.Text);
+            WindowUpdate();
+        }
+
+        private void View_Click(object sender, RoutedEventArgs e)
+        {
+            Appointment appointment = (Appointment)appointmentsDataGrid.SelectedItems[0];
+            DoctorViewPatient doctorViewPatientWindow = new DoctorViewPatient(appointment);
+            doctorViewPatientWindow.Show();
         }
     }
 }
