@@ -21,10 +21,21 @@ namespace Hospital
     {
 
         private PatientController patientController = new PatientController();
-      
+        List<Patient> patients = new List<Patient>();
+        List<Patient> patientsToShow = new List<Patient>();
+            
+
         public SecretaryPatientCRUD()
         {
             InitializeComponent();
+            patientsToShow = patientController.GetAll();
+            secretaryDataGrid.ItemsSource = patientsToShow;
+        }
+
+        private void DataGrid(object sender, SelectionChangedEventArgs e)
+        {
+            //patientsToShow = patientController.GetAll();
+           // secretaryDataGrid.ItemsSource = patientsToShow;
         }
 
         private Patient CreatePatientFromData()
@@ -51,7 +62,8 @@ namespace Hospital
 
         private void Button_Click_Create(object sender, RoutedEventArgs e)
         {
-
+            Patient patient = CreatePatientFromData();
+            patientController.Save(patient);
         }
     }
 }
