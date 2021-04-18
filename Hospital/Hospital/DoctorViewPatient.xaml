@@ -1,0 +1,26 @@
+﻿<Window x:Class="Hospital.DoctorViewPatient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital"
+        mc:Ignorable="d"
+        Title="DoctorViewPatient" Height="450" Width="800">
+    <Grid x:Name="dvpGrid">
+        <Label Content="Patient Details" HorizontalAlignment="Left" Margin="130,44,0,0" VerticalAlignment="Top"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="38,75,0,0" VerticalAlignment="Top"/>
+        <Label Content="Last Name" HorizontalAlignment="Left" Margin="38,106,0,0" VerticalAlignment="Top"/>
+        <Label Content="Jmbg" HorizontalAlignment="Left" Margin="38,137,0,0" VerticalAlignment="Top"/>
+        <Label Content="Date of birth" HorizontalAlignment="Left" Margin="38,168,0,0" VerticalAlignment="Top"/>
+        <Label Content="Address" HorizontalAlignment="Left" Margin="38,199,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Path=Appointment.Patient.User.FirstName}" HorizontalAlignment="Left" Margin="146,75,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Path=Appointment.Patient.User.LastName}" HorizontalAlignment="Left" Margin="146,106,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Path=Appointment.Patient.User.Jmbg}" HorizontalAlignment="Left" Margin="147,137,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Path=Appointment.Patient.User.DateOfBirth}" HorizontalAlignment="Left" Margin="146,168,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Path=Appointment.Patient.User.Address}" HorizontalAlignment="Left" Margin="146,199,0,0" VerticalAlignment="Top"/>
+
+        <!--<Label Content="Appointment Details" HorizontalAlignment="Left" Margin="535,44,0,0" VerticalAlignment="Top"/>
+        <Label Content="Time" HorizontalAlignment="Left" Margin="467,75,0,0" VerticalAlignment="Top"/>-->
+
+    </Grid>
+</Window>

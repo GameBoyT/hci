@@ -3,9 +3,6 @@ using System.Windows;
 
 namespace Hospital
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         public readonly AppointmentController appointmentController = new AppointmentController();

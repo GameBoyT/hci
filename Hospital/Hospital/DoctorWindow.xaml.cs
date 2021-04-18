@@ -252,7 +252,9 @@ namespace Hospital
 
         private void View_Click(object sender, RoutedEventArgs e)
         {
-
+            Appointment appointment = (Appointment)appointmentsDataGrid.SelectedItems[0];
+            DoctorViewPatient doctorViewPatientWindow = new DoctorViewPatient(appointment);
+            doctorViewPatientWindow.Show();
         }
     }
 }
