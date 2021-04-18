@@ -13,6 +13,7 @@ namespace Hospital
         private PatientController patientController = new PatientController();
         private DoctorController doctorController = new DoctorController();
         private RoomController roomController = new RoomController();
+        private StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
         List<Appointment> appointments = new List<Appointment>();
         List<Appointment> appointmentsToShow = new List<Appointment>();
         private Doctor Doctor;
@@ -55,7 +56,14 @@ namespace Hospital
             //patientController.Save(patient2);
             //patientController.Save(patient3);
 
-            Doctor = doctorController.GetByJmbg("2");
+            //roomController.Save("10", RoomType.exam, 2, "Rendgen soba");
+
+            //staticEquipmentController.Save("Rendgen", "10", 1, "Rendgen masina");
+            //List<StaticEquipment> roomsWitheRendgen = staticEquipmentController.GetAllRoomsWithEquipmentName("rendgen");
+            //MessageBox.Show(roomsWitheRendgen[0].Name);
+
+
+            Doctor = doctorController.GetByJmbg("1");
             appointment_date.SelectedDate = DateTime.Today;
             new_appointment_date.SelectedDate = DateTime.Today;
             appointmentType = AppointmentType.examination;
@@ -109,8 +117,8 @@ namespace Hospital
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
             Patient patient = patientController.GetByJmbg(patientJmbg.Text);
-            Room room = roomController.GetByName("336");
-            return new Appointment(id, appointmentType, appointmentDateTime, duration, patient, Doctor, room);
+            //Room room = roomController.GetByName("336");
+            return new Appointment(id, appointmentType, appointmentDateTime, duration, patient, Doctor, Doctor.Room);
         }
 
         private void Update_Appointment_Click(object sender, RoutedEventArgs e)

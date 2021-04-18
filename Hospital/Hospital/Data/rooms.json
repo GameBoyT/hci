@@ -1,12 +1,12 @@
 [
   {
+    "Appointments": null,
+    "Detail": "detalji",
+    "DynamicEquipments": null,
+    "Floor": 3,
     "Id": 1,
     "Name": "336",
     "RoomType": 2,
-    "Floor": 3,
-    "Detail": "detalji",
-    "Appointments": null,
-    "DynamicEquipments": null,
     "StaticEquipments": null
   },
   {
@@ -15,6 +15,16 @@
     "RoomType": 2,
     "Floor": 0,
     "Detail": "detaljiSoba7",
+    "Appointments": null,
+    "DynamicEquipments": null,
+    "StaticEquipments": null
+  },
+  {
+    "Id": 3,
+    "Name": "10",
+    "RoomType": 2,
+    "Floor": 2,
+    "Detail": "Rendgen soba",
     "Appointments": null,
     "DynamicEquipments": null,
     "StaticEquipments": null

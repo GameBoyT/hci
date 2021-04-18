@@ -11,7 +11,11 @@ namespace Controller
         public List<StaticEquipment> GetAll()
         {
             return staticEquipmentService.GetAll();
+        }
 
+        public List<StaticEquipment> GetAllRoomsWithEquipmentName(string name)
+        {
+            return staticEquipmentService.GetAllRoomsWithEquipmentName(name);
         }
 
         public StaticEquipment GetById(int id)
@@ -19,9 +23,9 @@ namespace Controller
             return staticEquipmentService.GetById(id);
         }
 
-        public void Save(int quantity, String type, String description, int name)
+        public void Save(String name, String roomName, int quantity, String description)
         {
-            throw new NotImplementedException();
+            staticEquipmentService.Save(name, roomName, quantity, description);
         }
 
         public void Delete(int id)

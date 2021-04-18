@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Repository
 {
@@ -38,9 +39,27 @@ namespace Repository
             return staticEquipments;
         }
 
+        public List<StaticEquipment> GetAllRoomsWithEquipmentName(string name)
+        {
+            return staticEquipments.FindAll(obj => string.Equals(obj.Name, name, StringComparison.OrdinalIgnoreCase));
+        }
+
         public Model.StaticEquipment GetById(int id)
         {
             return staticEquipments.Find(obj => obj.Id == id);
+        }
+
+        public int GenerateNewId()
+        {
+            try
+            {
+                int maxId = staticEquipments.Max(obj => obj.Id);
+                return maxId + 1;
+            }
+            catch
+            {
+                return 1;
+            }
         }
 
         public void Save(Model.StaticEquipment staticEquipment)

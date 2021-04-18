@@ -12,8 +12,8 @@
               AutoGenerateColumns="False"
               IsReadOnly="True" Margin="33,55,378,132">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id"
-                            Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Type"
+                            Binding="{Binding AppointmentType}" />
                 <DataGridTextColumn x:Name="start_time_column" Header="Start time"
                             Binding="{Binding StartTime , StringFormat=t, ConverterCulture=en-GB}" />
                 <DataGridTextColumn Header="Duration"

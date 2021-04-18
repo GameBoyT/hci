@@ -6,10 +6,16 @@ namespace Service
     public class StaticEquipmentService
     {
         public Repository.StaticEquipmentRepository staticEquipmentRepository = new Repository.StaticEquipmentRepository();
+        public Repository.RoomRepository roomRepository = new Repository.RoomRepository();
+
 
         public List<StaticEquipment> GetAll()
         {
             return staticEquipmentRepository.GetAll();
+        }
+        public List<StaticEquipment> GetAllRoomsWithEquipmentName(string name)
+        {
+            return staticEquipmentRepository.GetAllRoomsWithEquipmentName(name);
         }
 
         public Model.StaticEquipment GetById(int id)
@@ -17,9 +23,15 @@ namespace Service
             return staticEquipmentRepository.GetById(id);
         }
 
-        public void Save(Model.StaticEquipment staticEquipment)
+        public void Save(string name, string roomName , int quantity, string description)
         {
+            int id = staticEquipmentRepository.GenerateNewId();
+            Room room = roomRepository.GetByName(roomName);
+            StaticEquipment staticEquipment = new StaticEquipment(id, name, room, quantity, description);
             staticEquipmentRepository.Save(staticEquipment);
+
+            //room.AddStaticEquipment(staticEquipment);
+            //roomRepository.Update(room);
         }
 
         public void Delete(int id)
