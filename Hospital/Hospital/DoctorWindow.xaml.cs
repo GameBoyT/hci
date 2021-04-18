@@ -28,19 +28,26 @@ namespace Hospital
             //DateTime date = new DateTime(1985, 4, 26);
             //User doctorUser = new User("1", "Djordje", "Tovilovic", "djoleusername", "djolesifra", "djoleemail", "djoleadresa", date);
             //Doctor doctor = new Doctor(doctorUser);
-            //roomController.Save("336", RoomType.exam, 3, "detalji");
             //doctorController.Save(doctor);
 
-
             //DateTime date1 = new DateTime(1985, 4, 26);
-            //DateTime date2 = new DateTime(1998, 6, 12);
-            //DateTime date3 = new DateTime(1973, 8, 9);
-
             //User user = new User("2", "Nemanja", "Markovic", "nemanja", "sifra", "email", "adresa", date1);
             //Doctor doctor2 = new Doctor(user);
             //doctorController.Save(doctor2);
 
+            //Doctor doctor1 = doctorController.GetByJmbg("1");
+            //roomController.Save("336", RoomType.exam, 3, "detalji");
+            //doctor1.Room = roomController.GetByName("336");
+            //doctorController.Update(doctor1);
 
+            //Doctor doctor2 = doctorController.GetByJmbg("2");
+            //doctor2.Room = roomController.GetByName("7");
+            //roomController.Save("7", RoomType.exam, 0, "detaljiSoba7");
+            //doctorController.Update(doctor2);
+
+
+            //DateTime date2 = new DateTime(1998, 6, 12);
+            //DateTime date3 = new DateTime(1973, 8, 9);
             //User user2 = new User("3", "Zarko", "Zarkovic", "zarko", "sifra", "email", "adresa", date2);
             //User user3 = new User("4", "Pero", "Peric", "pero", "sifra", "email", "adresa", date3);
             //Patient patient2 = new Patient(user2);

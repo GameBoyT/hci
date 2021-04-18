@@ -9,6 +9,8 @@ namespace Model
             this.User = user;
         }
 
+        public Room Room { get; set; }
+
         public String Specialization { get; set; }
 
         public System.Collections.Generic.List<Appointment> Appointments { get; set; }
