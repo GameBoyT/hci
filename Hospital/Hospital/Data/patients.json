@@ -1,1 +1,199 @@
-[{"User":{"Jmbg":"3","FirstName":"Zarko","LastName":"Zarkovic","Username":"zarko","Password":"sifra","Email":"email","Address":"adresa","DateOfBirth":"1998-06-12T00:00:00"},"MedicalRecord":null,"Appointments":null,"Notifications":null},{"User":{"Jmbg":"4","FirstName":"Pero","LastName":"Peric","Username":"pero","Password":"sifra","Email":"email","Address":"adresa","DateOfBirth":"1973-08-09T00:00:00"},"MedicalRecord":null,"Appointments":null,"Notifications":null}]
+[
+  {
+    "User": {
+      "Jmbg": "4",
+      "FirstName": "Pero",
+      "LastName": "Peric",
+      "Username": "pero",
+      "Password": "sifra",
+      "Email": "email",
+      "Address": "adresa",
+      "DateOfBirth": "1973-08-09T00:00:00"
+    },
+    "MedicalRecord": null,
+    "Appointments": null,
+    "Notifications": null
+  },
+  {
+    "User": {
+      "Jmbg": "5",
+      "FirstName": "Jova",
+      "LastName": "Jovic",
+      "Username": "fasfaf",
+      "Password": "fasfasf",
+      "Email": "j@gmail.com",
+      "Address": "fsafasff",
+      "DateOfBirth": "2021-04-20T00:00:00"
+    },
+    "MedicalRecord": null,
+    "Appointments": null,
+    "Notifications": null
+  },
+  {
+    "User": {
+      "Jmbg": "6",
+      "FirstName": "Mile",
+      "LastName": "fdsfsdff",
+      "Username": "fdsfsd",
+      "Password": "fsdfdsf",
+      "Email": "a@gmail.com",
+      "Address": "fdsfsdf",
+      "DateOfBirth": "2021-04-06T00:00:00"
+    },
+    "MedicalRecord": null,
+    "Appointments": null,
+    "Notifications": null
+  },
+  {
+    "User": {
+      "Jmbg": "10",
+      "FirstName": "Zarko",
+      "LastName": "Zarkovic",
+      "Username": "zarko",
+      "Password": "sifra",
+      "Email": "email",
+      "Address": "adresa",
+      "DateOfBirth": "1998-06-12T00:00:00"
+    },
+    "MedicalRecord": {
+      "Alergies": null,
+      "Prescription": [
+        {
+          "Interval": 6,
+          "StartDate": "2021-03-20T14:00:00",
+          "EndDate": "2021-07-08T14:00:00",
+          "Description": "opis",
+          "Quantity": 100,
+          "Medicine": {
+            "Id": 2,
+            "Name": "Brufen"
+          }
+        },
+        {
+          "Interval": 3,
+          "StartDate": "2021-04-17T12:20:00",
+          "EndDate": "2021-06-02T12:20:00",
+          "Description": "opis",
+          "Quantity": 100,
+          "Medicine": {
+            "Id": 1,
+            "Name": "Paracetamol"
+          }
+        }
+      ],
+      "Anamnesis": null
+    },
+    "Appointments": null,
+    "Notifications": null
+  },
+  {
+    "User": {
+      "Jmbg": "8",
+      "FirstName": "Zarko",
+      "LastName": "Zarkovic",
+      "Username": "zarko",
+      "Password": "sifra",
+      "Email": "email",
+      "Address": "adresa",
+      "DateOfBirth": "1998-06-12T00:00:00"
+    },
+    "MedicalRecord": {
+      "Alergies": [ "Alergija na polen", "Alergija na dlake" ],
+      "Prescription": [
+        {
+          "Interval": 6,
+          "StartDate": "2021-03-20T14:00:00",
+          "EndDate": "2021-07-08T14:00:00",
+          "Description": "opis",
+          "Quantity": 100,
+          "Medicine": {
+            "Id": 2,
+            "Name": "Brufen"
+          }
+        },
+        {
+          "Interval": 3,
+          "StartDate": "2021-04-17T12:20:00",
+          "EndDate": "2021-06-02T12:20:00",
+          "Description": "opis",
+          "Quantity": 100,
+          "Medicine": {
+            "Id": 1,
+            "Name": "Paracetamol"
+          }
+        }
+      ],
+      "Anamnesis": [
+        {
+          "Id": 1,
+          "Type": "Licna",
+          "Name": "ime anamneze",
+          "Description": "opis anamneze"
+        },
+        {
+          "Id": 2,
+          "Type": "Anamneza",
+          "Name": "naziv",
+          "Description": "opis "
+        }
+      ]
+    },
+    "Appointments": null,
+    "Notifications": null
+  },
+  {
+    "User": {
+      "Jmbg": "3",
+      "FirstName": "Zarko",
+      "LastName": "Zarkovic",
+      "Username": "zarko",
+      "Password": "sifra",
+      "Email": "email",
+      "Address": "adresa",
+      "DateOfBirth": "1998-06-12T00:00:00"
+    },
+    "MedicalRecord": {
+      "Alergies": [ "Alergija na polen", "Alergija na dlake" ],
+      "Prescription": [
+        {
+          "Interval": 1,
+          "StartDate": "2021-03-20T23:00:00",
+          "EndDate": "2021-07-08T14:00:00",
+          "Description": "opis",
+          "Quantity": 100,
+          "Medicine": {
+            "Id": 2,
+            "Name": "Brufen"
+          }
+        },
+        {
+          "Interval": 3,
+          "StartDate": "2021-04-17T14:20:00",
+          "EndDate": "2021-06-02T12:20:00",
+          "Description": "opis",
+          "Quantity": 100,
+          "Medicine": {
+            "Id": 1,
+            "Name": "Paracetamol"
+          }
+        }
+      ],
+      "Anamnesis": [
+        {
+          "Id": 1,
+          "Type": "Licna",
+          "Name": "ime anamneze",
+          "Description": "opis anamneze"
+        },
+        {
+          "Id": 2,
+          "Type": "Anamneza",
+          "Name": "naziv",
+          "Description": "opis "
+        }
+      ]
+    },
+    "Appointments": null,
+    "Notifications": null
+  }
+]
