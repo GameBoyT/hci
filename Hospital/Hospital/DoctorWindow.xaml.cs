@@ -55,7 +55,7 @@ namespace Hospital
             //patientController.Save(patient2);
             //patientController.Save(patient3);
 
-            Doctor = doctorController.GetByJmbg("2");
+            Doctor = doctorController.GetByJmbg("1");
             appointment_date.SelectedDate = DateTime.Today;
             new_appointment_date.SelectedDate = DateTime.Today;
             appointmentType = AppointmentType.examination;
@@ -109,8 +109,8 @@ namespace Hospital
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
             Patient patient = patientController.GetByJmbg(patientJmbg.Text);
-            Room room = roomController.GetByName("336");
-            return new Appointment(id, appointmentType, appointmentDateTime, duration, patient, Doctor, room);
+            //Room room = roomController.GetByName("336");
+            return new Appointment(id, appointmentType, appointmentDateTime, duration, patient, Doctor, Doctor.Room);
         }
 
         private void Update_Appointment_Click(object sender, RoutedEventArgs e)
