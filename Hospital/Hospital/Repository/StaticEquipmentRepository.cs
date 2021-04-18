@@ -39,6 +39,11 @@ namespace Repository
             return staticEquipments;
         }
 
+        public List<StaticEquipment> GetAllRoomsWithEquipmentName(string name)
+        {
+            return staticEquipments.FindAll(obj => string.Equals(obj.Name, name, StringComparison.OrdinalIgnoreCase));
+        }
+
         public Model.StaticEquipment GetById(int id)
         {
             return staticEquipments.Find(obj => obj.Id == id);

@@ -13,6 +13,7 @@ namespace Hospital
         private PatientController patientController = new PatientController();
         private DoctorController doctorController = new DoctorController();
         private RoomController roomController = new RoomController();
+        private StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
         List<Appointment> appointments = new List<Appointment>();
         List<Appointment> appointmentsToShow = new List<Appointment>();
         private Doctor Doctor;
@@ -54,6 +55,13 @@ namespace Hospital
             //Patient patient3 = new Patient(user3);
             //patientController.Save(patient2);
             //patientController.Save(patient3);
+
+            //roomController.Save("10", RoomType.exam, 2, "Rendgen soba");
+
+            //staticEquipmentController.Save("Rendgen", "10", 1, "Rendgen masina");
+            //List<StaticEquipment> roomsWitheRendgen = staticEquipmentController.GetAllRoomsWithEquipmentName("rendgen");
+            //MessageBox.Show(roomsWitheRendgen[0].Name);
+
 
             Doctor = doctorController.GetByJmbg("1");
             appointment_date.SelectedDate = DateTime.Today;

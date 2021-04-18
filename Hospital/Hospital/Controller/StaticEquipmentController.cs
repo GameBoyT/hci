@@ -11,7 +11,11 @@ namespace Controller
         public List<StaticEquipment> GetAll()
         {
             return staticEquipmentService.GetAll();
+        }
 
+        public List<StaticEquipment> GetAllRoomsWithEquipmentName(string name)
+        {
+            return staticEquipmentService.GetAllRoomsWithEquipmentName(name);
         }
 
         public StaticEquipment GetById(int id)

@@ -54,7 +54,20 @@ namespace Model
         }
 
         public System.Collections.Generic.List<Appointment> Appointments { get; set; }
-        public System.Collections.Generic.List<DynamicEquipment> DynamicEquipments { get; set; }
         public System.Collections.Generic.List<StaticEquipment> StaticEquipments { get; set; }
+        public System.Collections.Generic.List<DynamicEquipment> DynamicEquipments { get; set; }
+
+        //public void AddStaticEquipment(StaticEquipment staticEquipment)
+        //{
+        //    if (staticEquipment == null)
+        //        return;
+        //    if (this.StaticEquipments == null)
+        //        this.StaticEquipments = new System.Collections.Generic.List<StaticEquipment>();
+        //    if (!this.StaticEquipments.Contains(staticEquipment))
+        //    {
+        //        this.StaticEquipments.Add(staticEquipment);
+        //        staticEquipment.Room = this;
+        //    }
+        //}
     }
 }
