@@ -16,6 +16,7 @@ namespace Hospital
         private StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
         List<Appointment> appointments = new List<Appointment>();
         List<Appointment> appointmentsToShow = new List<Appointment>();
+        List<Room> roomsToShow = new List<Room>();
         private Doctor Doctor;
         private AppointmentType appointmentType;
 
@@ -106,6 +107,8 @@ namespace Hospital
             appointments = appointmentController.GetAppointmentsForDoctor(Doctor.User.Jmbg);
             appointmentsToShow = appointments.FindAll(appointment => appointment.StartTime.Date == appointment_date.SelectedDate);
             appointmentsDataGrid.ItemsSource = appointmentsToShow;
+            rooms.ItemsSource = roomsToShow;
+            rooms.SelectedIndex = 0;
         }
 
         private Appointment CreateAppointmentFromData()
@@ -117,8 +120,14 @@ namespace Hospital
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
             Patient patient = patientController.GetByJmbg(patientJmbg.Text);
-            //Room room = roomController.GetByName("336");
-            return new Appointment(id, appointmentType, appointmentDateTime, duration, patient, Doctor, Doctor.Room);
+            if (appointmentType == AppointmentType.examination)
+            {
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patient, Doctor, Doctor.Room);
+            }
+            else
+            {
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patient, Doctor, (Room)rooms.SelectedItem);
+            }
         }
 
         private void Update_Appointment_Click(object sender, RoutedEventArgs e)
@@ -213,6 +222,12 @@ namespace Hospital
                 appointmentType = AppointmentType.examination;
             else
                 appointmentType = AppointmentType.operation;
+        }
+
+        private void FindButton_Click(object sender, RoutedEventArgs e)
+        {
+            roomsToShow = staticEquipmentController.GetAllRoomsWithEquipmentName(equipmentName.Text);
+            WindowUpdate();
         }
     }
 }
