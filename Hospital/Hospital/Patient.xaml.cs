@@ -175,7 +175,6 @@ namespace Hospital
             var new_window = new PatientAppointments();
             new_window.Show();
             this.Close();
-
         }
 
         private void notificationButton_Click(object sender, RoutedEventArgs e)

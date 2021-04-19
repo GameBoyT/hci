@@ -34,11 +34,19 @@ namespace Controller
             roomService.Delete(id);
         }
 
-        public void Update(String name, RoomType roomType, int floor, String detail)
+        public void Update(Room room)
+        {
+            roomService.Update(room);
+        }
+        public int GenerateNewId()
+        {
+            return roomService.GenerateNewId();
+        }
+
+        public void MoveEquipment(Model.Room fromRoom, Model.Room toRoom, DateTime date)
         {
             throw new NotImplementedException();
         }
-
 
     }
 }
