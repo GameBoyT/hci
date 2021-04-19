@@ -82,7 +82,7 @@ namespace Repository
             int maxId = 1;
             foreach (Patient patient in patients)
             {
-                if (patient.MedicalRecord != null && patient.MedicalRecord.Anamnesis != null)
+                if (patient.MedicalRecord != null && patient.MedicalRecord.Anamnesis != null && patient.MedicalRecord.Anamnesis.Count != 0)
                     maxId = patient.MedicalRecord.Anamnesis.Max(obj => obj.Id);
             }
             return maxId + 1;
