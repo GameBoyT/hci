@@ -24,6 +24,8 @@ namespace Hospital
             this.DataContext = this;
             app = Application.Current as App;
             Appointment = appointment;
+
+            lvDataBinding.ItemsSource = appointment.Patient.MedicalRecord.Anamnesis;
         }
     }
 }

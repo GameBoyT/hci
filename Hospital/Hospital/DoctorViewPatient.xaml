@@ -7,17 +7,54 @@
         mc:Ignorable="d"
         Title="DoctorViewPatient" Height="450" Width="800">
     <Grid x:Name="dvpGrid">
-        <Label Content="Patient Details" HorizontalAlignment="Left" Margin="130,44,0,0" VerticalAlignment="Top"/>
-        <Label Content="Name" HorizontalAlignment="Left" Margin="38,75,0,0" VerticalAlignment="Top"/>
-        <Label Content="Last Name" HorizontalAlignment="Left" Margin="38,106,0,0" VerticalAlignment="Top"/>
-        <Label Content="Jmbg" HorizontalAlignment="Left" Margin="38,137,0,0" VerticalAlignment="Top"/>
-        <Label Content="Date of birth" HorizontalAlignment="Left" Margin="38,168,0,0" VerticalAlignment="Top"/>
-        <Label Content="Address" HorizontalAlignment="Left" Margin="38,199,0,0" VerticalAlignment="Top"/>
-        <Label Content="{Binding Path=Appointment.Patient.User.FirstName}" HorizontalAlignment="Left" Margin="146,75,0,0" VerticalAlignment="Top"/>
-        <Label Content="{Binding Path=Appointment.Patient.User.LastName}" HorizontalAlignment="Left" Margin="146,106,0,0" VerticalAlignment="Top"/>
-        <Label Content="{Binding Path=Appointment.Patient.User.Jmbg}" HorizontalAlignment="Left" Margin="147,137,0,0" VerticalAlignment="Top"/>
-        <Label Content="{Binding Path=Appointment.Patient.User.DateOfBirth}" HorizontalAlignment="Left" Margin="146,168,0,0" VerticalAlignment="Top"/>
-        <Label Content="{Binding Path=Appointment.Patient.User.Address}" HorizontalAlignment="Left" Margin="146,199,0,0" VerticalAlignment="Top"/>
+
+        <TabControl>
+            <TabItem Header="Appointment Details">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="165*"/>
+                        <ColumnDefinition Width="599*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Patient Details" HorizontalAlignment="Left" Margin="100,44,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <Label Content="Name" HorizontalAlignment="Left" Margin="8,75,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Last Name" HorizontalAlignment="Left" Margin="8,106,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Jmbg" HorizontalAlignment="Left" Margin="8,137,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Date of birth" HorizontalAlignment="Left" Margin="8,168,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Address" HorizontalAlignment="Left" Margin="8,199,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="{Binding Path=Appointment.Patient.User.FirstName}" HorizontalAlignment="Left" Margin="116,75,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="{Binding Path=Appointment.Patient.User.LastName}" HorizontalAlignment="Left" Margin="116,106,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="{Binding Path=Appointment.Patient.User.Jmbg}" HorizontalAlignment="Left" Margin="117,137,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="{Binding Path=Appointment.Patient.User.DateOfBirth}" HorizontalAlignment="Left" Margin="116,168,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="{Binding Path=Appointment.Patient.User.Address}" HorizontalAlignment="Left" Margin="118,199,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2"/>
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Anamnesis">
+                <Grid>
+                    <ListView Margin="10,61,528,133" Name="lvDataBinding">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <TextBlock Text="Name: " />
+                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" />
+                                    <TextBlock Text=", " />
+                                    <TextBlock Text="Type: " />
+                                    <TextBlock Text="{Binding Type}" FontWeight="Bold" />
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <TextBlock HorizontalAlignment="Left" Margin="101,23,0,0" Text="Anamnesis" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="478,23,0,0" Text="Anamnesis Details" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Margin="349,61,0,0" Text="Detalji anamneze" TextWrapping="Wrap" VerticalAlignment="Top" Width="366" Height="212"/>
+                    <Button Content="Edit Anamnesis" HorizontalAlignment="Left" Margin="630,305,0,0" VerticalAlignment="Top"/>
+                </Grid>
+
+
+
+            </TabItem>
+        </TabControl>
 
         <!--<Label Content="Appointment Details" HorizontalAlignment="Left" Margin="535,44,0,0" VerticalAlignment="Top"/>
         <Label Content="Time" HorizontalAlignment="Left" Margin="467,75,0,0" VerticalAlignment="Top"/>-->
