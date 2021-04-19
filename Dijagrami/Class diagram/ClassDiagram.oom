@@ -12,6 +12,7 @@
 <a:Code>ClassDiagram</a:Code>
 <a:CreationDate>1617022475</a:CreationDate>
 <a:Creator>Djole</a:Creator>
+
 <a:ModificationDate>1618850367</a:ModificationDate>
 <a:Modifier>Wombat</a:Modifier>
 <a:PackageOptionsText>[FolderOptions]
@@ -15150,6 +15151,7 @@ LABL 0 Arial,8,N</a:FontList>
 <o:ClassDiagram Ref="o5"/>
 </c:DefaultDiagram>
 <c:SequenceDiagrams>
+
 <o:SequenceDiagram Id="o750">
 <a:ObjectID>46009B1E-BBF2-4C49-B528-F66CD7C1D9FE</a:ObjectID>
 <a:Name>Director</a:Name>
