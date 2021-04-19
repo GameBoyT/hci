@@ -33,14 +33,20 @@
                     <Label Content="Description" HorizontalAlignment="Left" Margin="509,183,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
                     <TextBox x:Name="description" HorizontalAlignment="Left" Margin="637,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                     <Button x:Name="deleteEquipment" Content="Delete" HorizontalAlignment="Left" Margin="346,301,0,0" VerticalAlignment="Top" Click="deleteEquipment_Click" Height="33" Width="66"/>
+                    <Button x:Name="updateStaticButton" Content="Update equipment" Visibility="Collapsed" HorizontalAlignment="Left"  Click="updateStatic_Click" Margin="621,334,0,0" VerticalAlignment="Top"  Height="33" Width="131" Grid.Column="1"/>
+                    <Button x:Name="cancelupdateStaticButton" Content="Cancel" Visibility="Collapsed" HorizontalAlignment="Left" Click="cancelupdateStatic_Click" Margin="478,334,0,0" VerticalAlignment="Top"  Height="33" Width="122" Grid.Column="1"/>
                     <Button x:Name="updateEquipment" Content="Update" Click="updateEquipment_Click" VerticalAlignment="Top" Margin="243,301,461,72" Height="33" Width="66"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Dynamic">
                 <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="387*"/>
+                    </Grid.ColumnDefinitions>
                     <DataGrid x:Name="DynamicDataGrid"
               AutoGenerateColumns="False"
-              IsReadOnly="True" Margin="33,55,378,132">
+              IsReadOnly="True" Margin="17,55,378,132" Grid.Column="1">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id"
                             Binding="{Binding Id}" />
@@ -52,18 +58,18 @@
                             Binding="{Binding Description}" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Label Content="Name" HorizontalAlignment="Left" Margin="509,116,0,0" VerticalAlignment="Top" Width="116"/>
-                    <TextBox x:Name="dynName" HorizontalAlignment="Left" Margin="637,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="addDynamic" Content="Add Equipment" HorizontalAlignment="Left" Margin="637,334,0,0" VerticalAlignment="Top" Click="addDynamic_Click" Height="33" Width="131"/>
-                    <TextBox x:Name="dynQuantity" HorizontalAlignment="Left" Margin="637,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Label Content="Quantity" HorizontalAlignment="Left" Margin="509,147,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.142,-0.368"/>
-                    <Label x:Name="dyntitle" Content="Add new equipment" HorizontalAlignment="Left" Margin="571,13,0,0" VerticalAlignment="Top" Width="126"/>
-                    <Label Content="Description" HorizontalAlignment="Left" Margin="509,183,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
-                    <TextBox x:Name="dynDescription" HorizontalAlignment="Left" Margin="637,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="updateDynamicButton" Content="Update equipment" Visibility="Collapsed" HorizontalAlignment="Left"  Click="updateDynamic_Click" Margin="637,334,0,0" VerticalAlignment="Top"  Height="33" Width="131"/>
-                    <Button x:Name="cancelupdateDynamicButton" Content="Cancel" Visibility="Collapsed" HorizontalAlignment="Left" Click="cancelupdateDynamic_Click" Margin="494,334,0,0" VerticalAlignment="Top"  Height="33" Width="122"/>
-                    <Button x:Name="deleteDynamic" Content="Delete" HorizontalAlignment="Left" Margin="346,301,0,0" VerticalAlignment="Top" Click="deleteDynamic_Click" Height="33" Width="66"/>
-                    <Button x:Name="updateDynamic" Content="Update" Click="updateDynamic_Click" VerticalAlignment="Top" Margin="243,301,461,72" Height="33" Width="66"/>
+                    <Label Content="Name" HorizontalAlignment="Left" Margin="493,116,0,0" VerticalAlignment="Top" Width="116" Grid.Column="1"/>
+                    <TextBox x:Name="dynName" HorizontalAlignment="Left" Margin="621,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Button x:Name="addDynamic" Content="Add Equipment" HorizontalAlignment="Left" Margin="621,334,0,0" VerticalAlignment="Top" Click="addDynamic_Click" Height="33" Width="131" Grid.Column="1"/>
+                    <TextBox x:Name="dynQuantity" HorizontalAlignment="Left" Margin="621,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Label Content="Quantity" HorizontalAlignment="Left" Margin="493,147,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.142,-0.368" Grid.Column="1"/>
+                    <Label x:Name="dynTitle" Content="Add new equipment" HorizontalAlignment="Left" Margin="555,13,0,0" VerticalAlignment="Top" Width="126" Grid.Column="1"/>
+                    <Label Content="Description" HorizontalAlignment="Left" Margin="493,183,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638" Grid.Column="1"/>
+                    <TextBox x:Name="dynDescription" HorizontalAlignment="Left" Margin="621,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Button x:Name="updateDynamicButton" Content="Update equipment" Visibility="Collapsed" HorizontalAlignment="Left"  Click="updateDynamic_Click" Margin="621,334,0,0" VerticalAlignment="Top"  Height="33" Width="131" Grid.Column="1"/>
+                    <Button x:Name="cancelupdateDynamicButton" Content="Cancel" Visibility="Collapsed" HorizontalAlignment="Left" Click="cancelupdateDynamic_Click" Margin="478,334,0,0" VerticalAlignment="Top"  Height="33" Width="122" Grid.Column="1"/>
+                    <Button x:Name="deleteDynamic" Content="Delete" HorizontalAlignment="Left" Margin="330,301,0,0" VerticalAlignment="Top" Click="deleteDynamic_Click" Height="33" Width="66" Grid.Column="1"/>
+                    <Button x:Name="updateDynamic" Content="Update" Click="updateDynamic_Show" VerticalAlignment="Top" Margin="237,301,471,0" Height="33" Width="66" Grid.Column="1"/>
                 </Grid>
             </TabItem>
         </TabControl>
