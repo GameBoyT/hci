@@ -82,6 +82,13 @@ namespace Hospital
 
 
         }
+
+        private void ClearFileds()
+        {
+            durationTextBox.Clear();
+            startTimeTextBox.Clear();
+
+        }
         private Appointment CreateAppointmentFromData()
         {
             //int id = Int32.Parse(idTextBox.Text);
@@ -138,18 +145,20 @@ namespace Hospital
                 }
                 else if (appointmentController.AppointmentValidationWithoutOverlaping(newAppointment))
                 {
-                    MessageBox.Show("Provjeri ulazne podatke", "greska");
+                    MessageBox.Show("Termin nije moguce dodati, ponovi unos", "greska");
 
                 }
                 else
                 {
                     appointmentController.Save(newAppointment);
+                    ClearFileds();
+                    MessageBox.Show("Novi termin uspjeno dodat", "Uspjesno");
                 }
 
             }
             catch
             {
-                MessageBox.Show("Unesi podatke u sva polja", "greska");
+                MessageBox.Show("Unesi podatke u sva polja", "Greska");
             }
         }
 
@@ -183,7 +192,7 @@ namespace Hospital
                     if (DateTime.Now.TimeOfDay > timeMinusOne.TimeOfDay && DateTime.Now.TimeOfDay < time.TimeOfDay)
                     {
                         String message = p.Medicine.Name + "," + time.TimeOfDay.ToString();
-                        MessageBox.Show(message, "obavjestenje");
+                        MessageBox.Show(message, "Obavjestenje");
                     }
 
 
