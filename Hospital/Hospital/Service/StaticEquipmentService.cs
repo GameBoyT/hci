@@ -14,7 +14,7 @@ namespace Service
         {
             return staticEquipmentRepository.GetAll();
         }
-        public List<StaticEquipment> GetAllRoomsWithEquipmentName(string name)
+        public List<Room> GetAllRoomsWithEquipmentName(string name)
         {
             return staticEquipmentRepository.GetAllRoomsWithEquipmentName(name);
         }

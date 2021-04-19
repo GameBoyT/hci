@@ -5,6 +5,9 @@ namespace Model
         public Patient(User user)
         {
             this.User = user;
+            this.MedicalRecord = new MedicalRecord();
+            this.Appointments = new System.Collections.Generic.List<Appointment>();
+            this.Notifications = new System.Collections.Generic.List<Notification>();
         }
 
         public User User { get; set; }

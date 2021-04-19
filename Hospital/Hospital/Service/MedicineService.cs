@@ -17,8 +17,15 @@ namespace Service
             return medicineRepository.GetById(id);
         }
 
-        public void Save(Medicine medicine)
+        public Medicine GetByName(string name)
         {
+            return medicineRepository.GetByName(name);
+        }
+
+        public void Save(string name)
+        {
+            int id = medicineRepository.GenerateNewId();
+            Medicine medicine = new Medicine(id, name);
             medicineRepository.Save(medicine);
         }
 

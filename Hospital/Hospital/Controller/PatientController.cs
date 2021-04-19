@@ -35,6 +35,15 @@ namespace Controller
         {
             patientService.Update(patient);
         }
+        public void AddAnamnesis(string jmbg, string name, string type, string description)
+        {
+            patientService.AddAnamnesis(jmbg, name, type, description);
+        }
+
+        public void UpdateAnamnesisDescription(string jmbg, int id, string description)
+        {
+            patientService.UpdateAnamnesisDescription(jmbg, id, description);
+        }
 
 
     }
