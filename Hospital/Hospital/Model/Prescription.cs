@@ -12,16 +12,22 @@ namespace Model
         public Medicine Medicine { get; set; }
 
 
-        public Prescription(int interval, DateTime startDate, DateTime endDate, String description, int quantity, Medicine medicine)
+        //public Prescription(int interval, DateTime startDate, DateTime endDate, String description, int quantity, Medicine medicine)
+        //{
+        //    this.Interval = interval;
+        //    this.StartDate = startDate;
+        //    this.EndDate = endDate;
+        //    this.Description = description;
+        //    this.Quantity = quantity;
+        //    this.Medicine = medicine;
+
+        //}
+
+        public Prescription(Medicine medicine, int quantity, string description)
         {
-            this.Interval = interval;
-            this.StartDate = startDate;
-            this.EndDate = endDate;
-            this.Description = description;
-            this.Quantity = quantity;
-            this.Medicine = medicine;
-
+            Medicine = medicine;
+            Quantity = quantity;
+            Description = description;
         }
-
     }
 }

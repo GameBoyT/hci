@@ -52,7 +52,7 @@ namespace Service
 
         public bool AppointmentTimeInFuture(Appointment appointment)
         {
-            if (DateTime.Now.Ticks > appointment.StartTime.Ticks)
+            if (appointment.StartTime.Ticks > DateTime.Now.Ticks)
                 return true;
             return false;
         }
@@ -121,7 +121,7 @@ namespace Service
         {
             List<Appointment> appointments = appointmentRepository.GetAll();
 
-            if (AppointmentTimeInFuture(appointment))
+            if (!AppointmentTimeInFuture(appointment))
             {
                 return true;
             }

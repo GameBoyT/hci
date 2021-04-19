@@ -47,7 +47,8 @@
         <Label x:Name="title" Content="New appointment" HorizontalAlignment="Left" Margin="571,13,0,0" VerticalAlignment="Top" Width="106"/>
         <RadioButton x:Name="timeRadioButton" Content="Time" HorizontalAlignment="Left" Margin="637,179,0,0" VerticalAlignment="Top" IsChecked="True" Click="timeRadioButton_Click"/>
         <RadioButton x:Name="doctorRadioButton" Content="Doctor" HorizontalAlignment="Left" Margin="637,199,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="showAppointments" Content="Show Appointments" HorizontalAlignment="Left" Margin="638,329,0,0" VerticalAlignment="Top" Click="showAppointments_Click"/>
+        <Button x:Name="showAppointments" Content="Show Appointments" HorizontalAlignment="Left" Margin="624,325,0,0" VerticalAlignment="Top" Click="showAppointments_Click" Height="28" Width="125"/>
+        <Button x:Name="notificationButton" Content="Notification" HorizontalAlignment="Left" Margin="33,325,0,0" VerticalAlignment="Top" Height="28" Width="116" Click="notificationButton_Click"/>
 
 
     </Grid>

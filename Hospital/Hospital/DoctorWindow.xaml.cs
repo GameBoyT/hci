@@ -45,20 +45,26 @@ namespace Hospital
             //doctorController.Update(doctor2);
 
 
-            //DateTime date2 = new DateTime(1998, 6, 12);
-            //DateTime date3 = new DateTime(1973, 8, 9);
-            //User user2 = new User("3", "Zarko", "Zarkovic", "zarko", "sifra", "email", "adresa", date2);
-            //User user3 = new User("4", "Pero", "Peric", "pero", "sifra", "email", "adresa", date3);
+            //DateTime date2 = new DateTime(1968, 2, 5);
+            //DateTime date3 = new DateTime(1977, 11, 4);
+            //User user2 = new User("10", "Mile", "Milic", "mile", "sifra", "email", "adresa", date2);
+            //User user3 = new User("11", "Simo", "Simic", "simo", "sifra", "email", "adresa", date3);
             //Patient patient2 = new Patient(user2);
             //Patient patient3 = new Patient(user3);
-            //patientController.Save(patient2);
-            //patientController.Save(patient3);
+            //app.patientController.Save(patient2);
+            //app.patientController.Save(patient3);
 
             //roomController.Save("10", RoomType.exam, 2, "Rendgen soba");
 
             //staticEquipmentController.Save("Rendgen", "10", 1, "Rendgen masina");
             //List<StaticEquipment> roomsWitheRendgen = staticEquipmentController.GetAllRoomsWithEquipmentName("rendgen");
             //MessageBox.Show(roomsWitheRendgen[0].Name);
+
+            //app.medicineController.Save("Aspirin");
+            //app.medicineController.Save("Andol");
+            //app.medicineController.Save("Amoksicilin");
+            //app.medicineController.Save("Brufen");
+            //app.medicineController.Save("Paracetamol");
 
 
             Doctor = app.doctorController.GetByJmbg("1");
@@ -252,9 +258,17 @@ namespace Hospital
 
         private void View_Click(object sender, RoutedEventArgs e)
         {
-            Appointment appointment = (Appointment)appointmentsDataGrid.SelectedItems[0];
-            DoctorViewPatient doctorViewPatientWindow = new DoctorViewPatient(appointment);
-            doctorViewPatientWindow.Show();
+            try
+            {
+                Appointment appointment = (Appointment)appointmentsDataGrid.SelectedItems[0];
+                DoctorViewPatient doctorViewPatientWindow = new DoctorViewPatient(appointment);
+                doctorViewPatientWindow.Show();
+                this.Close();
+            }
+            catch
+            {
+                MessageBox.Show("You have to select an appointment to view!");
+            }
         }
     }
 }
