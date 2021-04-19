@@ -35,5 +35,12 @@ namespace Hospital
             secretaryPatientCRUD.Show();
             this.Close();
         }
+
+        private void CRUD_Appointment_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryAppointmentCRUD secretaryAppointmentCRUD = new SecretaryAppointmentCRUD();
+            secretaryAppointmentCRUD.Show();
+            this.Close();
+        }
     }
 }
