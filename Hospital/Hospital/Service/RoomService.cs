@@ -37,7 +37,7 @@ namespace Service
 
         public void Update(Room room)
         {
-            roomRepository.Update(room);   
+            roomRepository.Update(room);
         }
 
         public int GenerateNewId()

@@ -7,11 +7,11 @@ using System.Linq;
 
 namespace Repository
 {
-   public class DynamicEquipmentRepository
-   {
+    public class DynamicEquipmentRepository
+    {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\dynamic.json";
         private List<DynamicEquipment> dynamics = new List<DynamicEquipment>();
-        
+
         public DynamicEquipmentRepository()
         {
             if (!File.Exists(fileLocation))
@@ -36,8 +36,8 @@ namespace Repository
         public List<DynamicEquipment> GetAll()
         {
             return dynamics;
-        } 
-         
+        }
+
         public DynamicEquipment GetById(int id)
         {
             return dynamics.Find(obj => obj.Id == id);
@@ -60,20 +60,20 @@ namespace Repository
             dynamics.Add(dynamicEquipment);
             WriteToJson();
         }
-      
+
         public void Delete(int id)
         {
             int index = dynamics.FindIndex(obj => obj.Id == id);
             dynamics.RemoveAt(index);
             WriteToJson();
         }
-      
+
         public void Update(DynamicEquipment dynamicEquipment)
         {
             int index = dynamics.FindIndex(obj => obj.Id == dynamicEquipment.Id);
             dynamics[index] = dynamicEquipment;
             WriteToJson();
         }
-   
-   }
+
+    }
 }

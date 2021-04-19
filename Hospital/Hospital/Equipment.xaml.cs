@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using Controller;
+﻿using Controller;
 using Model;
+using System;
+using System.Collections.Generic;
+using System.Windows;
 
 namespace Hospital
 {
@@ -76,7 +75,7 @@ namespace Hospital
             string textname = name.Text;
             string desc = description.Text;
             int quant = Int32.Parse(quantity.Text);
-            StaticEquipment equipment = new StaticEquipment(id_stat, textname,null , quant, desc);
+            StaticEquipment equipment = new StaticEquipment(id_stat, textname, null, quant, desc);
             staticController.Update(equipment);
             id_stat = -1;
 

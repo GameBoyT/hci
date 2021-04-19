@@ -1,5 +1,4 @@
 using Model;
-using System;
 using System.Collections.Generic;
 
 namespace Service
@@ -29,7 +28,7 @@ namespace Service
             return staticEquipmentRepository.GetById(id);
         }
 
-        public void Save(string name, string roomName , int quantity, string description)
+        public void Save(string name, string roomName, int quantity, string description)
         {
             int id = staticEquipmentRepository.GenerateNewId();
             Room room = roomRepository.GetByName(roomName);

@@ -34,7 +34,7 @@ namespace Repository
             string json = JsonConvert.SerializeObject(rooms);
             File.WriteAllText(fileLocation, json);
         }
-        
+
         public List<Room> GetAll()
         {
             return rooms;

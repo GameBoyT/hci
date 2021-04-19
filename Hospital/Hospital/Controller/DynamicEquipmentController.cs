@@ -1,38 +1,37 @@
 using Model;
 using Service;
-using System;
 using System.Collections.Generic;
 
 namespace Controller
 {
-   public class DynamicEquipmentController
-   {
+    public class DynamicEquipmentController
+    {
         private DynamicEquipmentService dynamicService = new DynamicEquipmentService();
 
-      public List<DynamicEquipment> GetAll()
-      {
+        public List<DynamicEquipment> GetAll()
+        {
             return dynamicService.GetAll();
-      }
-      
-      public DynamicEquipment GetById(int id)
-      {
+        }
+
+        public DynamicEquipment GetById(int id)
+        {
             return dynamicService.GetById(id);
-      }
-      
-      public void Save(DynamicEquipment dinamicEquipment)
-      {
+        }
+
+        public void Save(DynamicEquipment dinamicEquipment)
+        {
             dynamicService.Save(dinamicEquipment);
-      }
-      
-      public void Delete(int id)
-      {
+        }
+
+        public void Delete(int id)
+        {
             dynamicService.Delete(id);
-      }
-      
-      public void Update(DynamicEquipment dinamicEquipment)
-      {
+        }
+
+        public void Update(DynamicEquipment dinamicEquipment)
+        {
             dynamicService.Update(dinamicEquipment);
-      }
+        }
         public int GenerateNewId()
         {
             return dynamicService.GenerateNewId();

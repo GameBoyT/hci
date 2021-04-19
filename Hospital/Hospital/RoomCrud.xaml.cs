@@ -3,7 +3,6 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 
 
 namespace Hospital
@@ -12,7 +11,7 @@ namespace Hospital
     {
         private RoomController roomController = new RoomController();
         private int id; // pomaze oko update 
-       // List<Room> rooms = new List<Room>();
+                        // List<Room> rooms = new List<Room>();
         List<Room> roomsToShow = new List<Room>();
 
         public RoomCrud()
@@ -67,24 +66,24 @@ namespace Hospital
                 cancelupdateRoomButton.Visibility = Visibility.Visible;
                 title.Content = "Edit room";
 
-                
+
                 name.Text = room.Name;
                 floor.Text = room.Floor.ToString();
                 detail.Text = room.Detail;
                 type.Text = room.RoomType.ToString();
 
-             
+
             }
             catch
             {
                 MessageBox.Show("You have to fill in all input boxes!");
-            } 
+            }
         }
 
         private void update_Room_Click(object sender, RoutedEventArgs e)
         {
             string textname = name.Text;
-            Enum.TryParse(type.Text, out  RoomType myStatus);
+            Enum.TryParse(type.Text, out RoomType myStatus);
             string roomdetail = detail.Text;
             int roomfloor = Int32.Parse(floor.Text);
             Room room = new Room(id, textname, myStatus, roomfloor, roomdetail);

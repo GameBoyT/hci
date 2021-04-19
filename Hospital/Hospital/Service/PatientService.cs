@@ -7,7 +7,7 @@ namespace Service
 {
     public class PatientService
     {
-     
+
         public Repository.PatientRepository patientRepository = new Repository.PatientRepository();
         public Repository.AppointmentRepository appointmentRepository = new Repository.AppointmentRepository();
         public List<Patient> GetAll()
@@ -23,9 +23,9 @@ namespace Service
         public void Save(Model.Patient patient)
         {
             List<Patient> patients = patientRepository.GetAll();
-            foreach(Patient patient1 in patients)
+            foreach (Patient patient1 in patients)
             {
-                if(patient1.User.Jmbg == patient.User.Jmbg)
+                if (patient1.User.Jmbg == patient.User.Jmbg)
                 {
                     MessageBox.Show("Isti jmbg", "greska");
                     return;
