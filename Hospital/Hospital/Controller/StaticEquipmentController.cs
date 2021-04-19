@@ -18,6 +18,11 @@ namespace Controller
             return staticEquipmentService.GetAllRoomsWithEquipmentName(name);
         }
 
+        public int GenerateNewId()
+        {
+            return staticEquipmentService.GenerateNewId();
+        }
+
         public StaticEquipment GetById(int id)
         {
             return staticEquipmentService.GetById(id);
@@ -33,9 +38,9 @@ namespace Controller
             staticEquipmentService.Delete(id);
         }
 
-        public void Update(int quantity, String type, String description, int name)
+        public void Update(StaticEquipment staticEquipment)
         {
-            throw new NotImplementedException();
+            staticEquipmentService.Update(staticEquipment);
         }
 
     }

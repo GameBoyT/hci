@@ -1,7 +1,15 @@
+using System;
 namespace Model
 {
     public class DynamicEquipment
     {
+        public DynamicEquipment(int id, string name, int quantity, string description)
+        {
+            Id = id;
+            Name = name;
+            Quantity = quantity;
+            Description = description;
+        }
         public int Id
         {
             get

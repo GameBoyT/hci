@@ -118,7 +118,7 @@ namespace Hospital
         {
             var new_window = new PatientAppointments();
             new_window.Show();
-            App.Current.MainWindow.Hide();
+            Application.Current.MainWindow.Hide();
 
         }
     }
