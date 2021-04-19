@@ -112,6 +112,14 @@ namespace Hospital
             appointmentController.Delete(appointment.Id);
             WindowUpdate();
         }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            var new_window = new PatientWindow();
+            new_window.Show();
+            this.Close();
+        }
+
         
     }
 }

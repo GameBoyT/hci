@@ -48,7 +48,7 @@ namespace Controller
         {
             return appointmentService.AppointmentTimeIsInvalid(appointment);
         }
-        public bool AppoinementTimeInFuture(Appointment appointment)
+        public bool AppointmentTimeInFuture(Appointment appointment)
         {
             return appointmentService.AppointmentTimeInFuture(appointment);
         }
@@ -60,6 +60,10 @@ namespace Controller
         public int GenerateNewId()
         {
             return appointmentService.GenerateNewId();
+        }
+        public bool AppointmentValidationWithoutOverlaping(Appointment appointment)
+        {
+           return appointmentService.AppointmentValidationWithoutOverlaping(appointment);
         }
 
     }

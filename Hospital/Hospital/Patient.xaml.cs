@@ -24,20 +24,71 @@ namespace Hospital
         AppointmentController appointmentController = new AppointmentController();
         RoomController roomController = new RoomController();
         List<Doctor> doctors = new List<Doctor>();
-        private Patient Patient;
+        Patient patient;
         PatientController patientController = new PatientController();
         Doctor doctor;
+        List<Appointment> doctorsAppointments;
         public PatientWindow()
         {
             InitializeComponent();
+            /*//PATIENT DATA GEN
+            DateTime date2 = new DateTime(1998, 6, 12);
+            DateTime date3 = new DateTime(1973, 8, 9);
+            DateTime medicineStart1 = new DateTime(2021, 4, 17, 12, 20, 00);
+            DateTime medicineStart2 = new DateTime(2021, 3, 20, 14, 00, 00);
+            DateTime medicineEnd1 = new DateTime(2021, 6, 2, 12, 20, 00);
+            DateTime medicineEnd2 = new DateTime(2021, 7, 8, 14, 00, 00);
+            User user2 = new User("3", "Zarko", "Zarkovic", "zarko", "sifra", "email", "adresa", date2);
+            User user3 = new User("4", "Pero", "Peric", "pero", "sifra", "email", "adresa", date3);
+            Medicine medicine2 = new Medicine(1, "Paracetamol");
+            Medicine medicine3 = new Medicine(2, "Brufen");
+            MedicalRecord medicalRecord = new MedicalRecord();
+            Prescription prescription1 = new Prescription(3, medicineStart1, medicineEnd1, "opis",100,medicine2);
+            Prescription prescription2 = new Prescription(6, medicineStart2, medicineEnd2, "opis", 100, medicine3);
+            Anamnesis anamnesis1 = new Anamnesis(1,"Licna","ime anamneze", "opis anamneze");
+            Anamnesis anamnesis2 = new Anamnesis(2, "Anamneza", "naziv", "opis ");
+
+            prescription1.Medicine = medicine2;
+            prescription2.Medicine = medicine3;
+
+            List<Prescription> prescriptions = new List<Prescription>();
+            prescriptions.Add(prescription2);
+            prescriptions.Add(prescription1);
+
+            List<Anamnesis> anamneses = new List<Anamnesis>();
+            anamneses.Add(anamnesis1);
+            anamneses.Add(anamnesis2);
+
+            List<String> alergies = new List<String>();
+            alergies.Add("Alergija na polen");
+            alergies.Add("Alergija na dlake");
+
+            medicalRecord.Prescription = prescriptions;
+            medicalRecord.Anamnesis = anamneses;
+            medicalRecord.Alergies = alergies;
+            
+
+            Patient patient1 = new Patient(user2);
+            patient1.MedicalRecord = medicalRecord;
+
+            patientController.Save(patient1);
+            */
+
+
+
+
 
             timeDataGrid.Visibility = Visibility.Collapsed;
-            Patient = patientController.GetByJmbg("3");
+            patient = patientController.GetByJmbg("3");
             
             List<Appointment> apps = new List<Appointment>();
 
             doctors = doctorController.GetAll();
-            doctorsDataGrid.ItemsSource = doctors; 
+            doctorsDataGrid.ItemsSource = doctors;
+
+            //obavjestenja
+            
+
 
         }
         private Appointment CreateAppointmentFromData()
@@ -48,62 +99,67 @@ namespace Hospital
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
-            return new Appointment(appointmentController.GenerateNewId() , AppointmentType.examination, appointmentDateTime, duration, Patient, doctor, roomController.GetById(1));
+            return new Appointment(appointmentController.GenerateNewId() , AppointmentType.examination, appointmentDateTime, duration, patient, doctor, roomController.GetById(1));
         }
 
 
 
         private void New_Appointment_Click(object sender, RoutedEventArgs e)
         {
-            doctor = (Doctor)doctorsDataGrid.SelectedItems[0];
-            Appointment newAppointment = CreateAppointmentFromData();
-            List<Appointment> doctorsAppointments = appointmentController.GetAppointmentsForDoctor(doctor.User.Jmbg);
-            bool error = false;
-
-
-            foreach (Appointment app in doctorsAppointments)
+            try
             {
-                DateTime newAppEnd = newAppointment.StartTime.AddMinutes(newAppointment.DurationInMinutes);
-                DateTime newAppStart = newAppointment.StartTime;
-                DateTime doctorsAppEndTime = app.StartTime.AddMinutes(app.DurationInMinutes);
-                DateTime doctorAppStartTime = app.StartTime;
-                if((newAppStart < doctorsAppEndTime && newAppStart > doctorAppStartTime)||
-                    (newAppEnd > doctorAppStartTime && newAppStart < doctorsAppEndTime))
+                doctor = (Doctor)doctorsDataGrid.SelectedItems[0];
+                Appointment newAppointment = CreateAppointmentFromData();
+                doctorsAppointments = appointmentController.GetAppointmentsForDoctor(doctor.User.Jmbg);
+                bool error = false;
+
+
+                foreach (Appointment app in doctorsAppointments)
                 {
-                    error = true;
+                    DateTime newAppEnd = newAppointment.StartTime.AddMinutes(newAppointment.DurationInMinutes);
+                    DateTime newAppStart = newAppointment.StartTime;
+                    DateTime doctorsAppEndTime = app.StartTime.AddMinutes(app.DurationInMinutes);
+                    DateTime doctorAppStartTime = app.StartTime;
+                    if ((newAppStart.Ticks <= doctorsAppEndTime.Ticks && newAppStart.Ticks >= doctorAppStartTime.Ticks) ||
+                        (newAppEnd.Ticks >= doctorAppStartTime.Ticks && newAppEnd.Ticks <= doctorsAppEndTime.Ticks))
+                    {
+                        error = true;
+                    }
                 }
-            }
-            
-            if (error == true)
-            {
-                if (doctorRadioButton.IsChecked == true)
+
+                if (error == true)
                 {
-                    MessageBox.Show("Doktor je zauzet, izaberi drugi termin", "greska");
-                    timeDataGrid.Visibility = Visibility.Visible;
-                    List<Appointment> appointments = new List<Appointment>();
-                    timeDataGrid.ItemsSource = doctorsAppointments;
+                    if (doctorRadioButton.IsChecked == true)
+                    {
+                        MessageBox.Show("Doktor je zauzet, izaberi drugi termin", "greska");
+                        timeDataGrid.Visibility = Visibility.Visible;
+                        timeDataGrid.ItemsSource = doctorsAppointments;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Termin je zauzet, izaberi drugog doktora", "greska");
+
+
+                        timeDataGrid.ItemsSource = doctorsAppointments;
+
+                    }
+                }
+                else if (appointmentController.AppointmentValidationWithoutOverlaping(newAppointment))
+                {
+                    MessageBox.Show("Provjeri ulazne podatke", "greska");
 
                 }
                 else
                 {
-                    MessageBox.Show("Termin je zauzet, izaberi drugog doktora", "greska");
-                    List<Appointment> appointments = new List<Appointment>();
-                    
-                   
-                    timeDataGrid.ItemsSource = doctorsAppointments;
-                    
+                    appointmentController.Save(newAppointment);
                 }
-            } else if (appointmentController.AppointmentTimeIsInvalid(newAppointment))
-            {
-                MessageBox.Show("Provjeri ulazne podatke", "greska");
 
             }
-            else
+            catch
             {
-                appointmentController.Save(newAppointment);
+                MessageBox.Show("Unesi podatke u sva polja","greska");
             }
-
-
         }
         
 
@@ -118,8 +174,33 @@ namespace Hospital
         {
             var new_window = new PatientAppointments();
             new_window.Show();
-            Application.Current.MainWindow.Hide();
+            this.Close();
+        }
 
+        private void notificationButton_Click(object sender, RoutedEventArgs e)
+        {
+            List<Prescription> prescriptions = patient.MedicalRecord.Prescription;
+            foreach (Prescription p in prescriptions)
+            {
+                DateTime time = p.StartDate;
+                DateTime timeMinusOne = time.AddHours(-1);
+
+
+                for (int i = 0; i < p.Interval; i++)
+                {
+
+                    if (DateTime.Now.TimeOfDay > timeMinusOne.TimeOfDay && DateTime.Now.TimeOfDay < time.TimeOfDay)
+                    {
+                        String message = p.Medicine.Name + "," + time.TimeOfDay.ToString();
+                        MessageBox.Show(message, "obavjestenje");
+                    }
+
+
+
+                    time = time.AddHours(24 / p.Interval);
+                    timeMinusOne = time.AddHours(-1);
+                }
+            }
         }
     }
 }
