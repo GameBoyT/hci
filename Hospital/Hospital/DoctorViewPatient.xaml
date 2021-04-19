@@ -59,10 +59,42 @@
 
 
             </TabItem>
+            <TabItem Header="Prescription">
+                <Grid>
+                    <ListView Margin="10,61,588,133" Name="lvPrescriptionDataBinding" PreviewMouseLeftButtonUp="listViewPrescription_Click">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <TextBlock Text="Name: " />
+                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" />
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <TextBox Text="{Binding Path=DescriptionText}" IsEnabled="{Binding Path=IsAppointmentTime}" HorizontalAlignment="Left" Margin="249,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="139"/>
+
+                    <TextBlock HorizontalAlignment="Left" Margin="78,23,0,0" Text="Medicine" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="593,23,0,0" Text="Patients Prescriptions" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <Button Content="Add Prescription" HorizontalAlignment="Left" Margin="324,305,0,0" VerticalAlignment="Top" Height="30" Width="97" Click="PrescriptionAddButton_Click"/>
+                    <Button Content="Back" HorizontalAlignment="Left" Margin="40,340,0,0" VerticalAlignment="Top" Height="30" Width="75" Click="BackButton_Click"/>
+                    <ListView Margin="513,61,25,133" x:Name="lvPatientPrescriptionDataBinding">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <TextBlock Text="Name: " />
+                                    <TextBlock Text="{Binding Medicine.Name}" FontWeight="Bold" />
+                                    <TextBlock Text=", Quantity: " />
+                                    <TextBlock Text="{Binding Quantity}" FontWeight="Bold" />
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Label Content="Enter Quantity: " HorizontalAlignment="Left" Margin="249,61,0,0" VerticalAlignment="Top"/>
+                    <TextBox Text="{Binding Path=Quantity}" HorizontalAlignment="Left" Margin="346,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
+                    <Label Content="Enter Use Description: " HorizontalAlignment="Left" Margin="249,92,0,0" VerticalAlignment="Top"/>
+
+                </Grid>
+            </TabItem>
         </TabControl>
-
-        <!--<Label Content="Appointment Details" HorizontalAlignment="Left" Margin="535,44,0,0" VerticalAlignment="Top"/>
-        <Label Content="Time" HorizontalAlignment="Left" Margin="467,75,0,0" VerticalAlignment="Top"/>-->
-
     </Grid>
 </Window>

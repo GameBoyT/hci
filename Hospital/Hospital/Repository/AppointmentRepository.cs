@@ -55,7 +55,6 @@ namespace Repository
         public int GenerateNewId()
         {
             ReadJson();
-
             try
             {
                 int maxId = appointments.Max(obj => obj.Id);
