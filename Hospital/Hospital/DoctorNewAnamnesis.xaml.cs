@@ -40,6 +40,8 @@ namespace Hospital
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            DoctorViewPatient doctorViewPatientWindow = new DoctorViewPatient(Appointment);
+            doctorViewPatientWindow.Show();
             this.Close();
         }
     }
