@@ -17,6 +17,7 @@ namespace Hospital
 
         List<DynamicEquipment> dynamicEquipment = new List<DynamicEquipment>();
         int id;
+        int id_stat;
         public Equipment()
         {
             InitializeComponent();
@@ -54,14 +55,43 @@ namespace Hospital
             try
             {
                 StaticEquipment equipment = (StaticEquipment)StaticDataGrid.SelectedItems[0];
-                staticController.Update(equipment);
+                id_stat = equipment.Id;
+                addEquipment.Visibility = Visibility.Collapsed;
+                updateStaticButton.Visibility = Visibility.Visible;
+                cancelupdateStaticButton.Visibility = Visibility.Visible;
+                title.Content = "Edit equipment";
+
+                name.Text = equipment.Name;
+                quantity.Text = equipment.Quantity.ToString();
+                description.Text = equipment.Description;
             }
             catch
             {
-                MessageBox.Show("You have to select an equipmnet to update!");
+                MessageBox.Show("You have to fill in all input boxes!");
             }
         }
 
+        private void updateStatic_Click(object sender, RoutedEventArgs e)
+        {
+            string textname = name.Text;
+            string desc = description.Text;
+            int quant = Int32.Parse(quantity.Text);
+            StaticEquipment equipment = new StaticEquipment(id_stat, textname,null , quant, desc);
+            staticController.Update(equipment);
+            id_stat = -1;
+
+        }
+        private void cancelupdateStatic_Click(object sender, RoutedEventArgs e)
+        {
+            name.Text = "";
+            quantity.Text = "";
+            description.Text = "";
+
+            addEquipment.Visibility = Visibility.Visible;
+            updateStaticButton.Visibility = Visibility.Collapsed;
+            cancelupdateStaticButton.Visibility = Visibility.Collapsed;
+            title.Content = "Add new equipment";
+        }
         private void deleteEquipment_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -116,11 +146,19 @@ namespace Hospital
             try
             {
                 DynamicEquipment equipment = (DynamicEquipment)DynamicDataGrid.SelectedItems[0];
-                dynamicController.Update(equipment);
+                id = equipment.Id;
+                addDynamic.Visibility = Visibility.Collapsed;
+                updateDynamicButton.Visibility = Visibility.Visible;
+                cancelupdateDynamicButton.Visibility = Visibility.Visible;
+                dynTitle.Content = "Edit equipment";
+
+                dynName.Text = equipment.Name;
+                dynQuantity.Text = equipment.Quantity.ToString();
+                dynDescription.Text = equipment.Description;
             }
             catch
             {
-                MessageBox.Show("You have to select an equipment to update!");
+                MessageBox.Show("You have to fill in all input boxes!");
             }
         }
 
@@ -134,16 +172,18 @@ namespace Hospital
             id = -1;
         }
 
-        private void cancelupdateDynamicButton_Click(object sender, RoutedEventArgs e)
+        private void cancelupdateDynamic_Click(object sender, RoutedEventArgs e)
         {
-            name.Text = "";
-            quantity.Text = "";
-            description.Text = "";
+            dynName.Text = "";
+            dynQuantity.Text = "";
+            dynDescription.Text = "";
 
             addDynamic.Visibility = Visibility.Visible;
             updateDynamicButton.Visibility = Visibility.Collapsed;
             cancelupdateDynamicButton.Visibility = Visibility.Collapsed;
-            title.Content = "Create new room";
+            title.Content = "Add new equipment";
         }
+
+
     }
 }
