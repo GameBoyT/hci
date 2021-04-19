@@ -1,11 +1,13 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace Service
 {
     public class PatientService
     {
+     
         public Repository.PatientRepository patientRepository = new Repository.PatientRepository();
         public List<Patient> GetAll()
         {
@@ -19,6 +21,12 @@ namespace Service
 
         public void Save(Model.Patient patient)
         {
+            List<Patient> patients = patientRepository.GetAll();
+            foreach(Patient patient1 in patients)
+            {
+                if(patient1.User.Jmbg == patient.User.Jmbg)
+                    MessageBox.Show("Isti jmbg", "greska");
+            }
             patientRepository.Save(patient);
         }
 
