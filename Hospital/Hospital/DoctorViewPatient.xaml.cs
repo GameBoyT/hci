@@ -73,7 +73,6 @@ namespace Hospital
                 Anamnesis = new ObservableCollection<Anamnesis>();
             }
             lvDataBinding.ItemsSource = Anamnesis;
-
         }
 
         private void listView_Click(object sender, RoutedEventArgs e)
@@ -81,7 +80,7 @@ namespace Hospital
             var item = (sender as ListView).SelectedItem;
             if (item != null)
             {
-                if (!app.appointmentController.AppoinementTimeInFuture(Appointment))
+                if (!app.appointmentController.AppointmentTimeInFuture(Appointment))
                 {
                     IsAppointmentTime = true;
                 }
@@ -95,23 +94,31 @@ namespace Hospital
             app.patientController.UpdateAnamnesisDescription(Appointment.Patient.User.Jmbg, anamnesisId, DetailText);
             Appointment = app.appointmentController.GetById(Appointment.Id);
             Anamnesis = new ObservableCollection<Anamnesis>(Appointment.Patient.MedicalRecord.Anamnesis);
-
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             DetailText = Appointment.Patient.MedicalRecord.Anamnesis[lvDataBinding.SelectedIndex].Description;
-            //int anamnesisId = Appointment.Patient.MedicalRecord.Anamnesis[lvDataBinding.SelectedIndex].Id;
-            //app.patientController.UpdateAnamnesisDescription(Appointment.Patient.User.Jmbg, anamnesisId, DetailText);
-            //Appointment = app.appointmentController.GetById(Appointment.Id);
-            //Anamnesis = new ObservableCollection<Anamnesis>(Appointment.Patient.MedicalRecord.Anamnesis);
-
         }
         
         private void AddNewButton_Click(object sender, RoutedEventArgs e)
         {
-            DoctorNewAnamnesis doctorNewAnamnesisWindow = new DoctorNewAnamnesis(Appointment);
-            doctorNewAnamnesisWindow.Show();
+            if (app.appointmentController.AppointmentTimeInFuture(Appointment))
+            {
+                MessageBox.Show("You cannot add anamnesis until or after the appointment");
+            }
+            else
+            {
+                DoctorNewAnamnesis doctorNewAnamnesisWindow = new DoctorNewAnamnesis(Appointment);
+                doctorNewAnamnesisWindow.Show();
+                this.Close();
+            }
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            DoctorWindow doctorWindow = new DoctorWindow();
+            doctorWindow.Show();
             this.Close();
         }
     }

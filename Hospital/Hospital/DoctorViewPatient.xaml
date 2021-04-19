@@ -11,11 +11,11 @@
         <TabControl>
             <TabItem Header="Appointment Details">
                 <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
+                    <!--<Grid.ColumnDefinitions>
                         <ColumnDefinition Width="30*"/>
                         <ColumnDefinition Width="165*"/>
                         <ColumnDefinition Width="599*"/>
-                    </Grid.ColumnDefinitions>
+                    </Grid.ColumnDefinitions>-->
                     <Label Content="Patient Details" HorizontalAlignment="Left" Margin="100,44,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2"/>
                     <Label Content="Name" HorizontalAlignment="Left" Margin="8,75,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <Label Content="Last Name" HorizontalAlignment="Left" Margin="8,106,0,0" VerticalAlignment="Top" Grid.Column="1"/>
@@ -27,6 +27,7 @@
                     <Label Content="{Binding Path=Appointment.Patient.User.Jmbg}" HorizontalAlignment="Left" Margin="117,137,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <Label Content="{Binding Path=Appointment.Patient.User.DateOfBirth}" HorizontalAlignment="Left" Margin="116,168,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <Label Content="{Binding Path=Appointment.Patient.User.Address}" HorizontalAlignment="Left" Margin="118,199,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <Button Content="Back" HorizontalAlignment="Left" Margin="40,340,0,0" VerticalAlignment="Top" Height="30" Width="75" Click="BackButton_Click"/>
                 </Grid>
 
             </TabItem>
@@ -51,6 +52,8 @@
                     <Button Content="Save Changes" HorizontalAlignment="Left" Margin="630,305,0,0" VerticalAlignment="Top" Height="30" Width="85" Click="SaveChangesButton_Click"/>
                     <Button Content="Add New" HorizontalAlignment="Left" Margin="206,305,0,0" VerticalAlignment="Top" Height="30" Width="60" Click="AddNewButton_Click"/>
                     <Button Content="Cancel" HorizontalAlignment="Left" Margin="535,305,0,0" VerticalAlignment="Top" Height="30" Width="60" Click="CancelButton_Click"/>
+                    <Button Content="Back" HorizontalAlignment="Left" Margin="40,340,0,0" VerticalAlignment="Top" Height="30" Width="75" Click="BackButton_Click"/>
+
                 </Grid>
 
 

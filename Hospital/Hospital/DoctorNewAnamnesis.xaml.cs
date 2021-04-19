@@ -1,4 +1,5 @@
 ﻿using Controller;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,11 +20,11 @@ namespace Hospital
         public string AnamnesisName { get; set; }
         public string AnamnesisType { get; set; }
 
-        public Model.Patient Patient { get; set; }
-        public Model.Appointment Appointment { get; set; }
+        public Patient Patient { get; set; }
+        public Appointment Appointment { get; set; }
 
 
-        public DoctorNewAnamnesis(Model.Appointment appointment)
+        public DoctorNewAnamnesis(Appointment appointment)
         {
             InitializeComponent();
             this.DataContext = this;
