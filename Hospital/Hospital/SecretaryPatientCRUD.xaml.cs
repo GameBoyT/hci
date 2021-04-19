@@ -65,5 +65,24 @@ namespace Hospital
             Patient patient = CreatePatientFromData();
             patientController.Save(patient);
         }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Patient patient = (Patient)secretaryDataGrid.SelectedItems[0];
+                patientController.Delete(patient.User.Jmbg);
+                //WindowUpdate();
+            }
+            catch
+            {
+                MessageBox.Show("You have to select an appointment to delete!");
+            }
+        }
+
+        private void Update_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
