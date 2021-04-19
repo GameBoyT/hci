@@ -116,6 +116,7 @@ namespace Hospital
             patientController.Update(patient2);
             updateButton1.Visibility = Visibility.Collapsed;
             cancelButton.Visibility = Visibility.Collapsed;
+            WindowUpdate();
             ClearFileds();
         }
 
@@ -136,10 +137,17 @@ namespace Hospital
 
         private void Button_Click_Create(object sender, RoutedEventArgs e)
         {
-            Patient patient = CreatePatientFromData();
-            patientController.Save(patient);
-            WindowUpdate();
-            ClearFileds();
+            try
+            {
+                Patient patient = CreatePatientFromData();
+                patientController.Save(patient);
+                WindowUpdate();
+                ClearFileds();
+            }
+            catch
+            {
+                MessageBox.Show("Popunite sva polja!");
+            }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)

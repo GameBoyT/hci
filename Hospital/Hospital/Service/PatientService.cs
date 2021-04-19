@@ -26,7 +26,17 @@ namespace Service
             foreach(Patient patient1 in patients)
             {
                 if(patient1.User.Jmbg == patient.User.Jmbg)
+                {
                     MessageBox.Show("Isti jmbg", "greska");
+                    return;
+                }
+
+                if (patient1.User.Username == patient.User.Username)
+                {
+                    MessageBox.Show("Isti username", "greska");
+                    return;
+                }
+
             }
             patientRepository.Save(patient);
         }
