@@ -42,5 +42,12 @@ namespace Hospital
             secretaryAppointmentCRUD.Show();
             this.Close();
         }
+
+        private void Allergens_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryAllergens secretaryAllergens = new SecretaryAllergens();
+            secretaryAllergens.Show();
+            this.Close();
+        }
     }
 }

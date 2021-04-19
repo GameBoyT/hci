@@ -3287,7 +3287,7 @@ MULA 0 Arial,8,N</a:FontList>
 <o:AssociationSymbol Id="o48">
 <a:CreationDate>1618491074</a:CreationDate>
 <a:ModificationDate>1618563246</a:ModificationDate>
-<a:Rect>((-42248,-40676), (-21377,-32904))</a:Rect>
+<a:Rect>((-42248,-40676), (-21377,-32903))</a:Rect>
 <a:ListOfPoints>((-21377,-32904),(-29269,-32904),(-29269,-40676),(-42248,-40676))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>

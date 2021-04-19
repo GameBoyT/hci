@@ -34,7 +34,7 @@ namespace Repository
             string json = JsonConvert.SerializeObject(rooms);
             File.WriteAllText(fileLocation, json);
         }
-
+        
         public List<Room> GetAll()
         {
             return rooms;
@@ -83,5 +83,9 @@ namespace Repository
             WriteToJson();
         }
 
+        public void MoveEquipment(Model.Room fromRoom, Model.Room toRoom, DateTime date)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

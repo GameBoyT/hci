@@ -1,4 +1,5 @@
 using Model;
+using System;
 using System.Collections.Generic;
 
 namespace Service
@@ -16,6 +17,11 @@ namespace Service
         public List<Room> GetAllRoomsWithEquipmentName(string name)
         {
             return staticEquipmentRepository.GetAllRoomsWithEquipmentName(name);
+        }
+
+        public int GenerateNewId()
+        {
+            return staticEquipmentRepository.GenerateNewId();
         }
 
         public Model.StaticEquipment GetById(int id)
