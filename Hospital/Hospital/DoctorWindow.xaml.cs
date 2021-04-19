@@ -60,6 +60,12 @@ namespace Hospital
             //List<StaticEquipment> roomsWitheRendgen = staticEquipmentController.GetAllRoomsWithEquipmentName("rendgen");
             //MessageBox.Show(roomsWitheRendgen[0].Name);
 
+            //app.medicineController.Save("Aspirin");
+            //app.medicineController.Save("Andol");
+            //app.medicineController.Save("Amoksicilin");
+            //app.medicineController.Save("Brufen");
+            //app.medicineController.Save("Paracetamol");
+
 
             Doctor = app.doctorController.GetByJmbg("1");
             appointment_date.SelectedDate = DateTime.Today;
@@ -252,10 +258,17 @@ namespace Hospital
 
         private void View_Click(object sender, RoutedEventArgs e)
         {
-            Appointment appointment = (Appointment)appointmentsDataGrid.SelectedItems[0];
-            DoctorViewPatient doctorViewPatientWindow = new DoctorViewPatient(appointment);
-            doctorViewPatientWindow.Show();
-            this.Close();
+            try
+            {
+                Appointment appointment = (Appointment)appointmentsDataGrid.SelectedItems[0];
+                DoctorViewPatient doctorViewPatientWindow = new DoctorViewPatient(appointment);
+                doctorViewPatientWindow.Show();
+                this.Close();
+            }
+            catch
+            {
+                MessageBox.Show("You have to select an appointment to view!");
+            }
         }
     }
 }

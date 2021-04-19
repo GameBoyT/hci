@@ -18,9 +18,14 @@ namespace Controller
             return medicineService.GetById(id);
         }
 
-        public void Save(Medicine medicine)
+        public Medicine GetByName(string name)
         {
-            medicineService.Save(medicine);
+            return medicineService.GetByName(name);
+        }
+
+        public void Save(string name)
+        {
+            medicineService.Save(name);
         }
 
         public void Delete(int id)
@@ -32,8 +37,5 @@ namespace Controller
         {
             medicineService.Update(medicine);
         }
-
-
-
     }
 }

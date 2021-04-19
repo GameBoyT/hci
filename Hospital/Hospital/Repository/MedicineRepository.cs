@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Repository
 {
@@ -12,6 +13,18 @@ namespace Repository
         private List<Medicine> medicines = new List<Medicine>();
 
         public MedicineRepository()
+        {
+            ReadJson();
+        }
+
+
+        public void WriteToJson()
+        {
+            string json = JsonConvert.SerializeObject(medicines);
+            File.WriteAllText(fileLocation, json);
+        }
+
+        public void ReadJson()
         {
             if (!File.Exists(fileLocation))
             {
@@ -28,31 +41,46 @@ namespace Repository
             }
         }
 
-
-        public void WriteToJson()
-        {
-            string json = JsonConvert.SerializeObject(medicines);
-            File.WriteAllText(fileLocation, json);
-        }
-
         public List<Medicine> GetAll()
         {
+            ReadJson();
             return medicines;
         }
 
         public Medicine GetById(int id)
         {
+            ReadJson();
             return medicines.Find(obj => obj.Id == id);
+        }
+        public Medicine GetByName(string name)
+        {
+            return medicines.Find(obj => string.Equals(obj.Name, name, StringComparison.OrdinalIgnoreCase));
+        }
+
+        public int GenerateNewId()
+        {
+            ReadJson();
+            try
+            {
+                int maxId = medicines.Max(obj => obj.Id);
+                return maxId + 1;
+            }
+            catch
+            {
+                return 1;
+            }
         }
 
         public void Save(Medicine medicine)
         {
+            ReadJson();
             medicines.Add(medicine);
             WriteToJson();
         }
 
         public void Delete(int id)
         {
+            ReadJson();
             int index = medicines.FindIndex(obj => obj.Id == id);
             medicines.RemoveAt(index);
             WriteToJson();
@@ -60,6 +88,7 @@ namespace Repository
 
         public void Update(Medicine medicine)
         {
+            ReadJson();
             int index = medicines.FindIndex(obj => obj.Id == medicine.Id);
             medicines[index] = medicine;
             WriteToJson();

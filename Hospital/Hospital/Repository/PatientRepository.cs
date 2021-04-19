@@ -78,7 +78,6 @@ namespace Repository
         public int GenerateNewAnamnesisId()
         {
             ReadJson();
-
             int maxId = 1;
             foreach (Patient patient in patients)
             {
