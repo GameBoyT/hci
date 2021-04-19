@@ -47,10 +47,10 @@
                     </ListView>
                     <TextBlock HorizontalAlignment="Left" Margin="101,23,0,0" Text="Anamnesis" TextWrapping="Wrap" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="478,23,0,0" Text="Anamnesis Details" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                    <TextBox Text="{Binding Path=DetailText}" IsEnabled="{Binding Path=Foo}" HorizontalAlignment="Left" Margin="349,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="366" Height="212"/>
-                    <Button Content="Save Changes" HorizontalAlignment="Left" Margin="630,305,0,0" VerticalAlignment="Top" Height="30" Width="85"/>
+                    <TextBox Text="{Binding Path=DetailText}" IsEnabled="{Binding Path=IsAppointmentTime}" HorizontalAlignment="Left" Margin="349,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="366" Height="212"/>
+                    <Button Content="Save Changes" HorizontalAlignment="Left" Margin="630,305,0,0" VerticalAlignment="Top" Height="30" Width="85" Click="SaveChangesButton_Click"/>
                     <Button Content="Add New" HorizontalAlignment="Left" Margin="206,305,0,0" VerticalAlignment="Top" Height="30" Width="60" Click="AddNewButton_Click"/>
-                    <Button Content="Cancel" HorizontalAlignment="Left" Margin="535,305,0,0" VerticalAlignment="Top" Height="30" Width="60"/>
+                    <Button Content="Cancel" HorizontalAlignment="Left" Margin="535,305,0,0" VerticalAlignment="Top" Height="30" Width="60" Click="CancelButton_Click"/>
                 </Grid>
 
 

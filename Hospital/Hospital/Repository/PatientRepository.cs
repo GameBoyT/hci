@@ -14,6 +14,17 @@ namespace Repository
 
         public PatientRepository()
         {
+            ReadJson();
+        }
+
+        public void WriteToJson()
+        {
+            string json = JsonConvert.SerializeObject(patients);
+            File.WriteAllText(fileLocation, json);
+        }
+
+        public void ReadJson()
+        {
             if (!File.Exists(fileLocation))
             {
                 File.Create(fileLocation).Close();
@@ -28,30 +39,29 @@ namespace Repository
                 }
             }
         }
-        public void WriteToJson()
-        {
-            string json = JsonConvert.SerializeObject(patients);
-            File.WriteAllText(fileLocation, json);
-        }
 
         public List<Patient> GetAll()
         {
+            ReadJson();
             return patients;
         }
 
         public Patient GetByJmbg(String jmbg)
         {
+            ReadJson();
             return patients.Find(obj => obj.User.Jmbg == jmbg);
         }
 
         public void Save(Patient patient)
         {
+            ReadJson();
             patients.Add(patient);
             WriteToJson();
         }
 
         public void Delete(String jmbg)
         {
+            ReadJson();
             int index = patients.FindIndex(obj => obj.User.Jmbg == jmbg);
             patients.RemoveAt(index);
             WriteToJson();
@@ -59,6 +69,7 @@ namespace Repository
 
         public void Update(Patient patient)
         {
+            ReadJson();
             int index = patients.FindIndex(obj => obj.User.Jmbg == patient.User.Jmbg);
             patients[index] = patient;
             WriteToJson();
@@ -66,6 +77,8 @@ namespace Repository
 
         public int GenerateNewAnamnesisId()
         {
+            ReadJson();
+
             int maxId = 1;
             foreach (Patient patient in patients)
             {

@@ -14,6 +14,11 @@ namespace Repository
 
         public AppointmentRepository()
         {
+            ReadJson();
+        }
+
+        public void ReadJson()
+        {
             if (!File.Exists(fileLocation))
             {
                 File.Create(fileLocation).Close();
@@ -28,6 +33,7 @@ namespace Repository
                 }
             }
         }
+
         public void WriteToJson()
         {
             string json = JsonConvert.SerializeObject(appointments);
@@ -36,16 +42,20 @@ namespace Repository
 
         public List<Appointment> GetAll()
         {
+            ReadJson();
             return appointments;
         }
 
         public Appointment GetById(int id)
         {
+            ReadJson();
             return appointments.Find(obj => obj.Id == id);
         }
 
         public int GenerateNewId()
         {
+            ReadJson();
+
             try
             {
                 int maxId = appointments.Max(obj => obj.Id);
@@ -59,12 +69,16 @@ namespace Repository
 
         public void Save(Appointment appointment)
         {
+            ReadJson();
+
             appointments.Add(appointment);
             WriteToJson();
         }
 
         public void Delete(int id)
         {
+            ReadJson();
+
             int index = appointments.FindIndex(obj => obj.Id == id);
             appointments.RemoveAt(index);
             WriteToJson();
@@ -72,6 +86,7 @@ namespace Repository
 
         public void Update(Appointment appointment)
         {
+            ReadJson();
             int index = appointments.FindIndex(obj => obj.Id == appointment.Id);
             appointments[index] = appointment;
             WriteToJson();
@@ -79,11 +94,13 @@ namespace Repository
 
         public List<Appointment> GetAppointmentsForDoctor(String jmbg)
         {
+            ReadJson();
             return appointments.FindAll(appointment => appointment.Doctor.User.Jmbg == jmbg);
         }
 
         public List<Appointment> GetAppointmentsForPatient(String jmbg)
         {
+            ReadJson();
             return appointments.FindAll(appointment => appointment.Patient.User.Jmbg == jmbg);
         }
 

@@ -21,7 +21,7 @@ namespace Hospital
         public Appointment Appointment { get; set; }
         public ObservableCollection<Anamnesis> Anamnesis { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
-        private bool foo;
+        private bool isAppointmentTime;
         private string detailText;
 
         public string DetailText 
@@ -37,15 +37,15 @@ namespace Hospital
             }
         }
 
-        public bool Foo
+        public bool IsAppointmentTime
         {
-            get { return foo; }
+            get { return isAppointmentTime; }
             set
             {
-                if (foo != value)
+                if (isAppointmentTime != value)
                 {
-                    foo = value;
-                    OnPropertyChanged("foo");
+                    isAppointmentTime = value;
+                    OnPropertyChanged("isAppointmentTime");
                 }
             }
         }
@@ -64,9 +64,16 @@ namespace Hospital
             this.DataContext = this;
             app = Application.Current as App;
             Appointment = app.appointmentController.GetById(appointment.Id);
-            Anamnesis = new ObservableCollection<Anamnesis>(Appointment.Patient.MedicalRecord.Anamnesis);
+            if (Appointment.Patient.MedicalRecord != null && Appointment.Patient.MedicalRecord.Anamnesis != null)
+            {
+                Anamnesis = new ObservableCollection<Anamnesis>(Appointment.Patient.MedicalRecord.Anamnesis);
+            }
+            else
+            {
+                Anamnesis = new ObservableCollection<Anamnesis>();
+            }
             lvDataBinding.ItemsSource = Anamnesis;
-            //MessageBox.Show("You have to enter both fielaaaaads!");
+
         }
 
         private void listView_Click(object sender, RoutedEventArgs e)
@@ -74,14 +81,36 @@ namespace Hospital
             var item = (sender as ListView).SelectedItem;
             if (item != null)
             {
+                if (!app.appointmentController.AppoinementTimeInFuture(Appointment))
+                {
+                    IsAppointmentTime = true;
+                }
                 DetailText = Appointment.Patient.MedicalRecord.Anamnesis[lvDataBinding.SelectedIndex].Description;
-
             }
         }
 
+        private void SaveChangesButton_Click(object sender, RoutedEventArgs e)
+        {
+            int anamnesisId = Appointment.Patient.MedicalRecord.Anamnesis[lvDataBinding.SelectedIndex].Id;
+            app.patientController.UpdateAnamnesisDescription(Appointment.Patient.User.Jmbg, anamnesisId, DetailText);
+            Appointment = app.appointmentController.GetById(Appointment.Id);
+            Anamnesis = new ObservableCollection<Anamnesis>(Appointment.Patient.MedicalRecord.Anamnesis);
+
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            DetailText = Appointment.Patient.MedicalRecord.Anamnesis[lvDataBinding.SelectedIndex].Description;
+            //int anamnesisId = Appointment.Patient.MedicalRecord.Anamnesis[lvDataBinding.SelectedIndex].Id;
+            //app.patientController.UpdateAnamnesisDescription(Appointment.Patient.User.Jmbg, anamnesisId, DetailText);
+            //Appointment = app.appointmentController.GetById(Appointment.Id);
+            //Anamnesis = new ObservableCollection<Anamnesis>(Appointment.Patient.MedicalRecord.Anamnesis);
+
+        }
+        
         private void AddNewButton_Click(object sender, RoutedEventArgs e)
         {
-            DoctorNewAnamnesis doctorNewAnamnesisWindow = new DoctorNewAnamnesis(Appointment.Patient);
+            DoctorNewAnamnesis doctorNewAnamnesisWindow = new DoctorNewAnamnesis(Appointment);
             doctorNewAnamnesisWindow.Show();
             this.Close();
         }

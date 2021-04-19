@@ -47,5 +47,14 @@ namespace Service
             patient.MedicalRecord.Anamnesis.Add(anamnesis);
             Update(patient);
         }
+
+        public void UpdateAnamnesisDescription(string jmbg, int id, string description)
+        {
+            Patient patient = patientRepository.GetByJmbg(jmbg);
+            Anamnesis anamnesis = patient.MedicalRecord.Anamnesis.Find(obj => obj.Id == id);
+            anamnesis.Description = description;
+            //patient.MedicalRecord.Anamnesis.Add(anamnesis);
+            Update(patient);
+        }
     }
 }

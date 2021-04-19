@@ -255,6 +255,7 @@ namespace Hospital
             Appointment appointment = (Appointment)appointmentsDataGrid.SelectedItems[0];
             DoctorViewPatient doctorViewPatientWindow = new DoctorViewPatient(appointment);
             doctorViewPatientWindow.Show();
+            this.Close();
         }
     }
 }
