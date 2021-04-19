@@ -172,6 +172,8 @@ namespace Hospital
             Patient patient = Appointment.Patient;
             patient.MedicalRecord.Prescription.Add(prescription);
             app.patientController.Update(patient);
+            DescriptionText = "";
+            Quantity = "";
             Prescriptions = new ObservableCollection<Prescription>(patient.MedicalRecord.Prescription);
             lvPatientPrescriptionDataBinding.ItemsSource = Prescriptions;
         }
