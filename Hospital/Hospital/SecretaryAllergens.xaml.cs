@@ -21,6 +21,7 @@ namespace Hospital
     {
         List<Patient> patients = new List<Patient>();
         private PatientController patientController = new PatientController();
+        public Patient patient { get; set; }
 
         public SecretaryAllergens()
         {
@@ -31,9 +32,52 @@ namespace Hospital
 
         private void Show_Click(object sender, RoutedEventArgs e)
         {
-            /*AllergensDataGrid.AutoGenerateColumns = true;
-            Patient patient = (Patient)secretaryAllergensDataGrid.SelectedItems[0];
-            AllergensDataGrid.ItemsSource = patient.MedicalRecord.Alergies;*/
+            try
+            {
+                                patient = (Patient)secretaryAllergensDataGrid.SelectedItems[0];
+            }
+            catch
+            {
+
+            }
+            Show_Alergens();
+            
+        }
+
+        public void Show_Alergens()
+        {
+            patients = patientController.GetAll();
+            
+            
+            patient = patientController.GetByJmbg(patient.User.Jmbg);
+            secretaryAllergensDataGrid.ItemsSource = patients;
+            lvDataBinding.ItemsSource = patient.MedicalRecord.Alergies;
+           
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryFun secretaryFun = new SecretaryFun();
+            secretaryFun.Show();
+            this.Close();
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            
+            patient.MedicalRecord.Alergies.Add(addTextBox.Text);
+            patientController.Update(patient);
+            Show_Alergens();
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            
+            List<String> alergens = patient.MedicalRecord.Alergies;
+            
+            patient.MedicalRecord.Alergies.Remove(lvDataBinding.SelectedItems[0].ToString());
+            patientController.Update(patient);
+            Show_Alergens();
 
         }
     }
