@@ -56,13 +56,6 @@ namespace Repository
                 return 1;
             }
         }
-        public bool UniqueId(int id)
-        {
-            if (appointments.FindIndex(obj => obj.Id == id) == -1)
-                return true;
-            else
-                return false;
-        }
 
         public void Save(Appointment appointment)
         {

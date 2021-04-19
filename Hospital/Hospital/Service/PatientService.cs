@@ -7,6 +7,7 @@ namespace Service
     public class PatientService
     {
         public Repository.PatientRepository patientRepository = new Repository.PatientRepository();
+        public Repository.AppointmentRepository appointmentRepository = new Repository.AppointmentRepository();
         public List<Patient> GetAll()
         {
             return patientRepository.GetAll();
@@ -30,9 +31,21 @@ namespace Service
         public void Update(Model.Patient patient)
         {
             patientRepository.Update(patient);
+            List<Appointment> appointments = appointmentRepository.GetAppointmentsForPatient(patient.User.Jmbg);
+            foreach (Appointment appointment in appointments)
+            {
+                appointment.Patient = patient;
+                appointmentRepository.Update(appointment);
+            }
         }
 
-
-
+        public void AddAnamnesis(string jmbg, string name, string type, string description)
+        {
+            Patient patient = patientRepository.GetByJmbg(jmbg);
+            int id = patientRepository.GenerateNewAnamnesisId();
+            Anamnesis anamnesis = new Anamnesis(id, type, name, description);
+            patient.MedicalRecord.Anamnesis.Add(anamnesis);
+            Update(patient);
+        }
     }
 }

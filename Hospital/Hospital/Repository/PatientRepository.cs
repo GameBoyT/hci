@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Repository
 {
@@ -61,6 +62,17 @@ namespace Repository
             int index = patients.FindIndex(obj => obj.User.Jmbg == patient.User.Jmbg);
             patients[index] = patient;
             WriteToJson();
+        }
+
+        public int GenerateNewAnamnesisId()
+        {
+            int maxId = 1;
+            foreach (Patient patient in patients)
+            {
+                if (patient.MedicalRecord != null && patient.MedicalRecord.Anamnesis != null)
+                    maxId = patient.MedicalRecord.Anamnesis.Max(obj => obj.Id);
+            }
+            return maxId + 1;
         }
 
     }
