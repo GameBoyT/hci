@@ -76,7 +76,7 @@ namespace Hospital
             bool error = appointmentController.AppointmentTimeIsInvalid(newAppointment);
             if (error)
             {
-                MessageBox.Show("Greska kod unosenja podataka", "greska");
+                MessageBox.Show("Izmjena nije moguca", "greska");
             }
             else
             {
