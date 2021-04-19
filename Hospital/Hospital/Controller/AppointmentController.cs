@@ -63,7 +63,7 @@ namespace Controller
         }
         public bool AppointmentValidationWithoutOverlaping(Appointment appointment)
         {
-           return appointmentService.AppointmentValidationWithoutOverlaping(appointment);
+            return appointmentService.AppointmentValidationWithoutOverlaping(appointment);
         }
 
     }

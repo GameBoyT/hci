@@ -44,7 +44,7 @@ namespace Repository
             return directors.Find(obj => obj.User.Jmbg == jmbg);
         }
 
-      
+
 
         public void Save(Director director)
         {

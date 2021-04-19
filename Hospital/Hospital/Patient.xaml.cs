@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using Controller;
 using Model;
-using Controller;
-using System.Diagnostics;
+using System;
+using System.Collections.Generic;
+using System.Windows;
 
 namespace Hospital
 {
@@ -80,14 +71,14 @@ namespace Hospital
 
             timeDataGrid.Visibility = Visibility.Collapsed;
             patient = patientController.GetByJmbg("3");
-            
+
             List<Appointment> apps = new List<Appointment>();
 
             doctors = doctorController.GetAll();
             doctorsDataGrid.ItemsSource = doctors;
 
             //obavjestenja
-            
+
 
 
         }
@@ -99,7 +90,7 @@ namespace Hospital
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
-            return new Appointment(appointmentController.GenerateNewId() , AppointmentType.examination, appointmentDateTime, duration, patient, doctor, roomController.GetById(1));
+            return new Appointment(appointmentController.GenerateNewId(), AppointmentType.examination, appointmentDateTime, duration, patient, doctor, roomController.GetById(1));
         }
 
 
@@ -158,12 +149,12 @@ namespace Hospital
             }
             catch
             {
-                MessageBox.Show("Unesi podatke u sva polja","greska");
+                MessageBox.Show("Unesi podatke u sva polja", "greska");
             }
         }
-        
 
-     
+
+
 
         private void timeRadioButton_Click(object sender, RoutedEventArgs e)
         {

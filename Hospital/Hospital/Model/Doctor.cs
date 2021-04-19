@@ -4,7 +4,7 @@ namespace Model
 {
     public class Doctor : Employee
     {
-        public Doctor (User user)
+        public Doctor(User user)
         {
             this.User = user;
         }
@@ -17,7 +17,7 @@ namespace Model
 
         public System.Collections.Generic.List<Notification> Notifications { get; set; }
 
-        
+
 
 
     }

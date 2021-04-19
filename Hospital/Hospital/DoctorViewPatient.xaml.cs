@@ -1,17 +1,9 @@
 ﻿using Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Hospital
 {
@@ -30,7 +22,7 @@ namespace Hospital
         private string descriptionText;
         private string quantity;
 
-        public string DetailText 
+        public string DetailText
         {
             get { return detailText; }
             set
@@ -95,8 +87,8 @@ namespace Hospital
             InitializeComponent();
             this.DataContext = this;
             app = Application.Current as App;
-            
-            
+
+
 
             Appointment = app.appointmentController.GetById(appointment.Id);
             if (Appointment.Patient.MedicalRecord != null && Appointment.Patient.MedicalRecord.Anamnesis != null)
@@ -139,7 +131,7 @@ namespace Hospital
         {
             DetailText = Appointment.Patient.MedicalRecord.Anamnesis[lvDataBinding.SelectedIndex].Description;
         }
-        
+
         private void AddNewButton_Click(object sender, RoutedEventArgs e)
         {
             if (app.appointmentController.AppointmentTimeInFuture(Appointment))
@@ -172,6 +164,8 @@ namespace Hospital
             Patient patient = Appointment.Patient;
             patient.MedicalRecord.Prescription.Add(prescription);
             app.patientController.Update(patient);
+            DescriptionText = "";
+            Quantity = "";
             Prescriptions = new ObservableCollection<Prescription>(patient.MedicalRecord.Prescription);
             lvPatientPrescriptionDataBinding.ItemsSource = Prescriptions;
         }
