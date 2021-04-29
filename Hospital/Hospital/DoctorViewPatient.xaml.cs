@@ -160,14 +160,18 @@ namespace Hospital
 
         private void PrescriptionAddButton_Click(object sender, RoutedEventArgs e)
         {
-            Prescription prescription = new Prescription(Medicine, Int32.Parse(Quantity), DescriptionText);
-            Patient patient = Appointment.Patient;
-            patient.MedicalRecord.Prescription.Add(prescription);
-            app.patientController.Update(patient);
-            DescriptionText = "";
-            Quantity = "";
-            Prescriptions = new ObservableCollection<Prescription>(patient.MedicalRecord.Prescription);
-            lvPatientPrescriptionDataBinding.ItemsSource = Prescriptions;
+            try
+            {
+                Prescription prescription = new Prescription(Medicine, Int32.Parse(Quantity), DescriptionText);
+                app.patientController.AddPrescription(Appointment.Patient.User.Jmbg, prescription);
+                DescriptionText = "";
+                Quantity = "";
+                Prescriptions.Add(prescription);
+            }
+            catch
+            {
+                MessageBox.Show("Error");
+            }
         }
     }
 }

@@ -15,12 +15,12 @@ namespace Service
             return patientRepository.GetAll();
         }
 
-        public Model.Patient GetByJmbg(String jmbg)
+        public Patient GetByJmbg(String jmbg)
         {
             return patientRepository.GetByJmbg(jmbg);
         }
 
-        public void Save(Model.Patient patient)
+        public void Save(Patient patient)
         {
             List<Patient> patients = patientRepository.GetAll();
             foreach (Patient patient1 in patients)
@@ -46,7 +46,7 @@ namespace Service
             patientRepository.Delete(jmbg);
         }
 
-        public void Update(Model.Patient patient)
+        public void Update(Patient patient)
         {
             patientRepository.Update(patient);
             List<Appointment> appointments = appointmentRepository.GetAppointmentsForPatient(patient.User.Jmbg);
@@ -137,13 +137,11 @@ namespace Service
 
         }
 
-        //public void AddPrescription(string jmbg, Prescription prescription)
-        //{
-        //    Patient patient = patientRepository.GetByJmbg(jmbg);
-        //    int id = patientRepository.GenerateNewAnamnesisId();
-        //    Anamnesis anamnesis = new Anamnesis(id, type, name, description);
-        //    patient.MedicalRecord.Anamnesis.Add(anamnesis);
-        //    Update(patient);
-        //}
+        public void AddPrescription(string jmbg, Prescription prescription)
+        {
+            Patient patient = patientRepository.GetByJmbg(jmbg);
+            patient.MedicalRecord.Prescription.Add(prescription);
+            Update(patient);
+        }
     }
 }

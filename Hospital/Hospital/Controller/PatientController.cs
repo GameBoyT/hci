@@ -55,6 +55,9 @@ namespace Controller
             return patientService.AntiTrollCheck(appointmentId);
         }
 
-
+        public void AddPrescription(string jmbg, Prescription prescription)
+        {
+            patientService.AddPrescription(jmbg, prescription);
+        }
     }
 }
