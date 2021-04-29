@@ -45,6 +45,15 @@ namespace Controller
             patientService.UpdateAnamnesisDescription(jmbg, id, description);
         }
 
+        public string CheckForNotification(Patient patient)
+        {
+            return patientService.CheckForNotification(patient);
+        }
+
+        public string AntiTrollCheck(int appointmentId) {
+            return patientService.AntiTrollCheck(appointmentId);
+        }
+
 
     }
 }
