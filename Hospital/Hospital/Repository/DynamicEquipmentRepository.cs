@@ -14,7 +14,7 @@ namespace Repository
 
         public DynamicEquipmentRepository()
         {
-            ReadJson();   
+            ReadJson();
         }
 
         public void ReadJson()

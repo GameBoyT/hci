@@ -31,7 +31,7 @@ namespace Service
         {
             employeeRepository.Update(employee);
         }
-        
+
         public List<Employee> GetDoctors()
         {
             return employeeRepository.GetDoctors();
