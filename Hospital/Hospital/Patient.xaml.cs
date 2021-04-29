@@ -68,6 +68,7 @@ namespace Hospital
             patientController.Save(patient1);
             
             */
+            
 
             timeDataGrid.Visibility = Visibility.Collapsed;
             patient = patientController.GetByJmbg("3");
@@ -75,6 +76,10 @@ namespace Hospital
             List<Appointment> apps = new List<Appointment>();
 
             doctors = doctorController.GetDoctors();
+            foreach(Employee doctor in doctors)
+            {
+                doctorController.Update(doctor);
+            }
             doctorsDataGrid.ItemsSource = doctors;
         }
 
@@ -115,6 +120,7 @@ namespace Hospital
                 {
                     if (doctorRadioButton.IsChecked == true)
                     {
+
                         MessageBox.Show("Doktor je zauzet, izaberi drugi termin", "greska");
                         timeDataGrid.Visibility = Visibility.Visible;
                         timeDataGrid.ItemsSource = doctorsAppointments;
@@ -122,17 +128,15 @@ namespace Hospital
                     }
                     else
                     {
+
                         MessageBox.Show("Termin je zauzet, izaberi drugog doktora", "greska");
-
-
                         timeDataGrid.ItemsSource = doctorsAppointments;
-
+                    
                     }
                 }
                 else if (appointmentController.AppointmentValidationWithoutOverlaping(newAppointment))
                 {
                     MessageBox.Show("Termin nije moguce dodati, ponovi unos", "greska");
-
                 }
                 else
                 {
@@ -166,6 +170,13 @@ namespace Hospital
         private void notificationButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(patientController.CheckForNotification(patient), "obavjestenje");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var new_window = new PatientReview();
+            new_window.Show();
+            this.Close();
         }
     }
 }

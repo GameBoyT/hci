@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -19,6 +20,8 @@ namespace Model
 
         public Room Room { get; set; }
         public String Specialization { get; set; }
+
+        public System.Collections.Generic.List<Review> Reviews { get; set; }
 
 
         public System.Collections.Generic.List<Appointment> Appointment { get; set; }
