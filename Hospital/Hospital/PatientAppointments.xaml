@@ -32,6 +32,7 @@
         <Button x:Name="cancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="626,292,0,0" VerticalAlignment="Top" Height="34" Width="131" RenderTransformOrigin="0.539,1.632" Click="cancelButton_Click"/>
         <Button x:Name="updateButton" Content="Update" HorizontalAlignment="Left" Margin="329,270,0,0" VerticalAlignment="Top" Height="34" Width="131" Click="updateButton_Click"/>
         <Button x:Name="deletebutton" Content="Delete" HorizontalAlignment="Left" Margin="329,309,0,0" VerticalAlignment="Top" Height="33" Width="131" Click="deletebutton_Click"/>
+        <Button x:Name="backButton" Content="back" HorizontalAlignment="Left" Margin="692,385,0,0" VerticalAlignment="Top" Width="65" Click="backButton_Click"/>
 
 
 

@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using Controller;
 using Model;
-using Controller;
+using System;
+using System.Collections.Generic;
+using System.Windows;
 
 
 namespace Hospital
@@ -21,6 +13,7 @@ namespace Hospital
     public partial class PatientAppointments : Window
     {
         AppointmentController appointmentController = new AppointmentController();
+        PatientController patientController = new PatientController();
         List<Appointment> appointments = new List<Appointment>();
         public PatientAppointments()
         {
@@ -30,7 +23,7 @@ namespace Hospital
             readDataGrid.ItemsSource = appointments;
             cancelButton.Visibility = Visibility.Collapsed;
             updateConfirm.Visibility = Visibility.Collapsed;
-            
+
 
         }
 
@@ -84,7 +77,7 @@ namespace Hospital
             bool error = appointmentController.AppointmentTimeIsInvalid(newAppointment);
             if (error)
             {
-                MessageBox.Show("Greska kod unosenja podataka", "greska");
+                MessageBox.Show("Izmjena nije moguca", "greska");
             }
             else
             {
@@ -109,9 +102,19 @@ namespace Hospital
         private void deletebutton_Click(object sender, RoutedEventArgs e)
         {
             Appointment appointment = (Appointment)readDataGrid.SelectedItems[0];
+            MessageBox.Show(patientController.AntiTrollCheck(appointment.Id), "obavjestenje");
             appointmentController.Delete(appointment.Id);
+
             WindowUpdate();
         }
-        
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            var new_window = new PatientWindow();
+            new_window.Show();
+            this.Close();
+        }
+
+
     }
 }

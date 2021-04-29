@@ -13,9 +13,14 @@ namespace Service
         {
             return staticEquipmentRepository.GetAll();
         }
-        public List<StaticEquipment> GetAllRoomsWithEquipmentName(string name)
+        public List<Room> GetAllRoomsWithEquipmentName(string name)
         {
             return staticEquipmentRepository.GetAllRoomsWithEquipmentName(name);
+        }
+
+        public int GenerateNewId()
+        {
+            return staticEquipmentRepository.GenerateNewId();
         }
 
         public Model.StaticEquipment GetById(int id)
@@ -23,7 +28,7 @@ namespace Service
             return staticEquipmentRepository.GetById(id);
         }
 
-        public void Save(string name, string roomName , int quantity, string description)
+        public void Save(string name, string roomName, int quantity, string description)
         {
             int id = staticEquipmentRepository.GenerateNewId();
             Room room = roomRepository.GetByName(roomName);

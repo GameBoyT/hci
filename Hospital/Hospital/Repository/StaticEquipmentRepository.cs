@@ -9,51 +9,59 @@ namespace Repository
 {
     public class StaticEquipmentRepository
     {
-        private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\staticEquipment.json";
-        private List<StaticEquipment> staticEquipments = new List<StaticEquipment>();
+        private readonly string _fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\staticEquipments.json";
+        private List<StaticEquipment> _staticEquipments = new List<StaticEquipment>();
 
         public StaticEquipmentRepository()
         {
-            if (!File.Exists(fileLocation))
+            ReadJson();
+        }
+
+        public void ReadJson()
+        {
+            if (!File.Exists(_fileLocation))
             {
-                File.Create(fileLocation).Close();
+                File.Create(_fileLocation).Close();
             }
 
-            using (StreamReader r = new StreamReader(fileLocation))
+            using (StreamReader r = new StreamReader(_fileLocation))
             {
                 string json = r.ReadToEnd();
                 if (json != "")
                 {
-                    staticEquipments = JsonConvert.DeserializeObject<List<StaticEquipment>>(json);
+                    _staticEquipments = JsonConvert.DeserializeObject<List<StaticEquipment>>(json);
                 }
             }
         }
+
         public void WriteToJson()
         {
-            string json = JsonConvert.SerializeObject(staticEquipments);
-            File.WriteAllText(fileLocation, json);
+            string json = JsonConvert.SerializeObject(_staticEquipments, Formatting.Indented,
+                new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            File.WriteAllText(_fileLocation, json);
         }
 
         public List<StaticEquipment> GetAll()
         {
-            return staticEquipments;
+            return _staticEquipments;
         }
 
-        public List<StaticEquipment> GetAllRoomsWithEquipmentName(string name)
+        public List<Room> GetAllRoomsWithEquipmentName(string name)
         {
-            return staticEquipments.FindAll(obj => string.Equals(obj.Name, name, StringComparison.OrdinalIgnoreCase));
+            List<StaticEquipment> objList = _staticEquipments.FindAll(obj => string.Equals(obj.Name, name, StringComparison.OrdinalIgnoreCase));
+            return objList.Select(obj => obj.Room).ToList();
         }
 
         public Model.StaticEquipment GetById(int id)
         {
-            return staticEquipments.Find(obj => obj.Id == id);
+            return _staticEquipments.Find(obj => obj.Id == id);
         }
 
         public int GenerateNewId()
         {
             try
             {
-                int maxId = staticEquipments.Max(obj => obj.Id);
+                int maxId = _staticEquipments.Max(obj => obj.Id);
                 return maxId + 1;
             }
             catch
@@ -64,21 +72,21 @@ namespace Repository
 
         public void Save(Model.StaticEquipment staticEquipment)
         {
-            staticEquipments.Add(staticEquipment);
+            _staticEquipments.Add(staticEquipment);
             WriteToJson();
         }
 
         public void Delete(int id)
         {
-            int index = staticEquipments.FindIndex(obj => obj.Id == id);
-            staticEquipments.RemoveAt(index);
+            int index = _staticEquipments.FindIndex(obj => obj.Id == id);
+            _staticEquipments.RemoveAt(index);
             WriteToJson();
         }
 
         public void Update(StaticEquipment staticEquipment)
         {
-            int index = staticEquipments.FindIndex(obj => obj.Id == staticEquipment.Id);
-            staticEquipments[index] = staticEquipment;
+            int index = _staticEquipments.FindIndex(obj => obj.Id == staticEquipment.Id);
+            _staticEquipments[index] = staticEquipment;
             WriteToJson();
         }
 

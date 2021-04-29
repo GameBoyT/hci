@@ -1,0 +1,47 @@
+[
+  {
+    "User": {
+      "Address": "djoleadresa",
+      "DateOfBirth": "1985-04-26T00:00:00",
+      "Email": "djoleemail",
+      "FirstName": "Djordje",
+      "Jmbg": "15",
+      "LastName": "Tovilovic",
+      "Password": "djolesifra",
+      "Username": "djoleusername"
+    },
+    "EmployeeType": 1,
+    "Salary": 0.0,
+    "AnnualLeave": 0,
+    "Room": null,
+    "Appointment": null,
+    "Notification": null
+  },
+  {
+    "User": {
+      "Jmbg": "1",
+      "FirstName": "Djordje",
+      "LastName": "Tovilovic",
+      "Username": "djoleusername",
+      "Password": "djolesifra",
+      "Email": "djoleemail",
+      "Address": "djoleadresa",
+      "DateOfBirth": "1985-04-26T00:00:00"
+    },
+    "EmployeeType": 0,
+    "Salary": 0.0,
+    "AnnualLeave": 0,
+    "Room": {
+      "Id": 2,
+      "Name": "7",
+      "RoomType": 2,
+      "Floor": 0,
+      "Detail": "detaljiSoba7",
+      "Appointments": null,
+      "DynamicEquipments": null,
+      "StaticEquipments": null
+    },
+    "Appointment": [],
+    "Notification": []
+  }
+]

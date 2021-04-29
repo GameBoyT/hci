@@ -4,37 +4,19 @@ namespace Model
 {
     public class Anamnesis
     {
-        public int Id
+        public int Id { get; set; }
+        public String Type { get; set; }
+        public String Name { get; set; }
+        public String Description { get; set; }
+
+        public Anamnesis(int id, String type, String name, String description)
         {
-            get
-            ;
-            set
-            ;
+            this.Id = id;
+            this.Type = type;
+            this.Name = name;
+            this.Description = description;
         }
 
-        public String Type
-        {
-            get
-            ;
-            set
-            ;
-        }
-
-        public String Name
-        {
-            get
-            ;
-            set
-            ;
-        }
-
-        public String Description
-        {
-            get
-            ;
-            set
-            ;
-        }
 
     }
 }
