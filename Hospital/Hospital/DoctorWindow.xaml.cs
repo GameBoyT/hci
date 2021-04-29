@@ -13,7 +13,7 @@ namespace Hospital
         List<Appointment> appointmentsToShow = new List<Appointment>();
         public Appointment Appointment { get; set; }
         List<Room> roomsToShow = new List<Room>();
-        private Doctor Doctor;
+        private Employee Doctor;
         private AppointmentType appointmentType;
 
         public DoctorWindow()
@@ -66,8 +66,29 @@ namespace Hospital
             //app.medicineController.Save("Brufen");
             //app.medicineController.Save("Paracetamol");
 
+            Doctor = app.employeeController.GetByJmbg("1");
 
-            Doctor = app.doctorController.GetByJmbg("1");
+
+
+            //DateTime date = new DateTime(1985, 4, 26);
+            //User doctorUser = new User("1", "Djordje", "Tovilovic", "djoleusername", "djolesifra", "djoleemail", "djoleadresa", date);
+            //Employee doctor = new Employee(doctorUser, EmployeeType.doctor);
+            //app.employeeController.Save(doctor);
+
+
+
+            //Employee emp = app.employeeController.GetByJmbg("1");
+            //MessageBox.Show(emp.User.Jmbg);
+
+
+            //DateTime date = new DateTime(1985, 4, 26);
+            //User employeeUser = new User("15", "Djordje", "Tovilovic", "djoleusername", "djolesifra", "djoleemail", "djoleadresa", date);
+            //Employee emp = new Employee(employeeUser, EmployeeType.secretary);
+            //app.employeeController.Save(emp);
+
+            //Employee emp = app.employeeController.GetEmployees()[0];
+
+
             appointment_date.SelectedDate = DateTime.Today;
             new_appointment_date.SelectedDate = DateTime.Today;
             appointmentType = AppointmentType.examination;
