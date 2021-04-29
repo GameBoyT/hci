@@ -89,7 +89,7 @@ namespace Service
                     if (DateTime.Now.TimeOfDay > timeMinusOne.TimeOfDay && DateTime.Now.TimeOfDay < time.TimeOfDay)
                     {
                         String message = p.Medicine.Name + "," + time.TimeOfDay.ToString();
-                        return(message);
+                        return (message);
                     }
 
 
@@ -103,7 +103,7 @@ namespace Service
 
         public string IsPatientBlocked(Patient patient)
         {
-            if(patient.CancelationDates.Count > 5)
+            if (patient.CancelationDates.Count > 5)
             {
                 patient.Blocked = true;
                 patientRepository.Update(patient);
@@ -131,7 +131,7 @@ namespace Service
             updatedCancelations.RemoveRange(0, counter);
             updatedCancelations.Add(DateTime.Now);
             appointment.Patient.CancelationDates = updatedCancelations;
-            
+
             patientRepository.Update(appointment.Patient);
             return IsPatientBlocked(appointment.Patient);
 

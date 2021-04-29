@@ -104,7 +104,7 @@ namespace Hospital
             Appointment appointment = (Appointment)readDataGrid.SelectedItems[0];
             MessageBox.Show(patientController.AntiTrollCheck(appointment.Id), "obavjestenje");
             appointmentController.Delete(appointment.Id);
-            
+
             WindowUpdate();
         }
 

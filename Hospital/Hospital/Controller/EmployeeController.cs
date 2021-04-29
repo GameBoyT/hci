@@ -39,6 +39,21 @@ namespace Controller
             return employeeService.GetDoctors();
         }
 
-        public void RateDoctor(string doctorJmbg, Review review) => employeeService.RateDoctor(doctorJmbg, review);
+
+        public List<Employee> GetDoctorsBySpecialization(string specialization)
+        {
+            return employeeService.GetDoctorsBySpecialization(specialization);
+        }
+
+        public Employee GetDirector()
+        {
+            return employeeService.GetDirector();
+        }
+
+        public Employee GetSecretary()
+        {
+            return employeeService.GetSecretary();
+        }
+      
     }
 }

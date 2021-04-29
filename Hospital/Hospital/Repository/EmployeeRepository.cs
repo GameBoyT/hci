@@ -3,14 +3,13 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace Repository
 {
     public class EmployeeRepository
     {
-        private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\employees.json";
-        private List<Employee> employees = new List<Employee>();
+        private readonly string _fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\employees.json";
+        private List<Employee> _employees = new List<Employee>();
 
         public EmployeeRepository()
         {
@@ -19,67 +18,85 @@ namespace Repository
 
         public void ReadJson()
         {
-            if (!File.Exists(fileLocation))
+            if (!File.Exists(_fileLocation))
             {
-                File.Create(fileLocation).Close();
+                File.Create(_fileLocation).Close();
             }
 
-            using (StreamReader r = new StreamReader(fileLocation))
+            using (StreamReader r = new StreamReader(_fileLocation))
             {
                 string json = r.ReadToEnd();
                 if (json != "")
                 {
-                    employees = JsonConvert.DeserializeObject<List<Employee>>(json);
+                    _employees = JsonConvert.DeserializeObject<List<Employee>>(json);
                 }
             }
         }
 
         public void WriteToJson()
         {
-            string json = JsonConvert.SerializeObject(employees);
-            File.WriteAllText(fileLocation, json);
+            string json = JsonConvert.SerializeObject(_employees, Formatting.Indented,
+                new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            File.WriteAllText(_fileLocation, json);
         }
 
         public List<Employee> GetAll()
         {
             ReadJson();
-            return employees;
+            return _employees;
         }
 
         public Employee GetByJmbg(String jmbg)
         {
             ReadJson();
-            return employees.Find(obj => obj.User.Jmbg == jmbg);
+            return _employees.Find(obj => obj.User.Jmbg == jmbg);
         }
 
         public void Save(Employee employee)
         {
             ReadJson();
-            employees.Add(employee);
+            _employees.Add(employee);
             WriteToJson();
         }
 
         public void Delete(String jmbg)
         {
             ReadJson();
-            int index = employees.FindIndex(obj => obj.User.Jmbg == jmbg);
-            employees.RemoveAt(index);
+            int index = _employees.FindIndex(obj => obj.User.Jmbg == jmbg);
+            _employees.RemoveAt(index);
             WriteToJson();
         }
 
         public void Update(Employee employee)
         {
             ReadJson();
-            int index = employees.FindIndex(obj => obj.User.Jmbg == employee.User.Jmbg);
-            employees[index] = employee;
+            int index = _employees.FindIndex(obj => obj.User.Jmbg == employee.User.Jmbg);
+            _employees[index] = employee;
             WriteToJson();
         }
 
         public List<Employee> GetDoctors()
         {
             ReadJson();
-            return employees.FindAll(obj => obj.EmployeeType == EmployeeType.doctor);
+            return _employees.FindAll(obj => obj.EmployeeType == EmployeeType.doctor);
         }
 
+        public List<Employee> GetDoctorsBySpecialization(string specialization)
+        {
+            ReadJson();
+            return _employees.FindAll(obj => string.Equals(obj.Specialization, specialization, StringComparison.OrdinalIgnoreCase));
+        }
+
+        public Employee GetDirector()
+        {
+            ReadJson();
+            return _employees.Find(obj => obj.EmployeeType == EmployeeType.director);
+        }
+
+        public Employee GetSecretary()
+        {
+            ReadJson();
+            return _employees.Find(obj => obj.EmployeeType == EmployeeType.secretary);
+        }
     }
 }

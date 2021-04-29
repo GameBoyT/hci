@@ -12,7 +12,7 @@ namespace Hospital
     public partial class PatientWindow : Window
     {
         EmployeeController doctorController = new EmployeeController();
-        
+
         AppointmentController appointmentController = new AppointmentController();
         RoomController roomController = new RoomController();
         List<Employee> doctors = new List<Employee>();
@@ -69,6 +69,51 @@ namespace Hospital
             
             */
             
+            /*  //PATIENT DATA GEN
+              DateTime date2 = new DateTime(1998, 6, 12);
+              DateTime date3 = new DateTime(1973, 8, 9);
+              DateTime medicineStart1 = new DateTime(2021, 4, 17, 12, 20, 00);
+              DateTime medicineStart2 = new DateTime(2021, 3, 20, 14, 00, 00);
+              DateTime medicineEnd1 = new DateTime(2021, 6, 2, 12, 20, 00);
+              DateTime medicineEnd2 = new DateTime(2021, 7, 8, 14, 00, 00);
+              User user2 = new User("33", "Zarko", "Zarkovic", "asd", "sifra", "email", "adresa", date2);
+              User user3 = new User("44", "Pero", "Peric", "dsa", "sifra", "email", "adresa", date3);
+              Medicine medicine2 = new Medicine(1, "Paracetamol");
+              Medicine medicine3 = new Medicine(2, "Brufen");
+              MedicalRecord medicalRecord = new MedicalRecord();
+              //Prescription prescription1 = new Prescription(3, medicineStart1, medicineEnd1, "opis",100,medicine2);
+              //Prescription prescription2 = new Prescription(6, medicineStart2, medicineEnd2, "opis", 100, medicine3);
+              Anamnesis anamnesis1 = new Anamnesis(1,"Licna","ime anamneze", "opis anamneze");
+              Anamnesis anamnesis2 = new Anamnesis(2, "Anamneza", "naziv", "opis ");
+
+              //prescription1.Medicine = medicine2;
+              //prescription2.Medicine = medicine3;
+
+              List<Prescription> prescriptions = new List<Prescription>();
+              //prescriptions.Add(prescription2);
+              //prescriptions.Add(prescription1);
+
+              List<Anamnesis> anamneses = new List<Anamnesis>();
+              anamneses.Add(anamnesis1);
+              anamneses.Add(anamnesis2);
+
+              List<String> alergies = new List<String>();
+              alergies.Add("Alergija na polen");
+              alergies.Add("Alergija na dlake");
+
+              medicalRecord.Prescription = prescriptions;
+              medicalRecord.Anamnesis = anamneses;
+              medicalRecord.Alergies = alergies;
+
+
+              Patient patient1 = new Patient(user2);
+              patient1.MedicalRecord = medicalRecord;
+              List<DateTime> cancelDates = new List<DateTime>();
+              cancelDates.Add(DateTime.Now);
+              patient1.CancelationDates = cancelDates;
+              patientController.Save(patient1);
+
+              */
 
             timeDataGrid.Visibility = Visibility.Collapsed;
             patient = patientController.GetByJmbg("3");
@@ -111,7 +156,7 @@ namespace Hospital
                 doctorsAppointments = appointmentController.GetAppointmentsForDoctor(doctor.User.Jmbg);
                 bool error = false;
 
-                if(appointmentController.AppointmentIsTaken(newAppointment,doctor.User.Jmbg))
+                if (appointmentController.AppointmentIsTaken(newAppointment, doctor.User.Jmbg))
                 {
                     error = true;
                 }

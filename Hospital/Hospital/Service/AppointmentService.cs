@@ -58,7 +58,7 @@ namespace Service
         }
 
 
-     
+
 
         public bool AppointmentIsTaken(Appointment appointment, string doctorId)
         {

@@ -56,7 +56,7 @@ namespace Controller
         }
         public bool AppointmentIsTaken(Appointment appointment, string doctorId)
         {
-            return appointmentService.AppointmentIsTaken(appointment,doctorId);
+            return appointmentService.AppointmentIsTaken(appointment, doctorId);
         }
 
         public int GenerateNewId()
