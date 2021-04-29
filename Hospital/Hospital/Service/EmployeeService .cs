@@ -7,9 +7,23 @@ namespace Service
     public class EmployeeService
     {
         private Repository.EmployeeRepository employeeRepository = new Repository.EmployeeRepository();
-        public List<Employee> GetAll()
+        public List<Employee> GetEmployees()
         {
-            return employeeRepository.GetAll();
+            return employeeRepository.GetEmployees();
+        }
+
+        public List<Doctor> GetDoctors()
+        {
+            return employeeRepository.GetDoctors();
+        }
+        public void SaveDoctor(Doctor doctor)
+        {
+            employeeRepository.SaveDoctor(doctor);
+        }
+
+        public Doctor GetDoctorByJmbg(String jmbg)
+        {
+            return employeeRepository.GetDoctorByJmbg(jmbg);
         }
 
         public Employee GetByJmbg(String jmbg)

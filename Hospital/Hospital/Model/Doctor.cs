@@ -4,9 +4,8 @@ namespace Model
 {
     public class Doctor : Employee
     {
-        public Doctor(User user)
+        public Doctor(User user) : base (user, EmployeeType.doctor)
         {
-            this.User = user;
         }
 
         public Room Room { get; set; }

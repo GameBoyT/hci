@@ -9,9 +9,23 @@ namespace Controller
     {
         private EmployeeService employeeService = new EmployeeService();
 
-        public List<Employee> GetAll()
+        public List<Employee> GetEmployees()
         {
-            return employeeService.GetAll();
+            return employeeService.GetEmployees();
+        }
+
+        public List<Doctor> GetDoctors()
+        {
+            return employeeService.GetDoctors();
+        }
+        public void SaveDoctor(Doctor doctor)
+        {
+            employeeService.SaveDoctor(doctor);
+        }
+
+        public Doctor GetDoctorByJmbg(String jmbg)
+        {
+            return employeeService.GetDoctorByJmbg(jmbg);
         }
 
         public Employee GetByJmbg(String jmbg)

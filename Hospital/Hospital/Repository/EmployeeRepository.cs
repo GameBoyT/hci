@@ -10,6 +10,7 @@ namespace Repository
     {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\employees.json";
         private List<Employee> employees = new List<Employee>();
+        private List<Doctor> doctors = new List<Doctor>();
 
         public EmployeeRepository()
         {
@@ -33,9 +34,25 @@ namespace Repository
             File.WriteAllText(fileLocation, json);
         }
 
-        public List<Employee> GetAll()
+        public List<Employee> GetEmployees()
         {
             return employees;
+        }
+
+        public List<Doctor> GetDoctors()
+        {
+            return doctors;
+        }
+
+        public void SaveDoctor(Doctor doctor)
+        {
+            doctors.Add(doctor);
+            WriteToJson();
+        }
+
+        public Doctor GetDoctorByJmbg(String jmbg)
+        {
+            return doctors.Find(obj => obj.User.Jmbg == jmbg);
         }
 
         public Employee GetByJmbg(String jmbg)
