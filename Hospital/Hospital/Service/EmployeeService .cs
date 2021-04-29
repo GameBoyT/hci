@@ -36,5 +36,20 @@ namespace Service
         {
             return employeeRepository.GetDoctors();
         }
+
+        public List<Employee> GetDoctorsBySpecialization(string specialization)
+        {
+            return employeeRepository.GetDoctorsBySpecialization(specialization);
+        }
+
+        public Employee GetDirector()
+        {
+            return employeeRepository.GetDirector();
+        }
+
+        public Employee GetSecretary()
+        {
+            return employeeRepository.GetSecretary();
+        }
     }
 }

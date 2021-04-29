@@ -81,5 +81,22 @@ namespace Repository
             return _employees.FindAll(obj => obj.EmployeeType == EmployeeType.doctor);
         }
 
+        public List<Employee> GetDoctorsBySpecialization(string specialization)
+        {
+            ReadJson();
+            return _employees.FindAll(obj => string.Equals(obj.Specialization, specialization, StringComparison.OrdinalIgnoreCase));
+        }
+
+        public Employee GetDirector()
+        {
+            ReadJson();
+            return _employees.Find(obj => obj.EmployeeType == EmployeeType.director);
+        }
+
+        public Employee GetSecretary()
+        {
+            ReadJson();
+            return _employees.Find(obj => obj.EmployeeType == EmployeeType.secretary);
+        }
     }
 }
