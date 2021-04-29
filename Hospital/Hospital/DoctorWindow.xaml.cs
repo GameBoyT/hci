@@ -13,7 +13,7 @@ namespace Hospital
         List<Appointment> appointmentsToShow = new List<Appointment>();
         public Appointment Appointment { get; set; }
         List<Room> roomsToShow = new List<Room>();
-        private Doctor Doctor;
+        private Employee Doctor;
         private AppointmentType appointmentType;
 
         public DoctorWindow()
@@ -66,7 +66,7 @@ namespace Hospital
             //app.medicineController.Save("Brufen");
             //app.medicineController.Save("Paracetamol");
 
-            Doctor = app.doctorController.GetByJmbg("1");
+            Doctor = app.employeeController.GetByJmbg("1");
 
 
 
@@ -77,8 +77,8 @@ namespace Hospital
 
 
 
-            Employee emp = app.employeeController.GetByJmbg("1");
-            MessageBox.Show(emp.User.Jmbg);
+            //Employee emp = app.employeeController.GetByJmbg("1");
+            //MessageBox.Show(emp.User.Jmbg);
 
 
             //DateTime date = new DateTime(1985, 4, 26);

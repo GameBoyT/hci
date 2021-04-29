@@ -31,8 +31,17 @@
     "EmployeeType": 0,
     "Salary": 0.0,
     "AnnualLeave": 0,
-    "Room": null,
-    "Appointment": null,
-    "Notification": null
+    "Room": {
+      "Id": 2,
+      "Name": "7",
+      "RoomType": 2,
+      "Floor": 0,
+      "Detail": "detaljiSoba7",
+      "Appointments": null,
+      "DynamicEquipments": null,
+      "StaticEquipments": null
+    },
+    "Appointment": [],
+    "Notification": []
   }
 ]

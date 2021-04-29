@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Repository
 {
@@ -10,9 +11,13 @@ namespace Repository
     {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\employees.json";
         private List<Employee> employees = new List<Employee>();
-        private List<Doctor> doctors = new List<Doctor>();
 
         public EmployeeRepository()
+        {
+            ReadJson();
+        }
+
+        public void ReadJson()
         {
             if (!File.Exists(fileLocation))
             {
@@ -28,46 +33,35 @@ namespace Repository
                 }
             }
         }
+
         public void WriteToJson()
         {
             string json = JsonConvert.SerializeObject(employees);
             File.WriteAllText(fileLocation, json);
         }
 
-        public List<Employee> GetEmployees()
+        public List<Employee> GetAll()
         {
+            ReadJson();
             return employees;
-        }
-
-        public List<Employee> GetDoctors()
-        {
-            return employees;
-        }
-
-        public void SaveDoctor(Doctor doctor)
-        {
-            doctors.Add(doctor);
-            WriteToJson();
-        }
-
-        public Doctor GetDoctorByJmbg(String jmbg)
-        {
-            return doctors.Find(obj => obj.User.Jmbg == jmbg);
         }
 
         public Employee GetByJmbg(String jmbg)
         {
+            ReadJson();
             return employees.Find(obj => obj.User.Jmbg == jmbg);
         }
 
         public void Save(Employee employee)
         {
+            ReadJson();
             employees.Add(employee);
             WriteToJson();
         }
 
         public void Delete(String jmbg)
         {
+            ReadJson();
             int index = employees.FindIndex(obj => obj.User.Jmbg == jmbg);
             employees.RemoveAt(index);
             WriteToJson();
@@ -75,9 +69,17 @@ namespace Repository
 
         public void Update(Employee employee)
         {
+            ReadJson();
             int index = employees.FindIndex(obj => obj.User.Jmbg == employee.User.Jmbg);
             employees[index] = employee;
             WriteToJson();
         }
+
+        public List<Employee> GetDoctors()
+        {
+            ReadJson();
+            return employees.FindAll(obj => obj.EmployeeType == EmployeeType.doctor);
+        }
+
     }
 }

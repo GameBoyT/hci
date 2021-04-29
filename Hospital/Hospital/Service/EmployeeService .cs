@@ -7,23 +7,9 @@ namespace Service
     public class EmployeeService
     {
         private Repository.EmployeeRepository employeeRepository = new Repository.EmployeeRepository();
-        public List<Employee> GetEmployees()
+        public List<Employee> GetAll()
         {
-            return employeeRepository.GetEmployees();
-        }
-
-        public List<Employee> GetDoctors()
-        {
-            return employeeRepository.GetDoctors();
-        }
-        public void SaveDoctor(Doctor doctor)
-        {
-            employeeRepository.SaveDoctor(doctor);
-        }
-
-        public Doctor GetDoctorByJmbg(String jmbg)
-        {
-            return employeeRepository.GetDoctorByJmbg(jmbg);
+            return employeeRepository.GetAll();
         }
 
         public Employee GetByJmbg(String jmbg)
@@ -45,7 +31,10 @@ namespace Service
         {
             employeeRepository.Update(employee);
         }
-
-
+        
+        public List<Employee> GetDoctors()
+        {
+            return employeeRepository.GetDoctors();
+        }
     }
 }
