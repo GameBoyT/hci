@@ -7,7 +7,7 @@ namespace Service
 {
     public class PatientService
     {
-     
+
         public Repository.PatientRepository patientRepository = new Repository.PatientRepository();
         public Repository.AppointmentRepository appointmentRepository = new Repository.AppointmentRepository();
         public List<Patient> GetAll()
@@ -23,9 +23,9 @@ namespace Service
         public void Save(Model.Patient patient)
         {
             List<Patient> patients = patientRepository.GetAll();
-            foreach(Patient patient1 in patients)
+            foreach (Patient patient1 in patients)
             {
-                if(patient1.User.Jmbg == patient.User.Jmbg)
+                if (patient1.User.Jmbg == patient.User.Jmbg)
                 {
                     MessageBox.Show("Isti jmbg", "greska");
                     return;
@@ -72,6 +72,69 @@ namespace Service
             Anamnesis anamnesis = patient.MedicalRecord.Anamnesis.Find(obj => obj.Id == id);
             anamnesis.Description = description;
             Update(patient);
+        }
+
+        public string CheckForNotification(Patient patient)
+        {
+            List<Prescription> prescriptions = patient.MedicalRecord.Prescription;
+            foreach (Prescription p in prescriptions)
+            {
+                DateTime time = p.StartDate;
+                DateTime timeMinusOne = time.AddHours(-1);
+
+
+                for (int i = 0; i < p.Interval; i++)
+                {
+
+                    if (DateTime.Now.TimeOfDay > timeMinusOne.TimeOfDay && DateTime.Now.TimeOfDay < time.TimeOfDay)
+                    {
+                        String message = p.Medicine.Name + "," + time.TimeOfDay.ToString();
+                        return (message);
+                    }
+
+
+
+                    time = time.AddHours(24 / p.Interval);
+                    timeMinusOne = time.AddHours(-1);
+                }
+            }
+            return ("Nema lijeka za popiti");
+        }
+
+        public string IsPatientBlocked(Patient patient)
+        {
+            if (patient.CancelationDates.Count > 5)
+            {
+                patient.Blocked = true;
+                patientRepository.Update(patient);
+                return "Pacijent je blokiran";
+            }
+            return "Uspjeno obrisan termin";
+        }
+
+
+        public string AntiTrollCheck(int appointmentId)
+        {
+            Appointment appointment = appointmentRepository.GetById(appointmentId);
+            List<DateTime> updatedCancelations = appointment.Patient.CancelationDates;
+            List<DateTime> toRemove = new List<DateTime>();
+            int counter = 0;
+            //izbacuje sva otkazivanja koja su starija od 10 dana
+            foreach (DateTime cancelTime in updatedCancelations)
+            {
+                if (cancelTime < DateTime.Now.AddDays(-10))
+                {
+                    counter++;
+                }
+                else break;
+            }
+            updatedCancelations.RemoveRange(0, counter);
+            updatedCancelations.Add(DateTime.Now);
+            appointment.Patient.CancelationDates = updatedCancelations;
+
+            patientRepository.Update(appointment.Patient);
+            return IsPatientBlocked(appointment.Patient);
+
         }
 
         //public void AddPrescription(string jmbg, Prescription prescription)

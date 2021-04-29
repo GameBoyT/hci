@@ -37,7 +37,7 @@ namespace Hospital
         {
             var new_window = new PatientWindow();
             new_window.Show();
-            App.Current.MainWindow.Hide();
+            Application.Current.MainWindow.Hide();
 
 
         }
@@ -46,12 +46,14 @@ namespace Hospital
         {
             DoctorWindow doctorWindow = new DoctorWindow();
             doctorWindow.Show();
-            App.Current.MainWindow.Hide();
+            Application.Current.MainWindow.Hide();
         }
 
         private void Button_Click_Director(object sender, RoutedEventArgs e)
         {
-
+            DirectorWindow directorWindow = new DirectorWindow();
+            directorWindow.Show();
+            Application.Current.MainWindow.Hide();
         }
 
         private void Button_Click_Secretary(object sender, RoutedEventArgs e)

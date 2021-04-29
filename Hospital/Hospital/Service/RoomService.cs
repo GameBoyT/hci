@@ -35,11 +35,9 @@ namespace Service
             roomRepository.Delete(id);
         }
 
-        public void Update(String name, RoomType roomType, int floor, String detail)
+        public void Update(Room room)
         {
-            //appointmentRepository.Update(appointment);
-
-            throw new NotImplementedException();
+            roomRepository.Update(room);
         }
 
         public int GenerateNewId()
@@ -47,5 +45,9 @@ namespace Service
             return roomRepository.GenerateNewId();
         }
 
+        public void MoveEquipment(Model.Room fromRoom, Model.Room toRoom, DateTime date)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

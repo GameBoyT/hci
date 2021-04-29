@@ -6,6 +6,8 @@ namespace Controller
 {
     public class AppointmentController
     {
+        PatientController patientController = new PatientController();
+
 
         private Service.AppointmentService appointmentService = new Service.AppointmentService();
 
@@ -52,9 +54,9 @@ namespace Controller
         {
             return appointmentService.AppointmentTimeInFuture(appointment);
         }
-        public bool AppointmentIsTaken(Appointment appointment)
+        public bool AppointmentIsTaken(Appointment appointment, string doctorId)
         {
-            return appointmentService.AppointmentIsTaken(appointment);
+            return appointmentService.AppointmentIsTaken(appointment, doctorId);
         }
 
         public int GenerateNewId()
@@ -63,7 +65,7 @@ namespace Controller
         }
         public bool AppointmentValidationWithoutOverlaping(Appointment appointment)
         {
-           return appointmentService.AppointmentValidationWithoutOverlaping(appointment);
+            return appointmentService.AppointmentValidationWithoutOverlaping(appointment);
         }
 
     }

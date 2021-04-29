@@ -18,12 +18,17 @@ namespace Service
             return staticEquipmentRepository.GetAllRoomsWithEquipmentName(name);
         }
 
+        public int GenerateNewId()
+        {
+            return staticEquipmentRepository.GenerateNewId();
+        }
+
         public Model.StaticEquipment GetById(int id)
         {
             return staticEquipmentRepository.GetById(id);
         }
 
-        public void Save(string name, string roomName , int quantity, string description)
+        public void Save(string name, string roomName, int quantity, string description)
         {
             int id = staticEquipmentRepository.GenerateNewId();
             Room room = roomRepository.GetByName(roomName);
