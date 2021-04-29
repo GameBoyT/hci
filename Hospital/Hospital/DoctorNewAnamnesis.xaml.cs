@@ -26,7 +26,7 @@ namespace Hospital
         {
             if (AnamnesisName != "" && AnamnesisType != "")
             {
-                app.patientController.AddAnamnesis(Patient.User.Jmbg, AnamnesisName, AnamnesisType, "");
+                Anamnesis anamnesis = app.patientController.AddAnamnesis(Patient.User.Jmbg, AnamnesisName, AnamnesisType, "");
                 Appointment = app.appointmentController.GetById(Appointment.Id);
                 DoctorViewPatient doctorViewPatientWindow = new DoctorViewPatient(Appointment);
                 doctorViewPatientWindow.Show();

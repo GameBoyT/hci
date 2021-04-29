@@ -13,7 +13,6 @@ namespace Hospital
         public Appointment Appointment { get; set; }
         public Medicine Medicine { get; set; }
         public ObservableCollection<Anamnesis> Anamnesis { get; set; }
-        public ObservableCollection<Medicine> Medicines { get; set; }
         public ObservableCollection<Prescription> Prescriptions { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -88,21 +87,17 @@ namespace Hospital
             this.DataContext = this;
             app = Application.Current as App;
 
-
+            //TODO: Change to this or to parameter appointmentId
+            //Appointment = appointment;
 
             Appointment = app.appointmentController.GetById(appointment.Id);
-            if (Appointment.Patient.MedicalRecord != null && Appointment.Patient.MedicalRecord.Anamnesis != null)
-                Anamnesis = new ObservableCollection<Anamnesis>(Appointment.Patient.MedicalRecord.Anamnesis);
-            else
-                Anamnesis = new ObservableCollection<Anamnesis>();
-
             if (!app.appointmentController.AppointmentTimeInFuture(Appointment))
                 IsAppointmentTime = true;
 
-            Medicines = new ObservableCollection<Medicine>(app.medicineController.GetAll());
+            Anamnesis = new ObservableCollection<Anamnesis>(Appointment.Patient.MedicalRecord.Anamnesis);
             Prescriptions = new ObservableCollection<Prescription>(appointment.Patient.MedicalRecord.Prescription);
             lvDataBinding.ItemsSource = Anamnesis;
-            lvPrescriptionDataBinding.ItemsSource = Medicines;
+            lvPrescriptionDataBinding.ItemsSource = app.medicineController.GetAll();
             lvPatientPrescriptionDataBinding.ItemsSource = Prescriptions;
         }
 
@@ -115,21 +110,21 @@ namespace Hospital
                 {
                     IsAppointmentTime = true;
                 }
-                DetailText = Appointment.Patient.MedicalRecord.Anamnesis[lvDataBinding.SelectedIndex].Description;
+                DetailText = Anamnesis[lvDataBinding.SelectedIndex].Description;
             }
         }
 
         private void SaveChangesButton_Click(object sender, RoutedEventArgs e)
         {
-            int anamnesisId = Appointment.Patient.MedicalRecord.Anamnesis[lvDataBinding.SelectedIndex].Id;
-            app.patientController.UpdateAnamnesisDescription(Appointment.Patient.User.Jmbg, anamnesisId, DetailText);
-            Appointment = app.appointmentController.GetById(Appointment.Id);
-            Anamnesis = new ObservableCollection<Anamnesis>(Appointment.Patient.MedicalRecord.Anamnesis);
+            Anamnesis selectedAnamnesis = Appointment.Patient.MedicalRecord.Anamnesis[lvDataBinding.SelectedIndex];
+            Anamnesis updatedAnamnesis = app.patientController.UpdateAnamnesisDescription(Appointment.Patient.User.Jmbg, selectedAnamnesis.Id, DetailText);
+            int index = Anamnesis.IndexOf(selectedAnamnesis);
+            Anamnesis[index] = updatedAnamnesis;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            DetailText = Appointment.Patient.MedicalRecord.Anamnesis[lvDataBinding.SelectedIndex].Description;
+            DetailText = Anamnesis[lvDataBinding.SelectedIndex].Description;
         }
 
         private void AddNewButton_Click(object sender, RoutedEventArgs e)
@@ -162,8 +157,7 @@ namespace Hospital
         {
             try
             {
-                Prescription prescription = new Prescription(Medicine, Int32.Parse(Quantity), DescriptionText);
-                app.patientController.AddPrescription(Appointment.Patient.User.Jmbg, prescription);
+                Prescription prescription = app.patientController.AddPrescription(Appointment.Patient.User.Jmbg, Medicine, Int32.Parse(Quantity), DescriptionText);
                 DescriptionText = "";
                 Quantity = "";
                 Prescriptions.Add(prescription);

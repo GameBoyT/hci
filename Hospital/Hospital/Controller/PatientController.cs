@@ -35,14 +35,14 @@ namespace Controller
         {
             patientService.Update(patient);
         }
-        public void AddAnamnesis(string jmbg, string name, string type, string description)
+        public Anamnesis AddAnamnesis(string jmbg, string name, string type, string description)
         {
-            patientService.AddAnamnesis(jmbg, name, type, description);
+            return patientService.AddAnamnesis(jmbg, name, type, description);
         }
 
-        public void UpdateAnamnesisDescription(string jmbg, int id, string description)
+        public Anamnesis UpdateAnamnesisDescription(string jmbg, int id, string description)
         {
-            patientService.UpdateAnamnesisDescription(jmbg, id, description);
+            return patientService.UpdateAnamnesisDescription(jmbg, id, description);
         }
 
         public string CheckForNotification(Patient patient)
@@ -55,9 +55,9 @@ namespace Controller
             return patientService.AntiTrollCheck(appointmentId);
         }
 
-        public void AddPrescription(string jmbg, Prescription prescription)
+        public Prescription AddPrescription(string jmbg, Medicine medicine, int quantity, string description)
         {
-            patientService.AddPrescription(jmbg, prescription);
+            return patientService.AddPrescription(jmbg, medicine, quantity, description);
         }
     }
 }
