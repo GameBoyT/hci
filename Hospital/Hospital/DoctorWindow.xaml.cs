@@ -68,6 +68,12 @@ namespace Hospital
 
 
             Doctor = app.doctorController.GetByJmbg("1");
+
+
+            //Employee emp = app.employeeController.GetByJmbg("1");
+            //MessageBox.Show(emp.User.Username);
+
+
             appointment_date.SelectedDate = DateTime.Today;
             new_appointment_date.SelectedDate = DateTime.Today;
             appointmentType = AppointmentType.examination;

@@ -4,6 +4,10 @@ namespace Model
 {
     public class Employee
     {
+        public Employee()
+        {
+
+        }
         public Double Salary
         {
             get
