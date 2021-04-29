@@ -12,7 +12,7 @@ namespace Service
             return employeeRepository.GetEmployees();
         }
 
-        public List<Doctor> GetDoctors()
+        public List<Employee> GetDoctors()
         {
             return employeeRepository.GetDoctors();
         }

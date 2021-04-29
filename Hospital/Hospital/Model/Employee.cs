@@ -12,9 +12,15 @@ namespace Model
         public User User { get; set; }
 
         public EmployeeType EmployeeType { get; set; }
-        
+
         public Double Salary { get; set; }
 
         public int AnnualLeave { get; set; }
+
+        public Room Room { get; set; }
+
+        public System.Collections.Generic.List<Appointment> Appointment { get; set; }
+
+        public System.Collections.Generic.List<Notification> Notification { get; set; }
     }
 }

@@ -39,9 +39,9 @@ namespace Repository
             return employees;
         }
 
-        public List<Doctor> GetDoctors()
+        public List<Employee> GetDoctors()
         {
-            return doctors;
+            return employees;
         }
 
         public void SaveDoctor(Doctor doctor)

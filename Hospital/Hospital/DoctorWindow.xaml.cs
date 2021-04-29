@@ -66,16 +66,19 @@ namespace Hospital
             //app.medicineController.Save("Brufen");
             //app.medicineController.Save("Paracetamol");
 
+            Doctor = app.doctorController.GetByJmbg("1");
 
 
 
-            DateTime date = new DateTime(1985, 4, 26);
-            User doctorUser = new User("1", "Djordje", "Tovilovic", "djoleusername", "djolesifra", "djoleemail", "djoleadresa", date);
-            Doctor doctor = new Doctor(doctorUser);
-            app.employeeController.SaveDoctor(doctor);
+            //DateTime date = new DateTime(1985, 4, 26);
+            //User doctorUser = new User("1", "Djordje", "Tovilovic", "djoleusername", "djolesifra", "djoleemail", "djoleadresa", date);
+            //Employee doctor = new Employee(doctorUser, EmployeeType.doctor);
+            //app.employeeController.Save(doctor);
 
-            Doctor = app.employeeController.GetDoctorByJmbg("1");
-            MessageBox.Show(Doctor.User.Jmbg);
+
+
+            Employee emp = app.employeeController.GetByJmbg("1");
+            MessageBox.Show(emp.User.Jmbg);
 
 
             //DateTime date = new DateTime(1985, 4, 26);

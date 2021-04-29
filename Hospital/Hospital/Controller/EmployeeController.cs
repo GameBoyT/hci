@@ -14,7 +14,7 @@ namespace Controller
             return employeeService.GetEmployees();
         }
 
-        public List<Doctor> GetDoctors()
+        public List<Employee> GetDoctors()
         {
             return employeeService.GetDoctors();
         }
