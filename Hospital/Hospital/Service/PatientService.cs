@@ -129,6 +129,7 @@ namespace Service
                 else break;
             }
             updatedCancelations.RemoveRange(0, counter);
+            updatedCancelations.Add(DateTime.Now);
             appointment.Patient.CancelationDates = updatedCancelations;
             
             patientRepository.Update(appointment.Patient);

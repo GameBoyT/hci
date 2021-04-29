@@ -11,13 +11,14 @@ namespace Hospital
     /// </summary>
     public partial class PatientWindow : Window
     {
-        DoctorController doctorController = new DoctorController();
+        EmployeeController doctorController = new EmployeeController();
+        
         AppointmentController appointmentController = new AppointmentController();
         RoomController roomController = new RoomController();
-        List<Doctor> doctors = new List<Doctor>();
+        List<Employee> doctors = new List<Employee>();
         Patient patient;
         PatientController patientController = new PatientController();
-        Doctor doctor;
+        Employee doctor;
         List<Appointment> doctorsAppointments;
         public PatientWindow()
         {
@@ -73,7 +74,7 @@ namespace Hospital
 
             List<Appointment> apps = new List<Appointment>();
 
-            doctors = doctorController.GetAll();
+            doctors = doctorController.GetDoctors();
             doctorsDataGrid.ItemsSource = doctors;
         }
 
@@ -100,7 +101,7 @@ namespace Hospital
         {
             try
             {
-                doctor = (Doctor)doctorsDataGrid.SelectedItems[0];
+                doctor = (Employee)doctorsDataGrid.SelectedItems[0];
                 Appointment newAppointment = CreateAppointmentFromData();
                 doctorsAppointments = appointmentController.GetAppointmentsForDoctor(doctor.User.Jmbg);
                 bool error = false;

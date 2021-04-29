@@ -7,7 +7,6 @@ namespace Hospital
     {
         public readonly AppointmentController appointmentController = new AppointmentController();
         public readonly PatientController patientController = new PatientController();
-        public readonly DoctorController doctorController = new DoctorController();
         public readonly RoomController roomController = new RoomController();
         public readonly StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
         public readonly MedicineController medicineController = new MedicineController();
