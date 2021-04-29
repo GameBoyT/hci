@@ -1,11 +1,9 @@
-using System;
-
 namespace Model
 {
-   public enum EmployeeType
-   {
-      doctor,
-      director,
-      secretary
-   }
+    public enum EmployeeType
+    {
+        doctor,
+        director,
+        secretary
+    }
 }

@@ -9,52 +9,52 @@ namespace Repository
 {
     public class MedicineRepository
     {
-        private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\medicine.json";
-        private List<Medicine> medicines = new List<Medicine>();
+        private readonly string _fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\medicines.json";
+        private List<Medicine> _medicines = new List<Medicine>();
 
         public MedicineRepository()
         {
             ReadJson();
         }
 
-
-        public void WriteToJson()
-        {
-            string json = JsonConvert.SerializeObject(medicines);
-            File.WriteAllText(fileLocation, json);
-        }
-
         public void ReadJson()
         {
-            if (!File.Exists(fileLocation))
+            if (!File.Exists(_fileLocation))
             {
-                File.Create(fileLocation).Close();
+                File.Create(_fileLocation).Close();
             }
 
-            using (StreamReader r = new StreamReader(fileLocation))
+            using (StreamReader r = new StreamReader(_fileLocation))
             {
                 string json = r.ReadToEnd();
                 if (json != "")
                 {
-                    medicines = JsonConvert.DeserializeObject<List<Medicine>>(json);
+                    _medicines = JsonConvert.DeserializeObject<List<Medicine>>(json);
                 }
             }
+        }
+
+        public void WriteToJson()
+        {
+            string json = JsonConvert.SerializeObject(_medicines, Formatting.Indented,
+                new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            File.WriteAllText(_fileLocation, json);
         }
 
         public List<Medicine> GetAll()
         {
             ReadJson();
-            return medicines;
+            return _medicines;
         }
 
         public Medicine GetById(int id)
         {
             ReadJson();
-            return medicines.Find(obj => obj.Id == id);
+            return _medicines.Find(obj => obj.Id == id);
         }
         public Medicine GetByName(string name)
         {
-            return medicines.Find(obj => string.Equals(obj.Name, name, StringComparison.OrdinalIgnoreCase));
+            return _medicines.Find(obj => string.Equals(obj.Name, name, StringComparison.OrdinalIgnoreCase));
         }
 
         public int GenerateNewId()
@@ -62,7 +62,7 @@ namespace Repository
             ReadJson();
             try
             {
-                int maxId = medicines.Max(obj => obj.Id);
+                int maxId = _medicines.Max(obj => obj.Id);
                 return maxId + 1;
             }
             catch
@@ -74,23 +74,23 @@ namespace Repository
         public void Save(Medicine medicine)
         {
             ReadJson();
-            medicines.Add(medicine);
+            _medicines.Add(medicine);
             WriteToJson();
         }
 
         public void Delete(int id)
         {
             ReadJson();
-            int index = medicines.FindIndex(obj => obj.Id == id);
-            medicines.RemoveAt(index);
+            int index = _medicines.FindIndex(obj => obj.Id == id);
+            _medicines.RemoveAt(index);
             WriteToJson();
         }
 
         public void Update(Medicine medicine)
         {
             ReadJson();
-            int index = medicines.FindIndex(obj => obj.Id == medicine.Id);
-            medicines[index] = medicine;
+            int index = _medicines.FindIndex(obj => obj.Id == medicine.Id);
+            _medicines[index] = medicine;
             WriteToJson();
         }
 

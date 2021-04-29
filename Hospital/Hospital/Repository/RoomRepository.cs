@@ -9,52 +9,58 @@ namespace Repository
 {
     public class RoomRepository
     {
-        private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\rooms.json";
-        private List<Room> rooms = new List<Room>();
+        private readonly string _fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\rooms.json";
+        private List<Room> _rooms = new List<Room>();
 
         public RoomRepository()
         {
-            if (!File.Exists(fileLocation))
+            ReadJson();
+        }
+
+        public void ReadJson()
+        {
+            if (!File.Exists(_fileLocation))
             {
-                File.Create(fileLocation).Close();
+                File.Create(_fileLocation).Close();
             }
 
-            using (StreamReader r = new StreamReader(fileLocation))
+            using (StreamReader r = new StreamReader(_fileLocation))
             {
                 string json = r.ReadToEnd();
                 if (json != "")
                 {
-                    rooms = JsonConvert.DeserializeObject<List<Room>>(json);
+                    _rooms = JsonConvert.DeserializeObject<List<Room>>(json);
                 }
             }
         }
 
         public void WriteToJson()
         {
-            string json = JsonConvert.SerializeObject(rooms);
-            File.WriteAllText(fileLocation, json);
+            string json = JsonConvert.SerializeObject(_rooms, Formatting.Indented,
+                new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            File.WriteAllText(_fileLocation, json);
         }
 
         public List<Room> GetAll()
         {
-            return rooms;
+            return _rooms;
         }
 
         public Room GetById(int id)
         {
-            return rooms.Find(obj => obj.Id == id);
+            return _rooms.Find(obj => obj.Id == id);
         }
 
         public Room GetByName(String name)
         {
-            return rooms.Find(obj => obj.Name == name);
+            return _rooms.Find(obj => obj.Name == name);
         }
 
         public int GenerateNewId()
         {
             try
             {
-                int maxId = rooms.Max(obj => obj.Id);
+                int maxId = _rooms.Max(obj => obj.Id);
                 return maxId + 1;
             }
             catch
@@ -65,21 +71,21 @@ namespace Repository
 
         public void Save(Room room)
         {
-            rooms.Add(room);
+            _rooms.Add(room);
             WriteToJson();
         }
 
         public void Delete(int id)
         {
-            int index = rooms.FindIndex(obj => obj.Id == id);
-            rooms.RemoveAt(index);
+            int index = _rooms.FindIndex(obj => obj.Id == id);
+            _rooms.RemoveAt(index);
             WriteToJson();
         }
 
         public void Update(Room room)
         {
-            int index = rooms.FindIndex(obj => obj.Id == room.Id);
-            rooms[index] = room;
+            int index = _rooms.FindIndex(obj => obj.Id == room.Id);
+            _rooms[index] = room;
             WriteToJson();
         }
 

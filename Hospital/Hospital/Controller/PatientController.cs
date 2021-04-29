@@ -50,7 +50,8 @@ namespace Controller
             return patientService.CheckForNotification(patient);
         }
 
-        public string AntiTrollCheck(int appointmentId) {
+        public string AntiTrollCheck(int appointmentId)
+        {
             return patientService.AntiTrollCheck(appointmentId);
         }
 
