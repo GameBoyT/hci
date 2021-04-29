@@ -54,6 +54,8 @@ namespace Controller
         {
             return employeeService.GetSecretary();
         }
+
+        public void RateDoctor(string doctorJmbg, Review review) => employeeService.RateDoctor(doctorJmbg, review);
       
     }
 }
