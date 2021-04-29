@@ -49,5 +49,12 @@ namespace Hospital
             secretaryAllergens.Show();
             this.Close();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryGuest secretaryGuest = new SecretaryGuest();
+            secretaryGuest.Show();
+            this.Close();
+        }
     }
 }
