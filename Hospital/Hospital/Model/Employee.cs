@@ -8,7 +8,10 @@ namespace Model
         {
             User = user;
             EmployeeType = employeeType;
+            Appointment = new System.Collections.Generic.List<Appointment>();
+            Notification = new System.Collections.Generic.List<Notification>();
         }
+
         public User User { get; set; }
 
         public EmployeeType EmployeeType { get; set; }
