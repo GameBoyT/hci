@@ -99,6 +99,40 @@ namespace Service
                 }
             }
             return ("Nema lijeka za popiti");
+        }
+
+        public string IsPatientBlocked(Patient patient)
+        {
+            if(patient.CancelationDates.Count > 5)
+            {
+                patient.Blocked = true;
+                patientRepository.Update(patient);
+                return "Pacijent je blokiran";
+            }
+            return "Uspjeno obrisan termin";
+        }
+
+
+        public string AntiTrollCheck(int appointmentId)
+        {
+            Appointment appointment = appointmentRepository.GetById(appointmentId);
+            List<DateTime> updatedCancelations = appointment.Patient.CancelationDates;
+            List<DateTime> toRemove = new List<DateTime>();
+            int counter = 0;
+            //izbacuje sva otkazivanja koja su starija od 10 dana
+            foreach (DateTime cancelTime in updatedCancelations)
+            {
+                if (cancelTime < DateTime.Now.AddDays(-10))
+                {
+                    counter++;
+                }
+                else break;
+            }
+            updatedCancelations.RemoveRange(0, counter);
+            appointment.Patient.CancelationDates = updatedCancelations;
+            
+            patientRepository.Update(appointment.Patient);
+            return IsPatientBlocked(appointment.Patient);
 
         }
 

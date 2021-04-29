@@ -6,6 +6,8 @@ namespace Controller
 {
     public class AppointmentController
     {
+        PatientController patientController = new PatientController();
+
 
         private Service.AppointmentService appointmentService = new Service.AppointmentService();
 
