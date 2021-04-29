@@ -13,6 +13,7 @@ namespace Hospital
     public partial class PatientAppointments : Window
     {
         AppointmentController appointmentController = new AppointmentController();
+        PatientController patientController = new PatientController();
         List<Appointment> appointments = new List<Appointment>();
         public PatientAppointments()
         {
@@ -101,7 +102,9 @@ namespace Hospital
         private void deletebutton_Click(object sender, RoutedEventArgs e)
         {
             Appointment appointment = (Appointment)readDataGrid.SelectedItems[0];
+            MessageBox.Show(patientController.AntiTrollCheck(appointment.Id), "obavjestenje");
             appointmentController.Delete(appointment.Id);
+            
             WindowUpdate();
         }
 
