@@ -57,9 +57,12 @@ namespace Service
             return false;
         }
 
-        public bool AppointmentIsTaken(Appointment appointment)
+
+     
+
+        public bool AppointmentIsTaken(Appointment appointment, string doctorId)
         {
-            List<Appointment> appointments = appointmentRepository.GetAll();
+            List<Appointment> appointments = appointmentRepository.GetAppointmentsForDoctor(doctorId);
 
             foreach (Appointment app in appointments)
             {
@@ -69,8 +72,8 @@ namespace Service
                     DateTime appointmentEndTime = appointment.StartTime.AddMinutes(appointment.DurationInMinutes);
 
                     //Provera da li postoji pregled u tom terminu
-                    if ((app.StartTime.Ticks < appointment.StartTime.Ticks && endTime.Ticks > appointment.StartTime.Ticks) ||
-                            (app.StartTime.Ticks < appointmentEndTime.Ticks && endTime.Ticks > appointmentEndTime.Ticks))
+                    if ((appointment.StartTime.Ticks >= app.StartTime.Ticks && appointment.StartTime.Ticks <= endTime.Ticks) ||
+                        appointmentEndTime.Ticks >= app.StartTime.Ticks && appointmentEndTime.Ticks <= endTime.Ticks)
                     {
                         return true;
                     }

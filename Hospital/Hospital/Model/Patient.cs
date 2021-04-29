@@ -2,6 +2,7 @@ namespace Model
 {
     public class Patient
     {
+       
         public Patient(User user)
         {
             this.User = user;

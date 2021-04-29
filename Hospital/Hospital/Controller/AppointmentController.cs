@@ -52,9 +52,9 @@ namespace Controller
         {
             return appointmentService.AppointmentTimeInFuture(appointment);
         }
-        public bool AppointmentIsTaken(Appointment appointment)
+        public bool AppointmentIsTaken(Appointment appointment, string doctorId)
         {
-            return appointmentService.AppointmentIsTaken(appointment);
+            return appointmentService.AppointmentIsTaken(appointment,doctorId);
         }
 
         public int GenerateNewId()

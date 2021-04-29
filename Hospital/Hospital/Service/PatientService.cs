@@ -74,6 +74,34 @@ namespace Service
             Update(patient);
         }
 
+        public string CheckForNotification(Patient patient)
+        {
+            List<Prescription> prescriptions = patient.MedicalRecord.Prescription;
+            foreach (Prescription p in prescriptions)
+            {
+                DateTime time = p.StartDate;
+                DateTime timeMinusOne = time.AddHours(-1);
+
+
+                for (int i = 0; i < p.Interval; i++)
+                {
+
+                    if (DateTime.Now.TimeOfDay > timeMinusOne.TimeOfDay && DateTime.Now.TimeOfDay < time.TimeOfDay)
+                    {
+                        String message = p.Medicine.Name + "," + time.TimeOfDay.ToString();
+                        return(message);
+                    }
+
+
+
+                    time = time.AddHours(24 / p.Interval);
+                    timeMinusOne = time.AddHours(-1);
+                }
+            }
+            return ("Nema lijeka za popiti");
+
+        }
+
         //public void AddPrescription(string jmbg, Prescription prescription)
         //{
         //    Patient patient = patientRepository.GetByJmbg(jmbg);

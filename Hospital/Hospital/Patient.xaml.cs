@@ -66,9 +66,6 @@ namespace Hospital
             */
 
 
-
-
-
             timeDataGrid.Visibility = Visibility.Collapsed;
             patient = patientController.GetByJmbg("3");
 
@@ -76,11 +73,6 @@ namespace Hospital
 
             doctors = doctorController.GetAll();
             doctorsDataGrid.ItemsSource = doctors;
-
-            //obavjestenja
-
-
-
         }
 
         private void ClearFileds()
@@ -108,21 +100,12 @@ namespace Hospital
             {
                 doctor = (Doctor)doctorsDataGrid.SelectedItems[0];
                 Appointment newAppointment = CreateAppointmentFromData();
-                doctorsAppointments = appointmentController.GetAppointmentsForDoctor(doctor.User.Jmbg);
+                
                 bool error = false;
 
-
-                foreach (Appointment app in doctorsAppointments)
+                if(appointmentController.AppointmentIsTaken(newAppointment,doctor.User.Jmbg))
                 {
-                    DateTime newAppEnd = newAppointment.StartTime.AddMinutes(newAppointment.DurationInMinutes);
-                    DateTime newAppStart = newAppointment.StartTime;
-                    DateTime doctorsAppEndTime = app.StartTime.AddMinutes(app.DurationInMinutes);
-                    DateTime doctorAppStartTime = app.StartTime;
-                    if ((newAppStart.Ticks <= doctorsAppEndTime.Ticks && newAppStart.Ticks >= doctorAppStartTime.Ticks) ||
-                        (newAppEnd.Ticks >= doctorAppStartTime.Ticks && newAppEnd.Ticks <= doctorsAppEndTime.Ticks))
-                    {
-                        error = true;
-                    }
+                    error = true;
                 }
 
                 if (error == true)
@@ -179,28 +162,7 @@ namespace Hospital
 
         private void notificationButton_Click(object sender, RoutedEventArgs e)
         {
-            List<Prescription> prescriptions = patient.MedicalRecord.Prescription;
-            foreach (Prescription p in prescriptions)
-            {
-                DateTime time = p.StartDate;
-                DateTime timeMinusOne = time.AddHours(-1);
-
-
-                for (int i = 0; i < p.Interval; i++)
-                {
-
-                    if (DateTime.Now.TimeOfDay > timeMinusOne.TimeOfDay && DateTime.Now.TimeOfDay < time.TimeOfDay)
-                    {
-                        String message = p.Medicine.Name + "," + time.TimeOfDay.ToString();
-                        MessageBox.Show(message, "Obavjestenje");
-                    }
-
-
-
-                    time = time.AddHours(24 / p.Interval);
-                    timeMinusOne = time.AddHours(-1);
-                }
-            }
+            MessageBox.Show(patientController.CheckForNotification(patient), "obavjestenje");
         }
     }
 }
