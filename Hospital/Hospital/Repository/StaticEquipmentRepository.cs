@@ -36,8 +36,7 @@ namespace Repository
 
         public void WriteToJson()
         {
-            string json = JsonConvert.SerializeObject(_staticEquipments, Formatting.Indented,
-                new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            string json = JsonConvert.SerializeObject(_staticEquipments, Formatting.Indented);
             File.WriteAllText(_fileLocation, json);
         }
 
