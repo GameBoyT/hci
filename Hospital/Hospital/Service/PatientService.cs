@@ -52,7 +52,7 @@ namespace Service
             List<Appointment> appointments = appointmentRepository.GetAppointmentsForPatient(patient.User.Jmbg);
             foreach (Appointment appointment in appointments)
             {
-                appointment.Patient = patient;
+                appointment.PatientJmbg = patient.User.Jmbg;
                 appointmentRepository.Update(appointment);
             }
         }
@@ -118,7 +118,7 @@ namespace Service
         public string AntiTrollCheck(int appointmentId)
         {
             Appointment appointment = appointmentRepository.GetById(appointmentId);
-            Patient patient = patientRepository.GetByJmbg(appointment.Doctor.User.Jmbg);
+            Patient patient = patientRepository.GetByJmbg(appointment.DoctorJmbg);
             List<DateTime> updatedCancelations = patient.CancelationDates;
             List<DateTime> toRemove = new List<DateTime>();
             int counter = 0;

@@ -1,6 +1,10 @@
 [
   {
+    "$id": "1",
+    "CancelationDates": [],
+    "Blocked": false,
     "User": {
+      "$id": "2",
       "Jmbg": "4",
       "FirstName": "Pero",
       "LastName": "Peric",
@@ -15,7 +19,11 @@
     "Notifications": null
   },
   {
+    "$id": "3",
+    "CancelationDates": [],
+    "Blocked": false,
     "User": {
+      "$id": "4",
       "Jmbg": "5",
       "FirstName": "Jova",
       "LastName": "Jovic",
@@ -30,7 +38,11 @@
     "Notifications": null
   },
   {
+    "$id": "5",
+    "CancelationDates": [],
+    "Blocked": false,
     "User": {
+      "$id": "6",
       "Jmbg": "6",
       "FirstName": "Mile",
       "LastName": "fdsfsdff",
@@ -45,7 +57,11 @@
     "Notifications": null
   },
   {
+    "$id": "7",
+    "CancelationDates": [],
+    "Blocked": false,
     "User": {
+      "$id": "8",
       "Jmbg": "8",
       "FirstName": "Zarko",
       "LastName": "Zarkovic",
@@ -56,26 +72,34 @@
       "DateOfBirth": "1998-06-12T00:00:00"
     },
     "MedicalRecord": {
-      "Alergies": [ "Alergija na polen", "Alergija na dlake" ],
+      "$id": "9",
+      "Alergies": [
+        "Alergija na polen",
+        "Alergija na dlake"
+      ],
       "Prescription": [
         {
+          "$id": "10",
           "Interval": 6,
           "StartDate": "2021-03-20T10:00:00",
           "EndDate": "2021-07-08T14:00:00",
           "Description": "opis",
           "Quantity": 100,
           "Medicine": {
+            "$id": "11",
             "Id": 2,
             "Name": "Brufen"
           }
         },
         {
+          "$id": "12",
           "Interval": 3,
           "StartDate": "2021-04-17T12:20:00",
           "EndDate": "2021-06-02T12:20:00",
           "Description": "opis",
           "Quantity": 100,
           "Medicine": {
+            "$id": "13",
             "Id": 1,
             "Name": "Paracetamol"
           }
@@ -83,24 +107,31 @@
       ],
       "Anamnesis": [
         {
+          "$id": "14",
           "Id": 1,
           "Type": "Licna",
           "Name": "ime anamneze",
           "Description": "opis anamneze"
         },
         {
+          "$id": "15",
           "Id": 2,
           "Type": "Anamneza",
           "Name": "naziv",
           "Description": "opis "
         }
-      ]
+      ],
+      "Referrals": []
     },
     "Appointments": null,
     "Notifications": null
   },
   {
+    "$id": "16",
+    "CancelationDates": [],
+    "Blocked": false,
     "User": {
+      "$id": "17",
       "Jmbg": "3",
       "FirstName": "Zarko",
       "LastName": "Zarkovic",
@@ -111,63 +142,93 @@
       "DateOfBirth": "1998-06-12T00:00:00"
     },
     "MedicalRecord": {
-      "Alergies": [ "Alergija na polen", "Alergija na dlake" ],
+      "$id": "18",
+      "Alergies": [
+        "Alergija na polen",
+        "Alergija na dlake"
+      ],
       "Prescription": [
         {
+          "$id": "19",
           "Interval": 1,
           "StartDate": "2021-03-20T20:00:00",
           "EndDate": "2021-07-08T14:00:00",
           "Description": "opis",
           "Quantity": 100,
           "Medicine": {
+            "$id": "20",
             "Id": 4,
             "Name": "Brufen"
           }
         },
         {
+          "$id": "21",
           "Interval": 3,
           "StartDate": "2021-04-17T14:20:00",
           "EndDate": "2021-06-02T12:20:00",
           "Description": "opis",
           "Quantity": 100,
           "Medicine": {
+            "$id": "22",
             "Id": 5,
             "Name": "Paracetamol"
+          }
+        },
+        {
+          "$id": "23",
+          "Interval": 0,
+          "StartDate": "0001-01-01T00:00:00",
+          "EndDate": "0001-01-01T00:00:00",
+          "Description": "a",
+          "Quantity": 1,
+          "Medicine": {
+            "$id": "24",
+            "Id": 3,
+            "Name": "Amoksicilin"
           }
         }
       ],
       "Anamnesis": [
         {
+          "$id": "25",
           "Id": 1,
           "Type": "Licna",
           "Name": "ime anamneze",
           "Description": "opis anamneze izmena odma, zapravo radi ovaj put"
         },
         {
+          "$id": "26",
           "Id": 2,
           "Type": "Anamneza",
           "Name": "naziv",
-          "Description": "opis "
+          "Description": "opis aa"
         },
         {
+          "$id": "27",
           "Id": 3,
           "Type": "Anamnesis type",
           "Name": "Anamnesis name",
           "Description": "bbb"
         },
         {
+          "$id": "28",
           "Id": 4,
           "Type": "novi tip",
           "Name": "nova",
           "Description": "aaaa"
         }
-      ]
+      ],
+      "Referrals": []
     },
     "Appointments": null,
     "Notifications": null
   },
   {
+    "$id": "29",
+    "CancelationDates": [],
+    "Blocked": false,
     "User": {
+      "$id": "30",
       "Jmbg": "10",
       "FirstName": "Mile",
       "LastName": "Milic",
@@ -178,48 +239,57 @@
       "DateOfBirth": "1968-02-05T00:00:00"
     },
     "MedicalRecord": {
+      "$id": "31",
       "Alergies": [],
       "Prescription": [
         {
+          "$id": "32",
           "Interval": 0,
           "StartDate": "0001-01-01T00:00:00",
           "EndDate": "0001-01-01T00:00:00",
           "Description": "Qq",
           "Quantity": 5,
           "Medicine": {
+            "$id": "33",
             "Id": 5,
             "Name": "Paracetamol"
           }
         },
         {
+          "$id": "34",
           "Interval": 0,
           "StartDate": "0001-01-01T00:00:00",
           "EndDate": "0001-01-01T00:00:00",
           "Description": "Joooo",
           "Quantity": 15,
           "Medicine": {
+            "$id": "35",
             "Id": 4,
             "Name": "Brufen"
           }
         },
         {
+          "$id": "36",
           "Interval": 0,
           "StartDate": "0001-01-01T00:00:00",
           "EndDate": "0001-01-01T00:00:00",
           "Description": "a",
           "Quantity": 10,
           "Medicine": {
+            "$id": "37",
             "Id": 2,
             "Name": "Andol"
           }
         },
         {
+          "$id": "38",
           "Interval": 0,
           "StartDate": "0001-01-01T00:00:00",
           "EndDate": "0001-01-01T00:00:00",
           "Description": "a",
           "Quantity": 10,
           "Medicine": {
+            "$id": "39",
             "Id": 2,
             "Name": "Andol"
           }
@@ -227,30 +297,38 @@
       ],
       "Anamnesis": [
         {
+          "$id": "40",
           "Id": 5,
           "Type": "bb",
           "Name": "aa",
           "Description": ""
         },
         {
+          "$id": "41",
           "Id": 6,
           "Type": "b",
           "Name": "a",
           "Description": "aaaa"
         },
         {
+          "$id": "42",
           "Id": 7,
           "Type": "ww",
           "Name": "qq",
           "Description": "radi jej"
         }
-      ]
+      ],
+      "Referrals": []
     },
     "Appointments": [],
     "Notifications": []
   },
   {
+    "$id": "43",
+    "CancelationDates": [],
+    "Blocked": false,
     "User": {
+      "$id": "44",
       "Jmbg": "11",
       "FirstName": "Simo",
       "LastName": "Simic",
@@ -261,12 +339,62 @@
       "DateOfBirth": "1977-11-04T00:00:00"
     },
     "MedicalRecord": {
+      "$id": "45",
       "Alergies": [],
       "Prescription": [],
-      "Anamnesis": []
+      "Anamnesis": [],
+      "Referrals": []
+    },
+    "Appointments": [],
+    "Notifications": []
+  },
+  {
+    "$id": "46",
+    "CancelationDates": [
+      "2021-04-30T16:29:36.3696597+02:00"
+    ],
+    "Blocked": false,
+    "User": {
+      "$id": "47",
+      "Jmbg": "33",
+      "FirstName": "Zarko",
+      "LastName": "Zarkovic",
+      "Username": "asd",
+      "Password": "sifra",
+      "Email": "email",
+      "Address": "adresa",
+      "DateOfBirth": "1998-06-12T00:00:00"
+    },
+    "MedicalRecord": {
+      "$id": "48",
+      "Alergies": [
+        "Alergija na polen",
+        "Alergija na dlake"
+      ],
+      "Prescription": [],
+      "Anamnesis": [
+        {
+          "$id": "49",
+          "Id": 1,
+          "Type": "Licna",
+          "Name": "ime anamneze",
+          "Description": "opis anamneze"
+        },
+        {
+          "$id": "50",
+          "Id": 2,
+          "Type": "Anamneza",
+          "Name": "naziv",
+          "Description": "opis "
+        }
+      ],
+      "Referrals": [
+        {
+          "$id": "51"
+        }
+      ]
     },
     "Appointments": [],
     "Notifications": []
   }
 ]
-

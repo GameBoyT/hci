@@ -11,6 +11,7 @@ namespace Hospital
     {
         App app;
         public Appointment Appointment { get; set; }
+        public Patient Patient { get; set; }
         public Medicine Medicine { get; set; }
         public ObservableCollection<Anamnesis> Anamnesis { get; set; }
         public ObservableCollection<Prescription> Prescriptions { get; set; }
@@ -87,6 +88,7 @@ namespace Hospital
             this.DataContext = this;
             app = Application.Current as App;
 
+            Patient = app.patientController.GetByJmbg(appointment.PatientJmbg);
             //TODO: Change to this or to parameter appointmentId
             //Appointment = appointment;
 
@@ -94,8 +96,8 @@ namespace Hospital
             if (!app.appointmentController.AppointmentTimeInFuture(Appointment))
                 IsAppointmentTime = true;
 
-            Anamnesis = new ObservableCollection<Anamnesis>(Appointment.Patient.MedicalRecord.Anamnesis);
-            Prescriptions = new ObservableCollection<Prescription>(appointment.Patient.MedicalRecord.Prescription);
+            Anamnesis = new ObservableCollection<Anamnesis>(Patient.MedicalRecord.Anamnesis);
+            Prescriptions = new ObservableCollection<Prescription>(Patient.MedicalRecord.Prescription);
             lvDataBinding.ItemsSource = Anamnesis;
             lvPrescriptionDataBinding.ItemsSource = app.medicineController.GetAll();
             lvPatientPrescriptionDataBinding.ItemsSource = Prescriptions;
@@ -116,8 +118,8 @@ namespace Hospital
 
         private void SaveChangesButton_Click(object sender, RoutedEventArgs e)
         {
-            Anamnesis selectedAnamnesis = Appointment.Patient.MedicalRecord.Anamnesis[lvDataBinding.SelectedIndex];
-            Anamnesis updatedAnamnesis = app.patientController.UpdateAnamnesisDescription(Appointment.Patient.User.Jmbg, selectedAnamnesis.Id, DetailText);
+            Anamnesis selectedAnamnesis = Patient.MedicalRecord.Anamnesis[lvDataBinding.SelectedIndex];
+            Anamnesis updatedAnamnesis = app.patientController.UpdateAnamnesisDescription(Patient.User.Jmbg, selectedAnamnesis.Id, DetailText);
             int index = Anamnesis.IndexOf(selectedAnamnesis);
             Anamnesis[index] = updatedAnamnesis;
         }
@@ -157,7 +159,7 @@ namespace Hospital
         {
             try
             {
-                Prescription prescription = app.patientController.AddPrescription(Appointment.Patient.User.Jmbg, Medicine, Int32.Parse(Quantity), DescriptionText);
+                Prescription prescription = app.patientController.AddPrescription(Appointment.PatientJmbg, Medicine, Int32.Parse(Quantity), DescriptionText);
                 DescriptionText = "";
                 Quantity = "";
                 Prescriptions.Add(prescription);

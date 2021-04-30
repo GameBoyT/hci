@@ -70,8 +70,8 @@ namespace Hospital
                                                          oldAppintment.AppointmentType,
                                                          appointmentDateTime,
                                                          duration,
-                                                         oldAppintment.Patient,
-                                                         oldAppintment.Doctor,
+                                                         oldAppintment.PatientJmbg,
+                                                         oldAppintment.DoctorJmbg,
                                                          oldAppintment.Room);
 
             bool error = appointmentController.AppointmentTimeIsInvalid(newAppointment);

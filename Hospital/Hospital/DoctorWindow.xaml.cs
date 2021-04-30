@@ -116,7 +116,7 @@ namespace Hospital
                 new_appointment_date.SelectedDate = Appointment.StartTime.Date;
                 durationTextBox.Text = Appointment.DurationInMinutes.ToString();
                 startTimeTextBox.Text = Appointment.StartTime.ToString("HH:mm");
-                patientJmbg.Text = Appointment.Patient.User.Jmbg;
+                patientJmbg.Text = Appointment.PatientJmbg;
                 roomsToShow.Clear();
                 roomsToShow.Add(Appointment.Room);
                 rooms.SelectedIndex = 0;
@@ -163,15 +163,15 @@ namespace Hospital
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
-            Patient patient = app.patientController.GetByJmbg(patientJmbg.Text);
             rooms.SelectedIndex = 0;
+
             if (appointmentType == AppointmentType.examination)
             {
-                return new Appointment(id, appointmentType, appointmentDateTime, duration, patient, Doctor, Doctor.Room);
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, Doctor.Room);
             }
             else
             {
-                return new Appointment(id, appointmentType, appointmentDateTime, duration, patient, Doctor, (Room)rooms.SelectedItem);
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, (Room)rooms.SelectedItem);
             }
         }
 
@@ -183,15 +183,14 @@ namespace Hospital
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
-            Patient patient = app.patientController.GetByJmbg(patientJmbg.Text);
             rooms.SelectedIndex = 0;
             if (appointmentType == AppointmentType.examination)
             {
-                return new Appointment(id, appointmentType, appointmentDateTime, duration, patient, Doctor, Doctor.Room);
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, Doctor.Room);
             }
             else
             {
-                return new Appointment(id, appointmentType, appointmentDateTime, duration, patient, Doctor, (Room)rooms.SelectedItem);
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, (Room)rooms.SelectedItem);
             }
         }
 
@@ -258,7 +257,7 @@ namespace Hospital
             try
             {
                 Appointment appointment = CreateAppointmentFromData();
-                if (appointment.Patient == null)
+                if (appointment.PatientJmbg == null)
                 {
                     MessageBox.Show("You have to enter a valid patient jmbg!");
                     return;
