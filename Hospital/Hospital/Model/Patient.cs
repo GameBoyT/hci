@@ -18,6 +18,7 @@ namespace Model
 
         }
 
+        
         public List<DateTime> CancelationDates { get; set; }
 
         public bool Blocked { get; set; }

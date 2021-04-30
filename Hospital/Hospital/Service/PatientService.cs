@@ -116,7 +116,8 @@ namespace Service
         public string AntiTrollCheck(int appointmentId)
         {
             Appointment appointment = appointmentRepository.GetById(appointmentId);
-            List<DateTime> updatedCancelations = appointment.Patient.CancelationDates;
+            Patient patient = patientRepository.GetByJmbg(appointment.Doctor.User.Jmbg);
+            List<DateTime> updatedCancelations = patient.CancelationDates;
             List<DateTime> toRemove = new List<DateTime>();
             int counter = 0;
             //izbacuje sva otkazivanja koja su starija od 10 dana
@@ -130,10 +131,10 @@ namespace Service
             }
             updatedCancelations.RemoveRange(0, counter);
             updatedCancelations.Add(DateTime.Now);
-            appointment.Patient.CancelationDates = updatedCancelations;
+            patient.CancelationDates = updatedCancelations;
 
-            patientRepository.Update(appointment.Patient);
-            return IsPatientBlocked(appointment.Patient);
+            patientRepository.Update(patient);
+            return IsPatientBlocked(patient);
 
         }
 
