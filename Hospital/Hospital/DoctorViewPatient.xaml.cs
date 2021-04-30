@@ -137,9 +137,8 @@ namespace Hospital
             }
             else
             {
-                DoctorNewAnamnesis doctorNewAnamnesisWindow = new DoctorNewAnamnesis(Appointment);
+                DoctorNewAnamnesis doctorNewAnamnesisWindow = new DoctorNewAnamnesis(Appointment, this);
                 doctorNewAnamnesisWindow.Show();
-                this.Close();
             }
         }
 
