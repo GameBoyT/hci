@@ -7,15 +7,14 @@ namespace Model
 {
     public class Referral
     {
-        string Description { get; set; }
-        Employee Doctor { get; set; }
-
-        public Referral(string description, Employee doctor)
+        public Referral(string doctorJmbg, string description)
         {
+            this.DoctorJmbg = doctorJmbg;
             this.Description = description;
-            this.Doctor = doctor;
         }
 
-
+        public string DoctorJmbg { get; set; }
+        
+        public string Description { get; set; }
     }
 }
