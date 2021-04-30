@@ -1,0 +1,80 @@
+[
+  {
+    "CancelationDates": [
+      "2021-04-30T18:29:47.2508286+02:00"
+    ],
+    "Blocked": false,
+    "User": {
+      "Jmbg": "5",
+      "FirstName": "Zarko",
+      "LastName": "Zarkovic",
+      "Username": "asd",
+      "Password": "sifra",
+      "Email": "email",
+      "Address": "adresa",
+      "DateOfBirth": "1998-06-12T00:00:00"
+    },
+    "MedicalRecord": {
+      "Alergies": [
+        "Alergija na polen",
+        "Alergija na dlake"
+      ],
+      "Prescription": [],
+      "Anamnesis": [
+        {
+          "Id": 1,
+          "Type": "Licna",
+          "Name": "ime anamneze",
+          "Description": "opis anamneze"
+        },
+        {
+          "Id": 2,
+          "Type": "Anamneza",
+          "Name": "naziv",
+          "Description": "opis "
+        }
+      ],
+      "Referrals": []
+    },
+    "Appointments": [],
+    "Notifications": []
+  },
+  {
+    "CancelationDates": [],
+    "Blocked": false,
+    "User": {
+      "Jmbg": "6",
+      "FirstName": "Pero",
+      "LastName": "Peric",
+      "Username": "dsa",
+      "Password": "sifra",
+      "Email": "email",
+      "Address": "adresa",
+      "DateOfBirth": "1973-08-09T00:00:00"
+    },
+    "MedicalRecord": {
+      "Alergies": [
+        "Alergija na macke",
+        "Alergija na pse"
+      ],
+      "Prescription": [],
+      "Anamnesis": [
+        {
+          "Id": 1,
+          "Type": "Licna",
+          "Name": "ime anamneze",
+          "Description": "opis anamneze"
+        },
+        {
+          "Id": 2,
+          "Type": "Anamneza",
+          "Name": "naziv",
+          "Description": "opis "
+        }
+      ],
+      "Referrals": []
+    },
+    "Appointments": [],
+    "Notifications": []
+  }
+]

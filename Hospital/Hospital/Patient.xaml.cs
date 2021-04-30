@@ -76,8 +76,8 @@ namespace Hospital
               DateTime medicineStart2 = new DateTime(2021, 3, 20, 14, 00, 00);
               DateTime medicineEnd1 = new DateTime(2021, 6, 2, 12, 20, 00);
               DateTime medicineEnd2 = new DateTime(2021, 7, 8, 14, 00, 00);
-              User user2 = new User("33", "Zarko", "Zarkovic", "asd", "sifra", "email", "adresa", date2);
-              User user3 = new User("44", "Pero", "Peric", "dsa", "sifra", "email", "adresa", date3);
+              User user2 = new User("5", "Zarko", "Zarkovic", "asd", "sifra", "email", "adresa", date2);
+              User user3 = new User("6", "Pero", "Peric", "dsa", "sifra", "email", "adresa", date3);
               Medicine medicine2 = new Medicine(1, "Paracetamol");
               Medicine medicine3 = new Medicine(2, "Brufen");
               MedicalRecord medicalRecord = new MedicalRecord();
