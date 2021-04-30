@@ -4,7 +4,7 @@ namespace Model
 {
     public class Appointment
     {
-        public Appointment(int id, AppointmentType appointmentType, DateTime startTime, Double durationInMinutes, string patientJmbg, string doctorJmbg, Room room)
+        public Appointment(int id, AppointmentType appointmentType, DateTime startTime, Double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId)
         {
             this.Id = id;
             this.AppointmentType = appointmentType;
@@ -12,7 +12,7 @@ namespace Model
             this.DurationInMinutes = durationInMinutes;
             this.PatientJmbg = patientJmbg;
             this.DoctorJmbg = doctorJmbg;
-            this.Room = room;
+            this.RoomId = roomId;
         }
 
         public int Id { get; set; }
@@ -27,7 +27,7 @@ namespace Model
 
         public string PatientJmbg { get; set; }
 
-        public Room Room { get; set; }
+        public int RoomId { get; set; }
 
     }
 }

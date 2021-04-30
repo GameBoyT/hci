@@ -147,7 +147,7 @@ namespace Hospital
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
-            return new Appointment(appointmentController.GenerateNewId(), AppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, roomController.GetById(1));
+            return new Appointment(appointmentController.GenerateNewId(), AppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, 1);
         }
 
 

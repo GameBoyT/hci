@@ -113,7 +113,7 @@ namespace Hospital
                 startTimeTextBox.Text = Appointment.StartTime.ToString("HH:mm");
                 patientJmbg.Text = Appointment.PatientJmbg;
                 roomsToShow.Clear();
-                roomsToShow.Add(Appointment.Room);
+                roomsToShow.Add(app.roomController.GetById(Appointment.RoomId));
                 rooms.SelectedIndex = 0;
 
 
@@ -162,11 +162,11 @@ namespace Hospital
 
             if (appointmentType == AppointmentType.examination)
             {
-                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, Doctor.Room);
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, Doctor.Room.Id);
             }
             else
             {
-                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, (Room)rooms.SelectedItem);
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, ((Room)rooms.SelectedItem).Id);
             }
         }
 
@@ -181,11 +181,11 @@ namespace Hospital
             rooms.SelectedIndex = 0;
             if (appointmentType == AppointmentType.examination)
             {
-                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, Doctor.Room);
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, Doctor.Room.Id);
             }
             else
             {
-                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, (Room)rooms.SelectedItem);
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, ((Room)rooms.SelectedItem).Id);
             }
         }
 
