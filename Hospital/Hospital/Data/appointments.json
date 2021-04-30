@@ -1,0 +1,20 @@
+[
+  {
+    "Id": 1,
+    "AppointmentType": 0,
+    "StartTime": "2021-04-30T20:00:00",
+    "DurationInMinutes": 15.0,
+    "DoctorJmbg": "1",
+    "PatientJmbg": "5",
+    "RoomId": 1
+  },
+  {
+    "Id": 2,
+    "AppointmentType": 0,
+    "StartTime": "2021-04-30T21:00:00",
+    "DurationInMinutes": 45.0,
+    "DoctorJmbg": "1",
+    "PatientJmbg": "6",
+    "RoomId": 1
+  }
+]

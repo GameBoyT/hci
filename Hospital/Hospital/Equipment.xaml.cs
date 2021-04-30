@@ -34,7 +34,7 @@ namespace Hospital
             int quant = Int32.Parse(quantity.Text);
             staticController.Save(textname, "302", quant, desc);
             //Room room = new Room(101, textname, (RoomType)1, 4, "test soba");
-            return new StaticEquipment(id, textname, null, quant, desc);
+            return new StaticEquipment(id, textname, 3, quant, desc);
         }
 
         private void addEquipment_Click(object sender, RoutedEventArgs e)
@@ -75,7 +75,7 @@ namespace Hospital
             string textname = name.Text;
             string desc = description.Text;
             int quant = Int32.Parse(quantity.Text);
-            StaticEquipment equipment = new StaticEquipment(id_stat, textname, null, quant, desc);
+            StaticEquipment equipment = new StaticEquipment(id_stat, textname, 4, quant, desc);
             staticController.Update(equipment);
             id_stat = -1;
 

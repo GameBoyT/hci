@@ -2,11 +2,11 @@ namespace Model
 {
     public class StaticEquipment
     {
-        public StaticEquipment(int id, string name, Room room, int quantity, string description)
+        public StaticEquipment(int id, string name, int roomId, int quantity, string description)
         {
             Id = id;
             Name = name;
-            Room = room;
+            RoomId = roomId;
             Quantity = quantity;
             Description = description;
         }
@@ -19,7 +19,7 @@ namespace Model
             ;
         }
 
-        public Room Room { get; set; }
+        public int RoomId { get; set; }
 
 
         public string Name

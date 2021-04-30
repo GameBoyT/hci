@@ -45,11 +45,12 @@ namespace Repository
             return _staticEquipments;
         }
 
-        public List<Room> GetAllRoomsWithEquipmentName(string name)
-        {
-            List<StaticEquipment> objList = _staticEquipments.FindAll(obj => string.Equals(obj.Name, name, StringComparison.OrdinalIgnoreCase));
-            return objList.Select(obj => obj.Room).ToList();
-        }
+        //public List<Room> GetAllRoomsWithEquipmentName(string name)
+        //{
+        //    List<StaticEquipment> objList = _staticEquipments.FindAll(obj => string.Equals(obj.Name, name, StringComparison.OrdinalIgnoreCase));
+        //    return objList.Select(obj => obj.RoomId).ToList();
+
+        //}
 
         public Model.StaticEquipment GetById(int id)
         {

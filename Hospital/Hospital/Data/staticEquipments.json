@@ -1,0 +1,16 @@
+[
+  {
+    "Id": 1,
+    "RoomId": 3,
+    "Name": "Anaesthesia",
+    "Quantity": 1,
+    "Description": "Anaesthesia machine"
+  },
+  {
+    "Id": 2,
+    "RoomId": 4,
+    "Name": "Anaesthesia",
+    "Quantity": 1,
+    "Description": "Anaesthesia machine"
+  }
+]

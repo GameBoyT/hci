@@ -54,11 +54,16 @@ namespace Hospital
             //app.patientController.Save(patient2);
             //app.patientController.Save(patient3);
 
-            //roomController.Save("10", RoomType.exam, 2, "Rendgen soba");
+            //app.roomController.Save("10", RoomType.operating, 0, "Operation room 1");
+            //app.roomController.Save("11", RoomType.operating, 0, "Operation room 2");
 
-            //staticEquipmentController.Save("Rendgen", "10", 1, "Rendgen masina");
-            //List<StaticEquipment> roomsWitheRendgen = staticEquipmentController.GetAllRoomsWithEquipmentName("rendgen");
+            //app.staticEquipmentController.Save("Anaesthesia", "10", 1, "Anaesthesia machine");
+            //app.staticEquipmentController.Save("Anaesthesia", "11", 1, "Anaesthesia machine");
+
+
+            //List<Room> roomsWitheRendgen = app.staticEquipmentController.GetAllRoomsWithEquipmentName("Anaesthesia");
             //MessageBox.Show(roomsWitheRendgen[0].Name);
+
 
             //app.medicineController.Save("Aspirin");
             //app.medicineController.Save("Andol");
@@ -92,6 +97,17 @@ namespace Hospital
             //app.employeeController.Update(Doctor);
 
 
+            StaticEquipment staticEquipment1 = app.staticEquipmentController.GetById(1);
+            StaticEquipment staticEquipment2 = app.staticEquipmentController.GetById(2);
+
+            Room room3 = app.roomController.GetById(3);
+            Room room4 = app.roomController.GetById(4);
+            room3.StaticEquipments.Add(staticEquipment1);
+            room4.StaticEquipments.Add(staticEquipment2);
+
+
+            app.roomController.Update(room3);
+            app.roomController.Update(room4);
 
 
             appointment_date.SelectedDate = DateTime.Today;
@@ -316,7 +332,7 @@ namespace Hospital
 
         private void FindButton_Click(object sender, RoutedEventArgs e)
         {
-            roomsToShow = app.staticEquipmentController.GetAllRoomsWithEquipmentName(equipmentName.Text);
+            //roomsToShow = app.staticEquipmentController.GetAllRoomsWithEquipmentName(equipmentName.Text);
             WindowUpdate();
         }
 
