@@ -9,24 +9,21 @@ namespace Hospital
         public string AnamnesisName { get; set; }
         public string AnamnesisType { get; set; }
 
-        public Patient Patient { get; set; }
         public Appointment Appointment { get; set; }
-
 
         public DoctorNewAnamnesis(Appointment appointment)
         {
             InitializeComponent();
-            this.DataContext = this;
             app = Application.Current as App;
+            this.DataContext = this;
             Appointment = appointment;
-            Patient = appointment.Patient;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             if (AnamnesisName != "" && AnamnesisType != "")
             {
-                Anamnesis anamnesis = app.patientController.AddAnamnesis(Patient.User.Jmbg, AnamnesisName, AnamnesisType, "");
+                Anamnesis anamnesis = app.patientController.AddAnamnesis(Appointment.PatientJmbg, AnamnesisName, AnamnesisType, "");
                 Appointment = app.appointmentController.GetById(Appointment.Id);
                 DoctorViewPatient doctorViewPatientWindow = new DoctorViewPatient(Appointment);
                 doctorViewPatientWindow.Show();

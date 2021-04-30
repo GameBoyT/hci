@@ -95,13 +95,13 @@ namespace Repository
         public List<Appointment> GetAppointmentsForDoctor(String jmbg)
         {
             ReadJson();
-            return _appointments.FindAll(appointment => appointment.Doctor.User.Jmbg == jmbg);
+            return _appointments.FindAll(appointment => appointment.DoctorJmbg == jmbg);
         }
 
         public List<Appointment> GetAppointmentsForPatient(String jmbg)
         {
             ReadJson();
-            return _appointments.FindAll(appointment => appointment.Patient.User.Jmbg == jmbg);
+            return _appointments.FindAll(appointment => appointment.PatientJmbg == jmbg);
         }
 
     }

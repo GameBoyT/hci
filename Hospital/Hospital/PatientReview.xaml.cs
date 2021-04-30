@@ -57,7 +57,7 @@ namespace Hospital
         {
             
             Appointment appointment = (Appointment)AppointmentsListView.SelectedItems[0];
-            employeeController.RateDoctor(appointment.Doctor.User.Jmbg,getReviewFromForm());
+            employeeController.RateDoctor(appointment.DoctorJmbg,getReviewFromForm());
         }
     }
 }
