@@ -15,12 +15,12 @@ namespace Service
             return patientRepository.GetAll();
         }
 
-        public Model.Patient GetByJmbg(String jmbg)
+        public Patient GetByJmbg(String jmbg)
         {
             return patientRepository.GetByJmbg(jmbg);
         }
 
-        public void Save(Model.Patient patient)
+        public void Save(Patient patient)
         {
             List<Patient> patients = patientRepository.GetAll();
             foreach (Patient patient1 in patients)
@@ -46,7 +46,7 @@ namespace Service
             patientRepository.Delete(jmbg);
         }
 
-        public void Update(Model.Patient patient)
+        public void Update(Patient patient)
         {
             patientRepository.Update(patient);
             List<Appointment> appointments = appointmentRepository.GetAppointmentsForPatient(patient.User.Jmbg);
@@ -57,21 +57,23 @@ namespace Service
             }
         }
 
-        public void AddAnamnesis(string jmbg, string name, string type, string description)
+        public Anamnesis AddAnamnesis(string jmbg, string name, string type, string description)
         {
             Patient patient = patientRepository.GetByJmbg(jmbg);
             int id = patientRepository.GenerateNewAnamnesisId();
             Anamnesis anamnesis = new Anamnesis(id, type, name, description);
             patient.MedicalRecord.Anamnesis.Add(anamnesis);
             Update(patient);
+            return anamnesis;
         }
 
-        public void UpdateAnamnesisDescription(string jmbg, int id, string description)
+        public Anamnesis UpdateAnamnesisDescription(string jmbg, int id, string description)
         {
             Patient patient = patientRepository.GetByJmbg(jmbg);
             Anamnesis anamnesis = patient.MedicalRecord.Anamnesis.Find(obj => obj.Id == id);
             anamnesis.Description = description;
             Update(patient);
+            return anamnesis;
         }
 
         public string CheckForNotification(Patient patient)
@@ -137,13 +139,13 @@ namespace Service
 
         }
 
-        //public void AddPrescription(string jmbg, Prescription prescription)
-        //{
-        //    Patient patient = patientRepository.GetByJmbg(jmbg);
-        //    int id = patientRepository.GenerateNewAnamnesisId();
-        //    Anamnesis anamnesis = new Anamnesis(id, type, name, description);
-        //    patient.MedicalRecord.Anamnesis.Add(anamnesis);
-        //    Update(patient);
-        //}
+        public Prescription AddPrescription(string jmbg, Medicine medicine, int quantity, string description)
+        {
+            Patient patient = patientRepository.GetByJmbg(jmbg);
+            Prescription prescription = new Prescription(medicine, quantity, description);
+            patient.MedicalRecord.Prescription.Add(prescription);
+            Update(patient);
+            return prescription;
+        }
     }
 }
