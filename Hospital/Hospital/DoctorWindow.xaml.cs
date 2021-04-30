@@ -74,11 +74,21 @@ namespace Hospital
             //Employee doctor = new Employee(doctorUser, EmployeeType.doctor);
             //app.employeeController.Save(doctor);
 
+            //DateTime date = new DateTime(1988, 2, 14);
+            //User doctorUser = new User("2", "Jovan", "Simic", "jovanusername", "jovanesifra", "jovanemail", "jovanadresa", date);
+            //Employee doctor = new Employee(doctorUser, EmployeeType.doctor);
+            //app.employeeController.Save(doctor);
+
+
             Doctor = app.employeeController.GetByJmbg("1");
 
 
             //app.roomController.Save("336", RoomType.exam, 3, "detalji");
             //Doctor.Room = app.roomController.GetByName("336");
+            //app.employeeController.Update(Doctor);
+
+            //app.roomController.Save("111", RoomType.exam, 1, "111detalji");
+            //Doctor.Room = app.roomController.GetByName("111");
             //app.employeeController.Update(Doctor);
 
 

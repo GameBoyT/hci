@@ -5,8 +5,18 @@
     "RoomType": 2,
     "Floor": 3,
     "Detail": "detalji",
-    "Appointments": null,
-    "StaticEquipments": null,
-    "DynamicEquipments": null
+    "Appointments": [],
+    "StaticEquipments": [],
+    "DynamicEquipments": []
+  },
+  {
+    "Id": 2,
+    "Name": "111",
+    "RoomType": 2,
+    "Floor": 1,
+    "Detail": "111detalji",
+    "Appointments": [],
+    "StaticEquipments": [],
+    "DynamicEquipments": []
   }
 ]

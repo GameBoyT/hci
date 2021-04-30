@@ -1,0 +1,60 @@
+[
+  {
+    "User": {
+      "Jmbg": "1",
+      "FirstName": "Djordje",
+      "LastName": "Tovilovic",
+      "Username": "djoleusername",
+      "Password": "djolesifra",
+      "Email": "djoleemail",
+      "Address": "djoleadresa",
+      "DateOfBirth": "1985-04-26T00:00:00"
+    },
+    "EmployeeType": 0,
+    "Salary": 0.0,
+    "AnnualLeave": 0,
+    "Room": {
+      "Id": 1,
+      "Name": "336",
+      "RoomType": 2,
+      "Floor": 3,
+      "Detail": "detalji",
+      "Appointments": [],
+      "StaticEquipments": [],
+      "DynamicEquipments": []
+    },
+    "Specialization": null,
+    "Appointment": [],
+    "Notification": [],
+    "Reviews": []
+  },
+  {
+    "User": {
+      "Jmbg": "2",
+      "FirstName": "Jovan",
+      "LastName": "Simic",
+      "Username": "jovanusername",
+      "Password": "jovanesifra",
+      "Email": "jovanemail",
+      "Address": "jovanadresa",
+      "DateOfBirth": "1988-02-14T00:00:00"
+    },
+    "EmployeeType": 0,
+    "Salary": 0.0,
+    "AnnualLeave": 0,
+    "Room": {
+      "Id": 2,
+      "Name": "111",
+      "RoomType": 2,
+      "Floor": 1,
+      "Detail": "111detalji",
+      "Appointments": [],
+      "StaticEquipments": [],
+      "DynamicEquipments": []
+    },
+    "Specialization": null,
+    "Appointment": [],
+    "Notification": [],
+    "Reviews": []
+  }
+]
