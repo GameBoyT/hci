@@ -72,8 +72,6 @@ namespace Hospital
             //app.medicineController.Save("Paracetamol");
 
 
-
-
             //DateTime date = new DateTime(1985, 4, 26);
             //User doctorUser = new User("1", "Djordje", "Tovilovic", "djoleusername", "djolesifra", "djoleemail", "djoleadresa", date);
             //Employee doctor = new Employee(doctorUser, EmployeeType.doctor);
@@ -97,17 +95,29 @@ namespace Hospital
             //app.employeeController.Update(Doctor);
 
 
-            StaticEquipment staticEquipment1 = app.staticEquipmentController.GetById(1);
-            StaticEquipment staticEquipment2 = app.staticEquipmentController.GetById(2);
+            //StaticEquipment staticEquipment1 = app.staticEquipmentController.GetById(1);
+            //StaticEquipment staticEquipment2 = app.staticEquipmentController.GetById(2);
 
-            Room room3 = app.roomController.GetById(3);
-            Room room4 = app.roomController.GetById(4);
-            room3.StaticEquipments.Add(staticEquipment1);
-            room4.StaticEquipments.Add(staticEquipment2);
+            //Room room3 = app.roomController.GetById(3);
+            //Room room4 = app.roomController.GetById(4);
+            //room3.StaticEquipments.Add(staticEquipment1);
+            //room4.StaticEquipments.Add(staticEquipment2);
 
 
-            app.roomController.Update(room3);
-            app.roomController.Update(room4);
+            //app.roomController.Update(room3);
+            //app.roomController.Update(room4);
+
+
+            //DateTime date1 = new DateTime(1995, 2, 16);
+            //User directorUser = new User("3", "Nikola", "Sljivkov", "nikolausername", "nikolasifra", "nikolaemail", "nikolaemail", date1);
+            //Employee director = new Employee(directorUser, EmployeeType.director);
+            //app.employeeController.Save(director);
+
+            //DateTime date2 = new DateTime(1974, 6, 8);
+            //User secretaryUser = new User("4", "Vladimir", "Trpka", "vladimirusername", "vladimiresifra", "vladimiremail", "vladimiradresa", date2);
+            //Employee secretary = new Employee(secretaryUser, EmployeeType.secretary);
+            //app.employeeController.Save(secretary);
+
 
 
             appointment_date.SelectedDate = DateTime.Today;
