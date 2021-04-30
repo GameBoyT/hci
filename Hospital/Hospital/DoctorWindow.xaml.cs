@@ -54,11 +54,16 @@ namespace Hospital
             //app.patientController.Save(patient2);
             //app.patientController.Save(patient3);
 
-            //roomController.Save("10", RoomType.exam, 2, "Rendgen soba");
+            //app.roomController.Save("10", RoomType.operating, 0, "Operation room 1");
+            //app.roomController.Save("11", RoomType.operating, 0, "Operation room 2");
 
-            //staticEquipmentController.Save("Rendgen", "10", 1, "Rendgen masina");
-            //List<StaticEquipment> roomsWitheRendgen = staticEquipmentController.GetAllRoomsWithEquipmentName("rendgen");
+            //app.staticEquipmentController.Save("Anaesthesia", "10", 1, "Anaesthesia machine");
+            //app.staticEquipmentController.Save("Anaesthesia", "11", 1, "Anaesthesia machine");
+
+
+            //List<Room> roomsWitheRendgen = app.staticEquipmentController.GetAllRoomsWithEquipmentName("Anaesthesia");
             //MessageBox.Show(roomsWitheRendgen[0].Name);
+
 
             //app.medicineController.Save("Aspirin");
             //app.medicineController.Save("Andol");
@@ -66,27 +71,53 @@ namespace Hospital
             //app.medicineController.Save("Brufen");
             //app.medicineController.Save("Paracetamol");
 
-            Doctor = app.employeeController.GetByJmbg("1");
-
-
 
             //DateTime date = new DateTime(1985, 4, 26);
             //User doctorUser = new User("1", "Djordje", "Tovilovic", "djoleusername", "djolesifra", "djoleemail", "djoleadresa", date);
             //Employee doctor = new Employee(doctorUser, EmployeeType.doctor);
             //app.employeeController.Save(doctor);
 
+            //DateTime date = new DateTime(1988, 2, 14);
+            //User doctorUser = new User("2", "Jovan", "Simic", "jovanusername", "jovanesifra", "jovanemail", "jovanadresa", date);
+            //Employee doctor = new Employee(doctorUser, EmployeeType.doctor);
+            //app.employeeController.Save(doctor);
 
 
-            //Employee emp = app.employeeController.GetByJmbg("1");
-            //MessageBox.Show(emp.User.Jmbg);
+            Doctor = app.employeeController.GetByJmbg("1");
 
 
-            //DateTime date = new DateTime(1985, 4, 26);
-            //User employeeUser = new User("15", "Djordje", "Tovilovic", "djoleusername", "djolesifra", "djoleemail", "djoleadresa", date);
-            //Employee emp = new Employee(employeeUser, EmployeeType.secretary);
-            //app.employeeController.Save(emp);
+            //app.roomController.Save("336", RoomType.exam, 3, "detalji");
+            //Doctor.Room = app.roomController.GetByName("336");
+            //app.employeeController.Update(Doctor);
 
-            //Employee emp = app.employeeController.GetEmployees()[0];
+            //app.roomController.Save("111", RoomType.exam, 1, "111detalji");
+            //Doctor.Room = app.roomController.GetByName("111");
+            //app.employeeController.Update(Doctor);
+
+
+            //StaticEquipment staticEquipment1 = app.staticEquipmentController.GetById(1);
+            //StaticEquipment staticEquipment2 = app.staticEquipmentController.GetById(2);
+
+            //Room room3 = app.roomController.GetById(3);
+            //Room room4 = app.roomController.GetById(4);
+            //room3.StaticEquipments.Add(staticEquipment1);
+            //room4.StaticEquipments.Add(staticEquipment2);
+
+
+            //app.roomController.Update(room3);
+            //app.roomController.Update(room4);
+
+
+            //DateTime date1 = new DateTime(1995, 2, 16);
+            //User directorUser = new User("3", "Nikola", "Sljivkov", "nikolausername", "nikolasifra", "nikolaemail", "nikolaemail", date1);
+            //Employee director = new Employee(directorUser, EmployeeType.director);
+            //app.employeeController.Save(director);
+
+            //DateTime date2 = new DateTime(1974, 6, 8);
+            //User secretaryUser = new User("4", "Vladimir", "Trpka", "vladimirusername", "vladimiresifra", "vladimiremail", "vladimiradresa", date2);
+            //Employee secretary = new Employee(secretaryUser, EmployeeType.secretary);
+            //app.employeeController.Save(secretary);
+
 
 
             appointment_date.SelectedDate = DateTime.Today;
@@ -118,7 +149,7 @@ namespace Hospital
                 startTimeTextBox.Text = Appointment.StartTime.ToString("HH:mm");
                 patientJmbg.Text = Appointment.PatientJmbg;
                 roomsToShow.Clear();
-                roomsToShow.Add(Appointment.Room);
+                roomsToShow.Add(app.roomController.GetById(Appointment.RoomId));
                 rooms.SelectedIndex = 0;
 
 
@@ -167,11 +198,11 @@ namespace Hospital
 
             if (appointmentType == AppointmentType.examination)
             {
-                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, Doctor.Room);
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, Doctor.RoomId);
             }
             else
             {
-                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, (Room)rooms.SelectedItem);
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, ((Room)rooms.SelectedItem).Id);
             }
         }
 
@@ -186,11 +217,11 @@ namespace Hospital
             rooms.SelectedIndex = 0;
             if (appointmentType == AppointmentType.examination)
             {
-                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, Doctor.Room);
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, Doctor.RoomId);
             }
             else
             {
-                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, (Room)rooms.SelectedItem);
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, ((Room)rooms.SelectedItem).Id);
             }
         }
 
@@ -291,7 +322,7 @@ namespace Hospital
                 appointmentType = AppointmentType.examination;
                 roomsToShow.Clear();
                 rooms.SelectedIndex = -1;
-                roomsToShow.Add(Doctor.Room);
+                roomsToShow.Add(app.roomController.GetById(Doctor.RoomId));
                 rooms.IsEnabled = false;
                 equipmentName.IsEnabled = false;
                 findButton.IsEnabled = false;
@@ -311,7 +342,7 @@ namespace Hospital
 
         private void FindButton_Click(object sender, RoutedEventArgs e)
         {
-            roomsToShow = app.staticEquipmentController.GetAllRoomsWithEquipmentName(equipmentName.Text);
+            //roomsToShow = app.staticEquipmentController.GetAllRoomsWithEquipmentName(equipmentName.Text);
             WindowUpdate();
         }
 

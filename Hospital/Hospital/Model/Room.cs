@@ -11,6 +11,9 @@ namespace Model
             RoomType = roomType;
             Floor = floor;
             Detail = detail;
+            Appointments = new System.Collections.Generic.List<Appointment>();
+            StaticEquipments = new System.Collections.Generic.List<StaticEquipment>();
+            DynamicEquipments = new System.Collections.Generic.List<DynamicEquipment>();
         }
 
         public int Id

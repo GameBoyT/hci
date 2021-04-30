@@ -7,39 +7,13 @@ namespace Hospital
         public MainWindow()
         {
             InitializeComponent();
-
-
-            // Test-ovi kontrolera
-
-            //DoctorController doctorController = new DoctorController();
-            //var k = doctorController.GetAll();
-            //MessageBox.Show(k[0].User.FirstName);
-            //PatientController patientController = new PatientController();
-            //var s = patientController.GetAll();
-            //MessageBox.Show(s[0].User.FirstName);
-
-            //AppointmentController patientController = new AppointmentController();
-            //var s = patientController.GetAll();
-            //MessageBox.Show(s[0].Doctor.User.FirstName);
-
-
-            //StaticEquipmentController patientController = new StaticEquipmentController();
-            //var s = patientController.GetAll();
         }
-
-        //private void roomOptions(object sender, RoutedEventArgs e)
-        //{
-        //    RoomOptions room = new RoomOptions();
-        //    room.Show();
-        //}
 
         private void Button_Click_Patient(object sender, RoutedEventArgs e)
         {
             var new_window = new PatientWindow();
             new_window.Show();
             Application.Current.MainWindow.Hide();
-
-
         }
 
         private void Button_Click_Doctor(object sender, RoutedEventArgs e)
