@@ -19,8 +19,6 @@ namespace Model
             ;
         }
 
-        public int RoomId { get; set; }
-
 
         public string Name
         {
@@ -29,6 +27,8 @@ namespace Model
             set
             ;
         }
+
+        public int RoomId { get; set; }
 
         public int Quantity
         {

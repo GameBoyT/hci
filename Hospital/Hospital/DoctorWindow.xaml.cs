@@ -198,7 +198,7 @@ namespace Hospital
 
             if (appointmentType == AppointmentType.examination)
             {
-                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, Doctor.Room.Id);
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, Doctor.RoomId);
             }
             else
             {
@@ -217,7 +217,7 @@ namespace Hospital
             rooms.SelectedIndex = 0;
             if (appointmentType == AppointmentType.examination)
             {
-                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, Doctor.Room.Id);
+                return new Appointment(id, appointmentType, appointmentDateTime, duration, patientJmbg.Text, Doctor.User.Jmbg, Doctor.RoomId);
             }
             else
             {
@@ -322,7 +322,7 @@ namespace Hospital
                 appointmentType = AppointmentType.examination;
                 roomsToShow.Clear();
                 rooms.SelectedIndex = -1;
-                roomsToShow.Add(Doctor.Room);
+                roomsToShow.Add(app.roomController.GetById(Doctor.RoomId));
                 rooms.IsEnabled = false;
                 equipmentName.IsEnabled = false;
                 findButton.IsEnabled = false;
