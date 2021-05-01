@@ -20,20 +20,21 @@ namespace Service
             return ConvertListToDTO(appointments);
         }
 
-        public List<AppointmentDTO> GetAllDTO()
+        public AppointmentDTO GetById(int id)
         {
-            List<Appointment> appointments = appointmentRepository.GetAll();
-            return ConvertListToDTO(appointments);
-        }
-
-        public Appointment GetById(int id)
-        {
-            return appointmentRepository.GetById(id);
+            return ConvertToDTO(appointmentRepository.GetById(id));
         }
 
         public void Save(Appointment appointment)
         {
             appointmentRepository.Save(appointment);
+        }
+
+        public AppointmentDTO SaveDTO(AppointmentDTO appointment)
+        {
+            appointment.Id = appointmentRepository.GenerateNewId();
+            appointmentRepository.Save(ConvertToModel(appointment));
+            return appointment;
         }
 
         public void Delete(int id)
@@ -61,9 +62,9 @@ namespace Service
             return appointmentRepository.GenerateNewId();
         }
 
-        public bool AppointmentTimeInFuture(Appointment appointment)
+        public bool IsTimeInFuture(DateTime appointmentStartTime)
         {
-            if (appointment.StartTime.Ticks > DateTime.Now.Ticks)
+            if (appointmentStartTime.Ticks > DateTime.Now.Ticks)
                 return true;
             return false;
         }
@@ -91,12 +92,11 @@ namespace Service
             return false;
         }
 
-
         public bool AppointmentValidationWithoutOverlaping(Appointment appointment)
         {
             List<Appointment> appointments = appointmentRepository.GetAll();
 
-            if (!AppointmentTimeInFuture(appointment))
+            if (!IsTimeInFuture(appointment.StartTime))
             {
                 return true;
             }
@@ -131,7 +131,7 @@ namespace Service
         {
             List<Appointment> appointments = appointmentRepository.GetAll();
 
-            if (!AppointmentTimeInFuture(appointment))
+            if (!IsTimeInFuture(appointment.StartTime))
             {
                 return true;
             }

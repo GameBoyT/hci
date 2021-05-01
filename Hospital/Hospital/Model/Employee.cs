@@ -28,7 +28,7 @@ namespace Model
         public System.Collections.Generic.List<Appointment> Appointments { get; set; }
 
         public System.Collections.Generic.List<Notification> Notifications { get; set; }
-        
+
         public System.Collections.Generic.List<Review> Reviews { get; set; }
     }
 }

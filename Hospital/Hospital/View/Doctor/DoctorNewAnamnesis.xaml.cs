@@ -1,7 +1,7 @@
 ﻿using Model;
 using System.Windows;
 
-namespace Hospital
+namespace Hospital.View.Doctor
 {
     public partial class DoctorNewAnamnesis : Window
     {
@@ -9,27 +9,22 @@ namespace Hospital
         public string AnamnesisName { get; set; }
         public string AnamnesisType { get; set; }
 
-        public Appointment Appointment { get; set; }
+        public DoctorViewPatient ParentWindow { get; set; }
 
-        public DoctorViewPatient PastWindow { get; set; }
-
-        public DoctorNewAnamnesis(Appointment appointment, DoctorViewPatient window)
+        public DoctorNewAnamnesis(DoctorViewPatient window)
         {
             InitializeComponent();
             app = Application.Current as App;
             this.DataContext = this;
-            Appointment = appointment;
-            PastWindow = window;
+            ParentWindow = window;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             if (AnamnesisName != "" && AnamnesisType != "")
             {
-                Anamnesis anamnesis = app.patientController.AddAnamnesis(Appointment.PatientJmbg, AnamnesisName, AnamnesisType, "");
-                Appointment = app.appointmentController.GetById(Appointment.Id);
-
-                PastWindow.Anamnesis.Add(anamnesis);
+                Anamnesis anamnesis = app.patientController.AddAnamnesis(ParentWindow.Appointment.PatientJmbg, AnamnesisName, AnamnesisType, "");
+                ParentWindow.Anamnesis.Add(anamnesis);
                 this.Close();
             }
             else

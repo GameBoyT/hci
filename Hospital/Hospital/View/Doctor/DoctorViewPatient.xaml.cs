@@ -6,12 +6,12 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Hospital
+namespace Hospital.View.Doctor
 {
     public partial class DoctorViewPatient : Window, INotifyPropertyChanged
     {
         App app;
-        public Appointment Appointment { get; set; }
+        public AppointmentDTO Appointment { get; set; }
         public Patient Patient { get; set; }
         public Medicine Medicine { get; set; }
         public ObservableCollection<Anamnesis> Anamnesis { get; set; }
@@ -89,13 +89,10 @@ namespace Hospital
             this.DataContext = this;
             app = Application.Current as App;
 
-            Patient = app.patientController.GetByJmbg(appointment.PatientJmbg);
-            //TODO: Change to this or to parameter appointmentId
-            //Appointment = appointment;
-
-            Appointment = app.appointmentController.GetById(appointment.Id);
-            if (!app.appointmentController.AppointmentTimeInFuture(Appointment))
+            Appointment = appointment;
+            if (!app.appointmentController.IsTimeInFuture(Appointment.StartTime))
                 IsAppointmentTime = true;
+            Patient = app.patientController.GetByJmbg(appointment.PatientJmbg);
 
             Anamnesis = new ObservableCollection<Anamnesis>(Patient.MedicalRecord.Anamnesis);
             Prescriptions = new ObservableCollection<Prescription>(Patient.MedicalRecord.Prescription);
@@ -109,7 +106,7 @@ namespace Hospital
             var item = (sender as ListView).SelectedItem;
             if (item != null)
             {
-                if (!app.appointmentController.AppointmentTimeInFuture(Appointment))
+                if (!app.appointmentController.IsTimeInFuture(Appointment.StartTime))
                 {
                     IsAppointmentTime = true;
                 }
@@ -119,10 +116,9 @@ namespace Hospital
 
         private void SaveChangesButton_Click(object sender, RoutedEventArgs e)
         {
-            Anamnesis selectedAnamnesis = Patient.MedicalRecord.Anamnesis[lvDataBinding.SelectedIndex];
+            Anamnesis selectedAnamnesis = Anamnesis[lvDataBinding.SelectedIndex];
             Anamnesis updatedAnamnesis = app.patientController.UpdateAnamnesisDescription(Patient.User.Jmbg, selectedAnamnesis.Id, DetailText);
-            int index = Anamnesis.IndexOf(selectedAnamnesis);
-            Anamnesis[index] = updatedAnamnesis;
+            selectedAnamnesis.Description = updatedAnamnesis.Description;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -132,13 +128,13 @@ namespace Hospital
 
         private void AddNewButton_Click(object sender, RoutedEventArgs e)
         {
-            if (app.appointmentController.AppointmentTimeInFuture(Appointment))
+            if (app.appointmentController.IsTimeInFuture(Appointment.StartTime))
             {
                 MessageBox.Show("You cannot add anamnesis until or after the appointment");
             }
             else
             {
-                DoctorNewAnamnesis doctorNewAnamnesisWindow = new DoctorNewAnamnesis(Appointment, this);
+                DoctorNewAnamnesis doctorNewAnamnesisWindow = new DoctorNewAnamnesis(this);
                 doctorNewAnamnesisWindow.Show();
             }
         }

@@ -16,12 +16,8 @@ namespace Controller
         {
             return appointmentService.GetAll();
         }
-        public List<AppointmentDTO> GetAllDTO()
-        {
-            return appointmentService.GetAllDTO();
-        }
 
-        public Appointment GetById(int id)
+        public AppointmentDTO GetById(int id)
         {
             return appointmentService.GetById(id);
         }
@@ -29,6 +25,11 @@ namespace Controller
         public void Save(Appointment appointment)
         {
             appointmentService.Save(appointment);
+        }
+
+        public AppointmentDTO SaveDTO(AppointmentDTO appointment)
+        {
+            return appointmentService.SaveDTO(appointment);
         }
 
         public void Delete(int id)
@@ -55,9 +56,9 @@ namespace Controller
         {
             return appointmentService.AppointmentTimeIsInvalid(appointment);
         }
-        public bool AppointmentTimeInFuture(Appointment appointment)
+        public bool IsTimeInFuture(DateTime appointmentStartTime)
         {
-            return appointmentService.AppointmentTimeInFuture(appointment);
+            return appointmentService.IsTimeInFuture(appointmentStartTime);
         }
         public bool AppointmentIsTaken(Appointment appointment, string doctorId)
         {

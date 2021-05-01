@@ -128,11 +128,11 @@ namespace Hospital
             doctors = doctorController.GetDoctors();
             timeDataGrid.Visibility = Visibility.Collapsed;
             patient = patientController.GetByJmbg("5");
-            
+
 
             List<Appointment> apps = new List<Appointment>();
 
-            
+
             doctorsDataGrid.ItemsSource = doctors;
         }
 

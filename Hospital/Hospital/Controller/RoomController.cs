@@ -48,5 +48,15 @@ namespace Controller
             throw new NotImplementedException();
         }
 
+        public List<Room> GetOperationRooms()
+        {
+            return roomService.GetOperationRooms();
+        }
+
+        public List<Room> GetRoomsWithEquipmentName(string name)
+        {
+            return roomService.GetRoomsWithEquipmentName(name);
+        }
+
     }
 }

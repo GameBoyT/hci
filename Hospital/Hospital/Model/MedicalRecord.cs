@@ -7,11 +7,11 @@ namespace Model
     {
         public List<String> Alergies { get; set; }
 
-        public System.Collections.Generic.List<Prescription> Prescription { get; set; }
+        public List<Prescription> Prescription { get; set; }
 
-        public System.Collections.Generic.List<Anamnesis> Anamnesis { get; set; }
+        public List<Anamnesis> Anamnesis { get; set; }
 
-        public System.Collections.Generic.List<Referral> Referrals { get; set; }
+        public List<Referral> Referrals { get; set; }
 
         public MedicalRecord()
         {

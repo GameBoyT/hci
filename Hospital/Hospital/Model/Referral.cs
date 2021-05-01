@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Model;
-
-namespace Model
+﻿namespace Model
 {
     public class Referral
     {
@@ -14,7 +9,7 @@ namespace Model
         }
 
         public string DoctorJmbg { get; set; }
-        
+
         public string Description { get; set; }
     }
 }
