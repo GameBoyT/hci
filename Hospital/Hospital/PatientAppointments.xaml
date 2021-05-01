@@ -15,8 +15,10 @@
                             Binding="{Binding StartTime}" />
                 <DataGridTextColumn Header="Duration"
                             Binding="{Binding DurationInMinutes}" />
-                <DataGridTextColumn Header="Doctor"
-                            Binding="{Binding Doctor.User.LastName}" />
+                <DataGridTextColumn Header="LastName"
+                            Binding="{Binding DoctorFirstName}" />
+                <DataGridTextColumn Header="FirstName"
+                            Binding="{Binding DoctorLastName}" />
 
 
             </DataGrid.Columns>

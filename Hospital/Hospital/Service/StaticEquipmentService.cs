@@ -13,10 +13,6 @@ namespace Service
         {
             return staticEquipmentRepository.GetAll();
         }
-        public List<Room> GetAllRoomsWithEquipmentName(string name)
-        {
-            return staticEquipmentRepository.GetAllRoomsWithEquipmentName(name);
-        }
 
         public int GenerateNewId()
         {
@@ -32,7 +28,7 @@ namespace Service
         {
             int id = staticEquipmentRepository.GenerateNewId();
             Room room = roomRepository.GetByName(roomName);
-            StaticEquipment staticEquipment = new StaticEquipment(id, name, room, quantity, description);
+            StaticEquipment staticEquipment = new StaticEquipment(id, name, room.Id, quantity, description);
             staticEquipmentRepository.Save(staticEquipment);
 
             //room.AddStaticEquipment(staticEquipment);

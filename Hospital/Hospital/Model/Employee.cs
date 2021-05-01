@@ -8,8 +8,9 @@ namespace Model
         {
             User = user;
             EmployeeType = employeeType;
-            Appointment = new System.Collections.Generic.List<Appointment>();
-            Notification = new System.Collections.Generic.List<Notification>();
+            Appointments = new System.Collections.Generic.List<Appointment>();
+            Notifications = new System.Collections.Generic.List<Notification>();
+            Reviews = new System.Collections.Generic.List<Review>();
         }
 
         public User User { get; set; }
@@ -20,12 +21,14 @@ namespace Model
 
         public int AnnualLeave { get; set; }
 
-        public Room Room { get; set; }
+        public int RoomId { get; set; }
 
         public String Specialization { get; set; }
 
-        public System.Collections.Generic.List<Appointment> Appointment { get; set; }
+        public System.Collections.Generic.List<Appointment> Appointments { get; set; }
 
-        public System.Collections.Generic.List<Notification> Notification { get; set; }
+        public System.Collections.Generic.List<Notification> Notifications { get; set; }
+
+        public System.Collections.Generic.List<Review> Reviews { get; set; }
     }
 }

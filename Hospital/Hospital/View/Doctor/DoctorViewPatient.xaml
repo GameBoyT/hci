@@ -1,9 +1,9 @@
-﻿<Window x:Class="Hospital.DoctorViewPatient"
+﻿<Window x:Class="Hospital.View.Doctor.DoctorViewPatient"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Hospital"
+        xmlns:local="clr-namespace:Hospital.View.Doctor"
         mc:Ignorable="d"
         Title="DoctorViewPatient" Height="450" Width="800">
     <Grid x:Name="dvpGrid">
@@ -12,9 +12,8 @@
             <TabItem Header="Appointment Details">
                 <Grid Background="#FFE5E5E5">
                     <Label Content="Patient Details" HorizontalAlignment="Left" Margin="100,44,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2"/>
-
-                    <Grid Margin="55,75,468,143">
-                        <Grid.RowDefinitions>
+                        <Grid Margin="30,75,550,160">
+                            <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
                             <RowDefinition />
@@ -25,31 +24,19 @@
                             <ColumnDefinition />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <!--<Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30*"/>
-                        <ColumnDefinition Width="165*"/>
-                        <ColumnDefinition Width="599*"/>
-                    </Grid.ColumnDefinitions>-->
                         <TextBlock Grid.Column="0" Grid.Row="0">Name: </TextBlock>
                         <TextBlock Grid.Column="0" Grid.Row="1">Last Name: </TextBlock>
                         <TextBlock Grid.Column="0" Grid.Row="2">Jmbg: </TextBlock>
                         <TextBlock Grid.Column="0" Grid.Row="3">Date of birth:</TextBlock>
                         <TextBlock Grid.Column="0" Grid.Row="4">Address:</TextBlock>
-                        <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" Text="{Binding Path=Appointment.Patient.User.FirstName}"></TextBox>
-                        <TextBox Grid.Column="1" Grid.Row="1" IsReadOnly="True" Text="{Binding Path=Appointment.Patient.User.LastName}"></TextBox>
-                        <TextBox Grid.Column="1" Grid.Row="2" IsReadOnly="True" Text="{Binding Path=Appointment.Patient.User.Jmbg}"></TextBox>
-                        <TextBox Grid.Column="1" Grid.Row="3" IsReadOnly="True" Text="{Binding Path=Appointment.Patient.User.DateOfBirth, StringFormat='dd-MM-yyyy'}"></TextBox>
-                        <TextBox Grid.Column="1" Grid.Row="4" IsReadOnly="True" Text="{Binding Path=Appointment.Patient.User.Address}"></TextBox>
-
-                        <!--<Label Content="{Binding Path=Appointment.Patient.User.FirstName}" HorizontalAlignment="Left" Margin="116,75,0,0" VerticalAlignment="Top" Grid.Column="1"  Grid.Row="0"/>
-                        <Label Content="{Binding Path=Appointment.Patient.User.LastName}" HorizontalAlignment="Left" Margin="116,106,0,0" VerticalAlignment="Top" Grid.Column="1"  Grid.Row="1"/>
-                        <Label Content="{Binding Path=Appointment.Patient.User.Jmbg}" HorizontalAlignment="Left" Margin="117,137,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                        <Label Content="{Binding Path=Appointment.Patient.User.DateOfBirth}" HorizontalAlignment="Left" Margin="116,168,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                        <Label Content="{Binding Path=Appointment.Patient.User.Address}" HorizontalAlignment="Left" Margin="118,199,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2"/>-->
+                        <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" Text="{Binding Path=Patient.User.FirstName}"></TextBox>
+                        <TextBox Grid.Column="1" Grid.Row="1" IsReadOnly="True" Text="{Binding Path=Patient.User.LastName}"></TextBox>
+                        <TextBox Grid.Column="1" Grid.Row="2" IsReadOnly="True" Text="{Binding Path=Patient.User.Jmbg}"></TextBox>
+                        <TextBox Grid.Column="1" Grid.Row="3" IsReadOnly="True" Text="{Binding Path=Patient.User.DateOfBirth, StringFormat='dd-MM-yyyy'}"></TextBox>
+                        <TextBox Grid.Column="1" Grid.Row="4" IsReadOnly="True" Text="{Binding Path=Patient.User.Address}"></TextBox>
                     </Grid>
                     <Button Content="Back" HorizontalAlignment="Left" Margin="40,340,0,0" VerticalAlignment="Top" Height="30" Width="75" Click="BackButton_Click"/>
                 </Grid>
-
             </TabItem>
             <TabItem Header="Anamnesis">
                 <Grid>
@@ -73,11 +60,7 @@
                     <Button Content="Add New" HorizontalAlignment="Left" Margin="206,305,0,0" VerticalAlignment="Top" Height="30" Width="60" Click="AddNewButton_Click"/>
                     <Button Content="Cancel" HorizontalAlignment="Left" Margin="535,305,0,0" VerticalAlignment="Top" Height="30" Width="60" Click="CancelButton_Click"/>
                     <Button Content="Back" HorizontalAlignment="Left" Margin="40,340,0,0" VerticalAlignment="Top" Height="30" Width="75" Click="BackButton_Click"/>
-
                 </Grid>
-
-
-
             </TabItem>
             <TabItem Header="Prescription">
                 <Grid>
@@ -91,12 +74,9 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <TextBox Text="{Binding Path=DescriptionText}" IsEnabled="{Binding Path=IsAppointmentTime}" HorizontalAlignment="Left" Margin="249,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="139"/>
 
                     <TextBlock HorizontalAlignment="Left" Margin="78,23,0,0" Text="Medicine" TextWrapping="Wrap" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="593,23,0,0" Text="Patients Prescriptions" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                    <Button Content="Add Prescription" HorizontalAlignment="Left" Margin="324,305,0,0" VerticalAlignment="Top" Height="30" Width="97" Click="PrescriptionAddButton_Click"/>
-                    <Button Content="Back" HorizontalAlignment="Left" Margin="40,340,0,0" VerticalAlignment="Top" Height="30" Width="75" Click="BackButton_Click"/>
                     <ListView Margin="513,61,25,133" x:Name="lvPatientPrescriptionDataBinding" >
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -110,9 +90,11 @@
                         </ListView.ItemTemplate>
                     </ListView>
                     <Label Content="Enter Quantity: " HorizontalAlignment="Left" Margin="249,61,0,0" VerticalAlignment="Top"/>
-                    <TextBox Text="{Binding Path=Quantity}" HorizontalAlignment="Left" Margin="346,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
+                    <TextBox Text="{Binding Path=Quantity}"  IsEnabled="{Binding Path=IsAppointmentTime}" HorizontalAlignment="Left" Margin="346,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
                     <Label Content="Enter Use Description: " HorizontalAlignment="Left" Margin="249,92,0,0" VerticalAlignment="Top"/>
-
+                    <TextBox Text="{Binding Path=DescriptionText}" IsEnabled="{Binding Path=IsAppointmentTime}" HorizontalAlignment="Left" Margin="249,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="139"/>
+                    <Button Content="Add Prescription" HorizontalAlignment="Left" Margin="324,305,0,0" VerticalAlignment="Top" Height="30" Width="97" Click="PrescriptionAddButton_Click"/>
+                    <Button Content="Back" HorizontalAlignment="Left" Margin="40,340,0,0" VerticalAlignment="Top" Height="30" Width="75" Click="BackButton_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>

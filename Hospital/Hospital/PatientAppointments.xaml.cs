@@ -3,6 +3,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using DTO;
 
 
 namespace Hospital
@@ -15,12 +16,13 @@ namespace Hospital
         AppointmentController appointmentController = new AppointmentController();
         PatientController patientController = new PatientController();
         List<Appointment> appointments = new List<Appointment>();
+        List<AppointmentDTO> appointmentDTOs = new List<AppointmentDTO>();
         public PatientAppointments()
         {
             InitializeComponent();
 
-            appointments = appointmentController.GetAppointmentsForPatient("3");
-            readDataGrid.ItemsSource = appointments;
+            appointmentDTOs = appointmentController.GetAppointmentsForPatient("5");
+            readDataGrid.ItemsSource = appointmentDTOs;
             cancelButton.Visibility = Visibility.Collapsed;
             updateConfirm.Visibility = Visibility.Collapsed;
 
@@ -29,8 +31,8 @@ namespace Hospital
 
         private void WindowUpdate()
         {
-            appointments = appointmentController.GetAppointmentsForPatient("3");
-            readDataGrid.ItemsSource = appointments;
+            appointmentDTOs = appointmentController.GetAppointmentsForPatient("5");
+            readDataGrid.ItemsSource = appointmentDTOs;
         }
 
         private void ClearFileds()
@@ -44,10 +46,11 @@ namespace Hospital
         {
             try
             {
-                Appointment appoinment = (Appointment)readDataGrid.SelectedItems[0];
-                new_appointment_date.SelectedDate = appoinment.StartTime.Date;
-                durationTextBox.Text = appoinment.DurationInMinutes.ToString();
-                startTimeTextBox.Text = appoinment.StartTime.ToString(("HH:mm"));
+                AppointmentDTO appoinmentDTO = (AppointmentDTO)readDataGrid.SelectedItems[0];
+                Appointment appointment = appointmentController.ConvertToModel(appoinmentDTO);
+                new_appointment_date.SelectedDate = appointment.StartTime.Date;
+                durationTextBox.Text = appointment.DurationInMinutes.ToString();
+                startTimeTextBox.Text = appointment.StartTime.ToString(("HH:mm"));
                 updateConfirm.Visibility = Visibility.Visible;
                 cancelButton.Visibility = Visibility.Visible;
             }
@@ -57,31 +60,40 @@ namespace Hospital
             }
         }
 
-        private void updateConfirm_Click(object sender, RoutedEventArgs e)
+
+        private AppointmentDTO AppointmentFromData()
         {
-            Appointment oldAppintment = (Appointment)readDataGrid.SelectedItems[0];
+
+            AppointmentDTO oldAppointmentDTO = (AppointmentDTO)readDataGrid.SelectedItems[0];
+            Appointment oldAppointment = appointmentController.ConvertToModel(oldAppointmentDTO);
             DateTime pickedDate = new_appointment_date.SelectedDate.Value;
             int hours = Int32.Parse(startTimeTextBox.Text.Split(':')[0]);
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
 
-            Appointment newAppointment = new Appointment(oldAppintment.Id,
-                                                         oldAppintment.AppointmentType,
+            AppointmentDTO newAppointment = new AppointmentDTO(oldAppointment.Id,
+                                                         oldAppointment.AppointmentType,
                                                          appointmentDateTime,
                                                          duration,
-                                                         oldAppintment.Patient,
-                                                         oldAppintment.Doctor,
-                                                         oldAppintment.Room);
+                                                         oldAppointment.PatientJmbg,
+                                                         oldAppointment.DoctorJmbg,
+                                                         oldAppointment.RoomId);
+            return newAppointment;
+        }
 
-            bool error = appointmentController.AppointmentTimeIsInvalid(newAppointment);
+        private void updateConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+            bool error = appointmentController.AppointmentTimeIsInvalid(AppointmentFromData());
             if (error)
             {
                 MessageBox.Show("Izmjena nije moguca", "greska");
             }
             else
             {
-                appointmentController.Update(newAppointment);
+                appointmentController.Update(AppointmentFromData());
                 WindowUpdate();
                 updateConfirm.Visibility = Visibility.Collapsed;
                 cancelButton.Visibility = Visibility.Collapsed;
@@ -101,9 +113,9 @@ namespace Hospital
 
         private void deletebutton_Click(object sender, RoutedEventArgs e)
         {
-            Appointment appointment = (Appointment)readDataGrid.SelectedItems[0];
-            MessageBox.Show(patientController.AntiTrollCheck(appointment.Id), "obavjestenje");
-            appointmentController.Delete(appointment.Id);
+            AppointmentDTO appointmentDTO = (AppointmentDTO)readDataGrid.SelectedItems[0];
+            MessageBox.Show(patientController.AntiTrollCheck(appointmentDTO.Id), "obavjestenje");
+            appointmentController.Delete(appointmentDTO.Id);
 
             WindowUpdate();
         }

@@ -36,8 +36,7 @@ namespace Repository
 
         public void WriteToJson()
         {
-            string json = JsonConvert.SerializeObject(_rooms, Formatting.Indented,
-                new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            string json = JsonConvert.SerializeObject(_rooms, Formatting.Indented);
             File.WriteAllText(_fileLocation, json);
         }
 
@@ -93,5 +92,22 @@ namespace Repository
         {
             throw new NotImplementedException();
         }
+
+        public List<Room> GetOperationRooms()
+        {
+            return _rooms.FindAll(obj => obj.RoomType == RoomType.operating);
+        }
+
+        public List<Room> GetRoomsWithEquipmentName(string name)
+        {
+            List<Room> roomsToReturn = new List<Room>();
+            foreach (Room room in _rooms)
+            {
+                if (room.StaticEquipments.Exists(obj => string.Equals(obj.Name, name, StringComparison.OrdinalIgnoreCase)))
+                    roomsToReturn.Add(room);
+            }
+            return roomsToReturn;
+        }
+
     }
 }

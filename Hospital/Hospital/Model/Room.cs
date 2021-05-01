@@ -11,47 +11,20 @@ namespace Model
             RoomType = roomType;
             Floor = floor;
             Detail = detail;
+            Appointments = new System.Collections.Generic.List<Appointment>();
+            StaticEquipments = new System.Collections.Generic.List<StaticEquipment>();
+            DynamicEquipments = new System.Collections.Generic.List<DynamicEquipment>();
         }
 
-        public int Id
-        {
-            get
-            ;
-            set
-            ;
-        }
+        public int Id { get; set; }
 
-        public String Name
-        {
-            get
-            ;
-            set
-            ;
-        }
+        public String Name { get; set; }
 
-        public RoomType RoomType
-        {
-            get
-            ;
-            set
-            ;
-        }
+        public RoomType RoomType { get; set; }
 
-        public int Floor
-        {
-            get
-            ;
-            set
-            ;
-        }
+        public int Floor { get; set; }
 
-        public String Detail
-        {
-            get
-            ;
-            set
-            ;
-        }
+        public String Detail { get; set; }
 
         public System.Collections.Generic.List<Appointment> Appointments { get; set; }
         public System.Collections.Generic.List<StaticEquipment> StaticEquipments { get; set; }

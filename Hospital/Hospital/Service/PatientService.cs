@@ -9,18 +9,20 @@ namespace Service
     {
 
         public Repository.PatientRepository patientRepository = new Repository.PatientRepository();
+        public Repository.EmployeeRepository employeeRepository = new Repository.EmployeeRepository();
         public Repository.AppointmentRepository appointmentRepository = new Repository.AppointmentRepository();
+
         public List<Patient> GetAll()
         {
             return patientRepository.GetAll();
         }
 
-        public Model.Patient GetByJmbg(String jmbg)
+        public Patient GetByJmbg(String jmbg)
         {
             return patientRepository.GetByJmbg(jmbg);
         }
 
-        public void Save(Model.Patient patient)
+        public void Save(Patient patient)
         {
             List<Patient> patients = patientRepository.GetAll();
             foreach (Patient patient1 in patients)
@@ -46,32 +48,28 @@ namespace Service
             patientRepository.Delete(jmbg);
         }
 
-        public void Update(Model.Patient patient)
+        public void Update(Patient patient)
         {
             patientRepository.Update(patient);
-            List<Appointment> appointments = appointmentRepository.GetAppointmentsForPatient(patient.User.Jmbg);
-            foreach (Appointment appointment in appointments)
-            {
-                appointment.Patient = patient;
-                appointmentRepository.Update(appointment);
-            }
         }
 
-        public void AddAnamnesis(string jmbg, string name, string type, string description)
+        public Anamnesis AddAnamnesis(string jmbg, string name, string type, string description)
         {
             Patient patient = patientRepository.GetByJmbg(jmbg);
             int id = patientRepository.GenerateNewAnamnesisId();
             Anamnesis anamnesis = new Anamnesis(id, type, name, description);
             patient.MedicalRecord.Anamnesis.Add(anamnesis);
             Update(patient);
+            return anamnesis;
         }
 
-        public void UpdateAnamnesisDescription(string jmbg, int id, string description)
+        public Anamnesis UpdateAnamnesisDescription(string jmbg, int id, string description)
         {
             Patient patient = patientRepository.GetByJmbg(jmbg);
             Anamnesis anamnesis = patient.MedicalRecord.Anamnesis.Find(obj => obj.Id == id);
             anamnesis.Description = description;
             Update(patient);
+            return anamnesis;
         }
 
         public string CheckForNotification(Patient patient)
@@ -116,7 +114,8 @@ namespace Service
         public string AntiTrollCheck(int appointmentId)
         {
             Appointment appointment = appointmentRepository.GetById(appointmentId);
-            List<DateTime> updatedCancelations = appointment.Patient.CancelationDates;
+            Patient patient = patientRepository.GetByJmbg(appointment.PatientJmbg);
+            List<DateTime> updatedCancelations = patient.CancelationDates;
             List<DateTime> toRemove = new List<DateTime>();
             int counter = 0;
             //izbacuje sva otkazivanja koja su starija od 10 dana
@@ -130,20 +129,20 @@ namespace Service
             }
             updatedCancelations.RemoveRange(0, counter);
             updatedCancelations.Add(DateTime.Now);
-            appointment.Patient.CancelationDates = updatedCancelations;
+            patient.CancelationDates = updatedCancelations;
 
-            patientRepository.Update(appointment.Patient);
-            return IsPatientBlocked(appointment.Patient);
+            patientRepository.Update(patient);
+            return IsPatientBlocked(patient);
 
         }
 
-        //public void AddPrescription(string jmbg, Prescription prescription)
-        //{
-        //    Patient patient = patientRepository.GetByJmbg(jmbg);
-        //    int id = patientRepository.GenerateNewAnamnesisId();
-        //    Anamnesis anamnesis = new Anamnesis(id, type, name, description);
-        //    patient.MedicalRecord.Anamnesis.Add(anamnesis);
-        //    Update(patient);
-        //}
+        public Prescription AddPrescription(string jmbg, Medicine medicine, int quantity, string description)
+        {
+            Patient patient = patientRepository.GetByJmbg(jmbg);
+            Prescription prescription = new Prescription(medicine, quantity, description);
+            patient.MedicalRecord.Prescription.Add(prescription);
+            Update(patient);
+            return prescription;
+        }
     }
 }

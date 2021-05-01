@@ -1,1 +1,58 @@
-[{"Id":1,"Name":"336","RoomType":2,"Floor":3,"Detail":"detalji","Appointments":null,"StaticEquipments":null,"DynamicEquipments":null},{"Id":2,"Name":"7","RoomType":2,"Floor":0,"Detail":"detaljiSoba7","Appointments":null,"StaticEquipments":null,"DynamicEquipments":null},{"Id":3,"Name":"10","RoomType":2,"Floor":2,"Detail":"Rendgen soba","Appointments":null,"StaticEquipments":null,"DynamicEquipments":null},{"Id":4,"Name":"aa","RoomType":1,"Floor":3,"Detail":"mozendi","Appointments":null,"StaticEquipments":null,"DynamicEquipments":null},{"Id":5,"Name":"aa","RoomType":1,"Floor":2,"Detail":"mozendi","Appointments":null,"StaticEquipments":null,"DynamicEquipments":null}]
+[
+  {
+    "Id": 1,
+    "Name": "336",
+    "RoomType": 2,
+    "Floor": 3,
+    "Detail": "detalji",
+    "Appointments": [],
+    "StaticEquipments": [],
+    "DynamicEquipments": []
+  },
+  {
+    "Id": 2,
+    "Name": "111",
+    "RoomType": 2,
+    "Floor": 1,
+    "Detail": "111detalji",
+    "Appointments": [],
+    "StaticEquipments": [],
+    "DynamicEquipments": []
+  },
+  {
+    "Id": 3,
+    "Name": "10",
+    "RoomType": 1,
+    "Floor": 0,
+    "Detail": "Operation room 1",
+    "Appointments": [],
+    "StaticEquipments": [
+      {
+        "Id": 1,
+        "RoomId": 3,
+        "Name": "Anaesthesia",
+        "Quantity": 1,
+        "Description": "Anaesthesia machine"
+      }
+    ],
+    "DynamicEquipments": []
+  },
+  {
+    "Id": 4,
+    "Name": "11",
+    "RoomType": 1,
+    "Floor": 0,
+    "Detail": "Operation room 2",
+    "Appointments": [],
+    "StaticEquipments": [
+      {
+        "Id": 2,
+        "RoomId": 4,
+        "Name": "Anaesthesia",
+        "Quantity": 1,
+        "Description": "Anaesthesia machine"
+      }
+    ],
+    "DynamicEquipments": []
+  }
+]

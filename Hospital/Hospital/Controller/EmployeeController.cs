@@ -39,6 +39,7 @@ namespace Controller
             return employeeService.GetDoctors();
         }
 
+
         public List<Employee> GetDoctorsBySpecialization(string specialization)
         {
             return employeeService.GetDoctorsBySpecialization(specialization);
@@ -53,5 +54,8 @@ namespace Controller
         {
             return employeeService.GetSecretary();
         }
+
+        public void RateDoctor(string doctorJmbg, Review review) => employeeService.RateDoctor(doctorJmbg, review);
+
     }
 }

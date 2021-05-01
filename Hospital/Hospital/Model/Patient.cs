@@ -5,17 +5,14 @@ namespace Model
 {
     public class Patient
     {
-
-
         public Patient(User user)
         {
             this.User = user;
             this.MedicalRecord = new MedicalRecord();
-            this.Appointments = new System.Collections.Generic.List<Appointment>();
-            this.Notifications = new System.Collections.Generic.List<Notification>();
+            this.Appointments = new List<Appointment>();
+            this.Notifications = new List<Notification>();
             this.CancelationDates = new List<DateTime>();
             this.Blocked = false;
-
         }
 
         public List<DateTime> CancelationDates { get; set; }
@@ -26,8 +23,8 @@ namespace Model
 
         public MedicalRecord MedicalRecord { get; set; }
 
-        public System.Collections.Generic.List<Appointment> Appointments { get; set; }
+        public List<Appointment> Appointments { get; set; }
 
-        public System.Collections.Generic.List<Notification> Notifications { get; set; }
+        public List<Notification> Notifications { get; set; }
     }
 }

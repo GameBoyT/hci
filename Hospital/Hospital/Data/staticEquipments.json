@@ -1,25 +1,16 @@
 [
   {
     "Id": 1,
-    "Room": {
-      "Id": 3,
-      "Name": "10",
-      "RoomType": 2,
-      "Floor": 2,
-      "Detail": "Rendgen soba",
-      "Appointments": null,
-      "StaticEquipments": null,
-      "DynamicEquipments": null
-    },
-    "Name": "Rendgen",
+    "RoomId": 3,
+    "Name": "Anaesthesia",
     "Quantity": 1,
-    "Description": "Rendgen masina"
+    "Description": "Anaesthesia machine"
   },
   {
     "Id": 2,
-    "Room": null,
-    "Name": "Krevet",
-    "Quantity": 3,
-    "Description": "Za sapvanje"
+    "RoomId": 4,
+    "Name": "Anaesthesia",
+    "Quantity": 1,
+    "Description": "Anaesthesia machine"
   }
 ]

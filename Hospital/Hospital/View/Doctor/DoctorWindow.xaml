@@ -1,0 +1,42 @@
+﻿<Window x:Class="Hospital.View.Doctor.DoctorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital.View.Doctor"
+        mc:Ignorable="d"
+        Title="DoctorWindow" Height="450" Width="850">
+    <Grid>
+        <DataGrid x:Name="appointmentsDataGrid"
+              AutoGenerateColumns="False"
+              IsReadOnly="True" Margin="33,55,378,132">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Type"
+                            Binding="{Binding AppointmentType}" />
+                <DataGridTextColumn x:Name="start_time_column" Header="Start time"
+                            Binding="{Binding StartTime , StringFormat=t, ConverterCulture=en-GB}" />
+                <DataGridTextColumn Header="Duration"
+                            Binding="{Binding DurationInMinutes}" />
+                <DataGridTextColumn Header="Name"
+                            Binding="{Binding PatientFirstName}" />
+                <DataGridTextColumn Header="Last Name"
+                            Binding="{Binding PatientLastName}" />
+                <DataGridTextColumn Header="Room"
+                            Binding="{Binding RoomName}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Content="Appointments" HorizontalAlignment="Left" Margin="185,21,0,0" VerticalAlignment="Top" Width="91"/>
+
+        <Label Content="Appointments date:" HorizontalAlignment="Left" Margin="33,320,0,0" VerticalAlignment="Top" Width="122"/>
+        <DatePicker x:Name="appointment_date" SelectedDateChanged="DatePicker_SelectedDateChanged" HorizontalAlignment="Left" Margin="160,322,0,0" VerticalAlignment="Top"/>
+
+        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="381" Margin="16,17,0,0" VerticalAlignment="Top" Width="452"/>
+
+        <Button Content="View Patient" HorizontalAlignment="Left" Margin="300,318,0,0" VerticalAlignment="Top" Click="View_Click" Height="28" Width="111"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="300,354,0,0" VerticalAlignment="Top" Click="Update_Click" Height="28" Width="66"/>
+        <Button Content="Delete" HorizontalAlignment="Center" Margin="0,354,0,0" VerticalAlignment="Top" Click="Delete_Click" Height="28" Width="62"/>
+        <Button Content="New Examination" HorizontalAlignment="Left" Margin="517,326,0,0" VerticalAlignment="Top" Height="31" Width="113" Click="NewExaminationButtonClick" />
+        <Button Content="New Operation" HorizontalAlignment="Left" Margin="663,326,0,0" VerticalAlignment="Top" Height="31" Width="101" Click="NewOperationButtonClick" />
+    </Grid>
+</Window>

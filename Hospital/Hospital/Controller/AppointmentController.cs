@@ -1,3 +1,4 @@
+using DTO;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -11,19 +12,19 @@ namespace Controller
 
         private Service.AppointmentService appointmentService = new Service.AppointmentService();
 
-        public List<Appointment> GetAll()
+        public List<AppointmentDTO> GetAll()
         {
             return appointmentService.GetAll();
         }
 
-        public Appointment GetById(int id)
+        public AppointmentDTO GetById(int id)
         {
             return appointmentService.GetById(id);
         }
 
-        public void Save(Appointment appointment)
+        public AppointmentDTO Save(AppointmentDTO appointment)
         {
-            appointmentService.Save(appointment);
+            return appointmentService.Save(appointment);
         }
 
         public void Delete(int id)
@@ -31,30 +32,30 @@ namespace Controller
             appointmentService.Delete(id);
         }
 
-        public void Update(Appointment appointment)
+        public void Update(AppointmentDTO appointment)
         {
             appointmentService.Update(appointment);
         }
 
-        public List<Appointment> GetAppointmentsForDoctor(String jmbg)
+        public List<AppointmentDTO> GetAppointmentsForDoctor(String jmbg)
         {
             return appointmentService.GetAppointmentsForDoctor(jmbg);
         }
 
-        public List<Appointment> GetAppointmentsForPatient(String jmbg)
+        public List<AppointmentDTO> GetAppointmentsForPatient(String jmbg)
         {
             return appointmentService.GetAppointmentsForPatient(jmbg);
         }
 
-        public bool AppointmentTimeIsInvalid(Appointment appointment)
+        public bool AppointmentTimeIsInvalid(AppointmentDTO appointment)
         {
             return appointmentService.AppointmentTimeIsInvalid(appointment);
         }
-        public bool AppointmentTimeInFuture(Appointment appointment)
+        public bool IsTimeInFuture(DateTime appointmentStartTime)
         {
-            return appointmentService.AppointmentTimeInFuture(appointment);
+            return appointmentService.IsTimeInFuture(appointmentStartTime);
         }
-        public bool AppointmentIsTaken(Appointment appointment, string doctorId)
+        public bool AppointmentIsTaken(AppointmentDTO appointment, string doctorId)
         {
             return appointmentService.AppointmentIsTaken(appointment, doctorId);
         }
@@ -63,9 +64,18 @@ namespace Controller
         {
             return appointmentService.GenerateNewId();
         }
-        public bool AppointmentValidationWithoutOverlaping(Appointment appointment)
+        public bool AppointmentValidationWithoutOverlaping(AppointmentDTO appointment)
         {
             return appointmentService.AppointmentValidationWithoutOverlaping(appointment);
+        }
+        public List<AppointmentDTO> GetAppointmentsFromPast(String patientJmbg)
+        {
+            return appointmentService.GetAppointmentsFromPast( patientJmbg);
+        }
+
+        public Appointment ConvertToModel(AppointmentDTO appointmentDTO)
+        {
+            return appointmentService.ConvertToModel(appointmentDTO);
         }
 
     }

@@ -36,8 +36,7 @@ namespace Repository
 
         public void WriteToJson()
         {
-            string json = JsonConvert.SerializeObject(_appointments, Formatting.Indented,
-                new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            string json = JsonConvert.SerializeObject(_appointments, Formatting.Indented);
             File.WriteAllText(_fileLocation, json);
         }
 
@@ -67,41 +66,43 @@ namespace Repository
             }
         }
 
-        public void Save(Appointment appointment)
+        public Appointment Save(Appointment appointment)
         {
             ReadJson();
 
             _appointments.Add(appointment);
             WriteToJson();
+            return appointment;
         }
 
-        public void Delete(int id)
+        public Appointment Delete(int id)
         {
             ReadJson();
-
-            int index = _appointments.FindIndex(obj => obj.Id == id);
-            _appointments.RemoveAt(index);
+            Appointment appointment = _appointments.Find(obj => obj.Id == id);
+            _appointments.Remove(appointment);
             WriteToJson();
+            return appointment;
         }
 
-        public void Update(Appointment appointment)
+        public Appointment Update(Appointment appointment)
         {
             ReadJson();
             int index = _appointments.FindIndex(obj => obj.Id == appointment.Id);
             _appointments[index] = appointment;
             WriteToJson();
+            return appointment;
         }
 
         public List<Appointment> GetAppointmentsForDoctor(String jmbg)
         {
             ReadJson();
-            return _appointments.FindAll(appointment => appointment.Doctor.User.Jmbg == jmbg);
+            return _appointments.FindAll(appointment => appointment.DoctorJmbg == jmbg);
         }
 
         public List<Appointment> GetAppointmentsForPatient(String jmbg)
         {
             ReadJson();
-            return _appointments.FindAll(appointment => appointment.Patient.User.Jmbg == jmbg);
+            return _appointments.FindAll(appointment => appointment.PatientJmbg == jmbg);
         }
 
     }
