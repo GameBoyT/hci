@@ -14,9 +14,12 @@ namespace Hospital.View.Doctor
 {
     public partial class DoctorExamination : Window
     {
-        public DoctorExamination()
+        public DoctorWindow ParentWindow { get; set; }
+        public DoctorExamination(DoctorWindow parentWindow)
         {
             InitializeComponent();
+
+            ParentWindow = parentWindow;
         }
     }
 }
