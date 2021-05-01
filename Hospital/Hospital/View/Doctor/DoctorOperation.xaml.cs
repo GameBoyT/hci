@@ -25,6 +25,7 @@ namespace Hospital.View.Doctor
         {
             roomsDataGrid.ItemsSource = app.roomController.GetRoomsWithEquipmentName(equipmentName.Text);
         }
+
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             try

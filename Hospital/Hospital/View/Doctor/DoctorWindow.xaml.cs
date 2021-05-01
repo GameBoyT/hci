@@ -18,7 +18,6 @@ namespace Hospital.View.Doctor
         {
             InitializeComponent();
             app = Application.Current as App;
-            //this.DataContext = this;
 
             Doctor = app.employeeController.GetByJmbg("1");
             WindowUpdate();
@@ -41,8 +40,16 @@ namespace Hospital.View.Doctor
         private void Update_Click(object sender, RoutedEventArgs e)
         {
             AppointmentDTO appointment = (AppointmentDTO)appointmentsDataGrid.SelectedItems[0];
-            DoctorUpdateExamination doctorViewPatientWindow = new DoctorUpdateExamination(this, appointment);
-            doctorViewPatientWindow.Show();
+            if (appointment.AppointmentType == AppointmentType.examination)
+            {
+                DoctorUpdateExamination doctorUpdateExamination = new DoctorUpdateExamination(this, appointment);
+                doctorUpdateExamination.Show();
+            }
+            else
+            {
+                DoctorUpdateOperation doctorUpdateOperation = new DoctorUpdateOperation(this, appointment);
+                doctorUpdateOperation.Show();
+            }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
