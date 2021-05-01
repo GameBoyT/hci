@@ -42,7 +42,7 @@ namespace Service
             Employee doctor = employeeRepository.GetByJmbg(doctorJmbg);
             doctor.Reviews.Add(review);
             employeeRepository.Update(doctor);
-        } 
+        }
         public List<Employee> GetDoctorsBySpecialization(string specialization)
         {
             return employeeRepository.GetDoctorsBySpecialization(specialization);

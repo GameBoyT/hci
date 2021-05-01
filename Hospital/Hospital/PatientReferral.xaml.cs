@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Controller;
-using Model;
+﻿using Controller;
 using DTO;
+using Model;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace Hospital
 {
@@ -25,7 +17,7 @@ namespace Hospital
         EmployeeController employeeController = new EmployeeController();
         AppointmentController appointmentController = new AppointmentController();
         List<Referral> referrals;
-        ObservableCollection<ReferralDTO>referralDTOs = new ObservableCollection<ReferralDTO>();
+        ObservableCollection<ReferralDTO> referralDTOs = new ObservableCollection<ReferralDTO>();
         Patient patient;
         ReferralDTO selectedDTO;
         public PatientReferral()
@@ -35,7 +27,7 @@ namespace Hospital
             referrals = patient.MedicalRecord.Referrals;
             foreach (Referral referral in referrals)
             {
-                
+
                 ReferralDTO referralDTO = new ReferralDTO(employeeController.GetByJmbg(referral.DoctorJmbg), referral.Description);
                 referralDTOs.Add(referralDTO);
             }
@@ -43,7 +35,8 @@ namespace Hospital
 
         }
 
-        private void UpdateReferralList(ReferralDTO toDeleteReferral) {
+        private void UpdateReferralList(ReferralDTO toDeleteReferral)
+        {
 
             referrals.RemoveAt(referralDTOs.IndexOf(toDeleteReferral));
             referralDTOs.Remove(toDeleteReferral);
@@ -55,7 +48,7 @@ namespace Hospital
 
         private Appointment CreateAppointmentFromData()
         {
-            
+
             //int id = Int32.Parse(idTextBox.Text);
             DateTime pickedDate = new_appointment_date.SelectedDate.Value;
             int hours = Int32.Parse(startTimeTextBox.Text.Split(':')[0]);
@@ -85,7 +78,7 @@ namespace Hospital
             {
                 MessageBox.Show("Nije moguce dodati novi specijalisticki pregleda na taj termin", "greska");
             }
-            
+
         }
     }
 }

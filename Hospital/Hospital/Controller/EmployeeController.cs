@@ -56,6 +56,6 @@ namespace Controller
         }
 
         public void RateDoctor(string doctorJmbg, Review review) => employeeService.RateDoctor(doctorJmbg, review);
-      
+
     }
 }

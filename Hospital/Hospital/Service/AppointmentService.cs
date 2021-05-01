@@ -167,7 +167,7 @@ namespace Service
             return false;
         }
 
-        public AppointmentDTO ConvertToDTO (Appointment appointment)
+        public AppointmentDTO ConvertToDTO(Appointment appointment)
         {
             Employee doctor = employeeRepository.GetByJmbg(appointment.DoctorJmbg);
             Patient patient = patientRepository.GetByJmbg(appointment.PatientJmbg);

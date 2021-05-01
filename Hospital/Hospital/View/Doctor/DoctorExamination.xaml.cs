@@ -1,16 +1,7 @@
 ﻿using DTO;
 using Model;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Hospital.View.Doctor
 {
@@ -18,7 +9,6 @@ namespace Hospital.View.Doctor
     {
         App app;
         public DoctorWindow ParentWindow { get; set; }
-        //private List<Patient> _patientsToShow { get; set; }
         public DoctorExamination(DoctorWindow parentWindow)
         {
             InitializeComponent();
@@ -26,6 +16,7 @@ namespace Hospital.View.Doctor
 
             ParentWindow = parentWindow;
             patientsDataGrid.ItemsSource = app.patientController.GetAll();
+            new_appointment_date.SelectedDate = DateTime.Today;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)

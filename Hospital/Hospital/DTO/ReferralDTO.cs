@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Model;
+﻿using Model;
+using System;
 
 namespace DTO
 {
@@ -15,6 +13,6 @@ namespace DTO
             this.Doctor = doctor;
             this.Description = description;
         }
-        
+
     }
 }

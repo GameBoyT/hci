@@ -1,5 +1,4 @@
-﻿using DTO;
-using Model;
+﻿using Model;
 using System.Windows;
 
 namespace Hospital.View.Doctor

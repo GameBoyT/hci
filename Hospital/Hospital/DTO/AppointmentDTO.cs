@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Model;
+﻿using Model;
+using System;
 
 namespace DTO
 {
@@ -20,13 +18,13 @@ namespace DTO
         public string PatientJmbg { get; set; }
 
         public String DoctorFirstName { get; set; }
-        
+
         public String DoctorLastName { get; set; }
 
         public String DoctorSpecialization { get; set; }
 
         public String PatientFirstName { get; set; }
-        
+
         public String PatientLastName { get; set; }
 
         public int RoomId { get; set; }
@@ -41,7 +39,7 @@ namespace DTO
         //    DoctorLastName = doctorLastName;
         //}
 
-        public AppointmentDTO (int id, AppointmentType appointmentType, DateTime startTime, Double durationInMinutes, String doctorJmbg, string doctorFirstName,
+        public AppointmentDTO(int id, AppointmentType appointmentType, DateTime startTime, Double durationInMinutes, String doctorJmbg, string doctorFirstName,
                                     string doctorLastName, string doctorSpecialization, String patientJmbg, String patientFirstName, String patientLastName, int roomId, String roomName)
         {
             Id = id;
