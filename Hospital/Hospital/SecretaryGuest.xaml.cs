@@ -46,5 +46,12 @@ namespace Hospital
             Patient patient = CreatePatientFromData();
             patientController.Save(patient);
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryFun secretaryFun = new SecretaryFun();
+            secretaryFun.Show();
+            this.Close();
+        }
     }
 }
