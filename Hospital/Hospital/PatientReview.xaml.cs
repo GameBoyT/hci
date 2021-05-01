@@ -8,7 +8,8 @@ using System.Windows.Shapes;
 using Controller;
 using Model;
 using DTO;
-
+using System;
+using System.Windows;
 
 namespace Hospital
 {
