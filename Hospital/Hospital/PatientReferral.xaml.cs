@@ -81,5 +81,12 @@ namespace Hospital
             }
 
         }
+
+        private void CancelButtonClick(object sender, RoutedEventArgs e)
+        {
+            var new_window = new PatientWindow();
+            new_window.Show();
+            this.Close();
+        }
     }
 }

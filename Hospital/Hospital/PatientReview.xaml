@@ -8,7 +8,7 @@
         Title="PatientReview" Height="450" Width="800">
     <Grid>
         <ListView ItemsSource="{Binding appointmentsInPast}"
-                  Name="AppointmentsListView" Margin="0,0,382,40">
+                  Name="AppointmentsListView" Margin="0,0,382,40" SelectedIndex="0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="140" Header="Start Time"
@@ -21,16 +21,17 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Rate" HorizontalAlignment="Left" Margin="513,367,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.386,0.804" Height="27" Width="95" Click="Button_Click"/>
-        <Label Content="Brzina" HorizontalAlignment="Left" Margin="460,68,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Informacije" HorizontalAlignment="Left" Margin="460,114,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Opsti utisak" HorizontalAlignment="Left" Margin="460,217,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Ljubaznost" HorizontalAlignment="Left" Margin="460,165,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="speedTextBox" HorizontalAlignment="Left" Margin="614,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16" InputScope="Number"/>
-        <TextBox x:Name="informationTextBox" HorizontalAlignment="Left" Margin="614,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16"/>
-        <TextBox x:Name="kindnessTextBox" HorizontalAlignment="Left" Margin="614,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16"/>
-        <TextBox x:Name="overallTextBox" HorizontalAlignment="Left" Margin="614,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16"/>
-        <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Left" Margin="460,277,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="64"/>
+        <Button Content="Rate" HorizontalAlignment="Left" Margin="518,326,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.386,0.804" Height="27" Width="95" Click="Button_Click"/>
+        <Label Content="Brzina (0-10)" HorizontalAlignment="Left" Margin="465,27,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Informacije  (0-10)" HorizontalAlignment="Left" Margin="465,73,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Opsti utisak  (0-10)" HorizontalAlignment="Left" Margin="465,176,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Ljubaznost  (0-10)" HorizontalAlignment="Left" Margin="465,124,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="speedTextBox" HorizontalAlignment="Left" Margin="619,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16" InputScope="Number"/>
+        <TextBox x:Name="informationTextBox" HorizontalAlignment="Left" Margin="619,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16"/>
+        <TextBox x:Name="kindnessTextBox" HorizontalAlignment="Left" Margin="619,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16"/>
+        <TextBox x:Name="overallTextBox" HorizontalAlignment="Left" Margin="619,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16"/>
+        <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Left" Margin="465,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="64"/>
+        <Button x:Name="cancelButton" Content="Back" HorizontalAlignment="Left" Margin="674,380,0,0" VerticalAlignment="Top" Height="26" Width="93" RenderTransformOrigin="0.155,0.535" Click="CancelButtonClick"/>
 
 
     </Grid>

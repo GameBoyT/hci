@@ -49,5 +49,12 @@ namespace Hospital
             AppointmentDTO appointmentDTO = (AppointmentDTO)AppointmentsListView.SelectedItems[0];
             employeeController.RateDoctor(appointmentDTO.DoctorJmbg,getReviewFromForm());
         }
+
+        private void CancelButtonClick(object sender, RoutedEventArgs e)
+        {
+            var new_window = new PatientWindow();
+            new_window.Show();
+            this.Close();
+        }
     }
 }

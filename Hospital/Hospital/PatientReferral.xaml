@@ -8,14 +8,14 @@
         Title="PatientReferral" Height="450" Width="800">
     <Grid>
         <ListView ItemsSource="{Binding referralDTOs}"
-                  Name="ReferralListView" Margin="0,0,382,40">
+                  Name="ReferralListView" Margin="0,0,382,40" SelectedIndex="0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="140" Header="Start Time"
+                    <GridViewColumn Width="140" Header="First Name"
          DisplayMemberBinding="{Binding Doctor.User.FirstName}"  />
-                    <GridViewColumn Width="140" Header="First Name"  
+                    <GridViewColumn Width="140" Header="Last Name"  
          DisplayMemberBinding="{Binding Doctor.User.LastName}" />
-                    <GridViewColumn Width="140" Header="Last Name"
+                    <GridViewColumn Width="140" Header="Referral Description"
          DisplayMemberBinding="{Binding Description}" />
 
                 </GridView>
@@ -29,6 +29,7 @@
         <Label Content="Duration in minutes" HorizontalAlignment="Left" Margin="509,147,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.142,-0.368"/>
         <Label Content="Select date" HorizontalAlignment="Left" Margin="509,84,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
         <Label x:Name="title" Content="New special appointment" HorizontalAlignment="Left" Margin="541,10,0,0" VerticalAlignment="Top" Width="156" RenderTransformOrigin="0.235,0.572"/>
+        <Button x:Name="cancelButton" Content="Back" HorizontalAlignment="Left" Margin="664,341,0,0" VerticalAlignment="Top" Height="25" Width="93" RenderTransformOrigin="0.155,0.535" Click="CancelButtonClick"/>
 
 
     </Grid>
