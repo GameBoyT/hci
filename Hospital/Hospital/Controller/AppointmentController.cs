@@ -46,7 +46,7 @@ namespace Controller
             return appointmentService.GetAppointmentsForDoctor(jmbg);
         }
 
-        public List<Appointment> GetAppointmentsForPatient(String jmbg)
+        public List<AppointmentDTO> GetAppointmentsForPatient(String jmbg)
         {
             return appointmentService.GetAppointmentsForPatient(jmbg);
         }
@@ -71,6 +71,15 @@ namespace Controller
         public bool AppointmentValidationWithoutOverlaping(Appointment appointment)
         {
             return appointmentService.AppointmentValidationWithoutOverlaping(appointment);
+        }
+        public List<AppointmentDTO> GetAppointmentsFromPast(String patientJmbg)
+        {
+            return appointmentService.GetAppointmentsFromPast( patientJmbg);
+        }
+
+        public Appointment ConvertToModel(AppointmentDTO appointmentDTO)
+        {
+            return appointmentService.ConvertToModel(appointmentDTO);
         }
 
     }

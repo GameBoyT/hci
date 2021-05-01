@@ -51,9 +51,9 @@ namespace Service
             return ConvertListToDTO(appointmentRepository.GetAppointmentsForDoctor(jmbg));
         }
 
-        public List<Appointment> GetAppointmentsForPatient(String jmbg)
+        public List<AppointmentDTO> GetAppointmentsForPatient(String jmbg)
         {
-            return appointmentRepository.GetAppointmentsForPatient(jmbg);
+            return ConvertListToDTO(appointmentRepository.GetAppointmentsForPatient(jmbg));
         }
 
         public int GenerateNewId()
@@ -167,7 +167,7 @@ namespace Service
             return false;
         }
 
-        public AppointmentDTO ConvertToDTO (Appointment appointment)
+        public AppointmentDTO ConvertToDTO(Appointment appointment)
         {
             Employee doctor = employeeRepository.GetByJmbg(appointment.DoctorJmbg);
             Patient patient = patientRepository.GetByJmbg(appointment.PatientJmbg);
@@ -227,5 +227,20 @@ namespace Service
             }
             return appointments;
         }
+
+        public List<AppointmentDTO>  GetAppointmentsFromPast(String patientJmbg)
+        {
+            List<Appointment>appointments = appointmentRepository.GetAppointmentsForPatient(patientJmbg);
+            List<Appointment> appointmentsInPast = new List<Appointment>();
+            foreach(Appointment appointment in appointments)
+            {
+                if (appointment.StartTime < DateTime.Now)
+                    appointmentsInPast.Add(appointment);
+            }
+            return ConvertListToDTO(appointmentsInPast);
+
+
+        }
+      
     }
 }

@@ -15,9 +15,17 @@
     "AnnualLeave": 0,
     "RoomId": 1,
     "Specialization": null,
-    "Appointment": [],
-    "Notification": [],
-    "Reviews": []
+    "Appointments": [],
+    "Notifications": [],
+    "Reviews": [
+      {
+        "Description": "asd",
+        "Speed": 5,
+        "Kindness": 5,
+        "Informations": 5,
+        "Overall": 5
+      }
+    ]
   },
   {
     "User": {
@@ -35,8 +43,8 @@
     "AnnualLeave": 0,
     "RoomId": 2,
     "Specialization": null,
-    "Appointment": [],
-    "Notification": [],
+    "Appointments": [],
+    "Notifications": [],
     "Reviews": []
   },
   {
@@ -53,10 +61,10 @@
     "EmployeeType": 1,
     "Salary": 0.0,
     "AnnualLeave": 0,
-    "Room": null,
+    "RoomId": 0,
     "Specialization": null,
-    "Appointment": [],
-    "Notification": [],
+    "Appointments": [],
+    "Notifications": [],
     "Reviews": []
   },
   {
@@ -73,10 +81,10 @@
     "EmployeeType": 2,
     "Salary": 0.0,
     "AnnualLeave": 0,
-    "Room": null,
+    "RoomId": 0,
     "Specialization": null,
-    "Appointment": [],
-    "Notification": [],
+    "Appointments": [],
+    "Notifications": [],
     "Reviews": []
   }
 ]
