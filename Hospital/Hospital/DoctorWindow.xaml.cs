@@ -10,8 +10,8 @@ namespace Hospital
     public partial class DoctorWindow : Window
     {
         App app;
-        List<Appointment> appointments = new List<Appointment>();
-        List<Appointment> appointmentsToShow = new List<Appointment>();
+        List<AppointmentDTO> appointments = new List<AppointmentDTO>();
+        List<AppointmentDTO> appointmentsToShow = new List<AppointmentDTO>();
         public Appointment Appointment { get; set; }
         List<Room> roomsToShow = new List<Room>();
         private Employee Doctor;
@@ -353,7 +353,7 @@ namespace Hospital
         {
             try
             {
-                Appointment appointment = (Appointment)appointmentsDataGrid.SelectedItems[0];
+                AppointmentDTO appointment = (AppointmentDTO)appointmentsDataGrid.SelectedItems[0];
                 DoctorViewPatient doctorViewPatientWindow = new DoctorViewPatient(appointment);
                 doctorViewPatientWindow.Show();
                 this.Close();

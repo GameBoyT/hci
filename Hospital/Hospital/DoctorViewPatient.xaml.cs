@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using DTO;
+using Model;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -82,7 +83,7 @@ namespace Hospital
             }
         }
 
-        public DoctorViewPatient(Appointment appointment)
+        public DoctorViewPatient(AppointmentDTO appointment)
         {
             InitializeComponent();
             this.DataContext = this;
