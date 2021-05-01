@@ -13,11 +13,6 @@ namespace Controller
             return staticEquipmentService.GetAll();
         }
 
-        //public List<Room> GetAllRoomsWithEquipmentName(string name)
-        //{
-        //    return staticEquipmentService.GetAllRoomsWithEquipmentName(name);
-        //}
-
         public int GenerateNewId()
         {
             return staticEquipmentService.GenerateNewId();

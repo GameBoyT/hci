@@ -30,13 +30,13 @@
 
         <Label Content="Appointments date:" HorizontalAlignment="Left" Margin="33,320,0,0" VerticalAlignment="Top" Width="122"/>
         <DatePicker x:Name="appointment_date" SelectedDateChanged="DatePicker_SelectedDateChanged" HorizontalAlignment="Left" Margin="160,322,0,0" VerticalAlignment="Top"/>
-        
+
         <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="381" Margin="16,17,0,0" VerticalAlignment="Top" Width="452"/>
-        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="347" Margin="492,17,0,0" VerticalAlignment="Top" Width="320"/>
 
         <Button Content="View Patient" HorizontalAlignment="Left" Margin="300,318,0,0" VerticalAlignment="Top" Click="View_Click" Height="28" Width="111"/>
         <Button Content="Update" HorizontalAlignment="Left" Margin="300,354,0,0" VerticalAlignment="Top" Click="Update_Click" Height="28" Width="66"/>
         <Button Content="Delete" HorizontalAlignment="Center" Margin="0,354,0,0" VerticalAlignment="Top" Click="Delete_Click" Height="28" Width="62"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="531,387,0,0" VerticalAlignment="Top" Height="31" Width="56" Click="NewExaminationButtonClick" />
+        <Button Content="New Examination" HorizontalAlignment="Left" Margin="517,326,0,0" VerticalAlignment="Top" Height="31" Width="113" Click="NewExaminationButtonClick" />
+        <Button Content="New Operation" HorizontalAlignment="Left" Margin="663,326,0,0" VerticalAlignment="Top" Height="31" Width="101" Click="NewOperationButtonClick" />
     </Grid>
 </Window>

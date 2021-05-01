@@ -49,5 +49,15 @@ namespace Service
         {
             throw new NotImplementedException();
         }
+
+        public List<Room> GetOperationRooms()
+        {
+            return roomRepository.GetOperationRooms();
+        }
+
+        public List<Room> GetRoomsWithEquipmentName(string name)
+        {
+            return roomRepository.GetRoomsWithEquipmentName(name);
+        }
     }
 }

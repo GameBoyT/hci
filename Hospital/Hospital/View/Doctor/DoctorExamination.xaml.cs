@@ -25,7 +25,7 @@ namespace Hospital.View.Doctor
             app = Application.Current as App;
 
             ParentWindow = parentWindow;
-            patientsDataGrid.ItemsSource = app.patientController.GetAll(); ;
+            patientsDataGrid.ItemsSource = app.patientController.GetAll();
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)

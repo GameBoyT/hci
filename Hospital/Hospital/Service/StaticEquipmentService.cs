@@ -13,10 +13,6 @@ namespace Service
         {
             return staticEquipmentRepository.GetAll();
         }
-        //public List<Room> GetAllRoomsWithEquipmentName(string name)
-        //{
-        //    return staticEquipmentRepository.GetAllRoomsWithEquipmentName(name);
-        //}
 
         public int GenerateNewId()
         {

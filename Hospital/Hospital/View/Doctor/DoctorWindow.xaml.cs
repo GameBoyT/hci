@@ -74,9 +74,14 @@ namespace Hospital.View.Doctor
 
         private void NewExaminationButtonClick(object sender, RoutedEventArgs e)
         {
-            DoctorExamination doctorViewPatientWindow = new DoctorExamination(this);
-            doctorViewPatientWindow.Show();
+            DoctorExamination doctorExamination = new DoctorExamination(this);
+            doctorExamination.Show();
+        }
 
+        private void NewOperationButtonClick(object sender, RoutedEventArgs e)
+        {
+            DoctorOperation doctorOperation = new DoctorOperation(this);
+            doctorOperation.Show();
         }
     }
 }
