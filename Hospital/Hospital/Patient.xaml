@@ -49,8 +49,8 @@
         <RadioButton x:Name="doctorRadioButton" Content="Doctor" HorizontalAlignment="Left" Margin="637,199,0,0" VerticalAlignment="Top"/>
         <Button x:Name="showAppointments" Content="Show Appointments" HorizontalAlignment="Left" Margin="624,325,0,0" VerticalAlignment="Top" Click="showAppointments_Click" Height="28" Width="125"/>
         <Button x:Name="notificationButton" Content="Notification" HorizontalAlignment="Left" Margin="33,325,0,0" VerticalAlignment="Top" Height="28" Width="116" Click="notificationButton_Click"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="246,333,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="413,353,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Button Content="Rating" HorizontalAlignment="Left" Margin="180,325,0,0" VerticalAlignment="Top" Click="Button_Click" Height="28" Width="116"/>
+        <Button Content="Referrals" HorizontalAlignment="Left" Margin="325,325,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="28" Width="115"/>
 
 
     </Grid>
