@@ -19,7 +19,7 @@ namespace Hospital
         {
             InitializeComponent();
 
-            appointments = appointmentController.GetAppointmentsForPatient("3");
+            appointments = appointmentController.GetAppointmentsForPatient("5");
             readDataGrid.ItemsSource = appointments;
             cancelButton.Visibility = Visibility.Collapsed;
             updateConfirm.Visibility = Visibility.Collapsed;
@@ -29,7 +29,7 @@ namespace Hospital
 
         private void WindowUpdate()
         {
-            appointments = appointmentController.GetAppointmentsForPatient("3");
+            appointments = appointmentController.GetAppointmentsForPatient("5");
             readDataGrid.ItemsSource = appointments;
         }
 
