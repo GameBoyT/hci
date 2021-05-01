@@ -1,7 +1,9 @@
 [
   {
     "CancelationDates": [
-      "2021-04-30T18:29:47.2508286+02:00"
+      "2021-04-30T18:29:47.2508286+02:00",
+      "2021-05-01T15:27:01.2715104+02:00",
+      "2021-05-01T15:27:11.1768043+02:00"
     ],
     "Blocked": false,
     "User": {
@@ -37,7 +39,15 @@
       "Referrals": [
         {
           "DoctorJmbg": "1",
+          "Description": "opis treci "
+        },
+        {
+          "DoctorJmbg": "1",
           "Description": "opis drugi "
+        },
+        {
+          "DoctorJmbg": "1",
+          "Description": "opis prvi "
         }
       ]
     },
