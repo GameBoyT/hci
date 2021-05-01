@@ -22,14 +22,9 @@ namespace Controller
             return appointmentService.GetById(id);
         }
 
-        public void Save(Appointment appointment)
+        public AppointmentDTO Save(AppointmentDTO appointment)
         {
-            appointmentService.Save(appointment);
-        }
-
-        public AppointmentDTO SaveDTO(AppointmentDTO appointment)
-        {
-            return appointmentService.SaveDTO(appointment);
+            return appointmentService.Save(appointment);
         }
 
         public void Delete(int id)
@@ -37,7 +32,7 @@ namespace Controller
             appointmentService.Delete(id);
         }
 
-        public void Update(Appointment appointment)
+        public void Update(AppointmentDTO appointment)
         {
             appointmentService.Update(appointment);
         }
@@ -52,7 +47,7 @@ namespace Controller
             return appointmentService.GetAppointmentsForPatient(jmbg);
         }
 
-        public bool AppointmentTimeIsInvalid(Appointment appointment)
+        public bool AppointmentTimeIsInvalid(AppointmentDTO appointment)
         {
             return appointmentService.AppointmentTimeIsInvalid(appointment);
         }
@@ -60,7 +55,7 @@ namespace Controller
         {
             return appointmentService.IsTimeInFuture(appointmentStartTime);
         }
-        public bool AppointmentIsTaken(Appointment appointment, string doctorId)
+        public bool AppointmentIsTaken(AppointmentDTO appointment, string doctorId)
         {
             return appointmentService.AppointmentIsTaken(appointment, doctorId);
         }
@@ -69,7 +64,7 @@ namespace Controller
         {
             return appointmentService.GenerateNewId();
         }
-        public bool AppointmentValidationWithoutOverlaping(Appointment appointment)
+        public bool AppointmentValidationWithoutOverlaping(AppointmentDTO appointment)
         {
             return appointmentService.AppointmentValidationWithoutOverlaping(appointment);
         }

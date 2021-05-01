@@ -57,9 +57,9 @@ namespace DTO
             RoomName = roomName;
         }
 
-        public AppointmentDTO(AppointmentType appointmentType, DateTime startTime, double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId)
+        public AppointmentDTO(int id, AppointmentType appointmentType, DateTime startTime, double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId)
         {
-            Id = -1;
+            Id = id;
             AppointmentType = appointmentType;
             StartTime = startTime;
             DurationInMinutes = durationInMinutes;
@@ -67,5 +67,17 @@ namespace DTO
             DoctorJmbg = doctorJmbg;
             RoomId = roomId;
         }
+
+        public AppointmentDTO(AppointmentType appointmentType, DateTime startTime, double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId)
+        {
+            AppointmentType = appointmentType;
+            StartTime = startTime;
+            DurationInMinutes = durationInMinutes;
+            PatientJmbg = patientJmbg;
+            DoctorJmbg = doctorJmbg;
+            RoomId = roomId;
+        }
+
+
     }
 }

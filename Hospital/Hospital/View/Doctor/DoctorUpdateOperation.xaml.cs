@@ -5,20 +5,26 @@ using System.Windows;
 
 namespace Hospital.View.Doctor
 {
-    public partial class DoctorOperation : Window
+    public partial class DoctorUpdateOperation : Window
     {
         App app;
         public DoctorWindow ParentWindow { get; set; }
+        public AppointmentDTO Appointment { get; set; }
+        public Patient Patient { get; set; }
 
-        public DoctorOperation(DoctorWindow parentWindow)
+        public DoctorUpdateOperation(DoctorWindow parentWindow, AppointmentDTO appointment)
         {
             InitializeComponent();
             app = Application.Current as App;
+            this.DataContext = this;
 
             ParentWindow = parentWindow;
-            patientsDataGrid.ItemsSource = app.patientController.GetAll();
+            Appointment = appointment;
+            Patient = app.patientController.GetByJmbg(appointment.PatientJmbg);
+            new_appointment_date.SelectedDate = appointment.StartTime;
+            startTimeTextBox.Text = appointment.StartTime.ToString("HH:mm");
+            durationTextBox.Text = appointment.DurationInMinutes.ToString();
             roomsDataGrid.ItemsSource = app.roomController.GetOperationRooms();
-            new_appointment_date.SelectedDate = DateTime.Today;
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
@@ -26,28 +32,28 @@ namespace Hospital.View.Doctor
             roomsDataGrid.ItemsSource = app.roomController.GetRoomsWithEquipmentName(equipmentName.Text);
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                AppointmentDTO appointment = ParseNewAppointment();
-                app.appointmentController.Save(appointment);
+                AppointmentDTO appointment = ParseUpdatedAppointment();
+                app.appointmentController.Update(appointment);
                 ParentWindow.WindowUpdate();
                 this.Close();
             }
             catch
             {
-                MessageBox.Show("Chose a patient and fill all the fields!");
+                MessageBox.Show("Fill all the fields!");
             }
         }
+
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private AppointmentDTO ParseNewAppointment()
+        private AppointmentDTO ParseUpdatedAppointment()
         {
-            Patient patient = (Patient)patientsDataGrid.SelectedItems[0];
             Room room = (Room)roomsDataGrid.SelectedItems[0];
             DateTime pickedDate = new_appointment_date.SelectedDate.Value;
             int hours = Int32.Parse(startTimeTextBox.Text.Split(':')[0]);
@@ -55,7 +61,8 @@ namespace Hospital.View.Doctor
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
 
-            return new AppointmentDTO(AppointmentType.operation, appointmentDateTime, duration, patient.User.Jmbg, ParentWindow.Doctor.User.Jmbg, room.Id);
+
+            return new AppointmentDTO(Appointment.Id, AppointmentType.operation, appointmentDateTime, duration, Appointment.PatientJmbg, Appointment.DoctorJmbg, room.Id);
         }
     }
 }
