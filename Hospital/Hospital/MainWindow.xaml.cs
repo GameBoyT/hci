@@ -18,7 +18,7 @@ namespace Hospital
 
         private void Button_Click_Doctor(object sender, RoutedEventArgs e)
         {
-            DoctorWindow doctorWindow = new DoctorWindow();
+            View.Doctor.DoctorWindow doctorWindow = new View.Doctor.DoctorWindow();
             doctorWindow.Show();
             this.Close();
         }

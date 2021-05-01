@@ -2,7 +2,7 @@
 using Model;
 using System.Windows;
 
-namespace Hospital
+namespace Hospital.View.Doctor
 {
     public partial class DoctorNewAnamnesis : Window
     {

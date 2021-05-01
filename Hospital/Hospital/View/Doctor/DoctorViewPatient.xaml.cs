@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Hospital
+namespace Hospital.View.Doctor
 {
     public partial class DoctorViewPatient : Window, INotifyPropertyChanged
     {

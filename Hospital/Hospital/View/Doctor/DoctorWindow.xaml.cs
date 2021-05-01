@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Hospital
+namespace Hospital.View.Doctor
 {
     public partial class DoctorWindow : Window
     {
@@ -264,6 +264,12 @@ namespace Hospital
             {
                 MessageBox.Show("You have to select an appointment to view!");
             }
+        }
+
+        private void NewExaminationButtonClick(object sender, RoutedEventArgs e)
+        {
+            DoctorExamination doctorViewPatientWindow = new DoctorExamination();
+
         }
     }
 }
