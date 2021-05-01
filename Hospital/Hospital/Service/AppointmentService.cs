@@ -20,15 +20,9 @@ namespace Service
             return ConvertListToDTO(appointments);
         }
 
-        public List<AppointmentDTO> GetAllDTO()
+        public AppointmentDTO GetById(int id)
         {
-            List<Appointment> appointments = appointmentRepository.GetAll();
-            return ConvertListToDTO(appointments);
-        }
-
-        public Appointment GetById(int id)
-        {
-            return appointmentRepository.GetById(id);
+            return ConvertToDTO(appointmentRepository.GetById(id));
         }
 
         public void Save(Appointment appointment)
@@ -61,9 +55,9 @@ namespace Service
             return appointmentRepository.GenerateNewId();
         }
 
-        public bool AppointmentTimeInFuture(Appointment appointment)
+        public bool AppointmentTimeInFuture(DateTime appointmentStartTime)
         {
-            if (appointment.StartTime.Ticks > DateTime.Now.Ticks)
+            if (appointmentStartTime.Ticks > DateTime.Now.Ticks)
                 return true;
             return false;
         }
@@ -91,12 +85,11 @@ namespace Service
             return false;
         }
 
-
         public bool AppointmentValidationWithoutOverlaping(Appointment appointment)
         {
             List<Appointment> appointments = appointmentRepository.GetAll();
 
-            if (!AppointmentTimeInFuture(appointment))
+            if (!AppointmentTimeInFuture(appointment.StartTime))
             {
                 return true;
             }
@@ -131,7 +124,7 @@ namespace Service
         {
             List<Appointment> appointments = appointmentRepository.GetAll();
 
-            if (!AppointmentTimeInFuture(appointment))
+            if (!AppointmentTimeInFuture(appointment.StartTime))
             {
                 return true;
             }

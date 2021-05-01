@@ -12,116 +12,18 @@ namespace Hospital
         App app;
         List<AppointmentDTO> appointments = new List<AppointmentDTO>();
         List<AppointmentDTO> appointmentsToShow = new List<AppointmentDTO>();
-        public Appointment Appointment { get; set; }
         List<Room> roomsToShow = new List<Room>();
-        private Employee Doctor;
+        public Appointment Appointment { get; set; }
+        public Employee Doctor { get; set; }
         private AppointmentType appointmentType;
 
         public DoctorWindow()
         {
             InitializeComponent();
             app = Application.Current as App;
-
-
-            // DATA TO GENERATE
-
-            //DateTime date = new DateTime(1985, 4, 26);
-            //User doctorUser = new User("1", "Djordje", "Tovilovic", "djoleusername", "djolesifra", "djoleemail", "djoleadresa", date);
-            //Doctor doctor = new Doctor(doctorUser);
-            //doctorController.Save(doctor);
-
-            //DateTime date1 = new DateTime(1985, 4, 26);
-            //User user = new User("2", "Nemanja", "Markovic", "nemanja", "sifra", "email", "adresa", date1);
-            //Doctor doctor2 = new Doctor(user);
-            //doctorController.Save(doctor2);
-
-            //Doctor doctor1 = doctorController.GetByJmbg("1");
-            //roomController.Save("336", RoomType.exam, 3, "detalji");
-            //doctor1.Room = roomController.GetByName("336");
-            //doctorController.Update(doctor1);
-
-            //Doctor doctor2 = doctorController.GetByJmbg("2");
-            //doctor2.Room = roomController.GetByName("7");
-            //roomController.Save("7", RoomType.exam, 0, "detaljiSoba7");
-            //doctorController.Update(doctor2);
-
-
-            //DateTime date2 = new DateTime(1968, 2, 5);
-            //DateTime date3 = new DateTime(1977, 11, 4);
-            //User user2 = new User("10", "Mile", "Milic", "mile", "sifra", "email", "adresa", date2);
-            //User user3 = new User("11", "Simo", "Simic", "simo", "sifra", "email", "adresa", date3);
-            //Patient patient2 = new Patient(user2);
-            //Patient patient3 = new Patient(user3);
-            //app.patientController.Save(patient2);
-            //app.patientController.Save(patient3);
-
-            //app.roomController.Save("10", RoomType.operating, 0, "Operation room 1");
-            //app.roomController.Save("11", RoomType.operating, 0, "Operation room 2");
-
-            //app.staticEquipmentController.Save("Anaesthesia", "10", 1, "Anaesthesia machine");
-            //app.staticEquipmentController.Save("Anaesthesia", "11", 1, "Anaesthesia machine");
-
-
-            //List<Room> roomsWitheRendgen = app.staticEquipmentController.GetAllRoomsWithEquipmentName("Anaesthesia");
-            //MessageBox.Show(roomsWitheRendgen[0].Name);
-
-
-            //app.medicineController.Save("Aspirin");
-            //app.medicineController.Save("Andol");
-            //app.medicineController.Save("Amoksicilin");
-            //app.medicineController.Save("Brufen");
-            //app.medicineController.Save("Paracetamol");
-
-
-            //DateTime date = new DateTime(1985, 4, 26);
-            //User doctorUser = new User("1", "Djordje", "Tovilovic", "djoleusername", "djolesifra", "djoleemail", "djoleadresa", date);
-            //Employee doctor = new Employee(doctorUser, EmployeeType.doctor);
-            //app.employeeController.Save(doctor);
-
-            //DateTime date = new DateTime(1988, 2, 14);
-            //User doctorUser = new User("2", "Jovan", "Simic", "jovanusername", "jovanesifra", "jovanemail", "jovanadresa", date);
-            //Employee doctor = new Employee(doctorUser, EmployeeType.doctor);
-            //app.employeeController.Save(doctor);
-
+            //this.DataContext = this;
 
             Doctor = app.employeeController.GetByJmbg("1");
-
-
-            //app.roomController.Save("336", RoomType.exam, 3, "detalji");
-            //Doctor.Room = app.roomController.GetByName("336");
-            //app.employeeController.Update(Doctor);
-
-            //app.roomController.Save("111", RoomType.exam, 1, "111detalji");
-            //Doctor.Room = app.roomController.GetByName("111");
-            //app.employeeController.Update(Doctor);
-
-
-            //StaticEquipment staticEquipment1 = app.staticEquipmentController.GetById(1);
-            //StaticEquipment staticEquipment2 = app.staticEquipmentController.GetById(2);
-
-            //Room room3 = app.roomController.GetById(3);
-            //Room room4 = app.roomController.GetById(4);
-            //room3.StaticEquipments.Add(staticEquipment1);
-            //room4.StaticEquipments.Add(staticEquipment2);
-
-
-            //app.roomController.Update(room3);
-            //app.roomController.Update(room4);
-
-
-            //DateTime date1 = new DateTime(1995, 2, 16);
-            //User directorUser = new User("3", "Nikola", "Sljivkov", "nikolausername", "nikolasifra", "nikolaemail", "nikolaemail", date1);
-            //Employee director = new Employee(directorUser, EmployeeType.director);
-            //app.employeeController.Save(director);
-
-            //DateTime date2 = new DateTime(1974, 6, 8);
-            //User secretaryUser = new User("4", "Vladimir", "Trpka", "vladimirusername", "vladimiresifra", "vladimiremail", "vladimiradresa", date2);
-            //Employee secretary = new Employee(secretaryUser, EmployeeType.secretary);
-            //app.employeeController.Save(secretary);
-
-
-            List<AppointmentDTO> appointmentDTOs = app.appointmentController.GetAllDTO();
-            MessageBox.Show(appointmentDTOs[0].PatientLastName);
 
             appointment_date.SelectedDate = DateTime.Today;
             new_appointment_date.SelectedDate = DateTime.Today;
@@ -275,7 +177,7 @@ namespace Hospital
         {
             try
             {
-                Appointment appointment = (Appointment)appointmentsDataGrid.SelectedItems[0];
+                AppointmentDTO appointment = (AppointmentDTO)appointmentsDataGrid.SelectedItems[0];
                 app.appointmentController.Delete(appointment.Id);
                 WindowUpdate();
             }
@@ -298,12 +200,12 @@ namespace Hospital
                 }
 
                 //TODO: treba refaktorisati AppointmentTimeIsInvalid da moze izbaciti error za svaku gresku posebno
-                if (app.appointmentController.AppointmentTimeIsInvalid(appointment))
-                {
-                    MessageBox.Show("Appointment time is invalid!");
-                    return;
+                //if (app.appointmentController.AppointmentTimeIsInvalid(appointment))
+                //{
+                //    MessageBox.Show("Appointment time is invalid!");
+                //    return;
 
-                }
+                //}
 
                 app.appointmentController.Save(appointment);
                 ChangeToNewAppointment();

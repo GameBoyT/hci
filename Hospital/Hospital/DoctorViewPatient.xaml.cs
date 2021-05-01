@@ -11,7 +11,7 @@ namespace Hospital
     public partial class DoctorViewPatient : Window, INotifyPropertyChanged
     {
         App app;
-        public Appointment Appointment { get; set; }
+        public AppointmentDTO Appointment { get; set; }
         public Patient Patient { get; set; }
         public Medicine Medicine { get; set; }
         public ObservableCollection<Anamnesis> Anamnesis { get; set; }
@@ -89,13 +89,10 @@ namespace Hospital
             this.DataContext = this;
             app = Application.Current as App;
 
-            Patient = app.patientController.GetByJmbg(appointment.PatientJmbg);
-            //TODO: Change to this or to parameter appointmentId
-            //Appointment = appointment;
-
-            Appointment = app.appointmentController.GetById(appointment.Id);
-            if (!app.appointmentController.AppointmentTimeInFuture(Appointment))
+            Appointment = appointment;
+            if (!app.appointmentController.AppointmentTimeInFuture(Appointment.StartTime))
                 IsAppointmentTime = true;
+            Patient = app.patientController.GetByJmbg(appointment.PatientJmbg);
 
             Anamnesis = new ObservableCollection<Anamnesis>(Patient.MedicalRecord.Anamnesis);
             Prescriptions = new ObservableCollection<Prescription>(Patient.MedicalRecord.Prescription);
@@ -109,7 +106,7 @@ namespace Hospital
             var item = (sender as ListView).SelectedItem;
             if (item != null)
             {
-                if (!app.appointmentController.AppointmentTimeInFuture(Appointment))
+                if (!app.appointmentController.AppointmentTimeInFuture(Appointment.StartTime))
                 {
                     IsAppointmentTime = true;
                 }
@@ -132,13 +129,13 @@ namespace Hospital
 
         private void AddNewButton_Click(object sender, RoutedEventArgs e)
         {
-            if (app.appointmentController.AppointmentTimeInFuture(Appointment))
+            if (app.appointmentController.AppointmentTimeInFuture(Appointment.StartTime))
             {
                 MessageBox.Show("You cannot add anamnesis until or after the appointment");
             }
             else
             {
-                DoctorNewAnamnesis doctorNewAnamnesisWindow = new DoctorNewAnamnesis(Appointment, this);
+                DoctorNewAnamnesis doctorNewAnamnesisWindow = new DoctorNewAnamnesis(this);
                 doctorNewAnamnesisWindow.Show();
             }
         }
