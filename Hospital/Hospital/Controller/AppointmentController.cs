@@ -27,6 +27,11 @@ namespace Controller
             appointmentService.Save(appointment);
         }
 
+        public AppointmentDTO SaveDTO(AppointmentDTO appointment)
+        {
+            return appointmentService.SaveDTO(appointment);
+        }
+
         public void Delete(int id)
         {
             appointmentService.Delete(id);

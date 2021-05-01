@@ -7,6 +7,33 @@
         mc:Ignorable="d"
         Title="DoctorExamination" Height="450" Width="800">
     <Grid>
-
+        <DataGrid x:Name="patientsDataGrid"
+              AutoGenerateColumns="False"
+              IsReadOnly="True" Margin="33,55,521,120">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Jmbg"
+                            Binding="{Binding User.Jmbg}" />
+                <DataGridTextColumn Header="First Name"
+                            Binding="{Binding User.FirstName}" />
+                <DataGridTextColumn Header="Last Name"
+                            Binding="{Binding User.LastName}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Margin="310,50,300,310">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*" />
+                <ColumnDefinition Width="12*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0">Date:</TextBlock>
+            <TextBlock Grid.Column="0" Grid.Row="1">Start Time:</TextBlock>
+            <DatePicker x:Name="new_appointment_date" Grid.Column="1" Grid.Row="0"/>
+            <TextBox x:Name="startTimeTextBox" Grid.Column="1" Grid.Row="1"/>
+        </Grid>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="350,185,0,0" VerticalAlignment="Top" Height="27" Width="65" Click="CancelButton_Click"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="438,185,0,0" VerticalAlignment="Top" Height="27" Width="62" Click="AddButton_Click"/>
     </Grid>
 </Window>

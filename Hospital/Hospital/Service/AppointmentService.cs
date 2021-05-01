@@ -30,6 +30,13 @@ namespace Service
             appointmentRepository.Save(appointment);
         }
 
+        public AppointmentDTO SaveDTO(AppointmentDTO appointment)
+        {
+            appointment.Id = appointmentRepository.GenerateNewId();
+            appointmentRepository.Save(ConvertToModel(appointment));
+            return appointment;
+        }
+
         public void Delete(int id)
         {
             appointmentRepository.Delete(id);
