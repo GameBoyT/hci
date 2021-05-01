@@ -1,3 +1,4 @@
+using DTO;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,13 @@ namespace Controller
 
         private Service.AppointmentService appointmentService = new Service.AppointmentService();
 
-        public List<Appointment> GetAll()
+        public List<AppointmentDTO> GetAll()
         {
             return appointmentService.GetAll();
+        }
+        public List<AppointmentDTO> GetAllDTO()
+        {
+            return appointmentService.GetAllDTO();
         }
 
         public Appointment GetById(int id)
@@ -36,7 +41,7 @@ namespace Controller
             appointmentService.Update(appointment);
         }
 
-        public List<Appointment> GetAppointmentsForDoctor(String jmbg)
+        public List<AppointmentDTO> GetAppointmentsForDoctor(String jmbg)
         {
             return appointmentService.GetAppointmentsForDoctor(jmbg);
         }

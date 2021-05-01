@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using DTO;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -9,8 +10,8 @@ namespace Hospital
     public partial class DoctorWindow : Window
     {
         App app;
-        List<Appointment> appointments = new List<Appointment>();
-        List<Appointment> appointmentsToShow = new List<Appointment>();
+        List<AppointmentDTO> appointments = new List<AppointmentDTO>();
+        List<AppointmentDTO> appointmentsToShow = new List<AppointmentDTO>();
         public Appointment Appointment { get; set; }
         List<Room> roomsToShow = new List<Room>();
         private Employee Doctor;
@@ -119,6 +120,8 @@ namespace Hospital
             //app.employeeController.Save(secretary);
 
 
+            List<AppointmentDTO> appointmentDTOs = app.appointmentController.GetAllDTO();
+            MessageBox.Show(appointmentDTOs[0].PatientLastName);
 
             appointment_date.SelectedDate = DateTime.Today;
             new_appointment_date.SelectedDate = DateTime.Today;
@@ -350,7 +353,7 @@ namespace Hospital
         {
             try
             {
-                Appointment appointment = (Appointment)appointmentsDataGrid.SelectedItems[0];
+                AppointmentDTO appointment = (AppointmentDTO)appointmentsDataGrid.SelectedItems[0];
                 DoctorViewPatient doctorViewPatientWindow = new DoctorViewPatient(appointment);
                 doctorViewPatientWindow.Show();
                 this.Close();

@@ -1,4 +1,5 @@
 ﻿using Controller;
+using DTO;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace Hospital
         Patient patient;
         PatientController patientController = new PatientController();
         Employee doctor;
-        List<Appointment> doctorsAppointments;
+        List<AppointmentDTO> doctorsAppointments;
         public PatientWindow()
         {
             InitializeComponent();

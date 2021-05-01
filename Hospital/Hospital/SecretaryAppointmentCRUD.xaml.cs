@@ -1,4 +1,5 @@
 ﻿using Controller;
+using DTO;
 using Model;
 using System.Collections.Generic;
 using System.Windows;
@@ -10,7 +11,7 @@ namespace Hospital
     /// </summary>
     public partial class SecretaryAppointmentCRUD : Window
     {
-        List<Appointment> appointments = new List<Appointment>();
+        List<AppointmentDTO> appointments = new List<AppointmentDTO>();
         private AppointmentController appointmentController = new AppointmentController();
 
         public SecretaryAppointmentCRUD()

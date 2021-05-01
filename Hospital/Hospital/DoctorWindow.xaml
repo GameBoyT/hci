@@ -19,11 +19,11 @@
                 <DataGridTextColumn Header="Duration"
                             Binding="{Binding DurationInMinutes}" />
                 <DataGridTextColumn Header="Name"
-                            Binding="{Binding Patient.User.FirstName}" />
+                            Binding="{Binding PatientFirstName}" />
                 <DataGridTextColumn Header="Last Name"
-                            Binding="{Binding Patient.User.LastName}" />
+                            Binding="{Binding PatientLastName}" />
                 <DataGridTextColumn Header="Room"
-                            Binding="{Binding Room.Name}" />
+                            Binding="{Binding RoomName}" />
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Delete" HorizontalAlignment="Center" Margin="0,354,0,0" VerticalAlignment="Top" Click="Delete_Click" Height="28" Width="62"/>

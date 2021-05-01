@@ -11,12 +11,15 @@ namespace Hospital
 
         public Appointment Appointment { get; set; }
 
-        public DoctorNewAnamnesis(Appointment appointment)
+        public DoctorViewPatient PastWindow { get; set; }
+
+        public DoctorNewAnamnesis(Appointment appointment, DoctorViewPatient window)
         {
             InitializeComponent();
             app = Application.Current as App;
             this.DataContext = this;
             Appointment = appointment;
+            PastWindow = window;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -25,8 +28,8 @@ namespace Hospital
             {
                 Anamnesis anamnesis = app.patientController.AddAnamnesis(Appointment.PatientJmbg, AnamnesisName, AnamnesisType, "");
                 Appointment = app.appointmentController.GetById(Appointment.Id);
-                DoctorViewPatient doctorViewPatientWindow = new DoctorViewPatient(Appointment);
-                doctorViewPatientWindow.Show();
+
+                PastWindow.Anamnesis.Add(anamnesis);
                 this.Close();
             }
             else
@@ -37,8 +40,6 @@ namespace Hospital
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            DoctorViewPatient doctorViewPatientWindow = new DoctorViewPatient(Appointment);
-            doctorViewPatientWindow.Show();
             this.Close();
         }
     }
