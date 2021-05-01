@@ -30,7 +30,7 @@ namespace Hospital.View.Doctor
             try
             {
                 AppointmentDTO appointment = ParseNewAppointment();
-                app.appointmentController.SaveDTO(appointment);
+                app.appointmentController.Save(appointment);
                 ParentWindow.WindowUpdate();
                 this.Close();
             }

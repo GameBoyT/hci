@@ -25,12 +25,7 @@ namespace Service
             return ConvertToDTO(appointmentRepository.GetById(id));
         }
 
-        public void Save(Appointment appointment)
-        {
-            appointmentRepository.Save(appointment);
-        }
-
-        public AppointmentDTO SaveDTO(AppointmentDTO appointment)
+        public AppointmentDTO Save(AppointmentDTO appointment)
         {
             appointment.Id = appointmentRepository.GenerateNewId();
             appointmentRepository.Save(ConvertToModel(appointment));
@@ -42,9 +37,9 @@ namespace Service
             appointmentRepository.Delete(id);
         }
 
-        public void Update(Appointment appointment)
+        public void Update(AppointmentDTO appointment)
         {
-            appointmentRepository.Update(appointment);
+            appointmentRepository.Update(ConvertToModel(appointment));
         }
 
         public List<AppointmentDTO> GetAppointmentsForDoctor(String jmbg)
@@ -70,7 +65,7 @@ namespace Service
         }
 
 
-        public bool AppointmentIsTaken(Appointment appointment, string doctorId)
+        public bool AppointmentIsTaken(AppointmentDTO appointment, string doctorId)
         {
             List<Appointment> appointments = appointmentRepository.GetAppointmentsForDoctor(doctorId);
 
@@ -92,7 +87,7 @@ namespace Service
             return false;
         }
 
-        public bool AppointmentValidationWithoutOverlaping(Appointment appointment)
+        public bool AppointmentValidationWithoutOverlaping(AppointmentDTO appointment)
         {
             List<Appointment> appointments = appointmentRepository.GetAll();
 
@@ -127,7 +122,7 @@ namespace Service
             return false;
         }
 
-        public bool AppointmentTimeIsInvalid(Appointment appointment)
+        public bool AppointmentTimeIsInvalid(AppointmentDTO appointment)
         {
             List<Appointment> appointments = appointmentRepository.GetAll();
 

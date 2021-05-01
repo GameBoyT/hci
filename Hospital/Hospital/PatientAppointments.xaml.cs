@@ -61,7 +61,7 @@ namespace Hospital
         }
 
 
-        private Appointment AppointmentFromData()
+        private AppointmentDTO AppointmentFromData()
         {
 
             AppointmentDTO oldAppointmentDTO = (AppointmentDTO)readDataGrid.SelectedItems[0];
@@ -72,7 +72,7 @@ namespace Hospital
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
 
-            Appointment newAppointment = new Appointment(oldAppointment.Id,
+            AppointmentDTO newAppointment = new AppointmentDTO(oldAppointment.Id,
                                                          oldAppointment.AppointmentType,
                                                          appointmentDateTime,
                                                          duration,

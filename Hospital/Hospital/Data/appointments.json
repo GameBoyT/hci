@@ -34,5 +34,23 @@
     "DoctorJmbg": "1",
     "PatientJmbg": "5",
     "RoomId": 1
+  },
+  {
+    "Id": 7,
+    "AppointmentType": 0,
+    "StartTime": "2021-05-01T22:22:00",
+    "DurationInMinutes": 15.0,
+    "DoctorJmbg": "1",
+    "PatientJmbg": "5",
+    "RoomId": 1
+  },
+  {
+    "Id": 8,
+    "AppointmentType": 0,
+    "StartTime": "2021-05-01T23:00:00",
+    "DurationInMinutes": 15.0,
+    "DoctorJmbg": "1",
+    "PatientJmbg": "5",
+    "RoomId": 1
   }
 ]

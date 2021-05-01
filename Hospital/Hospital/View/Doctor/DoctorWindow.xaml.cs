@@ -40,7 +40,9 @@ namespace Hospital.View.Doctor
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-
+            AppointmentDTO appointment = (AppointmentDTO)appointmentsDataGrid.SelectedItems[0];
+            DoctorUpdateExamination doctorViewPatientWindow = new DoctorUpdateExamination(this, appointment);
+            doctorViewPatientWindow.Show();
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)

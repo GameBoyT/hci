@@ -142,7 +142,7 @@ namespace Hospital
             startTimeTextBox.Clear();
 
         }
-        private Appointment CreateAppointmentFromData()
+        private AppointmentDTO CreateAppointmentFromData()
         {
             //int id = Int32.Parse(idTextBox.Text);
             DateTime pickedDate = new_appointment_date.SelectedDate.Value;
@@ -150,7 +150,8 @@ namespace Hospital
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
-            return new Appointment(appointmentController.GenerateNewId(), AppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, 1);
+
+            return new AppointmentDTO(appointmentController.GenerateNewId(), AppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, 1);
         }
 
 
@@ -160,7 +161,7 @@ namespace Hospital
             try
             {
                 doctor = (Employee)doctorsDataGrid.SelectedItems[0];
-                Appointment newAppointment = CreateAppointmentFromData();
+                AppointmentDTO newAppointment = CreateAppointmentFromData();
                 doctorsAppointments = appointmentController.GetAppointmentsForDoctor(doctor.User.Jmbg);
                 bool error = false;
 
