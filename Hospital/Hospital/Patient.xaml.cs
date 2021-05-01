@@ -119,15 +119,15 @@ namespace Hospital
             //  patient1.MedicalRecord.Referrals = referrals;
             //  patientController.Save(patient1);
 
-                
+            //Referral referral = new Referral("1", "opis drugi ");
+            //patient.MedicalRecord.Referrals.Add(referral);
+            //patientController.Update(patient);
 
 
             doctors = doctorController.GetDoctors();
             timeDataGrid.Visibility = Visibility.Collapsed;
             patient = patientController.GetByJmbg("5");
-            Referral referral = new Referral("1", "opis drugi ");
-            patient.MedicalRecord.Referrals.Add(referral);
-            patientController.Update(patient);
+            
 
             List<Appointment> apps = new List<Appointment>();
 
@@ -172,18 +172,14 @@ namespace Hospital
                 {
                     if (doctorRadioButton.IsChecked == true)
                     {
-
                         MessageBox.Show("Doktor je zauzet, izaberi drugi termin", "greska");
                         timeDataGrid.Visibility = Visibility.Visible;
                         timeDataGrid.ItemsSource = doctorsAppointments;
-
                     }
                     else
                     {
-
                         MessageBox.Show("Termin je zauzet, izaberi drugog doktora", "greska");
                         timeDataGrid.ItemsSource = doctorsAppointments;
-                    
                     }
                 }
                 else if (appointmentController.AppointmentValidationWithoutOverlaping(newAppointment))
@@ -229,6 +225,14 @@ namespace Hospital
             var new_window = new PatientReview();
             new_window.Show();
             this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var new_window = new PatientReferral();
+            new_window.Show();
+            this.Close();
+
         }
     }
 }

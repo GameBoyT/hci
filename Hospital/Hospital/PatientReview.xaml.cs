@@ -25,7 +25,7 @@ namespace Hospital
         public PatientReview()
         {
             InitializeComponent();
-            List<Appointment> allAppointments = appointmentController.GetAppointmentsForPatient("3");
+            List<Appointment> allAppointments = appointmentController.GetAppointmentsForPatient("5");
             List<Appointment> appointmentsInPast = new List<Appointment>();
             foreach (Appointment appointment in allAppointments)
             {
@@ -52,6 +52,8 @@ namespace Hospital
                 return review;
            
         }
+
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
