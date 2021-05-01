@@ -17,6 +17,7 @@ namespace Hospital
         private EmployeeController employeeController = new EmployeeController();
         List<Employee> employees = new List<Employee>();
         Notification notification;
+        
 
 
         public SecretaryAppointmentCRUD()
@@ -45,10 +46,12 @@ namespace Hospital
 
         private void SendNotification()
         {
+            
             notification = new Notification(1, "fsdfdsfgdsfsgsdg", 15);
-            Appointment selectAppintment = (Appointment)secretaryAppointmentDataGrid.SelectedItems[0];
-            selectAppintment.Doctor.Notification.Add(notification);
-            employeeController.Update(selectAppintment.Doctor);
+            AppointmentDTO selectAppintment = (AppointmentDTO)secretaryAppointmentDataGrid.SelectedItems[0];
+            Employee doctor = employeeController.GetByJmbg(selectAppintment.DoctorJmbg);
+            doctor.Notifications.Add(notification);
+            employeeController.Update(doctor);
         }
 
         private void Nazad(object sender, RoutedEventArgs e)
@@ -76,7 +79,7 @@ namespace Hospital
         {
             try
             {
-                Appointment appoinment = (Appointment)secretaryAppointmentDataGrid.SelectedItems[0];
+                AppointmentDTO appoinment = (AppointmentDTO)secretaryAppointmentDataGrid.SelectedItems[0];
                 datePickerAppointment.SelectedDate = appoinment.StartTime.Date;
                 durationTB.Text = appoinment.DurationInMinutes.ToString();
                 startTimeTB.Text = appoinment.StartTime.ToString(("HH:mm"));
@@ -99,20 +102,20 @@ namespace Hospital
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            Appointment oldAppintment = (Appointment)secretaryAppointmentDataGrid.SelectedItems[0];
+            AppointmentDTO oldAppointment = (AppointmentDTO)secretaryAppointmentDataGrid.SelectedItems[0];
             DateTime pickedDate = datePickerAppointment.SelectedDate.Value;
             int hours = Int32.Parse(startTimeTB.Text.Split(':')[0]);
             int minutes = Int32.Parse(startTimeTB.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTB.Text);
 
-            Appointment newAppointment = new Appointment(oldAppintment.Id,
-                                                         oldAppintment.AppointmentType,
-                                                         appointmentDateTime,
-                                                         duration,
-                                                         oldAppintment.Patient,
-                                                         oldAppintment.Doctor,
-                                                         oldAppintment.Room);
+            AppointmentDTO newAppointment = new AppointmentDTO(oldAppointment.Id,
+                                                        oldAppointment.AppointmentType,
+                                                        appointmentDateTime,
+                                                        duration,
+                                                        oldAppointment.PatientJmbg,
+                                                        oldAppointment.DoctorJmbg,
+                                                        oldAppointment.RoomId);
 
             bool error = appointmentController.AppointmentTimeIsInvalid(newAppointment);
             if (error)
