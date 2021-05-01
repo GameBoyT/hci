@@ -1,3 +1,4 @@
+using DTO;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,10 @@ namespace Controller
         public List<Appointment> GetAll()
         {
             return appointmentService.GetAll();
+        }
+        public List<AppointmentDTO> GetAllDTO()
+        {
+            return appointmentService.GetAllDTO();
         }
 
         public Appointment GetById(int id)

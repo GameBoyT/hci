@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using DTO;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -119,6 +120,8 @@ namespace Hospital
             //app.employeeController.Save(secretary);
 
 
+            List<AppointmentDTO> appointmentDTOs = app.appointmentController.GetAllDTO();
+            MessageBox.Show(appointmentDTOs[0].PatientLastName);
 
             appointment_date.SelectedDate = DateTime.Today;
             new_appointment_date.SelectedDate = DateTime.Today;

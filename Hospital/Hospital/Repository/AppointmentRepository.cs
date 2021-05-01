@@ -66,12 +66,13 @@ namespace Repository
             }
         }
 
-        public void Save(Appointment appointment)
+        public Appointment Save(Appointment appointment)
         {
             ReadJson();
 
             _appointments.Add(appointment);
             WriteToJson();
+            return appointment;
         }
 
         public void Delete(int id)
