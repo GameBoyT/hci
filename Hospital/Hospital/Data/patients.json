@@ -37,10 +37,6 @@
       "Referrals": [
         {
           "DoctorJmbg": "1",
-          "Description": "opis neki"
-        },
-        {
-          "DoctorJmbg": "1",
           "Description": "opis drugi "
         }
       ]
