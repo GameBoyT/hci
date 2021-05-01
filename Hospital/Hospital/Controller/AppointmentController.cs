@@ -51,9 +51,9 @@ namespace Controller
         {
             return appointmentService.AppointmentTimeIsInvalid(appointment);
         }
-        public bool AppointmentTimeInFuture(DateTime appointmentStartTime)
+        public bool IsTimeInFuture(DateTime appointmentStartTime)
         {
-            return appointmentService.AppointmentTimeInFuture(appointmentStartTime);
+            return appointmentService.IsTimeInFuture(appointmentStartTime);
         }
         public bool AppointmentIsTaken(Appointment appointment, string doctorId)
         {

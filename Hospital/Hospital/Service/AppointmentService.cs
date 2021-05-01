@@ -55,7 +55,7 @@ namespace Service
             return appointmentRepository.GenerateNewId();
         }
 
-        public bool AppointmentTimeInFuture(DateTime appointmentStartTime)
+        public bool IsTimeInFuture(DateTime appointmentStartTime)
         {
             if (appointmentStartTime.Ticks > DateTime.Now.Ticks)
                 return true;
@@ -89,7 +89,7 @@ namespace Service
         {
             List<Appointment> appointments = appointmentRepository.GetAll();
 
-            if (!AppointmentTimeInFuture(appointment.StartTime))
+            if (!IsTimeInFuture(appointment.StartTime))
             {
                 return true;
             }
@@ -124,7 +124,7 @@ namespace Service
         {
             List<Appointment> appointments = appointmentRepository.GetAll();
 
-            if (!AppointmentTimeInFuture(appointment.StartTime))
+            if (!IsTimeInFuture(appointment.StartTime))
             {
                 return true;
             }

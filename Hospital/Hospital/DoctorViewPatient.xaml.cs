@@ -90,7 +90,7 @@ namespace Hospital
             app = Application.Current as App;
 
             Appointment = appointment;
-            if (!app.appointmentController.AppointmentTimeInFuture(Appointment.StartTime))
+            if (!app.appointmentController.IsTimeInFuture(Appointment.StartTime))
                 IsAppointmentTime = true;
             Patient = app.patientController.GetByJmbg(appointment.PatientJmbg);
 
@@ -106,7 +106,7 @@ namespace Hospital
             var item = (sender as ListView).SelectedItem;
             if (item != null)
             {
-                if (!app.appointmentController.AppointmentTimeInFuture(Appointment.StartTime))
+                if (!app.appointmentController.IsTimeInFuture(Appointment.StartTime))
                 {
                     IsAppointmentTime = true;
                 }
@@ -116,10 +116,9 @@ namespace Hospital
 
         private void SaveChangesButton_Click(object sender, RoutedEventArgs e)
         {
-            Anamnesis selectedAnamnesis = Patient.MedicalRecord.Anamnesis[lvDataBinding.SelectedIndex];
+            Anamnesis selectedAnamnesis = Anamnesis[lvDataBinding.SelectedIndex];
             Anamnesis updatedAnamnesis = app.patientController.UpdateAnamnesisDescription(Patient.User.Jmbg, selectedAnamnesis.Id, DetailText);
-            int index = Anamnesis.IndexOf(selectedAnamnesis);
-            Anamnesis[index] = updatedAnamnesis;
+            selectedAnamnesis.Description = updatedAnamnesis.Description;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -129,7 +128,7 @@ namespace Hospital
 
         private void AddNewButton_Click(object sender, RoutedEventArgs e)
         {
-            if (app.appointmentController.AppointmentTimeInFuture(Appointment.StartTime))
+            if (app.appointmentController.IsTimeInFuture(Appointment.StartTime))
             {
                 MessageBox.Show("You cannot add anamnesis until or after the appointment");
             }
