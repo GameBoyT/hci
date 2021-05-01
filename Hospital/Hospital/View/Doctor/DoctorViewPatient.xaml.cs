@@ -1,6 +1,7 @@
 ﻿using DTO;
 using Model;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
@@ -16,6 +17,8 @@ namespace Hospital.View.Doctor
         public Medicine Medicine { get; set; }
         public ObservableCollection<Anamnesis> Anamnesis { get; set; }
         public ObservableCollection<Prescription> Prescriptions { get; set; }
+
+        private List<Employee> Doctors { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private bool isAppointmentTime;
@@ -94,11 +97,14 @@ namespace Hospital.View.Doctor
                 IsAppointmentTime = true;
             Patient = app.patientController.GetByJmbg(appointment.PatientJmbg);
 
+            Doctors = app.employeeController.GetDoctors();
+
             Anamnesis = new ObservableCollection<Anamnesis>(Patient.MedicalRecord.Anamnesis);
             Prescriptions = new ObservableCollection<Prescription>(Patient.MedicalRecord.Prescription);
             lvDataBinding.ItemsSource = Anamnesis;
             lvPrescriptionDataBinding.ItemsSource = app.medicineController.GetAll();
             lvPatientPrescriptionDataBinding.ItemsSource = Prescriptions;
+            doctorsDataGrid.ItemsSource = Doctors;
         }
 
         private void listView_Click(object sender, RoutedEventArgs e)
@@ -164,6 +170,11 @@ namespace Hospital.View.Doctor
             {
                 MessageBox.Show("Error");
             }
+        }
+
+        private void FilterButton_Click(object sender, RoutedEventArgs e)
+        {
+            doctorsDataGrid.ItemsSource = app.employeeController.GetDoctorsBySpecialization(specializationName.Text);
         }
     }
 }
