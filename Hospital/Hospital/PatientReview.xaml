@@ -14,9 +14,9 @@
                     <GridViewColumn Width="140" Header="Start Time"
          DisplayMemberBinding="{Binding StartTime}"  />
                     <GridViewColumn Width="140" Header="First Name"  
-         DisplayMemberBinding="{Binding Doctor.User.FirstName}" />
+         DisplayMemberBinding="{Binding DoctorFirstName}" />
                     <GridViewColumn Width="140" Header="Last Name"
-         DisplayMemberBinding="{Binding Doctor.User.LastName}" />
+         DisplayMemberBinding="{Binding DoctorLastName}" />
 
                 </GridView>
             </ListView.View>

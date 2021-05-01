@@ -1,8 +1,13 @@
-﻿using Controller;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using Controller;
 using Model;
-using System;
-using System.Collections.Generic;
-using System.Windows;
+using DTO;
 
 
 namespace Hospital
@@ -17,16 +22,7 @@ namespace Hospital
         public PatientReview()
         {
             InitializeComponent();
-            List<Appointment> allAppointments = appointmentController.GetAppointmentsForPatient("5");
-            List<Appointment> appointmentsInPast = new List<Appointment>();
-            foreach (Appointment appointment in allAppointments)
-            {
-                if (appointment.StartTime < DateTime.Now)
-                {
-                    appointmentsInPast.Add(appointment);
-                }
-            }
-            AppointmentsListView.ItemsSource = appointmentsInPast;
+            AppointmentsListView.ItemsSource = appointmentController.GetAppointmentsFromPast("5");
 
 
 
@@ -49,9 +45,8 @@ namespace Hospital
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-            Appointment appointment = (Appointment)AppointmentsListView.SelectedItems[0];
-            employeeController.RateDoctor(appointment.DoctorJmbg, getReviewFromForm());
+            AppointmentDTO appointmentDTO = (AppointmentDTO)AppointmentsListView.SelectedItems[0];
+            employeeController.RateDoctor(appointmentDTO.DoctorJmbg,getReviewFromForm());
         }
     }
 }
