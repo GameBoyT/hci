@@ -13,6 +13,11 @@ namespace Controller
             return medicineService.GetAll();
         }
 
+        public List<Medicine> GetVerified()
+        {
+            return medicineService.GetVerified();
+        }
+
         public Medicine GetById(int id)
         {
             return medicineService.GetById(id);

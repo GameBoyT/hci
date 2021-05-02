@@ -45,12 +45,19 @@ namespace Repository
             ReadJson();
             return _medicines;
         }
+        
+        public List<Medicine> GetVerified()
+        {
+            ReadJson();
+            return _medicines.FindAll(obj => obj.Verification == VerificationType.verified);
+        }
 
         public Medicine GetById(int id)
         {
             ReadJson();
             return _medicines.Find(obj => obj.Id == id);
         }
+
         public Medicine GetByName(string name)
         {
             return _medicines.Find(obj => string.Equals(obj.Name, name, StringComparison.OrdinalIgnoreCase));

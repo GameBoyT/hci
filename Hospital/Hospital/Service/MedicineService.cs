@@ -12,6 +12,11 @@ namespace Service
             return medicineRepository.GetAll();
         }
 
+        public List<Medicine> GetVerified()
+        {
+            return medicineRepository.GetVerified();
+        }
+
         public Medicine GetById(int id)
         {
             return medicineRepository.GetById(id);

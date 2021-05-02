@@ -116,7 +116,7 @@ namespace Hospital.View.Doctor
             Anamnesis = new ObservableCollection<Anamnesis>(Patient.MedicalRecord.Anamnesis);
             Prescriptions = new ObservableCollection<Prescription>(Patient.MedicalRecord.Prescription);
             lvDataBinding.ItemsSource = Anamnesis;
-            lvPrescriptionDataBinding.ItemsSource = app.medicineController.GetAll();
+            lvPrescriptionDataBinding.ItemsSource = app.medicineController.GetVerified();
             lvPatientPrescriptionDataBinding.ItemsSource = Prescriptions;
             doctorsDataGrid.ItemsSource = Doctors;
         }
