@@ -16,6 +16,10 @@ namespace Service
         {
             return medicineRepository.GetVerified();
         }
+        public List<Medicine> GetNotRejected()
+        {
+            return medicineRepository.GetNotRejected();
+        }
 
         public Medicine GetById(int id)
         {
@@ -27,10 +31,10 @@ namespace Service
             return medicineRepository.GetByName(name);
         }
 
-        public void Save(string name)
+        public void Save(string name, string description)
         {
             int id = medicineRepository.GenerateNewId();
-            Medicine medicine = new Medicine(id, name);
+            Medicine medicine = new Medicine(id, name, description);
             medicineRepository.Save(medicine);
         }
 
@@ -39,8 +43,12 @@ namespace Service
             medicineRepository.Delete(id);
         }
 
-        public void Update(Medicine medicine)
+        public void Update(int id, string name, VerificationType verification, string description)
         {
+            Medicine medicine = GetById(id);
+            medicine.Name = name;
+            medicine.Verification = verification;
+            medicine.Description = description;
             medicineRepository.Update(medicine);
         }
     }

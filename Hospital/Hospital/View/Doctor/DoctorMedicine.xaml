@@ -1,0 +1,29 @@
+﻿<Window x:Class="Hospital.View.Doctor.DoctorMedicine"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital.View.Doctor"
+        mc:Ignorable="d"
+        Title="DoctorMedicine" Height="450" Width="800">
+    <Grid>
+        <ListView Margin="10,61,555,133" Name="lvMedicineDataBinding" PreviewMouseLeftButtonUp="lvMedicineDataBinding_PreviewMouseLeftButtonUp">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold" />
+                        <TextBlock Text="  | " />
+                        <TextBlock Text="{Binding Verification}" />
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Label Content="Medicine Description: " HorizontalAlignment="Left" Margin="400,61,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Path=MedicineDescriptionText}" HorizontalAlignment="Left" Margin="342,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Height="170"/>
+        <Button Content="Save Changes" HorizontalAlignment="Left" Margin="498,281,0,0" VerticalAlignment="Top" Height="30" Width="85" Click="SaveChangesButton_Click"/>
+        <Button Content="Verify" HorizontalAlignment="Left" Margin="603,351,0,0" VerticalAlignment="Top" Height="30" Width="97" Click="VerifyButton_Click"/>
+        <Button Content="Reject" HorizontalAlignment="Left" Margin="444,351,0,0" VerticalAlignment="Top" Height="30" Width="96" Click="RejectButton_Click"/>
+
+    </Grid>
+</Window>

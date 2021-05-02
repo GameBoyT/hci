@@ -2,27 +2,31 @@
   {
     "Id": 1,
     "Name": "Aspirin",
-    "Verification": 0
+    "Verification": 0,
+    "Description": "opis1"
   },
   {
     "Id": 2,
     "Name": "Andol",
-    "Verification": 0
-
+    "Verification": 0,
+    "Description": "opis25"
   },
   {
     "Id": 3,
     "Name": "Amoksicilin",
-    "Verification": 0
+    "Verification": 0,
+    "Description": "opis3"
   },
   {
     "Id": 4,
     "Name": "Brufen",
-    "Verification": 1
+    "Verification": 1,
+    "Description": "opis4"
   },
   {
     "Id": 5,
     "Name": "Paracetamol",
-    "Verification": 2
+    "Verification": 2,
+    "Description": "opis5"
   }
 ]

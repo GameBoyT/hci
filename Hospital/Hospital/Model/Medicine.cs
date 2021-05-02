@@ -8,11 +8,14 @@ namespace Model
         
         public VerificationType Verification { get; set; }
 
-        public Medicine(int id, string name)
+        public string Description { get; set; }
+
+        public Medicine(int id, string name, string description)
         {
             Id = id;
             Name = name;
             Verification = VerificationType.needsVerification;
+            Description = description;
         }
     }
 }

@@ -18,6 +18,11 @@ namespace Controller
             return medicineService.GetVerified();
         }
 
+        public List<Medicine> GetNotRejected()
+        {
+            return medicineService.GetNotRejected();
+        }
+
         public Medicine GetById(int id)
         {
             return medicineService.GetById(id);
@@ -28,9 +33,9 @@ namespace Controller
             return medicineService.GetByName(name);
         }
 
-        public void Save(string name)
+        public void Save(string name, string description)
         {
-            medicineService.Save(name);
+            medicineService.Save(name, description);
         }
 
         public void Delete(int id)
@@ -38,9 +43,9 @@ namespace Controller
             medicineService.Delete(id);
         }
 
-        public void Update(Medicine medicine)
+        public void Update(int id, string name, VerificationType verification, string description)
         {
-            medicineService.Update(medicine);
+            medicineService.Update(id, name, verification, description);
         }
     }
 }

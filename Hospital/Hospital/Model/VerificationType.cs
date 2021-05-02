@@ -3,7 +3,7 @@ namespace Model
     public enum VerificationType
     {
         verified,
-        discarded,
+        rejected,
         needsVerification
     }
 }
