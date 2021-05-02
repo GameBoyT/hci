@@ -3,30 +3,35 @@
     "Id": 1,
     "Name": "Aspirin",
     "Verification": 0,
-    "Description": "opis1"
+    "Description": "opis1",
+    "DoctorComment": ""
   },
   {
     "Id": 2,
     "Name": "Andol",
     "Verification": 0,
-    "Description": "opis25"
+    "Description": "zz",
+    "DoctorComment": ""
   },
   {
     "Id": 3,
     "Name": "Amoksicilin",
     "Verification": 0,
-    "Description": "opis3"
+    "Description": "opis3",
+    "DoctorComment": ""
   },
   {
     "Id": 4,
     "Name": "Brufen",
-    "Verification": 1,
-    "Description": "opis4"
+    "Verification": 2,
+    "Description": "opis4",
+    "DoctorComment": ""
   },
   {
     "Id": 5,
     "Name": "Paracetamol",
     "Verification": 2,
-    "Description": "opis5"
+    "Description": "afag",
+    "DoctorComment": ""
   }
 ]

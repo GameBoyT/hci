@@ -10,12 +10,23 @@ namespace Model
 
         public string Description { get; set; }
 
-        public Medicine(int id, string name, string description)
+        public string DoctorComment { get; set; }
+
+        //public Medicine(int id, string name, string description)
+        //{
+        //    Id = id;
+        //    Name = name;
+        //    Verification = VerificationType.needsVerification;
+        //    Description = description;
+        //}
+
+        public Medicine(int id, string name, string description, string doctorComment)
         {
             Id = id;
             Name = name;
             Verification = VerificationType.needsVerification;
             Description = description;
+            DoctorComment = doctorComment;
         }
     }
 }

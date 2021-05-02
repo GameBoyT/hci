@@ -39,7 +39,7 @@ namespace Hospital.View.Doctor
             }
         }
 
-        
+
         protected virtual void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
@@ -61,8 +61,27 @@ namespace Hospital.View.Doctor
 
         private void lvMedicineDataBinding_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Medicine = (Medicine)(sender as ListView).SelectedItem;
-            MedicineDescriptionText = Medicines[lvMedicineDataBinding.SelectedIndex].Description;
+            try
+            {
+                Medicine = (Medicine)(sender as ListView).SelectedItem;
+                MedicineDescriptionText = Medicines[lvMedicineDataBinding.SelectedIndex].Description;
+                VerificationButtonVisibility(Medicine.Verification);
+            }
+            catch { }
+        }
+
+        private void VerificationButtonVisibility (VerificationType verification)
+        {
+            if (verification == VerificationType.needsVerification)
+            {
+                VerifyButton.Visibility = Visibility.Visible;
+                RejectButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                VerifyButton.Visibility = Visibility.Collapsed;
+                RejectButton.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void SaveChangesButton_Click(object sender, RoutedEventArgs e)
@@ -77,14 +96,20 @@ namespace Hospital.View.Doctor
             Medicine medicine = Medicines[lvMedicineDataBinding.SelectedIndex];
             app.medicineController.Update(medicine.Id, medicine.Name, VerificationType.verified, medicine.Description);
             //medicine.Verification = VerificationType.verified;
-
-            Medicines = new ObservableCollection<Medicine>(app.medicineController.GetNotRejected());
-            lvMedicineDataBinding.ItemsSource = Medicines;
+            
+            UpdateWindow();
         }
 
         private void RejectButton_Click(object sender, RoutedEventArgs e)
         {
+            DoctorVerificationRejection doctorVerificationRejection = new DoctorVerificationRejection(this);
+            doctorVerificationRejection.Show();
+        }
 
+        public void UpdateWindow()
+        {
+            Medicines = new ObservableCollection<Medicine>(app.medicineController.GetNotRejected());
+            lvMedicineDataBinding.ItemsSource = Medicines;
         }
     }
 }

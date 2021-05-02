@@ -34,7 +34,7 @@ namespace Service
         public void Save(string name, string description)
         {
             int id = medicineRepository.GenerateNewId();
-            Medicine medicine = new Medicine(id, name, description);
+            Medicine medicine = new Medicine(id, name, description, "");
             medicineRepository.Save(medicine);
         }
 
@@ -49,6 +49,13 @@ namespace Service
             medicine.Name = name;
             medicine.Verification = verification;
             medicine.Description = description;
+            medicineRepository.Update(medicine);
+        }
+        public void RejectMedicine(int id, string doctorComment)
+        {
+            Medicine medicine = GetById(id);
+            medicine.Verification = VerificationType.rejected;
+            medicine.DoctorComment = doctorComment;
             medicineRepository.Update(medicine);
         }
     }

@@ -1,4 +1,5 @@
 using Model;
+using System;
 using System.Collections.Generic;
 
 namespace Controller
@@ -36,6 +37,11 @@ namespace Controller
         public void Save(string name, string description)
         {
             medicineService.Save(name, description);
+        }
+
+        public void RejectMedicine(int id, string doctorComment)
+        {
+            medicineService.RejectMedicine(id, doctorComment);
         }
 
         public void Delete(int id)
