@@ -1,20 +1,19 @@
-﻿using Controller;
-using Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
-
-namespace Hospital
+using Model;
+using Controller;
+namespace Hospital.View.Director
 {
-
+    /// <summary>
+    /// Interaction logic for Equipment.xaml
+    /// </summary>
     public partial class Equipment : Window
     {
-        private StaticEquipmentController staticController = new StaticEquipmentController();
-
-        List<StaticEquipment> staticEquipment = new List<StaticEquipment>();
-        private DynamicEquipmentController dynamicController = new DynamicEquipmentController();
-
-        List<DynamicEquipment> dynamicEquipment = new List<DynamicEquipment>();
+        private readonly StaticEquipmentController staticController = new StaticEquipmentController();
+        readonly List<StaticEquipment> staticEquipment = new List<StaticEquipment>();
+        private readonly DynamicEquipmentController dynamicController = new DynamicEquipmentController();
+        readonly List<DynamicEquipment> dynamicEquipment = new List<DynamicEquipment>();
         int id;
         int id_stat;
         public Equipment()
@@ -25,7 +24,6 @@ namespace Hospital
             dynamicEquipment = dynamicController.GetAll();
             DynamicDataGrid.ItemsSource = dynamicEquipment;
         }
-
         private StaticEquipment CreateEquipment()
         {
             int id = staticController.GenerateNewId();
@@ -37,7 +35,7 @@ namespace Hospital
             return new StaticEquipment(id, textname, 3, quant, desc);
         }
 
-        private void addEquipment_Click(object sender, RoutedEventArgs e)
+        private void AddEquipment_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -49,7 +47,7 @@ namespace Hospital
             }
         }
 
-        private void updateEquipment_Click(object sender, RoutedEventArgs e)
+        private void UpdateEquipment_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -70,7 +68,7 @@ namespace Hospital
             }
         }
 
-        private void updateStatic_Click(object sender, RoutedEventArgs e)
+        private void UpdateStatic_Click(object sender, RoutedEventArgs e)
         {
             string textname = name.Text;
             string desc = description.Text;
@@ -80,7 +78,7 @@ namespace Hospital
             id_stat = -1;
 
         }
-        private void cancelupdateStatic_Click(object sender, RoutedEventArgs e)
+        private void CancelupdateStatic_Click(object sender, RoutedEventArgs e)
         {
             name.Text = "";
             quantity.Text = "";
@@ -91,7 +89,7 @@ namespace Hospital
             cancelupdateStaticButton.Visibility = Visibility.Collapsed;
             title.Content = "Add new equipment";
         }
-        private void deleteEquipment_Click(object sender, RoutedEventArgs e)
+        private void DeleteEquipment_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -115,7 +113,7 @@ namespace Hospital
             return new DynamicEquipment(id, textname, quant, desc);
         }
 
-        private void addDynamic_Click(object sender, RoutedEventArgs e)
+        private void AddDynamic_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -127,7 +125,7 @@ namespace Hospital
             }
         }
 
-        private void deleteDynamic_Click(object sender, RoutedEventArgs e)
+        private void DeleteDynamic_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -140,7 +138,7 @@ namespace Hospital
             }
         }
 
-        private void updateDynamic_Show(object sender, RoutedEventArgs e)
+        private void UpdateDynamic_Show(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -161,7 +159,7 @@ namespace Hospital
             }
         }
 
-        private void updateDynamic_Click(object sender, RoutedEventArgs e)
+        private void UpdateDynamic_Click(object sender, RoutedEventArgs e)
         {
             string textname = dynName.Text;
             string desc = dynDescription.Text;
@@ -171,7 +169,7 @@ namespace Hospital
             id = -1;
         }
 
-        private void cancelupdateDynamic_Click(object sender, RoutedEventArgs e)
+        private void CancelupdateDynamic_Click(object sender, RoutedEventArgs e)
         {
             dynName.Text = "";
             dynQuantity.Text = "";
@@ -186,3 +184,4 @@ namespace Hospital
 
     }
 }
+

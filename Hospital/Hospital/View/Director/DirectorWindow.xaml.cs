@@ -1,7 +1,16 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
-
-namespace Hospital
+namespace Hospital.View.Director
 {
 
     public partial class DirectorWindow : Window
@@ -24,5 +33,14 @@ namespace Hospital
             equipment.Show();
             System.Windows.Application.Current.MainWindow.Hide();
         }
+
+        private void ViewMedicine(object sender, RoutedEventArgs e)
+        {
+            MedicineCrud meds = new MedicineCrud();
+            meds.Show();
+            System.Windows.Application.Current.MainWindow.Hide();
+
+        }
+
     }
 }

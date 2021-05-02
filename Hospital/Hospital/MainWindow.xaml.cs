@@ -25,7 +25,7 @@ namespace Hospital
 
         private void Button_Click_Director(object sender, RoutedEventArgs e)
         {
-            DirectorWindow directorWindow = new DirectorWindow();
+            View.Director.DirectorWindow directorWindow = new View.Director.DirectorWindow();
             directorWindow.Show();
             this.Close();
         }
