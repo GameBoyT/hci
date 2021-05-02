@@ -25,6 +25,7 @@ namespace Hospital.View.Doctor
         private string detailText;
         private string descriptionText;
         private string quantity;
+        private string referralDescriptionText;
 
         public string DetailText
         {
@@ -74,6 +75,19 @@ namespace Hospital.View.Doctor
                 {
                     isAppointmentTime = value;
                     OnPropertyChanged("isAppointmentTime");
+                }
+            }
+        }
+
+        public string ReferralDescriptionText
+        {
+            get { return referralDescriptionText; }
+            set
+            {
+                if (referralDescriptionText != value)
+                {
+                    referralDescriptionText = value;
+                    OnPropertyChanged("referralDescriptionText");
                 }
             }
         }
@@ -171,10 +185,16 @@ namespace Hospital.View.Doctor
                 MessageBox.Show("Error");
             }
         }
-
-        private void FilterButton_Click(object sender, RoutedEventArgs e)
+        private void specializationName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            doctorsDataGrid.ItemsSource = app.employeeController.GetDoctorsBySpecialization(specializationName.Text);
+            doctorsDataGrid.ItemsSource = Doctors.FindAll(obj => obj.Specialization.IndexOf(specializationName.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+        
+        private void ReferralAddButton_Click(object sender, RoutedEventArgs e)
+        {
+            Employee doctor = (Employee)doctorsDataGrid.SelectedItems[0];
+            app.patientController.AddReferral(Appointment.PatientJmbg, doctor.User.Jmbg, ReferralDescriptionText);
+            ReferralDescriptionText = "";
         }
     }
 }

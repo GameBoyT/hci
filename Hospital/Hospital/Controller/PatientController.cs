@@ -59,5 +59,10 @@ namespace Controller
         {
             return patientService.AddPrescription(jmbg, medicine, quantity, description);
         }
+
+        internal Referral AddReferral(string patientJmbg, string doctorJmbg, string description)
+        {
+            return patientService.AddReferral(patientJmbg, doctorJmbg, description);
+        }
     }
 }

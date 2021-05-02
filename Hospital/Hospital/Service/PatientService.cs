@@ -63,6 +63,15 @@ namespace Service
             return anamnesis;
         }
 
+        internal Referral AddReferral(string patientJmbg, string doctorJmbg, string description)
+        {
+            Referral referral = new Referral(doctorJmbg, description);
+            Patient patient = GetByJmbg(patientJmbg);
+            patient.MedicalRecord.Referrals.Add(referral);
+            Update(patient);
+            return referral;
+        }
+
         public Anamnesis UpdateAnamnesisDescription(string jmbg, int id, string description)
         {
             Patient patient = patientRepository.GetByJmbg(jmbg);
