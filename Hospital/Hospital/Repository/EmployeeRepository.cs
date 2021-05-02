@@ -83,7 +83,8 @@ namespace Repository
         public List<Employee> GetDoctorsBySpecialization(string specialization)
         {
             ReadJson();
-            return _employees.FindAll(obj => string.Equals(obj.Specialization, specialization, StringComparison.OrdinalIgnoreCase));
+            List<Employee> doctors = GetDoctors();
+            return doctors.FindAll(obj => string.Equals(obj.Specialization, specialization, StringComparison.OrdinalIgnoreCase));
         }
 
         public Employee GetDirector()

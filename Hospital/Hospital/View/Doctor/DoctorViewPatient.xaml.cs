@@ -1,6 +1,7 @@
 ﻿using DTO;
 using Model;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
@@ -17,11 +18,14 @@ namespace Hospital.View.Doctor
         public ObservableCollection<Anamnesis> Anamnesis { get; set; }
         public ObservableCollection<Prescription> Prescriptions { get; set; }
 
+        private List<Employee> Doctors { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
         private bool isAppointmentTime;
         private string detailText;
         private string descriptionText;
         private string quantity;
+        private string referralDescriptionText;
 
         public string DetailText
         {
@@ -75,6 +79,19 @@ namespace Hospital.View.Doctor
             }
         }
 
+        public string ReferralDescriptionText
+        {
+            get { return referralDescriptionText; }
+            set
+            {
+                if (referralDescriptionText != value)
+                {
+                    referralDescriptionText = value;
+                    OnPropertyChanged("referralDescriptionText");
+                }
+            }
+        }
+
         protected virtual void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
@@ -94,11 +111,14 @@ namespace Hospital.View.Doctor
                 IsAppointmentTime = true;
             Patient = app.patientController.GetByJmbg(appointment.PatientJmbg);
 
+            Doctors = app.employeeController.GetDoctors();
+
             Anamnesis = new ObservableCollection<Anamnesis>(Patient.MedicalRecord.Anamnesis);
             Prescriptions = new ObservableCollection<Prescription>(Patient.MedicalRecord.Prescription);
             lvDataBinding.ItemsSource = Anamnesis;
-            lvPrescriptionDataBinding.ItemsSource = app.medicineController.GetAll();
+            lvPrescriptionDataBinding.ItemsSource = app.medicineController.GetVerified();
             lvPatientPrescriptionDataBinding.ItemsSource = Prescriptions;
+            doctorsDataGrid.ItemsSource = Doctors;
         }
 
         private void listView_Click(object sender, RoutedEventArgs e)
@@ -164,6 +184,17 @@ namespace Hospital.View.Doctor
             {
                 MessageBox.Show("Error");
             }
+        }
+        private void specializationName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            doctorsDataGrid.ItemsSource = Doctors.FindAll(obj => obj.Specialization.IndexOf(specializationName.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+        
+        private void ReferralAddButton_Click(object sender, RoutedEventArgs e)
+        {
+            Employee doctor = (Employee)doctorsDataGrid.SelectedItems[0];
+            app.patientController.AddReferral(Appointment.PatientJmbg, doctor.User.Jmbg, ReferralDescriptionText);
+            ReferralDescriptionText = "";
         }
     }
 }

@@ -92,5 +92,11 @@ namespace Hospital.View.Doctor
             DoctorOperation doctorOperation = new DoctorOperation(this);
             doctorOperation.Show();
         }
+
+        private void MedicineButton_Click(object sender, RoutedEventArgs e)
+        {
+            DoctorMedicine doctorMedicine = new DoctorMedicine(Doctor);
+            doctorMedicine.Show();
+        }
     }
 }
