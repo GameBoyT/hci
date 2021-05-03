@@ -79,6 +79,16 @@ namespace Repository
             _dynamicEquipments[index] = dynamicEquipment;
             WriteToJson();
         }
+        public void MoveDynamicEquipment(DynamicEquipment dynamicEquipment)
+        {
+            DynamicEquipment dynamic = _dynamicEquipments.Find(obj => obj.Id == dynamicEquipment.Id);
+            dynamic.Quantity -= dynamicEquipment.Quantity;
+            Update(dynamic);
+            WriteToJson();
+
+            string lines = "Extracted dynamic equipment:" + dynamicEquipment.Name + "\t" + " quantity:" + Convert.ToString(dynamicEquipment.Quantity) + "\n";
+            File.AppendAllText("dynamicTransfer.txt", lines);
+        }
 
     }
 }
