@@ -49,6 +49,7 @@ namespace Hospital.View.Doctor
                     MessageBox.Show(notification.NotificationText, "Notification");
                 }
                 Doctor.Notifications.Clear();
+                app.employeeController.Update(Doctor);
             }
         }
 
@@ -112,6 +113,35 @@ namespace Hospital.View.Doctor
         {
             DoctorMedicine doctorMedicine = new DoctorMedicine(Doctor);
             doctorMedicine.Show();
+        }
+
+        public bool IsAppointmentScheduled(AppointmentDTO appointment)
+        {
+            if (!app.appointmentController.IsTimeInFuture(appointment.StartTime))
+            {
+                MessageBox.Show("You can't schedule appointments in the past!");
+                return true;
+            }
+
+            if (!app.appointmentController.IsDoctorAvailable(appointment))
+            {
+                MessageBox.Show("You already have an appointment at that time!");
+                return true;
+            }
+
+            if (!app.appointmentController.IsPatientAvailable(appointment))
+            {
+                MessageBox.Show("The patient already has an appointment at that time!");
+                return true;
+            }
+
+            if (!app.appointmentController.IsRoomAvailable(appointment))
+            {
+                MessageBox.Show("The room already has an appointment at that time!");
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -125,15 +125,21 @@ namespace Service
             return appointmentRepository.GenerateNewId();
         }
 
-        public bool IsDoctorAvailable(AppointmentDTO appointment, string doctorId)
+        public bool IsDoctorAvailable(AppointmentDTO appointment)
         {
-            List<AppointmentDTO> appointments = GetAppointmentsForDoctor(doctorId);
+            List<AppointmentDTO> appointments = GetAppointmentsForDoctor(appointment.DoctorJmbg);
             return IsTimeSlotFree(appointment, appointments);
         }
 
-        public bool IsRoomAvailable(AppointmentDTO appointment, int roomId)
+        public bool IsPatientAvailable(AppointmentDTO appointment)
         {
-            List<AppointmentDTO> appointments = GetAppointmentsForRoom(roomId);
+            List<AppointmentDTO> appointments = GetAppointmentsForPatient(appointment.PatientJmbg);
+            return IsTimeSlotFree(appointment, appointments);
+        }
+
+        public bool IsRoomAvailable(AppointmentDTO appointment)
+        {
+            List<AppointmentDTO> appointments = GetAppointmentsForRoom(appointment.RoomId);
             return IsTimeSlotFree(appointment, appointments);
         }
 
@@ -146,7 +152,7 @@ namespace Service
 
         public bool IsDateTimeBetween(DateTime dateTimeToCheck, DateTime startTime, DateTime endTime)
         {
-            return dateTimeToCheck.Ticks > startTime.Ticks && dateTimeToCheck.Ticks < endTime.Ticks;
+            return dateTimeToCheck.Ticks >= startTime.Ticks && dateTimeToCheck.Ticks < endTime.Ticks;
         }
 
         public bool IsTimeSlotFree(AppointmentDTO appointmentToCheck, List<AppointmentDTO> appointments)
@@ -172,6 +178,8 @@ namespace Service
 
 
 
+
+        // Stari kod, za brisanje kad se prebaci sve na novo
         public bool AppointmentIsTaken(AppointmentDTO appointment, string doctorId)
         {
             List<Appointment> appointments = appointmentRepository.GetAppointmentsForDoctor(doctorId);
