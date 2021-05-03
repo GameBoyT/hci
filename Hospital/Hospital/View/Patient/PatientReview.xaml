@@ -26,10 +26,10 @@
         <Label Content="Informacije  (0-10)" HorizontalAlignment="Left" Margin="465,73,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="Opsti utisak  (0-10)" HorizontalAlignment="Left" Margin="465,176,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="Ljubaznost  (0-10)" HorizontalAlignment="Left" Margin="465,124,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="speedTextBox" HorizontalAlignment="Left" Margin="619,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16" InputScope="Number"/>
-        <TextBox x:Name="informationTextBox" HorizontalAlignment="Left" Margin="619,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16"/>
-        <TextBox x:Name="kindnessTextBox" HorizontalAlignment="Left" Margin="619,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16"/>
-        <TextBox x:Name="overallTextBox" HorizontalAlignment="Left" Margin="619,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16"/>
+        <TextBox x:Name="speedTextBox" HorizontalAlignment="Left" Margin="619,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16" InputScope="Number" Text="10"/>
+        <TextBox x:Name="informationTextBox" HorizontalAlignment="Left" Margin="619,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16" Text="10"/>
+        <TextBox x:Name="kindnessTextBox" HorizontalAlignment="Left" Margin="619,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16" Text="10"/>
+        <TextBox x:Name="overallTextBox" HorizontalAlignment="Left" Margin="619,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16" Text="10"/>
         <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Left" Margin="465,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="64"/>
         <Button x:Name="cancelButton" Content="Back" HorizontalAlignment="Left" Margin="674,380,0,0" VerticalAlignment="Top" Height="26" Width="93" RenderTransformOrigin="0.155,0.535" Click="CancelButtonClick"/>
 

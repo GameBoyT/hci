@@ -81,7 +81,7 @@ namespace Service
             return anamnesis;
         }
 
-        public string CheckForNotification(Patient patient)
+        public void CheckForMedicineNotification(Patient patient)
         {
             List<Prescription> prescriptions = patient.MedicalRecord.Prescription;
             foreach (Prescription p in prescriptions)
@@ -96,7 +96,9 @@ namespace Service
                     if (DateTime.Now.TimeOfDay > timeMinusOne.TimeOfDay && DateTime.Now.TimeOfDay < time.TimeOfDay)
                     {
                         String message = p.Medicine.Name + "," + time.TimeOfDay.ToString();
-                        return (message);
+                        Notification notification = new Notification(0, message, 5);
+                        patient.Notifications.Add(notification);
+                        patientRepository.Update(patient);
                     }
 
 
@@ -105,7 +107,6 @@ namespace Service
                     timeMinusOne = time.AddHours(-1);
                 }
             }
-            return ("Nema lijeka za popiti");
         }
 
         public string IsPatientBlocked(Patient patient)
