@@ -12,5 +12,12 @@
     "Name": "Anaesthesia",
     "Quantity": 1,
     "Description": "Anaesthesia machine"
+  },
+  {
+    "Id": 3,
+    "RoomId": 2,
+    "Name": "BlaBla",
+    "Quantity": 2,
+    "Description": "blabla"
   }
 ]

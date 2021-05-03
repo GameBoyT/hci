@@ -30,9 +30,10 @@ namespace Hospital.View.Director
             string textname = name.Text;
             string desc = description.Text;
             int quant = Int32.Parse(quantity.Text);
-            staticController.Save(textname, "302", quant, desc);
+            string toRoomId = roomId.Text;
+            staticController.Save(textname, toRoomId, quant, desc);
             //Room room = new Room(101, textname, (RoomType)1, 4, "test soba");
-            return new StaticEquipment(id, textname, 3, quant, desc);
+            return new StaticEquipment(id, textname, Int32.Parse(toRoomId), quant, desc);
         }
 
         private void AddEquipment_Click(object sender, RoutedEventArgs e)
@@ -61,6 +62,7 @@ namespace Hospital.View.Director
                 name.Text = equipment.Name;
                 quantity.Text = equipment.Quantity.ToString();
                 description.Text = equipment.Description;
+                roomId.Text = equipment.RoomId.ToString();
             }
             catch
             {
@@ -73,7 +75,8 @@ namespace Hospital.View.Director
             string textname = name.Text;
             string desc = description.Text;
             int quant = Int32.Parse(quantity.Text);
-            StaticEquipment equipment = new StaticEquipment(id_stat, textname, 4, quant, desc);
+
+            StaticEquipment equipment = new StaticEquipment(id_stat, textname, Int32.Parse(roomId.Text), quant, desc);
             staticController.Update(equipment);
             id_stat = -1;
 
@@ -83,6 +86,7 @@ namespace Hospital.View.Director
             name.Text = "";
             quantity.Text = "";
             description.Text = "";
+            roomId.Text = "";
 
             addEquipment.Visibility = Visibility.Visible;
             updateStaticButton.Visibility = Visibility.Collapsed;
@@ -181,7 +185,23 @@ namespace Hospital.View.Director
             title.Content = "Add new equipment";
         }
 
+        private void Transfer_Static_Click(object sender, RoutedEventArgs e)
+        {
+            StaticTransfer staticTransfer = new StaticTransfer();
+            staticTransfer.Show();
 
+        }
+        private void Transfer_Dynamic_Click(object sender, RoutedEventArgs e)
+        {
+            Transfer dynamicTransfer = new Transfer();
+            dynamicTransfer.Show();
+
+        }
+
+        private void Search_Static_Click(object sender, RoutedEventArgs e)
+        {
+            StaticDataGrid.ItemsSource = staticEquipment.FindAll(obj => obj.Name == searchStatic.Text);
+        }
     }
 }
 

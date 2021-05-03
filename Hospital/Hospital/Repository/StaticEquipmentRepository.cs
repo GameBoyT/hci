@@ -63,7 +63,7 @@ namespace Repository
             }
         }
 
-        public void Save(Model.StaticEquipment staticEquipment)
+        public void Save(StaticEquipment staticEquipment)
         {
             _staticEquipments.Add(staticEquipment);
             WriteToJson();
@@ -82,6 +82,14 @@ namespace Repository
             _staticEquipments[index] = staticEquipment;
             WriteToJson();
         }
+        public List<StaticEquipment> GetByName(string name)
+        {
+            return _staticEquipments.FindAll(obj => obj.Name == name);
+        }
 
+        public List<StaticEquipment> FilterRoomId(int id)
+        {
+            return _staticEquipments.FindAll(obj => obj.RoomId == id);
+        }
     }
 }

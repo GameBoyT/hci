@@ -41,5 +41,9 @@ namespace Controller
         {
             dynamicService.MoveDynamicEquipment(dynamicEquipment);
         }
+        public List<DynamicEquipment> GetByName(string name)
+        {
+            return dynamicService.GetByName(name);
+        }
     }
 }

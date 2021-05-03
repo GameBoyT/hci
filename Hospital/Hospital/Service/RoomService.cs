@@ -7,6 +7,7 @@ namespace Service
     public class RoomService
     {
         public Repository.RoomRepository roomRepository = new Repository.RoomRepository();
+        public Repository.StaticEquipmentRepository staticRepository = new Repository.StaticEquipmentRepository();
 
         public List<Room> GetAll()
         {
@@ -65,6 +66,22 @@ namespace Service
         public List<Room> GetRoomsWithEquipmentName(string name)
         {
             return roomRepository.GetRoomsWithEquipmentName(name);
+        }
+
+        public void MoveStaticEquipment(int staticId, int toRoom, DateTime time)
+        {
+            if (time.Ticks < DateTime.Now.Ticks){
+                StaticEquipment staticEquipment = staticRepository.GetById(staticId);
+                Room room = GetById(staticEquipment.RoomId);
+                int index = room.StaticEquipments.FindIndex(obj => obj.Id == room.Id);
+                room.StaticEquipments.RemoveAt(index);
+                Room room2 = GetById(toRoom);
+                staticEquipment.RoomId = room2.Id;
+                room2.StaticEquipments.Add(staticEquipment);
+                staticRepository.Update(staticEquipment);
+                Update(room);
+                Update(room2);
+            }
         }
     }
 }

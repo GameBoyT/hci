@@ -24,7 +24,7 @@ namespace Hospital.View.Director
             dynamicEquipment = dynamicController.GetAll();
             DynamicDataGrid.ItemsSource = dynamicEquipment;
             lb_transfers.Items.Clear();
-            foreach (string line in File.ReadAllLines("dynamicTransfer.txt"))
+            foreach (string line in File.ReadAllLines(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\dynamicTransfer.txt"))
             {
                 lb_transfers.Items.Add(line);
             }

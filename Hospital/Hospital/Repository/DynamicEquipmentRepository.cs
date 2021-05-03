@@ -10,6 +10,7 @@ namespace Repository
     public class DynamicEquipmentRepository
     {
         private readonly string _fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\dynamicEquipments.json";
+        private readonly string _spisak = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\dynamicTransfer.txt";
         private List<DynamicEquipment> _dynamicEquipments = new List<DynamicEquipment>();
 
         public DynamicEquipmentRepository()
@@ -86,9 +87,12 @@ namespace Repository
             Update(dynamic);
             WriteToJson();
 
-            string lines = "Extracted dynamic equipment:" + dynamicEquipment.Name + "\t" + " quantity:" + Convert.ToString(dynamicEquipment.Quantity) + "\n";
-            File.AppendAllText("dynamicTransfer.txt", lines);
+            string lines = "Extracted dynamic equipment: " + Convert.ToString(dynamicEquipment.Quantity) + " " + dynamicEquipment.Name + "\n";
+            File.AppendAllText(_spisak, lines);
         }
-
+        public List<DynamicEquipment> GetByName(string name)
+        {
+            return _dynamicEquipments.FindAll(obj => obj.Name == name);
+        }
     }
 }

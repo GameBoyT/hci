@@ -44,5 +44,14 @@ namespace Service
         {
             staticEquipmentRepository.Update(staticEquipment);
         }
+
+        public List<StaticEquipment> GetByName(string name)
+        {
+            return staticEquipmentRepository.GetByName(name);
+        }
+        public List<StaticEquipment> FilterRoomId(int id)
+        {
+            return staticEquipmentRepository.FilterRoomId(id);
+        }
     }
 }

@@ -16,7 +16,15 @@
     "Floor": 1,
     "Detail": "111detalji",
     "Appointments": [],
-    "StaticEquipments": [],
+    "StaticEquipments": [
+      {
+        "Id": 3,
+        "RoomId": 2,
+        "Name": "BlaBla",
+        "Quantity": 2,
+        "Description": "blabla"
+      }
+    ],
     "DynamicEquipments": []
   },
   {
