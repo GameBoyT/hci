@@ -27,6 +27,15 @@ namespace Hospital
             InitializeComponent();
         }
 
+        private void ClearFileds()
+        {
+            JMBGTB.Clear();
+            userNameTB.Clear();
+            passwordTB.Clear();
+            passwordTB.Clear();
+
+        }
+
         private Patient CreatePatientFromData()
         {
             string jmbg = JMBGTB.Text;
@@ -36,7 +45,7 @@ namespace Hospital
             string password = passwordTB.Text;
             string email = "";
             string address = "";
-            DateTime dateBirth = new DateTime(2021, 1, 1);
+            DateTime dateBirth = new DateTime();
             User patient = new User(jmbg, firstName, lastName, username, password, email, address, dateBirth);
             return new Patient(patient);
         }
@@ -45,6 +54,7 @@ namespace Hospital
         {
             Patient patient = CreatePatientFromData();
             patientController.Save(patient);
+            ClearFileds();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
