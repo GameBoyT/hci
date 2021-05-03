@@ -45,7 +45,7 @@ namespace Hospital
             string password = passwordTB.Text;
             string email = "";
             string address = "";
-            DateTime dateBirth = new DateTime();
+            DateTime dateBirth = new DateTime(2021,1,1);
             User patient = new User(jmbg, firstName, lastName, username, password, email, address, dateBirth);
             return new Patient(patient);
         }
@@ -61,6 +61,13 @@ namespace Hospital
         {
             SecretaryFun secretaryFun = new SecretaryFun();
             secretaryFun.Show();
+            this.Close();
+        }
+
+        private void BackAppointment_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryAppointmentCRUD secretaryAppointmentCRUD = new SecretaryAppointmentCRUD();
+            secretaryAppointmentCRUD.Show();
             this.Close();
         }
     }
