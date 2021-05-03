@@ -40,11 +40,20 @@ namespace Hospital
             this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Guest_Click(object sender, RoutedEventArgs e)
         {
             SecretaryGuest secretaryGuest = new SecretaryGuest();
             secretaryGuest.Show();
             this.Close();
         }
+
+        private void Noticeboard_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryNoticeboard secretaryNoticeboard = new SecretaryNoticeboard();
+            secretaryNoticeboard.Show();
+            this.Close();
+        }
+
+        
     }
 }

@@ -32,6 +32,10 @@ namespace Controller
             notificationService.Update(notification);
         }
 
+        public int GenerateNewId()
+        {
+            return notificationService.GenerateNewId();
+        }
 
     }
 }
