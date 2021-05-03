@@ -53,5 +53,10 @@ namespace Controller
         {
             medicineService.Update(id, name, verification, description);
         }
+
+        public int GenerateNewId()
+        {
+            return medicineService.GenerateNewId();
+        }
     }
 }

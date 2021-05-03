@@ -1,12 +1,13 @@
-﻿using Controller;
-using Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Windows;
+using Model;
+using Controller;
 
-
-namespace Hospital
+namespace Hospital.View.Director
 {
+
     public partial class RoomCrud : Window
     {
         private RoomController roomController = new RoomController();

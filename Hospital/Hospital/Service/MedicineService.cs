@@ -58,5 +58,9 @@ namespace Service
             medicine.DoctorComment = doctorComment;
             medicineRepository.Update(medicine);
         }
+        public int GenerateNewId()
+        {
+            return medicineRepository.GenerateNewId();
+        }
     }
 }
