@@ -8,6 +8,7 @@ namespace Controller
     public class AppointmentController
     {
         private Service.AppointmentService appointmentService = new Service.AppointmentService();
+        private Service.NotificationService notificationService = new Service.NotificationService();
 
         public List<AppointmentDTO> GetAll()
         {
@@ -19,19 +20,24 @@ namespace Controller
             return appointmentService.GetById(id);
         }
 
-        public AppointmentDTO Save(AppointmentDTO appointment)
+        public AppointmentDTO Save(AppointmentDTO appointment, string modifierJmbg)
         {
-            return appointmentService.Save(appointment);
+            AppointmentDTO createdAppointment = appointmentService.Save(appointment);
+            notificationService.NotifyAppointmentCreation(createdAppointment, modifierJmbg);
+            return createdAppointment;
         }
 
-        public void Delete(int id)
+        public void Update(AppointmentDTO appointment, string modifierJmbg)
         {
-            appointmentService.Delete(id);
+            AppointmentDTO updatetAppointment = appointmentService.Update(appointment);
+            notificationService.NotifyAppointmentUpdate(updatetAppointment, modifierJmbg);
         }
 
-        public void Update(AppointmentDTO appointment)
+        public AppointmentDTO Delete(int id, string modifierJmbg)
         {
-            appointmentService.Update(appointment);
+            AppointmentDTO appointment = appointmentService.Delete(id);
+            notificationService.NotifyAppointmentDeletion(appointment, modifierJmbg);
+            return appointment;
         }
 
         public List<AppointmentDTO> GetAppointmentsForDoctor(String jmbg)

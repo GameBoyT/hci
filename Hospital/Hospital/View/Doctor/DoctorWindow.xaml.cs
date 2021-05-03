@@ -73,7 +73,7 @@ namespace Hospital.View.Doctor
             try
             {
                 AppointmentDTO appointment = (AppointmentDTO)appointmentsDataGrid.SelectedItems[0];
-                app.appointmentController.Delete(appointment.Id);
+                app.appointmentController.Delete(appointment.Id, Doctor.User.Jmbg);
                 WindowUpdate();
             }
             catch

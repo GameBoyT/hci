@@ -1,3 +1,4 @@
+using DTO;
 using Model;
 using System.Collections.Generic;
 
@@ -16,9 +17,25 @@ namespace Controller
         {
             return notificationService.GetById(id);
         }
+
         public void Save(Notification notification)
         {
             notificationService.Save(notification);
+        }
+
+        public void NotifyAppointmentCreation(AppointmentDTO appointment, string senderJmbg)
+        {
+            notificationService.NotifyAppointmentCreation(appointment, senderJmbg);
+        }
+
+        public void NotifyAppointmentUpdate(AppointmentDTO appointment, string senderJmbg)
+        {
+            notificationService.NotifyAppointmentUpdate(appointment, senderJmbg);
+        }
+
+        public void NotifyAppointmentDeletion(AppointmentDTO appointment, string senderJmbg)
+        {
+            notificationService.NotifyAppointmentDeletion(appointment, senderJmbg);
         }
 
         public void Delete(int id)

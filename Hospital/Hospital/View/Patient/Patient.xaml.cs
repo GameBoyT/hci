@@ -207,7 +207,7 @@ namespace Hospital
                 }
                 else
                 {
-                    appointmentController.Save(newAppointment);
+                    appointmentController.Save(newAppointment, patient.User.Jmbg);
                     ClearFileds();
                     MessageBox.Show("Novi termin uspjeno dodat", "Uspjesno");
                 }

@@ -96,7 +96,8 @@ namespace Service
                     if (DateTime.Now.TimeOfDay > timeMinusOne.TimeOfDay && DateTime.Now.TimeOfDay < time.TimeOfDay)
                     {
                         String message = p.Medicine.Name + "," + time.TimeOfDay.ToString();
-                        Notification notification = new Notification(0, message, 5);
+                        //Promjeni ovo 1
+                        Notification notification = new Notification(0, message, "1", patient.User.Jmbg);
                         patient.Notifications.Add(notification);
                         patientRepository.Update(patient);
                     }

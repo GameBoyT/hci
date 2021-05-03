@@ -39,7 +39,7 @@ namespace Hospital.View.Doctor
                 AppointmentDTO appointment = ParseUpdatedAppointment();
                 if (ParentWindow.IsAppointmentScheduled(appointment))
                     return;
-                app.appointmentController.Update(appointment);
+                app.appointmentController.Update(appointment, appointment.DoctorJmbg);
                 ParentWindow.WindowUpdate();
                 this.Close();
             }

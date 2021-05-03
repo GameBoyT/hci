@@ -4,36 +4,24 @@ namespace Model
 {
     public class Notification
     {
-        public Notification(int id, string notificationText, int receiver)
+        public Notification(int id, string notificationText, string senderJmbg, string receiverJmbg)
         {
             Id = id;
             NotificationText = notificationText;
-            Receiver = receiver;
+            SenderJmbg = senderJmbg;
+            ReceiverJmbg = receiverJmbg;
+            DateTimeOfSending = DateTime.Now;
         }
 
-        public int Id
-        {
-            get
-            ;
-            set
-            ;
-        }
+        public int Id { get; set; }
 
-        public String NotificationText
-        {
-            get
-            ;
-            set
-            ;
-        }
+        public string NotificationText { get; set; }
 
-        public int Receiver
-        {
-            get
-            ;
-            set
-            ;
-        }
+        public string SenderJmbg { get; set; }
+
+        public string ReceiverJmbg { get; set; }
+        
+        public DateTime DateTimeOfSending { get; set; }
 
     }
 }
