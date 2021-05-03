@@ -4,20 +4,22 @@ namespace Model
 {
     public class Room
     {
-        public Room(int id, string name, RoomType roomType, int floor, string detail)
+        public Room(int id, string name, RoomType roomType, int floor, string detail, bool status )
         {
             Id = id;
             Name = name;
             RoomType = roomType;
             Floor = floor;
             Detail = detail;
+            Status = status;
             Appointments = new System.Collections.Generic.List<Appointment>();
             StaticEquipments = new System.Collections.Generic.List<StaticEquipment>();
-            DynamicEquipments = new System.Collections.Generic.List<DynamicEquipment>();
+
         }
 
         public int Id { get; set; }
 
+        public bool Status { get; set; }
         public String Name { get; set; }
 
         public RoomType RoomType { get; set; }
@@ -28,7 +30,6 @@ namespace Model
 
         public System.Collections.Generic.List<Appointment> Appointments { get; set; }
         public System.Collections.Generic.List<StaticEquipment> StaticEquipments { get; set; }
-        public System.Collections.Generic.List<DynamicEquipment> DynamicEquipments { get; set; }
 
         //public void AddStaticEquipment(StaticEquipment staticEquipment)
         //{

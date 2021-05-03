@@ -202,6 +202,14 @@ namespace Hospital.View.Director
         {
             StaticDataGrid.ItemsSource = staticEquipment.FindAll(obj => obj.Name == searchStatic.Text);
         }
+        private void Search_Dynamic_Click(object sender, RoutedEventArgs e)
+        {
+            StaticDataGrid.ItemsSource = dynamicEquipment.FindAll(obj => obj.Name == searchDynamic.Text);
+        }
+        private void Filter_Static_Click(object sender, RoutedEventArgs e)
+        {
+            StaticDataGrid.ItemsSource = staticEquipment.FindAll(obj => obj.RoomId == Int32.Parse(filterStatic.Text));
+        }
     }
 }
 

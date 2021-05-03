@@ -9,7 +9,7 @@
     <Grid>
         <TabControl HorizontalAlignment="Left" Height="434" Margin="4,0,0,0" VerticalAlignment="Center" Width="796">
             <TabItem Header="Static">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFE5E5E5" Margin="-3,0,3,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="69*"/>
                         <ColumnDefinition Width="10*"/>
@@ -19,7 +19,7 @@
                     </Grid.ColumnDefinitions>
                     <DataGrid x:Name="StaticDataGrid"
                         AutoGenerateColumns="False"
-                        IsReadOnly="True" Margin="10,13,591,174" Grid.ColumnSpan="5">
+                        IsReadOnly="True" Margin="10,13,534,174" Grid.ColumnSpan="5">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id"
                             Binding="{Binding Id}" />
@@ -29,6 +29,8 @@
                             Binding="{Binding Quantity}" />
                             <DataGridTextColumn Header="Description"
                             Binding="{Binding Description}" />
+                            <DataGridTextColumn Header="Room Id"
+                            Binding="{Binding RoomId}" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <Label Content="Name" HorizontalAlignment="Left" Margin="413,116,0,0" VerticalAlignment="Top" Width="116" Grid.Column="4"/>
@@ -44,12 +46,13 @@
                     <Button x:Name="cancelupdateStaticButton" Content="Cancel" Visibility="Collapsed" HorizontalAlignment="Left" Click="CancelupdateStatic_Click" Margin="382,334,0,0" VerticalAlignment="Top"  Height="33" Width="122" Grid.Column="4"/>
                     <Button x:Name="updateEquipment" Content="Update" Click="UpdateEquipment_Click" VerticalAlignment="Top" Margin="37,299,591,0" Height="33" Width="66" Grid.Column="4"/>
                     <Button Content="Move Equipment" HorizontalAlignment="Left" Height="35" Margin="10,299,0,0" VerticalAlignment="Top" Width="100" Click="Transfer_Static_Click" Grid.ColumnSpan="5"/>
-                    <Button Content="Search" Grid.Column="4" HorizontalAlignment="Left" Height="30" Margin="250,26,0,0" VerticalAlignment="Top" Click="Search_Static_Click" Width="66"/>
-                    <Button Content="Filter" Grid.Column="4" HorizontalAlignment="Left" Height="33" Margin="132,61,0,0" VerticalAlignment="Top" Width="66"/>
-                    <TextBox x:Name="searchStatic" Grid.Column="4" HorizontalAlignment="Left" Height="30" Margin="132,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113"/>
+                    <Button Content="Search" Grid.Column="4" HorizontalAlignment="Left" Height="30" Margin="283,26,0,0" VerticalAlignment="Top" Click="Search_Static_Click" Width="66"/>
+                    <Button Content="Filter" Grid.Column="4" HorizontalAlignment="Left" Height="33" Margin="283,61,0,0" VerticalAlignment="Top" Click="Filter_Static_Click" Width="66"/>
+                    <TextBox x:Name="searchStatic" Grid.Column="4" HorizontalAlignment="Left" Height="30" Margin="165,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113"/>
                     <Label Content="Room Id" Grid.Column="4" HorizontalAlignment="Left" Height="25" Margin="418,220,0,0" VerticalAlignment="Top" Width="68"/>
                     <TextBox x:Name="roomId" Grid.Column="4" HorizontalAlignment="Left" Height="13" Margin="541,232,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    
+                    <TextBox x:Name="filterStatic" Grid.Column="4" HorizontalAlignment="Left" Height="30" Margin="165,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113"/>
+
                 </Grid>
             </TabItem>
             <TabItem Header="Dynamic">
@@ -85,7 +88,8 @@
                     <Button x:Name="deleteDynamic" Content="Delete" HorizontalAlignment="Left" Margin="227,295,0,0" VerticalAlignment="Top" Click="DeleteDynamic_Click" Height="33" Width="66" Grid.Column="1"/>
                     <Button x:Name="updateDynamic" Content="Update" Click="UpdateDynamic_Show" VerticalAlignment="Top" Margin="141,295,567,0" Height="33" Width="66" Grid.Column="1"/>
                     <Button Content="Move Equipment" HorizontalAlignment="Left" Height="35" Margin="17,295,0,0" VerticalAlignment="Top" Width="103" Click="Transfer_Dynamic_Click" Grid.Column="1"/>
-                    <Button Content="Search" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="227,55,0,0" VerticalAlignment="Top" Width="66"/>
+                    <TextBox x:Name="searchDynamic" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="212,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113"/>
+                    <Button Content="Search" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="346,56,0,0" VerticalAlignment="Top"  Click="Search_Dynamic_Click"  Width="66"/>
                 </Grid>
             </TabItem>
         </TabControl>
