@@ -19,7 +19,11 @@ namespace Hospital
         Notification notification;
         private NotificationController notificationController = new NotificationController();
         private PatientController patientController = new PatientController();
-        
+        List<Patient> patients = new List<Patient>();
+        Patient patient;
+        Employee doctor;
+        List<AppointmentDTO> doctorsAppointments;
+
 
 
         public SecretaryAppointmentCRUD()
@@ -29,8 +33,11 @@ namespace Hospital
             secretaryAppointmentDataGrid.ItemsSource = appointments;
             employees = employeeController.GetDoctors();
             doctorsDataGrid.ItemsSource = employees;
-            cancelButton.Visibility = Visibility.Collapsed;
+            patients = patientController.GetAll();
+            patientsDataGrid.ItemsSource = patients;
+           cancelButton.Visibility = Visibility.Collapsed;
             saveButton.Visibility = Visibility.Collapsed;
+            timeDataGrid.Visibility = Visibility.Collapsed;
         }
 
         private void ClearFileds()
@@ -123,6 +130,72 @@ namespace Hospital
                 ClearFileds();
 
             }
+        }
+
+        private AppointmentDTO CreateAppointmentFromData()
+        {
+            //int id = Int32.Parse(idTextBox.Text);
+            DateTime pickedDate = datePickerAppointment.SelectedDate.Value;
+            int hours = Int32.Parse(startTimeTB.Text.Split(':')[0]);
+            int minutes = Int32.Parse(startTimeTB.Text.Split(':')[1]);
+            DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
+            double duration = Convert.ToDouble(durationTB.Text);
+
+            return new AppointmentDTO(appointmentController.GenerateNewId(), AppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, 1);
+        }
+
+        private void Create_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                doctor = (Employee)doctorsDataGrid.SelectedItems[0];
+                patient = (Patient)patientsDataGrid.SelectedItems[0];
+                AppointmentDTO newAppointment = CreateAppointmentFromData();
+                doctorsAppointments = appointmentController.GetAppointmentsForDoctor(doctor.User.Jmbg);
+                bool error = false;
+
+                if (appointmentController.AppointmentIsTaken(newAppointment, doctor.User.Jmbg))
+                {
+                    error = true;
+                }
+
+                if (error == true)
+                {
+                    if (doctorRadioButton.IsChecked == true)
+                    {
+                        MessageBox.Show("Doktor je zauzet, izaberi drugi termin", "greska");
+                        timeDataGrid.Visibility = Visibility.Visible;
+                        timeDataGrid.ItemsSource = doctorsAppointments;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Termin je zauzet, izaberi drugog doktora", "greska");
+                        timeDataGrid.ItemsSource = doctorsAppointments;
+                    }
+                }
+                else if (appointmentController.AppointmentValidationWithoutOverlaping(newAppointment))
+                {
+                    MessageBox.Show("Termin nije moguce dodati, ponovi unos", "greska");
+                }
+                else
+                {
+                    appointmentController.Save(newAppointment, patient.User.Jmbg);
+                    ClearFileds();
+                    MessageBox.Show("Novi termin uspjeno dodat", "Uspjesno");
+                    WindowUpdate();
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Unesi podatke u sva polja", "Greska");
+            }
+
+        }
+
+        private void timeRadioButton_Click(object sender, RoutedEventArgs e)
+        {
+            timeDataGrid.Visibility = Visibility.Collapsed;
         }
     }
 }
