@@ -31,15 +31,34 @@ namespace Hospital
 
         Review getReviewFromForm()
         {
-            int information = Int32.Parse(informationTextBox.Text);
-            int speed = Int32.Parse(speedTextBox.Text);
-            int overall = Int32.Parse(overallTextBox.Text);
-            int kindness = Int32.Parse(kindnessTextBox.Text);
-            string description = descriptionTextBox.Text;
+            Review review;
+                
+                int information = Int32.Parse(informationTextBox.Text);
+                int speed = Int32.Parse(speedTextBox.Text);
+                int overall = Int32.Parse(overallTextBox.Text);
+                int kindness = Int32.Parse(kindnessTextBox.Text);
+                string description = descriptionTextBox.Text;
 
-            Review review = new Review(speed, kindness, information, overall, description);
-            return review;
+            //if (isBetween(0, information, 10) &&
+            //   isBetween(0, speed, 10) &&
+            //   isBetween(0, overall, 10) &&
+            //   isBetween(0, kindness, 10))
+            //{
 
+
+            //}   
+            return review = new Review(speed, kindness, information, overall, description);
+
+
+
+
+        }
+
+        private bool isBetween(int min, int value, int max)
+        {
+            if (value >= min && value <= max)
+                return true;
+            else return false;
         }
 
 

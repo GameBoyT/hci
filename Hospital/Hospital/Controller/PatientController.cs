@@ -45,9 +45,9 @@ namespace Controller
             return patientService.UpdateAnamnesisDescription(jmbg, id, description);
         }
 
-        public string CheckForNotification(Patient patient)
+        public void CheckForMedicineNotification(Patient patient)
         {
-            return patientService.CheckForNotification(patient);
+            patientService.CheckForMedicineNotification(patient);
         }
 
         public string AntiTrollCheck(int appointmentId)
@@ -63,6 +63,11 @@ namespace Controller
         internal Referral AddReferral(string patientJmbg, string doctorJmbg, string description)
         {
             return patientService.AddReferral(patientJmbg, doctorJmbg, description);
+        }
+
+        public void ClearNotification()
+        {
+
         }
     }
 }

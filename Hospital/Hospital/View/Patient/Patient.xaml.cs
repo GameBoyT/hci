@@ -130,10 +130,10 @@ namespace Hospital
             patient = patientController.GetByJmbg("5");
 
 
-            List<Appointment> apps = new List<Appointment>();
 
 
             doctorsDataGrid.ItemsSource = doctors;
+            CheckNotifications();
         }
 
         private void ClearFileds()
@@ -155,6 +155,23 @@ namespace Hospital
         }
 
 
+
+        public void CheckNotifications()
+        {
+            
+                patientController.CheckForMedicineNotification(patient);
+                foreach (Notification notification in patient.Notifications)
+                {
+                    MessageBox.Show(notification.NotificationText, "Notification");
+                }
+                patient.Notifications.Clear();
+                patientController.Update(patient);
+                
+            
+            
+
+
+        }
 
         private void New_Appointment_Click(object sender, RoutedEventArgs e)
         {
@@ -217,10 +234,7 @@ namespace Hospital
             this.Close();
         }
 
-        private void notificationButton_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(patientController.CheckForNotification(patient), "obavjestenje");
-        }
+       
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
