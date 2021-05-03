@@ -115,9 +115,26 @@ namespace Service
             return ConvertListToDTO(appointmentRepository.GetAppointmentsForPatient(jmbg));
         }
 
+        public List<AppointmentDTO> GetAppointmentsForRoom(int id)
+        {
+            return ConvertListToDTO(appointmentRepository.GetAppointmentsForRoom(id));
+        }
+
         public int GenerateNewId()
         {
             return appointmentRepository.GenerateNewId();
+        }
+
+        public bool IsDoctorAvailable(AppointmentDTO appointment, string doctorId)
+        {
+            List<AppointmentDTO> appointments = GetAppointmentsForDoctor(doctorId);
+            return IsTimeSlotFree(appointment, appointments);
+        }
+
+        public bool IsRoomAvailable(AppointmentDTO appointment, int roomId)
+        {
+            List<AppointmentDTO> appointments = GetAppointmentsForRoom(roomId);
+            return IsTimeSlotFree(appointment, appointments);
         }
 
         public bool IsTimeInFuture(DateTime appointmentStartTime)
@@ -126,6 +143,33 @@ namespace Service
                 return true;
             return false;
         }
+
+        public bool IsDateTimeBetween(DateTime dateTimeToCheck, DateTime startTime, DateTime endTime)
+        {
+            return dateTimeToCheck.Ticks > startTime.Ticks && dateTimeToCheck.Ticks < endTime.Ticks;
+        }
+
+        public bool IsTimeSlotFree(AppointmentDTO appointmentToCheck, List<AppointmentDTO> appointments)
+        {
+            DateTime appointmentToCheckEndTime = appointmentToCheck.StartTime.AddMinutes(appointmentToCheck.DurationInMinutes);
+            foreach (AppointmentDTO appointment in appointments)
+            {
+                if (appointmentToCheck.Id != appointment.Id)
+                {
+                    DateTime appointmentEndTime = appointment.StartTime.AddMinutes(appointment.DurationInMinutes);
+
+                    //Provera da li postoji pregled u tom terminu
+                    if (IsDateTimeBetween(appointmentToCheck.StartTime, appointment.StartTime, appointmentEndTime) || 
+                            IsDateTimeBetween (appointmentToCheckEndTime, appointment.StartTime, appointmentEndTime))
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            return true;
+        }
+
 
 
         public bool AppointmentIsTaken(AppointmentDTO appointment, string doctorId)

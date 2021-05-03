@@ -44,6 +44,16 @@ namespace Controller
             return appointmentService.GetAppointmentsForPatient(jmbg);
         }
 
+        public bool IsDoctorAvailable(AppointmentDTO appointment, string doctorJmbg)
+        {
+            return appointmentService.IsDoctorAvailable(appointment, doctorJmbg);
+        }
+
+        public bool IsRoomAvailable(AppointmentDTO appointment, int roomId)
+        {
+            return appointmentService.IsRoomAvailable(appointment, roomId);
+        }
+
         public bool AppointmentTimeIsInvalid(AppointmentDTO appointment)
         {
             return appointmentService.AppointmentTimeIsInvalid(appointment);
