@@ -138,7 +138,7 @@ namespace Hospital
             }
             catch
             {
-                MessageBox.Show("Popunite sva polja!");
+                MessageBox.Show("Fill in all the fields!");
             }
         }
 

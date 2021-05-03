@@ -34,6 +34,9 @@ namespace Service
             notificationRepository.Update(notification);
         }
 
-
+        public int GenerateNewId()
+        {
+            return notificationRepository.GenerateNewId();
+        }
     }
 }
