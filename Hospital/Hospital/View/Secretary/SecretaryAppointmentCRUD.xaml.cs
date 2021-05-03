@@ -197,5 +197,12 @@ namespace Hospital
         {
             timeDataGrid.Visibility = Visibility.Collapsed;
         }
+
+        private void Guest_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryGuest secretaryGuest = new SecretaryGuest();
+            secretaryGuest.Show();
+            this.Close();
+        }
     }
 }
