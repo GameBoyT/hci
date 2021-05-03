@@ -37,6 +37,13 @@ namespace Controller
             return dynamicService.GenerateNewId();
         }
 
-
+        public void MoveDynamicEquipment(DynamicEquipment dynamicEquipment)
+        {
+            dynamicService.MoveDynamicEquipment(dynamicEquipment);
+        }
+        public List<DynamicEquipment> GetByName(string name)
+        {
+            return dynamicService.GetByName(name);
+        }
     }
 }

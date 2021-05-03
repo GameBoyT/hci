@@ -58,5 +58,9 @@ namespace Controller
             return roomService.GetRoomsWithEquipmentName(name);
         }
 
+        public void MoveStaticEquipment(int staticId, int toRoom, DateTime time) {
+            roomService.MoveStaticEquipment(staticId, toRoom, time);
+        }
+
     }
 }

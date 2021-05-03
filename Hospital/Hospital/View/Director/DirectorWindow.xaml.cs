@@ -31,7 +31,7 @@ namespace Hospital.View.Director
         {
             Equipment equipment = new Equipment();
             equipment.Show();
-            System.Windows.Application.Current.MainWindow.Hide();
+            Application.Current.MainWindow.Hide();
         }
 
         private void ViewMedicine(object sender, RoutedEventArgs e)

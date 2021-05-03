@@ -38,5 +38,15 @@ namespace Controller
             staticEquipmentService.Update(staticEquipment);
         }
 
+        public List<StaticEquipment> GetByName(string name)
+        {
+            return staticEquipmentService.GetByName(name);
+        }
+
+        public List<StaticEquipment> FilterRoomId(int id)
+        {
+            return staticEquipmentService.FilterRoomId(id);
+        }
+
     }
 }

@@ -29,7 +29,7 @@ namespace Hospital.View.Director
             string roomdetail = detail.Text;
             int roomfloor = Int32.Parse(floor.Text);
             roomController.Save(textname, myStatus, roomfloor, roomdetail);
-            return new Room(id, textname, myStatus, roomfloor, roomdetail);
+            return new Room(id, textname, myStatus, roomfloor, roomdetail, true);
         }
 
         private void New_Room_Click(object sender, RoutedEventArgs e)
@@ -87,7 +87,7 @@ namespace Hospital.View.Director
             Enum.TryParse(type.Text, out RoomType myStatus);
             string roomdetail = detail.Text;
             int roomfloor = Int32.Parse(floor.Text);
-            Room room = new Room(id, textname, myStatus, roomfloor, roomdetail);
+            Room room = new Room(id, textname, myStatus, roomfloor, roomdetail, true);
             roomController.Update(room);
             id = -1;
         }

@@ -5,9 +5,9 @@
     "RoomType": 2,
     "Floor": 3,
     "Detail": "detalji",
+    "Status": true,
     "Appointments": [],
-    "StaticEquipments": [],
-    "DynamicEquipments": []
+    "StaticEquipments": []
   },
   {
     "Id": 2,
@@ -15,9 +15,17 @@
     "RoomType": 2,
     "Floor": 1,
     "Detail": "111detalji",
+    "Status": true,
     "Appointments": [],
-    "StaticEquipments": [],
-    "DynamicEquipments": []
+    "StaticEquipments": [
+      {
+        "Id": 3,
+        "RoomId": 2,
+        "Name": "BlaBla",
+        "Quantity": 2,
+        "Description": "blabla"
+      }
+    ]
   },
   {
     "Id": 3,
@@ -25,6 +33,7 @@
     "RoomType": 1,
     "Floor": 0,
     "Detail": "Operation room 1",
+    "Status": true,
     "Appointments": [],
     "StaticEquipments": [
       {
@@ -34,8 +43,7 @@
         "Quantity": 1,
         "Description": "Anaesthesia machine"
       }
-    ],
-    "DynamicEquipments": []
+    ]
   },
   {
     "Id": 4,
@@ -43,6 +51,7 @@
     "RoomType": 1,
     "Floor": 0,
     "Detail": "Operation room 2",
+    "Status" : true,
     "Appointments": [],
     "StaticEquipments": [
       {
@@ -52,7 +61,6 @@
         "Quantity": 1,
         "Description": "Anaesthesia machine"
       }
-    ],
-    "DynamicEquipments": []
+    ]
   }
 ]
