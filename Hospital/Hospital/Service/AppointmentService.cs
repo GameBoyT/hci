@@ -25,21 +25,84 @@ namespace Service
             return ConvertToDTO(appointmentRepository.GetById(id));
         }
 
-        public AppointmentDTO Save(AppointmentDTO appointment)
+        public AppointmentDTO Save(AppointmentDTO appointmentDTO)
         {
-            appointment.Id = appointmentRepository.GenerateNewId();
-            appointmentRepository.Save(ConvertToModel(appointment));
-            return appointment;
+            appointmentDTO.Id = GenerateNewId();
+            Appointment appointment = ConvertToModel(appointmentDTO);
+            appointmentRepository.Save(appointment);
+            AddAppointmentToParticipants(appointment);
+            return appointmentDTO;
         }
 
+        public void AddAppointmentToParticipants(Appointment appointment)
+        {
+            AddAppointmentToDoctor(appointment);
+            AddAppointmentToPatient(appointment);
+            AddAppointmentToRoom(appointment);
+        }
+
+        public void AddAppointmentToDoctor(Appointment appointment)
+        {
+            Employee doctor = employeeRepository.GetByJmbg(appointment.DoctorJmbg);
+            doctor.Appointments.Add(appointment);
+            employeeRepository.Update(doctor);
+        }
+
+        public void AddAppointmentToPatient(Appointment appointment)
+        {
+            Patient patient = patientRepository.GetByJmbg(appointment.PatientJmbg);
+            patient.Appointments.Add(appointment);
+            patientRepository.Update(patient);
+        }
+
+        public void AddAppointmentToRoom(Appointment appointment)
+        {
+            Room room = roomRepository.GetById(appointment.RoomId);
+            room.Appointments.Add(appointment);
+            roomRepository.Update(room);
+        }
+
+        public void Update(AppointmentDTO appointmentDTO)
+        {
+            Appointment appointment = ConvertToModel(appointmentDTO);
+            appointmentRepository.Update(appointment);
+            UpdateAppointmentParticipants(appointment);
+        }
+
+        public void UpdateAppointmentParticipants (Appointment appointment)
+        {
+            UpdateAppointmentForDoctor(appointment);
+            UpdateAppointmentForPatient(appointment);
+            UpdateAppointmentForRoom(appointment);
+        }
+
+        public void UpdateAppointmentForDoctor(Appointment appointment)
+        {
+            Employee doctor = employeeRepository.GetByJmbg(appointment.DoctorJmbg);
+            int index = doctor.Appointments.FindIndex(obj => obj.Id == appointment.Id);
+            doctor.Appointments[index] = appointment;
+            employeeRepository.Update(doctor);
+        }
+
+        public void UpdateAppointmentForPatient(Appointment appointment)
+        {
+            Patient patient = patientRepository.GetByJmbg(appointment.PatientJmbg);
+            int index = patient.Appointments.FindIndex(obj => obj.Id == appointment.Id);
+            patient.Appointments[index] = appointment;
+            patientRepository.Update(patient);
+        }
+
+        public void UpdateAppointmentForRoom(Appointment appointment)
+        {
+            Room room = roomRepository.GetById(appointment.RoomId);
+            int index = room.Appointments.FindIndex(obj => obj.Id == appointment.Id);
+            room.Appointments[index] = appointment;
+            roomRepository.Update(room);
+        }
+        
         public void Delete(int id)
         {
             appointmentRepository.Delete(id);
-        }
-
-        public void Update(AppointmentDTO appointment)
-        {
-            appointmentRepository.Update(ConvertToModel(appointment));
         }
 
         public List<AppointmentDTO> GetAppointmentsForDoctor(String jmbg)
@@ -52,9 +115,26 @@ namespace Service
             return ConvertListToDTO(appointmentRepository.GetAppointmentsForPatient(jmbg));
         }
 
+        public List<AppointmentDTO> GetAppointmentsForRoom(int id)
+        {
+            return ConvertListToDTO(appointmentRepository.GetAppointmentsForRoom(id));
+        }
+
         public int GenerateNewId()
         {
             return appointmentRepository.GenerateNewId();
+        }
+
+        public bool IsDoctorAvailable(AppointmentDTO appointment, string doctorId)
+        {
+            List<AppointmentDTO> appointments = GetAppointmentsForDoctor(doctorId);
+            return IsTimeSlotFree(appointment, appointments);
+        }
+
+        public bool IsRoomAvailable(AppointmentDTO appointment, int roomId)
+        {
+            List<AppointmentDTO> appointments = GetAppointmentsForRoom(roomId);
+            return IsTimeSlotFree(appointment, appointments);
         }
 
         public bool IsTimeInFuture(DateTime appointmentStartTime)
@@ -63,6 +143,33 @@ namespace Service
                 return true;
             return false;
         }
+
+        public bool IsDateTimeBetween(DateTime dateTimeToCheck, DateTime startTime, DateTime endTime)
+        {
+            return dateTimeToCheck.Ticks > startTime.Ticks && dateTimeToCheck.Ticks < endTime.Ticks;
+        }
+
+        public bool IsTimeSlotFree(AppointmentDTO appointmentToCheck, List<AppointmentDTO> appointments)
+        {
+            DateTime appointmentToCheckEndTime = appointmentToCheck.StartTime.AddMinutes(appointmentToCheck.DurationInMinutes);
+            foreach (AppointmentDTO appointment in appointments)
+            {
+                if (appointmentToCheck.Id != appointment.Id)
+                {
+                    DateTime appointmentEndTime = appointment.StartTime.AddMinutes(appointment.DurationInMinutes);
+
+                    //Provera da li postoji pregled u tom terminu
+                    if (IsDateTimeBetween(appointmentToCheck.StartTime, appointment.StartTime, appointmentEndTime) || 
+                            IsDateTimeBetween (appointmentToCheckEndTime, appointment.StartTime, appointmentEndTime))
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            return true;
+        }
+
 
 
         public bool AppointmentIsTaken(AppointmentDTO appointment, string doctorId)

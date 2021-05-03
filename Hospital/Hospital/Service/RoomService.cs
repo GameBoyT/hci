@@ -40,6 +40,13 @@ namespace Service
             roomRepository.Update(room);
         }
 
+        //public void AddAppointment(Appointment appointment)
+        //{
+        //    Room room = GetById(appointment.RoomId);
+        //    room.Appointments.Add(appointment);
+        //    Update(room);
+        //}
+
         public int GenerateNewId()
         {
             return roomRepository.GenerateNewId();

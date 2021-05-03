@@ -37,6 +37,8 @@ namespace Hospital.View.Doctor
             try
             {
                 AppointmentDTO appointment = ParseUpdatedAppointment();
+                if (IsDoctorOrRoomScheduled(appointment))
+                    return;
                 app.appointmentController.Update(appointment);
                 ParentWindow.WindowUpdate();
                 this.Close();
@@ -63,6 +65,21 @@ namespace Hospital.View.Doctor
 
 
             return new AppointmentDTO(Appointment.Id, AppointmentType.operation, appointmentDateTime, duration, Appointment.PatientJmbg, Appointment.DoctorJmbg, room.Id);
+        }
+
+        private bool IsDoctorOrRoomScheduled(AppointmentDTO appointment)
+        {
+            if (!app.appointmentController.IsDoctorAvailable(appointment, ParentWindow.Doctor.User.Jmbg))
+            {
+                MessageBox.Show("You already have an appointment at that time!");
+                return true;
+            }
+            if (!app.appointmentController.IsRoomAvailable(appointment, appointment.RoomId))
+            {
+                MessageBox.Show("The room already has an appointment at that time!");
+                return true;
+            }
+            return false;
         }
     }
 }

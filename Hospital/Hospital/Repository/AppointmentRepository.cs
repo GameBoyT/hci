@@ -105,5 +105,10 @@ namespace Repository
             return _appointments.FindAll(appointment => appointment.PatientJmbg == jmbg);
         }
 
+        internal List<Appointment> GetAppointmentsForRoom(int roomId)
+        {
+            ReadJson();
+            return _appointments.FindAll(appointment => appointment.RoomId == roomId);
+        }
     }
 }

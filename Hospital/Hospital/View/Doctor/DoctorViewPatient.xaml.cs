@@ -189,12 +189,25 @@ namespace Hospital.View.Doctor
         {
             doctorsDataGrid.ItemsSource = Doctors.FindAll(obj => obj.Specialization.IndexOf(specializationName.Text, StringComparison.OrdinalIgnoreCase) >= 0);
         }
-        
+
         private void ReferralAddButton_Click(object sender, RoutedEventArgs e)
         {
-            Employee doctor = (Employee)doctorsDataGrid.SelectedItems[0];
-            app.patientController.AddReferral(Appointment.PatientJmbg, doctor.User.Jmbg, ReferralDescriptionText);
-            ReferralDescriptionText = "";
+            if (ReferralDescriptionText == "" || ReferralDescriptionText == null)
+            {
+                MessageBox.Show("You have to enter a description!");
+                return;
+            }
+
+            try
+            {
+                Employee doctor = (Employee)doctorsDataGrid.SelectedItems[0];
+                app.patientController.AddReferral(Appointment.PatientJmbg, doctor.User.Jmbg, ReferralDescriptionText);
+                ReferralDescriptionText = "";
+            }
+            catch
+            {
+                MessageBox.Show("Choose a doctor!");
+            }
         }
     }
 }

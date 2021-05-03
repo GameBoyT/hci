@@ -7,9 +7,6 @@ namespace Controller
 {
     public class AppointmentController
     {
-        PatientController patientController = new PatientController();
-
-
         private Service.AppointmentService appointmentService = new Service.AppointmentService();
 
         public List<AppointmentDTO> GetAll()
@@ -45,6 +42,16 @@ namespace Controller
         public List<AppointmentDTO> GetAppointmentsForPatient(String jmbg)
         {
             return appointmentService.GetAppointmentsForPatient(jmbg);
+        }
+
+        public bool IsDoctorAvailable(AppointmentDTO appointment, string doctorJmbg)
+        {
+            return appointmentService.IsDoctorAvailable(appointment, doctorJmbg);
+        }
+
+        public bool IsRoomAvailable(AppointmentDTO appointment, int roomId)
+        {
+            return appointmentService.IsRoomAvailable(appointment, roomId);
         }
 
         public bool AppointmentTimeIsInvalid(AppointmentDTO appointment)

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -63,8 +64,14 @@ namespace Hospital.View.Doctor
         {
             try
             {
+                //List<string> vs = new List<string>
+                //{
+                //    "zz",
+                //    "cc"
+                //};
                 Medicine = (Medicine)(sender as ListView).SelectedItem;
                 MedicineDescriptionText = Medicines[lvMedicineDataBinding.SelectedIndex].Description;
+                //MedicineDescriptionText += string.Join(",", vs.Select(x => x.ToString()).ToArray());
                 VerificationButtonVisibility(Medicine.Verification);
             }
             catch { }
