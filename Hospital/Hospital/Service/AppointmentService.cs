@@ -25,21 +25,84 @@ namespace Service
             return ConvertToDTO(appointmentRepository.GetById(id));
         }
 
-        public AppointmentDTO Save(AppointmentDTO appointment)
+        public AppointmentDTO Save(AppointmentDTO appointmentDTO)
         {
-            appointment.Id = appointmentRepository.GenerateNewId();
-            appointmentRepository.Save(ConvertToModel(appointment));
-            return appointment;
+            appointmentDTO.Id = GenerateNewId();
+            Appointment appointment = ConvertToModel(appointmentDTO);
+            appointmentRepository.Save(appointment);
+            AddAppointmentToParticipants(appointment);
+            return appointmentDTO;
         }
 
+        public void AddAppointmentToParticipants(Appointment appointment)
+        {
+            AddAppointmentToDoctor(appointment);
+            AddAppointmentToPatient(appointment);
+            AddAppointmentToRoom(appointment);
+        }
+
+        public void AddAppointmentToDoctor(Appointment appointment)
+        {
+            Employee doctor = employeeRepository.GetByJmbg(appointment.DoctorJmbg);
+            doctor.Appointments.Add(appointment);
+            employeeRepository.Update(doctor);
+        }
+
+        public void AddAppointmentToPatient(Appointment appointment)
+        {
+            Patient patient = patientRepository.GetByJmbg(appointment.PatientJmbg);
+            patient.Appointments.Add(appointment);
+            patientRepository.Update(patient);
+        }
+
+        public void AddAppointmentToRoom(Appointment appointment)
+        {
+            Room room = roomRepository.GetById(appointment.RoomId);
+            room.Appointments.Add(appointment);
+            roomRepository.Update(room);
+        }
+
+        public void Update(AppointmentDTO appointmentDTO)
+        {
+            Appointment appointment = ConvertToModel(appointmentDTO);
+            appointmentRepository.Update(appointment);
+            UpdateAppointmentParticipants(appointment);
+        }
+
+        public void UpdateAppointmentParticipants (Appointment appointment)
+        {
+            UpdateAppointmentForDoctor(appointment);
+            UpdateAppointmentForPatient(appointment);
+            UpdateAppointmentForRoom(appointment);
+        }
+
+        public void UpdateAppointmentForDoctor(Appointment appointment)
+        {
+            Employee doctor = employeeRepository.GetByJmbg(appointment.DoctorJmbg);
+            int index = doctor.Appointments.FindIndex(obj => obj.Id == appointment.Id);
+            doctor.Appointments[index] = appointment;
+            employeeRepository.Update(doctor);
+        }
+
+        public void UpdateAppointmentForPatient(Appointment appointment)
+        {
+            Patient patient = patientRepository.GetByJmbg(appointment.PatientJmbg);
+            int index = patient.Appointments.FindIndex(obj => obj.Id == appointment.Id);
+            patient.Appointments[index] = appointment;
+            patientRepository.Update(patient);
+        }
+
+        public void UpdateAppointmentForRoom(Appointment appointment)
+        {
+            Room room = roomRepository.GetById(appointment.RoomId);
+            int index = room.Appointments.FindIndex(obj => obj.Id == appointment.Id);
+            room.Appointments[index] = appointment;
+            roomRepository.Update(room);
+        }
+        
         public void Delete(int id)
         {
             appointmentRepository.Delete(id);
-        }
-
-        public void Update(AppointmentDTO appointment)
-        {
-            appointmentRepository.Update(ConvertToModel(appointment));
         }
 
         public List<AppointmentDTO> GetAppointmentsForDoctor(String jmbg)

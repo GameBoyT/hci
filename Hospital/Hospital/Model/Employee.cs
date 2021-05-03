@@ -11,6 +11,7 @@ namespace Model
             Appointments = new System.Collections.Generic.List<Appointment>();
             Notifications = new System.Collections.Generic.List<Notification>();
             Reviews = new System.Collections.Generic.List<Review>();
+            Specialization = "";
         }
 
         public User User { get; set; }
@@ -23,7 +24,7 @@ namespace Model
 
         public int RoomId { get; set; }
 
-        public String Specialization { get; set; }
+        public string Specialization { get; set; }
 
         public System.Collections.Generic.List<Appointment> Appointments { get; set; }
 

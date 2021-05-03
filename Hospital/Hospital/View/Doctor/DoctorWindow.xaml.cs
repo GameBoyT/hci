@@ -20,6 +20,8 @@ namespace Hospital.View.Doctor
             app = Application.Current as App;
 
             Doctor = app.employeeController.GetByJmbg("1");
+            //Doctor.Notifications.Add(new Notification(1, "Kkekekeadaafsdafasfdasfasfsda", 1));
+
             WindowUpdate();
             appointment_date.SelectedDate = DateTime.Today;
         }
@@ -32,9 +34,22 @@ namespace Hospital.View.Doctor
 
         public void WindowUpdate()
         {
+            CheckNotifications();
             _appointments = app.appointmentController.GetAppointmentsForDoctor(Doctor.User.Jmbg);
             _appointmentsToShow = _appointments.FindAll(appointment => appointment.StartTime.Date == appointment_date.SelectedDate);
             appointmentsDataGrid.ItemsSource = _appointmentsToShow;
+        }
+
+        public void CheckNotifications()
+        {
+            if (Doctor.Notifications.Count > 0)
+            {
+                foreach (Notification notification in Doctor.Notifications)
+                {
+                    MessageBox.Show(notification.NotificationText, "Notification");
+                }
+                Doctor.Notifications.Clear();
+            }
         }
 
         private void Update_Click(object sender, RoutedEventArgs e)
