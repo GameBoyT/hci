@@ -93,7 +93,7 @@ namespace Hospital
             }
             else
             {
-                appointmentController.Update(AppointmentFromData());
+                appointmentController.Update(AppointmentFromData(), "5");
                 WindowUpdate();
                 updateConfirm.Visibility = Visibility.Collapsed;
                 cancelButton.Visibility = Visibility.Collapsed;
@@ -115,7 +115,7 @@ namespace Hospital
         {
             AppointmentDTO appointmentDTO = (AppointmentDTO)readDataGrid.SelectedItems[0];
             MessageBox.Show(patientController.AntiTrollCheck(appointmentDTO.Id), "obavjestenje");
-            appointmentController.Delete(appointmentDTO.Id);
+            appointmentController.Delete(appointmentDTO.Id, "5");
 
             WindowUpdate();
         }

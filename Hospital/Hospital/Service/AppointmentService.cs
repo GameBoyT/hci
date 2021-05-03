@@ -12,6 +12,7 @@ namespace Service
         private EmployeeRepository employeeRepository = new EmployeeRepository();
         private PatientRepository patientRepository = new PatientRepository();
         private RoomRepository roomRepository = new RoomRepository();
+        private NotificationService notificationService = new NotificationService();
 
 
         public List<AppointmentDTO> GetAll()
@@ -31,6 +32,7 @@ namespace Service
             Appointment appointment = ConvertToModel(appointmentDTO);
             appointmentRepository.Save(appointment);
             AddAppointmentToParticipants(appointment);
+            //notificationService.NotifyAppointmentCreation(appointmentDTO);
             return appointmentDTO;
         }
 
@@ -62,11 +64,13 @@ namespace Service
             roomRepository.Update(room);
         }
 
-        public void Update(AppointmentDTO appointmentDTO)
+        public AppointmentDTO Update(AppointmentDTO appointmentDTO)
         {
             Appointment appointment = ConvertToModel(appointmentDTO);
-            appointmentRepository.Update(appointment);
+            AppointmentDTO updatedAppointment = ConvertToDTO(appointmentRepository.Update(appointment));
             UpdateAppointmentParticipants(appointment);
+            //notificationService.NotifyAppointmentUpdate(appointmentDTO);
+            return updatedAppointment;
         }
 
         public void UpdateAppointmentParticipants (Appointment appointment)
@@ -100,17 +104,18 @@ namespace Service
             roomRepository.Update(room);
         }
         
-        public void Delete(int id)
+        public AppointmentDTO Delete(int id)
         {
-            appointmentRepository.Delete(id);
+            return ConvertToDTO(appointmentRepository.Delete(id));
+            //notificationService.NotifyAppointmentDeletion(appointmentDTO);
         }
 
-        public List<AppointmentDTO> GetAppointmentsForDoctor(String jmbg)
+        public List<AppointmentDTO> GetAppointmentsForDoctor(string jmbg)
         {
             return ConvertListToDTO(appointmentRepository.GetAppointmentsForDoctor(jmbg));
         }
 
-        public List<AppointmentDTO> GetAppointmentsForPatient(String jmbg)
+        public List<AppointmentDTO> GetAppointmentsForPatient(string jmbg)
         {
             return ConvertListToDTO(appointmentRepository.GetAppointmentsForPatient(jmbg));
         }

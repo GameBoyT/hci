@@ -26,7 +26,7 @@ namespace Hospital.View.Doctor
                 AppointmentDTO appointment = ParseNewAppointment();
                 if (ParentWindow.IsAppointmentScheduled(appointment))
                     return;
-                app.appointmentController.Save(appointment);
+                app.appointmentController.Save(appointment, appointment.DoctorJmbg);
                 ParentWindow.WindowUpdate();
                 this.Close();
             }

@@ -68,7 +68,7 @@ namespace Hospital
             {
                 if (!appointmentController.AppointmentTimeIsInvalid(newAppointment))
                 {
-                    appointmentController.Save(newAppointment);
+                    appointmentController.Save(newAppointment, patient.User.Jmbg);
                     UpdateReferralList(selectedDTO);
                     MessageBox.Show("Specijalisticki pregled uspjesno dodat", "greska");
 
