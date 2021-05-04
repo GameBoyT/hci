@@ -1,23 +1,30 @@
 [
   {
     "Id": 1,
-    "RoomId": 3,
     "Name": "Anaesthesia",
+    "RoomId": 1,
     "Quantity": 1,
     "Description": "Anaesthesia machine"
   },
   {
     "Id": 2,
-    "RoomId": 4,
     "Name": "Anaesthesia",
+    "RoomId": 4,
     "Quantity": 1,
     "Description": "Anaesthesia machine"
   },
   {
     "Id": 3,
-    "RoomId": 2,
     "Name": "BlaBla",
+    "RoomId": 2,
     "Quantity": 2,
     "Description": "blabla"
+  },
+  {
+    "Id": 4,
+    "Name": "krevet",
+    "RoomId": 2,
+    "Quantity": 1,
+    "Description": "za spavanje"
   }
 ]

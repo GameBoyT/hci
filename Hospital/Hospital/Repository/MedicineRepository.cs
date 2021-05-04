@@ -57,6 +57,11 @@ namespace Repository
             ReadJson();
             return _medicines.FindAll(obj => obj.Verification != VerificationType.rejected);
         }
+        public List<Medicine> GetNotVerified()
+        {
+            ReadJson();
+            return _medicines.FindAll(obj => obj.Verification == VerificationType.needsVerification);
+        }
 
         public Medicine GetById(int id)
         {

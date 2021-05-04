@@ -13,15 +13,13 @@ namespace Hospital.View.Director
     public partial class MedicineCrud : Window
     {
 
-        private MedicineController medController = new MedicineController();
+        private readonly MedicineController medController = new MedicineController();
         private int id; // pomaze oko update 
-                        // List<Room> rooms = new List<Room>();
-        List<Medicine> medsToShow = new List<Medicine>();
         public MedicineCrud()
         {
             InitializeComponent();
-            medsToShow = medController.GetAll();
-            medicineDataGrid.ItemsSource = medsToShow;
+            medicineDataGrid.ItemsSource = medController.GetVerified();
+            needsToVerifyDataGrid.ItemsSource = medController.GetNotVerified();
         }
 
 

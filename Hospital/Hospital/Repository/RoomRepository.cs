@@ -87,10 +87,17 @@ namespace Repository
             _rooms[index] = room;
             WriteToJson();
         }
-
-        public void MoveEquipment(Model.Room fromRoom, Model.Room toRoom, DateTime date)
+        
+        public void Renovation(int roomId, DateTime renovationDate)
         {
-            throw new NotImplementedException();
+            if (renovationDate == DateTime.Today)
+            {
+                Room room = GetById(roomId);
+                room.Status = false;
+                Update(room);
+
+            }
+
         }
 
         public List<Room> GetOperationRooms()

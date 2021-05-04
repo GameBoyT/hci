@@ -11,7 +11,7 @@ namespace Hospital.View.Director
     {
         private StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
         private RoomController roomController = new RoomController();
-        int id = 1;
+        int id;
         private List<StaticEquipment> staticEquipments = new List<StaticEquipment>();
         
         public StaticTransfer()
@@ -34,10 +34,19 @@ namespace Hospital.View.Director
 
         private void Accept_Transfer_Click(object sender, RoutedEventArgs e)
         {
-            DateTime pickerDate = transfer_date.SelectedDate.Value;
-            DateTime TransferDateTime = new DateTime(pickerDate.Year, pickerDate.Month, pickerDate.Day, 00, 00, 00);
-            roomController.MoveStaticEquipment(id, Int32.Parse(toRoom.Text), TransferDateTime);
-            Cancel_Transfer_Click(sender, e);
+            try
+            {
+                DateTime pickerDate = transfer_date.SelectedDate.Value;
+                DateTime TransferDateTime = new DateTime(pickerDate.Year, pickerDate.Month, pickerDate.Day, 00, 00, 00);
+                roomController.MoveStaticEquipment(id, Int32.Parse(toRoom.Text), TransferDateTime);
+                id = -1;
+                Cancel_Transfer_Click(sender, e);
+            }
+            catch
+            {
+                MessageBox.Show("Please enter the date of transfer");
+            }
+            
         }
         private void Cancel_Transfer_Click(object sender, RoutedEventArgs e)
         {

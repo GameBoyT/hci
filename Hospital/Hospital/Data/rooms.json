@@ -1,63 +1,85 @@
 [
   {
     "Id": 1,
+    "Status": false,
     "Name": "336",
     "RoomType": 2,
     "Floor": 3,
     "Detail": "detalji",
-    "Status": true,
-    "Appointments": [],
-    "StaticEquipments": []
-  },
-  {
-    "Id": 2,
-    "Name": "111",
-    "RoomType": 2,
-    "Floor": 1,
-    "Detail": "111detalji",
-    "Status": true,
-    "Appointments": [],
-    "StaticEquipments": [
-      {
-        "Id": 3,
-        "RoomId": 2,
-        "Name": "BlaBla",
-        "Quantity": 2,
-        "Description": "blabla"
-      }
-    ]
-  },
-  {
-    "Id": 3,
-    "Name": "10",
-    "RoomType": 1,
-    "Floor": 0,
-    "Detail": "Operation room 1",
-    "Status": true,
     "Appointments": [],
     "StaticEquipments": [
       {
         "Id": 1,
-        "RoomId": 3,
         "Name": "Anaesthesia",
+        "RoomId": 1,
         "Quantity": 1,
         "Description": "Anaesthesia machine"
       }
     ]
   },
   {
+    "Id": 2,
+    "Status": true,
+    "Name": "111",
+    "RoomType": 2,
+    "Floor": 1,
+    "Detail": "111detalji",
+    "Appointments": [],
+    "StaticEquipments": [
+      {
+        "Id": 3,
+        "Name": "BlaBla",
+        "RoomId": 2,
+        "Quantity": 2,
+        "Description": "blabla"
+      },
+      {
+        "Id": 4,
+        "Name": "krevet",
+        "RoomId": 2,
+        "Quantity": 1,
+        "Description": "za spavanje"
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "Status": true,
+    "Name": "10",
+    "RoomType": 1,
+    "Floor": 0,
+    "Detail": "Operation room 1",
+    "Appointments": [],
+    "StaticEquipments": [
+      {
+        "Id": 1,
+        "Name": "Anaesthesia",
+        "RoomId": 3,
+        "Quantity": 1,
+        "Description": "Anaesthesia machine"
+      },
+      {
+        "Id": 4,
+        "Name": "krevet",
+        "RoomId": 3,
+        "Quantity": 1,
+        "Description": "za spavanje"
+      }
+    ]
+  },
+  {
     "Id": 4,
+    "Status": true,
     "Name": "11",
     "RoomType": 1,
     "Floor": 0,
     "Detail": "Operation room 2",
-    "Status" : true,
     "Appointments": [],
     "StaticEquipments": [
       {
         "Id": 2,
-        "RoomId": 4,
         "Name": "Anaesthesia",
+        "RoomId": 4,
         "Quantity": 1,
         "Description": "Anaesthesia machine"
       }

@@ -43,9 +43,9 @@ namespace Controller
             return roomService.GenerateNewId();
         }
 
-        public void MoveEquipment(Model.Room fromRoom, Model.Room toRoom, DateTime date)
+        public void Renovation(int roomId, DateTime renovationDate)
         {
-            throw new NotImplementedException();
+            roomService.Renovation(roomId, renovationDate);
         }
 
         public List<Room> GetOperationRooms()
@@ -58,9 +58,11 @@ namespace Controller
             return roomService.GetRoomsWithEquipmentName(name);
         }
 
-        public void MoveStaticEquipment(int staticId, int toRoom, DateTime time) {
+        public void MoveStaticEquipment(int staticId, int toRoom, DateTime time)
+        {
             roomService.MoveStaticEquipment(staticId, toRoom, time);
         }
+
 
     }
 }

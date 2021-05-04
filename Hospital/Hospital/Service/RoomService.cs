@@ -53,9 +53,9 @@ namespace Service
             return roomRepository.GenerateNewId();
         }
 
-        public void MoveEquipment(Model.Room fromRoom, Model.Room toRoom, DateTime date)
+        public void Renovation(int roomId, DateTime renovationDate)
         {
-            throw new NotImplementedException();
+            roomRepository.Renovation(roomId, renovationDate);
         }
 
         public List<Room> GetOperationRooms()
@@ -73,8 +73,7 @@ namespace Service
             if (time.Ticks < DateTime.Now.Ticks){
                 StaticEquipment staticEquipment = staticRepository.GetById(staticId);
                 Room room = GetById(staticEquipment.RoomId);
-                int index = room.StaticEquipments.FindIndex(obj => obj.Id == room.Id);
-                room.StaticEquipments.RemoveAt(index);
+                room.StaticEquipments.Remove(staticEquipment);
                 Room room2 = GetById(toRoom);
                 staticEquipment.RoomId = room2.Id;
                 room2.StaticEquipments.Add(staticEquipment);
