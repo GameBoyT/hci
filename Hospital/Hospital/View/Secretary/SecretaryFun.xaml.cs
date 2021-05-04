@@ -54,6 +54,11 @@ namespace Hospital
             this.Close();
         }
 
-        
+        private void Urgent_Click(object sender, RoutedEventArgs e)
+        {
+            View.Secretary.SecretaryUrgentAppointment secretaryUrgentAppointment = new View.Secretary.SecretaryUrgentAppointment();
+            secretaryUrgentAppointment.Show();
+            this.Close();
+        }
     }
 }
