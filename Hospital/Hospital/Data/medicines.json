@@ -3,14 +3,7 @@
     "Id": 1,
     "Name": "Aspirin",
     "Verification": 0,
-    "Description": "opis1",
-    "DoctorComment": ""
-  },
-  {
-    "Id": 2,
-    "Name": "Andol",
-    "Verification": 0,
-    "Description": "zz",
+    "Description": "opis2",
     "DoctorComment": ""
   },
   {
@@ -39,6 +32,13 @@
     "Name": "Diklofen",
     "Verification": 2,
     "Description": "bolove",
+    "DoctorComment": ""
+  },
+  {
+    "Id": 7,
+    "Name": "test",
+    "Verification": 2,
+    "Description": "test desc",
     "DoctorComment": ""
   }
 ]

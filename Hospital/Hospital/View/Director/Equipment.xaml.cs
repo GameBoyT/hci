@@ -200,16 +200,29 @@ namespace Hospital.View.Director
 
         private void Search_Static_Click(object sender, RoutedEventArgs e)
         {
-            StaticDataGrid.ItemsSource = staticEquipment.FindAll(obj => obj.Name == searchStatic.Text);
+            if(searchStatic.Text != ""){
+                StaticDataGrid.ItemsSource = staticEquipment.FindAll(obj => obj.Name == searchStatic.Text);
+            }
+            else
+            {
+                StaticDataGrid.ItemsSource = staticController.GetAll();
+            }
         }
         private void Search_Dynamic_Click(object sender, RoutedEventArgs e)
         {
-            DynamicDataGrid.ItemsSource = dynamicEquipment.FindAll(obj => obj.Name == searchDynamic.Text);
+            if (searchDynamic.Text != "")
+            {
+                DynamicDataGrid.ItemsSource = dynamicEquipment.FindAll(obj => obj.Name == searchDynamic.Text);
+            }
+            else
+            {
+                DynamicDataGrid.ItemsSource = dynamicController.GetAll();
+            }
         }
         private void Filter_Static_Click(object sender, RoutedEventArgs e)
         {
+            //Search_Static_Click(sender, e);
             StaticDataGrid.ItemsSource = staticEquipment.FindAll(obj => obj.RoomId == Int32.Parse(filterStatic.Text));
-
         }
     }
 }

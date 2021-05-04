@@ -12,5 +12,12 @@
     "Type": null,
     "Description": "moze",
     "Name": "gaza"
+  },
+  {
+    "Id": 3,
+    "Quantity": 170,
+    "Type": null,
+    "Description": "opis",
+    "Name": "traka"
   }
 ]

@@ -70,7 +70,7 @@ namespace Service
 
         public void MoveStaticEquipment(int staticId, int toRoom, DateTime time)
         {
-            if (time.Ticks < DateTime.Now.Ticks){
+            if (time.Ticks <= DateTime.Now.Ticks){
                 StaticEquipment staticEquipment = staticRepository.GetById(staticId);
                 Room room = GetById(staticEquipment.RoomId);
                 room.StaticEquipments.Remove(staticEquipment);
