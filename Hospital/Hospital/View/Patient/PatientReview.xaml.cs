@@ -10,6 +10,7 @@ using Model;
 using DTO;
 using System;
 using System.Windows;
+using Repository;
 
 namespace Hospital
 {
@@ -65,8 +66,17 @@ namespace Hospital
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentDTO appointmentDTO = (AppointmentDTO)AppointmentsListView.SelectedItems[0];
-            employeeController.RateDoctor(appointmentDTO.DoctorJmbg,getReviewFromForm());
+            if (DoctorRadioButton.IsChecked == true)
+            {
+                AppointmentDTO appointmentDTO = (AppointmentDTO)AppointmentsListView.SelectedItems[0];
+                employeeController.RateDoctor(appointmentDTO.DoctorJmbg, getReviewFromForm());
+            }
+            else
+            {
+                ReviewRepository reviewRepository = new ReviewRepository();
+                reviewRepository.Save(getReviewFromForm());
+                
+            }
         }
 
         private void CancelButtonClick(object sender, RoutedEventArgs e)
@@ -75,5 +85,7 @@ namespace Hospital
             new_window.Show();
             this.Close();
         }
+
+       
     }
 }

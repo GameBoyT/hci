@@ -114,8 +114,17 @@ namespace Hospital
         private void deletebutton_Click(object sender, RoutedEventArgs e)
         {
             AppointmentDTO appointmentDTO = (AppointmentDTO)readDataGrid.SelectedItems[0];
-            MessageBox.Show(patientController.AntiTrollCheck(appointmentDTO.Id), "obavjestenje");
+            string message = patientController.AntiTrollCheck(appointmentDTO.Id);
+            MessageBox.Show(message, "obavjestenje");
             appointmentController.Delete(appointmentDTO.Id, "5");
+
+            if(message == "Pacijent je blokiran")
+            {
+                var new_window = new MainWindow();
+                new_window.Show();
+                this.Close();
+
+            }
 
             WindowUpdate();
         }

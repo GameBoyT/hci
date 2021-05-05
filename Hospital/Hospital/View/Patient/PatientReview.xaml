@@ -32,6 +32,8 @@
         <TextBox x:Name="overallTextBox" HorizontalAlignment="Left" Margin="619,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16" Text="10"/>
         <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Left" Margin="465,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="64"/>
         <Button x:Name="cancelButton" Content="Back" HorizontalAlignment="Left" Margin="674,380,0,0" VerticalAlignment="Top" Height="26" Width="93" RenderTransformOrigin="0.155,0.535" Click="CancelButtonClick"/>
+        <RadioButton x:Name="HospitalRadioButton" Content="Hospital" HorizontalAlignment="Left" Margin="642,323,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <RadioButton x:Name="DoctorRadioButton" Content="Doctor" HorizontalAlignment="Left" Margin="642,349,0,0" VerticalAlignment="Top" />
 
 
     </Grid>

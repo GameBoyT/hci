@@ -116,6 +116,7 @@ namespace Service
             {
                 patient.Blocked = true;
                 patientRepository.Update(patient);
+                
                 return "Pacijent je blokiran";
             }
             return "Uspjeno obrisan termin";
