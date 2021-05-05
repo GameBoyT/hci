@@ -88,17 +88,6 @@ namespace Repository
             WriteToJson();
         }
         
-        public void Renovation(int roomId, DateTime renovationDate)
-        {
-            if (renovationDate == DateTime.Today)
-            {
-                Room room = GetById(roomId);
-                room.Status = false;
-                Update(room);
-
-            }
-
-        }
 
         public List<Room> GetOperationRooms()
         {

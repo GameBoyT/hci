@@ -16,7 +16,7 @@
   {
     "Id": 4,
     "Name": "Brufen",
-    "Verification": 2,
+    "Verification": 0,
     "Description": "opis4",
     "DoctorComment": ""
   },
@@ -37,8 +37,15 @@
   {
     "Id": 7,
     "Name": "test",
-    "Verification": 2,
+    "Verification": 1,
     "Description": "test desc",
+    "DoctorComment": "bla"
+  },
+  {
+    "Id": 8,
+    "Name": "test",
+    "Verification": 0,
+    "Description": "opis",
     "DoctorComment": ""
   }
 ]

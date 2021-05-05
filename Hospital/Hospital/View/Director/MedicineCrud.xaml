@@ -13,10 +13,10 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"
                             Binding="{Binding Name}" />
-                <DataGridTextColumn Header="DoctorComment"
-                            Binding="{Binding DoctorComment}" />
                 <DataGridTextColumn Header="Description"
                             Binding="{Binding Description}" />
+                <DataGridTextColumn Header="Verification"
+                            Binding="{Binding Verification}" />
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Delete" HorizontalAlignment="Left" Margin="269,90,0,0" VerticalAlignment="Top" Click="Delete_Med_Click" Height="28" Width="62"/>
@@ -40,12 +40,12 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"
                     Binding="{Binding Name}" />
-                <DataGridTextColumn Header="DoctorComment"
-                    Binding="{Binding DoctorComment}" />
                 <DataGridTextColumn Header="Description"
                     Binding="{Binding Description}" />
+                <DataGridTextColumn Header="Verification"
+                            Binding="{Binding Verification}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="To Verified: " HorizontalAlignment="Left" Height="23" Margin="27,200,0,0" VerticalAlignment="Top" Width="70"/>
+        <Label Content="Needs verification: " HorizontalAlignment="Left" Height="23" Margin="27,200,0,0" VerticalAlignment="Top" Width="121"/>
     </Grid>
 </Window>

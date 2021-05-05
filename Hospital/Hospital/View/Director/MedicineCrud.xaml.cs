@@ -7,9 +7,7 @@ using Controller;
 
 namespace Hospital.View.Director
 {
-    /// <summary>
-    /// Interaction logic for MedicineCrud.xaml
-    /// </summary>
+
     public partial class MedicineCrud : Window
     {
 

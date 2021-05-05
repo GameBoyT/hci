@@ -19,7 +19,7 @@
   },
   {
     "Id": 2,
-    "Status": true,
+    "Status": false,
     "Name": "111",
     "RoomType": 2,
     "Floor": 1,

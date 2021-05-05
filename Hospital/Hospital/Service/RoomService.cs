@@ -55,7 +55,14 @@ namespace Service
 
         public void Renovation(int roomId, DateTime renovationDate)
         {
-            roomRepository.Renovation(roomId, renovationDate);
+            if (renovationDate == DateTime.Today)
+            {
+                Room room = GetById(roomId);
+                room.Status = false;
+                Update(room);
+
+            }
+
         }
 
         public List<Room> GetOperationRooms()
@@ -73,11 +80,14 @@ namespace Service
             if (time.Ticks <= DateTime.Now.Ticks){
                 StaticEquipment staticEquipment = staticRepository.GetById(staticId);
                 Room room = GetById(staticEquipment.RoomId);
+
                 room.StaticEquipments.Remove(staticEquipment);
                 Room room2 = GetById(toRoom);
+
                 staticEquipment.RoomId = room2.Id;
                 room2.StaticEquipments.Add(staticEquipment);
                 staticRepository.Update(staticEquipment);
+
                 Update(room);
                 Update(room2);
             }
