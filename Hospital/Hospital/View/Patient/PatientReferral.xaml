@@ -8,7 +8,7 @@
         Title="PatientReferral" Height="450" Width="800">
     <Grid>
         <ListView ItemsSource="{Binding referralDTOs}"
-                  Name="ReferralListView" Margin="0,0,382,40" SelectedIndex="0">
+                  Name="ReferralListView" Margin="130,22,253,45" SelectedIndex="0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="140" Header="First Name"
@@ -21,15 +21,18 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Content="Start time" HorizontalAlignment="Left" Margin="509,116,0,0" VerticalAlignment="Top" Width="116"/>
-        <DatePicker x:Name="new_appointment_date" HorizontalAlignment="Left" Margin="637,86,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="startTimeTextBox" HorizontalAlignment="Left" Margin="637,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="addNewAppointmentButton" Content="Add new appointment" HorizontalAlignment="Left" Margin="557,229,0,0" VerticalAlignment="Top" Click="New_Appointment_Click" Height="33" Width="131"/>
-        <TextBox x:Name="durationTextBox" HorizontalAlignment="Left" Margin="637,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="15" IsEnabled="False"/>
-        <Label Content="Duration in minutes" HorizontalAlignment="Left" Margin="509,147,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.142,-0.368"/>
-        <Label Content="Select date" HorizontalAlignment="Left" Margin="509,84,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
-        <Label x:Name="title" Content="New special appointment" HorizontalAlignment="Left" Margin="541,10,0,0" VerticalAlignment="Top" Width="156" RenderTransformOrigin="0.235,0.572"/>
-        <Button x:Name="cancelButton" Content="Back" HorizontalAlignment="Left" Margin="664,341,0,0" VerticalAlignment="Top" Height="25" Width="93" RenderTransformOrigin="0.155,0.535" Click="CancelButtonClick"/>
+        <Label Content="Start time" HorizontalAlignment="Left" Margin="547,116,0,0" VerticalAlignment="Top" Width="116"/>
+        <DatePicker x:Name="new_appointment_date" HorizontalAlignment="Left" Margin="675,86,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="startTimeTextBox" HorizontalAlignment="Left" Margin="675,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102"/>
+        <Button x:Name="addNewAppointmentButton" Content="Add new appointment" HorizontalAlignment="Left" Margin="618,196,0,0" VerticalAlignment="Top" Click="New_Appointment_Click" Height="33" Width="130"/>
+        <TextBox x:Name="durationTextBox" HorizontalAlignment="Left" Margin="675,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Text="15" IsEnabled="False"/>
+        <Label Content="Duration in minutes" HorizontalAlignment="Left" Margin="547,147,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.142,-0.368"/>
+        <Label Content="Select date" HorizontalAlignment="Left" Margin="547,84,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
+        <Label x:Name="title" Content="New special appointment" HorizontalAlignment="Left" Margin="579,10,0,0" VerticalAlignment="Top" Width="156" RenderTransformOrigin="0.235,0.572"/>
+        <Button x:Name="NewAppointmentButton" Content="New appointment" HorizontalAlignment="Left" Margin="9,22,0,0" VerticalAlignment="Top" Height="34" Width="116" RenderTransformOrigin="0.155,0.535" Click="NewAppointmentClick"/>
+        <Button x:Name="showAppointments" Content="All appointments" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Click="showAppointments_Click" Height="33" Width="116"/>
+        <Button Content="Reviews" HorizontalAlignment="Left" Margin="9,108,0,0" VerticalAlignment="Top" Click="Button_Click" Height="33" Width="116"/>
+        <Button Content="Referrals" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="33" Width="116" IsEnabled="False"/>
 
 
     </Grid>
