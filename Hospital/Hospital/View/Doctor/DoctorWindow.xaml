@@ -6,6 +6,34 @@
         xmlns:local="clr-namespace:Hospital.View.Doctor"
         mc:Ignorable="d"
         Title="DoctorWindow" Height="450" Width="850">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <RoutedUICommand x:Key="Ctr1" Text="Another Text" />
+            <RoutedUICommand x:Key="Ctr2" Text="Another Text" />
+            <RoutedUICommand x:Key="Ctr3" Text="Another Text" />
+            <RoutedUICommand x:Key="Ctr4" Text="Another Text" />
+            <RoutedUICommand x:Key="Ctr5" Text="Another Text" />
+            <RoutedUICommand x:Key="Ctr6" Text="Another Text" />
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Key="V" Command="{StaticResource Ctr1}" />
+        <KeyBinding Key="U" Command="{StaticResource Ctr2}" />
+        <KeyBinding Key="D" Command="{StaticResource Ctr3}" />
+        <KeyBinding Key="E" Command="{StaticResource Ctr4}" />
+        <KeyBinding Key="O" Command="{StaticResource Ctr5}" />
+        <KeyBinding Key="M" Command="{StaticResource Ctr6}" />
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource Ctr1}" Executed="View_Click" />
+        <CommandBinding Command="{StaticResource Ctr2}" Executed="Update_Click" />
+        <CommandBinding Command="{StaticResource Ctr3}" Executed="Delete_Click" />
+        <CommandBinding Command="{StaticResource Ctr4}" Executed="NewExaminationButtonClick" />
+        <CommandBinding Command="{StaticResource Ctr5}" Executed="NewOperationButtonClick" />
+        <CommandBinding Command="{StaticResource Ctr6}" Executed="MedicineButton_Click" />
+    </Window.CommandBindings>
+
     <Grid>
         <DataGrid x:Name="appointmentsDataGrid"
               AutoGenerateColumns="False"
@@ -33,11 +61,47 @@
 
         <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="381" Margin="16,17,0,0" VerticalAlignment="Top" Width="452"/>
 
-        <Button Content="View Patient" HorizontalAlignment="Left" Margin="300,318,0,0" VerticalAlignment="Top" Click="View_Click" Height="28" Width="111"/>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="300,354,0,0" VerticalAlignment="Top" Click="Update_Click" Height="28" Width="66"/>
-        <Button Content="Delete" HorizontalAlignment="Center" Margin="0,354,0,0" VerticalAlignment="Top" Click="Delete_Click" Height="28" Width="62"/>
-        <Button Content="New Examination" HorizontalAlignment="Left" Margin="517,326,0,0" VerticalAlignment="Top" Height="31" Width="113" Click="NewExaminationButtonClick" />
-        <Button Content="New Operation" HorizontalAlignment="Left" Margin="663,326,0,0" VerticalAlignment="Top" Height="31" Width="101" Click="NewOperationButtonClick" />
-        <Button Content="Medicine" HorizontalAlignment="Left" Margin="693,29,0,0" VerticalAlignment="Top" Height="43" Width="71" Click="MedicineButton_Click"/>
+        <Button HorizontalAlignment="Left" Margin="300,318,0,0" VerticalAlignment="Top" Click="View_Click" Height="28" Width="111">
+            <Button.Content>
+                <TextBlock>
+                    <Underline>V</Underline>iew Appointment
+                </TextBlock>
+            </Button.Content>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="300,354,0,0" VerticalAlignment="Top" Click="Update_Click" Height="28" Width="66">
+            <Button.Content>
+                <TextBlock>
+                    <Underline>U</Underline>pdate
+                </TextBlock>
+            </Button.Content>
+        </Button>
+        <Button HorizontalAlignment="Center" Margin="0,354,0,0" VerticalAlignment="Top" Click="Delete_Click" Height="28" Width="62">
+            <Button.Content>
+                <TextBlock>
+                    <Underline>D</Underline>elete
+                </TextBlock>
+            </Button.Content>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="517,326,0,0" VerticalAlignment="Top" Height="31" Width="113" Click="NewExaminationButtonClick" >
+            <Button.Content>
+                <TextBlock>
+                    New <Underline>E</Underline>xamination
+                </TextBlock>
+            </Button.Content>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="663,326,0,0" VerticalAlignment="Top" Height="31" Width="101" Click="NewOperationButtonClick">
+            <Button.Content>
+                <TextBlock>
+                    New <Underline>O</Underline>peration
+                </TextBlock>
+            </Button.Content>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="693,29,0,0" VerticalAlignment="Top" Height="43" Width="71" Click="MedicineButton_Click">
+            <Button.Content>
+                <TextBlock>
+                    <Underline>M</Underline>edicine
+                </TextBlock>
+            </Button.Content>
+        </Button>
     </Grid>
 </Window>

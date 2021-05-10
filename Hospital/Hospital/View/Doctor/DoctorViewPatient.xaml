@@ -6,6 +6,35 @@
         xmlns:local="clr-namespace:Hospital.View.Doctor"
         mc:Ignorable="d"
         Title="DoctorViewPatient" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <RoutedUICommand x:Key="Ctr1" Text="Another Text" />
+            <RoutedUICommand x:Key="Ctr2" Text="Another Text" />
+            <!--<RoutedUICommand x:Key="Ctr3" Text="Another Text" />
+            <RoutedUICommand x:Key="Ctr4" Text="Another Text" />
+            <RoutedUICommand x:Key="Ctr5" Text="Another Text" />
+            <RoutedUICommand x:Key="Ctr6" Text="Another Text" />
+            <RoutedUICommand x:Key="Ctr7" Text="Another Text" />-->
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Key="B" Command="{StaticResource Ctr1}" />
+        <KeyBinding Key="Backspace" Command="{StaticResource Ctr2}" />
+        <!--<KeyBinding Key="D" Command="{StaticResource Ctr3}" />
+        <KeyBinding Key="E" Command="{StaticResource Ctr4}" />
+        <KeyBinding Key="O" Command="{StaticResource Ctr5}" />
+        <KeyBinding Key="M" Command="{StaticResource Ctr6}" />
+        <KeyBinding Key="T" Command="{StaticResource Ctr7}" />-->
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource Ctr1}" Executed="BackButton_Click" />
+        <CommandBinding Command="{StaticResource Ctr2}" Executed="BackButton_Click" />
+        <!--<CommandBinding Command="{StaticResource Ctr3}" Executed="Delete_Click" />
+        <CommandBinding Command="{StaticResource Ctr4}" Executed="NewExaminationButtonClick" />
+        <CommandBinding Command="{StaticResource Ctr5}" Executed="NewOperationButtonClick" />
+        <CommandBinding Command="{StaticResource Ctr6}" Executed="MedicineButton_Click" />
+        <CommandBinding Command="{StaticResource Ctr7}" Executed="CtrShortcut7" />-->
+    </Window.CommandBindings>
     <Grid x:Name="dvpGrid">
 
         <TabControl>
@@ -35,7 +64,13 @@
                         <TextBox Grid.Column="1" Grid.Row="3" IsReadOnly="True" Text="{Binding Path=Patient.User.DateOfBirth, StringFormat='dd-MM-yyyy'}"></TextBox>
                         <TextBox Grid.Column="1" Grid.Row="4" IsReadOnly="True" Text="{Binding Path=Patient.User.Address}"></TextBox>
                     </Grid>
-                    <Button Content="Back" HorizontalAlignment="Left" Margin="40,340,0,0" VerticalAlignment="Top" Height="30" Width="75" Click="BackButton_Click"/>
+                    <Button HorizontalAlignment="Left" Margin="40,340,0,0" VerticalAlignment="Top" Height="30" Width="75" Click="BackButton_Click">
+                        <Button.Content>
+                            <TextBlock>
+                                <Underline>B</Underline>ack
+                            </TextBlock>
+                        </Button.Content>
+                    </Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Anamnesis">

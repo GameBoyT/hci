@@ -18,12 +18,13 @@ namespace Hospital.View.Doctor
         {
             InitializeComponent();
             app = Application.Current as App;
-
+            this.DataContext = this;
             Doctor = app.employeeController.GetByJmbg("1");
-            //Doctor.Notifications.Add(new Notification(1, "Kkekekeadaafsdafasfdasfasfsda", 1));
 
             WindowUpdate();
             appointment_date.SelectedDate = DateTime.Today;
+            appointmentsDataGrid.SelectedIndex = 0;
+            appointmentsDataGrid.Focus();
         }
 
         private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -143,5 +144,7 @@ namespace Hospital.View.Doctor
 
             return false;
         }
+
+
     }
 }
