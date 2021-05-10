@@ -64,7 +64,7 @@ namespace Hospital
 
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Rate_Click(object sender, RoutedEventArgs e)
         {
             if (DoctorRadioButton.IsChecked == true)
             {
@@ -79,13 +79,37 @@ namespace Hospital
             }
         }
 
-        private void CancelButtonClick(object sender, RoutedEventArgs e)
+        private void NewAppointmentButtonClick(object sender, RoutedEventArgs e)
         {
             var new_window = new PatientWindow();
             new_window.Show();
             this.Close();
         }
 
-       
+        private void showAppointments_Click(object sender, RoutedEventArgs e)
+        {
+            var new_window = new PatientAppointments();
+            new_window.Show();
+            this.Close();
+        }
+
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var new_window = new PatientReview();
+            new_window.Show();
+            this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var new_window = new PatientReferral();
+            new_window.Show();
+            this.Close();
+
+        }
+
+
     }
 }

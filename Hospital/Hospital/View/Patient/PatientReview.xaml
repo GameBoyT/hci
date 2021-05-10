@@ -8,7 +8,7 @@
         Title="PatientReview" Height="450" Width="800">
     <Grid>
         <ListView ItemsSource="{Binding appointmentsInPast}"
-                  Name="AppointmentsListView" Margin="0,0,382,40" SelectedIndex="0">
+                  Name="AppointmentsListView" Margin="131,34,261,41" SelectedIndex="0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="140" Header="Start Time"
@@ -21,19 +21,22 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Rate" HorizontalAlignment="Left" Margin="518,326,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.386,0.804" Height="27" Width="95" Click="Button_Click"/>
-        <Label Content="Brzina (0-10)" HorizontalAlignment="Left" Margin="465,27,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Informacije  (0-10)" HorizontalAlignment="Left" Margin="465,73,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Opsti utisak  (0-10)" HorizontalAlignment="Left" Margin="465,176,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Ljubaznost  (0-10)" HorizontalAlignment="Left" Margin="465,124,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="speedTextBox" HorizontalAlignment="Left" Margin="619,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16" InputScope="Number" Text="10"/>
-        <TextBox x:Name="informationTextBox" HorizontalAlignment="Left" Margin="619,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16" Text="10"/>
-        <TextBox x:Name="kindnessTextBox" HorizontalAlignment="Left" Margin="619,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16" Text="10"/>
-        <TextBox x:Name="overallTextBox" HorizontalAlignment="Left" Margin="619,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="16" Text="10"/>
-        <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Left" Margin="465,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="64"/>
-        <Button x:Name="cancelButton" Content="Back" HorizontalAlignment="Left" Margin="674,380,0,0" VerticalAlignment="Top" Height="26" Width="93" RenderTransformOrigin="0.155,0.535" Click="CancelButtonClick"/>
-        <RadioButton x:Name="HospitalRadioButton" Content="Hospital" HorizontalAlignment="Left" Margin="642,323,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <RadioButton x:Name="DoctorRadioButton" Content="Doctor" HorizontalAlignment="Left" Margin="642,349,0,0" VerticalAlignment="Top" />
+        <Button Content="Rate" HorizontalAlignment="Left" Margin="614,321,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.386,0.804" Height="27" Width="96" Click="Rate_Click"/>
+        <Label Content="Brzina (0-10)" HorizontalAlignment="Left" Margin="562,22,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Informacije  (0-10)" HorizontalAlignment="Left" Margin="562,68,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Opsti utisak  (0-10)" HorizontalAlignment="Left" Margin="562,171,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Ljubaznost  (0-10)" HorizontalAlignment="Left" Margin="562,119,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="speedTextBox" HorizontalAlignment="Left" Margin="716,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" FontSize="16" InputScope="Number" Text="10"/>
+        <TextBox x:Name="informationTextBox" HorizontalAlignment="Left" Margin="716,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" FontSize="16" Text="10"/>
+        <TextBox x:Name="kindnessTextBox" HorizontalAlignment="Left" Margin="716,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" FontSize="16" Text="10"/>
+        <TextBox x:Name="overallTextBox" HorizontalAlignment="Left" Margin="716,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" FontSize="16" Text="10"/>
+        <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Left" Margin="562,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="64"/>
+        <Button x:Name="NewAppointmentButton" Content="New appointment" HorizontalAlignment="Left" Margin="8,34,0,0" VerticalAlignment="Top" Height="33" Width="116" RenderTransformOrigin="0.155,0.535" Click="NewAppointmentButtonClick"/>
+        <RadioButton x:Name="HospitalRadioButton" Content="Hospital" HorizontalAlignment="Left" Margin="716,310,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <RadioButton x:Name="DoctorRadioButton" Content="Doctor" HorizontalAlignment="Left" Margin="716,336,0,0" VerticalAlignment="Top" />
+        <Button x:Name="showAppointments" Content="Show Appointments" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Click="showAppointments_Click" Height="33" Width="114"/>
+        <Button Content="Reviews" HorizontalAlignment="Left" Margin="9,119,0,0" VerticalAlignment="Top" Click="Button_Click" Height="33" Width="116" IsEnabled="False"/>
+        <Button Content="Referrals" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="33" Width="116"/>
 
 
     </Grid>

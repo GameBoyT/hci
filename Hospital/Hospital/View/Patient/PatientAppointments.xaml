@@ -9,7 +9,7 @@
     <Grid>
         <DataGrid x:Name="readDataGrid"
               AutoGenerateColumns="False"
-              IsReadOnly="True" Margin="10,9,340,177">
+              IsReadOnly="True" Margin="144,25,270,177">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Start Time"
                             Binding="{Binding StartTime}" />
@@ -23,18 +23,20 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Start time" HorizontalAlignment="Left" Margin="509,116,0,0" VerticalAlignment="Top" Width="116"/>
-        <DatePicker x:Name="new_appointment_date" HorizontalAlignment="Left" Margin="637,86,0,0" VerticalAlignment="Top"/>
-        <Label Content="Choose priority" HorizontalAlignment="Left" Margin="509,181,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
-        <TextBox x:Name="startTimeTextBox" HorizontalAlignment="Left" Margin="637,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="durationTextBox" HorizontalAlignment="Left" Margin="637,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Duration in minutes" HorizontalAlignment="Left" Margin="509,147,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.142,-0.368"/>
-        <Label Content="Select date" HorizontalAlignment="Left" Margin="509,84,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
-        <Button x:Name="updateConfirm" Content="Confirm update" HorizontalAlignment="Left" Margin="624,254,0,0" VerticalAlignment="Top" Height="33" Width="131" Click="updateConfirm_Click"/>
-        <Button x:Name="cancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="626,292,0,0" VerticalAlignment="Top" Height="34" Width="131" RenderTransformOrigin="0.539,1.632" Click="cancelButton_Click"/>
-        <Button x:Name="updateButton" Content="Update" HorizontalAlignment="Left" Margin="329,270,0,0" VerticalAlignment="Top" Height="34" Width="131" Click="updateButton_Click"/>
-        <Button x:Name="deletebutton" Content="Delete" HorizontalAlignment="Left" Margin="329,309,0,0" VerticalAlignment="Top" Height="33" Width="131" Click="deletebutton_Click"/>
-        <Button x:Name="backButton" Content="back" HorizontalAlignment="Left" Margin="692,385,0,0" VerticalAlignment="Top" Width="65" Click="backButton_Click"/>
+        <Label Content="Start time" HorizontalAlignment="Left" Margin="547,122,0,0" VerticalAlignment="Top" Width="116"/>
+        <DatePicker x:Name="new_appointment_date" HorizontalAlignment="Left" Margin="675,92,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="startTimeTextBox" HorizontalAlignment="Left" Margin="675,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102"/>
+        <TextBox x:Name="durationTextBox" HorizontalAlignment="Left" Margin="675,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102"/>
+        <Label Content="Duration in minutes" HorizontalAlignment="Left" Margin="547,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.142,-0.368"/>
+        <Label Content="Select date" HorizontalAlignment="Left" Margin="547,90,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
+        <Button x:Name="updateConfirm" Content="Confirm update" HorizontalAlignment="Left" Margin="603,185,0,0" VerticalAlignment="Top" Height="33" Width="131" Click="updateConfirm_Click"/>
+        <Button x:Name="cancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="605,223,0,0" VerticalAlignment="Top" Height="34" Width="131" RenderTransformOrigin="0.539,1.632" Click="cancelButton_Click"/>
+        <Button x:Name="updateButton" Content="Update" HorizontalAlignment="Left" Margin="196,272,0,0" VerticalAlignment="Top" Height="34" Width="132" Click="updateButton_Click"/>
+        <Button x:Name="deletebutton" Content="Delete" HorizontalAlignment="Left" Margin="348,273,0,0" VerticalAlignment="Top" Height="32" Width="132" Click="deletebutton_Click"/>
+        <Button x:Name="NewAppointmentButton" Content="New appointment" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Width="116" Click="NewAppointment_Click" Height="33"/>
+        <Button x:Name="showAppointments" Content="All appointments" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Click="showAppointments_Click" Height="33" Width="116" IsEnabled="False"/>
+        <Button Content="Reviews" HorizontalAlignment="Left" Margin="9,108,0,0" VerticalAlignment="Top" Click="Button_Click" Height="33" Width="116"/>
+        <Button Content="Referrals" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="33" Width="116"/>
 
 
 
