@@ -1,2 +1,5 @@
 ﻿Extracted dynamic equipment: 10 flaster
 Extracted dynamic equipment: 50 gaza
+Extracted dynamic equipment: 25 gaza
+Extracted dynamic equipment: 30 traka
+Extracted dynamic equipment: 20 traka

@@ -13,28 +13,28 @@ namespace Hospital
         {
             var new_window = new PatientWindow();
             new_window.Show();
-            this.Close();
+            //this.Close();
         }
 
         private void Button_Click_Doctor(object sender, RoutedEventArgs e)
         {
             View.Doctor.DoctorWindow doctorWindow = new View.Doctor.DoctorWindow();
             doctorWindow.Show();
-            this.Close();
+            //this.Close();
         }
 
         private void Button_Click_Director(object sender, RoutedEventArgs e)
         {
             View.Director.DirectorWindow directorWindow = new View.Director.DirectorWindow();
             directorWindow.Show();
-            this.Close();
+            //this.Close();
         }
 
         private void Button_Click_Secretary(object sender, RoutedEventArgs e)
         {
             SecretaryFun secretaryFun = new SecretaryFun();
             secretaryFun.Show();
-            this.Close();
+            //this.Close();
         }
     }
 }

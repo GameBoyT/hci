@@ -30,10 +30,10 @@ namespace Hospital.View.Director
             string textname = name.Text;
             string desc = description.Text;
             int quant = Int32.Parse(quantity.Text);
-            string toRoomId = roomId.Text;
+            int toRoomId = Int32.Parse(roomId.Text);
             staticController.Save(textname, toRoomId, quant, desc);
             //Room room = new Room(101, textname, (RoomType)1, 4, "test soba");
-            return new StaticEquipment(id, textname, Int32.Parse(toRoomId), quant, desc);
+            return new StaticEquipment(id, textname, toRoomId, quant, desc);
         }
 
         private void AddEquipment_Click(object sender, RoutedEventArgs e)
@@ -200,14 +200,28 @@ namespace Hospital.View.Director
 
         private void Search_Static_Click(object sender, RoutedEventArgs e)
         {
-            StaticDataGrid.ItemsSource = staticEquipment.FindAll(obj => obj.Name == searchStatic.Text);
+            if(searchStatic.Text != ""){
+                StaticDataGrid.ItemsSource = staticEquipment.FindAll(obj => obj.Name == searchStatic.Text);
+            }
+            else
+            {
+                StaticDataGrid.ItemsSource = staticController.GetAll();
+            }
         }
         private void Search_Dynamic_Click(object sender, RoutedEventArgs e)
         {
-            StaticDataGrid.ItemsSource = dynamicEquipment.FindAll(obj => obj.Name == searchDynamic.Text);
+            if (searchDynamic.Text != "")
+            {
+                DynamicDataGrid.ItemsSource = dynamicEquipment.FindAll(obj => obj.Name == searchDynamic.Text);
+            }
+            else
+            {
+                DynamicDataGrid.ItemsSource = dynamicController.GetAll();
+            }
         }
         private void Filter_Static_Click(object sender, RoutedEventArgs e)
         {
+            //Search_Static_Click(sender, e);
             StaticDataGrid.ItemsSource = staticEquipment.FindAll(obj => obj.RoomId == Int32.Parse(filterStatic.Text));
         }
     }

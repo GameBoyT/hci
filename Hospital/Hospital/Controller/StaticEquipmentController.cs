@@ -23,9 +23,9 @@ namespace Controller
             return staticEquipmentService.GetById(id);
         }
 
-        public void Save(String name, String roomName, int quantity, String description)
+        public void Save(String name, int roomId, int quantity, String description)
         {
-            staticEquipmentService.Save(name, roomName, quantity, description);
+            staticEquipmentService.Save(name, roomId, quantity, description);
         }
 
         public void Delete(int id)

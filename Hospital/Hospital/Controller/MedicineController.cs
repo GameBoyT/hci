@@ -1,5 +1,6 @@
 using Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Controller
@@ -27,6 +28,11 @@ namespace Controller
         public Medicine GetById(int id)
         {
             return medicineService.GetById(id);
+        }
+
+        public List<Medicine> GetNotVerified()
+        {
+            return medicineService.GetNotVerified();
         }
 
         public Medicine GetByName(string name)

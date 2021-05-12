@@ -24,15 +24,15 @@ namespace Service
             return staticEquipmentRepository.GetById(id);
         }
 
-        public void Save(string name, string roomName, int quantity, string description)
+        public void Save(string name, int roomId, int quantity, string description)
         {
             int id = staticEquipmentRepository.GenerateNewId();
-            Room room = roomRepository.GetByName(roomName);
+            Room room = roomRepository.GetById(roomId);
             StaticEquipment staticEquipment = new StaticEquipment(id, name, room.Id, quantity, description);
             staticEquipmentRepository.Save(staticEquipment);
 
-            //room.AddStaticEquipment(staticEquipment);
-            //roomRepository.Update(room);
+            room.StaticEquipments.Add(staticEquipment);
+            roomRepository.Update(room);
         }
 
         public void Delete(int id)

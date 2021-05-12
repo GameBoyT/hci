@@ -87,11 +87,7 @@ namespace Repository
             _rooms[index] = room;
             WriteToJson();
         }
-
-        public void MoveEquipment(Model.Room fromRoom, Model.Room toRoom, DateTime date)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public List<Room> GetOperationRooms()
         {

@@ -8,9 +8,16 @@
   },
   {
     "Id": 2,
-    "Quantity": 150,
+    "Quantity": 125,
     "Type": null,
     "Description": "moze",
     "Name": "gaza"
+  },
+  {
+    "Id": 3,
+    "Quantity": 150,
+    "Type": null,
+    "Description": "opis",
+    "Name": "traka"
   }
 ]

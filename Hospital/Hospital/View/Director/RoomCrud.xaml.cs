@@ -104,5 +104,12 @@ namespace Hospital.View.Director
             cancelupdateRoomButton.Visibility = Visibility.Collapsed;
             title.Content = "Create new room";
         }
+
+        private void Renovation_Click(object sender, RoutedEventArgs e)
+        {
+            Room room = (Room)roomsDataGrid.SelectedItems[0];
+            roomController.Renovation(room.Id, renovationDate.SelectedDate.Value);
+        }
+
     }
 }

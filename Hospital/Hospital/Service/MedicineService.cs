@@ -34,7 +34,10 @@ namespace Service
         public void Save(string name, string description)
         {
             int id = medicineRepository.GenerateNewId();
-            Medicine medicine = new Medicine(id, name, description, "");
+            Medicine medicine = new Medicine(id, name, description, "")
+            {
+                Verification = VerificationType.needsVerification
+            };
             medicineRepository.Save(medicine);
         }
 
@@ -61,6 +64,11 @@ namespace Service
         public int GenerateNewId()
         {
             return medicineRepository.GenerateNewId();
+        }
+
+        public List<Medicine> GetNotVerified()
+        {
+            return medicineRepository.GetNotVerified();
         }
     }
 }

@@ -9,17 +9,17 @@
     <Grid>
         <DataGrid x:Name="medicineDataGrid"
               AutoGenerateColumns="False"
-              IsReadOnly="True" Margin="33,55,378,132">
+              IsReadOnly="True" Margin="10,13,557,239">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"
                             Binding="{Binding Name}" />
-                <DataGridTextColumn Header="DoctorComment"
-                            Binding="{Binding DoctorComment}" />
                 <DataGridTextColumn Header="Description"
                             Binding="{Binding Description}" />
+                <DataGridTextColumn Header="Verification"
+                            Binding="{Binding Verification}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Delete" HorizontalAlignment="Center" Margin="0,318,0,0" VerticalAlignment="Top" Click="Delete_Med_Click" Height="28" Width="62"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="269,90,0,0" VerticalAlignment="Top" Click="Delete_Med_Click" Height="28" Width="62"/>
 
         <Label Content="Name" HorizontalAlignment="Left" Margin="509,116,0,0" VerticalAlignment="Top" Width="116"/>
         <TextBox x:Name="name" HorizontalAlignment="Left" Margin="637,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -31,8 +31,21 @@
 
         <Label x:Name="title" Content="Create new med" HorizontalAlignment="Left" Margin="571,13,0,0" VerticalAlignment="Top" Width="106"/>
 
-        <Button Content="Update" HorizontalAlignment="Left" Margin="300,318,0,0" VerticalAlignment="Top" Click="UpdateMedShow_Click" Height="28" Width="66"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="265,46,0,0" VerticalAlignment="Top" Click="UpdateMedShow_Click" Height="28" Width="66"/>
         <Button x:Name="updateMedButton" Content="Update medicine" Visibility="Collapsed" HorizontalAlignment="Left"  Click="Update_Med_Click" Margin="637,334,0,0" VerticalAlignment="Top"  Height="33" Width="131"/>
         <Button x:Name="cancelupdateMedButton" Content="Cancel" Visibility="Collapsed" HorizontalAlignment="Left" Click="CancelupdateMedButton_Click" Margin="494,334,0,0" VerticalAlignment="Top"  Height="33" Width="122"/>
+        <DataGrid x:Name="needsToVerifyDataGrid"
+            AutoGenerateColumns="False"
+            IsReadOnly="True" Margin="10,228,557,24">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name"
+                    Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Description"
+                    Binding="{Binding Description}" />
+                <DataGridTextColumn Header="Verification"
+                            Binding="{Binding Verification}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Needs verification: " HorizontalAlignment="Left" Height="23" Margin="27,200,0,0" VerticalAlignment="Top" Width="121"/>
     </Grid>
 </Window>

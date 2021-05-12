@@ -19,6 +19,8 @@
                             Binding="{Binding Floor}" />
                 <DataGridTextColumn Header="Detail"
                             Binding="{Binding Detail}" />
+                <DataGridTextColumn Header="Free"
+                            Binding="{Binding Status}" />
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Delete" HorizontalAlignment="Center" Margin="0,318,0,0" VerticalAlignment="Top" Click="Delete_Room_Click" Height="28" Width="62"/>
@@ -37,5 +39,8 @@
         <TextBox x:Name="detail" HorizontalAlignment="Left" Margin="637,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Type" HorizontalAlignment="Left" Margin="509,217,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
         <TextBox x:Name="type" HorizontalAlignment="Left" Margin="637,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Renovation" HorizontalAlignment="Left" Margin="228,318,0,0" VerticalAlignment="Top" Click="Renovation_Click" Height="28" Width="66"/>
+        <DatePicker x:Name="renovationDate" HorizontalAlignment="Left" Height="26" Margin="240,386,0,0" VerticalAlignment="Top" Width="140"/>
+        <Label  Content="Enter date to renovate" HorizontalAlignment="Left"  Margin="99,386,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

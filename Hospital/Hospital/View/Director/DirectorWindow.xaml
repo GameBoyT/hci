@@ -9,6 +9,6 @@
     <Grid>
         <Button Content="View rooms" HorizontalAlignment="Left" Height="38" Margin="34,26,0,0" VerticalAlignment="Top" Click="View_rooms" Width="78"/>
         <Button Content="View equipment" HorizontalAlignment="Left" Height="29" Margin="34,90,0,0" VerticalAlignment="Top" Width="119" Click="ViewEquipments"/>
-        <Button Content="View medicine" HorizontalAlignment="Left" Height="35" Margin="51,146,0,0" VerticalAlignment="Top" Width="87" Click="ViewMedicine"/>
+        <Button Content="View medicine" HorizontalAlignment="Left" Height="35" Margin="34,147,0,0" VerticalAlignment="Top" Width="87" Click="ViewMedicine"/>
     </Grid>
 </Window>

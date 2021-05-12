@@ -3,27 +3,20 @@
     "Id": 1,
     "Name": "Aspirin",
     "Verification": 0,
-    "Description": "opis1",
-    "DoctorComment": ""
-  },
-  {
-    "Id": 2,
-    "Name": "Andol",
-    "Verification": 0,
-    "Description": "zz",
+    "Description": "opis2",
     "DoctorComment": ""
   },
   {
     "Id": 3,
     "Name": "Amoksicilin",
     "Verification": 0,
-    "Description": "opis3",
+    "Description": "123",
     "DoctorComment": ""
   },
   {
     "Id": 4,
     "Name": "Brufen",
-    "Verification": 2,
+    "Verification": 0,
     "Description": "opis4",
     "DoctorComment": ""
   },
@@ -32,6 +25,27 @@
     "Name": "Paracetamol",
     "Verification": 2,
     "Description": "afag",
+    "DoctorComment": ""
+  },
+  {
+    "Id": 6,
+    "Name": "Diklofen",
+    "Verification": 2,
+    "Description": "bolove",
+    "DoctorComment": ""
+  },
+  {
+    "Id": 7,
+    "Name": "test",
+    "Verification": 1,
+    "Description": "test desc",
+    "DoctorComment": "bla"
+  },
+  {
+    "Id": 9,
+    "Name": "tedst",
+    "Verification": 2,
+    "Description": "asd",
     "DoctorComment": ""
   }
 ]
