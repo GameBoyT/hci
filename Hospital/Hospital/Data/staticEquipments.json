@@ -14,16 +14,9 @@
     "Description": "Anaesthesia machine"
   },
   {
-    "Id": 3,
-    "Name": "BlaBla",
-    "RoomId": 2,
-    "Quantity": 2,
-    "Description": "blabla"
-  },
-  {
     "Id": 4,
     "Name": "krevet",
-    "RoomId": 2,
+    "RoomId": 3,
     "Quantity": 1,
     "Description": "za spavanje"
   }

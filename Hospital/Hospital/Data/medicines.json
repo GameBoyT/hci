@@ -10,7 +10,7 @@
     "Id": 3,
     "Name": "Amoksicilin",
     "Verification": 0,
-    "Description": "opis3",
+    "Description": "123",
     "DoctorComment": ""
   },
   {
@@ -42,10 +42,10 @@
     "DoctorComment": "bla"
   },
   {
-    "Id": 8,
-    "Name": "test",
-    "Verification": 0,
-    "Description": "opis",
+    "Id": 9,
+    "Name": "tedst",
+    "Verification": 2,
+    "Description": "asd",
     "DoctorComment": ""
   }
 ]

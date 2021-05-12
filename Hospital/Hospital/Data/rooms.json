@@ -51,7 +51,7 @@
   },
   {
     "Id": 3,
-    "Status": true,
+    "Status": false,
     "Name": "10",
     "RoomType": 1,
     "Floor": 0,
@@ -64,6 +64,13 @@
         "RoomId": 3,
         "Quantity": 1,
         "Description": "Anaesthesia machine"
+      },
+      {
+        "Id": 4,
+        "Name": "krevet",
+        "RoomId": 3,
+        "Quantity": 1,
+        "Description": "za spavanje"
       },
       {
         "Id": 4,
