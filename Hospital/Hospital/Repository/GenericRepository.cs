@@ -26,30 +26,30 @@ namespace Repository
             return _objects.Find(obj => obj.Id == id);
         }
 
-        public T Save(T obj)
+        public T Save(T entity)
         {
             ReadJson();
-            _objects.Add(obj);
+            _objects.Add(entity);
             WriteToJson();
-            return obj;
+            return entity;
         }
 
         public T Delete(int id)
         {
             ReadJson();
-            T obj = _objects.Find(obj => obj.Id == id);
-            _objects.Remove(obj);
+            T entity = _objects.Find(obj => obj.Id == id);
+            _objects.Remove(entity);
             WriteToJson();
-            return obj;
+            return entity;
         }
 
-        public T Update(T obj)
+        public T Update(T entity)
         {
             ReadJson();
-            int index = _objects.FindIndex(obj => obj.Id == obj.Id);
-            _objects[index] = obj;
+            int index = _objects.FindIndex(obj => obj.Id == entity.Id);
+            _objects[index] = entity;
             WriteToJson();
-            return obj;
+            return entity;
         }
 
         public int GenerateNewId()

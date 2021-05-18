@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Repository
 {
-    public class PatientRepository : GenericUserRepository<Patient>
+    public class PatientRepository : GenericRepository<Patient>
     {
         public PatientRepository()
         {
@@ -30,13 +30,13 @@ namespace Repository
             return patient;
         }
 
-        public Patient Update(Patient obj)
+        public new Patient Update(Patient patient)
         {
             ReadJson();
-            int index = _objects.FindIndex(obj => obj.User.Jmbg == obj.User.Jmbg);
-            _objects[index] = obj;
+            int index = _objects.FindIndex(obj => obj.User.Jmbg == patient.User.Jmbg);
+            _objects[index] = patient;
             WriteToJson();
-            return obj;
+            return patient;
         }
 
         public int GenerateNewAnamnesisId()

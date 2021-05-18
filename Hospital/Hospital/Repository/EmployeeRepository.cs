@@ -28,6 +28,15 @@ namespace Repository
             return employee;
         }
 
+        public new Employee Update(Employee employee)
+        {
+            ReadJson();
+            int index = _objects.FindIndex(obj => obj.User.Jmbg == employee.User.Jmbg);
+            _objects[index] = employee;
+            WriteToJson();
+            return employee;
+        }
+
         public List<Employee> GetDoctors()
         {
             ReadJson();

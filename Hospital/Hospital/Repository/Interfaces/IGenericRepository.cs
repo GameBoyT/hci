@@ -11,9 +11,9 @@ namespace Repository.Interfaces
 
         T GetById(int id);
         
-        T Save(T obj);
+        T Save(T entity);
         
-        T Update(T obj);
+        T Update(T entity);
         
         T Delete(int id);
     }
