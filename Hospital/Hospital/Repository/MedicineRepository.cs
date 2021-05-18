@@ -45,11 +45,18 @@ namespace Repository
             ReadJson();
             return _medicines;
         }
+
+        // napisati 1 fkju koja vraca po nekoj verifikaciji a ne 4 posebne
         
         public List<Medicine> GetVerified()
         {
             ReadJson();
             return _medicines.FindAll(obj => obj.Verification == VerificationType.verified);
+        }
+        public List<Medicine> GetRejected()
+        {
+            ReadJson();
+            return _medicines.FindAll(obj => obj.Verification == VerificationType.rejected);
         }
 
         public List<Medicine> GetNotRejected()
@@ -71,6 +78,7 @@ namespace Repository
 
         public Medicine GetByName(string name)
         {
+            ReadJson();
             return _medicines.Find(obj => string.Equals(obj.Name, name, StringComparison.OrdinalIgnoreCase));
         }
 

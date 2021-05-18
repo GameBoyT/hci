@@ -24,7 +24,7 @@
         <Label Content="Name" HorizontalAlignment="Left" Margin="509,116,0,0" VerticalAlignment="Top" Width="116"/>
         <TextBox x:Name="name" HorizontalAlignment="Left" Margin="637,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
-        <Button x:Name="createMedicine" Content="Add meds" HorizontalAlignment="Left" Margin="637,334,0,0" VerticalAlignment="Top" Click="New_Medicine_Click" Height="33" Width="131"/>
+        <Button x:Name="createMedicine" Content="Add meds" HorizontalAlignment="Left" Visibility="Visible" Margin="637,334,0,0" VerticalAlignment="Top" Click="New_Medicine_Click" Height="33" Width="131"/>
 
         <TextBox x:Name="description" HorizontalAlignment="Left" Margin="637,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Description" HorizontalAlignment="Left" Margin="509,161,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.142,-0.368"/>
@@ -34,7 +34,7 @@
         <Button Content="Update" HorizontalAlignment="Left" Margin="265,46,0,0" VerticalAlignment="Top" Click="UpdateMedShow_Click" Height="28" Width="66"/>
         <Button x:Name="updateMedButton" Content="Update medicine" Visibility="Collapsed" HorizontalAlignment="Left"  Click="Update_Med_Click" Margin="637,334,0,0" VerticalAlignment="Top"  Height="33" Width="131"/>
         <Button x:Name="cancelupdateMedButton" Content="Cancel" Visibility="Collapsed" HorizontalAlignment="Left" Click="CancelupdateMedButton_Click" Margin="494,334,0,0" VerticalAlignment="Top"  Height="33" Width="122"/>
-        <DataGrid x:Name="needsToVerifyDataGrid"
+        <DataGrid x:Name="rejectedDataGrid"
             AutoGenerateColumns="False"
             IsReadOnly="True" Margin="10,228,557,24">
             <DataGrid.Columns>
@@ -43,9 +43,11 @@
                 <DataGridTextColumn Header="Description"
                     Binding="{Binding Description}" />
                 <DataGridTextColumn Header="Verification"
-                            Binding="{Binding Verification}" />
+                    Binding="{Binding Verification}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Needs verification: " HorizontalAlignment="Left" Height="23" Margin="27,200,0,0" VerticalAlignment="Top" Width="121"/>
+        <Label Content="Rejected medication: " HorizontalAlignment="Left" Height="28" Margin="27,200,0,0" VerticalAlignment="Top" Width="121"/>
+        <Button Content="Send new request" HorizontalAlignment="Left" Margin="269,255,0,0" VerticalAlignment="Top" Click="RejectedMedShow_Click" Height="27" Width="116"/>
+        <Button x:Name="rejectMedicine" Content="Send request" Visibility="Collapsed" HorizontalAlignment="Left" Margin="637,334,0,0" VerticalAlignment="Top" Click="Reject_Medicine_Click" Height="33" Width="131"/>
     </Grid>
 </Window>

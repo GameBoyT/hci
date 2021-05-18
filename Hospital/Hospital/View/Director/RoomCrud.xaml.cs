@@ -111,5 +111,10 @@ namespace Hospital.View.Director
             roomController.Renovation(room.Id, renovationDate.SelectedDate.Value);
         }
 
+        private void HardRenovation_Click(object sender, RoutedEventArgs e)
+        {
+            HardRenovation hardRenovation = new HardRenovation();
+            hardRenovation.Show();
+        }
     }
 }

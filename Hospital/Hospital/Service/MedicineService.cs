@@ -20,6 +20,10 @@ namespace Service
         {
             return medicineRepository.GetNotRejected();
         }
+        public List<Medicine> GetRejected()
+        {
+            return medicineRepository.GetRejected();
+        }
 
         public Medicine GetById(int id)
         {

@@ -92,5 +92,34 @@ namespace Service
                 Update(room2);
             }
         }
+
+
+        public void AttachRooms(int roomAId, int roomBId)
+        {
+            //isRoomAvailable
+            Room roomA = GetById(roomAId);
+            Room roomB = GetById(roomBId);
+
+
+            ExtractEquipment(roomB, roomA);
+            roomA.Name = "RoomC";
+
+            Update(roomA);
+            Delete(roomBId);
+        }
+
+        public void ExtractEquipment(Room fromRoom, Room toRoom)
+        {
+            foreach (StaticEquipment staticEquipment in fromRoom.StaticEquipments)
+                toRoom.StaticEquipments.Add(staticEquipment);
+        }
+
+        public void DettachRooms(int roomId)
+        {
+            //isRoomAvailable
+            Room roomA = GetById(roomId);
+
+            Save(roomA.Name + "-A", roomA.RoomType, roomA.Floor, roomA.Detail);
+        }
     }
 }

@@ -24,13 +24,11 @@ namespace Repository
                 File.Create(_fileLocation).Close();
             }
 
-            using (StreamReader r = new StreamReader(_fileLocation))
+            using StreamReader r = new StreamReader(_fileLocation);
+            string json = r.ReadToEnd();
+            if (json != "")
             {
-                string json = r.ReadToEnd();
-                if (json != "")
-                {
-                    _rooms = JsonConvert.DeserializeObject<List<Room>>(json);
-                }
+                _rooms = JsonConvert.DeserializeObject<List<Room>>(json);
             }
         }
 

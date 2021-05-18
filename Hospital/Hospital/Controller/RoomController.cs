@@ -62,7 +62,13 @@ namespace Controller
         {
             roomService.MoveStaticEquipment(staticId, toRoom, time);
         }
-
-
+        public void AttachRooms(int roomAId, int roomBId)
+        {
+            roomService.AttachRooms(roomAId, roomBId);
+        }
+        public void DettachRooms(int roomId)
+        {
+            roomService.DettachRooms(roomId);
+        }
     }
 }

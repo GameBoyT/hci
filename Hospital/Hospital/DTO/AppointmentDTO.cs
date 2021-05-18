@@ -78,6 +78,6 @@ namespace DTO
             RoomId = roomId;
         }
 
-
+        // napravitit konstruktor za ronoviranje
     }
 }
