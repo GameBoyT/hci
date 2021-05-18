@@ -151,7 +151,7 @@ namespace Hospital
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
 
-            return new AppointmentDTO(appointmentController.GenerateNewId(), AppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, 1);
+            return new AppointmentDTO(AppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, doctor.RoomId, patient.User.Jmbg);
         }
 
 
@@ -207,7 +207,7 @@ namespace Hospital
                 }
                 else
                 {
-                    appointmentController.Save(newAppointment, patient.User.Jmbg);
+                    appointmentController.Save(newAppointment);
                     ClearFileds();
                     MessageBox.Show("Novi termin uspjeno dodat", "Uspjesno");
                 }

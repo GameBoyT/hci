@@ -31,13 +31,8 @@ namespace DTO
 
         public String RoomName { get; set; }
 
-        //public AppointmentDTO(Appointment appointment, String doctorJmbg, string doctorFirstName, string doctorLastName)
-        //{
-        //    Appointment = appointment;
-        //    DoctorJmbg = doctorJmbg;
-        //    DoctorFirstName = doctorFirstName;
-        //    DoctorLastName = doctorLastName;
-        //}
+        public String ModifiedByJmbg { get; set; }
+
 
         public AppointmentDTO(int id, AppointmentType appointmentType, DateTime startTime, Double durationInMinutes, String doctorJmbg, string doctorFirstName,
                                     string doctorLastName, string doctorSpecialization, String patientJmbg, String patientFirstName, String patientLastName, int roomId, String roomName)
@@ -57,7 +52,7 @@ namespace DTO
             RoomName = roomName;
         }
 
-        public AppointmentDTO(int id, AppointmentType appointmentType, DateTime startTime, double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId)
+        public AppointmentDTO(int id, AppointmentType appointmentType, DateTime startTime, double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId, string modifiedByJmbg)
         {
             Id = id;
             AppointmentType = appointmentType;
@@ -66,9 +61,10 @@ namespace DTO
             PatientJmbg = patientJmbg;
             DoctorJmbg = doctorJmbg;
             RoomId = roomId;
+            ModifiedByJmbg = modifiedByJmbg;
         }
 
-        public AppointmentDTO(AppointmentType appointmentType, DateTime startTime, double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId)
+        public AppointmentDTO(AppointmentType appointmentType, DateTime startTime, double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId, string modifiedByJmbg)
         {
             AppointmentType = appointmentType;
             StartTime = startTime;
@@ -76,6 +72,7 @@ namespace DTO
             PatientJmbg = patientJmbg;
             DoctorJmbg = doctorJmbg;
             RoomId = roomId;
+            ModifiedByJmbg = modifiedByJmbg;
         }
 
         // napravitit konstruktor za ronoviranje

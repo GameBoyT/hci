@@ -23,19 +23,19 @@ namespace Controller
             notificationService.Save(notification);
         }
 
-        public void NotifyAppointmentCreation(AppointmentDTO appointment, string senderJmbg)
+        public void NotifyAppointmentCreation(AppointmentDTO appointment)
         {
-            notificationService.NotifyAppointmentCreation(appointment, senderJmbg);
+            notificationService.NotifyAppointmentCreation(appointment);
         }
 
-        public void NotifyAppointmentUpdate(AppointmentDTO appointment, string senderJmbg)
+        public void NotifyAppointmentUpdate(AppointmentDTO appointment)
         {
-            notificationService.NotifyAppointmentUpdate(appointment, senderJmbg);
+            notificationService.NotifyAppointmentUpdate(appointment);
         }
 
-        public void NotifyAppointmentDeletion(AppointmentDTO appointment, string senderJmbg)
+        public void NotifyAppointmentDeletion(AppointmentDTO appointment)
         {
-            notificationService.NotifyAppointmentDeletion(appointment, senderJmbg);
+            notificationService.NotifyAppointmentDeletion(appointment);
         }
 
         public void Delete(int id)

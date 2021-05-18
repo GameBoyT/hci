@@ -114,7 +114,8 @@ namespace Hospital
                                                         duration,
                                                         oldAppointment.PatientJmbg,
                                                         oldAppointment.DoctorJmbg,
-                                                        oldAppointment.RoomId);
+                                                        oldAppointment.RoomId,
+                                                        employeeController.GetSecretary().User.Jmbg);
 
             bool error = appointmentController.AppointmentTimeIsInvalid(newAppointment);
             if (error)
@@ -123,7 +124,7 @@ namespace Hospital
             }
             else
             {
-                appointmentController.Update(newAppointment, employeeController.GetSecretary().User.Jmbg);
+                appointmentController.Update(newAppointment);
                 WindowUpdate();
                 saveButton.Visibility = Visibility.Collapsed;
                 cancelButton.Visibility = Visibility.Collapsed;
@@ -141,7 +142,7 @@ namespace Hospital
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTB.Text);
 
-            return new AppointmentDTO(appointmentController.GenerateNewId(), AppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, 1);
+            return new AppointmentDTO(AppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, doctor.RoomId, employeeController.GetSecretary().User.Jmbg);
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
@@ -179,7 +180,7 @@ namespace Hospital
                 }
                 else
                 {
-                    appointmentController.Save(newAppointment, patient.User.Jmbg);
+                    appointmentController.Save(newAppointment);
                     ClearFileds();
                     MessageBox.Show("Novi termin uspjeno dodat", "Uspjesno");
                     WindowUpdate();
