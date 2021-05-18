@@ -1,6 +1,7 @@
 using DTO;
 using Model;
 using Repository;
+using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 
@@ -8,31 +9,34 @@ namespace Service
 {
     public class AppointmentService
     {
-        private AppointmentRepository appointmentRepository = new AppointmentRepository();
-        private EmployeeRepository employeeRepository = new EmployeeRepository();
-        private PatientRepository patientRepository = new PatientRepository();
-        private RoomRepository roomRepository = new RoomRepository();
-        private NotificationService notificationService = new NotificationService();
+        private IAppointmentRepository _appointmentRepository = new AppointmentRepository();
+        private IEmployeeRepository _employeeRepository = new EmployeeRepository();
+        private IPatientRepository _patientRepository = new PatientRepository();
+        private IRoomRepository _roomRepository = new RoomRepository();
+
+        public AppointmentService()
+        {
+
+        }
 
 
         public List<AppointmentDTO> GetAll()
         {
-            List<Appointment> appointments = appointmentRepository.GetAll();
+            List<Appointment> appointments = _appointmentRepository.GetAll();
             return ConvertListToDTO(appointments);
         }
 
         public AppointmentDTO GetById(int id)
         {
-            return ConvertToDTO(appointmentRepository.GetById(id));
+            return ConvertToDTO(_appointmentRepository.GetById(id));
         }
 
         public AppointmentDTO Save(AppointmentDTO appointmentDTO)
         {
             appointmentDTO.Id = GenerateNewId();
             Appointment appointment = ConvertToModel(appointmentDTO);
-            appointmentRepository.Save(appointment);
+            _appointmentRepository.Save(appointment);
             AddAppointmentToParticipants(appointment);
-            //notificationService.NotifyAppointmentCreation(appointmentDTO);
             return appointmentDTO;
         }
 
@@ -45,31 +49,30 @@ namespace Service
 
         public void AddAppointmentToDoctor(Appointment appointment)
         {
-            Employee doctor = employeeRepository.GetByJmbg(appointment.DoctorJmbg);
+            Employee doctor = _employeeRepository.GetByJmbg(appointment.DoctorJmbg);
             doctor.Appointments.Add(appointment);
-            employeeRepository.Update(doctor);
+            _employeeRepository.Update(doctor);
         }
 
         public void AddAppointmentToPatient(Appointment appointment)
         {
-            Patient patient = patientRepository.GetByJmbg(appointment.PatientJmbg);
+            Patient patient = _patientRepository.GetByJmbg(appointment.PatientJmbg);
             patient.Appointments.Add(appointment);
-            patientRepository.Update(patient);
+            _patientRepository.Update(patient);
         }
 
         public void AddAppointmentToRoom(Appointment appointment)
         {
-            Room room = roomRepository.GetById(appointment.RoomId);
+            Room room = _roomRepository.GetById(appointment.RoomId);
             room.Appointments.Add(appointment);
-            roomRepository.Update(room);
+            _roomRepository.Update(room);
         }
 
         public AppointmentDTO Update(AppointmentDTO appointmentDTO)
         {
             Appointment appointment = ConvertToModel(appointmentDTO);
-            AppointmentDTO updatedAppointment = ConvertToDTO(appointmentRepository.Update(appointment));
+            AppointmentDTO updatedAppointment = ConvertToDTO(_appointmentRepository.Update(appointment));
             UpdateAppointmentParticipants(appointment);
-            //notificationService.NotifyAppointmentUpdate(appointmentDTO);
             return updatedAppointment;
         }
 
@@ -82,52 +85,51 @@ namespace Service
 
         public void UpdateAppointmentForDoctor(Appointment appointment)
         {
-            Employee doctor = employeeRepository.GetByJmbg(appointment.DoctorJmbg);
+            Employee doctor = _employeeRepository.GetByJmbg(appointment.DoctorJmbg);
             int index = doctor.Appointments.FindIndex(obj => obj.Id == appointment.Id);
             doctor.Appointments[index] = appointment;
-            employeeRepository.Update(doctor);
+            _employeeRepository.Update(doctor);
         }
 
         public void UpdateAppointmentForPatient(Appointment appointment)
         {
-            Patient patient = patientRepository.GetByJmbg(appointment.PatientJmbg);
+            Patient patient = _patientRepository.GetByJmbg(appointment.PatientJmbg);
             int index = patient.Appointments.FindIndex(obj => obj.Id == appointment.Id);
             patient.Appointments[index] = appointment;
-            patientRepository.Update(patient);
+            _patientRepository.Update(patient);
         }
 
         public void UpdateAppointmentForRoom(Appointment appointment)
         {
-            Room room = roomRepository.GetById(appointment.RoomId);
+            Room room = _roomRepository.GetById(appointment.RoomId);
             int index = room.Appointments.FindIndex(obj => obj.Id == appointment.Id);
             room.Appointments[index] = appointment;
-            roomRepository.Update(room);
+            _roomRepository.Update(room);
         }
         
         public AppointmentDTO Delete(int id)
         {
-            return ConvertToDTO(appointmentRepository.Delete(id));
-            //notificationService.NotifyAppointmentDeletion(appointmentDTO);
+            return ConvertToDTO(_appointmentRepository.Delete(id));
         }
 
         public List<AppointmentDTO> GetAppointmentsForDoctor(string jmbg)
         {
-            return ConvertListToDTO(appointmentRepository.GetAppointmentsForDoctor(jmbg));
+            return ConvertListToDTO(_appointmentRepository.GetAppointmentsForDoctor(jmbg));
         }
 
         public List<AppointmentDTO> GetAppointmentsForPatient(string jmbg)
         {
-            return ConvertListToDTO(appointmentRepository.GetAppointmentsForPatient(jmbg));
+            return ConvertListToDTO(_appointmentRepository.GetAppointmentsForPatient(jmbg));
         }
 
         public List<AppointmentDTO> GetAppointmentsForRoom(int id)
         {
-            return ConvertListToDTO(appointmentRepository.GetAppointmentsForRoom(id));
+            return ConvertListToDTO(_appointmentRepository.GetAppointmentsForRoom(id));
         }
 
         public int GenerateNewId()
         {
-            return appointmentRepository.GenerateNewId();
+            return _appointmentRepository.GenerateNewId();
         }
 
         public bool IsDoctorAvailable(AppointmentDTO appointment)
@@ -187,7 +189,7 @@ namespace Service
         // Stari kod, za brisanje kad se prebaci sve na novo
         public bool AppointmentIsTaken(AppointmentDTO appointment, string doctorId)
         {
-            List<Appointment> appointments = appointmentRepository.GetAppointmentsForDoctor(doctorId);
+            List<Appointment> appointments = _appointmentRepository.GetAppointmentsForDoctor(doctorId);
 
             foreach (Appointment app in appointments)
             {
@@ -209,7 +211,7 @@ namespace Service
 
         public bool AppointmentValidationWithoutOverlaping(AppointmentDTO appointment)
         {
-            List<Appointment> appointments = appointmentRepository.GetAll();
+            List<Appointment> appointments = _appointmentRepository.GetAll();
 
             if (!IsTimeInFuture(appointment.StartTime))
             {
@@ -244,7 +246,7 @@ namespace Service
 
         public bool AppointmentTimeIsInvalid(AppointmentDTO appointment)
         {
-            List<Appointment> appointments = appointmentRepository.GetAll();
+            List<Appointment> appointments = _appointmentRepository.GetAll();
 
             if (!IsTimeInFuture(appointment.StartTime))
             {
@@ -284,9 +286,9 @@ namespace Service
 
         public AppointmentDTO ConvertToDTO(Appointment appointment)
         {
-            Employee doctor = employeeRepository.GetByJmbg(appointment.DoctorJmbg);
-            Patient patient = patientRepository.GetByJmbg(appointment.PatientJmbg);
-            Room room = roomRepository.GetById(appointment.RoomId);
+            Employee doctor = _employeeRepository.GetByJmbg(appointment.DoctorJmbg);
+            Patient patient = _patientRepository.GetByJmbg(appointment.PatientJmbg);
+            Room room = _roomRepository.GetById(appointment.RoomId);
 
             AppointmentDTO appointmentDTO = new AppointmentDTO
                 (
@@ -345,7 +347,7 @@ namespace Service
 
         public List<AppointmentDTO>  GetAppointmentsFromPast(String patientJmbg)
         {
-            List<Appointment>appointments = appointmentRepository.GetAppointmentsForPatient(patientJmbg);
+            List<Appointment>appointments = _appointmentRepository.GetAppointmentsForPatient(patientJmbg);
             List<Appointment> appointmentsInPast = new List<Appointment>();
             foreach(Appointment appointment in appointments)
             {

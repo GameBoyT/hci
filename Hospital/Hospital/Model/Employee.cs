@@ -2,7 +2,7 @@ using System;
 
 namespace Model
 {
-    public class Employee
+    public class Employee : Entity 
     {
         public Employee(User user, EmployeeType employeeType)
         {

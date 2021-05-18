@@ -1,83 +1,47 @@
 using Model;
 using Newtonsoft.Json;
+using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Repository
 {
-    public class EmployeeRepository
+    public class EmployeeRepository : GenericRepository<Employee>, IEmployeeRepository
     {
-        private readonly string _fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\employees.json";
-        private List<Employee> _employees = new List<Employee>();
-
         public EmployeeRepository()
         {
+            _fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\employees.json";
             ReadJson();
         }
-
-        public void ReadJson()
-        {
-            if (!File.Exists(_fileLocation))
-            {
-                File.Create(_fileLocation).Close();
-            }
-
-            using (StreamReader r = new StreamReader(_fileLocation))
-            {
-                string json = r.ReadToEnd();
-                if (json != "")
-                {
-                    _employees = JsonConvert.DeserializeObject<List<Employee>>(json);
-                }
-            }
-        }
-
-        public void WriteToJson()
-        {
-            string json = JsonConvert.SerializeObject(_employees, Formatting.Indented);
-            File.WriteAllText(_fileLocation, json);
-        }
-
-        public List<Employee> GetAll()
-        {
-            ReadJson();
-            return _employees;
-        }
-
         public Employee GetByJmbg(String jmbg)
         {
             ReadJson();
-            return _employees.Find(obj => obj.User.Jmbg == jmbg);
+            return _objects.Find(obj => obj.User.Jmbg == jmbg);
         }
 
-        public void Save(Employee employee)
+        public Employee Delete(String jmbg)
         {
             ReadJson();
-            _employees.Add(employee);
+            Employee employee = _objects.Find(obj => obj.User.Jmbg == jmbg);
+            _objects.Remove(employee);
             WriteToJson();
+            return employee;
         }
 
-        public void Delete(String jmbg)
+        public new Employee Update(Employee employee)
         {
             ReadJson();
-            int index = _employees.FindIndex(obj => obj.User.Jmbg == jmbg);
-            _employees.RemoveAt(index);
+            int index = _objects.FindIndex(obj => obj.User.Jmbg == employee.User.Jmbg);
+            _objects[index] = employee;
             WriteToJson();
-        }
-
-        public void Update(Employee employee)
-        {
-            ReadJson();
-            int index = _employees.FindIndex(obj => obj.User.Jmbg == employee.User.Jmbg);
-            _employees[index] = employee;
-            WriteToJson();
+            return employee;
         }
 
         public List<Employee> GetDoctors()
         {
             ReadJson();
-            return _employees.FindAll(obj => obj.EmployeeType == EmployeeType.doctor);
+            return _objects.FindAll(obj => obj.EmployeeType == EmployeeType.doctor);
         }
 
         public List<Employee> GetDoctorsBySpecialization(string specialization)
@@ -90,13 +54,13 @@ namespace Repository
         public Employee GetDirector()
         {
             ReadJson();
-            return _employees.Find(obj => obj.EmployeeType == EmployeeType.director);
+            return _objects.Find(obj => obj.EmployeeType == EmployeeType.director);
         }
 
         public Employee GetSecretary()
         {
             ReadJson();
-            return _employees.Find(obj => obj.EmployeeType == EmployeeType.secretary);
+            return _objects.Find(obj => obj.EmployeeType == EmployeeType.secretary);
         }
     }
 }

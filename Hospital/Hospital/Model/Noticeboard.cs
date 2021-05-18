@@ -2,7 +2,7 @@
 
 namespace Model
 {
-    public class Noticeboard
+    public class Noticeboard : Entity
     {
         public Noticeboard(int id, string title, string text, DateTime noticeDate)
         {
@@ -12,36 +12,10 @@ namespace Model
             NoticeDate = noticeDate;
         }
 
-        public int Id
-        {
-            get
-            ;
-            set
-            ;
-        }
+        public String Title { get; set; }
 
-        public String Title
-        {
-            get
-            ;
-            set
-            ;
-        }
+        public String Text { get; set; }
 
-        public String Text
-        {
-            get
-            ;
-            set
-            ;
-        }
-
-        public DateTime NoticeDate
-        {
-            get
-            ;
-            set
-            ;
-        }
+        public DateTime NoticeDate { get; set; }
     }
 }

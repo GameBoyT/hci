@@ -1,6 +1,6 @@
 namespace Model
 {
-    public class StaticEquipment
+    public class StaticEquipment : Entity
     {
         public StaticEquipment(int id, string name, int roomId, int quantity, string description)
         {
@@ -10,15 +10,6 @@ namespace Model
             Quantity = quantity;
             Description = description;
         }
-
-        public int Id
-        {
-            get
-            ;
-            set
-            ;
-        }
-
 
         public string Name
         {

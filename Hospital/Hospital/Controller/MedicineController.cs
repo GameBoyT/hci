@@ -1,4 +1,7 @@
 using Model;
+using Repository;
+using Repository.Interfaces;
+using Service;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,66 +10,76 @@ namespace Controller
 {
     public class MedicineController
     {
-        private Service.MedicineService medicineService = new Service.MedicineService();
+        private readonly MedicineService _medicineService;
 
+        public MedicineController(IMedicineRepository medicineRepository)
+        {
+            _medicineService = new MedicineService(medicineRepository);
+        }
+
+        public MedicineController()
+        {
+            MedicineRepository medicineRepository = new MedicineRepository();
+            _medicineService = new MedicineService(medicineRepository);
+        }
 
         public List<Medicine> GetAll()
         {
-            return medicineService.GetAll();
+            return _medicineService.GetAll();
         }
 
         public List<Medicine> GetVerified()
         {
-            return medicineService.GetVerified();
+            return _medicineService.GetVerified();
         }
         public List<Medicine> GetRejected()
         {
-            return medicineService.GetRejected();
+            return _medicineService.GetRejected();
         }
 
         public List<Medicine> GetNotRejected()
         {
-            return medicineService.GetNotRejected();
+            return _medicineService.GetNotRejected();
         }
 
         public Medicine GetById(int id)
         {
-            return medicineService.GetById(id);
+            return _medicineService.GetById(id);
         }
 
         public List<Medicine> GetNotVerified()
         {
-            return medicineService.GetNotVerified();
+            return _medicineService.GetNotVerified();
         }
 
         public Medicine GetByName(string name)
         {
-            return medicineService.GetByName(name);
+            return _medicineService.GetByName(name);
         }
 
         public void Save(string name, string description)
         {
-            medicineService.Save(name, description);
+            _medicineService.Save(name, description);
         }
 
         public void RejectMedicine(int id, string doctorComment)
         {
-            medicineService.RejectMedicine(id, doctorComment);
+            _medicineService.RejectMedicine(id, doctorComment);
         }
 
         public void Delete(int id)
         {
-            medicineService.Delete(id);
+            _medicineService.Delete(id);
         }
 
         public void Update(int id, string name, VerificationType verification, string description)
         {
-            medicineService.Update(id, name, verification, description);
+            _medicineService.Update(id, name, verification, description);
         }
 
         public int GenerateNewId()
         {
-            return medicineService.GenerateNewId();
+            return _medicineService.GenerateNewId();
         }
     }
 }
