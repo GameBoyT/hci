@@ -2,7 +2,7 @@ using System;
 
 namespace Model
 {
-    public class Appointment
+    public class Appointment : Entity
     {
         public Appointment(int id, AppointmentType appointmentType, DateTime startTime, Double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId)
         {
@@ -14,8 +14,6 @@ namespace Model
             this.DoctorJmbg = doctorJmbg;
             this.RoomId = roomId;
         }
-
-        public int Id { get; set; }
 
         public AppointmentType AppointmentType { get; set; }
 

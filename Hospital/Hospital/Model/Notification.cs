@@ -2,7 +2,7 @@ using System;
 
 namespace Model
 {
-    public class Notification
+    public class Notification : Entity
     {
         public Notification(int id, string notificationText, string senderJmbg, string receiverJmbg)
         {
@@ -12,8 +12,6 @@ namespace Model
             ReceiverJmbg = receiverJmbg;
             DateTimeOfSending = DateTime.Now;
         }
-
-        public int Id { get; set; }
 
         public string NotificationText { get; set; }
 

@@ -1,5 +1,6 @@
 using Model;
 using Newtonsoft.Json;
+using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,108 +8,30 @@ using System.Linq;
 
 namespace Repository
 {
-    public class AppointmentRepository
+    public class AppointmentRepository : GenericRepository<Appointment>, IAppointmentRepository
     {
-        private readonly string _fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\appointments.json";
-        private List<Appointment> _appointments = new List<Appointment>();
-
         public AppointmentRepository()
         {
+            _fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\appointments.json";
             ReadJson();
-        }
-
-        public void ReadJson()
-        {
-            if (!File.Exists(_fileLocation))
-            {
-                File.Create(_fileLocation).Close();
-            }
-
-            using (StreamReader r = new StreamReader(_fileLocation))
-            {
-                string json = r.ReadToEnd();
-                if (json != "")
-                {
-                    _appointments = JsonConvert.DeserializeObject<List<Appointment>>(json);
-                }
-            }
-        }
-
-        public void WriteToJson()
-        {
-            string json = JsonConvert.SerializeObject(_appointments, Formatting.Indented);
-            File.WriteAllText(_fileLocation, json);
-        }
-
-        public List<Appointment> GetAll()
-        {
-            ReadJson();
-            return _appointments;
-        }
-
-        public Appointment GetById(int id)
-        {
-            ReadJson();
-            return _appointments.Find(obj => obj.Id == id);
-        }
-
-        public int GenerateNewId()
-        {
-            ReadJson();
-            try
-            {
-                int maxId = _appointments.Max(obj => obj.Id);
-                return maxId + 1;
-            }
-            catch
-            {
-                return 1;
-            }
-        }
-
-        public Appointment Save(Appointment appointment)
-        {
-            ReadJson();
-
-            _appointments.Add(appointment);
-            WriteToJson();
-            return appointment;
-        }
-
-        public Appointment Delete(int id)
-        {
-            ReadJson();
-            Appointment appointment = _appointments.Find(obj => obj.Id == id);
-            _appointments.Remove(appointment);
-            WriteToJson();
-            return appointment;
-        }
-
-        public Appointment Update(Appointment appointment)
-        {
-            ReadJson();
-            int index = _appointments.FindIndex(obj => obj.Id == appointment.Id);
-            _appointments[index] = appointment;
-            WriteToJson();
-            return appointment;
         }
 
         public List<Appointment> GetAppointmentsForDoctor(String jmbg)
         {
             ReadJson();
-            return _appointments.FindAll(appointment => appointment.DoctorJmbg == jmbg);
+            return _objects.FindAll(appointment => appointment.DoctorJmbg == jmbg);
         }
 
         public List<Appointment> GetAppointmentsForPatient(String jmbg)
         {
             ReadJson();
-            return _appointments.FindAll(appointment => appointment.PatientJmbg == jmbg);
+            return _objects.FindAll(appointment => appointment.PatientJmbg == jmbg);
         }
 
-        internal List<Appointment> GetAppointmentsForRoom(int roomId)
+        public List<Appointment> GetAppointmentsForRoom(int roomId)
         {
             ReadJson();
-            return _appointments.FindAll(appointment => appointment.RoomId == roomId);
+            return _objects.FindAll(appointment => appointment.RoomId == roomId);
         }
     }
 }

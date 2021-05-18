@@ -1,6 +1,6 @@
 namespace Model
 {
-    public class DynamicEquipment
+    public class DynamicEquipment : Entity
     {
         public DynamicEquipment(int id, string name, int quantity, string description)
         {
@@ -8,13 +8,6 @@ namespace Model
             Name = name;
             Quantity = quantity;
             Description = description;
-        }
-        public int Id
-        {
-            get
-            ;
-            set
-            ;
         }
 
         public int Quantity

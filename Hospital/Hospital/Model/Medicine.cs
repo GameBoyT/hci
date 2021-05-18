@@ -1,9 +1,7 @@
 namespace Model
 {
-    public class Medicine
+    public class Medicine : Entity
     {
-        public int Id { get; set; }
-        
         public string Name { get; set; }
         
         public VerificationType Verification { get; set; }
@@ -11,14 +9,6 @@ namespace Model
         public string Description { get; set; }
 
         public string DoctorComment { get; set; }
-
-        //public Medicine(int id, string name, string description)
-        //{
-        //    Id = id;
-        //    Name = name;
-        //    Verification = VerificationType.needsVerification;
-        //    Description = description;
-        //}
 
         public Medicine(int id, string name, string description, string doctorComment)
         {

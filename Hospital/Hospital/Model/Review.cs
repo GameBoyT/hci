@@ -2,7 +2,7 @@
 
 namespace Model
 {
-    public class Review
+    public class Review : Entity
     {
         public String Description { get; set; }
         public int Speed { get; set; }
