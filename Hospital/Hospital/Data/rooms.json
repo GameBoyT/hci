@@ -39,20 +39,13 @@
         "RoomId": 2,
         "Quantity": 1,
         "Description": "za spavanje"
-      },
-      {
-        "Id": 4,
-        "Name": "krevet",
-        "RoomId": 2,
-        "Quantity": 1,
-        "Description": "za spavanje"
       }
     ]
   },
   {
     "Id": 3,
     "Status": false,
-    "Name": "10",
+    "Name": "RoomC",
     "RoomType": 1,
     "Floor": 0,
     "Detail": "Operation room 1",
@@ -64,20 +57,6 @@
         "RoomId": 3,
         "Quantity": 1,
         "Description": "Anaesthesia machine"
-      },
-      {
-        "Id": 4,
-        "Name": "krevet",
-        "RoomId": 3,
-        "Quantity": 1,
-        "Description": "za spavanje"
-      },
-      {
-        "Id": 4,
-        "Name": "krevet",
-        "RoomId": 3,
-        "Quantity": 1,
-        "Description": "za spavanje"
       },
       {
         "Id": 4,

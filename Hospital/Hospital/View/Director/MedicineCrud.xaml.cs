@@ -17,7 +17,7 @@ namespace Hospital.View.Director
         {
             InitializeComponent();
             medicineDataGrid.ItemsSource = medController.GetVerified();
-            needsToVerifyDataGrid.ItemsSource = medController.GetNotVerified();
+            rejectedDataGrid.ItemsSource = medController.GetRejected();
         }
 
 
@@ -79,7 +79,7 @@ namespace Hospital.View.Director
         {
             string medicineName = name.Text;
             string medicineDescription = description.Text;
-            medController.Update(id, medicineName, 0, medicineDescription);
+            medController.Update(id, medicineName, VerificationType.needsVerification, medicineDescription);
             id = -1;
         }
 
@@ -94,5 +94,32 @@ namespace Hospital.View.Director
             cancelupdateMedButton.Visibility = Visibility.Collapsed;
             title.Content = "Create new med";
         }
+        private void RejectedMedShow_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Medicine med = (Medicine)rejectedDataGrid.SelectedItems[0];
+                id = med.Id;
+                createMedicine.Visibility = Visibility.Collapsed;
+                rejectMedicine.Visibility = Visibility.Visible;
+                title.Content = "Send for verification";
+
+                name.Text = med.Name;
+                description.Text = med.Description;
+
+            }
+            catch
+            {
+                MessageBox.Show("You have to fill in all input boxes!");
+            }
+        }
+        private void Reject_Medicine_Click(object sender, RoutedEventArgs e)
+        {
+            string medicineName = name.Text;
+            string medicineDescription = description.Text;
+            medController.Update(id, medicineName, VerificationType.needsVerification, medicineDescription);
+            id = -1;
+        }
+        
     }
 }

@@ -19,6 +19,10 @@ namespace Controller
         {
             return medicineService.GetVerified();
         }
+        public List<Medicine> GetRejected()
+        {
+            return medicineService.GetRejected();
+        }
 
         public List<Medicine> GetNotRejected()
         {

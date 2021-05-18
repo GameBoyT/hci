@@ -42,5 +42,6 @@
         <Button Content="Renovation" HorizontalAlignment="Left" Margin="228,318,0,0" VerticalAlignment="Top" Click="Renovation_Click" Height="28" Width="66"/>
         <DatePicker x:Name="renovationDate" HorizontalAlignment="Left" Height="26" Margin="240,386,0,0" VerticalAlignment="Top" Width="140"/>
         <Label  Content="Enter date to renovate" HorizontalAlignment="Left"  Margin="99,386,0,0" VerticalAlignment="Top"/>
+        <Button Content="HardRenovation" HorizontalAlignment="Left" Margin="509,399,0,0" VerticalAlignment="Top" Width="68" Height="20" Click="HardRenovation_Click"/>
     </Grid>
 </Window>
