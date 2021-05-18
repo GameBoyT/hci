@@ -37,7 +37,7 @@ namespace Service
             Appointment appointment = ConvertToModel(appointmentDTO);
             _appointmentRepository.Save(appointment);
             AddAppointmentToParticipants(appointment);
-            return appointmentDTO;
+            return ConvertToDTO(appointment);
         }
 
         public void AddAppointmentToParticipants(Appointment appointment)

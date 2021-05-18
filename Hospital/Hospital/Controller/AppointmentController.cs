@@ -20,23 +20,26 @@ namespace Controller
             return appointmentService.GetById(id);
         }
 
-        public AppointmentDTO Save(AppointmentDTO appointment, string modifierJmbg)
+        public AppointmentDTO Save(AppointmentDTO appointment)
         {
             AppointmentDTO createdAppointment = appointmentService.Save(appointment);
-            notificationService.NotifyAppointmentCreation(createdAppointment, modifierJmbg);
+            createdAppointment.ModifiedByJmbg = appointment.ModifiedByJmbg;
+            notificationService.NotifyAppointmentCreation(createdAppointment);
             return createdAppointment;
         }
 
-        public void Update(AppointmentDTO appointment, string modifierJmbg)
+        public void Update(AppointmentDTO appointment)
         {
             AppointmentDTO updatetAppointment = appointmentService.Update(appointment);
-            notificationService.NotifyAppointmentUpdate(updatetAppointment, modifierJmbg);
+            updatetAppointment.ModifiedByJmbg = appointment.ModifiedByJmbg;
+            notificationService.NotifyAppointmentUpdate(updatetAppointment);
         }
 
-        public AppointmentDTO Delete(int id, string modifierJmbg)
+        public AppointmentDTO Delete(int id, string modifiedByJmbg)
         {
             AppointmentDTO appointment = appointmentService.Delete(id);
-            notificationService.NotifyAppointmentDeletion(appointment, modifierJmbg);
+            appointment.ModifiedByJmbg = modifiedByJmbg;
+            notificationService.NotifyAppointmentDeletion(appointment);
             return appointment;
         }
 

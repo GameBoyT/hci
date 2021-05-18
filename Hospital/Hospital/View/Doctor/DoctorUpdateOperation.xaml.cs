@@ -39,7 +39,7 @@ namespace Hospital.View.Doctor
                 AppointmentDTO appointment = ParseUpdatedAppointment();
                 if (ParentWindow.IsAppointmentScheduled(appointment))
                     return;
-                app.appointmentController.Update(appointment, appointment.DoctorJmbg);
+                app.appointmentController.Update(appointment);
                 ParentWindow.WindowUpdate();
                 this.Close();
             }
@@ -64,7 +64,7 @@ namespace Hospital.View.Doctor
             double duration = Convert.ToDouble(durationTextBox.Text);
 
 
-            return new AppointmentDTO(Appointment.Id, AppointmentType.operation, appointmentDateTime, duration, Appointment.PatientJmbg, Appointment.DoctorJmbg, room.Id);
+            return new AppointmentDTO(Appointment.Id, AppointmentType.operation, appointmentDateTime, duration, Appointment.PatientJmbg, Appointment.DoctorJmbg, room.Id, Appointment.DoctorJmbg);
         }
     }
 }

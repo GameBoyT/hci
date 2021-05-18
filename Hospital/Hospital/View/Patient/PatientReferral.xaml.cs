@@ -58,7 +58,7 @@ namespace Hospital
             selectedDTO = (ReferralDTO)ReferralListView.SelectedItems[0];
             Employee doctor = selectedDTO.Doctor;
 
-            return new AppointmentDTO(AppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, 1);
+            return new AppointmentDTO(AppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, doctor.RoomId, patient.User.Jmbg);
         }
 
         private void New_Appointment_Click(object sender, RoutedEventArgs e)
@@ -68,7 +68,7 @@ namespace Hospital
             {
                 if (!appointmentController.AppointmentTimeIsInvalid(newAppointment))
                 {
-                    appointmentController.Save(newAppointment, patient.User.Jmbg);
+                    appointmentController.Save(newAppointment);
                     UpdateReferralList(selectedDTO);
                     MessageBox.Show("Specijalisticki pregled uspjesno dodat", "obavjestenje");
 

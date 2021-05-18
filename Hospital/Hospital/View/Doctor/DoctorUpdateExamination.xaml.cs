@@ -41,7 +41,7 @@ namespace Hospital.View.Doctor
                 AppointmentDTO appointment = ParseUpdatedAppointment();
                 if (ParentWindow.IsAppointmentScheduled(appointment))
                     return;
-                app.appointmentController.Update(appointment, appointment.DoctorJmbg);
+                app.appointmentController.Update(appointment);
                 ParentWindow.WindowUpdate();
                 this.Close();
             }
@@ -62,7 +62,7 @@ namespace Hospital.View.Doctor
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
 
-            return new AppointmentDTO(Appointment.Id, AppointmentType.examination, appointmentDateTime, 15.0, Appointment.PatientJmbg, Appointment.DoctorJmbg, Appointment.RoomId);
+            return new AppointmentDTO(Appointment.Id, AppointmentType.examination, appointmentDateTime, 15.0, Appointment.PatientJmbg, Appointment.DoctorJmbg, Appointment.RoomId, Appointment.DoctorJmbg);
         }
     }
 }

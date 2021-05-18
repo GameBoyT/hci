@@ -25,22 +25,22 @@ namespace Service
             notificationRepository.Save(notification);
         }
 
-        public void NotifyAppointmentCreation(AppointmentDTO appointment, string senderJmbg)
+        public void NotifyAppointmentCreation(AppointmentDTO appointment)
         {
             string text = "Zakazan je pregled za pacijenta " + appointment.PatientFirstName + " " + appointment.PatientLastName +
                 " koji ima zakazan pregled kod lekara " + appointment.DoctorLastName + " trajanje pregleda je " + appointment.DurationInMinutes + " minuta, a datum je " + appointment.StartTime.ToString();
 
 
-            if (senderJmbg != appointment.DoctorJmbg)
+            if (appointment.ModifiedByJmbg != appointment.DoctorJmbg)
             {
                 int id = notificationRepository.GenerateNewId();
-                Notification doctorNotification = new Notification(id, text, senderJmbg, appointment.DoctorJmbg);
+                Notification doctorNotification = new Notification(id, text, appointment.ModifiedByJmbg, appointment.DoctorJmbg);
                 AddNotificationToEmployee(doctorNotification);
             }
-            if (senderJmbg != appointment.PatientJmbg)
+            if (appointment.ModifiedByJmbg != appointment.PatientJmbg)
             {
                 int id = notificationRepository.GenerateNewId();
-                Notification patientNotification = new Notification(id, text, senderJmbg, appointment.PatientJmbg);
+                Notification patientNotification = new Notification(id, text, appointment.ModifiedByJmbg, appointment.PatientJmbg);
                 AddNotificationToPatient(patientNotification);
             }
         }
@@ -65,6 +65,25 @@ namespace Service
             }
         }
 
+        public void NotifyAppointmentUpdate(AppointmentDTO appointment)
+        {
+            string text = "Izmenjen je pregled za pacijenta " + appointment.PatientFirstName + " " + appointment.PatientLastName +
+                " koji ima zakazan pregled kod lekara " + appointment.DoctorLastName + " trajanje pregleda je " + appointment.DurationInMinutes + " minuta, a datum je " + appointment.StartTime.ToString();
+
+            if (appointment.ModifiedByJmbg != appointment.DoctorJmbg)
+            {
+                int id = notificationRepository.GenerateNewId();
+                Notification doctorNotification = new Notification(id, text, appointment.ModifiedByJmbg, appointment.DoctorJmbg);
+                AddNotificationToEmployee(doctorNotification);
+            }
+            if (appointment.ModifiedByJmbg != appointment.PatientJmbg)
+            {
+                int id = notificationRepository.GenerateNewId();
+                Notification patientNotification = new Notification(id, text, appointment.ModifiedByJmbg, appointment.PatientJmbg);
+                AddNotificationToPatient(patientNotification);
+            }
+        }
+
         public void NotifyAppointmentDeletion(AppointmentDTO appointment, string senderJmbg)
         {
             string text = "Obrisan pregled za pacijenta " + appointment.PatientFirstName + " " + appointment.PatientLastName +
@@ -80,6 +99,25 @@ namespace Service
             {
                 int id = notificationRepository.GenerateNewId();
                 Notification patientNotification = new Notification(id, text, senderJmbg, appointment.PatientJmbg);
+                AddNotificationToPatient(patientNotification);
+            }
+        }
+
+        public void NotifyAppointmentDeletion(AppointmentDTO appointment)
+        {
+            string text = "Obrisan pregled za pacijenta " + appointment.PatientFirstName + " " + appointment.PatientLastName +
+                " koji ima zakazan pregled kod lekara " + appointment.DoctorLastName + " trajanje pregleda je " + appointment.DurationInMinutes + " minuta, a datum je " + appointment.StartTime.ToString();
+
+            if (appointment.ModifiedByJmbg != appointment.DoctorJmbg)
+            {
+                int id = notificationRepository.GenerateNewId();
+                Notification doctorNotification = new Notification(id, text, appointment.ModifiedByJmbg, appointment.DoctorJmbg);
+                AddNotificationToEmployee(doctorNotification);
+            }
+            if (appointment.ModifiedByJmbg != appointment.PatientJmbg)
+            {
+                int id = notificationRepository.GenerateNewId();
+                Notification patientNotification = new Notification(id, text, appointment.ModifiedByJmbg, appointment.PatientJmbg);
                 AddNotificationToPatient(patientNotification);
             }
         }

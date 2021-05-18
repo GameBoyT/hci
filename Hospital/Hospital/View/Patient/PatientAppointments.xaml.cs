@@ -78,7 +78,8 @@ namespace Hospital
                                                          duration,
                                                          oldAppointment.PatientJmbg,
                                                          oldAppointment.DoctorJmbg,
-                                                         oldAppointment.RoomId);
+                                                         oldAppointment.RoomId,
+                                                         oldAppointment.PatientJmbg);
             return newAppointment;
         }
 
@@ -93,7 +94,7 @@ namespace Hospital
             }
             else
             {
-                appointmentController.Update(AppointmentFromData(), "5");
+                appointmentController.Update(AppointmentFromData());
                 WindowUpdate();
                 updateConfirm.Visibility = Visibility.Collapsed;
                 cancelButton.Visibility = Visibility.Collapsed;
