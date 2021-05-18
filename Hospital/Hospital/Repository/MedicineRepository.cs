@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Repository.Interfaces;
 
 namespace Repository
 {
-    public class MedicineRepository : GenericRepository<Medicine>
+    public class MedicineRepository : GenericRepository<Medicine>, IMedicineRepository
     {
         public MedicineRepository()
         {

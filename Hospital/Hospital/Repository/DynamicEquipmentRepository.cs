@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Repository.Interfaces;
 
 namespace Repository
 {
-    public class DynamicEquipmentRepository : GenericRepository<DynamicEquipment>
+    public class DynamicEquipmentRepository : GenericRepository<DynamicEquipment>, IDynamicEquipmentRepository
     {
         private readonly string _spisak = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\dynamicTransfer.txt";
         public DynamicEquipmentRepository()

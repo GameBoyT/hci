@@ -7,5 +7,18 @@ namespace Repository.Interfaces
 {
     interface IEmployeeRepository : IGenericRepository<Employee>
     {
+        Employee GetByJmbg(String jmbg);
+
+        Employee Delete(String jmbg);
+
+        new Employee Update(Employee employee);
+        
+        List<Employee> GetDoctors();
+
+        List<Employee> GetDoctorsBySpecialization(string specialization);
+
+        Employee GetDirector();
+
+        Employee GetSecretary();
     }
 }

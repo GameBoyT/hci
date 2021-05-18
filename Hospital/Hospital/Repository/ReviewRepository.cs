@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Repository.Interfaces;
 
 namespace Repository
 {
-    public class ReviewRepository : GenericRepository<Review>
+    public class ReviewRepository : GenericRepository<Review>, IReviewRepository
     {
         public ReviewRepository()
         {

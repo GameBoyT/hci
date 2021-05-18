@@ -16,5 +16,7 @@ namespace Repository.Interfaces
         T Update(T entity);
         
         T Delete(int id);
+
+        int GenerateNewId();
     }
 }

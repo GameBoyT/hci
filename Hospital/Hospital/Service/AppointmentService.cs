@@ -1,6 +1,7 @@
 using DTO;
 using Model;
 using Repository;
+using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 
@@ -8,8 +9,8 @@ namespace Service
 {
     public class AppointmentService
     {
-        private AppointmentRepository appointmentRepository = new AppointmentRepository();
-        private EmployeeRepository employeeRepository = new EmployeeRepository();
+        private IAppointmentRepository appointmentRepository = new AppointmentRepository();
+        private IEmployeeRepository employeeRepository = new EmployeeRepository();
         private PatientRepository patientRepository = new PatientRepository();
         private RoomRepository roomRepository = new RoomRepository();
         private NotificationService notificationService = new NotificationService();

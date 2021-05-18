@@ -1,12 +1,13 @@
 using Model;
 using Newtonsoft.Json;
+using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Repository
 {
-    public class EmployeeRepository : GenericRepository<Employee>
+    public class EmployeeRepository : GenericRepository<Employee>, IEmployeeRepository
     {
         public EmployeeRepository()
         {
