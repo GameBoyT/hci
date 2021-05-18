@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Repository.Interfaces
 {
-    interface IStaticEquipmentRepository : IGenericRepository<StaticEquipment>
+    public interface IStaticEquipmentRepository : IGenericRepository<StaticEquipment>
     {
         List<StaticEquipment> GetByName(string name);
 

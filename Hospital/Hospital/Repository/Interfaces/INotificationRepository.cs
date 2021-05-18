@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Repository.Interfaces
 {
-    interface INotificationRepository : IGenericRepository<Notification>
+    public interface INotificationRepository : IGenericRepository<Notification>
     {
     }
 }

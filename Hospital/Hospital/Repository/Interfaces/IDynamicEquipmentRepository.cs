@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Repository.Interfaces
 {
-    interface IDynamicEquipmentRepository : IGenericRepository<DynamicEquipment>
+    public interface IDynamicEquipmentRepository : IGenericRepository<DynamicEquipment>
     {
         void MoveDynamicEquipment(DynamicEquipment dynamicEquipment);
 

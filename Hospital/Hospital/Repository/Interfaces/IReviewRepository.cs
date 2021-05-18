@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Repository.Interfaces
 {
-    interface IReviewRepository : IGenericRepository<Review>
+    public interface IReviewRepository : IGenericRepository<Review>
     {
     }
 }

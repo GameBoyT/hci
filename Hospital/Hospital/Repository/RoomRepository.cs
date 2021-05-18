@@ -8,7 +8,7 @@ using Repository.Interfaces;
 
 namespace Repository
 {
-    public class RoomRepository : GenericRepository<Room>
+    public class RoomRepository : GenericRepository<Room>, IRoomRepository
     {
         public RoomRepository()
         {

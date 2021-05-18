@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Repository.Interfaces
 {
-    interface IAppointmentRepository : IGenericRepository<Appointment>
+    public interface IAppointmentRepository : IGenericRepository<Appointment>
     {
         List<Appointment> GetAppointmentsForDoctor(String jmbg);
 

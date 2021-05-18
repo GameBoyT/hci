@@ -8,7 +8,7 @@ using Repository.Interfaces;
 
 namespace Repository
 {
-    public class StaticEquipmentRepository : GenericRepository<StaticEquipment>
+    public class StaticEquipmentRepository : GenericRepository<StaticEquipment>, IStaticEquipmentRepository
     {
         public StaticEquipmentRepository()
         {

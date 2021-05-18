@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Repository.Interfaces
 {
-    interface IMedicineRepository : IGenericRepository<Medicine>
+    public interface IMedicineRepository : IGenericRepository<Medicine>
     {
         List<Medicine> GetVerified();
 

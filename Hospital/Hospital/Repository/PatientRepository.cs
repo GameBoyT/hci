@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Repository
 {
-    public class PatientRepository : GenericRepository<Patient>
+    public class PatientRepository : GenericRepository<Patient>, IPatientRepository
     {
         public PatientRepository()
         {

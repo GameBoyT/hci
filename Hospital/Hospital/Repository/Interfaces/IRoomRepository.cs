@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Repository.Interfaces
 {
-    interface IRoomRepository : IGenericRepository<Room>
+    public interface IRoomRepository : IGenericRepository<Room>
     {
         Room GetByName(String name);
 

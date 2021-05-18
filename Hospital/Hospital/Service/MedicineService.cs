@@ -1,53 +1,59 @@
 using Model;
+using Repository.Interfaces;
 using System.Collections.Generic;
 
 namespace Service
 {
     public class MedicineService
     {
-        private Repository.MedicineRepository medicineRepository = new Repository.MedicineRepository();
+        private IMedicineRepository _medicineRepository;
+
+        public MedicineService(IMedicineRepository medicineRepository)
+        {
+            _medicineRepository = medicineRepository;
+        }
 
         public List<Medicine> GetAll()
         {
-            return medicineRepository.GetAll();
+            return _medicineRepository.GetAll();
         }
 
         public List<Medicine> GetVerified()
         {
-            return medicineRepository.GetVerified();
+            return _medicineRepository.GetVerified();
         }
         public List<Medicine> GetNotRejected()
         {
-            return medicineRepository.GetNotRejected();
+            return _medicineRepository.GetNotRejected();
         }
         public List<Medicine> GetRejected()
         {
-            return medicineRepository.GetRejected();
+            return _medicineRepository.GetRejected();
         }
 
         public Medicine GetById(int id)
         {
-            return medicineRepository.GetById(id);
+            return _medicineRepository.GetById(id);
         }
 
         public Medicine GetByName(string name)
         {
-            return medicineRepository.GetByName(name);
+            return _medicineRepository.GetByName(name);
         }
 
         public void Save(string name, string description)
         {
-            int id = medicineRepository.GenerateNewId();
+            int id = _medicineRepository.GenerateNewId();
             Medicine medicine = new Medicine(id, name, description, "")
             {
                 Verification = VerificationType.needsVerification
             };
-            medicineRepository.Save(medicine);
+            _medicineRepository.Save(medicine);
         }
 
         public void Delete(int id)
         {
-            medicineRepository.Delete(id);
+            _medicineRepository.Delete(id);
         }
 
         public void Update(int id, string name, VerificationType verification, string description)
@@ -56,23 +62,23 @@ namespace Service
             medicine.Name = name;
             medicine.Verification = verification;
             medicine.Description = description;
-            medicineRepository.Update(medicine);
+            _medicineRepository.Update(medicine);
         }
         public void RejectMedicine(int id, string doctorComment)
         {
             Medicine medicine = GetById(id);
             medicine.Verification = VerificationType.rejected;
             medicine.DoctorComment = doctorComment;
-            medicineRepository.Update(medicine);
+            _medicineRepository.Update(medicine);
         }
         public int GenerateNewId()
         {
-            return medicineRepository.GenerateNewId();
+            return _medicineRepository.GenerateNewId();
         }
 
         public List<Medicine> GetNotVerified()
         {
-            return medicineRepository.GetNotVerified();
+            return _medicineRepository.GetNotVerified();
         }
     }
 }

@@ -15,8 +15,14 @@ namespace Repository
             _fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\medicines.json";
             ReadJson();
         }
+
+        public MedicineRepository(string fileLocation)
+        {
+            _fileLocation = fileLocation;
+            ReadJson();
+        }
         // napisati 1 fkju koja vraca po nekoj verifikaciji a ne 4 posebne
-        
+
         public List<Medicine> GetVerified()
         {
             ReadJson();

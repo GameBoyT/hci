@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Repository.Interfaces
 {
-    interface IPatientRepository : IGenericRepository<Patient>
+    public interface IPatientRepository : IGenericRepository<Patient>
     {
         Patient GetByJmbg(String jmbg);
 
