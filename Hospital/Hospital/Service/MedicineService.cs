@@ -18,17 +18,13 @@ namespace Service
             return _medicineRepository.GetAll();
         }
 
-        public List<Medicine> GetVerified()
+        public List<Medicine> GetByVerification(VerificationType verification)
         {
-            return _medicineRepository.GetVerified();
+            return _medicineRepository.GetByVerification( verification);
         }
         public List<Medicine> GetNotRejected()
         {
             return _medicineRepository.GetNotRejected();
-        }
-        public List<Medicine> GetRejected()
-        {
-            return _medicineRepository.GetRejected();
         }
 
         public Medicine GetById(int id)
@@ -74,11 +70,6 @@ namespace Service
         public int GenerateNewId()
         {
             return _medicineRepository.GenerateNewId();
-        }
-
-        public List<Medicine> GetNotVerified()
-        {
-            return _medicineRepository.GetNotVerified();
         }
     }
 }

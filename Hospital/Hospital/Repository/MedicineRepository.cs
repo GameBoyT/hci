@@ -21,29 +21,20 @@ namespace Repository
             _fileLocation = fileLocation;
             ReadJson();
         }
-        // napisati 1 fkju koja vraca po nekoj verifikaciji a ne 4 posebne
 
-        public List<Medicine> GetVerified()
+        public List<Medicine> GetByVerification(VerificationType verification)
         {
             ReadJson();
-            return _objects.FindAll(obj => obj.Verification == VerificationType.verified);
+            return _objects.FindAll(obj => obj.Verification == verification);
         }
-        public List<Medicine> GetRejected()
-        {
-            ReadJson();
-            return _objects.FindAll(obj => obj.Verification == VerificationType.rejected);
-        }
+
 
         public List<Medicine> GetNotRejected()
         {
             ReadJson();
             return _objects.FindAll(obj => obj.Verification != VerificationType.rejected);
         }
-        public List<Medicine> GetNotVerified()
-        {
-            ReadJson();
-            return _objects.FindAll(obj => obj.Verification == VerificationType.needsVerification);
-        }
+
 
         public Medicine GetByName(string name)
         {

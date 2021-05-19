@@ -28,14 +28,11 @@ namespace Controller
             return _medicineService.GetAll();
         }
 
-        public List<Medicine> GetVerified()
+        public List<Medicine> GetByVerification(VerificationType verification)
         {
-            return _medicineService.GetVerified();
+            return _medicineService.GetByVerification(verification);
         }
-        public List<Medicine> GetRejected()
-        {
-            return _medicineService.GetRejected();
-        }
+
 
         public List<Medicine> GetNotRejected()
         {
@@ -45,11 +42,6 @@ namespace Controller
         public Medicine GetById(int id)
         {
             return _medicineService.GetById(id);
-        }
-
-        public List<Medicine> GetNotVerified()
-        {
-            return _medicineService.GetNotVerified();
         }
 
         public Medicine GetByName(string name)

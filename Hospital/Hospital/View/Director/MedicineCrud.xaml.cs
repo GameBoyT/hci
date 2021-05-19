@@ -16,8 +16,8 @@ namespace Hospital.View.Director
         public MedicineCrud()
         {
             InitializeComponent();
-            medicineDataGrid.ItemsSource = medController.GetVerified();
-            rejectedDataGrid.ItemsSource = medController.GetRejected();
+            medicineDataGrid.ItemsSource = medController.GetByVerification((VerificationType) 0);
+            rejectedDataGrid.ItemsSource = medController.GetByVerification((VerificationType) 1);
         }
 
 
