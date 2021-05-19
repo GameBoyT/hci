@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Repository
 {
-    public class AppointmentRepository : GenericRepository<Appointment>, IAppointmentRepository
+    public class AppointmentRepository : GenericRepository<MedicalAppointment>, IAppointmentRepository
     {
         public AppointmentRepository()
         {
@@ -16,19 +16,19 @@ namespace Repository
             ReadJson();
         }
 
-        public List<Appointment> GetAppointmentsForDoctor(String jmbg)
+        public List<MedicalAppointment> GetAppointmentsForDoctor(String jmbg)
         {
             ReadJson();
             return _objects.FindAll(appointment => appointment.DoctorJmbg == jmbg);
         }
 
-        public List<Appointment> GetAppointmentsForPatient(String jmbg)
+        public List<MedicalAppointment> GetAppointmentsForPatient(String jmbg)
         {
             ReadJson();
             return _objects.FindAll(appointment => appointment.PatientJmbg == jmbg);
         }
 
-        public List<Appointment> GetAppointmentsForRoom(int roomId)
+        public List<MedicalAppointment> GetAppointmentsForRoom(int roomId)
         {
             ReadJson();
             return _objects.FindAll(appointment => appointment.RoomId == roomId);

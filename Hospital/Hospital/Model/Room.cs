@@ -12,7 +12,7 @@ namespace Model
             Floor = floor;
             Detail = detail;
             Status = status;
-            Appointments = new System.Collections.Generic.List<Appointment>();
+            Appointments = new System.Collections.Generic.List<MedicalAppointment>();
             StaticEquipments = new System.Collections.Generic.List<StaticEquipment>();
 
         }
@@ -27,7 +27,7 @@ namespace Model
 
         public String Detail { get; set; }
 
-        public System.Collections.Generic.List<Appointment> Appointments { get; set; }
+        public System.Collections.Generic.List<MedicalAppointment> Appointments { get; set; }
 
         public System.Collections.Generic.List<StaticEquipment> StaticEquipments { get; set; }
     }

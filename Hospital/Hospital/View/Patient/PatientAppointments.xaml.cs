@@ -15,7 +15,7 @@ namespace Hospital
     {
         AppointmentController appointmentController = new AppointmentController();
         PatientController patientController = new PatientController();
-        List<Appointment> appointments = new List<Appointment>();
+        List<MedicalAppointment> appointments = new List<MedicalAppointment>();
         List<AppointmentDTO> appointmentDTOs = new List<AppointmentDTO>();
         public PatientAppointments()
         {

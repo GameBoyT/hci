@@ -23,7 +23,7 @@ namespace Hospital.View.Doctor
         {
             if (AnamnesisName != "" && AnamnesisType != "")
             {
-                Anamnesis anamnesis = app.patientController.AddAnamnesis(ParentWindow.Appointment.PatientJmbg, AnamnesisName, AnamnesisType, "");
+                Anamnesis anamnesis = app.patientController.AddAnamnesis(ParentWindow.MedicalAppointment.PatientJmbg, AnamnesisName, AnamnesisType, "");
                 ParentWindow.Anamnesis.Add(anamnesis);
                 this.Close();
             }

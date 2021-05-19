@@ -18,7 +18,7 @@ namespace Hospital.View.Doctor
     {
         App app;
         public DoctorWindow ParentWindow { get; set; }
-        public AppointmentDTO Appointment { get; set; }
+        public AppointmentDTO MedicalAppointment { get; set; }
         public Patient Patient { get; set; }
 
         public DoctorUpdateExamination(DoctorWindow parentWindow, AppointmentDTO appointment)
@@ -28,7 +28,7 @@ namespace Hospital.View.Doctor
             this.DataContext = this;
 
             ParentWindow = parentWindow;
-            Appointment = appointment;
+            MedicalAppointment = appointment;
             Patient = app.patientController.GetByJmbg(appointment.PatientJmbg);
             new_appointment_date.SelectedDate = appointment.StartTime;
             startTimeTextBox.Text = appointment.StartTime.ToString("HH:mm");
@@ -62,7 +62,7 @@ namespace Hospital.View.Doctor
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
 
-            return new AppointmentDTO(Appointment.Id, AppointmentType.examination, appointmentDateTime, 15.0, Appointment.PatientJmbg, Appointment.DoctorJmbg, Appointment.RoomId, Appointment.DoctorJmbg);
+            return new AppointmentDTO(MedicalAppointment.Id, AppointmentType.examination, appointmentDateTime, 15.0, MedicalAppointment.PatientJmbg, MedicalAppointment.DoctorJmbg, MedicalAppointment.RoomId, MedicalAppointment.DoctorJmbg);
         }
     }
 }

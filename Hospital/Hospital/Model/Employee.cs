@@ -8,7 +8,7 @@ namespace Model
         {
             User = user;
             EmployeeType = employeeType;
-            Appointments = new System.Collections.Generic.List<Appointment>();
+            Appointments = new System.Collections.Generic.List<MedicalAppointment>();
             Notifications = new System.Collections.Generic.List<Notification>();
             Reviews = new System.Collections.Generic.List<Review>();
             Specialization = "";
@@ -26,7 +26,7 @@ namespace Model
 
         public string Specialization { get; set; }
 
-        public System.Collections.Generic.List<Appointment> Appointments { get; set; }
+        public System.Collections.Generic.List<MedicalAppointment> Appointments { get; set; }
 
         public System.Collections.Generic.List<Notification> Notifications { get; set; }
 

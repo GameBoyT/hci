@@ -125,7 +125,7 @@ namespace Service
 
         public string AntiTrollCheck(int appointmentId)
         {
-            Appointment appointment = appointmentRepository.GetById(appointmentId);
+            MedicalAppointment appointment = appointmentRepository.GetById(appointmentId);
             Patient patient = patientRepository.GetByJmbg(appointment.PatientJmbg);
             List<DateTime> updatedCancelations = patient.CancelationDates;
             List<DateTime> toRemove = new List<DateTime>();

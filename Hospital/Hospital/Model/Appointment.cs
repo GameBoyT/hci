@@ -2,9 +2,9 @@ using System;
 
 namespace Model
 {
-    public class Appointment : Entity
+    public class MedicalAppointment : Entity
     {
-        public Appointment(int id, AppointmentType appointmentType, DateTime startTime, Double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId)
+        public MedicalAppointment(int id, AppointmentType appointmentType, DateTime startTime, Double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId)
         {
             this.Id = id;
             this.AppointmentType = appointmentType;
