@@ -1,7 +1,7 @@
 using Model;
 using System;
 using System.Collections.Generic;
-
+using DTO;
 
 namespace Controller
 {
@@ -68,6 +68,16 @@ namespace Controller
         public void ClearNotification()
         {
 
+        }
+
+        public List<Anamnesis> GetAllAnamnesisForPatient(string patientJmbg)
+        {
+            return patientService.GetAllAnamnesisForPatient(patientJmbg);
+        }
+       
+        public List<PrescriptionDTO> GetAllPrescriptionsForPatient(string patientJmbg)
+        {
+            return patientService.GetAllPresctiptionsForPatient(patientJmbg);
         }
     }
 }
