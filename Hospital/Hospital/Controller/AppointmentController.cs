@@ -10,65 +10,65 @@ namespace Controller
         private Service.AppointmentService appointmentService = new Service.AppointmentService();
         private Service.NotificationService notificationService = new Service.NotificationService();
 
-        public List<AppointmentDTO> GetAll()
+        public List<MedicalAppointmentDTO> GetAll()
         {
             return appointmentService.GetAll();
         }
 
-        public AppointmentDTO GetById(int id)
+        public MedicalAppointmentDTO GetById(int id)
         {
             return appointmentService.GetById(id);
         }
 
-        public AppointmentDTO Save(AppointmentDTO appointment)
+        public MedicalAppointmentDTO Save(MedicalAppointmentDTO appointment)
         {
-            AppointmentDTO createdAppointment = appointmentService.Save(appointment);
+            MedicalAppointmentDTO createdAppointment = appointmentService.Save(appointment);
             createdAppointment.ModifiedByJmbg = appointment.ModifiedByJmbg;
             notificationService.NotifyAppointmentCreation(createdAppointment);
             return createdAppointment;
         }
 
-        public void Update(AppointmentDTO appointment)
+        public void Update(MedicalAppointmentDTO appointment)
         {
-            AppointmentDTO updatetAppointment = appointmentService.Update(appointment);
+            MedicalAppointmentDTO updatetAppointment = appointmentService.Update(appointment);
             updatetAppointment.ModifiedByJmbg = appointment.ModifiedByJmbg;
             notificationService.NotifyAppointmentUpdate(updatetAppointment);
         }
 
-        public AppointmentDTO Delete(int id, string modifiedByJmbg)
+        public MedicalAppointmentDTO Delete(int id, string modifiedByJmbg)
         {
-            AppointmentDTO appointment = appointmentService.Delete(id);
+            MedicalAppointmentDTO appointment = appointmentService.Delete(id);
             appointment.ModifiedByJmbg = modifiedByJmbg;
             notificationService.NotifyAppointmentDeletion(appointment);
             return appointment;
         }
 
-        public List<AppointmentDTO> GetAppointmentsForDoctor(String jmbg)
+        public List<MedicalAppointmentDTO> GetAppointmentsForDoctor(String jmbg)
         {
             return appointmentService.GetAppointmentsForDoctor(jmbg);
         }
 
-        public List<AppointmentDTO> GetAppointmentsForPatient(String jmbg)
+        public List<MedicalAppointmentDTO> GetAppointmentsForPatient(String jmbg)
         {
             return appointmentService.GetAppointmentsForPatient(jmbg);
         }
 
-        public bool IsDoctorAvailable(AppointmentDTO appointment)
+        public bool IsDoctorAvailable(MedicalAppointmentDTO appointment)
         {
             return appointmentService.IsDoctorAvailable(appointment);
         }
 
-        public bool IsPatientAvailable(AppointmentDTO appointment)
+        public bool IsPatientAvailable(MedicalAppointmentDTO appointment)
         {
             return appointmentService.IsPatientAvailable(appointment);
         }
 
-        public bool IsRoomAvailable(AppointmentDTO appointment)
+        public bool IsRoomAvailable(MedicalAppointmentDTO appointment)
         {
             return appointmentService.IsRoomAvailable(appointment);
         }
 
-        public bool AppointmentTimeIsInvalid(AppointmentDTO appointment)
+        public bool AppointmentTimeIsInvalid(MedicalAppointmentDTO appointment)
         {
             return appointmentService.AppointmentTimeIsInvalid(appointment);
         }
@@ -76,16 +76,16 @@ namespace Controller
         {
             return appointmentService.IsTimeInFuture(appointmentStartTime);
         }
-        public bool AppointmentIsTaken(AppointmentDTO appointment, string doctorId)
+        public bool AppointmentIsTaken(MedicalAppointmentDTO appointment, string doctorId)
         {
             return appointmentService.AppointmentIsTaken(appointment, doctorId);
         }
 
-        public bool AppointmentValidationWithoutOverlaping(AppointmentDTO appointment)
+        public bool AppointmentValidationWithoutOverlaping(MedicalAppointmentDTO appointment)
         {
             return appointmentService.AppointmentValidationWithoutOverlaping(appointment);
         }
-        public List<AppointmentDTO> GetAppointmentsFromPast(String patientJmbg)
+        public List<MedicalAppointmentDTO> GetAppointmentsFromPast(String patientJmbg)
         {
             return appointmentService.GetAppointmentsFromPast( patientJmbg);
         }

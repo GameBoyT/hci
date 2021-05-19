@@ -3,7 +3,7 @@ using System;
 
 namespace DTO
 {
-    public class AppointmentDTO
+    public class MedicalAppointmentDTO
     {
         public int Id { get; set; }
 
@@ -34,7 +34,7 @@ namespace DTO
         public String ModifiedByJmbg { get; set; }
 
 
-        public AppointmentDTO(int id, MedicalAppointmentType appointmentType, DateTime startTime, Double durationInMinutes, String doctorJmbg, string doctorFirstName,
+        public MedicalAppointmentDTO(int id, MedicalAppointmentType appointmentType, DateTime startTime, Double durationInMinutes, String doctorJmbg, string doctorFirstName,
                                     string doctorLastName, string doctorSpecialization, String patientJmbg, String patientFirstName, String patientLastName, int roomId, String roomName)
         {
             Id = id;
@@ -52,7 +52,7 @@ namespace DTO
             RoomName = roomName;
         }
 
-        public AppointmentDTO(int id, MedicalAppointmentType appointmentType, DateTime startTime, double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId, string modifiedByJmbg)
+        public MedicalAppointmentDTO(int id, MedicalAppointmentType appointmentType, DateTime startTime, double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId, string modifiedByJmbg)
         {
             Id = id;
             MedicalAppointmentType = appointmentType;
@@ -64,7 +64,7 @@ namespace DTO
             ModifiedByJmbg = modifiedByJmbg;
         }
 
-        public AppointmentDTO(MedicalAppointmentType appointmentType, DateTime startTime, double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId, string modifiedByJmbg)
+        public MedicalAppointmentDTO(MedicalAppointmentType appointmentType, DateTime startTime, double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId, string modifiedByJmbg)
         {
             MedicalAppointmentType = appointmentType;
             StartTime = startTime;

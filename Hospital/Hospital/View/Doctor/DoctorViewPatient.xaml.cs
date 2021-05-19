@@ -12,7 +12,7 @@ namespace Hospital.View.Doctor
     public partial class DoctorViewPatient : Window, INotifyPropertyChanged
     {
         App app;
-        public AppointmentDTO MedicalAppointment { get; set; }
+        public MedicalAppointmentDTO MedicalAppointment { get; set; }
         public Patient Patient { get; set; }
         public Medicine Medicine { get; set; }
         public ObservableCollection<Anamnesis> Anamnesis { get; set; }
@@ -100,7 +100,7 @@ namespace Hospital.View.Doctor
             }
         }
 
-        public DoctorViewPatient(AppointmentDTO appointment)
+        public DoctorViewPatient(MedicalAppointmentDTO appointment)
         {
             InitializeComponent();
             this.DataContext = this;

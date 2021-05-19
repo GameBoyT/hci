@@ -20,7 +20,7 @@ namespace Hospital
         Patient patient;
         PatientController patientController = new PatientController();
         Employee doctor;
-        List<AppointmentDTO> doctorsAppointments;
+        List<MedicalAppointmentDTO> doctorsAppointments;
         public PatientWindow()
         {
             InitializeComponent();
@@ -142,7 +142,7 @@ namespace Hospital
             startTimeTextBox.Clear();
 
         }
-        private AppointmentDTO CreateAppointmentFromData()
+        private MedicalAppointmentDTO CreateAppointmentFromData()
         {
             //int id = Int32.Parse(idTextBox.Text);
             DateTime pickedDate = new_appointment_date.SelectedDate.Value;
@@ -151,7 +151,7 @@ namespace Hospital
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
 
-            return new AppointmentDTO(MedicalAppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, doctor.RoomId, patient.User.Jmbg);
+            return new MedicalAppointmentDTO(MedicalAppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, doctor.RoomId, patient.User.Jmbg);
         }
 
 
@@ -178,7 +178,7 @@ namespace Hospital
             try
             {
                 doctor = (Employee)doctorsDataGrid.SelectedItems[0];
-                AppointmentDTO newAppointment = CreateAppointmentFromData();
+                MedicalAppointmentDTO newAppointment = CreateAppointmentFromData();
                 doctorsAppointments = appointmentController.GetAppointmentsForDoctor(doctor.User.Jmbg);
                 bool error = false;
 
