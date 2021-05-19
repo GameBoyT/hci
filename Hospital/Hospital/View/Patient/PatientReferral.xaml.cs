@@ -58,7 +58,7 @@ namespace Hospital
             selectedDTO = (ReferralDTO)ReferralListView.SelectedItems[0];
             Employee doctor = selectedDTO.Doctor;
 
-            return new AppointmentDTO(AppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, doctor.RoomId, patient.User.Jmbg);
+            return new AppointmentDTO(MedicalAppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, doctor.RoomId, patient.User.Jmbg);
         }
 
         private void New_Appointment_Click(object sender, RoutedEventArgs e)

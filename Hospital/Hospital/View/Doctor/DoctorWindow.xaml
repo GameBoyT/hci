@@ -40,7 +40,7 @@
               IsReadOnly="True" Margin="33,55,378,132">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Type"
-                            Binding="{Binding AppointmentType}" />
+                            Binding="{Binding MedicalAppointmentType}" />
                 <DataGridTextColumn x:Name="start_time_column" Header="Start time"
                             Binding="{Binding StartTime , StringFormat=t, ConverterCulture=en-GB}" />
                 <DataGridTextColumn Header="Duration"

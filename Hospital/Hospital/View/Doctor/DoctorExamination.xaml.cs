@@ -48,7 +48,7 @@ namespace Hospital.View.Doctor
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
 
-            return new AppointmentDTO(AppointmentType.examination, appointmentDateTime, 15.0, patient.User.Jmbg, ParentWindow.Doctor.User.Jmbg, ParentWindow.Doctor.RoomId, ParentWindow.Doctor.User.Jmbg);
+            return new AppointmentDTO(MedicalAppointmentType.examination, appointmentDateTime, 15.0, patient.User.Jmbg, ParentWindow.Doctor.User.Jmbg, ParentWindow.Doctor.RoomId, ParentWindow.Doctor.User.Jmbg);
         }
     }
 }

@@ -57,7 +57,7 @@ namespace Hospital.View.Doctor
         private void Update_Click(object sender, RoutedEventArgs e)
         {
             AppointmentDTO appointment = (AppointmentDTO)appointmentsDataGrid.SelectedItems[0];
-            if (appointment.AppointmentType == AppointmentType.examination)
+            if (appointment.MedicalAppointmentType == MedicalAppointmentType.examination)
             {
                 DoctorUpdateExamination doctorUpdateExamination = new DoctorUpdateExamination(this, appointment);
                 doctorUpdateExamination.Show();

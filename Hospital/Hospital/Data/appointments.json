@@ -1,7 +1,7 @@
 [
   {
     "Id": 1,
-    "AppointmentType": 0,
+    "MedicalAppointmentType": 0,
     "StartTime": "2021-04-30T20:00:00",
     "DurationInMinutes": 15.0,
     "DoctorJmbg": "1",
@@ -10,7 +10,7 @@
   },
   {
     "Id": 2,
-    "AppointmentType": 1,
+    "MedicalAppointmentType": 1,
     "StartTime": "2021-04-30T21:00:00",
     "DurationInMinutes": 45.0,
     "DoctorJmbg": "1",
@@ -19,7 +19,7 @@
   },
   {
     "Id": 4,
-    "AppointmentType": 0,
+    "MedicalAppointmentType": 0,
     "StartTime": "2021-05-02T13:00:00",
     "DurationInMinutes": 15.0,
     "DoctorJmbg": "1",
@@ -28,7 +28,7 @@
   },
   {
     "Id": 6,
-    "AppointmentType": 0,
+    "MedicalAppointmentType": 0,
     "StartTime": "2021-05-20T12:00:00",
     "DurationInMinutes": 15.0,
     "DoctorJmbg": "1",
@@ -37,7 +37,7 @@
   },
   {
     "Id": 7,
-    "AppointmentType": 0,
+    "MedicalAppointmentType": 0,
     "StartTime": "2021-05-01T22:22:00",
     "DurationInMinutes": 15.0,
     "DoctorJmbg": "1",
@@ -46,7 +46,7 @@
   },
   {
     "Id": 8,
-    "AppointmentType": 0,
+    "MedicalAppointmentType": 0,
     "StartTime": "2021-05-01T23:00:00",
     "DurationInMinutes": 15.0,
     "DoctorJmbg": "1",

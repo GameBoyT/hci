@@ -57,7 +57,7 @@ namespace Hospital.View.Doctor
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
 
-            return new AppointmentDTO(AppointmentType.operation, appointmentDateTime, duration, patient.User.Jmbg, ParentWindow.Doctor.User.Jmbg, room.Id, ParentWindow.Doctor.User.Jmbg);
+            return new AppointmentDTO(MedicalAppointmentType.operation, appointmentDateTime, duration, patient.User.Jmbg, ParentWindow.Doctor.User.Jmbg, room.Id, ParentWindow.Doctor.User.Jmbg);
         }
     }
 }

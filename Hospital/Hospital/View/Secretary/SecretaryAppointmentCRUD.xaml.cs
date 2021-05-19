@@ -109,7 +109,7 @@ namespace Hospital
             double duration = Convert.ToDouble(durationTB.Text);
 
             AppointmentDTO newAppointment = new AppointmentDTO(oldAppointment.Id,
-                                                        oldAppointment.AppointmentType,
+                                                        oldAppointment.MedicalAppointmentType,
                                                         appointmentDateTime,
                                                         duration,
                                                         oldAppointment.PatientJmbg,
@@ -142,7 +142,7 @@ namespace Hospital
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTB.Text);
 
-            return new AppointmentDTO(AppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, doctor.RoomId, employeeController.GetSecretary().User.Jmbg);
+            return new AppointmentDTO(MedicalAppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, doctor.RoomId, employeeController.GetSecretary().User.Jmbg);
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)

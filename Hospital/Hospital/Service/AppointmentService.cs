@@ -307,7 +307,7 @@ namespace Service
             AppointmentDTO appointmentDTO = new AppointmentDTO
                 (
                     appointment.Id,
-                    appointment.AppointmentType,
+                    appointment.MedicalAppointmentType,
                     appointment.StartTime,
                     appointment.DurationInMinutes,
                     doctor.User.Jmbg,
@@ -338,7 +338,7 @@ namespace Service
             MedicalAppointment appointment = new MedicalAppointment
                 (
                     appointmentDTO.Id,
-                    appointmentDTO.AppointmentType,
+                    appointmentDTO.MedicalAppointmentType,
                     appointmentDTO.StartTime,
                     appointmentDTO.DurationInMinutes,
                     appointmentDTO.PatientJmbg,

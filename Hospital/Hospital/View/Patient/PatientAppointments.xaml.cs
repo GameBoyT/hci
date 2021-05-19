@@ -71,7 +71,7 @@ namespace Hospital
             double duration = Convert.ToDouble(durationTextBox.Text);
 
             AppointmentDTO newAppointment = new AppointmentDTO(oldAppointmentDTO.Id,
-                                                         oldAppointmentDTO.AppointmentType,
+                                                         oldAppointmentDTO.MedicalAppointmentType,
                                                          appointmentDateTime,
                                                          duration,
                                                          oldAppointmentDTO.PatientJmbg,

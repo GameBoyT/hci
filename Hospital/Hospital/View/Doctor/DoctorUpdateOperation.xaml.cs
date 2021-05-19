@@ -64,7 +64,7 @@ namespace Hospital.View.Doctor
             double duration = Convert.ToDouble(durationTextBox.Text);
 
 
-            return new AppointmentDTO(MedicalAppointment.Id, AppointmentType.operation, appointmentDateTime, duration, MedicalAppointment.PatientJmbg, MedicalAppointment.DoctorJmbg, room.Id, MedicalAppointment.DoctorJmbg);
+            return new AppointmentDTO(MedicalAppointment.Id, MedicalAppointmentType.operation, appointmentDateTime, duration, MedicalAppointment.PatientJmbg, MedicalAppointment.DoctorJmbg, room.Id, MedicalAppointment.DoctorJmbg);
         }
     }
 }
