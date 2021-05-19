@@ -13,6 +13,12 @@
         <ComboBox x:Name="roomB" HorizontalAlignment="Center" Margin="0,113,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="dettachRoom" HorizontalAlignment="Left" Margin="67,235,0,0" VerticalAlignment="Top" Width="120"/>
         <Button Content="Accept" HorizontalAlignment="Left" Margin="581,367,0,0" VerticalAlignment="Top" Width="91" Click="AcceptRenovation_Click"/>
+        <DatePicker HorizontalAlignment="Left" Margin="626,113,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="626,142,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="102"/>
+        <TextBox HorizontalAlignment="Left" Height="19" Margin="626,172,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="102"/>
+        <Label Content="Date:" HorizontalAlignment="Left" Height="24" Margin="547,113,0,0" VerticalAlignment="Top" Width="74"/>
+        <Label Content="Start Time:" HorizontalAlignment="Left" Height="24" Margin="547,144,0,0" VerticalAlignment="Top" Width="74"/>
+        <Label Content="Duration:" HorizontalAlignment="Left" Height="24" Margin="547,169,0,0" VerticalAlignment="Top" Width="74"/>
 
     </Grid>
 </Window>
