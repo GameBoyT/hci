@@ -102,7 +102,7 @@ namespace Service
 
 
             ExtractEquipment(roomB, roomA);
-            roomA.Name = "RoomC";
+            roomA.Name = roomA.Name + "/" + roomB.Name;
 
             Update(roomA);
             Delete(roomBId);
