@@ -357,5 +357,19 @@ namespace Service
             }
             return appointments;
         }
+
+        public List<MedicalAppointmentDTO> GetOperationsForPatient(String patientJmbg)
+        {
+            List<MedicalAppointment> allAppointments = _appointmentRepository.GetAppointmentsForPatient(patientJmbg);
+            List<MedicalAppointment> operations = new List<MedicalAppointment>();
+            foreach(MedicalAppointment appointment in allAppointments)
+            {
+                if(appointment.MedicalAppointmentType == MedicalAppointmentType.operation) { operations.Add(appointment); }
+            }
+            return ConvertListToDTO(operations);
+            
+
+
+        }
     }
 }

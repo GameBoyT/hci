@@ -2,6 +2,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using DTO;
 
 namespace Service
 {
@@ -110,7 +111,7 @@ namespace Service
             }
         }
 
-        public string IsPatientBlocked(Patient patient)
+        private string IsPatientBlocked(Patient patient)
         {
             if (patient.CancelationDates.Count > 5)
             {
@@ -121,17 +122,10 @@ namespace Service
             }
             return "Uspjeno obrisan termin";
         }
-
-
-        public string AntiTrollCheck(int appointmentId)
+        private int NumberOfCancelationsInPast(List<DateTime> cancelations)
         {
-            MedicalAppointment appointment = appointmentRepository.GetById(appointmentId);
-            Patient patient = patientRepository.GetByJmbg(appointment.PatientJmbg);
-            List<DateTime> updatedCancelations = patient.CancelationDates;
-            List<DateTime> toRemove = new List<DateTime>();
             int counter = 0;
-            //izbacuje sva otkazivanja koja su starija od 10 dana
-            foreach (DateTime cancelTime in updatedCancelations)
+            foreach (DateTime cancelTime in cancelations)
             {
                 if (cancelTime < DateTime.Now.AddDays(-10))
                 {
@@ -139,7 +133,17 @@ namespace Service
                 }
                 else break;
             }
-            updatedCancelations.RemoveRange(0, counter);
+            return counter;
+        }
+
+
+        public string AntiTrollCheck(int appointmentId)
+        {
+            MedicalAppointment appointment = appointmentRepository.GetById(appointmentId);
+            Patient patient = patientRepository.GetByJmbg(appointment.PatientJmbg);
+            List<DateTime> updatedCancelations = patient.CancelationDates;
+            
+            updatedCancelations.RemoveRange(0, NumberOfCancelationsInPast(updatedCancelations));
             updatedCancelations.Add(DateTime.Now);
             patient.CancelationDates = updatedCancelations;
 
@@ -155,6 +159,37 @@ namespace Service
             patient.MedicalRecord.Prescription.Add(prescription);
             Update(patient);
             return prescription;
+        }
+
+        public List<Anamnesis>GetAllAnamnesisForPatient(string patientJmbg)
+        {
+            Patient patient = patientRepository.GetByJmbg(patientJmbg);
+            return patient.MedicalRecord.Anamnesis;
+        }
+
+        public List<PrescriptionDTO> GetAllPresctiptionsForPatient(string patientJmbg)
+        {
+            Patient patient = patientRepository.GetByJmbg(patientJmbg);
+            return PrescriptionsToDTOList(patient.MedicalRecord.Prescription);
+        }
+
+        public PrescriptionDTO PrescriptionToDTO(Prescription prescription)
+        {
+            PrescriptionDTO prescriptionDTO = new PrescriptionDTO(prescription.Medicine.Name,
+                                                                    prescription.Interval,
+                                                                    prescription.StartDate,
+                                                                    prescription.EndDate);
+            return prescriptionDTO;
+        }
+
+        public List<PrescriptionDTO> PrescriptionsToDTOList(List<Prescription> prescriptions)
+        {
+            List<PrescriptionDTO> prescriptionDTOs = new List<PrescriptionDTO>();
+            foreach(Prescription prescription in prescriptions)
+            {
+                prescriptionDTOs.Add(PrescriptionToDTO(prescription));
+            }
+            return prescriptionDTOs;
         }
     }
 }

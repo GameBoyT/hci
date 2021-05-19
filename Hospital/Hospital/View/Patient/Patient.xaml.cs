@@ -257,5 +257,11 @@ namespace Hospital
             new_window.Show();
             this.Close();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new PatientMedicalRecord();
+            newWindow.Show();
+        }
     }
 }
