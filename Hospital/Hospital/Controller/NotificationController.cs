@@ -23,17 +23,17 @@ namespace Controller
             notificationService.Save(notification);
         }
 
-        public void NotifyAppointmentCreation(AppointmentDTO appointment)
+        public void NotifyAppointmentCreation(MedicalAppointmentDTO appointment)
         {
             notificationService.NotifyAppointmentCreation(appointment);
         }
 
-        public void NotifyAppointmentUpdate(AppointmentDTO appointment)
+        public void NotifyAppointmentUpdate(MedicalAppointmentDTO appointment)
         {
             notificationService.NotifyAppointmentUpdate(appointment);
         }
 
-        public void NotifyAppointmentDeletion(AppointmentDTO appointment)
+        public void NotifyAppointmentDeletion(MedicalAppointmentDTO appointment)
         {
             notificationService.NotifyAppointmentDeletion(appointment);
         }

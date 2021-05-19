@@ -1,24 +1,33 @@
 [
   {
-    "Id": 1,
     "Status": false,
     "Name": "336",
     "RoomType": 2,
     "Floor": 3,
     "Detail": "detalji",
-    "Appointments": [],
+    "Appointments": [
+      {
+        "MedicalAppointmentType": 0,
+        "DoctorJmbg": "1",
+        "PatientJmbg": "5",
+        "StartTime": "2021-05-19T20:00:00",
+        "DurationInMinutes": 15.0,
+        "RoomId": 1,
+        "Id": 9
+      }
+    ],
     "StaticEquipments": [
       {
-        "Id": 1,
         "Name": "Anaesthesia",
         "RoomId": 1,
         "Quantity": 1,
-        "Description": "Anaesthesia machine"
+        "Description": "Anaesthesia machine",
+        "Id": 1
       }
-    ]
+    ],
+    "Id": 1
   },
   {
-    "Id": 2,
     "Status": false,
     "Name": "111",
     "RoomType": 2,
@@ -27,23 +36,23 @@
     "Appointments": [],
     "StaticEquipments": [
       {
-        "Id": 3,
         "Name": "BlaBla",
         "RoomId": 2,
         "Quantity": 2,
-        "Description": "blabla"
+        "Description": "blabla",
+        "Id": 3
       },
       {
-        "Id": 4,
         "Name": "krevet",
         "RoomId": 2,
         "Quantity": 1,
-        "Description": "za spavanje"
+        "Description": "za spavanje",
+        "Id": 4
       }
-    ]
+    ],
+    "Id": 2
   },
   {
-    "Id": 3,
     "Status": false,
     "Name": "RoomC",
     "RoomType": 1,
@@ -52,23 +61,23 @@
     "Appointments": [],
     "StaticEquipments": [
       {
-        "Id": 1,
         "Name": "Anaesthesia",
         "RoomId": 3,
         "Quantity": 1,
-        "Description": "Anaesthesia machine"
+        "Description": "Anaesthesia machine",
+        "Id": 1
       },
       {
-        "Id": 4,
         "Name": "krevet",
         "RoomId": 3,
         "Quantity": 1,
-        "Description": "za spavanje"
+        "Description": "za spavanje",
+        "Id": 4
       }
-    ]
+    ],
+    "Id": 3
   },
   {
-    "Id": 4,
     "Status": true,
     "Name": "11",
     "RoomType": 1,
@@ -77,12 +86,13 @@
     "Appointments": [],
     "StaticEquipments": [
       {
-        "Id": 2,
         "Name": "Anaesthesia",
         "RoomId": 4,
         "Quantity": 1,
-        "Description": "Anaesthesia machine"
+        "Description": "Anaesthesia machine",
+        "Id": 2
       }
-    ]
+    ],
+    "Id": 4
   }
 ]

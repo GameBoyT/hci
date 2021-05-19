@@ -46,7 +46,7 @@ namespace Hospital
 
         }
 
-        private AppointmentDTO CreateAppointmentFromData()
+        private MedicalAppointmentDTO CreateAppointmentFromData()
         {
 
             //int id = Int32.Parse(idTextBox.Text);
@@ -58,12 +58,12 @@ namespace Hospital
             selectedDTO = (ReferralDTO)ReferralListView.SelectedItems[0];
             Employee doctor = selectedDTO.Doctor;
 
-            return new AppointmentDTO(AppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, doctor.RoomId, patient.User.Jmbg);
+            return new MedicalAppointmentDTO(MedicalAppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, doctor.RoomId, patient.User.Jmbg);
         }
 
         private void New_Appointment_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentDTO newAppointment = CreateAppointmentFromData();
+            MedicalAppointmentDTO newAppointment = CreateAppointmentFromData();
             if (!appointmentController.AppointmentIsTaken(newAppointment, newAppointment.DoctorJmbg))
             {
                 if (!appointmentController.AppointmentTimeIsInvalid(newAppointment))

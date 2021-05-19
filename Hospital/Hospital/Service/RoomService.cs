@@ -41,7 +41,7 @@ namespace Service
             roomRepository.Update(room);
         }
 
-        //public void AddAppointment(Appointment appointment)
+        //public void AddAppointment(MedicalAppointment appointment)
         //{
         //    Room room = GetById(appointment.RoomId);
         //    room.Appointments.Add(appointment);

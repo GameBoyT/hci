@@ -38,7 +38,7 @@
     <Grid x:Name="dvpGrid">
 
         <TabControl>
-            <TabItem Header="Appointment Details">
+            <TabItem Header="MedicalAppointment Details">
                 <Grid Background="#FFE5E5E5">
                     <Label Content="Patient Details" HorizontalAlignment="Left" Margin="100,44,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2"/>
                     <Grid Margin="30,75,550,160">

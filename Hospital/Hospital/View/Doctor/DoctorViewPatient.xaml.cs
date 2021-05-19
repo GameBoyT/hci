@@ -12,7 +12,7 @@ namespace Hospital.View.Doctor
     public partial class DoctorViewPatient : Window, INotifyPropertyChanged
     {
         App app;
-        public AppointmentDTO Appointment { get; set; }
+        public MedicalAppointmentDTO MedicalAppointment { get; set; }
         public Patient Patient { get; set; }
         public Medicine Medicine { get; set; }
         public ObservableCollection<Anamnesis> Anamnesis { get; set; }
@@ -100,14 +100,14 @@ namespace Hospital.View.Doctor
             }
         }
 
-        public DoctorViewPatient(AppointmentDTO appointment)
+        public DoctorViewPatient(MedicalAppointmentDTO appointment)
         {
             InitializeComponent();
             this.DataContext = this;
             app = Application.Current as App;
 
-            Appointment = appointment;
-            if (!app.appointmentController.IsTimeInFuture(Appointment.StartTime))
+            MedicalAppointment = appointment;
+            if (!app.appointmentController.IsTimeInFuture(MedicalAppointment.StartTime))
                 IsAppointmentTime = true;
             Patient = app.patientController.GetByJmbg(appointment.PatientJmbg);
 
@@ -126,7 +126,7 @@ namespace Hospital.View.Doctor
             var item = (sender as ListView).SelectedItem;
             if (item != null)
             {
-                if (!app.appointmentController.IsTimeInFuture(Appointment.StartTime))
+                if (!app.appointmentController.IsTimeInFuture(MedicalAppointment.StartTime))
                 {
                     IsAppointmentTime = true;
                 }
@@ -148,7 +148,7 @@ namespace Hospital.View.Doctor
 
         private void AddNewButton_Click(object sender, RoutedEventArgs e)
         {
-            if (app.appointmentController.IsTimeInFuture(Appointment.StartTime))
+            if (app.appointmentController.IsTimeInFuture(MedicalAppointment.StartTime))
             {
                 MessageBox.Show("You cannot add anamnesis until or after the appointment");
             }
@@ -175,7 +175,7 @@ namespace Hospital.View.Doctor
         {
             try
             {
-                Prescription prescription = app.patientController.AddPrescription(Appointment.PatientJmbg, Medicine, Int32.Parse(Quantity), DescriptionText);
+                Prescription prescription = app.patientController.AddPrescription(MedicalAppointment.PatientJmbg, Medicine, Int32.Parse(Quantity), DescriptionText);
                 DescriptionText = "";
                 Quantity = "";
                 Prescriptions.Add(prescription);
@@ -201,7 +201,7 @@ namespace Hospital.View.Doctor
             try
             {
                 Employee doctor = (Employee)doctorsDataGrid.SelectedItems[0];
-                app.patientController.AddReferral(Appointment.PatientJmbg, doctor.User.Jmbg, ReferralDescriptionText);
+                app.patientController.AddReferral(MedicalAppointment.PatientJmbg, doctor.User.Jmbg, ReferralDescriptionText);
                 ReferralDescriptionText = "";
             }
             catch

@@ -9,17 +9,17 @@ namespace Hospital.View.Doctor
     {
         App app;
         public DoctorWindow ParentWindow { get; set; }
-        public AppointmentDTO Appointment { get; set; }
+        public MedicalAppointmentDTO MedicalAppointment { get; set; }
         public Patient Patient { get; set; }
 
-        public DoctorUpdateOperation(DoctorWindow parentWindow, AppointmentDTO appointment)
+        public DoctorUpdateOperation(DoctorWindow parentWindow, MedicalAppointmentDTO appointment)
         {
             InitializeComponent();
             app = Application.Current as App;
             this.DataContext = this;
 
             ParentWindow = parentWindow;
-            Appointment = appointment;
+            MedicalAppointment = appointment;
             Patient = app.patientController.GetByJmbg(appointment.PatientJmbg);
             new_appointment_date.SelectedDate = appointment.StartTime;
             startTimeTextBox.Text = appointment.StartTime.ToString("HH:mm");
@@ -36,7 +36,7 @@ namespace Hospital.View.Doctor
         {
             try
             {
-                AppointmentDTO appointment = ParseUpdatedAppointment();
+                MedicalAppointmentDTO appointment = ParseUpdatedAppointment();
                 if (ParentWindow.IsAppointmentScheduled(appointment))
                     return;
                 app.appointmentController.Update(appointment);
@@ -54,7 +54,7 @@ namespace Hospital.View.Doctor
             this.Close();
         }
 
-        private AppointmentDTO ParseUpdatedAppointment()
+        private MedicalAppointmentDTO ParseUpdatedAppointment()
         {
             Room room = (Room)roomsDataGrid.SelectedItems[0];
             DateTime pickedDate = new_appointment_date.SelectedDate.Value;
@@ -64,7 +64,7 @@ namespace Hospital.View.Doctor
             double duration = Convert.ToDouble(durationTextBox.Text);
 
 
-            return new AppointmentDTO(Appointment.Id, AppointmentType.operation, appointmentDateTime, duration, Appointment.PatientJmbg, Appointment.DoctorJmbg, room.Id, Appointment.DoctorJmbg);
+            return new MedicalAppointmentDTO(MedicalAppointment.Id, MedicalAppointmentType.operation, appointmentDateTime, duration, MedicalAppointment.PatientJmbg, MedicalAppointment.DoctorJmbg, room.Id, MedicalAppointment.DoctorJmbg);
         }
     }
 }

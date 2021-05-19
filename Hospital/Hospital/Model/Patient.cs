@@ -9,7 +9,7 @@ namespace Model
         {
             this.User = user;
             this.MedicalRecord = new MedicalRecord();
-            this.Appointments = new List<Appointment>();
+            this.Appointments = new List<MedicalAppointment>();
             this.Notifications = new List<Notification>();
             this.CancelationDates = new List<DateTime>();
             this.Blocked = false;
@@ -23,7 +23,7 @@ namespace Model
 
         public MedicalRecord MedicalRecord { get; set; }
 
-        public List<Appointment> Appointments { get; set; }
+        public List<MedicalAppointment> Appointments { get; set; }
 
         public List<Notification> Notifications { get; set; }
     }

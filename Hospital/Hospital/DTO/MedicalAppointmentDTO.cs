@@ -3,11 +3,11 @@ using System;
 
 namespace DTO
 {
-    public class AppointmentDTO
+    public class MedicalAppointmentDTO
     {
         public int Id { get; set; }
 
-        public AppointmentType AppointmentType { get; set; }
+        public MedicalAppointmentType MedicalAppointmentType { get; set; }
 
         public DateTime StartTime { get; set; }
 
@@ -34,11 +34,11 @@ namespace DTO
         public String ModifiedByJmbg { get; set; }
 
 
-        public AppointmentDTO(int id, AppointmentType appointmentType, DateTime startTime, Double durationInMinutes, String doctorJmbg, string doctorFirstName,
+        public MedicalAppointmentDTO(int id, MedicalAppointmentType appointmentType, DateTime startTime, Double durationInMinutes, String doctorJmbg, string doctorFirstName,
                                     string doctorLastName, string doctorSpecialization, String patientJmbg, String patientFirstName, String patientLastName, int roomId, String roomName)
         {
             Id = id;
-            AppointmentType = appointmentType;
+            MedicalAppointmentType = appointmentType;
             StartTime = startTime;
             DurationInMinutes = durationInMinutes;
             DoctorJmbg = doctorJmbg;
@@ -52,10 +52,10 @@ namespace DTO
             RoomName = roomName;
         }
 
-        public AppointmentDTO(int id, AppointmentType appointmentType, DateTime startTime, double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId, string modifiedByJmbg)
+        public MedicalAppointmentDTO(int id, MedicalAppointmentType appointmentType, DateTime startTime, double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId, string modifiedByJmbg)
         {
             Id = id;
-            AppointmentType = appointmentType;
+            MedicalAppointmentType = appointmentType;
             StartTime = startTime;
             DurationInMinutes = durationInMinutes;
             PatientJmbg = patientJmbg;
@@ -64,9 +64,9 @@ namespace DTO
             ModifiedByJmbg = modifiedByJmbg;
         }
 
-        public AppointmentDTO(AppointmentType appointmentType, DateTime startTime, double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId, string modifiedByJmbg)
+        public MedicalAppointmentDTO(MedicalAppointmentType appointmentType, DateTime startTime, double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId, string modifiedByJmbg)
         {
-            AppointmentType = appointmentType;
+            MedicalAppointmentType = appointmentType;
             StartTime = startTime;
             DurationInMinutes = durationInMinutes;
             PatientJmbg = patientJmbg;

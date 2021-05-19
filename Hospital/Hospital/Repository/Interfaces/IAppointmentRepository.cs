@@ -5,13 +5,13 @@ using System.Text;
 
 namespace Repository.Interfaces
 {
-    public interface IAppointmentRepository : IGenericRepository<Appointment>
+    public interface IAppointmentRepository : IGenericRepository<MedicalAppointment>
     {
-        List<Appointment> GetAppointmentsForDoctor(String jmbg);
+        List<MedicalAppointment> GetAppointmentsForDoctor(String jmbg);
 
-        List<Appointment> GetAppointmentsForPatient(String jmbg);
+        List<MedicalAppointment> GetAppointmentsForPatient(String jmbg);
 
-        List<Appointment> GetAppointmentsForRoom(int roomId);
+        List<MedicalAppointment> GetAppointmentsForRoom(int roomId);
 
     }
 }

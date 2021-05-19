@@ -11,8 +11,8 @@ namespace Hospital.View.Doctor
     {
         App app;
         public Employee Doctor { get; set; }
-        private List<AppointmentDTO> _appointments { get; set; }
-        private List<AppointmentDTO> _appointmentsToShow { get; set; }
+        private List<MedicalAppointmentDTO> _appointments { get; set; }
+        private List<MedicalAppointmentDTO> _appointmentsToShow { get; set; }
 
         public DoctorWindow()
         {
@@ -56,8 +56,8 @@ namespace Hospital.View.Doctor
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentDTO appointment = (AppointmentDTO)appointmentsDataGrid.SelectedItems[0];
-            if (appointment.AppointmentType == AppointmentType.examination)
+            MedicalAppointmentDTO appointment = (MedicalAppointmentDTO)appointmentsDataGrid.SelectedItems[0];
+            if (appointment.MedicalAppointmentType == MedicalAppointmentType.examination)
             {
                 DoctorUpdateExamination doctorUpdateExamination = new DoctorUpdateExamination(this, appointment);
                 doctorUpdateExamination.Show();
@@ -73,7 +73,7 @@ namespace Hospital.View.Doctor
         {
             try
             {
-                AppointmentDTO appointment = (AppointmentDTO)appointmentsDataGrid.SelectedItems[0];
+                MedicalAppointmentDTO appointment = (MedicalAppointmentDTO)appointmentsDataGrid.SelectedItems[0];
                 app.appointmentController.Delete(appointment.Id, Doctor.User.Jmbg);
                 WindowUpdate();
             }
@@ -87,7 +87,7 @@ namespace Hospital.View.Doctor
         {
             try
             {
-                AppointmentDTO appointment = (AppointmentDTO)appointmentsDataGrid.SelectedItems[0];
+                MedicalAppointmentDTO appointment = (MedicalAppointmentDTO)appointmentsDataGrid.SelectedItems[0];
                 DoctorViewPatient doctorViewPatientWindow = new DoctorViewPatient(appointment);
                 doctorViewPatientWindow.Show();
                 this.Close();
@@ -116,7 +116,7 @@ namespace Hospital.View.Doctor
             doctorMedicine.Show();
         }
 
-        public bool IsAppointmentScheduled(AppointmentDTO appointment)
+        public bool IsAppointmentScheduled(MedicalAppointmentDTO appointment)
         {
             if (!app.appointmentController.IsTimeInFuture(appointment.StartTime))
             {

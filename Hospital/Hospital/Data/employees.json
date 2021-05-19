@@ -15,7 +15,17 @@
     "AnnualLeave": 0,
     "RoomId": 1,
     "Specialization": null,
-    "Appointments": [],
+    "Appointments": [
+      {
+        "MedicalAppointmentType": 0,
+        "DoctorJmbg": "1",
+        "PatientJmbg": "5",
+        "StartTime": "2021-05-19T20:00:00",
+        "DurationInMinutes": 15.0,
+        "RoomId": 1,
+        "Id": 9
+      }
+    ],
     "Notifications": [],
     "Reviews": [
       {
@@ -23,9 +33,11 @@
         "Speed": 5,
         "Kindness": 5,
         "Informations": 5,
-        "Overall": 5
+        "Overall": 5,
+        "Id": 0
       }
-    ]
+    ],
+    "Id": 0
   },
   {
     "User": {
@@ -45,7 +57,8 @@
     "Specialization": null,
     "Appointments": [],
     "Notifications": [],
-    "Reviews": []
+    "Reviews": [],
+    "Id": 0
   },
   {
     "User": {
@@ -65,7 +78,8 @@
     "Specialization": null,
     "Appointments": [],
     "Notifications": [],
-    "Reviews": []
+    "Reviews": [],
+    "Id": 0
   },
   {
     "User": {
@@ -85,6 +99,7 @@
     "Specialization": null,
     "Appointments": [],
     "Notifications": [],
-    "Reviews": []
+    "Reviews": [],
+    "Id": 0
   }
 ]

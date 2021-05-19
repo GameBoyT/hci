@@ -15,8 +15,8 @@ namespace Hospital
     {
         AppointmentController appointmentController = new AppointmentController();
         PatientController patientController = new PatientController();
-        List<Appointment> appointments = new List<Appointment>();
-        List<AppointmentDTO> appointmentDTOs = new List<AppointmentDTO>();
+        List<MedicalAppointment> appointments = new List<MedicalAppointment>();
+        List<MedicalAppointmentDTO> appointmentDTOs = new List<MedicalAppointmentDTO>();
         public PatientAppointments()
         {
             InitializeComponent();
@@ -46,11 +46,10 @@ namespace Hospital
         {
             try
             {
-                AppointmentDTO appoinmentDTO = (AppointmentDTO)readDataGrid.SelectedItems[0];
-                Appointment appointment = appointmentController.ConvertToModel(appoinmentDTO);
-                new_appointment_date.SelectedDate = appointment.StartTime.Date;
-                durationTextBox.Text = appointment.DurationInMinutes.ToString();
-                startTimeTextBox.Text = appointment.StartTime.ToString(("HH:mm"));
+                MedicalAppointmentDTO appoinmentDTO = (MedicalAppointmentDTO)readDataGrid.SelectedItems[0];
+                new_appointment_date.SelectedDate = appoinmentDTO.StartTime.Date;
+                durationTextBox.Text = appoinmentDTO.DurationInMinutes.ToString();
+                startTimeTextBox.Text = appoinmentDTO.StartTime.ToString(("HH:mm"));
                 updateConfirm.Visibility = Visibility.Visible;
                 cancelButton.Visibility = Visibility.Visible;
             }
@@ -61,25 +60,24 @@ namespace Hospital
         }
 
 
-        private AppointmentDTO AppointmentFromData()
+        private MedicalAppointmentDTO AppointmentFromData()
         {
 
-            AppointmentDTO oldAppointmentDTO = (AppointmentDTO)readDataGrid.SelectedItems[0];
-            Appointment oldAppointment = appointmentController.ConvertToModel(oldAppointmentDTO);
+            MedicalAppointmentDTO oldAppointmentDTO = (MedicalAppointmentDTO)readDataGrid.SelectedItems[0];
             DateTime pickedDate = new_appointment_date.SelectedDate.Value;
             int hours = Int32.Parse(startTimeTextBox.Text.Split(':')[0]);
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
 
-            AppointmentDTO newAppointment = new AppointmentDTO(oldAppointment.Id,
-                                                         oldAppointment.AppointmentType,
+            MedicalAppointmentDTO newAppointment = new MedicalAppointmentDTO(oldAppointmentDTO.Id,
+                                                         oldAppointmentDTO.MedicalAppointmentType,
                                                          appointmentDateTime,
                                                          duration,
-                                                         oldAppointment.PatientJmbg,
-                                                         oldAppointment.DoctorJmbg,
-                                                         oldAppointment.RoomId,
-                                                         oldAppointment.PatientJmbg);
+                                                         oldAppointmentDTO.PatientJmbg,
+                                                         oldAppointmentDTO.DoctorJmbg,
+                                                         oldAppointmentDTO.RoomId,
+                                                         oldAppointmentDTO.PatientJmbg);
             return newAppointment;
         }
 
@@ -114,7 +112,7 @@ namespace Hospital
 
         private void deletebutton_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentDTO appointmentDTO = (AppointmentDTO)readDataGrid.SelectedItems[0];
+            MedicalAppointmentDTO appointmentDTO = (MedicalAppointmentDTO)readDataGrid.SelectedItems[0];
             string message = patientController.AntiTrollCheck(appointmentDTO.Id);
             MessageBox.Show(message, "obavjestenje");
             appointmentController.Delete(appointmentDTO.Id, "5");
