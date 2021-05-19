@@ -284,7 +284,21 @@ namespace Service
             return false;
         }
 
-        public AppointmentDTO ConvertToDTO(Appointment appointment)
+        public List<AppointmentDTO> GetAppointmentsFromPast(String patientJmbg)
+        {
+            List<Appointment> appointments = _appointmentRepository.GetAppointmentsForPatient(patientJmbg);
+            List<Appointment> appointmentsInPast = new List<Appointment>();
+            foreach (Appointment appointment in appointments)
+            {
+                if (appointment.StartTime < DateTime.Now)
+                    appointmentsInPast.Add(appointment);
+            }
+            return ConvertListToDTO(appointmentsInPast);
+
+
+        }
+
+        private AppointmentDTO ConvertToDTO(Appointment appointment)
         {
             Employee doctor = _employeeRepository.GetByJmbg(appointment.DoctorJmbg);
             Patient patient = _patientRepository.GetByJmbg(appointment.PatientJmbg);
@@ -309,7 +323,7 @@ namespace Service
             return appointmentDTO;
         }
 
-        public List<AppointmentDTO> ConvertListToDTO(List<Appointment> appointments)
+        private List<AppointmentDTO> ConvertListToDTO(List<Appointment> appointments)
         {
             List<AppointmentDTO> appointmentDTOs = new List<AppointmentDTO>();
             foreach (Appointment appointment in appointments)
@@ -319,8 +333,7 @@ namespace Service
             return appointmentDTOs;
         }
 
-
-        public Appointment ConvertToModel(AppointmentDTO appointmentDTO)
+        private Appointment ConvertToModel(AppointmentDTO appointmentDTO)
         {
             Appointment appointment = new Appointment
                 (
@@ -335,7 +348,7 @@ namespace Service
             return appointment;
         }
 
-        public List<Appointment> ConvertListToModel(List<AppointmentDTO> appointmentsDTOs)
+        private List<Appointment> ConvertListToModel(List<AppointmentDTO> appointmentsDTOs)
         {
             List<Appointment> appointments = new List<Appointment>();
             foreach (AppointmentDTO appointmentDTO in appointmentsDTOs)
@@ -344,20 +357,5 @@ namespace Service
             }
             return appointments;
         }
-
-        public List<AppointmentDTO>  GetAppointmentsFromPast(String patientJmbg)
-        {
-            List<Appointment>appointments = _appointmentRepository.GetAppointmentsForPatient(patientJmbg);
-            List<Appointment> appointmentsInPast = new List<Appointment>();
-            foreach(Appointment appointment in appointments)
-            {
-                if (appointment.StartTime < DateTime.Now)
-                    appointmentsInPast.Add(appointment);
-            }
-            return ConvertListToDTO(appointmentsInPast);
-
-
-        }
-      
     }
 }

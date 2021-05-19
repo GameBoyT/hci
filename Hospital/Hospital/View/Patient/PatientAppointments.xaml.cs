@@ -47,10 +47,9 @@ namespace Hospital
             try
             {
                 AppointmentDTO appoinmentDTO = (AppointmentDTO)readDataGrid.SelectedItems[0];
-                Appointment appointment = appointmentController.ConvertToModel(appoinmentDTO);
-                new_appointment_date.SelectedDate = appointment.StartTime.Date;
-                durationTextBox.Text = appointment.DurationInMinutes.ToString();
-                startTimeTextBox.Text = appointment.StartTime.ToString(("HH:mm"));
+                new_appointment_date.SelectedDate = appoinmentDTO.StartTime.Date;
+                durationTextBox.Text = appoinmentDTO.DurationInMinutes.ToString();
+                startTimeTextBox.Text = appoinmentDTO.StartTime.ToString(("HH:mm"));
                 updateConfirm.Visibility = Visibility.Visible;
                 cancelButton.Visibility = Visibility.Visible;
             }
@@ -65,21 +64,20 @@ namespace Hospital
         {
 
             AppointmentDTO oldAppointmentDTO = (AppointmentDTO)readDataGrid.SelectedItems[0];
-            Appointment oldAppointment = appointmentController.ConvertToModel(oldAppointmentDTO);
             DateTime pickedDate = new_appointment_date.SelectedDate.Value;
             int hours = Int32.Parse(startTimeTextBox.Text.Split(':')[0]);
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
 
-            AppointmentDTO newAppointment = new AppointmentDTO(oldAppointment.Id,
-                                                         oldAppointment.AppointmentType,
+            AppointmentDTO newAppointment = new AppointmentDTO(oldAppointmentDTO.Id,
+                                                         oldAppointmentDTO.AppointmentType,
                                                          appointmentDateTime,
                                                          duration,
-                                                         oldAppointment.PatientJmbg,
-                                                         oldAppointment.DoctorJmbg,
-                                                         oldAppointment.RoomId,
-                                                         oldAppointment.PatientJmbg);
+                                                         oldAppointmentDTO.PatientJmbg,
+                                                         oldAppointmentDTO.DoctorJmbg,
+                                                         oldAppointmentDTO.RoomId,
+                                                         oldAppointmentDTO.PatientJmbg);
             return newAppointment;
         }
 

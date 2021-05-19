@@ -81,10 +81,6 @@ namespace Controller
             return appointmentService.AppointmentIsTaken(appointment, doctorId);
         }
 
-        public int GenerateNewId()
-        {
-            return appointmentService.GenerateNewId();
-        }
         public bool AppointmentValidationWithoutOverlaping(AppointmentDTO appointment)
         {
             return appointmentService.AppointmentValidationWithoutOverlaping(appointment);
@@ -93,11 +89,5 @@ namespace Controller
         {
             return appointmentService.GetAppointmentsFromPast( patientJmbg);
         }
-
-        public Appointment ConvertToModel(AppointmentDTO appointmentDTO)
-        {
-            return appointmentService.ConvertToModel(appointmentDTO);
-        }
-
     }
 }
