@@ -9,10 +9,10 @@ namespace Service
 {
     public class AppointmentService
     {
-        private IAppointmentRepository _appointmentRepository = new AppointmentRepository();
-        private IEmployeeRepository _employeeRepository = new EmployeeRepository();
-        private IPatientRepository _patientRepository = new PatientRepository();
-        private IRoomRepository _roomRepository = new RoomRepository();
+        private readonly IAppointmentRepository _appointmentRepository = new AppointmentRepository();
+        private readonly IEmployeeRepository _employeeRepository = new EmployeeRepository();
+        private readonly IPatientRepository _patientRepository = new PatientRepository();
+        private readonly IRoomRepository _roomRepository = new RoomRepository();
 
         public AppointmentService()
         {
@@ -66,11 +66,6 @@ namespace Service
             Room room = _roomRepository.GetById(appointment.RoomId);
             room.Appointments.Add(appointment);
             _roomRepository.Update(room);
-        }
-
-        public void AddAppointmentToRoom(Appointment appointment)
-        {
-            
         }
 
         public AppointmentDTO Update(AppointmentDTO appointmentDTO)
@@ -132,7 +127,6 @@ namespace Service
             return ConvertListToDTO(_appointmentRepository.GetAppointmentsForRoom(id));
         }
 
-
         public int GenerateNewId()
         {
             return _appointmentRepository.GenerateNewId();
@@ -171,15 +165,14 @@ namespace Service
         public bool IsTimeSlotFree(AppointmentDTO appointmentToCheck, List<AppointmentDTO> appointments)
         {
             DateTime appointmentToCheckEndTime = appointmentToCheck.StartTime.AddMinutes(appointmentToCheck.DurationInMinutes);
+            DateTime appointmentEndTime;
             foreach (AppointmentDTO appointment in appointments)
             {
                 if (appointmentToCheck.Id != appointment.Id)
                 {
-                    DateTime appointmentEndTime = appointment.StartTime.AddMinutes(appointment.DurationInMinutes);
+                    appointmentEndTime = appointment.StartTime.AddMinutes(appointment.DurationInMinutes);
 
-                    //Provera da li postoji pregled u tom terminu
-                    if (IsDateTimeBetween(appointmentToCheck.StartTime, appointment.StartTime, appointmentEndTime) || 
-                            IsDateTimeBetween (appointmentToCheckEndTime, appointment.StartTime, appointmentEndTime))
+                    if (AreAppointmentsOverlapping(appointmentToCheck.StartTime, appointmentToCheckEndTime, appointment.StartTime, appointmentEndTime))
                     {
                         return false;
                     }
@@ -189,7 +182,39 @@ namespace Service
             return true;
         }
 
+        public List<DateTime> DoctorFreeTimeSlotsInNextHour(string jmbg)
+        {
+            List<DateTime> appointments = new List<DateTime>();
+            Employee doctor = _employeeRepository.GetByJmbg(jmbg);
+            DateTime startTime = DateTime.Now;
+            DateTime endTime;
+            DateTime appointmentEndTime;
+            for (int i = 0; i < 4; i++)
+            {
+                startTime.AddMinutes(15 * i);
+                endTime = startTime.AddMinutes(15);
 
+                foreach (Appointment appointment in doctor.Appointments)
+                {
+                    appointmentEndTime = appointment.StartTime.AddMinutes(appointment.DurationInMinutes);
+
+                    if (!AreAppointmentsOverlapping(startTime, endTime, appointment.StartTime, appointmentEndTime))
+                        appointments.Add(startTime);
+                }
+            }
+
+            return appointments;
+        }
+
+        private bool AreAppointmentsOverlapping(DateTime firstAppointmentStartTime, DateTime firstAppointmentEndTime, DateTime secondAppointmentStartTime, DateTime secondAppointmentEndTime)
+        {
+            if (IsDateTimeBetween(firstAppointmentStartTime, secondAppointmentStartTime, secondAppointmentStartTime) ||
+                    IsDateTimeBetween(firstAppointmentEndTime, secondAppointmentStartTime, secondAppointmentStartTime))
+            {
+                return true;
+            }
+            return false;
+        }
 
 
         // Stari kod, za brisanje kad se prebaci sve na novo
@@ -289,6 +314,9 @@ namespace Service
             }
             return false;
         }
+        // Sve iznad do komentara je za brisanje
+
+       
 
         public List<AppointmentDTO> GetAppointmentsFromPast(String patientJmbg)
         {
@@ -300,8 +328,18 @@ namespace Service
                     appointmentsInPast.Add(appointment);
             }
             return ConvertListToDTO(appointmentsInPast);
+        }
 
+        public List<AppointmentDTO> GetOperationsForPatient(String patientJmbg)
+        {
+            List<MedicalAppointment> allAppointments = _appointmentRepository.GetAppointmentsForPatient(patientJmbg);
+            List<MedicalAppointment> operations = new List<MedicalAppointment>();
+            foreach (MedicalAppointment appointment in allAppointments)
+            {
+                if (appointment.MedicalAppointmentType == MedicalAppointmentType.operation) { operations.Add(appointment); }
+            }
 
+            return ConvertListToDTO(operations);
         }
 
         private AppointmentDTO ConvertToDTO(MedicalAppointment appointment)
@@ -326,6 +364,7 @@ namespace Service
                     room.Id,
                     room.Name
                 );
+
             return appointmentDTO;
         }
 
@@ -336,6 +375,7 @@ namespace Service
             {
                 appointmentDTOs.Add(ConvertToDTO(appointment));
             }
+
             return appointmentDTOs;
         }
 
@@ -351,6 +391,7 @@ namespace Service
                     appointmentDTO.DoctorJmbg,
                     appointmentDTO.RoomId
                 );
+
             return appointment;
         }
 
@@ -361,21 +402,8 @@ namespace Service
             {
                 appointments.Add(ConvertToModel(appointmentDTO));
             }
+
             return appointments;
-        }
-
-        public List<MedicalAppointmentDTO> GetOperationsForPatient(String patientJmbg)
-        {
-            List<MedicalAppointment> allAppointments = _appointmentRepository.GetAppointmentsForPatient(patientJmbg);
-            List<MedicalAppointment> operations = new List<MedicalAppointment>();
-            foreach(MedicalAppointment appointment in allAppointments)
-            {
-                if(appointment.MedicalAppointmentType == MedicalAppointmentType.operation) { operations.Add(appointment); }
-            }
-            return ConvertListToDTO(operations);
-            
-
-
         }
     }
 }
