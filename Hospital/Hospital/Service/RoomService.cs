@@ -43,12 +43,10 @@ namespace Service
             roomRepository.Update(room);
         }
 
-        //public void AddAppointment(MedicalAppointment appointment)
-        //{
-        //    Room room = GetById(appointment.RoomId);
-        //    room.Appointments.Add(appointment);
-        //    Update(room);
-        //}
+        public List<Room> GetRoomsByRoomType(RoomType roomType)
+        {
+            return roomRepository.GetRoomsByRoomType(roomType);
+        }
 
         public int GenerateNewId()
         {
@@ -65,11 +63,6 @@ namespace Service
 
             }
 
-        }
-
-        public List<Room> GetOperationRooms()
-        {
-            return roomRepository.GetOperationRooms();
         }
 
         public List<Room> GetRoomsWithEquipmentName(string name)

@@ -48,9 +48,9 @@ namespace Controller
             roomService.Renovation(roomId, renovationDate);
         }
 
-        public List<Room> GetOperationRooms()
+        public List<Room> GetRoomsByRoomType(RoomType roomType)
         {
-            return roomService.GetOperationRooms();
+            return roomService.GetRoomsByRoomType(roomType);
         }
 
         public List<Room> GetRoomsWithEquipmentName(string name)

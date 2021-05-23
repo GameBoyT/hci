@@ -19,11 +19,6 @@ namespace Repository
         public Room GetByName(String name)
         {
             return _objects.Find(obj => obj.Name == name);
-        }    
-
-        public List<Room> GetOperationRooms()
-        {
-            return _objects.FindAll(obj => obj.RoomType == RoomType.operating);
         }
 
         public List<Room> GetRoomsWithEquipmentName(string name)
@@ -35,6 +30,11 @@ namespace Repository
                     roomsToReturn.Add(room);
             }
             return roomsToReturn;
+        }
+
+        public List<Room> GetRoomsByRoomType(RoomType roomType)
+        {
+            return _objects.FindAll(obj => obj.RoomType == roomType);
         }
     }
 }

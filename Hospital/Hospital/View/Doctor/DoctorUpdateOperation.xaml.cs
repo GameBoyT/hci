@@ -24,7 +24,7 @@ namespace Hospital.View.Doctor
             new_appointment_date.SelectedDate = appointment.StartTime;
             startTimeTextBox.Text = appointment.StartTime.ToString("HH:mm");
             durationTextBox.Text = appointment.DurationInMinutes.ToString();
-            roomsDataGrid.ItemsSource = app.roomController.GetOperationRooms();
+            roomsDataGrid.ItemsSource = app.roomController.GetRoomsByRoomType(RoomType.operating);
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)

@@ -19,5 +19,19 @@
     "RoomId": 3,
     "Quantity": 1,
     "Description": "za spavanje"
+  },
+  {
+    "Name": "Bed",
+    "RoomId": 5,
+    "Quantity": 1,
+    "Description": "Bed 1",
+    "Id": 3
+  },
+  {
+    "Name": "Bed",
+    "RoomId": 5,
+    "Quantity": 1,
+    "Description": "Bed 2",
+    "Id": 5
   }
 ]
