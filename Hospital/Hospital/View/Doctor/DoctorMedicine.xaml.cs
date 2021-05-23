@@ -73,9 +73,17 @@ namespace Hospital.View.Doctor
                 MedicineDescriptionText = Medicines[lvMedicineDataBinding.SelectedIndex].Description;
                 //MedicineDescriptionText += string.Join(",", vs.Select(x => x.ToString()).ToArray());
                 VerificationButtonVisibility(Medicine.Verification);
+                lvIngredientsDataBinding.ItemsSource = Medicine.Ingredients;
+                lvAlternativesDataBinding.ItemsSource = Medicine.Alternatives;
             }
             catch { }
         }
+
+        private void lvIngredientsDataBinding_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+        
 
         private void VerificationButtonVisibility (VerificationType verification)
         {

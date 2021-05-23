@@ -19,9 +19,32 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Label Content="Medicine Description: " HorizontalAlignment="Left" Margin="400,61,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=MedicineDescriptionText}" HorizontalAlignment="Left" Margin="342,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Height="170"/>
-        <Button Content="Save Changes" HorizontalAlignment="Left" Margin="498,281,0,0" VerticalAlignment="Top" Height="30" Width="85" Click="SaveChangesButton_Click"/>
+        <Label Content="Medicine Description: " HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Path=MedicineDescriptionText}" HorizontalAlignment="Left" Margin="287,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Height="170"/>
+        <Button Content="Save Changes" HorizontalAlignment="Left" Margin="443,281,0,0" VerticalAlignment="Top" Height="30" Width="85" Click="SaveChangesButton_Click"/>
+
+        <Label Content="Ingredients: " HorizontalAlignment="Left" Margin="618,61,0,0" VerticalAlignment="Top"/>
+        <ListView Margin="544,92,32,227" Name="lvIngredientsDataBinding" PreviewMouseLeftButtonUp="lvIngredientsDataBinding_PreviewMouseLeftButtonUp">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding}"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Label Content="Alternatives: " HorizontalAlignment="Left" Margin="617,217,0,0" VerticalAlignment="Top"/>
+        <ListView Margin="544,248,32,71" x:Name="lvAlternativesDataBinding">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
         <Button x:Name="VerifyButton" Content="Verify" Visibility="Collapsed" HorizontalAlignment="Left" Margin="603,351,0,0" VerticalAlignment="Top" Height="30" Width="97" Click="VerifyButton_Click"/>
         <Button x:Name="RejectButton" Content="Reject" Visibility="Collapsed" HorizontalAlignment="Left" Margin="444,351,0,0" VerticalAlignment="Top" Height="30" Width="96" Click="RejectButton_Click"/>
     </Grid>
