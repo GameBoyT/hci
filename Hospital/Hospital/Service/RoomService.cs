@@ -1,14 +1,16 @@
 using Model;
+using DTO;
 using System;
+using Repository;
 using System.Collections.Generic;
 
 namespace Service
 {
     public class RoomService
     {
-        public Repository.RoomRepository roomRepository = new Repository.RoomRepository();
-        public Repository.StaticEquipmentRepository staticRepository = new Repository.StaticEquipmentRepository();
-
+        public RoomRepository roomRepository = new RoomRepository();
+        public StaticEquipmentRepository staticRepository = new StaticEquipmentRepository();
+        private AppointmentService appointmentService = new AppointmentService();
         public List<Room> GetAll()
         {
             return roomRepository.GetAll();
@@ -94,18 +96,24 @@ namespace Service
         }
 
 
-        public void AttachRooms(int roomAId, int roomBId)
+        public void AttachRooms(int roomAId, int roomBId, DateTime dateTime, double duration)
         {
-            //isRoomAvailable
-            Room roomA = GetById(roomAId);
-            Room roomB = GetById(roomBId);
+            AppointmentDTO appointment1 = new AppointmentDTO(dateTime, duration, roomAId);
+            AppointmentDTO appointment2 = new AppointmentDTO(dateTime, duration, roomBId);
+            if (appointmentService.IsRoomAvailable(appointment1) && appointmentService.IsRoomAvailable(appointment2))
+            {
+                Room roomA = GetById(roomAId);
+                Room roomB = GetById(roomBId);
 
 
-            ExtractEquipment(roomB, roomA);
-            roomA.Name = roomA.Name + "/" + roomB.Name;
+                ExtractEquipment(roomB, roomA);
+                roomA.Name = roomA.Name + "/" + roomB.Name;
 
-            Update(roomA);
-            Delete(roomBId);
+                Update(roomA);
+                Delete(roomBId);
+                //dodati appoin u json
+
+            }
         }
 
         public void ExtractEquipment(Room fromRoom, Room toRoom)
@@ -114,12 +122,17 @@ namespace Service
                 toRoom.StaticEquipments.Add(staticEquipment);
         }
 
-        public void DettachRooms(int roomId)
+        public void DettachRooms(int roomId, DateTime dateTime, double duration)
         {
-            //isRoomAvailable
-            Room roomA = GetById(roomId);
+            
+            AppointmentDTO appointment1 = new AppointmentDTO(dateTime, duration, roomId);
+            if (appointmentService.IsRoomAvailable(appointment1))
+            {
+                Room roomA = GetById(roomId);
+                Save(roomA.Name + "-A", roomA.RoomType, roomA.Floor, roomA.Detail);
+                //dodati appoin u json
+            }
 
-            Save(roomA.Name + "-A", roomA.RoomType, roomA.Floor, roomA.Detail);
         }
     }
 }

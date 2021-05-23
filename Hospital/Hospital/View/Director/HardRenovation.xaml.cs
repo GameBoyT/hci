@@ -53,15 +53,16 @@ namespace Hospital.View.Director
         {
             Room roomA = roomController.GetByName(roomAName);
             Room roomB = roomController.GetByName(roomBName);
+            DateTime test = new DateTime();
 
-            roomController.AttachRooms(roomA.Id, roomB.Id);
+            roomController.AttachRooms(roomA.Id, roomB.Id,test ,15);
         }
 
         private void Dettach(string roomName)
         {
             Room room = roomController.GetByName(roomName);
-
-            roomController.DettachRooms(room.Id);
+            DateTime test = new DateTime();
+            roomController.DettachRooms(room.Id, test, 15);
         }
     }
 }

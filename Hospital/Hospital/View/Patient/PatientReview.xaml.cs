@@ -68,7 +68,7 @@ namespace Hospital
         {
             if (DoctorRadioButton.IsChecked == true)
             {
-                MedicalAppointmentDTO appointmentDTO = (MedicalAppointmentDTO)AppointmentsListView.SelectedItems[0];
+                AppointmentDTO appointmentDTO = (AppointmentDTO)AppointmentsListView.SelectedItems[0];
                 employeeController.RateDoctor(appointmentDTO.DoctorJmbg, getReviewFromForm());
             }
             else

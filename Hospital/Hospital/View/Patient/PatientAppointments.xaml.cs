@@ -16,7 +16,7 @@ namespace Hospital
         AppointmentController appointmentController = new AppointmentController();
         PatientController patientController = new PatientController();
         List<MedicalAppointment> appointments = new List<MedicalAppointment>();
-        List<MedicalAppointmentDTO> appointmentDTOs = new List<MedicalAppointmentDTO>();
+        List<AppointmentDTO> appointmentDTOs = new List<AppointmentDTO>();
         public PatientAppointments()
         {
             InitializeComponent();
@@ -46,7 +46,7 @@ namespace Hospital
         {
             try
             {
-                MedicalAppointmentDTO appoinmentDTO = (MedicalAppointmentDTO)readDataGrid.SelectedItems[0];
+                AppointmentDTO appoinmentDTO = (AppointmentDTO)readDataGrid.SelectedItems[0];
                 new_appointment_date.SelectedDate = appoinmentDTO.StartTime.Date;
                 durationTextBox.Text = appoinmentDTO.DurationInMinutes.ToString();
                 startTimeTextBox.Text = appoinmentDTO.StartTime.ToString(("HH:mm"));
@@ -60,17 +60,17 @@ namespace Hospital
         }
 
 
-        private MedicalAppointmentDTO AppointmentFromData()
+        private AppointmentDTO AppointmentFromData()
         {
 
-            MedicalAppointmentDTO oldAppointmentDTO = (MedicalAppointmentDTO)readDataGrid.SelectedItems[0];
+            AppointmentDTO oldAppointmentDTO = (AppointmentDTO)readDataGrid.SelectedItems[0];
             DateTime pickedDate = new_appointment_date.SelectedDate.Value;
             int hours = Int32.Parse(startTimeTextBox.Text.Split(':')[0]);
             int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTextBox.Text);
 
-            MedicalAppointmentDTO newAppointment = new MedicalAppointmentDTO(oldAppointmentDTO.Id,
+            AppointmentDTO newAppointment = new AppointmentDTO(oldAppointmentDTO.Id,
                                                          oldAppointmentDTO.MedicalAppointmentType,
                                                          appointmentDateTime,
                                                          duration,
@@ -112,7 +112,7 @@ namespace Hospital
 
         private void deletebutton_Click(object sender, RoutedEventArgs e)
         {
-            MedicalAppointmentDTO appointmentDTO = (MedicalAppointmentDTO)readDataGrid.SelectedItems[0];
+            AppointmentDTO appointmentDTO = (AppointmentDTO)readDataGrid.SelectedItems[0];
             string message = patientController.AntiTrollCheck(appointmentDTO.Id);
             MessageBox.Show(message, "obavjestenje");
             appointmentController.Delete(appointmentDTO.Id, "5");

@@ -20,18 +20,18 @@ namespace Service
         }
 
 
-        public List<MedicalAppointmentDTO> GetAll()
+        public List<AppointmentDTO> GetAll()
         {
             List<MedicalAppointment> appointments = _appointmentRepository.GetAll();
             return ConvertListToDTO(appointments);
         }
 
-        public MedicalAppointmentDTO GetById(int id)
+        public AppointmentDTO GetById(int id)
         {
             return ConvertToDTO(_appointmentRepository.GetById(id));
         }
 
-        public MedicalAppointmentDTO Save(MedicalAppointmentDTO appointmentDTO)
+        public AppointmentDTO Save(AppointmentDTO appointmentDTO)
         {
             appointmentDTO.Id = GenerateNewId();
             MedicalAppointment appointment = ConvertToModel(appointmentDTO);
@@ -68,10 +68,15 @@ namespace Service
             _roomRepository.Update(room);
         }
 
-        public MedicalAppointmentDTO Update(MedicalAppointmentDTO appointmentDTO)
+        public void AddAppointmentToRoom(Appointment appointment)
+        {
+            
+        }
+
+        public AppointmentDTO Update(AppointmentDTO appointmentDTO)
         {
             MedicalAppointment appointment = ConvertToModel(appointmentDTO);
-            MedicalAppointmentDTO updatedAppointment = ConvertToDTO(_appointmentRepository.Update(appointment));
+            AppointmentDTO updatedAppointment = ConvertToDTO(_appointmentRepository.Update(appointment));
             UpdateAppointmentParticipants(appointment);
             return updatedAppointment;
         }
@@ -107,46 +112,47 @@ namespace Service
             _roomRepository.Update(room);
         }
         
-        public MedicalAppointmentDTO Delete(int id)
+        public AppointmentDTO Delete(int id)
         {
             return ConvertToDTO(_appointmentRepository.Delete(id));
         }
 
-        public List<MedicalAppointmentDTO> GetAppointmentsForDoctor(string jmbg)
+        public List<AppointmentDTO> GetAppointmentsForDoctor(string jmbg)
         {
             return ConvertListToDTO(_appointmentRepository.GetAppointmentsForDoctor(jmbg));
         }
 
-        public List<MedicalAppointmentDTO> GetAppointmentsForPatient(string jmbg)
+        public List<AppointmentDTO> GetAppointmentsForPatient(string jmbg)
         {
             return ConvertListToDTO(_appointmentRepository.GetAppointmentsForPatient(jmbg));
         }
 
-        public List<MedicalAppointmentDTO> GetAppointmentsForRoom(int id)
+        public List<AppointmentDTO> GetAppointmentsForRoom(int id)
         {
             return ConvertListToDTO(_appointmentRepository.GetAppointmentsForRoom(id));
         }
+
 
         public int GenerateNewId()
         {
             return _appointmentRepository.GenerateNewId();
         }
 
-        public bool IsDoctorAvailable(MedicalAppointmentDTO appointment)
+        public bool IsDoctorAvailable(AppointmentDTO appointment)
         {
-            List<MedicalAppointmentDTO> appointments = GetAppointmentsForDoctor(appointment.DoctorJmbg);
+            List<AppointmentDTO> appointments = GetAppointmentsForDoctor(appointment.DoctorJmbg);
             return IsTimeSlotFree(appointment, appointments);
         }
 
-        public bool IsPatientAvailable(MedicalAppointmentDTO appointment)
+        public bool IsPatientAvailable(AppointmentDTO appointment)
         {
-            List<MedicalAppointmentDTO> appointments = GetAppointmentsForPatient(appointment.PatientJmbg);
+            List<AppointmentDTO> appointments = GetAppointmentsForPatient(appointment.PatientJmbg);
             return IsTimeSlotFree(appointment, appointments);
         }
 
-        public bool IsRoomAvailable(MedicalAppointmentDTO appointment)
+        public bool IsRoomAvailable(AppointmentDTO appointment)
         {
-            List<MedicalAppointmentDTO> appointments = GetAppointmentsForRoom(appointment.RoomId);
+            List<AppointmentDTO> appointments = GetAppointmentsForRoom(appointment.RoomId);
             return IsTimeSlotFree(appointment, appointments);
         }
 
@@ -162,10 +168,10 @@ namespace Service
             return dateTimeToCheck.Ticks >= startTime.Ticks && dateTimeToCheck.Ticks < endTime.Ticks;
         }
 
-        public bool IsTimeSlotFree(MedicalAppointmentDTO appointmentToCheck, List<MedicalAppointmentDTO> appointments)
+        public bool IsTimeSlotFree(AppointmentDTO appointmentToCheck, List<AppointmentDTO> appointments)
         {
             DateTime appointmentToCheckEndTime = appointmentToCheck.StartTime.AddMinutes(appointmentToCheck.DurationInMinutes);
-            foreach (MedicalAppointmentDTO appointment in appointments)
+            foreach (AppointmentDTO appointment in appointments)
             {
                 if (appointmentToCheck.Id != appointment.Id)
                 {
@@ -187,7 +193,7 @@ namespace Service
 
 
         // Stari kod, za brisanje kad se prebaci sve na novo
-        public bool AppointmentIsTaken(MedicalAppointmentDTO appointment, string doctorId)
+        public bool AppointmentIsTaken(AppointmentDTO appointment, string doctorId)
         {
             List<MedicalAppointment> appointments = _appointmentRepository.GetAppointmentsForDoctor(doctorId);
 
@@ -209,7 +215,7 @@ namespace Service
             return false;
         }
 
-        public bool AppointmentValidationWithoutOverlaping(MedicalAppointmentDTO appointment)
+        public bool AppointmentValidationWithoutOverlaping(AppointmentDTO appointment)
         {
             List<MedicalAppointment> appointments = _appointmentRepository.GetAll();
 
@@ -244,7 +250,7 @@ namespace Service
             return false;
         }
 
-        public bool AppointmentTimeIsInvalid(MedicalAppointmentDTO appointment)
+        public bool AppointmentTimeIsInvalid(AppointmentDTO appointment)
         {
             List<MedicalAppointment> appointments = _appointmentRepository.GetAll();
 
@@ -284,7 +290,7 @@ namespace Service
             return false;
         }
 
-        public List<MedicalAppointmentDTO> GetAppointmentsFromPast(String patientJmbg)
+        public List<AppointmentDTO> GetAppointmentsFromPast(String patientJmbg)
         {
             List<MedicalAppointment> appointments = _appointmentRepository.GetAppointmentsForPatient(patientJmbg);
             List<MedicalAppointment> appointmentsInPast = new List<MedicalAppointment>();
@@ -298,13 +304,13 @@ namespace Service
 
         }
 
-        private MedicalAppointmentDTO ConvertToDTO(MedicalAppointment appointment)
+        private AppointmentDTO ConvertToDTO(MedicalAppointment appointment)
         {
             Employee doctor = _employeeRepository.GetByJmbg(appointment.DoctorJmbg);
             Patient patient = _patientRepository.GetByJmbg(appointment.PatientJmbg);
             Room room = _roomRepository.GetById(appointment.RoomId);
 
-            MedicalAppointmentDTO appointmentDTO = new MedicalAppointmentDTO
+            AppointmentDTO appointmentDTO = new AppointmentDTO
                 (
                     appointment.Id,
                     appointment.MedicalAppointmentType,
@@ -323,9 +329,9 @@ namespace Service
             return appointmentDTO;
         }
 
-        private List<MedicalAppointmentDTO> ConvertListToDTO(List<MedicalAppointment> appointments)
+        private List<AppointmentDTO> ConvertListToDTO(List<MedicalAppointment> appointments)
         {
-            List<MedicalAppointmentDTO> appointmentDTOs = new List<MedicalAppointmentDTO>();
+            List<AppointmentDTO> appointmentDTOs = new List<AppointmentDTO>();
             foreach (MedicalAppointment appointment in appointments)
             {
                 appointmentDTOs.Add(ConvertToDTO(appointment));
@@ -333,7 +339,7 @@ namespace Service
             return appointmentDTOs;
         }
 
-        private MedicalAppointment ConvertToModel(MedicalAppointmentDTO appointmentDTO)
+        private MedicalAppointment ConvertToModel(AppointmentDTO appointmentDTO)
         {
             MedicalAppointment appointment = new MedicalAppointment
                 (
@@ -348,10 +354,10 @@ namespace Service
             return appointment;
         }
 
-        private List<MedicalAppointment> ConvertListToModel(List<MedicalAppointmentDTO> appointmentsDTOs)
+        private List<MedicalAppointment> ConvertListToModel(List<AppointmentDTO> appointmentsDTOs)
         {
             List<MedicalAppointment> appointments = new List<MedicalAppointment>();
-            foreach (MedicalAppointmentDTO appointmentDTO in appointmentsDTOs)
+            foreach (AppointmentDTO appointmentDTO in appointmentsDTOs)
             {
                 appointments.Add(ConvertToModel(appointmentDTO));
             }
