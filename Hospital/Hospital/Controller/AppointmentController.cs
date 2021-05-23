@@ -90,7 +90,7 @@ namespace Controller
             return appointmentService.GetAppointmentsFromPast( patientJmbg);
         }
 
-        public List<MedicalAppointmentDTO>GetOperationsForPatient(String patientJmbg)
+        public List<AppointmentDTO>GetOperationsForPatient(String patientJmbg)
         {
             return appointmentService.GetOperationsForPatient(patientJmbg);
         }
