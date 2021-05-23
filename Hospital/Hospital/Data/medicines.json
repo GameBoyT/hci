@@ -2,11 +2,13 @@
   {
     "Name": "Aspirin",
     "Verification": 0,
-    "Description": "opis2",
+    "Description": "opis2aa",
     "DoctorComment": "",
     "Ingredients": [
       "a",
-      "b"
+      "v",
+      "cc",
+      "x"
     ],
     "Alternatives": [
       {
@@ -17,6 +19,37 @@
         "Ingredients": [],
         "Alternatives": [],
         "Id": 3
+      },
+      {
+        "Name": "Aspirin",
+        "Verification": 0,
+        "Description": "opis2",
+        "DoctorComment": "",
+        "Ingredients": [
+          "a",
+          "b"
+        ],
+        "Alternatives": [
+          {
+            "Name": "Amoksicilin",
+            "Verification": 0,
+            "Description": "123",
+            "DoctorComment": "",
+            "Ingredients": [],
+            "Alternatives": [],
+            "Id": 3
+          }
+        ],
+        "Id": 1
+      },
+      {
+        "Name": "Brufen",
+        "Verification": 0,
+        "Description": "opis4",
+        "DoctorComment": "",
+        "Ingredients": [],
+        "Alternatives": [],
+        "Id": 4
       }
     ],
     "Id": 1
@@ -24,19 +57,277 @@
   {
     "Name": "Amoksicilin",
     "Verification": 0,
-    "Description": "123",
+    "Description": "gadasg",
     "DoctorComment": "",
-    "Ingredients": [],
-    "Alternatives": [],
+    "Ingredients": [
+      "a",
+      "b",
+      "aab",
+      "qq"
+    ],
+    "Alternatives": [
+      {
+        "Name": "Aspirin",
+        "Verification": 0,
+        "Description": "opis2aa",
+        "DoctorComment": "",
+        "Ingredients": [
+          "a",
+          "v",
+          "cc"
+        ],
+        "Alternatives": [
+          {
+            "Name": "Amoksicilin",
+            "Verification": 0,
+            "Description": "123",
+            "DoctorComment": "",
+            "Ingredients": [],
+            "Alternatives": [],
+            "Id": 3
+          },
+          {
+            "Name": "Aspirin",
+            "Verification": 0,
+            "Description": "opis2",
+            "DoctorComment": "",
+            "Ingredients": [
+              "a",
+              "b"
+            ],
+            "Alternatives": [
+              {
+                "Name": "Amoksicilin",
+                "Verification": 0,
+                "Description": "123",
+                "DoctorComment": "",
+                "Ingredients": [],
+                "Alternatives": [],
+                "Id": 3
+              }
+            ],
+            "Id": 1
+          },
+          {
+            "Name": "Brufen",
+            "Verification": 0,
+            "Description": "opis4",
+            "DoctorComment": "",
+            "Ingredients": [],
+            "Alternatives": [],
+            "Id": 4
+          }
+        ],
+        "Id": 1
+      },
+      {
+        "Name": "Amoksicilin",
+        "Verification": 0,
+        "Description": "123",
+        "DoctorComment": "",
+        "Ingredients": [
+          "a",
+          "b",
+          "aab"
+        ],
+        "Alternatives": [
+          {
+            "Name": "Aspirin",
+            "Verification": 0,
+            "Description": "opis2aa",
+            "DoctorComment": "",
+            "Ingredients": [
+              "a",
+              "v",
+              "cc"
+            ],
+            "Alternatives": [
+              {
+                "Name": "Amoksicilin",
+                "Verification": 0,
+                "Description": "123",
+                "DoctorComment": "",
+                "Ingredients": [],
+                "Alternatives": [],
+                "Id": 3
+              },
+              {
+                "Name": "Aspirin",
+                "Verification": 0,
+                "Description": "opis2",
+                "DoctorComment": "",
+                "Ingredients": [
+                  "a",
+                  "b"
+                ],
+                "Alternatives": [
+                  {
+                    "Name": "Amoksicilin",
+                    "Verification": 0,
+                    "Description": "123",
+                    "DoctorComment": "",
+                    "Ingredients": [],
+                    "Alternatives": [],
+                    "Id": 3
+                  }
+                ],
+                "Id": 1
+              },
+              {
+                "Name": "Brufen",
+                "Verification": 0,
+                "Description": "opis4",
+                "DoctorComment": "",
+                "Ingredients": [],
+                "Alternatives": [],
+                "Id": 4
+              }
+            ],
+            "Id": 1
+          }
+        ],
+        "Id": 3
+      }
+    ],
     "Id": 3
   },
   {
     "Name": "Brufen",
     "Verification": 0,
-    "Description": "opis4",
+    "Description": "afaffsa",
     "DoctorComment": "",
-    "Ingredients": [],
-    "Alternatives": [],
+    "Ingredients": [
+      "a",
+      "s",
+      "xx",
+      "aaa"
+    ],
+    "Alternatives": [
+      {
+        "Name": "Aspirin",
+        "Verification": 0,
+        "Description": "opis2aa",
+        "DoctorComment": "",
+        "Ingredients": [
+          "a",
+          "v",
+          "cc",
+          "x"
+        ],
+        "Alternatives": [
+          {
+            "Name": "Amoksicilin",
+            "Verification": 0,
+            "Description": "123",
+            "DoctorComment": "",
+            "Ingredients": [],
+            "Alternatives": [],
+            "Id": 3
+          },
+          {
+            "Name": "Aspirin",
+            "Verification": 0,
+            "Description": "opis2",
+            "DoctorComment": "",
+            "Ingredients": [
+              "a",
+              "b"
+            ],
+            "Alternatives": [
+              {
+                "Name": "Amoksicilin",
+                "Verification": 0,
+                "Description": "123",
+                "DoctorComment": "",
+                "Ingredients": [],
+                "Alternatives": [],
+                "Id": 3
+              }
+            ],
+            "Id": 1
+          },
+          {
+            "Name": "Brufen",
+            "Verification": 0,
+            "Description": "opis4",
+            "DoctorComment": "",
+            "Ingredients": [],
+            "Alternatives": [],
+            "Id": 4
+          }
+        ],
+        "Id": 1
+      },
+      {
+        "Name": "Brufen",
+        "Verification": 0,
+        "Description": "opis4",
+        "DoctorComment": "",
+        "Ingredients": [
+          "a",
+          "s",
+          "xx"
+        ],
+        "Alternatives": [
+          {
+            "Name": "Aspirin",
+            "Verification": 0,
+            "Description": "opis2aa",
+            "DoctorComment": "",
+            "Ingredients": [
+              "a",
+              "v",
+              "cc",
+              "x"
+            ],
+            "Alternatives": [
+              {
+                "Name": "Amoksicilin",
+                "Verification": 0,
+                "Description": "123",
+                "DoctorComment": "",
+                "Ingredients": [],
+                "Alternatives": [],
+                "Id": 3
+              },
+              {
+                "Name": "Aspirin",
+                "Verification": 0,
+                "Description": "opis2",
+                "DoctorComment": "",
+                "Ingredients": [
+                  "a",
+                  "b"
+                ],
+                "Alternatives": [
+                  {
+                    "Name": "Amoksicilin",
+                    "Verification": 0,
+                    "Description": "123",
+                    "DoctorComment": "",
+                    "Ingredients": [],
+                    "Alternatives": [],
+                    "Id": 3
+                  }
+                ],
+                "Id": 1
+              },
+              {
+                "Name": "Brufen",
+                "Verification": 0,
+                "Description": "opis4",
+                "DoctorComment": "",
+                "Ingredients": [],
+                "Alternatives": [],
+                "Id": 4
+              }
+            ],
+            "Id": 1
+          }
+        ],
+        "Id": 4
+      }
+    ],
     "Id": 4
   },
   {
@@ -44,8 +335,68 @@
     "Verification": 2,
     "Description": "afag",
     "DoctorComment": "",
-    "Ingredients": [],
-    "Alternatives": [],
+    "Ingredients": [
+      "a",
+      "z",
+      "c"
+    ],
+    "Alternatives": [
+      {
+        "Name": "Aspirin",
+        "Verification": 0,
+        "Description": "opis2aa",
+        "DoctorComment": "",
+        "Ingredients": [
+          "a",
+          "v",
+          "cc",
+          "x"
+        ],
+        "Alternatives": [
+          {
+            "Name": "Amoksicilin",
+            "Verification": 0,
+            "Description": "123",
+            "DoctorComment": "",
+            "Ingredients": [],
+            "Alternatives": [],
+            "Id": 3
+          },
+          {
+            "Name": "Aspirin",
+            "Verification": 0,
+            "Description": "opis2",
+            "DoctorComment": "",
+            "Ingredients": [
+              "a",
+              "b"
+            ],
+            "Alternatives": [
+              {
+                "Name": "Amoksicilin",
+                "Verification": 0,
+                "Description": "123",
+                "DoctorComment": "",
+                "Ingredients": [],
+                "Alternatives": [],
+                "Id": 3
+              }
+            ],
+            "Id": 1
+          },
+          {
+            "Name": "Brufen",
+            "Verification": 0,
+            "Description": "opis4",
+            "DoctorComment": "",
+            "Ingredients": [],
+            "Alternatives": [],
+            "Id": 4
+          }
+        ],
+        "Id": 1
+      }
+    ],
     "Id": 5
   },
   {
@@ -71,7 +422,9 @@
     "Verification": 2,
     "Description": "asd",
     "DoctorComment": "",
-    "Ingredients": [],
+    "Ingredients": [
+      "x"
+    ],
     "Alternatives": [],
     "Id": 9
   }

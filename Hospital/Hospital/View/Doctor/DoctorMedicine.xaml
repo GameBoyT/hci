@@ -21,10 +21,10 @@
 
         <Label Content="Medicine Description: " HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top"/>
         <TextBox Text="{Binding Path=MedicineDescriptionText}" HorizontalAlignment="Left" Margin="287,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Height="170"/>
-        <Button Content="Save Changes" HorizontalAlignment="Left" Margin="443,281,0,0" VerticalAlignment="Top" Height="30" Width="85" Click="SaveChangesButton_Click"/>
+        <Button Content="Edit Medicine" HorizontalAlignment="Left" Margin="443,286,0,0" VerticalAlignment="Top" Height="30" Width="85" Click="EditMedicineButton_Click"/>
 
         <Label Content="Ingredients: " HorizontalAlignment="Left" Margin="618,61,0,0" VerticalAlignment="Top"/>
-        <ListView Margin="544,92,32,227" Name="lvIngredientsDataBinding" PreviewMouseLeftButtonUp="lvIngredientsDataBinding_PreviewMouseLeftButtonUp">
+        <ListView Margin="544,92,32,227" Name="lvIngredientsDataBinding">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
