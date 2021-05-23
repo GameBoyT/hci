@@ -116,7 +116,7 @@ namespace Hospital.View.Doctor
             Anamnesis = new ObservableCollection<Anamnesis>(Patient.MedicalRecord.Anamnesis);
             Prescriptions = new ObservableCollection<Prescription>(Patient.MedicalRecord.Prescription);
             lvDataBinding.ItemsSource = Anamnesis;
-            lvPrescriptionDataBinding.ItemsSource = app.medicineController.GetByVerification((VerificationType)0);
+            lvPrescriptionDataBinding.ItemsSource = app.medicineController.GetByVerification(VerificationType.verified);
             lvPatientPrescriptionDataBinding.ItemsSource = Prescriptions;
             doctorsDataGrid.ItemsSource = Doctors;
         }
@@ -173,6 +173,14 @@ namespace Hospital.View.Doctor
 
         private void PrescriptionAddButton_Click(object sender, RoutedEventArgs e)
         {
+            foreach (string ingredient in Medicine.Ingredients)
+            {
+                if (Patient.MedicalRecord.Alergies.Contains(ingredient))
+                {
+                    MessageBox.Show("The patient is alergic to a medicine ingredient!");
+                    return;
+                }
+            }
             try
             {
                 Prescription prescription = app.patientController.AddPrescription(MedicalAppointment.PatientJmbg, Medicine, Int32.Parse(Quantity), DescriptionText);
