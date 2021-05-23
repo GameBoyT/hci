@@ -17,7 +17,7 @@ namespace Hospital.View.Doctor
 
             ParentWindow = parentWindow;
             patientsDataGrid.ItemsSource = app.patientController.GetAll();
-            roomsDataGrid.ItemsSource = app.roomController.GetOperationRooms();
+            roomsDataGrid.ItemsSource = app.roomController.GetRoomsByRoomType(RoomType.operating);
             new_appointment_date.SelectedDate = DateTime.Today;
         }
 

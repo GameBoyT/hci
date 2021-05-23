@@ -9,7 +9,7 @@ namespace Repository.Interfaces
     {
         Room GetByName(String name);
 
-        List<Room> GetOperationRooms();
+        List<Room> GetRoomsByRoomType(RoomType roomType);
 
         List<Room> GetRoomsWithEquipmentName(string name);
 

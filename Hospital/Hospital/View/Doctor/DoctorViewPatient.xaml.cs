@@ -15,6 +15,7 @@ namespace Hospital.View.Doctor
         public AppointmentDTO MedicalAppointment { get; set; }
         public Patient Patient { get; set; }
         public Medicine Medicine { get; set; }
+        public Room HospitalStayRoom { get; set; }
         public ObservableCollection<Anamnesis> Anamnesis { get; set; }
         public ObservableCollection<Prescription> Prescriptions { get; set; }
 
@@ -119,6 +120,8 @@ namespace Hospital.View.Doctor
             lvPrescriptionDataBinding.ItemsSource = app.medicineController.GetByVerification(VerificationType.verified);
             lvPatientPrescriptionDataBinding.ItemsSource = Prescriptions;
             doctorsDataGrid.ItemsSource = Doctors;
+
+            lvHospitalStayRoomsDataBinding.ItemsSource = app.roomController.GetRoomsByRoomType(RoomType.patients);
         }
 
         private void listView_Click(object sender, RoutedEventArgs e)
@@ -217,5 +220,29 @@ namespace Hospital.View.Doctor
                 MessageBox.Show("Choose a doctor!");
             }
         }
+
+
+        private void listViewHospitalStayRooms_Click(object sender, RoutedEventArgs e)
+        {
+            Room room = (Room)(sender as ListView).SelectedItem;
+            lvRoomBedsDataBinding.ItemsSource = room.StaticEquipments;
+        }
+
+        private void listViewRoomBeds_Click(object sender, RoutedEventArgs e)
+        {
+            StaticEquipment bed = (StaticEquipment)(sender as ListView).SelectedItem;
+
+            //try
+            //{
+            //    Employee doctor = (Employee)doctorsDataGrid.SelectedItems[0];
+            //    app.patientController.AddReferral(MedicalAppointment.PatientJmbg, doctor.User.Jmbg, ReferralDescriptionText);
+            //    ReferralDescriptionText = "";
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Choose a doctor!");
+            //}
+        }
+        
     }
 }
