@@ -13,6 +13,7 @@ namespace Model
             this.Notifications = new List<Notification>();
             this.CancelationDates = new List<DateTime>();
             this.Blocked = false;
+            Reminders = new List<Reminder>();
         }
 
         public List<DateTime> CancelationDates { get; set; }
@@ -26,5 +27,8 @@ namespace Model
         public List<MedicalAppointment> Appointments { get; set; }
 
         public List<Notification> Notifications { get; set; }
+        public List<Reminder> Reminders { get; set; }
+
+        
     }
 }

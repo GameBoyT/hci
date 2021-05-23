@@ -159,13 +159,14 @@ namespace Hospital
         public void CheckNotifications()
         {
             
-                patientController.CheckForMedicineNotification(patient);
-                foreach (Notification notification in patient.Notifications)
-                {
-                    MessageBox.Show(notification.NotificationText, "Notification");
-                }
-                patient.Notifications.Clear();
-                patientController.Update(patient);
+            patientController.CheckForMedicineNotification(patient);
+            patientController.CheckForReminder(patient.User.Jmbg);
+            foreach (Notification notification in patient.Notifications)
+            {
+                MessageBox.Show(notification.NotificationText, "Notification");
+            }
+            patient.Notifications.Clear();
+            patientController.Update(patient);
                 
             
             
@@ -261,6 +262,12 @@ namespace Hospital
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             var newWindow = new PatientMedicalRecord();
+            newWindow.Show();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new PatientReminder();
             newWindow.Show();
         }
     }

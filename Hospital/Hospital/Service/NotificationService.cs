@@ -130,7 +130,7 @@ namespace Service
             Save(notification);
         }
 
-        private void AddNotificationToPatient(Notification notification)
+        public void AddNotificationToPatient(Notification notification)
         {
             Patient patient = patientRepository.GetByJmbg(notification.ReceiverJmbg);
             patient.Notifications.Add(notification);

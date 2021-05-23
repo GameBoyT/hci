@@ -12,6 +12,8 @@ namespace Service
         public Repository.PatientRepository patientRepository = new Repository.PatientRepository();
         public Repository.EmployeeRepository employeeRepository = new Repository.EmployeeRepository();
         public Repository.AppointmentRepository appointmentRepository = new Repository.AppointmentRepository();
+        NotificationService notificationService = new NotificationService();
+
 
         public List<Patient> GetAll()
         {
@@ -191,5 +193,81 @@ namespace Service
             }
             return prescriptionDTOs;
         }
+
+      
+
+        public void AddReminder(string jmbg, Reminder reminder)
+        {
+            Patient patient = patientRepository.GetByJmbg(jmbg);
+            reminder.Id = GenerateId(jmbg);
+
+            patient.Reminders.Add(reminder);
+            patientRepository.Update(patient);
+        }
+
+        public List<Reminder> GetAllReminders(string jmbg)
+        {
+            Patient patient = patientRepository.GetByJmbg(jmbg);
+            return patient.Reminders;
+        }
+
+        private int GenerateId(string jmbg)
+        {
+            Patient patient = patientRepository.GetByJmbg(jmbg);
+            List<Reminder> reminders = patient.Reminders;
+            try
+            {
+                int max_id = reminders[0].Id;
+                foreach (Reminder reminder in reminders)
+                {
+                    if (max_id < reminder.Id)
+                        max_id = reminder.Id;
+                }
+                return max_id + 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
+       
+
+        public void DeleteReminder(string jmbg, int id)
+        {
+            Patient patient = patientRepository.GetByJmbg(jmbg);
+            List<Reminder> reminders = patient.Reminders;
+            reminders.Remove(reminders.Find(obj => obj.Id == id));
+            patientRepository.Update(patient);
+        }
+
+        public void UpdateReminder(string jmbg, Reminder reminder)
+        {
+            Patient patient = patientRepository.GetByJmbg(jmbg);
+            List<Reminder> reminders = patient.Reminders;
+            reminders[reminders.IndexOf(reminders.Find(obj => obj.Id == reminder.Id))] = reminder;
+            patient.Reminders = reminders;
+            patientRepository.Update(patient);
+            
+        }
+
+        public void CheckForReminder(string jmbg)
+        {
+            Patient patient = patientRepository.GetByJmbg(jmbg);
+            List<Reminder> reminders = patient.Reminders;
+            foreach(Reminder reminder in reminders)
+            {
+                if (reminder.NotifyTime < DateTime.Now)
+                {
+                    string message = reminder.Title + "," + reminder.Time.ToString();
+                    Notification notification = new Notification(0, message, "3", jmbg);
+                    patient.Notifications.Add(notification);
+                    patientRepository.Update(patient);
+                }
+                    
+            }
+
+
+        }
+
     }
 }
