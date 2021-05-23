@@ -12,7 +12,7 @@ namespace Hospital
     /// </summary>
     public partial class SecretaryAppointmentCRUD : Window
     {
-        List<MedicalAppointmentDTO> appointments = new List<MedicalAppointmentDTO>();
+        List<AppointmentDTO> appointments = new List<AppointmentDTO>();
         private AppointmentController appointmentController = new AppointmentController();
         private EmployeeController employeeController = new EmployeeController();
         List<Employee> employees = new List<Employee>();
@@ -22,7 +22,7 @@ namespace Hospital
         List<Patient> patients = new List<Patient>();
         Patient patient;
         Employee doctor;
-        List<MedicalAppointmentDTO> doctorsAppointments;
+        List<AppointmentDTO> doctorsAppointments;
 
 
 
@@ -64,7 +64,7 @@ namespace Hospital
         {
             try
             {
-                MedicalAppointmentDTO app = (MedicalAppointmentDTO)secretaryAppointmentDataGrid.SelectedItems[0];
+                AppointmentDTO app = (AppointmentDTO)secretaryAppointmentDataGrid.SelectedItems[0];
                 appointmentController.Delete(app.Id, employeeController.GetSecretary().User.Jmbg);
                 WindowUpdate();
             }
@@ -78,7 +78,7 @@ namespace Hospital
         {
             try
             {
-                MedicalAppointmentDTO appoinment = (MedicalAppointmentDTO)secretaryAppointmentDataGrid.SelectedItems[0];
+                AppointmentDTO appoinment = (AppointmentDTO)secretaryAppointmentDataGrid.SelectedItems[0];
                 datePickerAppointment.SelectedDate = appoinment.StartTime.Date;
                 durationTB.Text = appoinment.DurationInMinutes.ToString();
                 startTimeTB.Text = appoinment.StartTime.ToString(("HH:mm"));
@@ -101,14 +101,14 @@ namespace Hospital
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            MedicalAppointmentDTO oldAppointment = (MedicalAppointmentDTO)secretaryAppointmentDataGrid.SelectedItems[0];
+            AppointmentDTO oldAppointment = (AppointmentDTO)secretaryAppointmentDataGrid.SelectedItems[0];
             DateTime pickedDate = datePickerAppointment.SelectedDate.Value;
             int hours = Int32.Parse(startTimeTB.Text.Split(':')[0]);
             int minutes = Int32.Parse(startTimeTB.Text.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTB.Text);
 
-            MedicalAppointmentDTO newAppointment = new MedicalAppointmentDTO(oldAppointment.Id,
+            AppointmentDTO newAppointment = new AppointmentDTO(oldAppointment.Id,
                                                         oldAppointment.MedicalAppointmentType,
                                                         appointmentDateTime,
                                                         duration,
@@ -133,7 +133,7 @@ namespace Hospital
             }
         }
 
-        private MedicalAppointmentDTO CreateAppointmentFromData()
+        private AppointmentDTO CreateAppointmentFromData()
         {
             //int id = Int32.Parse(idTextBox.Text);
             DateTime pickedDate = datePickerAppointment.SelectedDate.Value;
@@ -142,7 +142,7 @@ namespace Hospital
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             double duration = Convert.ToDouble(durationTB.Text);
 
-            return new MedicalAppointmentDTO(MedicalAppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, doctor.RoomId, employeeController.GetSecretary().User.Jmbg);
+            return new AppointmentDTO(MedicalAppointmentType.examination, appointmentDateTime, duration, patient.User.Jmbg, doctor.User.Jmbg, doctor.RoomId, employeeController.GetSecretary().User.Jmbg);
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
@@ -151,7 +151,7 @@ namespace Hospital
             {
                 doctor = (Employee)doctorsDataGrid.SelectedItems[0];
                 patient = (Patient)patientsDataGrid.SelectedItems[0];
-                MedicalAppointmentDTO newAppointment = CreateAppointmentFromData();
+                AppointmentDTO newAppointment = CreateAppointmentFromData();
                 doctorsAppointments = appointmentController.GetAppointmentsForDoctor(doctor.User.Jmbg);
                 bool error = false;
 

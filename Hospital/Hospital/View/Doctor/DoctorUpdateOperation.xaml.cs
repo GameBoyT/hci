@@ -9,10 +9,10 @@ namespace Hospital.View.Doctor
     {
         App app;
         public DoctorWindow ParentWindow { get; set; }
-        public MedicalAppointmentDTO MedicalAppointment { get; set; }
+        public AppointmentDTO MedicalAppointment { get; set; }
         public Patient Patient { get; set; }
 
-        public DoctorUpdateOperation(DoctorWindow parentWindow, MedicalAppointmentDTO appointment)
+        public DoctorUpdateOperation(DoctorWindow parentWindow, AppointmentDTO appointment)
         {
             InitializeComponent();
             app = Application.Current as App;
@@ -36,7 +36,7 @@ namespace Hospital.View.Doctor
         {
             try
             {
-                MedicalAppointmentDTO appointment = ParseUpdatedAppointment();
+                AppointmentDTO appointment = ParseUpdatedAppointment();
                 if (ParentWindow.IsAppointmentScheduled(appointment))
                     return;
                 app.appointmentController.Update(appointment);
@@ -54,7 +54,7 @@ namespace Hospital.View.Doctor
             this.Close();
         }
 
-        private MedicalAppointmentDTO ParseUpdatedAppointment()
+        private AppointmentDTO ParseUpdatedAppointment()
         {
             Room room = (Room)roomsDataGrid.SelectedItems[0];
             DateTime pickedDate = new_appointment_date.SelectedDate.Value;
@@ -64,7 +64,7 @@ namespace Hospital.View.Doctor
             double duration = Convert.ToDouble(durationTextBox.Text);
 
 
-            return new MedicalAppointmentDTO(MedicalAppointment.Id, MedicalAppointmentType.operation, appointmentDateTime, duration, MedicalAppointment.PatientJmbg, MedicalAppointment.DoctorJmbg, room.Id, MedicalAppointment.DoctorJmbg);
+            return new AppointmentDTO(MedicalAppointment.Id, MedicalAppointmentType.operation, appointmentDateTime, duration, MedicalAppointment.PatientJmbg, MedicalAppointment.DoctorJmbg, room.Id, MedicalAppointment.DoctorJmbg);
         }
     }
 }

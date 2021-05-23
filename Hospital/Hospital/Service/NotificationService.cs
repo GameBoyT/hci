@@ -25,7 +25,7 @@ namespace Service
             notificationRepository.Save(notification);
         }
 
-        public void NotifyAppointmentCreation(MedicalAppointmentDTO appointment)
+        public void NotifyAppointmentCreation(AppointmentDTO appointment)
         {
             string text = "Zakazan je pregled za pacijenta " + appointment.PatientFirstName + " " + appointment.PatientLastName +
                 " koji ima zakazan pregled kod lekara " + appointment.DoctorLastName + " trajanje pregleda je " + appointment.DurationInMinutes + " minuta, a datum je " + appointment.StartTime.ToString();
@@ -46,7 +46,7 @@ namespace Service
         }
 
 
-        public void NotifyAppointmentUpdate(MedicalAppointmentDTO appointment, string senderJmbg)
+        public void NotifyAppointmentUpdate(AppointmentDTO appointment, string senderJmbg)
         {
             string text = "Izmenjen je pregled za pacijenta " + appointment.PatientFirstName + " " + appointment.PatientLastName +
                 " koji ima zakazan pregled kod lekara " + appointment.DoctorLastName + " trajanje pregleda je " + appointment.DurationInMinutes + " minuta, a datum je " + appointment.StartTime.ToString();
@@ -65,7 +65,7 @@ namespace Service
             }
         }
 
-        public void NotifyAppointmentUpdate(MedicalAppointmentDTO appointment)
+        public void NotifyAppointmentUpdate(AppointmentDTO appointment)
         {
             string text = "Izmenjen je pregled za pacijenta " + appointment.PatientFirstName + " " + appointment.PatientLastName +
                 " koji ima zakazan pregled kod lekara " + appointment.DoctorLastName + " trajanje pregleda je " + appointment.DurationInMinutes + " minuta, a datum je " + appointment.StartTime.ToString();
@@ -84,7 +84,7 @@ namespace Service
             }
         }
 
-        public void NotifyAppointmentDeletion(MedicalAppointmentDTO appointment, string senderJmbg)
+        public void NotifyAppointmentDeletion(AppointmentDTO appointment, string senderJmbg)
         {
             string text = "Obrisan pregled za pacijenta " + appointment.PatientFirstName + " " + appointment.PatientLastName +
                 " koji ima zakazan pregled kod lekara " + appointment.DoctorLastName + " trajanje pregleda je " + appointment.DurationInMinutes + " minuta, a datum je " + appointment.StartTime.ToString();
@@ -103,7 +103,7 @@ namespace Service
             }
         }
 
-        public void NotifyAppointmentDeletion(MedicalAppointmentDTO appointment)
+        public void NotifyAppointmentDeletion(AppointmentDTO appointment)
         {
             string text = "Obrisan pregled za pacijenta " + appointment.PatientFirstName + " " + appointment.PatientLastName +
                 " koji ima zakazan pregled kod lekara " + appointment.DoctorLastName + " trajanje pregleda je " + appointment.DurationInMinutes + " minuta, a datum je " + appointment.StartTime.ToString();
