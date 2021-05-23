@@ -79,5 +79,30 @@ namespace Controller
         {
             return patientService.GetAllPresctiptionsForPatient(patientJmbg);
         }
+
+        public void AddReminder(string jmbg, Reminder reminder)
+        {
+            patientService.AddReminder(jmbg, reminder);
+        }
+
+        public List<Reminder>GettAllReminders(string jmbg)
+        {
+            return patientService.GetAllReminders(jmbg);
+        }
+
+        public void DeleteRemider(string jmbg, int id)
+        {
+            patientService.DeleteReminder(jmbg, id);
+        }
+
+        public void UpdateReminder(string jmbg, Reminder reminder)
+        {
+            patientService.UpdateReminder(jmbg, reminder);
+        }
+
+        public void CheckForReminder(string jmbg)
+        {
+            patientService.CheckForReminder(jmbg);
+        }
     }
 }
