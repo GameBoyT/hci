@@ -60,6 +60,12 @@ namespace Service
             medicine.Description = description;
             _medicineRepository.Update(medicine);
         }
+
+        public void Update(Medicine medicine)
+        {
+            _medicineRepository.Update(medicine);
+        }
+
         public void RejectMedicine(int id, string doctorComment)
         {
             Medicine medicine = GetById(id);

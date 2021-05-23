@@ -1,0 +1,56 @@
+﻿<Window x:Class="Hospital.View.Doctor.DoctorMedicineUpdate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital.View.Doctor"
+        mc:Ignorable="d"
+        Title="DoctorMedicineUpdate" Height="450" Width="800">
+    <Grid>
+        <Label Content="Alternatives: " HorizontalAlignment="Left" Margin="108,61,0,0" VerticalAlignment="Top"/>
+        <ListView Margin="35,92,541,227" x:Name="lvAlternativesDataBinding">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ComboBox Name="MedicinesComboBox" HorizontalAlignment="Left" Margin="108,240,0,0" VerticalAlignment="Top" Width="152" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Button Content="Add Alternative" HorizontalAlignment="Left" Margin="162,277,0,0" VerticalAlignment="Top" Height="30" Width="97" Click="AlternativeAddButton_Click"/>
+        <Button Content="Remove Alternative" HorizontalAlignment="Left" Margin="35,277,0,0" VerticalAlignment="Top" Height="30" Width="111"/>
+
+        <Label Content="Medicine Description: " HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Path=MedicineDescriptionText}" HorizontalAlignment="Left" Margin="287,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Height="170"/>
+
+        <Label Content="Ingredients: " HorizontalAlignment="Left" Margin="618,61,0,0" VerticalAlignment="Top"/>
+        <ListView Margin="544,92,32,227" Name="lvIngredientsDataBinding">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding}"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Label Content="Enter New Ingredient: " HorizontalAlignment="Left" Margin="544,218,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Path=Ingredient}" HorizontalAlignment="Left" Margin="677,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Add Ingredient" HorizontalAlignment="Left" Margin="677,277,0,0" VerticalAlignment="Top" Height="30" Width="97" Click="IngredinetAddButton_Click"/>
+        <Button Content="Remove Ingredient" HorizontalAlignment="Left" Margin="544,277,0,0" VerticalAlignment="Top" Height="30" Width="112"/>
+
+        <Button Content="Save Changes" HorizontalAlignment="Left" Margin="690,378,0,0" VerticalAlignment="Top" Height="30" Width="84" Click="SaveChangesButton_Click"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="544,378,0,0" VerticalAlignment="Top" Height="30" Width="84" Click="CancelButton_Click"/>
+    </Grid>
+</Window>

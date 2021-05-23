@@ -64,18 +64,16 @@ namespace Hospital.View.Doctor
         {
             try
             {
-                //List<string> vs = new List<string>
-                //{
-                //    "zz",
-                //    "cc"
-                //};
                 Medicine = (Medicine)(sender as ListView).SelectedItem;
                 MedicineDescriptionText = Medicines[lvMedicineDataBinding.SelectedIndex].Description;
-                //MedicineDescriptionText += string.Join(",", vs.Select(x => x.ToString()).ToArray());
                 VerificationButtonVisibility(Medicine.Verification);
+
+                lvIngredientsDataBinding.ItemsSource = Medicine.Ingredients;
+                lvAlternativesDataBinding.ItemsSource = Medicine.Alternatives;
             }
             catch { }
         }
+        
 
         private void VerificationButtonVisibility (VerificationType verification)
         {
@@ -91,19 +89,20 @@ namespace Hospital.View.Doctor
             }
         }
 
-        private void SaveChangesButton_Click(object sender, RoutedEventArgs e)
+        private void EditMedicineButton_Click(object sender, RoutedEventArgs e)
         {
-            Medicine medicine = Medicines[lvMedicineDataBinding.SelectedIndex];
-            app.medicineController.Update(medicine.Id, medicine.Name, medicine.Verification, MedicineDescriptionText);
-            medicine.Description = MedicineDescriptionText;
+            DoctorMedicineUpdate doctorMedicineUpdate = new DoctorMedicineUpdate(this);
+            doctorMedicineUpdate.Show();
         }
 
         private void VerifyButton_Click(object sender, RoutedEventArgs e)
         {
             Medicine medicine = Medicines[lvMedicineDataBinding.SelectedIndex];
             app.medicineController.Update(medicine.Id, medicine.Name, VerificationType.verified, medicine.Description);
-            //medicine.Verification = VerificationType.verified;
-            
+
+            VerifyButton.Visibility = Visibility.Collapsed;
+            RejectButton.Visibility = Visibility.Collapsed;
+
             UpdateWindow();
         }
 

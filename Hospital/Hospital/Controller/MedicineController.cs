@@ -69,6 +69,11 @@ namespace Controller
             _medicineService.Update(id, name, verification, description);
         }
 
+        public void Update(Medicine medicine)
+        {
+            _medicineService.Update(medicine);
+        }
+
         public int GenerateNewId()
         {
             return _medicineService.GenerateNewId();
