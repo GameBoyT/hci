@@ -11,7 +11,7 @@
                   Name="AnamnesisListView" Margin="97,300,61,10" SelectedIndex="0" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="140" Header="Name"
+                    <GridViewColumn Width="140" Header="Anamnesis name"
          DisplayMemberBinding="{Binding Name}"  />
                     <GridViewColumn Width="140" Header="Description"  
          DisplayMemberBinding="{Binding Description}" />
@@ -21,8 +21,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        
-        
+
+
         <ListView ItemsSource="{Binding prescriptionsList}"
                   Name="PrescriptionListView" Margin="97,180,61,142" SelectedIndex="0" >
             <ListView.View>
@@ -43,13 +43,23 @@
                   Name="OperationsListView" Margin="97,36,61,259" SelectedIndex="0" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="140" Header="MedicineName"
+                    <GridViewColumn Width="140" Header="Start time"
          DisplayMemberBinding="{Binding StartTime}"  />
-                    
+                    <GridViewColumn Width="140" Header="First name"
+         DisplayMemberBinding="{Binding DoctorFirstName}"  />
+                    <GridViewColumn Width="140" Header="Last name"
+         DisplayMemberBinding="{Binding DoctorLastName}"  />
+                    <GridViewColumn Width="140" Header="Room Name"
+         DisplayMemberBinding="{Binding RoomName}"  />
+
 
                 </GridView>
             </ListView.View>
         </ListView>
+        <Label Content="Operations" HorizontalAlignment="Left" Margin="23,93,0,0" VerticalAlignment="Top"/>
+        <Label Content="Prescriptions" HorizontalAlignment="Left" Margin="14,223,0,0" VerticalAlignment="Top"/>
+        <Label Content="Anamnesis:" HorizontalAlignment="Left" Margin="23,349,0,0" VerticalAlignment="Top"/>
+        <Label FontSize="20" Content="Medical Record" HorizontalAlignment="Left" Margin="358,5,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

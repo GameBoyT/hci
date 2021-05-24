@@ -161,6 +161,7 @@ namespace Hospital
             
             patientController.CheckForMedicineNotification(patient);
             patientController.CheckForReminder(patient.User.Jmbg);
+            patient = patientController.GetByJmbg(patient.User.Jmbg);
             foreach (Notification notification in patient.Notifications)
             {
                 MessageBox.Show(notification.NotificationText, "Notification");
@@ -263,12 +264,14 @@ namespace Hospital
         {
             var newWindow = new PatientMedicalRecord();
             newWindow.Show();
+            //this.Close();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             var newWindow = new PatientReminder();
             newWindow.Show();
+            //this.Close();
         }
     }
 }

@@ -69,8 +69,8 @@ namespace Hospital
 
         private void ReminderToForm(Reminder reminder)
         {
-            notifyTimeTB.Text = reminder.NotifyTime.ToString("hh:mm");
-            timeTB.Text = reminder.Time.ToString("hh:mm");
+            notifyTimeTB.Text = reminder.NotifyTime.ToString("HH:mm");
+            timeTB.Text = reminder.Time.ToString("HH:mm");
             titleTB.Text = reminder.Title;
             datePicker.SelectedDate = reminder.Time;
 
@@ -88,11 +88,15 @@ namespace Hospital
 
         private void updateBtn_Click(object sender, RoutedEventArgs e)
         {
-            Reminder reminder = (Reminder)ReminderListView.SelectedItems[0];
-            Reminder newReminder = FormToReminder();
-            newReminder.Id = reminder.Id;
-            patientController.UpdateReminder(patient.User.Jmbg, newReminder);
-            WindowUpdate();
+            try
+            {
+                Reminder reminder = (Reminder)ReminderListView.SelectedItems[0];
+                Reminder newReminder = FormToReminder();
+                newReminder.Id = reminder.Id;
+                patientController.UpdateReminder(patient.User.Jmbg, newReminder);
+                WindowUpdate();
+            }
+            catch { MessageBox.Show("Select reminder", "Error"); }
         }
     }
 }
