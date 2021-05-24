@@ -113,6 +113,14 @@ namespace Service
             }
         }
 
+        public void AddHospitalStay(string jmbg, StaticEquipment bed, DateTime startDateTime, DateTime endDateTime)
+        {
+            HospitalStay hospitalStay = new HospitalStay(bed, startDateTime, endDateTime);
+            Patient patient = GetByJmbg(jmbg);
+            patient.MedicalRecord.HospitalStay = hospitalStay;
+            Update(patient);
+        }
+
         private string IsPatientBlocked(Patient patient)
         {
             if (patient.CancelationDates.Count > 5)

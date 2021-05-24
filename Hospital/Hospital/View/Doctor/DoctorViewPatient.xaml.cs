@@ -15,7 +15,7 @@ namespace Hospital.View.Doctor
         public AppointmentDTO MedicalAppointment { get; set; }
         public Patient Patient { get; set; }
         public Medicine Medicine { get; set; }
-        public Room HospitalStayRoom { get; set; }
+        public StaticEquipment HospitalStayBed { get; set; }
         public ObservableCollection<Anamnesis> Anamnesis { get; set; }
         public ObservableCollection<Prescription> Prescriptions { get; set; }
 
@@ -196,6 +196,7 @@ namespace Hospital.View.Doctor
                 MessageBox.Show("Error");
             }
         }
+
         private void specializationName_TextChanged(object sender, TextChangedEventArgs e)
         {
             doctorsDataGrid.ItemsSource = Doctors.FindAll(obj => obj.Specialization.IndexOf(specializationName.Text, StringComparison.OrdinalIgnoreCase) >= 0);
@@ -224,25 +225,35 @@ namespace Hospital.View.Doctor
 
         private void listViewHospitalStayRooms_Click(object sender, RoutedEventArgs e)
         {
-            Room room = (Room)(sender as ListView).SelectedItem;
-            lvRoomBedsDataBinding.ItemsSource = room.StaticEquipments;
+            try
+            {
+                Room room = (Room)(sender as ListView).SelectedItem;
+                lvRoomBedsDataBinding.ItemsSource = room.StaticEquipments;
+            }
+            catch { }
         }
 
         private void listViewRoomBeds_Click(object sender, RoutedEventArgs e)
         {
-            StaticEquipment bed = (StaticEquipment)(sender as ListView).SelectedItem;
-
-            //try
-            //{
-            //    Employee doctor = (Employee)doctorsDataGrid.SelectedItems[0];
-            //    app.patientController.AddReferral(MedicalAppointment.PatientJmbg, doctor.User.Jmbg, ReferralDescriptionText);
-            //    ReferralDescriptionText = "";
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Choose a doctor!");
-            //}
+            try
+            {
+                HospitalStayBed = (StaticEquipment)(sender as ListView).SelectedItem;
+            }
+            catch { }
         }
-        
+
+        private void HospitalStayAddButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                app.patientController.AddHospitalStay(Patient.User.Jmbg, HospitalStayBed, hospitalStayStartDate.SelectedDate.Value, hospitalStayEndDate.SelectedDate.Value);
+                MessageBox.Show("Hospital stay successfully added!");
+            }
+            catch
+            {
+                MessageBox.Show("You have to select all fields!");
+            }
+        }
+
     }
 }

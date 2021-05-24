@@ -17,6 +17,17 @@
       "DateOfBirth": "1998-06-12T00:00:00"
     },
     "MedicalRecord": {
+      "HospitalStay": {
+        "Bed": {
+          "Name": "Bed",
+          "RoomId": 5,
+          "Quantity": 1,
+          "Description": "Bed 1",
+          "Id": 3
+        },
+        "StartDateTime": "2021-05-25T00:00:00",
+        "EndDateTime": "2021-05-27T00:00:00"
+      },
       "Alergies": [
         "Alergija na polen",
         "Alergija na dlake"
@@ -60,6 +71,15 @@
         "DurationInMinutes": 15.0,
         "RoomId": 1,
         "Id": 9
+      },
+      {
+        "MedicalAppointmentType": 0,
+        "DoctorJmbg": "1",
+        "PatientJmbg": "5",
+        "StartTime": "2021-05-24T10:49:00",
+        "DurationInMinutes": 15.0,
+        "RoomId": 1,
+        "Id": 10
       }
     ],
     "Notifications": [
@@ -69,8 +89,16 @@
         "ReceiverJmbg": "5",
         "DateTimeOfSending": "2021-05-19T10:32:47.4764507+02:00",
         "Id": 1
+      },
+      {
+        "NotificationText": "Zakazan je pregled za pacijenta Zarko Zarkovic koji ima zakazan pregled kod lekara Tovilovic trajanje pregleda je 15 minuta, a datum je 5/24/2021 10:49:00 AM",
+        "SenderJmbg": "1",
+        "ReceiverJmbg": "5",
+        "DateTimeOfSending": "2021-05-24T10:48:11.656229+02:00",
+        "Id": 2
       }
     ],
+    "Reminders": [],
     "Id": 0
   },
   {
@@ -87,6 +115,11 @@
       "DateOfBirth": "1973-08-09T00:00:00"
     },
     "MedicalRecord": {
+      "HospitalStay": {
+        "Bed": null,
+        "StartDateTime": "0001-01-01T00:00:00",
+        "EndDateTime": "0001-01-01T00:00:00"
+      },
       "Alergies": [
         "Alergija na macke",
         "Alergija na pse"
@@ -110,6 +143,7 @@
     },
     "Appointments": [],
     "Notifications": [],
+    "Reminders": [],
     "Id": 0
   }
 ]

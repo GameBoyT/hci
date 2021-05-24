@@ -157,7 +157,8 @@
             </TabItem>
             <TabItem Header="Hospital stay">
                 <Grid>
-                    <ListView Margin="10,61,588,133" x:Name="lvHospitalStayRoomsDataBinding" PreviewMouseLeftButtonUp="listViewHospitalStayRooms_Click">
+                    <Label Content="Rooms:" HorizontalAlignment="Left" Margin="78,63,0,0" VerticalAlignment="Top" Width="60"/>
+                    <ListView Margin="10,112,588,82" x:Name="lvHospitalStayRoomsDataBinding" PreviewMouseLeftButtonUp="listViewHospitalStayRooms_Click">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <WrapPanel>
@@ -166,7 +167,9 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <ListView Margin="271,61,327,133" x:Name="lvRoomBedsDataBinding" PreviewMouseLeftButtonUp="listViewRoomBeds_Click">
+
+                    <Label Content="Beds:" HorizontalAlignment="Left" Margin="337,71,0,0" VerticalAlignment="Top" Width="52"/>
+                    <ListView Margin="265,112,333,82" x:Name="lvRoomBedsDataBinding" PreviewMouseLeftButtonUp="listViewRoomBeds_Click">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <WrapPanel>
@@ -175,6 +178,14 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+
+
+                    <Label Content="Start date:" HorizontalAlignment="Left" Margin="489,110,0,0" VerticalAlignment="Top" Width="122"/>
+                    <DatePicker x:Name="hospitalStayStartDate" HorizontalAlignment="Left" Margin="627,110,0,0" VerticalAlignment="Top"/>
+                    <Label Content="End date:" HorizontalAlignment="Left" Margin="489,165,0,0" VerticalAlignment="Top" Width="122"/>
+                    <DatePicker x:Name="hospitalStayEndDate" HorizontalAlignment="Left" Margin="627,167,0,0" VerticalAlignment="Top"/>
+
+                    <Button Content="Add Hospital Stay" HorizontalAlignment="Left" Margin="604,294,0,0" VerticalAlignment="Top" Height="30" Width="125" Click="HospitalStayAddButton_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>

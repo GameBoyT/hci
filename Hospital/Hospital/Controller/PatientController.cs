@@ -104,5 +104,10 @@ namespace Controller
         {
             patientService.CheckForReminder(jmbg);
         }
+
+        public void AddHospitalStay(string jmbg, StaticEquipment bed, DateTime startDateTime, DateTime endDateTime)
+        {
+            patientService.AddHospitalStay(jmbg, bed, startDateTime, endDateTime);
+        }
     }
 }

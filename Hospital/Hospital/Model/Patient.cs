@@ -27,8 +27,8 @@ namespace Model
         public List<MedicalAppointment> Appointments { get; set; }
 
         public List<Notification> Notifications { get; set; }
-        public List<Reminder> Reminders { get; set; }
 
+        public List<Reminder> Reminders { get; set; }
         
     }
 }
