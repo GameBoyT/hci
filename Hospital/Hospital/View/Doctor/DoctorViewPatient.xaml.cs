@@ -121,7 +121,13 @@ namespace Hospital.View.Doctor
             lvPatientPrescriptionDataBinding.ItemsSource = Prescriptions;
             doctorsDataGrid.ItemsSource = Doctors;
 
-            lvHospitalStayRoomsDataBinding.ItemsSource = app.roomController.GetRoomsByRoomType(RoomType.patients);
+            if (Patient.MedicalRecord.HospitalStay.Bed == null  || Patient.MedicalRecord.HospitalStay.EndDateTime.Ticks < DateTime.Now.Ticks)
+                lvHospitalStayRoomsDataBinding.ItemsSource = app.roomController.GetRoomsByRoomType(RoomType.patients);
+            else
+            {
+                NewHospitalStay.Visibility = Visibility.Collapsed;
+                ExtendHospitalStay.Visibility = Visibility.Visible;
+            }
         }
 
         private void listView_Click(object sender, RoutedEventArgs e)
@@ -246,6 +252,8 @@ namespace Hospital.View.Doctor
         {
             try
             {
+                NewHospitalStay.Visibility = Visibility.Collapsed;
+                ExtendHospitalStay.Visibility = Visibility.Visible;
                 app.patientController.AddHospitalStay(Patient.User.Jmbg, HospitalStayBed, hospitalStayStartDate.SelectedDate.Value, hospitalStayEndDate.SelectedDate.Value);
                 MessageBox.Show("Hospital stay successfully added!");
             }
@@ -254,6 +262,20 @@ namespace Hospital.View.Doctor
                 MessageBox.Show("You have to select all fields!");
             }
         }
+
+        private void HospitalStayExtendButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                app.patientController.ExtendHospitalStay(Patient.User.Jmbg, extendedEndDate.SelectedDate.Value);
+                MessageBox.Show("Hospital stay successfully extended!");
+            }
+            catch
+            {
+                MessageBox.Show("You have to select all fields!");
+            }
+        }
+
 
     }
 }

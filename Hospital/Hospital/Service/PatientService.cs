@@ -84,6 +84,21 @@ namespace Service
             return anamnesis;
         }
 
+        public void AddHospitalStay(string jmbg, StaticEquipment bed, DateTime startDateTime, DateTime endDateTime)
+        {
+            HospitalStay hospitalStay = new HospitalStay(bed, startDateTime, endDateTime);
+            Patient patient = GetByJmbg(jmbg);
+            patient.MedicalRecord.HospitalStay = hospitalStay;
+            Update(patient);
+        }
+
+        public void ExtendHospitalStay(string jmbg, DateTime extendedDate)
+        {
+            Patient patient = GetByJmbg(jmbg);
+            patient.MedicalRecord.HospitalStay.EndDateTime = extendedDate;
+            Update(patient);
+        }
+
         public void CheckForMedicineNotification(Patient patient)
         {
             List<Prescription> prescriptions = patient.MedicalRecord.Prescription;
@@ -111,14 +126,6 @@ namespace Service
                     timeMinusOne = time.AddHours(-1);
                 }
             }
-        }
-
-        public void AddHospitalStay(string jmbg, StaticEquipment bed, DateTime startDateTime, DateTime endDateTime)
-        {
-            HospitalStay hospitalStay = new HospitalStay(bed, startDateTime, endDateTime);
-            Patient patient = GetByJmbg(jmbg);
-            patient.MedicalRecord.HospitalStay = hospitalStay;
-            Update(patient);
         }
 
         private string IsPatientBlocked(Patient patient)

@@ -109,5 +109,10 @@ namespace Controller
         {
             patientService.AddHospitalStay(jmbg, bed, startDateTime, endDateTime);
         }
+
+        public void ExtendHospitalStay(string jmbg, DateTime extendedDate)
+        {
+            patientService.ExtendHospitalStay(jmbg, extendedDate);
+        }
     }
 }

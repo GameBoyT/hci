@@ -157,35 +157,63 @@
             </TabItem>
             <TabItem Header="Hospital stay">
                 <Grid>
-                    <Label Content="Rooms:" HorizontalAlignment="Left" Margin="78,63,0,0" VerticalAlignment="Top" Width="60"/>
-                    <ListView Margin="10,112,588,82" x:Name="lvHospitalStayRoomsDataBinding" PreviewMouseLeftButtonUp="listViewHospitalStayRooms_Click">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <WrapPanel>
-                                    <TextBlock Text="{Binding Name}"/>
-                                </WrapPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                    <Canvas x:Name="NewHospitalStay">
 
-                    <Label Content="Beds:" HorizontalAlignment="Left" Margin="337,71,0,0" VerticalAlignment="Top" Width="52"/>
-                    <ListView Margin="265,112,333,82" x:Name="lvRoomBedsDataBinding" PreviewMouseLeftButtonUp="listViewRoomBeds_Click">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <WrapPanel>
-                                    <TextBlock Text="{Binding Description}" />
-                                </WrapPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        <Label Content="Rooms:" HorizontalAlignment="Left" Margin="78,63,0,0" VerticalAlignment="Top" Width="60"/>
+                        <ListView Margin="10,112,588,82" x:Name="lvHospitalStayRoomsDataBinding" PreviewMouseLeftButtonUp="listViewHospitalStayRooms_Click" Height="218" Canvas.Left="10" Width="174">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <WrapPanel>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </WrapPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <Label Content="Beds:" HorizontalAlignment="Left" Margin="337,71,0,0" VerticalAlignment="Top" Width="52"/>
+                        <ListView Margin="265,112,333,82" x:Name="lvRoomBedsDataBinding" PreviewMouseLeftButtonUp="listViewRoomBeds_Click" Height="212" Width="192">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <WrapPanel>
+                                        <TextBlock Text="{Binding Description}" />
+                                    </WrapPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
 
-                    <Label Content="Start date:" HorizontalAlignment="Left" Margin="489,110,0,0" VerticalAlignment="Top" Width="122"/>
-                    <DatePicker x:Name="hospitalStayStartDate" HorizontalAlignment="Left" Margin="627,110,0,0" VerticalAlignment="Top"/>
-                    <Label Content="End date:" HorizontalAlignment="Left" Margin="489,165,0,0" VerticalAlignment="Top" Width="122"/>
-                    <DatePicker x:Name="hospitalStayEndDate" HorizontalAlignment="Left" Margin="627,167,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Start date:" HorizontalAlignment="Left" Margin="489,110,0,0" VerticalAlignment="Top" Width="122"/>
+                        <DatePicker x:Name="hospitalStayStartDate" HorizontalAlignment="Left" Margin="627,110,0,0" VerticalAlignment="Top"/>
+                        <Label Content="End date:" HorizontalAlignment="Left" Margin="489,165,0,0" VerticalAlignment="Top" Width="122"/>
+                        <DatePicker x:Name="hospitalStayEndDate" HorizontalAlignment="Left" Margin="627,167,0,0" VerticalAlignment="Top"/>
 
-                    <Button Content="Add Hospital Stay" HorizontalAlignment="Left" Margin="604,294,0,0" VerticalAlignment="Top" Height="30" Width="125" Click="HospitalStayAddButton_Click"/>
+                        <Button Content="Add Hospital Stay" HorizontalAlignment="Left" Margin="604,294,0,0" VerticalAlignment="Top" Height="30" Width="125" Click="HospitalStayAddButton_Click"/>
+                    </Canvas>
+                    <Canvas x:Name="ExtendHospitalStay"  Visibility="Collapsed">
+                        <!--<Grid Margin="30,75,550,160">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Grid.Row="0">Room:</TextBlock>
+                            <TextBlock Grid.Column="0" Grid.Row="1">Bed:</TextBlock>
+                            <TextBlock Grid.Column="0" Grid.Row="2">Start Date:</TextBlock>
+                            <TextBlock Grid.Column="0" Grid.Row="3">End Date:</TextBlock>
+                            <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" Text="{Binding Path=Patient.MedicalRecord.HospitalStay.Room}"></TextBox>
+                            <TextBox Grid.Column="1" Grid.Row="1" IsReadOnly="True" Text="{Binding Path=Patient.User.LastName}"></TextBox>
+                            <TextBox Grid.Column="1" Grid.Row="2" IsReadOnly="True" Text="{Binding Path=Patient.User.Jmbg}"></TextBox>
+                            <TextBox Grid.Column="1" Grid.Row="3" IsReadOnly="True" Text="{Binding Path=Patient.User.DateOfBirth, StringFormat='dd-MM-yyyy'}"></TextBox>
+                        </Grid>-->
+                        <Label Content="Extend hospital stay until date:" Margin="489,165,0,0" Width="187" Canvas.Left="-395" Canvas.Top="-85"/>
+                        <DatePicker x:Name="extendedEndDate" Margin="627,167,0,0" Canvas.Left="-338" Canvas.Top="-86"/>
+                        <Button Content="Extend Hospital Stay" HorizontalAlignment="Left" Margin="604,294,0,0" VerticalAlignment="Top" Height="30" Width="125" Click="HospitalStayExtendButton_Click"/>
+                    </Canvas>
                 </Grid>
             </TabItem>
         </TabControl>
