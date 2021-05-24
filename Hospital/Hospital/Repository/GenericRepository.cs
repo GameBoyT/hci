@@ -73,13 +73,11 @@ namespace Repository
                 File.Create(_fileLocation).Close();
             }
 
-            using (StreamReader r = new StreamReader(_fileLocation))
+            using StreamReader r = new StreamReader(_fileLocation);
+            string json = r.ReadToEnd();
+            if (json != "")
             {
-                string json = r.ReadToEnd();
-                if (json != "")
-                {
-                    _objects = JsonConvert.DeserializeObject<List<T>>(json);
-                }
+                _objects = JsonConvert.DeserializeObject<List<T>>(json);
             }
         }
 
