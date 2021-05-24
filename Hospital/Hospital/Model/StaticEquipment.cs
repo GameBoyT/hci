@@ -11,30 +11,12 @@ namespace Model
             Description = description;
         }
 
-        public string Name
-        {
-            get
-            ;
-            set
-            ;
-        }
+        public string Name { get; set; }
 
         public int RoomId { get; set; }
 
-        public int Quantity
-        {
-            get
-            ;
-            set
-            ;
-        }
+        public int Quantity { get; set; }
 
-        public string Description
-        {
-            get
-            ;
-            set
-            ;
-        }
+        public string Description { get; set; }
     }
 }

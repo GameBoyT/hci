@@ -5,6 +5,8 @@ namespace Model
 {
     public class MedicalRecord
     {
+        public HospitalStay HospitalStay { get; set; }
+
         public List<String> Alergies { get; set; }
 
         public List<Prescription> Prescription { get; set; }
@@ -15,6 +17,7 @@ namespace Model
 
         public MedicalRecord()
         {
+            this.HospitalStay = new HospitalStay();
             this.Alergies = new List<string>();
             this.Prescription = new List<Prescription>();
             this.Anamnesis = new List<Anamnesis>();
