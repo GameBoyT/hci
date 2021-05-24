@@ -31,7 +31,7 @@ namespace Hospital.View.Director
 
         private void AcceptRenovation_Click(object sender, RoutedEventArgs e)
         {
-            try // promeniti samo ime sobe kad se spajaju 
+            try 
             {
                 if ((bool)attach.IsChecked)
                 {
