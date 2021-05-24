@@ -213,11 +213,14 @@ namespace Service
 
         public void AddReminder(string jmbg, Reminder reminder)
         {
-            Patient patient = patientRepository.GetByJmbg(jmbg);
-            reminder.Id = GenerateId(jmbg);
+            if (isReminderValid(reminder))
+            {
+                Patient patient = patientRepository.GetByJmbg(jmbg);
+                reminder.Id = GenerateId(jmbg);
 
-            patient.Reminders.Add(reminder);
-            patientRepository.Update(patient);
+                patient.Reminders.Add(reminder);
+                patientRepository.Update(patient);
+            }
         }
 
         public List<Reminder> GetAllReminders(string jmbg)
@@ -257,24 +260,72 @@ namespace Service
 
         public void UpdateReminder(string jmbg, Reminder reminder)
         {
+            if (isReminderValid(reminder))
+            {
+                Patient patient = patientRepository.GetByJmbg(jmbg);
+                List<Reminder> reminders = patient.Reminders;
+
+                reminders[reminders.IndexOf(reminders.Find(obj => obj.Id == reminder.Id))] = reminder;
+                patient.Reminders = reminders;
+                patientRepository.Update(patient);
+            } 
+        }
+
+        private bool isReminderValid(Reminder reminder)
+        {
+            if (IsReminderInPast(reminder) || IsReminderNotifyTimePast(reminder))
+            {
+                MessageBox.Show("Reminder is in the past", "Error");
+                return false;
+            }
+
+            if(reminder.NotifyTime > reminder.Time)
+            {
+                MessageBox.Show("Notify time should be before reminder!", "error");
+                return false;
+            }
+            return true;
+
+        }
+
+        private bool IsReminderInPast(Reminder reminder)
+        {
+            if (reminder.Time < DateTime.Now)
+                return true;
+            else return false;
+        }
+
+        private bool IsReminderNotifyTimePast(Reminder reminder)
+        {
+            if (reminder.NotifyTime < DateTime.Now)
+                return true;
+            else return false;
+
+        }
+
+        private void RemoveOldReminders(string jmbg)
+        {
             Patient patient = patientRepository.GetByJmbg(jmbg);
             List<Reminder> reminders = patient.Reminders;
-            reminders[reminders.IndexOf(reminders.Find(obj => obj.Id == reminder.Id))] = reminder;
+            reminders.RemoveAll(obj => obj.Time < DateTime.Now);
             patient.Reminders = reminders;
             patientRepository.Update(patient);
             
+
         }
 
         public void CheckForReminder(string jmbg)
         {
+            RemoveOldReminders(jmbg);
+
             Patient patient = patientRepository.GetByJmbg(jmbg);
             List<Reminder> reminders = patient.Reminders;
             foreach(Reminder reminder in reminders)
             {
-                if (reminder.NotifyTime < DateTime.Now)
+                if (IsReminderNotifyTimePast(reminder))
                 {
-                    string message = reminder.Title + "," + reminder.Time.ToString();
-                    Notification notification = new Notification(0, message, "3", jmbg);
+                    string message = reminder.Title.ToUpper() + " , " + reminder.Time.ToString("dd:MM:yyyy HH:mm");
+                    Notification notification = new Notification(0, message, jmbg, jmbg);
                     patient.Notifications.Add(notification);
                     patientRepository.Update(patient);
                 }

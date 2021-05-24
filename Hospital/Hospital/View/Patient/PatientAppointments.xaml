@@ -37,6 +37,8 @@
         <Button x:Name="showAppointments" Content="All appointments" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Click="showAppointments_Click" Height="33" Width="116" IsEnabled="False"/>
         <Button Content="Reviews" HorizontalAlignment="Left" Margin="9,108,0,0" VerticalAlignment="Top" Click="Button_Click" Height="33" Width="116"/>
         <Button Content="Referrals" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="33" Width="116"/>
+        <Button Content="Medical Record" HorizontalAlignment="Left" Margin="10,237,0,0" VerticalAlignment="Top" Click="Button_Click_2" Width="116" Height="33"/>
+        <Button Content="Reminders" HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" Click="Button_Click_3" Width="116" Height="33"/>
 
 
 

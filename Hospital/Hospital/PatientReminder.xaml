@@ -10,23 +10,27 @@
         <ListView ItemsSource="{Binding reminderList}" Margin="0,10,350,0" Name = "ReminderListView" SelectionChanged="ReminderListView_SelectionChanged" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="140" Header="Name"
+                    <GridViewColumn Width="140" Header="Title"
          DisplayMemberBinding="{Binding Title}"  />
-                    <GridViewColumn Width="140" Header="Description"  
+                    <GridViewColumn Width="140" Header="Notify Time"  
          DisplayMemberBinding="{Binding NotifyTime}" />
-                    <GridViewColumn Width="140" Header="Type"
+                    <GridViewColumn Width="140" Header="Reminder Time"
          DisplayMemberBinding="{Binding Time}" />
 
                 </GridView>
             </ListView.View>
         </ListView>
         <DatePicker Name="datePicker" HorizontalAlignment="Left" Margin="624,101,0,0" VerticalAlignment="Top"/>
-        <TextBox Name ="notifyTimeTB"  HorizontalAlignment="Left" Margin="624,152,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name ="timeTB"  HorizontalAlignment="Left" Margin="624,204,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Name ="addReminderBnt"  Content="Button" HorizontalAlignment="Left" Margin="654,291,0,0" VerticalAlignment="Top" Click="addReminderBnt_Click"/>
-        <TextBox Name ="titleTB"  HorizontalAlignment="Left" Margin="624,56,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Name ="deleteBtn"  Content="Button" HorizontalAlignment="Left" Margin="731,291,0,0" VerticalAlignment="Top" Click="deleteBtn_Click"/>
-        <Button Name ="updateBtn" Content="Button" HorizontalAlignment="Left" Margin="684,369,0,0" VerticalAlignment="Top" Click="updateBtn_Click"/>
+        <TextBox Name ="notifyTimeTB"  HorizontalAlignment="Left" Margin="624,152,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name ="timeTB"  HorizontalAlignment="Left" Margin="624,204,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Name ="addReminderBnt"  Content="Add" HorizontalAlignment="Left" Margin="656,245,0,0" VerticalAlignment="Top" Click="addReminderBnt_Click" Width="53"/>
+        <TextBox Name ="titleTB"  HorizontalAlignment="Left" Margin="624,56,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Name ="deleteBtn"  Content="Delete" HorizontalAlignment="Left" Margin="656,281,0,0" VerticalAlignment="Top" Click="deleteBtn_Click" Width="53"/>
+        <Button Name ="updateBtn" Content="Update" HorizontalAlignment="Left" Margin="656,314,0,0" VerticalAlignment="Top" Click="updateBtn_Click" Width="53"/>
+        <Label Content="Reminder Title" HorizontalAlignment="Left" Margin="527,52,0,0" VerticalAlignment="Top"/>
+        <Label Content="Select Date" HorizontalAlignment="Left" Margin="527,101,0,0" VerticalAlignment="Top"/>
+        <Label Content="Notify me at" HorizontalAlignment="Left" Margin="527,148,0,0" VerticalAlignment="Top"/>
+        <Label Content="Reminder time" HorizontalAlignment="Left" Margin="527,200,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
