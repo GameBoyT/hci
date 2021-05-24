@@ -39,12 +39,18 @@ namespace Service
             AddAppointmentToParticipants(appointment);
             return ConvertToDTO(appointment);
         }
+        public void SaveRenovation(AppointmentDTO appointmentDTO)
+        {
+            appointmentDTO.Id = GenerateNewId();
+            MedicalAppointment appointment = ConvertToModel(appointmentDTO);
+            _appointmentRepository.Save(appointment);
+        }
 
         public void AddAppointmentToParticipants(MedicalAppointment appointment)
         {
+            AddAppointmentToRoom(appointment);
             AddAppointmentToDoctor(appointment);
             AddAppointmentToPatient(appointment);
-            AddAppointmentToRoom(appointment);
         }
 
         public void AddAppointmentToDoctor(MedicalAppointment appointment)
@@ -344,11 +350,23 @@ namespace Service
 
         private AppointmentDTO ConvertToDTO(MedicalAppointment appointment)
         {
+            Room room = _roomRepository.GetById(appointment.RoomId);
+            AppointmentDTO appointmentDTO;
+            if (appointment.DoctorJmbg == null)
+            {
+                appointmentDTO = new AppointmentDTO
+                    (
+                        appointment.Id,
+                        appointment.StartTime,
+                        appointment.DurationInMinutes,
+                        room.Id
+                    );
+
+                return appointmentDTO;
+            }
             Employee doctor = _employeeRepository.GetByJmbg(appointment.DoctorJmbg);
             Patient patient = _patientRepository.GetByJmbg(appointment.PatientJmbg);
-            Room room = _roomRepository.GetById(appointment.RoomId);
-
-            AppointmentDTO appointmentDTO = new AppointmentDTO
+             appointmentDTO = new AppointmentDTO
                 (
                     appointment.Id,
                     appointment.MedicalAppointmentType,

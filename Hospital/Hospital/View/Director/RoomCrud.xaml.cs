@@ -10,9 +10,8 @@ namespace Hospital.View.Director
 
     public partial class RoomCrud : Window
     {
-        private RoomController roomController = new RoomController();
-        private int id; // pomaze oko update 
-                        // List<Room> rooms = new List<Room>();
+        private readonly RoomController roomController = new RoomController();
+        private int id; 
         List<Room> roomsToShow = new List<Room>();
 
         public RoomCrud()
@@ -106,9 +105,10 @@ namespace Hospital.View.Director
         }
 
         private void Renovation_Click(object sender, RoutedEventArgs e)
-        {
+        {// try
             Room room = (Room)roomsDataGrid.SelectedItems[0];
             roomController.Renovation(room.Id, renovationDate.SelectedDate.Value);
+            //zakazati renoviranje samo ubaci u appointment vreme ne treba logika nikakva
         }
 
         private void HardRenovation_Click(object sender, RoutedEventArgs e)
