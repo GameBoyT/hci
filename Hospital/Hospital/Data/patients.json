@@ -22,11 +22,11 @@
           "Name": "Bed",
           "RoomId": 5,
           "Quantity": 1,
-          "Description": "Bed 1",
-          "Id": 3
+          "Description": "Bed 2",
+          "Id": 5
         },
-        "StartDateTime": "2021-05-25T00:00:00",
-        "EndDateTime": "2021-05-29T00:00:00"
+        "StartDateTime": "2021-05-24T00:00:00+02:00",
+        "EndDateTime": "2021-05-25T00:00:00"
       },
       "Alergies": [
         "Alergija na polen",
@@ -80,6 +80,15 @@
         "DurationInMinutes": 15.0,
         "RoomId": 1,
         "Id": 10
+      },
+      {
+        "MedicalAppointmentType": 0,
+        "DoctorJmbg": "1",
+        "PatientJmbg": "5",
+        "StartTime": "2021-05-24T22:00:00",
+        "DurationInMinutes": 15.0,
+        "RoomId": 1,
+        "Id": 12
       }
     ],
     "Notifications": [
@@ -96,6 +105,13 @@
         "ReceiverJmbg": "5",
         "DateTimeOfSending": "2021-05-24T10:48:11.656229+02:00",
         "Id": 2
+      },
+      {
+        "NotificationText": "Zakazan je pregled za pacijenta Zarko Zarkovic koji ima zakazan pregled kod lekara Tovilovic trajanje pregleda je 15 minuta, a datum je 5/24/2021 10:00:00 PM",
+        "SenderJmbg": "1",
+        "ReceiverJmbg": "5",
+        "DateTimeOfSending": "2021-05-24T20:55:31.1306448+02:00",
+        "Id": 4
       }
     ],
     "Reminders": [],

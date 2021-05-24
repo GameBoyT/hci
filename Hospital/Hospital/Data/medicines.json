@@ -411,10 +411,152 @@
   {
     "Name": "test",
     "Verification": 2,
-    "Description": "aj sad",
+    "Description": "aj asfasf",
     "DoctorComment": "bla",
-    "Ingredients": [],
-    "Alternatives": [],
+    "Ingredients": [
+      "az"
+    ],
+    "Alternatives": [
+      {
+        "Name": "Brufen",
+        "Verification": 0,
+        "Description": "afaffsa",
+        "DoctorComment": "",
+        "Ingredients": [
+          "a",
+          "s",
+          "xx",
+          "aaa"
+        ],
+        "Alternatives": [
+          {
+            "Name": "Aspirin",
+            "Verification": 0,
+            "Description": "opis2aa",
+            "DoctorComment": "",
+            "Ingredients": [
+              "a",
+              "v",
+              "cc",
+              "x"
+            ],
+            "Alternatives": [
+              {
+                "Name": "Amoksicilin",
+                "Verification": 0,
+                "Description": "123",
+                "DoctorComment": "",
+                "Ingredients": [],
+                "Alternatives": [],
+                "Id": 3
+              },
+              {
+                "Name": "Aspirin",
+                "Verification": 0,
+                "Description": "opis2",
+                "DoctorComment": "",
+                "Ingredients": [
+                  "a",
+                  "b"
+                ],
+                "Alternatives": [
+                  {
+                    "Name": "Amoksicilin",
+                    "Verification": 0,
+                    "Description": "123",
+                    "DoctorComment": "",
+                    "Ingredients": [],
+                    "Alternatives": [],
+                    "Id": 3
+                  }
+                ],
+                "Id": 1
+              },
+              {
+                "Name": "Brufen",
+                "Verification": 0,
+                "Description": "opis4",
+                "DoctorComment": "",
+                "Ingredients": [],
+                "Alternatives": [],
+                "Id": 4
+              }
+            ],
+            "Id": 1
+          },
+          {
+            "Name": "Brufen",
+            "Verification": 0,
+            "Description": "opis4",
+            "DoctorComment": "",
+            "Ingredients": [
+              "a",
+              "s",
+              "xx"
+            ],
+            "Alternatives": [
+              {
+                "Name": "Aspirin",
+                "Verification": 0,
+                "Description": "opis2aa",
+                "DoctorComment": "",
+                "Ingredients": [
+                  "a",
+                  "v",
+                  "cc",
+                  "x"
+                ],
+                "Alternatives": [
+                  {
+                    "Name": "Amoksicilin",
+                    "Verification": 0,
+                    "Description": "123",
+                    "DoctorComment": "",
+                    "Ingredients": [],
+                    "Alternatives": [],
+                    "Id": 3
+                  },
+                  {
+                    "Name": "Aspirin",
+                    "Verification": 0,
+                    "Description": "opis2",
+                    "DoctorComment": "",
+                    "Ingredients": [
+                      "a",
+                      "b"
+                    ],
+                    "Alternatives": [
+                      {
+                        "Name": "Amoksicilin",
+                        "Verification": 0,
+                        "Description": "123",
+                        "DoctorComment": "",
+                        "Ingredients": [],
+                        "Alternatives": [],
+                        "Id": 3
+                      }
+                    ],
+                    "Id": 1
+                  },
+                  {
+                    "Name": "Brufen",
+                    "Verification": 0,
+                    "Description": "opis4",
+                    "DoctorComment": "",
+                    "Ingredients": [],
+                    "Alternatives": [],
+                    "Id": 4
+                  }
+                ],
+                "Id": 1
+              }
+            ],
+            "Id": 4
+          }
+        ],
+        "Id": 4
+      }
+    ],
     "Id": 7
   },
   {

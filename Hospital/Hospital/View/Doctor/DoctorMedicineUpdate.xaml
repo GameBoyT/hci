@@ -29,7 +29,6 @@
         </ComboBox>
 
         <Button Content="Add Alternative" HorizontalAlignment="Left" Margin="162,277,0,0" VerticalAlignment="Top" Height="30" Width="97" Click="AlternativeAddButton_Click"/>
-        <Button Content="Remove Alternative" HorizontalAlignment="Left" Margin="35,277,0,0" VerticalAlignment="Top" Height="30" Width="111"/>
 
         <Label Content="Medicine Description: " HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top"/>
         <TextBox Text="{Binding Path=MedicineDescriptionText}" HorizontalAlignment="Left" Margin="287,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Height="170"/>
@@ -48,7 +47,6 @@
         <Label Content="Enter New Ingredient: " HorizontalAlignment="Left" Margin="544,218,0,0" VerticalAlignment="Top"/>
         <TextBox Text="{Binding Path=Ingredient}" HorizontalAlignment="Left" Margin="677,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
         <Button Content="Add Ingredient" HorizontalAlignment="Left" Margin="677,277,0,0" VerticalAlignment="Top" Height="30" Width="97" Click="IngredinetAddButton_Click"/>
-        <Button Content="Remove Ingredient" HorizontalAlignment="Left" Margin="544,277,0,0" VerticalAlignment="Top" Height="30" Width="112"/>
 
         <Button Content="Save Changes" HorizontalAlignment="Left" Margin="690,378,0,0" VerticalAlignment="Top" Height="30" Width="84" Click="SaveChangesButton_Click"/>
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="544,378,0,0" VerticalAlignment="Top" Height="30" Width="84" Click="CancelButton_Click"/>

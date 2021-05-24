@@ -122,11 +122,15 @@ namespace Hospital.View.Doctor
             doctorsDataGrid.ItemsSource = Doctors;
 
             if (Patient.MedicalRecord.HospitalStay.Bed == null  || Patient.MedicalRecord.HospitalStay.EndDateTime.Ticks < DateTime.Now.Ticks)
+            {
                 lvHospitalStayRoomsDataBinding.ItemsSource = app.roomController.GetRoomsByRoomType(RoomType.patients);
+                hospitalStayStartDate.SelectedDate = DateTime.Today;
+            }
             else
             {
                 NewHospitalStay.Visibility = Visibility.Collapsed;
                 ExtendHospitalStay.Visibility = Visibility.Visible;
+                extendedEndDate.SelectedDate = Patient.MedicalRecord.HospitalStay.EndDateTime;
             }
         }
 
@@ -250,11 +254,32 @@ namespace Hospital.View.Doctor
 
         private void HospitalStayAddButton_Click(object sender, RoutedEventArgs e)
         {
+            if (app.appointmentController.IsTimeInFuture(MedicalAppointment.StartTime))
+            {
+                MessageBox.Show("You cannot add an hospital stay until or after the appointment");
+                return;
+            }
+
+            DateTime startDate = hospitalStayStartDate.SelectedDate.Value;
+            DateTime endDate = hospitalStayEndDate.SelectedDate.Value;
+
+            if (startDate.DayOfYear < DateTime.Now.DayOfYear)
+            {
+                MessageBox.Show("You can't select a before today!");
+                return;
+            }
+
+            if (endDate.DayOfYear < startDate.DayOfYear )
+            {
+                MessageBox.Show("You can't select a start day before the end date!");
+                return;
+            }
+
             try
             {
+                app.patientController.AddHospitalStay(Patient.User.Jmbg, HospitalStayBed, startDate, endDate);
                 NewHospitalStay.Visibility = Visibility.Collapsed;
                 ExtendHospitalStay.Visibility = Visibility.Visible;
-                app.patientController.AddHospitalStay(Patient.User.Jmbg, HospitalStayBed, hospitalStayStartDate.SelectedDate.Value, hospitalStayEndDate.SelectedDate.Value);
                 MessageBox.Show("Hospital stay successfully added!");
             }
             catch
@@ -265,9 +290,22 @@ namespace Hospital.View.Doctor
 
         private void HospitalStayExtendButton_Click(object sender, RoutedEventArgs e)
         {
+            DateTime selectedDate = extendedEndDate.SelectedDate.Value;
+            if (selectedDate.DayOfYear <= Patient.MedicalRecord.HospitalStay.EndDateTime.DayOfYear)
+            {
+                MessageBox.Show("You can't select a date before the curent end date!");
+                return;
+            }
+
+            if (selectedDate.DayOfYear < DateTime.Now.DayOfYear)
+            {
+                MessageBox.Show("You can't select a before today!");
+                return;
+            }
+
             try
             {
-                app.patientController.ExtendHospitalStay(Patient.User.Jmbg, extendedEndDate.SelectedDate.Value);
+                app.patientController.ExtendHospitalStay(Patient.User.Jmbg, selectedDate);
                 MessageBox.Show("Hospital stay successfully extended!");
             }
             catch
