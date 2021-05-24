@@ -43,9 +43,9 @@ namespace Controller
             return roomService.GenerateNewId();
         }
 
-        public void Renovation(int roomId, DateTime renovationDate)
+        public bool Renovation(int roomId, DateTime renovationDate, double duration)
         {
-            roomService.Renovation(roomId, renovationDate);
+            return roomService.Renovation(roomId, renovationDate, duration);
         }
 
         public List<Room> GetRoomsByRoomType(RoomType roomType)
@@ -56,11 +56,6 @@ namespace Controller
         public List<Room> GetRoomsWithEquipmentName(string name)
         {
             return roomService.GetRoomsWithEquipmentName(name);
-        }
-
-        public void MoveStaticEquipment(int staticId, int toRoom, DateTime time)
-        {
-            roomService.MoveStaticEquipment(staticId, toRoom, time);
         }
 
     }

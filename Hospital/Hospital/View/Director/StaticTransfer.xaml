@@ -30,7 +30,10 @@
         <TextBox x:Name="toRoom" HorizontalAlignment="Left" Margin="365,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="acceptButton" Content="Accept" HorizontalAlignment="Left" Margin="425,276,0,0" Visibility="Collapsed" Click="Accept_Transfer_Click" VerticalAlignment="Top" Height="30" Width="60"/>
         <Button x:Name="cancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="337,276,0,0" Visibility="Collapsed" Click="Cancel_Transfer_Click" VerticalAlignment="Top" Height="30" Width="63"/>
-        <DatePicker  x:Name="transfer_date" HorizontalAlignment="Left" Height="23" Margin="517,45,0,0" VerticalAlignment="Top" Width="138"/>
+        <DatePicker x:Name="date" HorizontalAlignment="Left" Margin="650,54,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="startTime" HorizontalAlignment="Left" Height="20" Margin="650,83,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="102"/>
+        <Label Content="Date:" HorizontalAlignment="Left" Height="24" Margin="571,54,0,0" VerticalAlignment="Top" Width="74"/>
+        <Label Content="Start Time:" HorizontalAlignment="Left" Height="24" Margin="571,85,0,0" VerticalAlignment="Top" Width="74"/>
 
     </Grid>
 </Window>

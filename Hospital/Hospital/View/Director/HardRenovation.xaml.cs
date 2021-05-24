@@ -57,7 +57,7 @@ namespace Hospital.View.Director
 
             DateTime renovationDateTime = SelectedDate();
 
-            renovationController.AttachRooms(roomA.Id, roomB.Id, renovationDateTime, Int32.Parse(duration.Text));
+            renovationController.AttachRooms(roomA.Id, roomB.Id, renovationDateTime, Double.Parse(duration.Text));
         }
 
         private void Dettach(string roomName)
@@ -65,7 +65,7 @@ namespace Hospital.View.Director
             Room room = roomController.GetByName(roomName);
             DateTime renovationDateTime = SelectedDate();
 
-            renovationController.DettachRooms(room.Id,renovationDateTime, Int32.Parse(duration.Text));
+            renovationController.DettachRooms(room.Id,renovationDateTime, Double.Parse(duration.Text));
         }
         private DateTime SelectedDate()
         {
