@@ -8,8 +8,9 @@ namespace Service
 {
     public class RoomService
     {
-        public RoomRepository roomRepository = new RoomRepository();
-        public StaticEquipmentRepository staticRepository = new StaticEquipmentRepository();
+        public readonly RoomRepository roomRepository = new RoomRepository();
+        public readonly AppointmentService appointmentService = new AppointmentService();
+        public readonly StaticEquipmentRepository staticRepository = new StaticEquipmentRepository();
         public List<Room> GetAll()
         {
             return roomRepository.GetAll();
@@ -52,16 +53,17 @@ namespace Service
             return roomRepository.GenerateNewId();
         }
 
-        public void Renovation(int roomId, DateTime renovationDate)
+        public bool Renovation(int roomId, DateTime renovationDate, double duration)
         {
-            if (renovationDate == DateTime.Today)
-            {
-                Room room = GetById(roomId);
-                room.Status = false;
-                Update(room);
-
+            AppointmentDTO appointment = new AppointmentDTO(renovationDate, duration, roomId);
+            if (appointmentService.IsRoomAvailable(appointment)){
+                appointmentService.SaveRenovation(appointment);
+                return true;
             }
-
+            else
+            {
+                return false;
+            }
         }
 
         public List<Room> GetRoomsWithEquipmentName(string name)
@@ -69,22 +71,20 @@ namespace Service
             return roomRepository.GetRoomsWithEquipmentName(name);
         }
 
-        public void MoveStaticEquipment(int staticId, int toRoom, DateTime time)
+        public void MoveStaticEquipment(int staticId, int toRoom)
         {
-            if (time.Ticks <= DateTime.Now.Ticks){
-                StaticEquipment staticEquipment = staticRepository.GetById(staticId);
-                Room room = GetById(staticEquipment.RoomId);
+            StaticEquipment staticEquipment = staticRepository.GetById(staticId);
+            Room room = GetById(staticEquipment.RoomId);
 
-                room.StaticEquipments.Remove(staticEquipment);
-                Room room2 = GetById(toRoom);
+            room.StaticEquipments.Remove(staticEquipment);
+            Room room2 = GetById(toRoom);
 
-                staticEquipment.RoomId = room2.Id;
-                room2.StaticEquipments.Add(staticEquipment);
-                staticRepository.Update(staticEquipment);
+            staticEquipment.RoomId = room2.Id;
+            room2.StaticEquipments.Add(staticEquipment);
+            staticRepository.Update(staticEquipment);
 
-                Update(room);
-                Update(room2);
-            }
+            Update(room);
+            Update(room2);
         }
 
 

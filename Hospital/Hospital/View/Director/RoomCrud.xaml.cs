@@ -105,10 +105,10 @@ namespace Hospital.View.Director
         }
 
         private void Renovation_Click(object sender, RoutedEventArgs e)
-        {// try
-            Room room = (Room)roomsDataGrid.SelectedItems[0];
-            roomController.Renovation(room.Id, renovationDate.SelectedDate.Value);
-            //zakazati renoviranje samo ubaci u appointment vreme ne treba logika nikakva
+        {
+            Renovation renovation = new Renovation();
+            renovation.Show();
+            
         }
 
         private void HardRenovation_Click(object sender, RoutedEventArgs e)

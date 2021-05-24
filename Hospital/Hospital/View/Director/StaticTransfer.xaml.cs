@@ -9,10 +9,10 @@ namespace Hospital.View.Director
 
     public partial class StaticTransfer : Window
     {
-        private StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
-        private RoomController roomController = new RoomController();
-        int id;
-        private List<StaticEquipment> staticEquipments = new List<StaticEquipment>();
+        private readonly StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
+        private readonly RoomController roomController = new RoomController();
+        private readonly MovingStaticController movingStaticController = new MovingStaticController();
+        int staticId;
         
         public StaticTransfer()
         {
@@ -27,7 +27,7 @@ namespace Hospital.View.Director
             acceptButton.Visibility = Visibility.Visible;
             cancelButton.Visibility = Visibility.Visible;
 
-            id = equipment.Id;
+            staticId = equipment.Id;
             name.Text = equipment.Name;
             toRoom.Text = equipment.RoomId.ToString();
         }
@@ -36,10 +36,10 @@ namespace Hospital.View.Director
         {
             try
             {
-                DateTime pickerDate = transfer_date.SelectedDate.Value;
-                DateTime TransferDateTime = new DateTime(pickerDate.Year, pickerDate.Month, pickerDate.Day, 00, 00, 00);
-                roomController.MoveStaticEquipment(id, Int32.Parse(toRoom.Text), TransferDateTime);
-                id = -1;
+                DateTime transferTime = SelectedDate();
+
+                movingStaticController.Save(staticId, Int32.Parse(toRoom.Text), transferTime);
+                staticId = -1;
                 Cancel_Transfer_Click(sender, e);
             }
             catch
@@ -54,6 +54,14 @@ namespace Hospital.View.Director
             toRoom.Text = "";
             acceptButton.Visibility = Visibility.Collapsed;
             cancelButton.Visibility = Visibility.Collapsed;
+        }
+        private DateTime SelectedDate()
+        {
+            DateTime pickedDate = date.SelectedDate.Value;
+            int hours = Int32.Parse(startTime.Text.Split(':')[0]);
+            int minutes = Int32.Parse(startTime.Text.Split(':')[1]);
+            DateTime renovationDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
+            return renovationDateTime;
         }
     }
 }

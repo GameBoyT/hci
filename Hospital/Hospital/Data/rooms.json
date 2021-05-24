@@ -66,6 +66,13 @@
         "Quantity": 1,
         "Description": "za spavanje",
         "Id": 4
+      },
+      {
+        "Name": "Anaesthesia",
+        "RoomId": 2,
+        "Quantity": 1,
+        "Description": "Anaesthesia machine",
+        "Id": 1
       }
     ],
     "Id": 2
