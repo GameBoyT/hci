@@ -15,9 +15,7 @@ namespace Hospital
         {
             InitializeComponent();
             RenovationTime();
-            //premestanje opreme
-            MoviStaticEquipment();
-                
+               
         }
 
         private void RenovationTime()
@@ -42,20 +40,6 @@ namespace Hospital
             }
         }
 
-        private void MoviStaticEquipment()
-        {
-            List<MovingStatic> listOfStatic = _movingStaticService.GetAll();
-            foreach (MovingStatic staticToMove in listOfStatic )
-            {
-                if (staticToMove.DateTime.Ticks <= DateTime.Now.Ticks)
-                {
-                    _roomService.MoveStaticEquipment(staticToMove.StaticId, staticToMove.RoomId);
-                    _movingStaticService.Delete(staticToMove.Id);
-                }
-
-            }
-
-        }
         private void Button_Click_Patient(object sender, RoutedEventArgs e)
         {
             var new_window = new PatientWindow();

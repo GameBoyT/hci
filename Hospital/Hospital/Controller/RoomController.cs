@@ -57,6 +57,10 @@ namespace Controller
         {
             return roomService.GetRoomsWithEquipmentName(name);
         }
+        public void MoveStaticEquipment(int staticId, int toRoom)
+        {
+            roomService.MoveStaticEquipment(staticId, toRoom);
+        }
 
     }
 }

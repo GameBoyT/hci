@@ -43,7 +43,7 @@ namespace Service
             _renovationRepository.Delete(renovationId);
         }
 
-        public void AttachRooms(int roomAId, int roomBId, DateTime dateTime, double duration)
+        public bool AttachRooms(int roomAId, int roomBId, DateTime dateTime, double duration)
         {
             AppointmentDTO appointment1 = new AppointmentDTO(dateTime, duration, roomAId);
             AppointmentDTO appointment2 = new AppointmentDTO(dateTime, duration, roomBId);
@@ -53,9 +53,11 @@ namespace Service
                 _appointmentService.SaveRenovation(appointment2);
                 RenovationAppointment renovation = new RenovationAppointment(GenerateNewId(), dateTime, duration, roomAId, roomBId, "bla", 0);
                 _renovationRepository.Save(renovation);
+                return true;
             }
+            return false;
         }
-        public void DettachRooms(int roomId, DateTime dateTime, double duration)
+        public bool DettachRooms(int roomId, DateTime dateTime, double duration)
         {
             AppointmentDTO appointment1 = new AppointmentDTO(dateTime, duration, roomId);
             if (_appointmentService.IsRoomAvailable(appointment1))
@@ -63,8 +65,9 @@ namespace Service
                 _appointmentService.SaveRenovation(appointment1);
                 RenovationAppointment renovation = new RenovationAppointment(GenerateNewId(), dateTime, duration, roomId, 0, "bla", 1);
                 _renovationRepository.Save(renovation);
+                return true;
             }
-
+            return false;
         }
     }
 }

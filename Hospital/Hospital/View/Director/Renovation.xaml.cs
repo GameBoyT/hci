@@ -27,7 +27,12 @@ namespace Hospital.View.Director
             {
                 Room room = (Room)roomsDataGrid.SelectedItems[0];
                 DateTime renovationDate = SelectedDate();
-                roomController.Renovation(room.Id ,renovationDate, Double.Parse(duration.Text));
+                bool goodDate = roomController.Renovation(room.Id ,renovationDate, Double.Parse(duration.Text));
+
+                if (!goodDate)
+                {
+                    MessageBox.Show("Ponovo zauzmite datum");
+                }
             }
             catch
             {
