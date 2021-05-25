@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Hospital.View.Secretary;
+using System.Windows;
 
 namespace Hospital
 {
@@ -58,6 +59,13 @@ namespace Hospital
         {
             View.Secretary.SecretaryUrgentAppointment secretaryUrgentAppointment = new View.Secretary.SecretaryUrgentAppointment();
             secretaryUrgentAppointment.Show();
+            this.Close();
+        }
+
+        private void Doctor_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryDoctorCRUD secretaryDoctorCRUD = new SecretaryDoctorCRUD();
+            secretaryDoctorCRUD.Show();
             this.Close();
         }
     }

@@ -4,15 +4,18 @@ namespace Model
 {
     public class Employee : Entity 
     {
-        public Employee(User user, EmployeeType employeeType)
+        public Employee(User user, EmployeeType employeeType,string specialization, string start, string end)
         {
             User = user;
             EmployeeType = employeeType;
+            this.StartWork = start;
+            this.EndWork = end;
             Appointments = new System.Collections.Generic.List<MedicalAppointment>();
             Notifications = new System.Collections.Generic.List<Notification>();
             Reviews = new System.Collections.Generic.List<Review>();
-            Specialization = "";
+            Specialization = specialization;
         }
+
 
         public User User { get; set; }
 
@@ -23,6 +26,10 @@ namespace Model
         public int AnnualLeave { get; set; }
 
         public int RoomId { get; set; }
+
+        public string StartWork { get; set; }
+
+        public string EndWork { get; set; }
 
         public string Specialization { get; set; }
 
