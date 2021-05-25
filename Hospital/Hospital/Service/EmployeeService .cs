@@ -1,6 +1,7 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace Service
 {
@@ -14,12 +15,28 @@ namespace Service
 
         public Employee GetByJmbg(String jmbg)
         {
+            
             return employeeRepository.GetByJmbg(jmbg);
         }
 
         public void Save(Employee employee)
         {
-            employeeRepository.Save(employee);
+            List<Employee> employees = employeeRepository.GetAll();
+            foreach (Employee employee1 in employees)
+            {
+                if(employee1.User.Jmbg == employee.User.Jmbg)
+                {
+                    MessageBox.Show("Isti jmbg", "greska");
+                    return;
+                }
+
+                if (employee1.User.Username == employee.User.Username)
+                {
+                    MessageBox.Show("Isti username", "greska");
+                    return;
+                }
+            }
+                employeeRepository.Save(employee);
         }
 
         public void Delete(String jmbg)
