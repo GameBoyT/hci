@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital.View.Doctor"
         mc:Ignorable="d"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
         Title="DoctorUpdateExamination" Height="450" Width="800">
     <Grid>
         <Label Content="Patient Details" HorizontalAlignment="Left" Margin="100,44,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2"/>

@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital.View.Doctor"
         mc:Ignorable="d"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
         Title="DoctorWindow" Height="450" Width="850">
 
     <Window.Resources>
@@ -36,8 +38,10 @@
 
     <Grid>
         <DataGrid x:Name="appointmentsDataGrid"
+              BorderThickness="1"
+              BorderBrush="Black"
               AutoGenerateColumns="False"
-              IsReadOnly="True" Margin="33,55,378,132">
+              IsReadOnly="True" Margin="33,55,325,132">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Type"
                             Binding="{Binding MedicalAppointmentType}" />
@@ -54,49 +58,47 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Content="Appointments" HorizontalAlignment="Left" Margin="185,21,0,0" VerticalAlignment="Top" Width="91"/>
+        <Label Content="Appointments" HorizontalAlignment="Left" Margin="234,24,0,0" VerticalAlignment="Top" Width="90"/>
 
-        <Label Content="Appointments date:" HorizontalAlignment="Left" Margin="33,320,0,0" VerticalAlignment="Top" Width="122"/>
-        <DatePicker x:Name="appointment_date" SelectedDateChanged="DatePicker_SelectedDateChanged" HorizontalAlignment="Left" Margin="160,322,0,0" VerticalAlignment="Top"/>
+        <Label Content="Appointments date:" HorizontalAlignment="Left" Margin="33,326,0,0" VerticalAlignment="Top" Width="140" Height="35"/>
+        <DatePicker x:Name="appointment_date" SelectedDateChanged="DatePicker_SelectedDateChanged" Margin="33,368,0,0" VerticalAlignment="Top" Width="120"/>
 
-        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="381" Margin="16,17,0,0" VerticalAlignment="Top" Width="452"/>
-
-        <Button HorizontalAlignment="Left" Margin="300,318,0,0" VerticalAlignment="Top" Click="View_Click" Height="28" Width="111">
+        <Button Margin="350,318,0,0" VerticalAlignment="Top" Click="View_Click" Height="35" Width="175">
             <Button.Content>
                 <TextBlock>
                     <Underline>V</Underline>iew Appointment
                 </TextBlock>
             </Button.Content>
         </Button>
-        <Button HorizontalAlignment="Left" Margin="300,354,0,0" VerticalAlignment="Top" Click="Update_Click" Height="28" Width="66">
+        <Button Margin="350,368,0,0" VerticalAlignment="Top" Click="Update_Click" Height="35" Width="75">
             <Button.Content>
                 <TextBlock>
                     <Underline>U</Underline>pdate
                 </TextBlock>
             </Button.Content>
         </Button>
-        <Button HorizontalAlignment="Center" Margin="0,354,0,0" VerticalAlignment="Top" Click="Delete_Click" Height="28" Width="62">
+        <Button Margin="450,368,0,0" VerticalAlignment="Top" Click="Delete_Click" Height="35" Width="75">
             <Button.Content>
                 <TextBlock>
                     <Underline>D</Underline>elete
                 </TextBlock>
             </Button.Content>
         </Button>
-        <Button HorizontalAlignment="Left" Margin="517,326,0,0" VerticalAlignment="Top" Height="31" Width="113" Click="NewExaminationButtonClick" >
+        <Button Margin="586,368,0,0" VerticalAlignment="Top" Height="35" Width="150" Click="NewExaminationButtonClick" >
             <Button.Content>
                 <TextBlock>
                     New <Underline>E</Underline>xamination
                 </TextBlock>
             </Button.Content>
         </Button>
-        <Button HorizontalAlignment="Left" Margin="663,326,0,0" VerticalAlignment="Top" Height="31" Width="101" Click="NewOperationButtonClick">
+        <Button Margin="586,318,0,0" Height="35" Width="150" Click="NewOperationButtonClick" VerticalAlignment="Top">
             <Button.Content>
                 <TextBlock>
                     New <Underline>O</Underline>peration
                 </TextBlock>
             </Button.Content>
         </Button>
-        <Button HorizontalAlignment="Left" Margin="693,29,0,0" VerticalAlignment="Top" Height="43" Width="71" Click="MedicineButton_Click">
+        <Button Margin="586,55,0,0" VerticalAlignment="Top" Height="35" Width="150" Click="MedicineButton_Click">
             <Button.Content>
                 <TextBlock>
                     <Underline>M</Underline>edicine

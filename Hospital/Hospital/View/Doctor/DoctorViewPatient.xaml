@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital.View.Doctor"
         mc:Ignorable="d"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
         Title="DoctorViewPatient" Height="450" Width="800">
     <Window.Resources>
         <ResourceDictionary>
@@ -39,7 +41,7 @@
 
         <TabControl>
             <TabItem Header="MedicalAppointment Details">
-                <Grid Background="#FFE5E5E5">
+                <Grid>
                     <Label Content="Patient Details" HorizontalAlignment="Left" Margin="100,44,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2"/>
                     <Grid Margin="30,75,550,160">
                         <Grid.RowDefinitions>
@@ -75,7 +77,9 @@
             </TabItem>
             <TabItem Header="Anamnesis">
                 <Grid>
-                    <ListView Margin="10,61,528,133" Name="lvDataBinding" PreviewMouseLeftButtonUp="listView_Click">
+                    <ListView Margin="10,61,528,133" Name="lvDataBinding" PreviewMouseLeftButtonUp="listView_Click"               
+                              BorderThickness="1"
+                              BorderBrush="Black">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <WrapPanel>
@@ -99,7 +103,9 @@
             </TabItem>
             <TabItem Header="Prescription">
                 <Grid>
-                    <ListView Margin="10,61,588,133" Name="lvPrescriptionDataBinding" PreviewMouseLeftButtonUp="listViewPrescription_Click">
+                    <ListView Margin="10,61,588,133" Name="lvPrescriptionDataBinding" PreviewMouseLeftButtonUp="listViewPrescription_Click"
+                                BorderThickness="1"
+                                BorderBrush="Black">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <WrapPanel>
@@ -111,7 +117,9 @@
 
                     <TextBlock HorizontalAlignment="Left" Margin="78,23,0,0" Text="Medicine" TextWrapping="Wrap" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="593,23,0,0" Text="Patients Prescriptions" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                    <ListView Margin="513,61,25,133" x:Name="lvPatientPrescriptionDataBinding" >
+                    <ListView Margin="513,61,25,133" x:Name="lvPatientPrescriptionDataBinding"
+                              BorderThickness="1"
+                              BorderBrush="Black">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <WrapPanel>
@@ -134,8 +142,10 @@
             <TabItem Header="Referral">
                 <Grid>
                     <DataGrid x:Name="doctorsDataGrid"
-                  AutoGenerateColumns="False"
-                  IsReadOnly="True" Margin="33,55,470,157">
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True" Margin="33,55,400,157"
+                              BorderThickness="1"
+                              BorderBrush="Black">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Jmbg"
                                 Binding="{Binding User.Jmbg}" />
@@ -160,7 +170,9 @@
                     <Canvas x:Name="NewHospitalStay">
 
                         <Label Content="Rooms:" HorizontalAlignment="Left" Margin="78,63,0,0" VerticalAlignment="Top" Width="60"/>
-                        <ListView Margin="10,112,588,82" x:Name="lvHospitalStayRoomsDataBinding" PreviewMouseLeftButtonUp="listViewHospitalStayRooms_Click" Height="218" Canvas.Left="10" Width="174">
+                        <ListView Margin="10,112,588,82" x:Name="lvHospitalStayRoomsDataBinding" PreviewMouseLeftButtonUp="listViewHospitalStayRooms_Click" Height="218" Canvas.Left="10" Width="174"
+                                  BorderThickness="1"
+                              BorderBrush="Black">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <WrapPanel>
@@ -171,7 +183,9 @@
                         </ListView>
 
                         <Label Content="Beds:" HorizontalAlignment="Left" Margin="337,71,0,0" VerticalAlignment="Top" Width="52"/>
-                        <ListView Margin="265,112,333,82" x:Name="lvRoomBedsDataBinding" PreviewMouseLeftButtonUp="listViewRoomBeds_Click" Height="212" Width="192">
+                        <ListView Margin="265,112,333,82" x:Name="lvRoomBedsDataBinding" PreviewMouseLeftButtonUp="listViewRoomBeds_Click" Height="212" Width="192"
+                                  BorderThickness="1"
+                              BorderBrush="Black">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <WrapPanel>
@@ -187,7 +201,7 @@
                         <Label Content="End date:" HorizontalAlignment="Left" Margin="489,165,0,0" VerticalAlignment="Top" Width="122"/>
                         <DatePicker x:Name="hospitalStayEndDate" HorizontalAlignment="Left" Margin="627,167,0,0" VerticalAlignment="Top"/>
 
-                        <Button Content="Add Hospital Stay" HorizontalAlignment="Left" Margin="604,294,0,0" VerticalAlignment="Top" Height="30" Width="125" Click="HospitalStayAddButton_Click"/>
+                        <Button Content="Add Hospital Stay" Margin="604,294,0,0" Height="35" Width="150" Click="HospitalStayAddButton_Click" />
                     </Canvas>
                     <Canvas x:Name="ExtendHospitalStay"  Visibility="Collapsed">
                         <!--<Grid Margin="30,75,550,160">
