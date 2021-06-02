@@ -107,6 +107,24 @@
         "DurationInMinutes": 15.0,
         "RoomId": 1,
         "Id": 14
+      },
+      {
+        "MedicalAppointmentType": 0,
+        "DoctorJmbg": "1",
+        "PatientJmbg": "5",
+        "StartTime": "2021-06-02T10:00:00",
+        "DurationInMinutes": 15.0,
+        "RoomId": 1,
+        "Id": 15
+      },
+      {
+        "MedicalAppointmentType": 0,
+        "DoctorJmbg": "1",
+        "PatientJmbg": "5",
+        "StartTime": "2021-06-02T10:15:00",
+        "DurationInMinutes": 15.0,
+        "RoomId": 1,
+        "Id": 16
       }
     ],
     "Notifications": [
@@ -144,6 +162,20 @@
         "ReceiverJmbg": "5",
         "DateTimeOfSending": "2021-06-01T21:14:58.1412389+02:00",
         "Id": 6
+      },
+      {
+        "NotificationText": "Zakazan je pregled za pacijenta Zarko Zarkovic koji ima zakazan pregled kod lekara Tovilovic trajanje pregleda je 15 minuta, a datum je 6/2/2021 10:00:00 AM",
+        "SenderJmbg": "1",
+        "ReceiverJmbg": "5",
+        "DateTimeOfSending": "2021-06-02T09:24:58.827308+02:00",
+        "Id": 7
+      },
+      {
+        "NotificationText": "Zakazan je pregled za pacijenta Zarko Zarkovic koji ima zakazan pregled kod lekara Tovilovic trajanje pregleda je 15 minuta, a datum je 6/2/2021 10:15:00 AM",
+        "SenderJmbg": "1",
+        "ReceiverJmbg": "5",
+        "DateTimeOfSending": "2021-06-02T10:03:51.0217528+02:00",
+        "Id": 8
       }
     ],
     "Reminders": [],

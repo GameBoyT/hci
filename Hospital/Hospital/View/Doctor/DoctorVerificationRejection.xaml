@@ -11,7 +11,7 @@
     <Grid>
         <Label Content="Rejection Reason: " HorizontalAlignment="Center" Margin="0,22,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="111"></Label>
         <TextBox x:Name="MedicineRejectionText" HorizontalAlignment="Center" Margin="0,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" Height="170"/>
-        <Button Content="Reject" HorizontalAlignment="Left" Margin="258,283,0,0" VerticalAlignment="Top" Height="30" Width="56" Click="RejectButton_Click"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="74,283,0,0" VerticalAlignment="Top" Height="30" Width="56" Click="CancelButton_Click"/>
+        <Button Content="Reject" HorizontalAlignment="Left" Margin="258,283,0,0" VerticalAlignment="Top" Height="35" Width="56" Click="RejectButton_Click"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="74,283,0,0" VerticalAlignment="Top" Height="35" Width="56" Click="CancelButton_Click"/>
     </Grid>
 </Window>
