@@ -10,34 +10,9 @@ namespace Hospital
     {
         private readonly RenovationService _renovationService = new RenovationService();
         private readonly RoomService _roomService = new RoomService();
-        private readonly MovingStaticService _movingStaticService = new MovingStaticService();
         public MainWindow()
         {
-            InitializeComponent();
-            RenovationTime();
-               
-        }
-
-        private void RenovationTime()
-        {
-            List<RenovationAppointment> renovations = _renovationService.GetAll();
-            foreach (RenovationAppointment renovation in renovations)
-            {
-                if (renovation.StartTime.Ticks <= DateTime.Now.Ticks)
-                {
-                    if (renovation.Type == 0)
-                    {
-                        _roomService.AttachRooms(renovation.RoomId, renovation.RoomBId);
-                        _renovationService.Delete(renovation.Id);
-                    }
-                    else
-                    {
-                        _roomService.DettachRooms(renovation.RoomId);
-                        _renovationService.Delete(renovation.Id);
-                    }
-                }
-
-            }
+            InitializeComponent();               
         }
 
         private void Button_Click_Patient(object sender, RoutedEventArgs e)

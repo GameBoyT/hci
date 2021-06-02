@@ -33,10 +33,14 @@ namespace Hospital.View.Director
                 {
                     MessageBox.Show("Ponovo zauzmite datum");
                 }
+                else
+                {
+                    MessageBox.Show("Uspesno ste zakazali renoviranje");
+                }
             }
             catch
             {
-                MessageBox.Show("Ponovo zauzmite datum");               
+                MessageBox.Show("Niste zauzeli datum");               
             }
 
         }

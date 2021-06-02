@@ -11,14 +11,41 @@ namespace Hospital.View.Director
     public partial class RoomCrud : Window
     {
         private readonly RoomController roomController = new RoomController();
+        private readonly RenovationController renovationController = new RenovationController();
         private int id; 
-        List<Room> roomsToShow = new List<Room>();
+       
 
         public RoomCrud()
         {
             InitializeComponent();
-            roomsToShow = roomController.GetAll();
+            RenovationTime();
+            List<Room> roomsToShow = roomController.GetAll();
             roomsDataGrid.ItemsSource = roomsToShow;
+        }
+        private void RenovationTime()
+        {
+            List<RenovationAppointment> renovations = renovationController.GetAll();
+
+            foreach (RenovationAppointment renovation in renovations)
+            {
+                if (renovation.StartTime.Ticks <= DateTime.Now.Ticks)
+                {
+                    DoRenovation(renovation);
+                }
+
+            }
+        }
+        private void DoRenovation(RenovationAppointment renovation)
+        {
+            if (renovation.Type == 0)
+            {
+                roomController.AttachRooms(renovation.RoomId, renovation.RoomBId);
+            }
+            else
+            {
+                roomController.DettachRooms(renovation.RoomId);
+            }
+            renovationController.Delete(renovation.Id);
         }
         private Room CreateRoom()
         {
