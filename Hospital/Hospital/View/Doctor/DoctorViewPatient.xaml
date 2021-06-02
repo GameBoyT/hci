@@ -87,6 +87,7 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
+                    <fa:ImageAwesome Icon="UserCircle" Grid.Column="2" Margin="0,21,124,0" Grid.Row="1" HorizontalAlignment="Right" Width="155" Height="141" VerticalAlignment="Top"  />
                 </Grid>
             </TabItem>
             <TabItem Header="Anamnesis">
