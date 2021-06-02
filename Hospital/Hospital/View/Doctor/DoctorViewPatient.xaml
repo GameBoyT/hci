@@ -214,10 +214,10 @@
                                 Binding="{Binding Specialization}" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Label Content="Doctors: " HorizontalAlignment="Center" Margin="0,0,0,10" Grid.Column="1" Height="19" VerticalAlignment="Bottom"/>
+                    <Label Content="Doctors" HorizontalAlignment="Center" Margin="0,0,0,10" Grid.Column="1" Height="19" VerticalAlignment="Bottom"/>
                     <Label Content="Specialization needed:" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="155" RenderTransformOrigin="0.529,-0.638" Grid.Row="2" Grid.Column="1"/>
                     <TextBox x:Name="specializationName" Margin="170,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="specializationName_TextChanged" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="120"/>
-                    <Label Content="Referral details: " HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Bottom" Grid.Column="3"/>
+                    <Label Content="Referral details" HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Bottom" Grid.Column="3"/>
                     <TextBox Text="{Binding Path=ReferralDescriptionText}" IsEnabled="{Binding Path=IsAppointmentTime}" TextWrapping="Wrap" Grid.Column="3" Margin="10,10,10,10" Grid.Row="1"/>
                     <Button Content="Add Referral" Margin="0,10,10,0" VerticalAlignment="Top" Width="125" Click="ReferralAddButton_Click" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Right" Height="35"/>
                     <Button Margin="10,0,0,30" VerticalAlignment="Bottom" Width="75" Click="BackButton_Click" Height="35" Grid.Row="2" Grid.Column="1">
@@ -250,7 +250,7 @@
                                 <ColumnDefinition Width="45"/>
                             </Grid.ColumnDefinitions>
 
-                            <Label Content="Rooms:" HorizontalAlignment="Center" VerticalAlignment="Center" Width="46" Grid.Column="1" Height="19"/>
+                            <Label Content="Rooms" HorizontalAlignment="Center" VerticalAlignment="Center" Width="46" Grid.Column="1" Height="19"/>
                             <ListView Margin="10,10,10,10" x:Name="lvHospitalStayRoomsDataBinding" PreviewMouseLeftButtonUp="listViewHospitalStayRooms_Click"
                                   BorderThickness="1"
                               BorderBrush="Black" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
@@ -263,7 +263,7 @@
                                 </ListView.ItemTemplate>
                             </ListView>
 
-                            <Label Content="Beds:" HorizontalAlignment="Center" VerticalAlignment="Center" Width="34" Grid.Column="3" Height="19"/>
+                            <Label Content="Beds" HorizontalAlignment="Center" VerticalAlignment="Center" Width="34" Grid.Column="3" Height="19"/>
                             <ListView Margin="10,10,10,10" x:Name="lvRoomBedsDataBinding" PreviewMouseLeftButtonUp="listViewRoomBeds_Click"
                                   BorderThickness="1"
                               BorderBrush="Black" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2">

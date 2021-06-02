@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital.View.Doctor"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True"
@@ -63,46 +64,63 @@
         <Label Content="Appointments date:" HorizontalAlignment="Left" Margin="33,326,0,0" VerticalAlignment="Top" Width="140" Height="35"/>
         <DatePicker x:Name="appointment_date" SelectedDateChanged="DatePicker_SelectedDateChanged" Margin="33,368,0,0" VerticalAlignment="Top" Width="120"/>
 
-        <Button Margin="350,318,0,0" VerticalAlignment="Top" Click="View_Click" Height="35" Width="175">
+        <Button Margin="400,318,0,0" VerticalAlignment="Top" Click="View_Click" Height="35" Width="125">
             <Button.Content>
-                <TextBlock>
-                    <Underline>V</Underline>iew Appointment
-                </TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="AddressCard" Width="40" Foreground="#2596be"/>
+                    <TextBlock><Underline><Run Text="V"/></Underline><Run Text="iew"/></TextBlock>
+                </StackPanel>
             </Button.Content>
         </Button>
-        <Button Margin="350,368,0,0" VerticalAlignment="Top" Click="Update_Click" Height="35" Width="75">
+
+        <Button Margin="400,368,0,0" VerticalAlignment="Top" Click="Update_Click" Height="35" Width="125">
             <Button.Content>
-                <TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Edit" Width="40" Foreground="#2596be"/>
+                    <TextBlock>
                     <Underline>U</Underline>pdate
-                </TextBlock>
+                    </TextBlock>
+                </StackPanel>
             </Button.Content>
         </Button>
-        <Button Margin="450,368,0,0" VerticalAlignment="Top" Click="Delete_Click" Height="35" Width="75">
+        <Button Margin="248,368,0,0" VerticalAlignment="Top" Click="Delete_Click" Height="35" Width="125">
             <Button.Content>
-                <TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Trash" Width="40" Foreground="#2596be"/>
+                    <TextBlock>
                     <Underline>D</Underline>elete
-                </TextBlock>
+                    </TextBlock>
+                </StackPanel>
             </Button.Content>
         </Button>
-        <Button Margin="586,368,0,0" VerticalAlignment="Top" Height="35" Width="150" Click="NewExaminationButtonClick" >
+        <Button Margin="586,368,0,0" VerticalAlignment="Top" Height="35" Width="175" Click="NewExaminationButtonClick" >
             <Button.Content>
-                <TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Stethoscope" Width="40" Foreground="#2596be"/>
+                    <TextBlock>
                     New <Underline>E</Underline>xamination
-                </TextBlock>
+                    </TextBlock>
+                </StackPanel>
             </Button.Content>
         </Button>
-        <Button Margin="586,318,0,0" Height="35" Width="150" Click="NewOperationButtonClick" VerticalAlignment="Top">
+        <Button Margin="586,318,0,0" Height="35" Width="175" Click="NewOperationButtonClick" VerticalAlignment="Top">
             <Button.Content>
-                <TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Ambulance" Width="40" Foreground="#2596be"/>
+                    <TextBlock>
                     New <Underline>O</Underline>peration
-                </TextBlock>
+                    </TextBlock>
+                </StackPanel>
             </Button.Content>
         </Button>
-        <Button Margin="586,55,0,0" VerticalAlignment="Top" Height="35" Width="150" Click="MedicineButton_Click">
+        <Button Margin="586,55,0,0" VerticalAlignment="Top" Height="35" Width="175" Click="MedicineButton_Click">
             <Button.Content>
-                <TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Medkit" Width="40" Foreground="#2596be"/>
+                    <TextBlock>
                     <Underline>M</Underline>edicine
-                </TextBlock>
+                    </TextBlock>
+                </StackPanel>
             </Button.Content>
         </Button>
     </Grid>

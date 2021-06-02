@@ -9,7 +9,9 @@
         ui:WindowHelper.UseModernWindowStyle="True"
         Title="DoctorMedicine" Height="450" Width="800">
     <Grid>
-        <ListView Margin="10,61,555,133" Name="lvMedicineDataBinding" PreviewMouseLeftButtonUp="lvMedicineDataBinding_PreviewMouseLeftButtonUp">
+        <ListView Margin="10,61,555,133" Name="lvMedicineDataBinding" PreviewMouseLeftButtonUp="lvMedicineDataBinding_PreviewMouseLeftButtonUp"
+                    BorderThickness="1"
+                    BorderBrush="Black">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
@@ -26,7 +28,9 @@
         <Button Content="Edit Medicine" HorizontalAlignment="Left" Margin="443,286,0,0" VerticalAlignment="Top" Height="35" Width="85" Click="EditMedicineButton_Click"/>
 
         <Label Content="Ingredients: " HorizontalAlignment="Left" Margin="618,61,0,0" VerticalAlignment="Top"/>
-        <ListView Margin="544,92,32,227" Name="lvIngredientsDataBinding">
+        <ListView Margin="544,92,32,227" Name="lvIngredientsDataBinding"
+                  BorderThickness="1"
+                    BorderBrush="Black">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
@@ -37,7 +41,9 @@
         </ListView>
 
         <Label Content="Alternatives: " HorizontalAlignment="Left" Margin="617,217,0,0" VerticalAlignment="Top"/>
-        <ListView Margin="544,248,32,71" x:Name="lvAlternativesDataBinding">
+        <ListView Margin="544,248,32,71" x:Name="lvAlternativesDataBinding"
+                  BorderThickness="1"
+                    BorderBrush="Black">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
