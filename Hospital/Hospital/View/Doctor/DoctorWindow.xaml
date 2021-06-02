@@ -38,11 +38,24 @@
     </Window.CommandBindings>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="45"/>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="45"/>
+        </Grid.ColumnDefinitions>
         <DataGrid x:Name="appointmentsDataGrid"
               BorderThickness="1"
               BorderBrush="Black"
               AutoGenerateColumns="False"
-              IsReadOnly="True" Margin="33,55,325,132">
+              IsReadOnly="True" Margin="10,10,10,10" Grid.Column="1" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Type"
                             Binding="{Binding MedicalAppointmentType}" />
@@ -59,12 +72,12 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Content="Appointments" HorizontalAlignment="Left" Margin="234,24,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label Content="Appointments" HorizontalAlignment="Center" Margin="0,16,0,0" Width="90" Grid.Column="1" Height="19" VerticalAlignment="Top"/>
 
-        <Label Content="Appointments date:" HorizontalAlignment="Left" Margin="33,326,0,0" VerticalAlignment="Top" Width="140" Height="35"/>
-        <DatePicker x:Name="appointment_date" SelectedDateChanged="DatePicker_SelectedDateChanged" Margin="33,368,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Appointments date:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="140" Height="35" Grid.Column="1" Grid.Row="2"/>
+        <DatePicker x:Name="appointment_date" SelectedDateChanged="DatePicker_SelectedDateChanged" Margin="10,65,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="2" Height="32"/>
 
-        <Button Margin="400,318,0,0" VerticalAlignment="Top" Click="View_Click" Height="35" Width="125">
+        <Button Margin="0,10,10,0" VerticalAlignment="Top" Click="View_Click" Height="35" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Width="125">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="AddressCard" Width="40" Foreground="#2596be"/>
@@ -73,7 +86,7 @@
             </Button.Content>
         </Button>
 
-        <Button Margin="400,368,0,0" VerticalAlignment="Top" Click="Update_Click" Height="35" Width="125">
+        <Button Margin="0,65,10,0" VerticalAlignment="Top" Click="Update_Click" Height="35" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Width="125">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Edit" Width="40" Foreground="#2596be"/>
@@ -83,7 +96,7 @@
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Button Margin="248,368,0,0" VerticalAlignment="Top" Click="Delete_Click" Height="35" Width="125">
+        <Button Margin="0,65,155,0" VerticalAlignment="Top" Click="Delete_Click" Height="35" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Width="125">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Trash" Width="40" Foreground="#2596be"/>
@@ -93,7 +106,7 @@
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Button Margin="586,368,0,0" VerticalAlignment="Top" Height="35" Width="175" Click="NewExaminationButtonClick" >
+        <Button Margin="0,65,10,0" VerticalAlignment="Top" Click="NewExaminationButtonClick" Height="35" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Right" Width="175" >
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Stethoscope" Width="40" Foreground="#2596be"/>
@@ -103,7 +116,7 @@
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Button Margin="586,318,0,0" Height="35" Width="175" Click="NewOperationButtonClick" VerticalAlignment="Top">
+        <Button Margin="0,10,10,0" Height="35" Click="NewOperationButtonClick" VerticalAlignment="Top" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Right" Width="175">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Ambulance" Width="40" Foreground="#2596be"/>
@@ -113,12 +126,42 @@
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Button Margin="586,55,0,0" VerticalAlignment="Top" Height="35" Width="175" Click="MedicineButton_Click">
+        <Button Margin="0,0,10,10" VerticalAlignment="Bottom" Width="175" Click="MedicineButton_Click" Grid.Column="3" HorizontalAlignment="Right" Grid.Row="1" Height="35">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Medkit" Width="40" Foreground="#2596be"/>
                     <TextBlock>
                     <Underline>M</Underline>edicine
+                    </TextBlock>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button Margin="0,0,10,65" VerticalAlignment="Bottom" Height="35" Click="MedicineButton_Click" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right" Width="175">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Desktop" Width="40" Foreground="#2596be"/>
+                    <TextBlock>
+                    <Underline>D</Underline>emo
+                    </TextBlock>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button Margin="0,0,10,120" VerticalAlignment="Bottom" Width="175" Click="MedicineButton_Click" Grid.Column="3" HorizontalAlignment="Right" Grid.Row="1" Height="35">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="StickyNote" Width="40" Foreground="#2596be"/>
+                    <TextBlock>
+                    <Underline>S</Underline>hortcuts
+                    </TextBlock>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button Margin="0,10,10,0" VerticalAlignment="Top" Height="35" Click="MedicineButton_Click" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right" Width="175">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="SignOut" Width="40" Foreground="#2596be"/>
+                    <TextBlock>
+                    <Underline>L</Underline>og out
                     </TextBlock>
                 </StackPanel>
             </Button.Content>

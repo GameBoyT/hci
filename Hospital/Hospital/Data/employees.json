@@ -16,7 +16,7 @@
     "RoomId": 1,
     "StartWork": null,
     "EndWork": null,
-    "Specialization": null,
+    "Specialization": "Surgeon",
     "Appointments": [
       {
         "MedicalAppointmentType": 0,
@@ -130,7 +130,7 @@
     "RoomId": 2,
     "StartWork": null,
     "EndWork": null,
-    "Specialization": null,
+    "Specialization": "Pediatrician",
     "Appointments": [],
     "Notifications": [],
     "Reviews": [],

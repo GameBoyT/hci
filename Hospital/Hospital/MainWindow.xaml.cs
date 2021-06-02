@@ -17,7 +17,11 @@ namespace Hospital
             RenovationTime();
             //premestanje opreme
             MoviStaticEquipment();
-                
+
+            View.Doctor.DoctorWindow doctorWindow = new View.Doctor.DoctorWindow();
+            doctorWindow.Show();
+            this.Close();
+
         }
 
         private void RenovationTime()
