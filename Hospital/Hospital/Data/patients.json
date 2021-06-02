@@ -32,7 +32,70 @@
         "Alergija na polen",
         "Alergija na dlake"
       ],
-      "Prescription": [],
+      "Prescription": [
+        {
+          "Interval": 0,
+          "StartDate": "2021-06-02T10:52:02.2930844+02:00",
+          "EndDate": "0001-01-01T00:00:00",
+          "Description": "adsf",
+          "Quantity": 15,
+          "Medicine": {
+            "Name": "Aspirin",
+            "Verification": 0,
+            "Description": "opis2aa",
+            "DoctorComment": "",
+            "Ingredients": [
+              "a",
+              "v",
+              "cc",
+              "x"
+            ],
+            "Alternatives": [
+              {
+                "Name": "Amoksicilin",
+                "Verification": 0,
+                "Description": "123",
+                "DoctorComment": "",
+                "Ingredients": [],
+                "Alternatives": [],
+                "Id": 3
+              },
+              {
+                "Name": "Aspirin",
+                "Verification": 0,
+                "Description": "opis2",
+                "DoctorComment": "",
+                "Ingredients": [
+                  "a",
+                  "b"
+                ],
+                "Alternatives": [
+                  {
+                    "Name": "Amoksicilin",
+                    "Verification": 0,
+                    "Description": "123",
+                    "DoctorComment": "",
+                    "Ingredients": [],
+                    "Alternatives": [],
+                    "Id": 3
+                  }
+                ],
+                "Id": 1
+              },
+              {
+                "Name": "Brufen",
+                "Verification": 0,
+                "Description": "opis4",
+                "DoctorComment": "",
+                "Ingredients": [],
+                "Alternatives": [],
+                "Id": 4
+              }
+            ],
+            "Id": 1
+          }
+        }
+      ],
       "Anamnesis": [
         {
           "Id": 1,

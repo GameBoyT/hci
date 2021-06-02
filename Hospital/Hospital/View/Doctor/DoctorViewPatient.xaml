@@ -79,8 +79,8 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="75*"/>
-                        <RowDefinition Height="199*"/>
-                        <RowDefinition Height="58*"/>
+                        <RowDefinition Height="200*"/>
+                        <RowDefinition Height="60*"/>
                         <RowDefinition Height="82*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -109,9 +109,9 @@
                     <TextBlock HorizontalAlignment="Left" Margin="88,32,0,0" Text="Anamnesis" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="67" Grid.Column="1"/>
                     <TextBlock HorizontalAlignment="Center" Text="Anamnesis Details" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="3" Height="19" Width="70" Margin="0,32,0,0"/>
                     <TextBox Text="{Binding Path=DetailText}" IsEnabled="{Binding Path=IsAppointmentTime}" TextWrapping="Wrap" Grid.Column="3" Grid.RowSpan="2" Margin="0,75,0,0"/>
-                    <Button Content="Save Changes" Margin="172,23,0,0" VerticalAlignment="Top" Height="35" Width="125" Click="SaveChangesButton_Click" Grid.Column="3" Grid.Row="2"/>
-                    <Button Content="Add New" Margin="137,23,0,0" VerticalAlignment="Top" Height="35" Width="124" Click="AddNewButton_Click" Grid.Row="2" Grid.Column="1"/>
-                    <Button Content="Cancel" Margin="0,23,0,0" VerticalAlignment="Top" Height="35" Width="125" Click="CancelButton_Click" Grid.Column="3" Grid.Row="2"/>
+                    <Button Content="Save Changes" Margin="0,0,0,0" VerticalAlignment="Bottom" Height="35" Width="125" Click="SaveChangesButton_Click" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Right"/>
+                    <Button Content="Add New" Margin="0,0,0,0" VerticalAlignment="Bottom" Height="35" Click="AddNewButton_Click" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Width="125"/>
+                    <Button Content="Cancel" Margin="0,0,0,0" VerticalAlignment="Bottom" Height="35" Width="125" Click="CancelButton_Click" Grid.Column="3" Grid.Row="2"/>
                     <Button Margin="0,14,0,0" Height="35" Width="75" Click="BackButton_Click" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top">
                         <Button.Content>
                             <TextBlock>
@@ -124,24 +124,24 @@
             <TabItem Header="Prescription">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="72*"/>
-                        <RowDefinition Height="215*"/>
-                        <RowDefinition Height="17*"/>
+                        <RowDefinition Height="75*"/>
+                        <RowDefinition Height="200*"/>
+                        <RowDefinition Height="29*"/>
                         <RowDefinition Height="111*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40*"/>
-                        <ColumnDefinition Width="187*"/>
-                        <ColumnDefinition Width="97*"/>
-                        <ColumnDefinition Width="161*"/>
-                        <ColumnDefinition Width="63*"/>
-                        <ColumnDefinition Width="168*"/>
-                        <ColumnDefinition Width="45*"/>
+                        <ColumnDefinition Width="42*"/>
+                        <ColumnDefinition Width="206*"/>
+                        <ColumnDefinition Width="93*"/>
+                        <ColumnDefinition Width="169*"/>
+                        <ColumnDefinition Width="66*"/>
+                        <ColumnDefinition Width="177*"/>
+                        <ColumnDefinition Width="47*"/>
                     </Grid.ColumnDefinitions>
 
                     <ListView Name="lvPrescriptionDataBinding" PreviewMouseLeftButtonUp="listViewPrescription_Click"
                                 BorderThickness="1"
-                                BorderBrush="Black" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,66,0">
+                                BorderBrush="Black" Grid.Column="3" Margin="0,72,0,0" Grid.RowSpan="2">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <WrapPanel>
@@ -152,10 +152,10 @@
                     </ListView>
 
                     <TextBlock HorizontalAlignment="Center" Text="Medicine" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="3" Height="19" Width="58"/>
-                    <TextBlock HorizontalAlignment="Center" Text="Patients Prescriptions" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="1" Height="19" Width="133"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Patients Prescriptions" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="1" Height="19" Width="134"/>
                     <ListView x:Name="lvPatientPrescriptionDataBinding"
                               BorderThickness="1"
-                              BorderBrush="Black" Grid.Row="1" Grid.ColumnSpan="3" Margin="42,0,102,0">
+                              BorderBrush="Black" Grid.Column="1" Grid.Row="1">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <WrapPanel>
@@ -167,11 +167,11 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <Label Content="Quantity: " HorizontalAlignment="Left" Margin="66,0,0,6" VerticalAlignment="Bottom" Grid.Column="4" Grid.Row="1" Height="19" Width="58" Grid.ColumnSpan="2"/>
-                    <TextBox Text="{Binding Path=Quantity}"  IsEnabled="{Binding Path=IsAppointmentTime}" Margin="0,0,0,0" TextWrapping="Wrap" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Right" Width="71" Height="32" VerticalAlignment="Bottom"/>
+                    <Label Content="Quantity: " HorizontalAlignment="Left" Margin="0,0,0,6" VerticalAlignment="Bottom" Grid.Column="5" Grid.Row="1" Height="19" Width="58"/>
+                    <TextBox Text="{Binding Path=Quantity}"  IsEnabled="{Binding Path=IsAppointmentTime}" Margin="0,0,0,0" TextWrapping="Wrap" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Right" Width="70" Height="32" VerticalAlignment="Bottom"/>
                     <Label Content="Enter Use Description: " HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="5" Height="19" Width="140"/>
-                    <TextBox Text="{Binding Path=DescriptionText}" IsEnabled="{Binding Path=IsAppointmentTime}" TextWrapping="Wrap" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Center" Width="176" Height="122" VerticalAlignment="Top"/>
-                    <Button Content="Add Prescription" Margin="52,17,0,0" VerticalAlignment="Top" Height="35" Width="125" Click="PrescriptionAddButton_Click" Grid.Column="5" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                    <TextBox Text="{Binding Path=DescriptionText}" IsEnabled="{Binding Path=IsAppointmentTime}" TextWrapping="Wrap" Grid.Column="5" HorizontalAlignment="Center" Width="176" Height="122" VerticalAlignment="Top" Margin="0,72,0,0" Grid.RowSpan="2"/>
+                    <Button Content="Add Prescription" Margin="0,0,0,76" VerticalAlignment="Bottom" Click="PrescriptionAddButton_Click" Grid.Column="5" Grid.Row="2" Grid.RowSpan="2" Width="125" HorizontalAlignment="Right" Height="35"/>
                     <Button Content="Back" Margin="40,43,0,0" VerticalAlignment="Top" Height="35" Width="75" Click="BackButton_Click" Grid.ColumnSpan="2" Grid.Row="3"/>
                 </Grid>
             </TabItem>
