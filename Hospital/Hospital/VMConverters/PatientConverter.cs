@@ -11,21 +11,22 @@ namespace Hospital.VMConverters
     {
         public PatientViewModel ConvertModelToViewModel(Patient patient)
         {
-            PatientViewModel patientViewModel = new PatientViewModel();
-
-            patientViewModel.Jmbg = patient.User.Jmbg;
-            patientViewModel.FirstName = patient.User.FirstName;
-            patientViewModel.LastName = patient.User.LastName;
-            patientViewModel._Patient = patient;
+            PatientViewModel patientViewModel = new PatientViewModel
+            {
+                Jmbg = patient.User.Jmbg,
+                FirstName = patient.User.FirstName,
+                LastName = patient.User.LastName,
+                _Patient = patient
+            };
 
             return patientViewModel;
         }
 
-        public ObservableCollection<PatientViewModel> ConvertCollectionToViewModel(ObservableCollection<Patient> students)
+        public ObservableCollection<PatientViewModel> ConvertCollectionToViewModel(List<Patient> patients)
         {
             ObservableCollection<PatientViewModel> vmPatients = new ObservableCollection<PatientViewModel>();
             PatientViewModel patientViewModel;
-            foreach (Patient patient in students)
+            foreach (Patient patient in patients)
             {
                 patientViewModel = ConvertModelToViewModel(patient);
                 vmPatients.Add(patientViewModel);

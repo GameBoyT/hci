@@ -137,7 +137,17 @@
     "RoomType": 1,
     "Floor": 0,
     "Detail": "Operation room 1",
-    "Appointments": [],
+    "Appointments": [
+      {
+        "MedicalAppointmentType": 1,
+        "DoctorJmbg": "1",
+        "PatientJmbg": "5",
+        "StartTime": "2021-06-03T20:20:00",
+        "DurationInMinutes": 30.0,
+        "RoomId": 3,
+        "Id": 17
+      }
+    ],
     "StaticEquipments": [
       {
         "Name": "Anaesthesia",

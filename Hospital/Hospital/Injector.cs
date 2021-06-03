@@ -12,25 +12,27 @@ namespace Hospital
     {
         private PatientService patientService = new PatientService();
 
-        //private TeacherService teacherService = new TeacherService();
+        private EmployeeService employeeService = new EmployeeService();
 
         //private ClassesService subjectService = new ClassesService();
 
-        //private TeacherConverter teacherConverter = new TeacherConverter();
+        private EmployeeConverter employeeConverter = new EmployeeConverter();
 
         //private SubjectConverter subjectConverter = new SubjectConverter();
 
         private PatientConverter patientConverter = new PatientConverter();
+
+        private AppointmentConverter appointmentConverter = new AppointmentConverter();
 
         public PatientService PatientService
         {
             get { return patientService; }
         }
 
-        //public TeacherService TeacherService
-        //{
-        //    get { return teacherService; }
-        //}
+        public EmployeeService EmployeeService
+        {
+            get { return employeeService; }
+        }
 
         //public ClassesService SubjectService
         //{
@@ -42,14 +44,20 @@ namespace Hospital
         //    get { return subjectConverter; }
         //}
 
-        //public TeacherConverter TeacherConverter
-        //{
-        //    get { return teacherConverter; }
-        //}
+        public EmployeeConverter EmployeeConverter
+        {
+            get { return employeeConverter; }
+        }
 
         public PatientConverter PatientConverter
         {
             get { return patientConverter; }
+        }
+
+        public AppointmentConverter AppointmentConverter 
+        { 
+            get { return appointmentConverter; }
+
         }
     }
 }

@@ -16,11 +16,11 @@
               IsReadOnly="True" Margin="33,55,521,120">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Jmbg"
-                            Binding="{Binding User.Jmbg}" />
+                            Binding="{Binding Jmbg}" />
                 <DataGridTextColumn Header="First Name"
-                            Binding="{Binding User.FirstName}" />
+                            Binding="{Binding FirstName}" />
                 <DataGridTextColumn Header="Last Name"
-                            Binding="{Binding User.LastName}" />
+                            Binding="{Binding LastName}" />
             </DataGrid.Columns>
         </DataGrid>
         <Grid Margin="310,50,300,310">

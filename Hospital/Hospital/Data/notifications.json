@@ -68,5 +68,12 @@
     "ReceiverJmbg": "5",
     "DateTimeOfSending": "2021-06-02T16:38:31.1823502+02:00",
     "Id": 10
+  },
+  {
+    "NotificationText": "Zakazan je pregled za pacijenta Zarko Zarkovic koji ima zakazan pregled kod lekara Tovilovic trajanje pregleda je 30 minuta, a datum je 6/3/2021 8:20:00 PM",
+    "SenderJmbg": "1",
+    "ReceiverJmbg": "5",
+    "DateTimeOfSending": "2021-06-03T20:17:45.7186439+02:00",
+    "Id": 11
   }
 ]

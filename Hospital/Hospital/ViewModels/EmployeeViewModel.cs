@@ -1,21 +1,23 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Model;
 
 namespace Hospital.ViewModels
 {
-    public class PatientViewModel : ViewModel
+    public class EmployeeViewModel : ViewModel
     {
         private Injector injector;
 
-        private Patient patient;
+        private Employee employee;
 
         private string jmbg;
 
         private string firstName;
 
         private string lastName;
+
+        private string specialization;
 
         public Injector Injector
         {
@@ -26,12 +28,12 @@ namespace Hospital.ViewModels
             }
         }
 
-        public Patient _Patient
+        public Employee _Employee
         {
-            get { return patient; }
+            get { return employee; }
             set
             {
-                patient = value;
+                employee = value;
             }
         }
 
@@ -65,10 +67,21 @@ namespace Hospital.ViewModels
             }
         }
 
-        public PatientViewModel()
+        public string Specialization
+        {
+            get { return specialization; }
+            set
+            {
+                specialization = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public EmployeeViewModel()
         {
             Injector = new Injector();
-            _Patient = new Patient();
+            _Employee = new Employee();
         }
+
     }
 }

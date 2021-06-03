@@ -11,8 +11,8 @@ namespace Hospital.ViewModels
         #region Polja
         private Injector inject;
 
-        private ObservableCollection<Patient> patients;
-        
+        private ObservableCollection<PatientViewModel> patients;
+
         public DateTime ExaminationDate { get; set; }
 
         public string StartTime { get; set; }
@@ -26,7 +26,7 @@ namespace Hospital.ViewModels
             }
         }
 
-        public ObservableCollection<Patient> Patients
+        public ObservableCollection<PatientViewModel> Patients
         {
             get { return patients; }
             set
@@ -41,11 +41,12 @@ namespace Hospital.ViewModels
         public ExaminationViewModel()
         {
             Inject = new Injector();
-            Patients = new ObservableCollection<Patient>(Inject.PatientService.GetAll());
+            Patients = new ObservableCollection<PatientViewModel>(Inject.PatientConverter.ConvertCollectionToViewModel(Inject.PatientService.GetAll()));
             ExaminationDate = DateTime.Now;
             StartTime = "12:00";
-    }
+        }
 
-    #endregion
-}
+        #endregion
+
+    }
 }

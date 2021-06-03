@@ -16,6 +16,15 @@ namespace Model
             Specialization = specialization;
         }
 
+        public Employee()
+        {
+            User = new User();
+            Appointments = new System.Collections.Generic.List<MedicalAppointment>();
+            Notifications = new System.Collections.Generic.List<Notification>();
+            Reviews = new System.Collections.Generic.List<Review>();
+            Specialization = "";
+        }
+
 
         public User User { get; set; }
 
