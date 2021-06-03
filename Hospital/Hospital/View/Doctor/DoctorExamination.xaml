@@ -11,6 +11,7 @@
     <Grid>
         <DataGrid x:Name="patientsDataGrid"
               AutoGenerateColumns="False"
+              ItemsSource="{Binding Patients}"
               IsReadOnly="True" Margin="33,55,521,120">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Jmbg"

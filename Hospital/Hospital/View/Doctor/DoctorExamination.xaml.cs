@@ -1,6 +1,7 @@
 ﻿using DTO;
 using Model;
 using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace Hospital.View.Doctor
@@ -9,13 +10,16 @@ namespace Hospital.View.Doctor
     {
         App app;
         public DoctorWindow ParentWindow { get; set; }
+
+        public ObservableCollection<Patient> Patients { get; set; }
         public DoctorExamination(DoctorWindow parentWindow)
         {
             InitializeComponent();
             app = Application.Current as App;
 
+            this.DataContext = this;
             ParentWindow = parentWindow;
-            patientsDataGrid.ItemsSource = app.patientController.GetAll();
+            Patients = new ObservableCollection<Patient>(app.patientController.GetAll());
             new_appointment_date.SelectedDate = DateTime.Today;
         }
 
