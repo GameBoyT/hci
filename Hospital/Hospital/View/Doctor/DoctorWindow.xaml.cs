@@ -100,7 +100,8 @@ namespace Hospital.View.Doctor
 
         private void NewExaminationButtonClick(object sender, RoutedEventArgs e)
         {
-            DoctorExamination doctorExamination = new DoctorExamination(this);
+            //DoctorExamination doctorExamination = new DoctorExamination(this);
+            DoctorExamination doctorExamination = new DoctorExamination();
             doctorExamination.Show();
         }
 

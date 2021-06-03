@@ -10,7 +10,7 @@ namespace Hospital
 {
     public class Injector
     {
-        //private StudentService studentService = new StudentService();
+        private PatientService patientService = new PatientService();
 
         //private TeacherService teacherService = new TeacherService();
 
@@ -22,10 +22,10 @@ namespace Hospital
 
         private PatientConverter patientConverter = new PatientConverter();
 
-        //public StudentService StudentService
-        //{
-        //    get { return studentService; }
-        //}
+        public PatientService PatientService
+        {
+            get { return patientService; }
+        }
 
         //public TeacherService TeacherService
         //{
