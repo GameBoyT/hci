@@ -14,6 +14,9 @@ namespace Hospital
 
         private EmployeeService employeeService = new EmployeeService();
 
+        private AppointmentService appointmentService = new AppointmentService();
+
+
         //private ClassesService subjectService = new ClassesService();
 
         private EmployeeConverter employeeConverter = new EmployeeConverter();
@@ -33,6 +36,12 @@ namespace Hospital
         {
             get { return employeeService; }
         }
+
+        public AppointmentService AppointmentService
+        {
+            get { return appointmentService; }
+        }
+
 
         //public ClassesService SubjectService
         //{

@@ -1,4 +1,5 @@
 using DTO;
+using Hospital.ViewModels;
 using Model;
 using Repository;
 using Repository.Interfaces;
@@ -24,6 +25,11 @@ namespace Service
         {
             List<MedicalAppointment> appointments = _appointmentRepository.GetAll();
             return ConvertListToDTO(appointments);
+        }
+
+        public List<MedicalAppointment> GetAllForLoggedInDoctor()
+        {
+            return _appointmentRepository.GetAppointmentsForDoctor("3");
         }
 
         public AppointmentDTO GetById(int id)
