@@ -18,6 +18,21 @@ namespace Hospital.View.Director
         {
             InitializeComponent();
             staticDataGrid.ItemsSource = staticEquipmentController.GetAll();
+            MoviStaticEquipment();
+
+        }
+        private void MoviStaticEquipment()
+        {
+            List<MovingStatic> listOfStatic = movingStaticController.GetAll();
+            foreach (MovingStatic staticToMove in listOfStatic)
+            {
+                if (staticToMove.DateTime.Ticks <= DateTime.Now.Ticks)
+                {
+                    roomController.MoveStaticEquipment(staticToMove.StaticId, staticToMove.RoomId);
+                    movingStaticController.Delete(staticToMove.Id);
+                }
+
+            }
 
         }
 

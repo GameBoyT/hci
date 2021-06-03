@@ -8,19 +8,16 @@ using System.Windows.Controls;
 
 namespace Hospital.View.Director
 {
-    /// <summary>
-    /// Interaction logic for HardRenovation.xaml
-    /// </summary>
     public partial class HardRenovation : Window
     {
         private readonly RoomController roomController = new RoomController();
         private readonly RenovationController renovationController = new RenovationController();
-        private List<Room> rooms = new List<Room>();
+        
         
         public HardRenovation()
         {
             InitializeComponent();
-            rooms = roomController.GetAll();
+            List<Room> rooms = roomController.GetAll();
             foreach(Room room in rooms)
             {
                 roomA.Items.Add(room.Name);
@@ -31,7 +28,7 @@ namespace Hospital.View.Director
 
         private void AcceptRenovation_Click(object sender, RoutedEventArgs e)
         {
-            try // promeniti samo ime sobe kad se spajaju 
+            try 
             {
                 if ((bool)attach.IsChecked)
                 {
@@ -57,7 +54,9 @@ namespace Hospital.View.Director
 
             DateTime renovationDateTime = SelectedDate();
 
-            renovationController.AttachRooms(roomA.Id, roomB.Id, renovationDateTime, Double.Parse(duration.Text));
+            bool goodDate = renovationController.AttachRooms(roomA.Id, roomB.Id, renovationDateTime, Double.Parse(duration.Text));
+            Greska(goodDate);
+            
         }
 
         private void Dettach(string roomName)
@@ -65,7 +64,8 @@ namespace Hospital.View.Director
             Room room = roomController.GetByName(roomName);
             DateTime renovationDateTime = SelectedDate();
 
-            renovationController.DettachRooms(room.Id,renovationDateTime, Double.Parse(duration.Text));
+            bool goodDate = renovationController.DettachRooms(room.Id, renovationDateTime, Double.Parse(duration.Text));
+            Greska(goodDate);
         }
         private DateTime SelectedDate()
         {
@@ -74,6 +74,18 @@ namespace Hospital.View.Director
             int minutes = Int32.Parse(startTime.Text.Split(':')[1]);
             DateTime renovationDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
             return renovationDateTime;
+        }
+
+        private void Greska(bool goodDate)
+        {
+            if (!goodDate)
+            {
+                MessageBox.Show("Datum je vec zauzet, odaberite drugi");
+            }
+            else
+            {
+                MessageBox.Show("Uspesno ste zakazali renoviranje");
+            }
         }
     }
 }

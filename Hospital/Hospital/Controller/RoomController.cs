@@ -57,6 +57,18 @@ namespace Controller
         {
             return roomService.GetRoomsWithEquipmentName(name);
         }
+        public void MoveStaticEquipment(int staticId, int toRoom)
+        {
+            roomService.MoveStaticEquipment(staticId, toRoom);
+        }
+        public void DettachRooms(int roomId)
+        {
+            roomService.DettachRooms(roomId);
+        }
+        public void AttachRooms(int roomAId, int roomBId)
+        {
+            roomService.AttachRooms(roomAId, roomBId);
+        }
 
     }
 }

@@ -214,8 +214,8 @@ namespace Service
 
         private bool AreAppointmentsOverlapping(DateTime firstAppointmentStartTime, DateTime firstAppointmentEndTime, DateTime secondAppointmentStartTime, DateTime secondAppointmentEndTime)
         {
-            if (IsDateTimeBetween(firstAppointmentStartTime, secondAppointmentStartTime, secondAppointmentStartTime) ||
-                    IsDateTimeBetween(firstAppointmentEndTime, secondAppointmentStartTime, secondAppointmentStartTime))
+            if (IsDateTimeBetween(firstAppointmentStartTime, secondAppointmentStartTime, secondAppointmentEndTime) ||
+                    IsDateTimeBetween(firstAppointmentEndTime, secondAppointmentStartTime, secondAppointmentEndTime))
             {
                 return true;
             }

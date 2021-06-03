@@ -29,13 +29,13 @@ namespace Controller
         {
             _renovationService.Delete(renovationId);
         }
-        public void AttachRooms(int roomAId, int roomBId, DateTime dateTime, double duration)
+        public bool AttachRooms(int roomAId, int roomBId, DateTime dateTime, double duration)
         {
-            _renovationService.AttachRooms(roomAId, roomBId, dateTime, duration);
+            return _renovationService.AttachRooms(roomAId, roomBId, dateTime, duration);
         }
-        public void DettachRooms(int roomId, DateTime dateTime, double duration)
+        public bool DettachRooms(int roomId, DateTime dateTime, double duration)
         {
-            _renovationService.DettachRooms(roomId, dateTime, duration);
+            return _renovationService.DettachRooms(roomId, dateTime, duration);
         }
     }
 }
