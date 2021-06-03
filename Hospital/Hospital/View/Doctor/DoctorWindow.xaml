@@ -10,7 +10,7 @@
         ui:WindowHelper.UseModernWindowStyle="True"
         Title="DoctorWindow" Height="450" Width="850">
 
-    <Window.Resources>
+    <!--<Window.Resources>
         <ResourceDictionary>
             <RoutedUICommand x:Key="Ctr1" Text="Another Text" />
             <RoutedUICommand x:Key="Ctr2" Text="Another Text" />
@@ -35,7 +35,7 @@
         <CommandBinding Command="{StaticResource Ctr4}" Executed="NewExaminationButtonClick" />
         <CommandBinding Command="{StaticResource Ctr5}" Executed="NewOperationButtonClick" />
         <CommandBinding Command="{StaticResource Ctr6}" Executed="MedicineButton_Click" />
-    </Window.CommandBindings>
+    </Window.CommandBindings>-->
 
     <Grid>
         <Grid.RowDefinitions>
@@ -51,7 +51,10 @@
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="45"/>
         </Grid.ColumnDefinitions>
+        
+        <Label Content="Appointments" HorizontalAlignment="Center" Margin="0,16,0,0" Width="90" Grid.Column="1" Height="19" VerticalAlignment="Top"/>
         <DataGrid x:Name="appointmentsDataGrid"
+              ItemsSource="{Binding SelectedDateAppointments}"
               BorderThickness="1"
               BorderBrush="Black"
               AutoGenerateColumns="False"
@@ -72,11 +75,14 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Content="Appointments" HorizontalAlignment="Center" Margin="0,16,0,0" Width="90" Grid.Column="1" Height="19" VerticalAlignment="Top"/>
 
         <Label Content="Appointments date:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="140" Height="35" Grid.Column="1" Grid.Row="2"/>
-        <DatePicker x:Name="appointment_date" SelectedDateChanged="DatePicker_SelectedDateChanged" Margin="10,65,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="2" Height="32"/>
-
+        <DatePicker x:Name="appointment_date" 
+                        SelectedDate="{Binding
+                        Path=AppointmentsDate,
+                        Mode=TwoWay}" 
+                    Margin="10,65,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="2" Height="32"/>
+        <!--
         <Button Margin="0,10,10,0" VerticalAlignment="Top" Click="View_Click" Height="35" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Width="125">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
@@ -106,7 +112,9 @@
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Button Margin="0,65,10,0" VerticalAlignment="Top" Click="NewExaminationButtonClick" Height="35" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Right" Width="175" >
+        -->
+
+        <Button Margin="0,65,10,0" VerticalAlignment="Top" Command="{Binding Path=NewExaminationCommand}" Height="35" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Right" Width="175" >
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Stethoscope" Width="40" Foreground="#2596be"/>
@@ -116,6 +124,7 @@
                 </StackPanel>
             </Button.Content>
         </Button>
+        <!--
         <Button Margin="0,10,10,0" Height="35" Click="NewOperationButtonClick" VerticalAlignment="Top" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Right" Width="175">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
@@ -165,6 +174,6 @@
                     </TextBlock>
                 </StackPanel>
             </Button.Content>
-        </Button>
+        </Button>-->
     </Grid>
 </Window>

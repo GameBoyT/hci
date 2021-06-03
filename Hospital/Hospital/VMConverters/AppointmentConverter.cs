@@ -1,5 +1,6 @@
 ﻿using Hospital.ViewModels;
 using Model;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,6 +16,10 @@ namespace Hospital.VMConverters
         private PatientConverter patientConverter;
 
         private EmployeeConverter employeeConverter;
+
+
+        public PatientService PatientService { get; set; }
+        public EmployeeService EmployeeService { get; set; }
 
         public Injector Injector
         {
@@ -47,16 +52,13 @@ namespace Hospital.VMConverters
 
         public AppointmentConverter()
         {
-            //Injector = new Injector();
-            //Injector = injector;
-            //injector.AppointmentConverter.PatientConverter = injector.PatientConverter;
-            //injector.AppointmentConverter.EmployeeConverter = injector.EmployeeConverter;
+
         }
         public AppointmentViewModel ConvertModelToViewModel(MedicalAppointment appointment)
         {
 
-            PatientViewModel patient = PatientConverter.ConvertModelToViewModel(Injector.PatientService.GetByJmbg(appointment.PatientJmbg));
-            EmployeeViewModel doctor = EmployeeConverter.ConvertModelToViewModel(Injector.EmployeeService.GetByJmbg(appointment.PatientJmbg));
+            PatientViewModel patient = PatientConverter.ConvertModelToViewModel(PatientService.GetByJmbg(appointment.PatientJmbg));
+            EmployeeViewModel doctor = EmployeeConverter.ConvertModelToViewModel(EmployeeService.GetByJmbg(appointment.DoctorJmbg));
 
             AppointmentViewModel appointmentViewModel = new AppointmentViewModel
                (
@@ -92,5 +94,6 @@ namespace Hospital.VMConverters
             }
             return vmAppointments;
         }
+
     }
 }
