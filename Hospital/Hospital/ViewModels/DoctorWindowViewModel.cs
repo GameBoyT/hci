@@ -64,6 +64,8 @@ namespace Hospital.ViewModels
             injector.AppointmentConverter.PatientConverter = injector.PatientConverter;
             injector.AppointmentConverter.EmployeeService = injector.EmployeeService;
             injector.AppointmentConverter.PatientService = injector.PatientService;
+            injector.AppointmentConverter.RoomConverter = injector.RoomConverter;
+            injector.AppointmentConverter.RoomService = injector.RoomService;
 
             //this.navService = navService;
 

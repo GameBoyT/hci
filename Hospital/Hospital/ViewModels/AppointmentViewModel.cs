@@ -80,7 +80,7 @@ namespace Hospital.ViewModels
             }
         }
 
-        public Double DurationInMinutes 
+        public double DurationInMinutes
         {
             get { return durationInMinutes; }
             set

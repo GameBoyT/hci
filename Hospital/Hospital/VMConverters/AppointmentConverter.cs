@@ -11,42 +11,21 @@ namespace Hospital.VMConverters
     public class AppointmentConverter
     {
         #region Polja
-        private Injector injector;
-
-        private PatientConverter patientConverter;
-
-        private EmployeeConverter employeeConverter;
-
 
         public PatientService PatientService { get; set; }
+
         public EmployeeService EmployeeService { get; set; }
 
-        public Injector Injector
-        {
-            get { return injector; }
-            set
-            {
-                injector = value;
-            }
-        }
+        public RoomService RoomService { get; set; }
 
-        public PatientConverter PatientConverter
-        {
-            get { return patientConverter; }
-            set
-            {
-                patientConverter = value;
-            }
-        }
 
-        public EmployeeConverter EmployeeConverter
-        {
-            get { return employeeConverter; }
-            set
-            {
-                employeeConverter = value;
-            }
-        }
+        public Injector Injector { get; set; }
+
+        public PatientConverter PatientConverter { get; set; }
+
+        public EmployeeConverter EmployeeConverter { get; set; }
+
+        public RoomConverter RoomConverter { get; set; }
 
         #endregion
 
@@ -59,6 +38,7 @@ namespace Hospital.VMConverters
 
             PatientViewModel patient = PatientConverter.ConvertModelToViewModel(PatientService.GetByJmbg(appointment.PatientJmbg));
             EmployeeViewModel doctor = EmployeeConverter.ConvertModelToViewModel(EmployeeService.GetByJmbg(appointment.DoctorJmbg));
+            RoomViewModel room = RoomConverter.ConvertModelToViewModel(RoomService.GetById(appointment.RoomId));
 
             AppointmentViewModel appointmentViewModel = new AppointmentViewModel
                (
@@ -73,9 +53,8 @@ namespace Hospital.VMConverters
                    patient.Jmbg,
                    patient.FirstName,
                    patient.LastName,
-                   //Fali room
-                   1,
-                   "336"
+                   room.Id,
+                   room.Name
                );
 
             appointmentViewModel._Appointment = appointment;
