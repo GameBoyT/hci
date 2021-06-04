@@ -27,11 +27,11 @@
             <TextBlock Grid.Column="0" Grid.Row="2">Jmbg:</TextBlock>
             <TextBlock Grid.Column="0" Grid.Row="3">Date of birth:</TextBlock>
             <TextBlock Grid.Column="0" Grid.Row="4">Address:</TextBlock>
-            <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" Text="{Binding Path=Patient.FirstName}"></TextBox>
-            <TextBox Grid.Column="1" Grid.Row="1" IsReadOnly="True" Text="{Binding Path=Patient.LastName}"></TextBox>
-            <TextBox Grid.Column="1" Grid.Row="2" IsReadOnly="True" Text="{Binding Path=Patient.Jmbg}"></TextBox>
-            <TextBox Grid.Column="1" Grid.Row="3" IsReadOnly="True" Text="{Binding Path=Patient.DateOfBirth, StringFormat='dd-MM-yyyy'}"></TextBox>
-            <TextBox Grid.Column="1" Grid.Row="4" IsReadOnly="True" Text="{Binding Path=Patient.Address}"></TextBox>
+            <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" Text="{Binding Path=Appointment.Patient.FirstName}"></TextBox>
+            <TextBox Grid.Column="1" Grid.Row="1" IsReadOnly="True" Text="{Binding Path=Appointment.Patient.LastName}"></TextBox>
+            <TextBox Grid.Column="1" Grid.Row="2" IsReadOnly="True" Text="{Binding Path=Appointment.Patient.Jmbg}"></TextBox>
+            <TextBox Grid.Column="1" Grid.Row="3" IsReadOnly="True" Text="{Binding Path=Appointment.Patient.DateOfBirth, StringFormat='dd-MM-yyyy'}"></TextBox>
+            <TextBox Grid.Column="1" Grid.Row="4" IsReadOnly="True" Text="{Binding Path=Appointment.Patient.Address}"></TextBox>
         </Grid>
 
         <Grid Margin="400,75,200,280">
@@ -45,10 +45,12 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Grid.Row="0">Date:</TextBlock>
             <TextBlock Grid.Column="0" Grid.Row="1">Start Time:</TextBlock>
-            <DatePicker x:Name="new_appointment_date" Grid.Column="1" Grid.Row="0"/>
-            <TextBox x:Name="startTimeTextBox" Grid.Column="1" Grid.Row="1"/>
+            <DatePicker SelectedDate="{Binding
+                        Path=ExaminationDate,
+                        Mode=TwoWay}"  Grid.Column="1" Grid.Row="0"/>
+            <TextBox Text="{Binding StartTime}" Grid.Column="1" Grid.Row="1"/>
         </Grid>
-        <!--<Button Content="Update" HorizontalAlignment="Left" Margin="538,190,0,0" VerticalAlignment="Top" Height="27" Width="62" Click="UpdateButton_Click"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="400,190,0,0" VerticalAlignment="Top" Height="27" Width="65" Click="CancelButton_Click"/>-->
+        <Button Content="Update" HorizontalAlignment="Left" Margin="538,190,0,0" VerticalAlignment="Top" Height="27" Width="62" Command="{Binding Path=UpdateCommand}"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="400,190,0,0" VerticalAlignment="Top" Height="27" Width="65" Command="{Binding Path=CancelCommand}"/>
     </Grid>
 </Page>

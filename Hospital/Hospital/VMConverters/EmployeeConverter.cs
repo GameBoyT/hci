@@ -15,6 +15,7 @@ namespace Hospital.VMConverters
                 FirstName = employee.User.FirstName,
                 LastName = employee.User.LastName,
                 Specialization = employee.Specialization,
+                RoomId = employee.RoomId,
                 _Employee = employee
             };
 

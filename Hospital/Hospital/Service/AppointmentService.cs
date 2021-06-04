@@ -86,6 +86,13 @@ namespace Service
             _roomRepository.Update(room);
         }
 
+        public MedicalAppointment Update(MedicalAppointment appointment)
+        {
+            _appointmentRepository.Update(appointment);
+            //UpdateAppointmentParticipants(appointment);
+            return appointment;
+        }
+
         public AppointmentDTO Update(AppointmentDTO appointmentDTO)
         {
             MedicalAppointment appointment = ConvertToModel(appointmentDTO);

@@ -16,6 +16,8 @@ namespace Hospital.ViewModels
 
         private string specialization;
 
+        private int roomId;
+
         public Injector Injector
         {
             get { return injector; }
@@ -70,6 +72,16 @@ namespace Hospital.ViewModels
             set
             {
                 specialization = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int RoomId
+        {
+            get { return roomId; }
+            set
+            {
+                roomId = value;
                 OnPropertyChanged();
             }
         }

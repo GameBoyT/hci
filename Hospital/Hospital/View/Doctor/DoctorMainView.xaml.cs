@@ -10,13 +10,12 @@ namespace Hospital.View.Doctor
         {
             InitializeComponent();
             DataContext = new DoctorWindowViewModel();
-
         }
 
         private void EditAppointmentBtn_Click(object sender, RoutedEventArgs e)
         {
             AppointmentViewModel avm = (AppointmentViewModel)appointmentsDataGrid.SelectedItem;
-            UpdateExaminationViewModel vm = new UpdateExaminationViewModel(avm);
+            UpdateExaminationViewModel vm = new UpdateExaminationViewModel(NavigationService, avm);
             UpdateExaminationView updateExaminationView = new UpdateExaminationView(vm);
             NavigationService.Navigate(updateExaminationView);
         }
