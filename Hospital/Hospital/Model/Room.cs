@@ -4,6 +4,10 @@ namespace Model
 {
     public class Room : Entity
     {
+        public Room()
+        {
+        }
+
         public Room(int id, string name, RoomType roomType, int floor, string detail, bool status )
         {
             Id = id;
