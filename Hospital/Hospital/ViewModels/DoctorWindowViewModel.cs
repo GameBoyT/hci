@@ -14,13 +14,33 @@ namespace Hospital.ViewModels
     {
         private DateTime appointmentsDate;
 
+        public Injector Inject { get; set; }
+
         public ObservableCollection<AppointmentViewModel> Appointments { get; set; }
 
         public ObservableCollection<AppointmentViewModel> SelectedDateAppointments { get; set; }
 
+        public AppointmentViewModel SelectedAppointment { get; set; }
+
         public RelayCommand NewExaminationCommand { get; set; }
 
-        public Injector Inject { get; set; }
+        public RelayCommand DeleteCommand { get; set; }
+
+
+        private bool CanExecute_DeleteCommand(object obj)
+        {
+            if (SelectedAppointment != null) return true;
+            return false;
+        }
+
+        private void Execute_DeleteCommand(object obj)
+        {
+            Inject.AppointmentService.Delete(SelectedAppointment.Id);
+            Appointments.Remove(SelectedAppointment);
+            SelectedDateAppointments.Remove(SelectedAppointment);
+        }
+
+
 
         public DateTime AppointmentsDate
         {
@@ -32,7 +52,7 @@ namespace Hospital.ViewModels
             {
                 appointmentsDate = value;
                 OnPropertyChanged();
-                DateChanged();
+                UpdateSelectedDateAppointmens();
             }
         }
 
@@ -47,15 +67,15 @@ namespace Hospital.ViewModels
 
             //this.navService = navService;
 
-            //NewExaminationCommand = new RelayCommand(Executed_NewExaminationCommand);
-
+            DeleteCommand = new RelayCommand(Execute_DeleteCommand, CanExecute_DeleteCommand);
+            
 
             Appointments = new ObservableCollection<AppointmentViewModel>(Inject.AppointmentConverter.ConvertCollectionToViewModel(Inject.AppointmentService.GetAllForLoggedInDoctor()));
             SelectedDateAppointments = new ObservableCollection<AppointmentViewModel>(Appointments.Where(appointment => appointment.StartTime.Date == DateTime.Now.Date));
             AppointmentsDate = DateTime.Now;
         }
 
-        private void DateChanged()
+        private void UpdateSelectedDateAppointmens()
         {
             try
             {
