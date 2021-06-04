@@ -5,11 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital"
         mc:Ignorable="d"
-        xmlns:ui="http://schemas.modernwpf.com/2019"
+        xmlns:ui="http://schemas.modernwpf.com/2019" xmlns:fa="http://schemas.fontawesome.io/icons/"
         ui:WindowHelper.UseModernWindowStyle="True"
-        Title="MainWindow" Height="450" Width="850">
+        Title="MainWindow" Height="500" Width="850">
     <Grid>
-        <Frame x:Name="frame" Source="View/Doctor/DoctorMainView.xaml" />
+        <Button Margin="0,0,0,0" VerticalAlignment="Top" Command="{Binding Path=NavigateToExamination}" Height="35" Width="175" >
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Stethoscope" Width="40" Foreground="#2596be"/>
+                    <TextBlock>
+                    New <Underline>E</Underline>xamination
+                    </TextBlock>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Frame x:Name="frame" Source="View/Doctor/DoctorMainView.xaml" Margin="0,50,0,0" />
 
     </Grid>
 </Window>

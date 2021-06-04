@@ -39,10 +39,7 @@ namespace Hospital.ViewModels
 
         public void Executed_CancelCommand(object obj)
         {
-            foreach (Window item in Application.Current.Windows)
-            {
-                if (item.DataContext == this) item.Close();
-            }
+            NavigationService.GoBack();
         }
 
         private MedicalAppointment ParseNewAppointment()
