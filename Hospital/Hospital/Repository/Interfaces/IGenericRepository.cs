@@ -1,7 +1,5 @@
 ﻿using Model;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Repository.Interfaces
 {
@@ -10,11 +8,11 @@ namespace Repository.Interfaces
         List<T> GetAll();
 
         T GetById(int id);
-        
+
         T Save(T entity);
-        
+
         T Update(T entity);
-        
+
         T Delete(int id);
 
         int GenerateNewId();

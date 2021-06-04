@@ -1,7 +1,6 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Repository.Interfaces
 {
@@ -12,7 +11,7 @@ namespace Repository.Interfaces
         Employee Delete(String jmbg);
 
         new Employee Update(Employee employee);
-        
+
         List<Employee> GetDoctors();
 
         List<Employee> GetDoctorsBySpecialization(string specialization);

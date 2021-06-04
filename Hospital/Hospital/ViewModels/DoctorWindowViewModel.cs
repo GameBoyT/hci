@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Hospital.Commands;
+using System;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Linq;
-using System.Windows.Controls;
-using Hospital.View.Doctor;
-using Hospital.Commands;
-using System.Windows.Navigation;
 
 namespace Hospital.ViewModels
 {
@@ -70,7 +65,7 @@ namespace Hospital.ViewModels
             //this.navService = navService;
 
             DeleteCommand = new RelayCommand(Execute_DeleteCommand, CanExecute_DeleteCommand);
-            
+
 
             Appointments = new ObservableCollection<AppointmentViewModel>(Inject.AppointmentConverter.ConvertCollectionToViewModel(Inject.AppointmentService.GetAllForLoggedInDoctor()));
             SelectedDateAppointments = new ObservableCollection<AppointmentViewModel>(Appointments.Where(appointment => appointment.StartTime.Date == DateTime.Now.Date));

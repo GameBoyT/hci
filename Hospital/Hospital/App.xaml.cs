@@ -10,8 +10,8 @@ namespace Hospital
     {
         private static readonly string _medicineFileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\medicines.json";
 
-        
-        
+
+
         private static readonly MedicineRepository medicineRepository = new MedicineRepository(_medicineFileLocation);
 
 

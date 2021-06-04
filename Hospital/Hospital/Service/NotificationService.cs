@@ -8,7 +8,7 @@ namespace Service
     {
         private Repository.NotificationRepository notificationRepository = new Repository.NotificationRepository();
         private Repository.EmployeeRepository employeeRepository = new Repository.EmployeeRepository();
-        private Repository.PatientRepository patientRepository = new Repository.PatientRepository ();
+        private Repository.PatientRepository patientRepository = new Repository.PatientRepository();
 
         public List<Notification> GetAll()
         {

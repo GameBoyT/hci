@@ -2,9 +2,9 @@ using System;
 
 namespace Model
 {
-    public class Employee : Entity 
+    public class Employee : Entity
     {
-        public Employee(User user, EmployeeType employeeType,string specialization, string start, string end)
+        public Employee(User user, EmployeeType employeeType, string specialization, string start, string end)
         {
             User = user;
             EmployeeType = employeeType;

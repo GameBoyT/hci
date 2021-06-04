@@ -1,8 +1,8 @@
+using DTO;
 using Model;
 using System;
 using System.Collections.Generic;
 using System.Windows;
-using DTO;
 
 namespace Service
 {
@@ -134,7 +134,7 @@ namespace Service
             {
                 patient.Blocked = true;
                 patientRepository.Update(patient);
-                
+
                 return "Pacijent je blokiran";
             }
             return "Uspjeno obrisan termin";
@@ -159,7 +159,7 @@ namespace Service
             MedicalAppointment appointment = appointmentRepository.GetById(appointmentId);
             Patient patient = patientRepository.GetByJmbg(appointment.PatientJmbg);
             List<DateTime> updatedCancelations = patient.CancelationDates;
-            
+
             updatedCancelations.RemoveRange(0, NumberOfCancelationsInPast(updatedCancelations));
             updatedCancelations.Add(DateTime.Now);
             patient.CancelationDates = updatedCancelations;
@@ -178,7 +178,7 @@ namespace Service
             return prescription;
         }
 
-        public List<Anamnesis>GetAllAnamnesisForPatient(string patientJmbg)
+        public List<Anamnesis> GetAllAnamnesisForPatient(string patientJmbg)
         {
             Patient patient = patientRepository.GetByJmbg(patientJmbg);
             return patient.MedicalRecord.Anamnesis;
@@ -202,14 +202,14 @@ namespace Service
         public List<PrescriptionDTO> PrescriptionsToDTOList(List<Prescription> prescriptions)
         {
             List<PrescriptionDTO> prescriptionDTOs = new List<PrescriptionDTO>();
-            foreach(Prescription prescription in prescriptions)
+            foreach (Prescription prescription in prescriptions)
             {
                 prescriptionDTOs.Add(PrescriptionToDTO(prescription));
             }
             return prescriptionDTOs;
         }
 
-      
+
 
         public void AddReminder(string jmbg, Reminder reminder)
         {
@@ -248,7 +248,7 @@ namespace Service
                 return 1;
             }
         }
-       
+
 
         public void DeleteReminder(string jmbg, int id)
         {
@@ -268,7 +268,7 @@ namespace Service
                 reminders[reminders.IndexOf(reminders.Find(obj => obj.Id == reminder.Id))] = reminder;
                 patient.Reminders = reminders;
                 patientRepository.Update(patient);
-            } 
+            }
         }
 
         private bool isReminderValid(Reminder reminder)
@@ -279,7 +279,7 @@ namespace Service
                 return false;
             }
 
-            if(reminder.NotifyTime > reminder.Time)
+            if (reminder.NotifyTime > reminder.Time)
             {
                 MessageBox.Show("Notify time should be before reminder!", "error");
                 return false;
@@ -310,7 +310,7 @@ namespace Service
             reminders.RemoveAll(obj => obj.Time < DateTime.Now);
             patient.Reminders = reminders;
             patientRepository.Update(patient);
-            
+
 
         }
 
@@ -320,7 +320,7 @@ namespace Service
 
             Patient patient = patientRepository.GetByJmbg(jmbg);
             List<Reminder> reminders = patient.Reminders;
-            foreach(Reminder reminder in reminders)
+            foreach (Reminder reminder in reminders)
             {
                 if (IsReminderNotifyTimePast(reminder))
                 {
@@ -329,7 +329,7 @@ namespace Service
                     patient.Notifications.Add(notification);
                     patientRepository.Update(patient);
                 }
-                    
+
             }
 
 

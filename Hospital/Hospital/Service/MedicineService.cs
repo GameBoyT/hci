@@ -20,7 +20,7 @@ namespace Service
 
         public List<Medicine> GetByVerification(VerificationType verification)
         {
-            return _medicineRepository.GetByVerification( verification);
+            return _medicineRepository.GetByVerification(verification);
         }
         public List<Medicine> GetNotRejected()
         {

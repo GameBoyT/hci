@@ -1,5 +1,4 @@
 using DTO;
-using Model;
 using System;
 using System.Collections.Generic;
 
@@ -87,10 +86,10 @@ namespace Controller
         }
         public List<AppointmentDTO> GetAppointmentsFromPast(String patientJmbg)
         {
-            return appointmentService.GetAppointmentsFromPast( patientJmbg);
+            return appointmentService.GetAppointmentsFromPast(patientJmbg);
         }
 
-        public List<AppointmentDTO>GetOperationsForPatient(String patientJmbg)
+        public List<AppointmentDTO> GetOperationsForPatient(String patientJmbg)
         {
             return appointmentService.GetOperationsForPatient(patientJmbg);
         }

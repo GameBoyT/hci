@@ -15,7 +15,7 @@ namespace Service
 
         public Employee GetByJmbg(String jmbg)
         {
-            
+
             return employeeRepository.GetByJmbg(jmbg);
         }
 
@@ -24,7 +24,7 @@ namespace Service
             List<Employee> employees = employeeRepository.GetAll();
             foreach (Employee employee1 in employees)
             {
-                if(employee1.User.Jmbg == employee.User.Jmbg)
+                if (employee1.User.Jmbg == employee.User.Jmbg)
                 {
                     MessageBox.Show("Isti jmbg", "greska");
                     return;
@@ -36,7 +36,7 @@ namespace Service
                     return;
                 }
             }
-                employeeRepository.Save(employee);
+            employeeRepository.Save(employee);
         }
 
         public void Delete(String jmbg)

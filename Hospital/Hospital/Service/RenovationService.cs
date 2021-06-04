@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DTO;  
+﻿using DTO;
+using Model;
 using Repository;
 using Repository.Interfaces;
-using Model;
+using System;
+using System.Collections.Generic;
 
 namespace Service
 {
@@ -20,7 +19,7 @@ namespace Service
         public List<RenovationAppointment> GetAll()
         {
             return _renovationRepository.GetAll();
-            
+
         }
         /*
         public AppointmentDTO GetById(int id)

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Collections.ObjectModel;
+﻿using Hospital.Commands;
 using Model;
-using System.Windows;
-using Hospital.Commands;
+using System;
+using System.Collections.ObjectModel;
 using System.Windows.Navigation;
 
 namespace Hospital.ViewModels
@@ -61,7 +58,7 @@ namespace Hospital.ViewModels
         {
             Inject = new Injector();
             Patients = new ObservableCollection<PatientViewModel>(Inject.PatientConverter.ConvertCollectionToViewModel(Inject.PatientService.GetAll()));
-            
+
             AddCommand = new RelayCommand(Executed_AddCommand);
             CancelCommand = new RelayCommand(Executed_CancelCommand);
 

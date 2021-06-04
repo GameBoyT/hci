@@ -17,6 +17,6 @@ namespace Model
         public int StaticId { get; set; }
         public int RoomId { get; set; }
         public DateTime DateTime { get; set; }
-        
+
     }
 }

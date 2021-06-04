@@ -1,7 +1,5 @@
 ﻿using Model;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Hospital.ViewModels
 {
@@ -90,7 +88,7 @@ namespace Hospital.ViewModels
             }
         }
 
-        public string DoctorJmbg 
+        public string DoctorJmbg
         {
             get { return doctorJmbg; }
             set
@@ -100,7 +98,7 @@ namespace Hospital.ViewModels
             }
         }
 
-        public string PatientJmbg 
+        public string PatientJmbg
         {
             get { return patientJmbg; }
             set
@@ -110,7 +108,7 @@ namespace Hospital.ViewModels
             }
         }
 
-        public String DoctorFirstName 
+        public string DoctorFirstName
         {
             get { return doctorFirstName; }
             set
@@ -120,7 +118,7 @@ namespace Hospital.ViewModels
             }
         }
 
-        public String DoctorLastName 
+        public string DoctorLastName
         {
             get { return doctorLastName; }
             set
@@ -130,7 +128,7 @@ namespace Hospital.ViewModels
             }
         }
 
-        public String DoctorSpecialization 
+        public string DoctorSpecialization
         {
             get { return doctorSpecialization; }
             set
@@ -140,7 +138,7 @@ namespace Hospital.ViewModels
             }
         }
 
-        public String PatientFirstName 
+        public string PatientFirstName
         {
             get { return patientFirstName; }
             set
@@ -150,7 +148,7 @@ namespace Hospital.ViewModels
             }
         }
 
-        public String PatientLastName 
+        public string PatientLastName
         {
             get { return patientLastName; }
             set
@@ -160,7 +158,7 @@ namespace Hospital.ViewModels
             }
         }
 
-        public int RoomId 
+        public int RoomId
         {
             get { return roomId; }
             set
@@ -170,7 +168,7 @@ namespace Hospital.ViewModels
             }
         }
 
-        public String RoomName 
+        public string RoomName
         {
             get { return roomName; }
             set
@@ -180,7 +178,7 @@ namespace Hospital.ViewModels
             }
         }
 
-        public String ModifiedByJmbg
+        public string ModifiedByJmbg
         {
             get { return modifiedByJmbg; }
             set

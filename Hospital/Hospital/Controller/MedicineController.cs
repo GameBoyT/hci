@@ -2,8 +2,6 @@ using Model;
 using Repository;
 using Repository.Interfaces;
 using Service;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Controller

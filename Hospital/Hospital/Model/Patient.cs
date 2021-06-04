@@ -40,6 +40,6 @@ namespace Model
         public List<Notification> Notifications { get; set; }
 
         public List<Reminder> Reminders { get; set; }
-        
+
     }
 }

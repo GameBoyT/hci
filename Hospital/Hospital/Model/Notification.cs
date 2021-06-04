@@ -18,7 +18,7 @@ namespace Model
         public string SenderJmbg { get; set; }
 
         public string ReceiverJmbg { get; set; }
-        
+
         public DateTime DateTimeOfSending { get; set; }
 
     }

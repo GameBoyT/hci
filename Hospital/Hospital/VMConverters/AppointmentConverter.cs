@@ -1,25 +1,21 @@
 ﻿using Hospital.ViewModels;
 using Model;
 using Service;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 
 namespace Hospital.VMConverters
 {
     public class AppointmentConverter
     {
         #region Polja
+        public Injector Injector { get; set; }
 
         public PatientService PatientService { get; set; }
 
         public EmployeeService EmployeeService { get; set; }
 
         public RoomService RoomService { get; set; }
-
-
-        public Injector Injector { get; set; }
 
         public PatientConverter PatientConverter { get; set; }
 

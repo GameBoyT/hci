@@ -1,10 +1,5 @@
-﻿using DTO;
-using Hospital.ViewModels;
-using Model;
-using System;
-using System.Collections.Generic;
+﻿using Hospital.ViewModels;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace Hospital.View.Doctor
 {
@@ -17,7 +12,7 @@ namespace Hospital.View.Doctor
 
         public DoctorWindow()
         {
-            InitializeComponent();  
+            InitializeComponent();
             this.DataContext = new DoctorWindowViewModel();
 
 

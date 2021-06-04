@@ -1,8 +1,7 @@
-﻿using System;
-using Model;
+﻿using Model;
 using Service;
+using System;
 using System.Collections.Generic;
-using System.Text;
 
 
 namespace Controller

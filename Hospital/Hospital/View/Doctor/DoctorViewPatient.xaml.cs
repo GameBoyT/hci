@@ -121,7 +121,7 @@ namespace Hospital.View.Doctor
             lvPatientPrescriptionDataBinding.ItemsSource = Prescriptions;
             doctorsDataGrid.ItemsSource = Doctors;
 
-            if (Patient.MedicalRecord.HospitalStay.Bed == null  || Patient.MedicalRecord.HospitalStay.EndDateTime.Ticks < DateTime.Now.Ticks)
+            if (Patient.MedicalRecord.HospitalStay.Bed == null || Patient.MedicalRecord.HospitalStay.EndDateTime.Ticks < DateTime.Now.Ticks)
             {
                 lvHospitalStayRoomsDataBinding.ItemsSource = app.roomController.GetRoomsByRoomType(RoomType.patients);
                 hospitalStayStartDate.SelectedDate = DateTime.Today;
@@ -269,7 +269,7 @@ namespace Hospital.View.Doctor
                 return;
             }
 
-            if (endDate.DayOfYear < startDate.DayOfYear )
+            if (endDate.DayOfYear < startDate.DayOfYear)
             {
                 MessageBox.Show("You can't select a start day before the end date!");
                 return;

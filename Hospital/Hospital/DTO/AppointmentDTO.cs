@@ -83,9 +83,10 @@ namespace DTO
             PatientJmbg = null;
             DoctorJmbg = null;
             MedicalAppointmentType = 0;
-            
+
         }
-        public AppointmentDTO(int id, DateTime dateTime, double duration, int roomId) {
+        public AppointmentDTO(int id, DateTime dateTime, double duration, int roomId)
+        {
 
             Id = id;
             MedicalAppointmentType = 0;

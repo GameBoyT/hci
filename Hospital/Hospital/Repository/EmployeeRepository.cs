@@ -1,5 +1,4 @@
 using Model;
-using Newtonsoft.Json;
 using Repository.Interfaces;
 using System;
 using System.Collections.Generic;

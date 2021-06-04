@@ -8,7 +8,7 @@ namespace Model
         {
         }
 
-        public Room(int id, string name, RoomType roomType, int floor, string detail, bool status )
+        public Room(int id, string name, RoomType roomType, int floor, string detail, bool status)
         {
             Id = id;
             Name = name;

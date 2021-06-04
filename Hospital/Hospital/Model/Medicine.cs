@@ -16,7 +16,7 @@ namespace Model
         }
 
         public string Name { get; set; }
-        
+
         public VerificationType Verification { get; set; }
 
         public string Description { get; set; }

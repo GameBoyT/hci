@@ -1,7 +1,7 @@
+using DTO;
 using Model;
 using System;
 using System.Collections.Generic;
-using DTO;
 
 namespace Controller
 {
@@ -74,7 +74,7 @@ namespace Controller
         {
             return patientService.GetAllAnamnesisForPatient(patientJmbg);
         }
-       
+
         public List<PrescriptionDTO> GetAllPrescriptionsForPatient(string patientJmbg)
         {
             return patientService.GetAllPresctiptionsForPatient(patientJmbg);
@@ -85,7 +85,7 @@ namespace Controller
             patientService.AddReminder(jmbg, reminder);
         }
 
-        public List<Reminder>GettAllReminders(string jmbg)
+        public List<Reminder> GettAllReminders(string jmbg)
         {
             return patientService.GetAllReminders(jmbg);
         }

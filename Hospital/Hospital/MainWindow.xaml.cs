@@ -1,10 +1,5 @@
-﻿using System.Windows;
-using Service;
-using System;
-using Model;
-using System.Collections.Generic;
-using Hospital.View.Doctor;
-using Hospital.ViewModels;
+﻿using Hospital.ViewModels;
+using System.Windows;
 
 namespace Hospital
 {

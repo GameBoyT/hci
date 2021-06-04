@@ -1,9 +1,7 @@
 using Model;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using Repository.Interfaces;
+using System;
+using System.IO;
 using System.Linq;
 
 namespace Repository

@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Hospital.ViewModels;
+using Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
-using Hospital.ViewModels;
-using Model;
 
 namespace Hospital.VMConverters
 {

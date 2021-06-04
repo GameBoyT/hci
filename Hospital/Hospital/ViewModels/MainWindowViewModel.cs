@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Navigation;
-using System.Windows;
-using Hospital.Commands;
+﻿using Hospital.Commands;
 using Hospital.View.Doctor;
+using System.Windows.Navigation;
 
 namespace Hospital.ViewModels
 {

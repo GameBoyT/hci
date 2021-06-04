@@ -1,5 +1,4 @@
 using DTO;
-using Hospital.ViewModels;
 using Model;
 using Repository;
 using Repository.Interfaces;
@@ -95,7 +94,7 @@ namespace Service
             return updatedAppointment;
         }
 
-        public void UpdateAppointmentParticipants (MedicalAppointment appointment)
+        public void UpdateAppointmentParticipants(MedicalAppointment appointment)
         {
             UpdateAppointmentForDoctor(appointment);
             UpdateAppointmentForPatient(appointment);
@@ -125,7 +124,7 @@ namespace Service
             room.Appointments[index] = appointment;
             _roomRepository.Update(room);
         }
-        
+
         public AppointmentDTO Delete(int id)
         {
             return ConvertToDTO(_appointmentRepository.Delete(id));
@@ -335,7 +334,7 @@ namespace Service
         }
         // Sve iznad do komentara je za brisanje
 
-       
+
 
         public List<AppointmentDTO> GetAppointmentsFromPast(String patientJmbg)
         {
@@ -379,22 +378,22 @@ namespace Service
             }
             Employee doctor = _employeeRepository.GetByJmbg(appointment.DoctorJmbg);
             Patient patient = _patientRepository.GetByJmbg(appointment.PatientJmbg);
-             appointmentDTO = new AppointmentDTO
-                (
-                    appointment.Id,
-                    appointment.MedicalAppointmentType,
-                    appointment.StartTime,
-                    appointment.DurationInMinutes,
-                    doctor.User.Jmbg,
-                    doctor.User.FirstName,
-                    doctor.User.LastName,
-                    doctor.Specialization,
-                    patient.User.Jmbg,
-                    patient.User.FirstName,
-                    patient.User.LastName,
-                    room.Id,
-                    room.Name
-                );
+            appointmentDTO = new AppointmentDTO
+               (
+                   appointment.Id,
+                   appointment.MedicalAppointmentType,
+                   appointment.StartTime,
+                   appointment.DurationInMinutes,
+                   doctor.User.Jmbg,
+                   doctor.User.FirstName,
+                   doctor.User.LastName,
+                   doctor.Specialization,
+                   patient.User.Jmbg,
+                   patient.User.FirstName,
+                   patient.User.LastName,
+                   room.Id,
+                   room.Name
+               );
 
             return appointmentDTO;
         }

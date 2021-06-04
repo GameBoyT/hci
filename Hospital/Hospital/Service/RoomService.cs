@@ -1,7 +1,7 @@
-using Model;
 using DTO;
-using System;
+using Model;
 using Repository;
+using System;
 using System.Collections.Generic;
 
 namespace Service
@@ -56,7 +56,8 @@ namespace Service
         public bool Renovation(int roomId, DateTime renovationDate, double duration)
         {
             AppointmentDTO appointment = new AppointmentDTO(renovationDate, duration, roomId);
-            if (appointmentService.IsRoomAvailable(appointment)){
+            if (appointmentService.IsRoomAvailable(appointment))
+            {
                 appointmentService.SaveRenovation(appointment);
                 return true;
             }

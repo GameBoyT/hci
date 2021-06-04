@@ -1,10 +1,5 @@
-﻿using Service;
-using Hospital.VMConverters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hospital.VMConverters;
+using Service;
 
 namespace Hospital
 {
@@ -63,8 +58,8 @@ namespace Hospital
             get { return patientConverter; }
         }
 
-        public AppointmentConverter AppointmentConverter 
-        { 
+        public AppointmentConverter AppointmentConverter
+        {
             get { return appointmentConverter; }
 
         }

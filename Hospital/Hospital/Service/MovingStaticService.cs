@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Model;
 using Repository;
 using Repository.Interfaces;
-using Model;
+using System;
+using System.Collections.Generic;
 
 namespace Service
 {
