@@ -9,15 +9,16 @@ namespace Hospital.View.Doctor
         public DoctorMainView()
         {
             InitializeComponent();
-            this.DataContext = new DoctorWindowViewModel();
+            DataContext = new DoctorWindowViewModel();
 
         }
 
-        private void AddStudentBtn_Click(object sender, RoutedEventArgs e)
+        private void EditAppointmentBtn_Click(object sender, RoutedEventArgs e)
         {
-            ExaminationViewModel vm = new ExaminationViewModel(this.NavigationService);
-            DoctorExaminationView addStudentPage = new DoctorExaminationView(vm);
-            this.NavigationService.Navigate(addStudentPage);
+            AppointmentViewModel avm = (AppointmentViewModel)appointmentsDataGrid.SelectedItem;
+            UpdateExaminationViewModel vm = new UpdateExaminationViewModel(avm);
+            UpdateExaminationView updateExaminationView = new UpdateExaminationView(vm);
+            NavigationService.Navigate(updateExaminationView);
         }
     }
 }

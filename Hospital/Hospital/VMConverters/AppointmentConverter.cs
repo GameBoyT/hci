@@ -32,26 +32,38 @@ namespace Hospital.VMConverters
         public AppointmentViewModel ConvertModelToViewModel(MedicalAppointment appointment)
         {
 
-            PatientViewModel patient = PatientConverter.ConvertModelToViewModel(PatientService.GetByJmbg(appointment.PatientJmbg));
             EmployeeViewModel doctor = EmployeeConverter.ConvertModelToViewModel(EmployeeService.GetByJmbg(appointment.DoctorJmbg));
+            PatientViewModel patient = PatientConverter.ConvertModelToViewModel(PatientService.GetByJmbg(appointment.PatientJmbg));
             RoomViewModel room = RoomConverter.ConvertModelToViewModel(RoomService.GetById(appointment.RoomId));
 
+
             AppointmentViewModel appointmentViewModel = new AppointmentViewModel
-               (
-                   appointment.Id,
-                   appointment.MedicalAppointmentType,
-                   appointment.StartTime,
-                   appointment.DurationInMinutes,
-                   doctor.Jmbg,
-                   doctor.FirstName,
-                   doctor.LastName,
-                   doctor.Specialization,
-                   patient.Jmbg,
-                   patient.FirstName,
-                   patient.LastName,
-                   room.Id,
-                   room.Name
-               );
+                (
+                    appointment.Id,
+                    appointment.MedicalAppointmentType,
+                    appointment.StartTime,
+                    appointment.DurationInMinutes,
+                    doctor,
+                    patient,
+                    room
+                );
+
+            //AppointmentViewModel appointmentViewModel = new AppointmentViewModel
+            //   (
+            //       appointment.Id,
+            //       appointment.MedicalAppointmentType,
+            //       appointment.StartTime,
+            //       appointment.DurationInMinutes,
+            //       doctor.Jmbg,
+            //       doctor.FirstName,
+            //       doctor.LastName,
+            //       doctor.Specialization,
+            //       patient.Jmbg,
+            //       patient.FirstName,
+            //       patient.LastName,
+            //       room.Id,
+            //       room.Name
+            //   );
 
             appointmentViewModel._Appointment = appointment;
 

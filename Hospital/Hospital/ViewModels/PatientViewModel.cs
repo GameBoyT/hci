@@ -1,36 +1,23 @@
 ﻿using Model;
+using System;
 
 namespace Hospital.ViewModels
 {
     public class PatientViewModel : ViewModel
     {
-        private Injector injector;
-
-        private Patient patient;
-
         private string jmbg;
 
         private string firstName;
 
         private string lastName;
 
-        public Injector Injector
-        {
-            get { return injector; }
-            set
-            {
-                injector = value;
-            }
-        }
+        private DateTime dateOfBirth;
 
-        public Patient _Patient
-        {
-            get { return patient; }
-            set
-            {
-                patient = value;
-            }
-        }
+        private string address;
+
+        public Injector Injector { get; set; }
+
+        public Patient _Patient { get; set; }
 
         public string Jmbg
         {
@@ -58,6 +45,26 @@ namespace Hospital.ViewModels
             set
             {
                 lastName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public DateTime DateOfBirth
+        {
+            get { return dateOfBirth; }
+            set
+            {
+                dateOfBirth = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Address
+        {
+            get { return address; }
+            set
+            {
+                address = value;
                 OnPropertyChanged();
             }
         }

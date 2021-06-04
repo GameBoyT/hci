@@ -15,6 +15,12 @@ namespace Hospital.ViewModels
 
         private double durationInMinutes;
 
+        private EmployeeViewModel doctor;
+
+        private PatientViewModel patient;
+        
+        private RoomViewModel room;
+
         // Umjest ovih polja AppointmentViewModel trebalo bi da sadrzi EmployeeViewModel, PatientViewModel i RoomViewModel
         private string doctorJmbg;
 
@@ -188,6 +194,36 @@ namespace Hospital.ViewModels
             }
         }
 
+        public EmployeeViewModel Doctor
+        {
+            get { return doctor; }
+            set
+            {
+                doctor = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public PatientViewModel Patient
+        {
+            get { return patient; }
+            set
+            {
+                patient = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public RoomViewModel Room
+        {
+            get { return room; }
+            set
+            {
+                room = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public AppointmentViewModel(int id, MedicalAppointmentType appointmentType, DateTime startTime, Double durationInMinutes, string doctorJmbg, string doctorFirstName,
                                     string doctorLastName, string doctorSpecialization, string patientJmbg, string patientFirstName, string patientLastName, int roomId, string roomName)
@@ -205,6 +241,17 @@ namespace Hospital.ViewModels
             PatientLastName = patientLastName;
             RoomId = roomId;
             RoomName = roomName;
+        }
+
+        public AppointmentViewModel(int id, MedicalAppointmentType appointmentType, DateTime startTime, Double durationInMinutes, EmployeeViewModel doctor, PatientViewModel patient, RoomViewModel room)
+        {
+            Id = id;
+            MedicalAppointmentType = appointmentType;
+            StartTime = startTime;
+            DurationInMinutes = durationInMinutes;
+            Doctor = doctor;
+            Patient = patient;
+            Room = room;
         }
 
         public AppointmentViewModel(int id, MedicalAppointmentType appointmentType, DateTime startTime, double durationInMinutes, string patientJmbg, string doctorJmbg, int roomId, string modifiedByJmbg)

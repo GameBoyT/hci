@@ -1,7 +1,9 @@
 ﻿using Hospital.Commands;
+using Hospital.View.Doctor;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Navigation;
 
 namespace Hospital.ViewModels
 {
@@ -35,8 +37,6 @@ namespace Hospital.ViewModels
             SelectedDateAppointments.Remove(SelectedAppointment);
         }
 
-
-
         public DateTime AppointmentsDate
         {
             get
@@ -62,11 +62,9 @@ namespace Hospital.ViewModels
             injector.AppointmentConverter.RoomConverter = injector.RoomConverter;
             injector.AppointmentConverter.RoomService = injector.RoomService;
 
-            //this.navService = navService;
 
             DeleteCommand = new RelayCommand(Execute_DeleteCommand, CanExecute_DeleteCommand);
-
-
+            
             Appointments = new ObservableCollection<AppointmentViewModel>(Inject.AppointmentConverter.ConvertCollectionToViewModel(Inject.AppointmentService.GetAllForLoggedInDoctor()));
             SelectedDateAppointments = new ObservableCollection<AppointmentViewModel>(Appointments.Where(appointment => appointment.StartTime.Date == DateTime.Now.Date));
             AppointmentsDate = DateTime.Now;
@@ -96,5 +94,6 @@ namespace Hospital.ViewModels
         //    //this.NavService.Navigate(
         //    //    new Uri("DoctorExaminationView.xaml", UriKind.Relative));
         //}
+
     }
 }

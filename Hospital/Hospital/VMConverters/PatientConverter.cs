@@ -14,6 +14,8 @@ namespace Hospital.VMConverters
                 Jmbg = patient.User.Jmbg,
                 FirstName = patient.User.FirstName,
                 LastName = patient.User.LastName,
+                DateOfBirth = patient.User.DateOfBirth,
+                Address = patient.User.Address,
                 _Patient = patient
             };
 

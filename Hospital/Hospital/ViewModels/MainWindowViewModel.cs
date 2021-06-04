@@ -13,7 +13,6 @@ namespace Hospital.ViewModels
 
         #region Komande
         public RelayCommand NavigateToExamination { get; set; }
-
         #endregion
 
         #region Akcije
@@ -24,11 +23,10 @@ namespace Hospital.ViewModels
 
         private void Execute_NavigateToExamination(object obj)
         {
-            ExaminationViewModel vm = new ExaminationViewModel(this.NavService);
+            ExaminationViewModel vm = new ExaminationViewModel(NavService);
             DoctorExaminationView addStudentPage = new DoctorExaminationView(vm);
-            this.NavService.Navigate(addStudentPage);
+            NavService.Navigate(addStudentPage);
         }
-
         #endregion
 
         public MainWindowViewModel(NavigationService navService)

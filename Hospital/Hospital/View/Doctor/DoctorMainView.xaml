@@ -39,11 +39,11 @@
                 <DataGridTextColumn Header="Duration"
                             Binding="{Binding DurationInMinutes}" />
                 <DataGridTextColumn Header="Name"
-                            Binding="{Binding PatientFirstName}" />
+                            Binding="{Binding Patient.FirstName}" />
                 <DataGridTextColumn Header="Last Name"
-                            Binding="{Binding PatientLastName}" />
+                            Binding="{Binding Patient.LastName}" />
                 <DataGridTextColumn Header="Room"
-                            Binding="{Binding RoomName}" />
+                            Binding="{Binding Room.Name}" />
             </DataGrid.Columns>
         </DataGrid>
 
@@ -63,8 +63,9 @@
                 </StackPanel>
             </Button.Content>
         </Button>
+                -->
 
-        <Button Margin="0,65,10,0" VerticalAlignment="Top" Click="Update_Click" Height="35" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Width="125">
+        <Button Margin="0,65,10,0" VerticalAlignment="Top" Click="EditAppointmentBtn_Click" Height="35" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Width="125">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Edit" Width="40" Foreground="#2596be"/>
@@ -74,7 +75,6 @@
                 </StackPanel>
             </Button.Content>
         </Button>
-                -->
         <Button Margin="0,65,155,0" VerticalAlignment="Top" Command="{Binding Path=DeleteCommand}" Height="35" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Width="125">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
@@ -87,7 +87,7 @@
         </Button>
 
 
-        <Button Margin="0,65,10,0" VerticalAlignment="Top" Click="AddStudentBtn_Click"  Height="35" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Right" Width="175" >
+        <!--<Button Margin="0,65,10,0" VerticalAlignment="Top" Click="AddStudentBtn_Click"  Height="35" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Right" Width="175" >
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Stethoscope" Width="40" Foreground="#2596be"/>
@@ -96,6 +96,6 @@
                     </TextBlock>
                 </StackPanel>
             </Button.Content>
-        </Button>
+        </Button>-->
     </Grid>
 </Page>
