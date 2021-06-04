@@ -16,6 +16,11 @@ namespace Model
             this.DateOfBirth = dateOfBirth;
         }
 
+        public User()
+        {
+
+        }
+
         public String Jmbg
         {
             get

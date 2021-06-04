@@ -1,4 +1,5 @@
 using DTO;
+using Hospital.ViewModels;
 using Model;
 using Repository;
 using Repository.Interfaces;
@@ -26,6 +27,11 @@ namespace Service
             return ConvertListToDTO(appointments);
         }
 
+        public List<MedicalAppointment> GetAllForLoggedInDoctor()
+        {
+            return _appointmentRepository.GetAppointmentsForDoctor("1");
+        }
+
         public AppointmentDTO GetById(int id)
         {
             return ConvertToDTO(_appointmentRepository.GetById(id));
@@ -39,6 +45,13 @@ namespace Service
             AddAppointmentToParticipants(appointment);
             return ConvertToDTO(appointment);
         }
+
+        public MedicalAppointment Save(MedicalAppointment appointment)
+        {
+            appointment.Id = GenerateNewId();
+            return _appointmentRepository.Save(appointment);
+        }
+
         public void SaveRenovation(AppointmentDTO appointmentDTO)
         {
             appointmentDTO.Id = GenerateNewId();

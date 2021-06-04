@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital.View.Doctor"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="DoctorViewPatient" Height="450" Width="800">
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        Title="DoctorViewPatient" Height="470" Width="800">
     <Window.Resources>
         <ResourceDictionary>
             <RoutedUICommand x:Key="Ctr1" Text="Another Text" />
@@ -36,12 +39,22 @@
         <CommandBinding Command="{StaticResource Ctr7}" Executed="CtrShortcut7" />-->
     </Window.CommandBindings>
     <Grid x:Name="dvpGrid">
-
         <TabControl>
-            <TabItem Header="MedicalAppointment Details">
-                <Grid Background="#FFE5E5E5">
-                    <Label Content="Patient Details" HorizontalAlignment="Left" Margin="100,44,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2"/>
-                    <Grid Margin="30,75,550,160">
+            <TabItem Header="Appointment Details">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="45"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Patient Details" HorizontalAlignment="Center" Margin="0,0,0,10" Grid.Column="1" Height="19" VerticalAlignment="Bottom"/>
+                    <Grid Margin="10,10,10,10" Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
@@ -64,18 +77,37 @@
                         <TextBox Grid.Column="1" Grid.Row="3" IsReadOnly="True" Text="{Binding Path=Patient.User.DateOfBirth, StringFormat='dd-MM-yyyy'}"></TextBox>
                         <TextBox Grid.Column="1" Grid.Row="4" IsReadOnly="True" Text="{Binding Path=Patient.User.Address}"></TextBox>
                     </Grid>
-                    <Button HorizontalAlignment="Left" Margin="40,340,0,0" VerticalAlignment="Top" Height="30" Width="75" Click="BackButton_Click">
+                    <Button Margin="10,0,0,30" VerticalAlignment="Bottom" Width="80" Click="BackButton_Click" Height="35" Grid.Row="2" Grid.Column="1">
                         <Button.Content>
-                            <TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <fa:ImageAwesome Icon="ArrowCircleLeft" Height="18" Width="30" Foreground="#2596be"/>
+                                <TextBlock>
                                 <Underline>B</Underline>ack
-                            </TextBlock>
+                                </TextBlock>
+                            </StackPanel>
                         </Button.Content>
                     </Button>
+                    <fa:ImageAwesome Icon="UserCircle" Grid.Column="2" Margin="0,21,124,0" Grid.Row="1" HorizontalAlignment="Right" Width="155" Height="141" VerticalAlignment="Top"  />
                 </Grid>
             </TabItem>
             <TabItem Header="Anamnesis">
                 <Grid>
-                    <ListView Margin="10,61,528,133" Name="lvDataBinding" PreviewMouseLeftButtonUp="listView_Click">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="45"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListView Margin="10,10,10,10" Name="lvDataBinding" PreviewMouseLeftButtonUp="listView_Click"               
+                              BorderThickness="1"
+                              BorderBrush="Black" Grid.Column="1" Grid.Row="1">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <WrapPanel>
@@ -88,30 +120,44 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <TextBlock HorizontalAlignment="Left" Margin="101,23,0,0" Text="Anamnesis" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="478,23,0,0" Text="Anamnesis Details" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                    <TextBox Text="{Binding Path=DetailText}" IsEnabled="{Binding Path=IsAppointmentTime}" HorizontalAlignment="Left" Margin="349,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="366" Height="212"/>
-                    <Button Content="Save Changes" HorizontalAlignment="Left" Margin="630,305,0,0" VerticalAlignment="Top" Height="30" Width="85" Click="SaveChangesButton_Click"/>
-                    <Button Content="Add New" HorizontalAlignment="Left" Margin="206,305,0,0" VerticalAlignment="Top" Height="30" Width="60" Click="AddNewButton_Click"/>
-                    <Button Content="Cancel" HorizontalAlignment="Left" Margin="535,305,0,0" VerticalAlignment="Top" Height="30" Width="60" Click="CancelButton_Click"/>
-                    <Button Content="Back" HorizontalAlignment="Left" Margin="40,340,0,0" VerticalAlignment="Top" Height="30" Width="75" Click="BackButton_Click"/>
+                    <TextBlock HorizontalAlignment="Center" Margin="0,0,0,10" Text="Anamnesis" TextWrapping="Wrap" Width="68" Grid.Column="1" Height="19" VerticalAlignment="Bottom"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Anamnesis Details" TextWrapping="Wrap" Grid.Column="3" Width="116" Margin="0,16,0,0" Height="19" VerticalAlignment="Top"/>
+                    <TextBox Text="{Binding Path=DetailText}" IsEnabled="{Binding Path=IsAppointmentTime}" TextWrapping="Wrap" Grid.Column="3" Grid.Row="1" Margin="10,10,10,10"/>
+                    <Button Content="Save Changes" Margin="0,10,10,0" VerticalAlignment="Top" Width="125" Click="SaveChangesButton_Click" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Right" Height="35"/>
+                    <Button Content="Add New" Margin="0,10,10,0" VerticalAlignment="Top" Height="35" Click="AddNewButton_Click" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Width="125"/>
+                    <Button Content="Cancel" Margin="10,10,0,0" VerticalAlignment="Top" Width="125" Click="CancelButton_Click" Grid.Column="3" Grid.Row="2" Height="35"/>
+                    <Button Margin="10,0,0,30" VerticalAlignment="Bottom" Width="80" Click="BackButton_Click" Height="35" Grid.Row="2" Grid.Column="1">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <fa:ImageAwesome Icon="ArrowCircleLeft" Height="18" Width="30" Foreground="#2596be"/>
+                                <TextBlock>
+                                <Underline>B</Underline>ack
+                                </TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Prescription">
                 <Grid>
-                    <ListView Margin="10,61,588,133" Name="lvPrescriptionDataBinding" PreviewMouseLeftButtonUp="listViewPrescription_Click">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <WrapPanel>
-                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" />
-                                </WrapPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-
-                    <TextBlock HorizontalAlignment="Left" Margin="78,23,0,0" Text="Medicine" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="593,23,0,0" Text="Patients Prescriptions" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                    <ListView Margin="513,61,25,133" x:Name="lvPatientPrescriptionDataBinding" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="45"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Center" Text="Patients Prescriptions" TextWrapping="Wrap" VerticalAlignment="Bottom" Grid.Column="1" Height="19" Width="134" Margin="0,0,0,10"/>
+                    <ListView x:Name="lvPatientPrescriptionDataBinding"
+                              BorderThickness="1"
+                              BorderBrush="Black" Grid.Column="1" Grid.Row="1" Margin="10,10,10,10">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <WrapPanel>
@@ -123,19 +169,55 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <Label Content="Enter Quantity: " HorizontalAlignment="Left" Margin="249,61,0,0" VerticalAlignment="Top"/>
-                    <TextBox Text="{Binding Path=Quantity}"  IsEnabled="{Binding Path=IsAppointmentTime}" HorizontalAlignment="Left" Margin="346,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
-                    <Label Content="Enter Use Description: " HorizontalAlignment="Left" Margin="249,92,0,0" VerticalAlignment="Top"/>
-                    <TextBox Text="{Binding Path=DescriptionText}" IsEnabled="{Binding Path=IsAppointmentTime}" HorizontalAlignment="Left" Margin="249,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="139"/>
-                    <Button Content="Add Prescription" HorizontalAlignment="Left" Margin="324,305,0,0" VerticalAlignment="Top" Height="30" Width="97" Click="PrescriptionAddButton_Click"/>
-                    <Button Content="Back" HorizontalAlignment="Left" Margin="40,340,0,0" VerticalAlignment="Top" Height="30" Width="75" Click="BackButton_Click"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Medicine" TextWrapping="Wrap" VerticalAlignment="Bottom" Grid.Column="3" Height="19" Width="58" Margin="0,0,0,10"/>
+                    <ListView Name="lvPrescriptionDataBinding" PreviewMouseLeftButtonUp="listViewPrescription_Click"
+                                BorderThickness="1"
+                                BorderBrush="Black" Grid.Column="3" Margin="10,10,10,10" Grid.Row="1">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" />
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <Label Content="Enter Use Description: " HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Column="5" Height="19" Width="140" Margin="0,0,0,10"/>
+                    <TextBox Text="{Binding Path=DescriptionText}" IsEnabled="{Binding Path=IsAppointmentTime}" TextWrapping="Wrap" Grid.Column="5" Margin="10,10,10,75" Grid.Row="1"/>
+                    <Label Content="Quantity: " HorizontalAlignment="Left" Margin="10,0,0,16" VerticalAlignment="Bottom" Grid.Column="5" Grid.Row="1" Height="19" Width="58"/>
+                    <TextBox Text="{Binding Path=Quantity}"  IsEnabled="{Binding Path=IsAppointmentTime}" Margin="0,0,10,10" TextWrapping="Wrap" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Right" Width="95" Height="32" VerticalAlignment="Bottom"/>
+                    <Button Content="Add Prescription" Margin="0,10,10,0" VerticalAlignment="Top" Click="PrescriptionAddButton_Click" Grid.Column="5" Grid.Row="2" Width="125" HorizontalAlignment="Right" Height="35"/>
+                    <Button Margin="10,0,0,30" VerticalAlignment="Bottom" Width="80" Click="BackButton_Click" Height="35" Grid.Row="2" Grid.Column="1">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <fa:ImageAwesome Icon="ArrowCircleLeft" Height="18" Width="30" Foreground="#2596be"/>
+                                <TextBlock>
+                                <Underline>B</Underline>ack
+                                </TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Referral">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="45"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
                     <DataGrid x:Name="doctorsDataGrid"
-                  AutoGenerateColumns="False"
-                  IsReadOnly="True" Margin="33,55,470,157">
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              BorderThickness="1"
+                              BorderBrush="Black" Grid.Column="1" Margin="10,10,10,10" Grid.Row="1">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Jmbg"
                                 Binding="{Binding User.Jmbg}" />
@@ -147,49 +229,91 @@
                                 Binding="{Binding Specialization}" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Label Content="Specialization needed:" HorizontalAlignment="Left" Margin="33,268,0,0" VerticalAlignment="Top" Width="132" RenderTransformOrigin="0.529,-0.638"/>
-                    <TextBox x:Name="specializationName" HorizontalAlignment="Left" Margin="182,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="specializationName_TextChanged"/>
-                    <Label Content="Referral details: " HorizontalAlignment="Left" Margin="452,55,0,0" VerticalAlignment="Top"/>
-                    <TextBox Text="{Binding Path=ReferralDescriptionText}" IsEnabled="{Binding Path=IsAppointmentTime}" HorizontalAlignment="Left" Margin="411,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="163"/>
-                    <Button Content="Add Referral" HorizontalAlignment="Left" Margin="525,281,0,0" VerticalAlignment="Top" Height="30" Width="97" Click="ReferralAddButton_Click"/>
-                    <Button Content="Back" HorizontalAlignment="Left" Margin="40,340,0,0" VerticalAlignment="Top" Height="30" Width="75" Click="BackButton_Click"/>
+                    <Label Content="Doctors" HorizontalAlignment="Center" Margin="0,0,0,10" Grid.Column="1" Height="19" VerticalAlignment="Bottom"/>
+                    <Label Content="Specialization needed:" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="155" RenderTransformOrigin="0.529,-0.638" Grid.Row="2" Grid.Column="1"/>
+                    <TextBox x:Name="specializationName" Margin="170,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="specializationName_TextChanged" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="120"/>
+                    <Label Content="Referral details" HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Bottom" Grid.Column="3"/>
+                    <TextBox Text="{Binding Path=ReferralDescriptionText}" IsEnabled="{Binding Path=IsAppointmentTime}" TextWrapping="Wrap" Grid.Column="3" Margin="10,10,10,10" Grid.Row="1"/>
+                    <Button Content="Add Referral" Margin="0,10,10,0" VerticalAlignment="Top" Width="125" Click="ReferralAddButton_Click" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Right" Height="35"/>
+                    <Button Margin="10,0,0,30" VerticalAlignment="Bottom" Width="80" Click="BackButton_Click" Height="35" Grid.Row="2" Grid.Column="1">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <fa:ImageAwesome Icon="ArrowCircleLeft" Height="18" Width="30" Foreground="#2596be"/>
+                                <TextBlock>
+                                <Underline>B</Underline>ack
+                                </TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Hospital stay">
                 <Grid>
-                    <Canvas x:Name="NewHospitalStay">
+                    <Canvas x:Name="NewHospitalStay" Grid.ColumnSpan="5" Grid.RowSpan="3">
+                        <Grid Width="800" Height="414">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="45"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="7*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="7*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="7*"/>
+                                <ColumnDefinition Width="45"/>
+                            </Grid.ColumnDefinitions>
 
-                        <Label Content="Rooms:" HorizontalAlignment="Left" Margin="78,63,0,0" VerticalAlignment="Top" Width="60"/>
-                        <ListView Margin="10,112,588,82" x:Name="lvHospitalStayRoomsDataBinding" PreviewMouseLeftButtonUp="listViewHospitalStayRooms_Click" Height="218" Canvas.Left="10" Width="174">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <WrapPanel>
-                                        <TextBlock Text="{Binding Name}"/>
-                                    </WrapPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                            <Label Content="Rooms" HorizontalAlignment="Center" VerticalAlignment="Center" Width="46" Grid.Column="1" Height="19"/>
+                            <ListView Margin="10,10,10,10" x:Name="lvHospitalStayRoomsDataBinding" PreviewMouseLeftButtonUp="listViewHospitalStayRooms_Click"
+                                  BorderThickness="1"
+                              BorderBrush="Black" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel>
+                                            <TextBlock Text="{Binding Name}"/>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
 
-                        <Label Content="Beds:" HorizontalAlignment="Left" Margin="337,71,0,0" VerticalAlignment="Top" Width="52"/>
-                        <ListView Margin="265,112,333,82" x:Name="lvRoomBedsDataBinding" PreviewMouseLeftButtonUp="listViewRoomBeds_Click" Height="212" Width="192">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <WrapPanel>
-                                        <TextBlock Text="{Binding Description}" />
-                                    </WrapPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                            <Label Content="Beds" HorizontalAlignment="Center" VerticalAlignment="Center" Width="34" Grid.Column="3" Height="19"/>
+                            <ListView Margin="10,10,10,10" x:Name="lvRoomBedsDataBinding" PreviewMouseLeftButtonUp="listViewRoomBeds_Click"
+                                  BorderThickness="1"
+                              BorderBrush="Black" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel>
+                                            <TextBlock Text="{Binding Description}" />
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
 
 
-                        <Label Content="Start date:" HorizontalAlignment="Left" Margin="489,110,0,0" VerticalAlignment="Top" Width="122"/>
-                        <DatePicker x:Name="hospitalStayStartDate" HorizontalAlignment="Left" Margin="627,110,0,0" VerticalAlignment="Top"/>
-                        <Label Content="End date:" HorizontalAlignment="Left" Margin="489,165,0,0" VerticalAlignment="Top" Width="122"/>
-                        <DatePicker x:Name="hospitalStayEndDate" HorizontalAlignment="Left" Margin="627,167,0,0" VerticalAlignment="Top"/>
-
-                        <Button Content="Add Hospital Stay" HorizontalAlignment="Left" Margin="604,294,0,0" VerticalAlignment="Top" Height="30" Width="125" Click="HospitalStayAddButton_Click"/>
+                            <Label Content="Start date:" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="74" Grid.Column="5" Grid.Row="1" Height="18"/>
+                            <Label Content="End date:" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="74" Grid.Column="5" Grid.Row="2" Height="18"/>
+                            <DatePicker x:Name="hospitalStayStartDate" Grid.Column="6" Grid.Row="1" Margin="10,10,0,0" VerticalAlignment="Top" Height="32" Width="154"/>
+                            <Label HorizontalAlignment="Center" Margin="0,24,0,0" VerticalAlignment="Top" Width="122" Grid.Column="5" Grid.Row="2" Height="0"/>
+                            <DatePicker x:Name="hospitalStayEndDate" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="6" Grid.Row="2" Height="32" Width="152"/>
+                            <Button Content="Add Hospital Stay" Click="HospitalStayAddButton_Click" Margin="10,0,0,10" VerticalAlignment="Bottom" Grid.Column="6" Grid.Row="2" Height="35" Width="150" />
+                            <Button Width="80" Click="BackButton_Click" Height="35" Grid.Row="3" Grid.Column="1" Margin="10,0,0,30" VerticalAlignment="Bottom">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <fa:ImageAwesome Icon="ArrowCircleLeft" Height="18" Width="30" Foreground="#2596be"/>
+                                        <TextBlock>
+                                            <Underline>B</Underline>ack
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                        </Grid>
                     </Canvas>
-                    <Canvas x:Name="ExtendHospitalStay"  Visibility="Collapsed">
+                    <Canvas x:Name="ExtendHospitalStay"  Visibility="Collapsed" Grid.ColumnSpan="5" Grid.RowSpan="3">
                         <!--<Grid Margin="30,75,550,160">
                             <Grid.RowDefinitions>
                                 <RowDefinition />
@@ -212,7 +336,7 @@
                         </Grid>-->
                         <Label Content="Extend hospital stay until date:" Margin="489,165,0,0" Width="187" Canvas.Left="-395" Canvas.Top="-85"/>
                         <DatePicker x:Name="extendedEndDate" Margin="627,167,0,0" Canvas.Left="-338" Canvas.Top="-86"/>
-                        <Button Content="Extend Hospital Stay" HorizontalAlignment="Left" Margin="604,294,0,0" VerticalAlignment="Top" Height="30" Width="125" Click="HospitalStayExtendButton_Click"/>
+                        <Button Content="Extend Hospital Stay" HorizontalAlignment="Left" Margin="604,294,0,0" VerticalAlignment="Top" Height="35" Width="125" Click="HospitalStayExtendButton_Click"/>
                     </Canvas>
                 </Grid>
             </TabItem>

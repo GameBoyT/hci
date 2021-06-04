@@ -16,6 +16,17 @@ namespace Model
             Reminders = new List<Reminder>();
         }
 
+        public Patient()
+        {
+            this.User = new User();
+            this.MedicalRecord = new MedicalRecord();
+            this.Appointments = new List<MedicalAppointment>();
+            this.Notifications = new List<Notification>();
+            this.CancelationDates = new List<DateTime>();
+            this.Blocked = false;
+            Reminders = new List<Reminder>();
+        }
+
         public List<DateTime> CancelationDates { get; set; }
 
         public bool Blocked { get; set; }

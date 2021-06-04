@@ -14,7 +14,9 @@
     "Salary": 0.0,
     "AnnualLeave": 0,
     "RoomId": 1,
-    "Specialization": null,
+    "StartWork": null,
+    "EndWork": null,
+    "Specialization": "Surgeon",
     "Appointments": [
       {
         "MedicalAppointmentType": 0,
@@ -51,6 +53,60 @@
         "DurationInMinutes": 15.0,
         "RoomId": 1,
         "Id": 12
+      },
+      {
+        "MedicalAppointmentType": 0,
+        "DoctorJmbg": "1",
+        "PatientJmbg": "5",
+        "StartTime": "2021-06-01T20:22:00",
+        "DurationInMinutes": 15.0,
+        "RoomId": 1,
+        "Id": 13
+      },
+      {
+        "MedicalAppointmentType": 0,
+        "DoctorJmbg": "1",
+        "PatientJmbg": "5",
+        "StartTime": "2021-06-01T23:00:00",
+        "DurationInMinutes": 15.0,
+        "RoomId": 1,
+        "Id": 14
+      },
+      {
+        "MedicalAppointmentType": 0,
+        "DoctorJmbg": "1",
+        "PatientJmbg": "5",
+        "StartTime": "2021-06-02T10:00:00",
+        "DurationInMinutes": 15.0,
+        "RoomId": 1,
+        "Id": 15
+      },
+      {
+        "MedicalAppointmentType": 0,
+        "DoctorJmbg": "1",
+        "PatientJmbg": "5",
+        "StartTime": "2021-06-02T10:15:00",
+        "DurationInMinutes": 15.0,
+        "RoomId": 1,
+        "Id": 16
+      },
+      {
+        "MedicalAppointmentType": 0,
+        "DoctorJmbg": "1",
+        "PatientJmbg": "5",
+        "StartTime": "2021-06-02T12:30:00",
+        "DurationInMinutes": 15.0,
+        "RoomId": 1,
+        "Id": 17
+      },
+      {
+        "MedicalAppointmentType": 1,
+        "DoctorJmbg": "1",
+        "PatientJmbg": "5",
+        "StartTime": "2021-06-03T20:20:00",
+        "DurationInMinutes": 30.0,
+        "RoomId": 3,
+        "Id": 17
       }
     ],
     "Notifications": [],
@@ -81,7 +137,9 @@
     "Salary": 0.0,
     "AnnualLeave": 0,
     "RoomId": 2,
-    "Specialization": null,
+    "StartWork": null,
+    "EndWork": null,
+    "Specialization": "Pediatrician",
     "Appointments": [],
     "Notifications": [],
     "Reviews": [],
@@ -102,6 +160,8 @@
     "Salary": 0.0,
     "AnnualLeave": 0,
     "RoomId": 0,
+    "StartWork": null,
+    "EndWork": null,
     "Specialization": null,
     "Appointments": [],
     "Notifications": [],
@@ -123,6 +183,8 @@
     "Salary": 0.0,
     "AnnualLeave": 0,
     "RoomId": 0,
+    "StartWork": null,
+    "EndWork": null,
     "Specialization": null,
     "Appointments": [],
     "Notifications": [],
