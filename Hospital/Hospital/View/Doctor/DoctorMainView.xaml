@@ -85,7 +85,7 @@
         </Button>
         -->
 
-        <Button Margin="0,65,10,0" VerticalAlignment="Top" Command="{Binding Path=NewExaminationCommand}" Height="35" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Right" Width="175" >
+        <Button Margin="0,65,10,0" VerticalAlignment="Top" Click="AddStudentBtn_Click"  Height="35" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Right" Width="175" >
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Stethoscope" Width="40" Foreground="#2596be"/>

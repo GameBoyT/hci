@@ -14,17 +14,6 @@ namespace Hospital.ViewModels
     {
         private DateTime appointmentsDate;
 
-        //private NavigationService navService;
-
-        //public NavigationService NavService
-        //{
-        //    get { return navService; }
-        //    set
-        //    {
-        //        navService = value;
-        //    }
-        //}
-
         public ObservableCollection<AppointmentViewModel> Appointments { get; set; }
 
         public ObservableCollection<AppointmentViewModel> SelectedDateAppointments { get; set; }

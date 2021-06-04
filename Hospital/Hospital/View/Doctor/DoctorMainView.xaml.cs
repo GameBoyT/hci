@@ -22,5 +22,12 @@ namespace Hospital.View.Doctor
             this.DataContext = new DoctorWindowViewModel();
 
         }
+
+        private void AddStudentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ExaminationViewModel vm = new ExaminationViewModel(this.NavigationService);
+            DoctorExaminationView addStudentPage = new DoctorExaminationView(vm);
+            this.NavigationService.Navigate(addStudentPage);
+        }
     }
 }

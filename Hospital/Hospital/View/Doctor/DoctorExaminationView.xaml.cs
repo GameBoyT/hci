@@ -16,10 +16,10 @@ namespace Hospital.View.Doctor
 {
     public partial class DoctorExaminationView : Page
     {
-        public DoctorExaminationView()
+        public DoctorExaminationView(ExaminationViewModel vm)
         {
             InitializeComponent();
-            this.DataContext = new ExaminationViewModel();
+            this.DataContext = vm;
         }
     }
 }

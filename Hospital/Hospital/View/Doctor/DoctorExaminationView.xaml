@@ -41,6 +41,6 @@
             <TextBox Text="{Binding StartTime}"  Grid.Column="1" Grid.Row="1"/>
         </Grid>
         <Button Content="Add" HorizontalAlignment="Left" Margin="438,185,0,0" VerticalAlignment="Top" Height="27" Width="62" Command="{Binding Path=AddCommand}" />
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="350,185,0,0" VerticalAlignment="Top" Height="27" Width="65" Command="{Binding Path=CancelCommand}" CommandParameter="{Binding ElementName=ExaminationWindow}"/>
+        <!--<Button Content="Cancel" HorizontalAlignment="Left" Margin="350,185,0,0" VerticalAlignment="Top" Height="27" Width="65" Command="{Binding Path=CancelCommand}" CommandParameter="{Binding ElementName=DoctorExaminationView}"/>-->
     </Grid>
 </Page>

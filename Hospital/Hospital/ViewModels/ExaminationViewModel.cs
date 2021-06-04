@@ -5,10 +5,11 @@ using System.Collections.ObjectModel;
 using Model;
 using System.Windows;
 using Hospital.Commands;
+using System.Windows.Navigation;
 
 namespace Hospital.ViewModels
 {
-    class ExaminationViewModel : ViewModel
+    public class ExaminationViewModel : ViewModel
     {
         #region Polja
 
@@ -25,6 +26,8 @@ namespace Hospital.ViewModels
         public RelayCommand AddCommand { get; set; }
 
         public RelayCommand CancelCommand { get; set; }
+
+        public NavigationService NavigationService { get; }
 
 
         #endregion
@@ -62,6 +65,19 @@ namespace Hospital.ViewModels
             Inject = new Injector();
             Patients = new ObservableCollection<PatientViewModel>(Inject.PatientConverter.ConvertCollectionToViewModel(Inject.PatientService.GetAll()));
             
+            AddCommand = new RelayCommand(Executed_AddCommand);
+            CancelCommand = new RelayCommand(Executed_CancelCommand);
+
+            ExaminationDate = DateTime.Now;
+            StartTime = "12:00";
+        }
+
+        public ExaminationViewModel(NavigationService navigationService)
+        {
+            NavigationService = navigationService;
+            Inject = new Injector();
+            Patients = new ObservableCollection<PatientViewModel>(Inject.PatientConverter.ConvertCollectionToViewModel(Inject.PatientService.GetAll()));
+
             AddCommand = new RelayCommand(Executed_AddCommand);
             CancelCommand = new RelayCommand(Executed_CancelCommand);
 
