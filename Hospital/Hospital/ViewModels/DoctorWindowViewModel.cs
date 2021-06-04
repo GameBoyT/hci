@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Controls;
 using Hospital.View.Doctor;
 using Hospital.Commands;
+using System.Windows.Navigation;
 
 namespace Hospital.ViewModels
 {
@@ -13,11 +14,23 @@ namespace Hospital.ViewModels
     {
         private DateTime appointmentsDate;
 
+        //private NavigationService navService;
+
+        //public NavigationService NavService
+        //{
+        //    get { return navService; }
+        //    set
+        //    {
+        //        navService = value;
+        //    }
+        //}
+
         public ObservableCollection<AppointmentViewModel> Appointments { get; set; }
 
         public ObservableCollection<AppointmentViewModel> SelectedDateAppointments { get; set; }
 
         public RelayCommand NewExaminationCommand { get; set; }
+
         public Injector Inject { get; set; }
 
         public DateTime AppointmentsDate
@@ -43,7 +56,9 @@ namespace Hospital.ViewModels
             injector.AppointmentConverter.EmployeeService = injector.EmployeeService;
             injector.AppointmentConverter.PatientService = injector.PatientService;
 
-            NewExaminationCommand = new RelayCommand(Executed_NewExaminationCommand);
+            //this.navService = navService;
+
+            //NewExaminationCommand = new RelayCommand(Executed_NewExaminationCommand);
 
 
             Appointments = new ObservableCollection<AppointmentViewModel>(Inject.AppointmentConverter.ConvertCollectionToViewModel(Inject.AppointmentService.GetAllForLoggedInDoctor()));
@@ -67,10 +82,13 @@ namespace Hospital.ViewModels
             catch { }
         }
 
-        public void Executed_NewExaminationCommand(object obj)
-        {
-            DoctorExamination doctorExamination = new DoctorExamination();
-            doctorExamination.Show();
-        }
+        //public void Executed_NewExaminationCommand(object obj)
+        //{
+        //    DoctorExaminationView doctorExamination = new DoctorExaminationView();
+        //    this.NavService.Navigate(doctorExamination);
+
+        //    //this.NavService.Navigate(
+        //    //    new Uri("DoctorExaminationView.xaml", UriKind.Relative));
+        //}
     }
 }

@@ -7,12 +7,9 @@
         mc:Ignorable="d"
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="850">
     <Grid>
-        <Button Content="Patient" HorizontalAlignment="Left" Height="49" Margin="67,329,0,0" VerticalAlignment="Top" Click="Button_Click_Patient" Width="128"/>
-        <Button Content="Doctor" HorizontalAlignment="Left" Height="49" Margin="240,329,0,0" VerticalAlignment="Top" Click="Button_Click_Doctor" Width="128"/>
-        <Button Content="Director" HorizontalAlignment="Left" Height="49" Margin="420,329,0,0" VerticalAlignment="Top" Click="Button_Click_Director" Width="128"/>
-        <Button Content="Secretary" HorizontalAlignment="Left" Height="49" Margin="602,329,0,0" VerticalAlignment="Top" Click="Button_Click_Secretary" Width="128"/>
+        <Frame x:Name="frame" Source="View/Doctor/DoctorMainView.xaml" />
 
     </Grid>
 </Window>

@@ -124,6 +124,7 @@
                 </StackPanel>
             </Button.Content>
         </Button>
+
         <!--
         <Button Margin="0,10,10,0" Height="35" Click="NewOperationButtonClick" VerticalAlignment="Top" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Right" Width="175">
             <Button.Content>

@@ -17,7 +17,7 @@ namespace Hospital.View.Doctor
 
         public DoctorWindow()
         {
-            InitializeComponent();
+            InitializeComponent();  
             this.DataContext = new DoctorWindowViewModel();
 
 
