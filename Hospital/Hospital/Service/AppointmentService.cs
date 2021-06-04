@@ -45,6 +45,13 @@ namespace Service
             AddAppointmentToParticipants(appointment);
             return ConvertToDTO(appointment);
         }
+
+        public MedicalAppointment Save(MedicalAppointment appointment)
+        {
+            appointment.Id = GenerateNewId();
+            return _appointmentRepository.Save(appointment);
+        }
+
         public void SaveRenovation(AppointmentDTO appointmentDTO)
         {
             appointmentDTO.Id = GenerateNewId();

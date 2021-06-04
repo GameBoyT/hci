@@ -12,6 +12,13 @@ namespace Model
             this.RoomId = roomId;
         }
 
+        public Appointment(DateTime startTime, Double durationInMinutes, int roomId)
+        {
+            this.StartTime = startTime;
+            this.DurationInMinutes = durationInMinutes;
+            this.RoomId = roomId;
+        }
+
         public Appointment()
         {
 
