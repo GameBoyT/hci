@@ -21,12 +21,5 @@ namespace Hospital.View
             InitializeComponent();
             DataContext = new LoginViewModel();
         }
-
-        private void LoginBtn_Click(object sender, RoutedEventArgs e)
-        {
-            DoctorMainWindow doctorMainView = new DoctorMainWindow();
-            doctorMainView.Show();
-            this.Close();
-        }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using Hospital.Commands;
+using Hospital.View.Doctor;
 using Hospital.ViewModels.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 
 namespace Hospital.ViewModels
 {
@@ -17,7 +19,12 @@ namespace Hospital.ViewModels
             User.Validate();
             if (User.IsValid)
             {
-
+                DoctorMainWindow doctorMainWindow = new DoctorMainWindow();
+                doctorMainWindow.Show();
+                foreach (Window item in Application.Current.Windows)
+                {
+                    if (item.DataContext == this) item.Close();
+                }
             }
         }
 
