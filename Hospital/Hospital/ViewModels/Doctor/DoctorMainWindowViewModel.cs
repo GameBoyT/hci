@@ -17,6 +17,8 @@ namespace Hospital.ViewModels
         public RelayCommand NavigateToNewExamination { get; set; }
 
         public RelayCommand NavigateToNewOperation { get; set; }
+
+        public RelayCommand NavigateToMedicine { get; set; }
         #endregion
 
         #region Akcije
@@ -35,8 +37,8 @@ namespace Hospital.ViewModels
 
         private void Execute_NavigateToNewExamination(object obj)
         {
-            ExaminationViewModel vm = new ExaminationViewModel(NavService);
-            DoctorExaminationView view = new DoctorExaminationView(vm);
+            NewExaminationViewModel vm = new NewExaminationViewModel(NavService);
+            NewExaminationView view = new NewExaminationView(vm);
             NavService.Navigate(view);
         }
 
@@ -46,6 +48,12 @@ namespace Hospital.ViewModels
             NewOperationView view = new NewOperationView(vm);
             NavService.Navigate(view);
         }
+
+        private void Execute_NavigateToMedicine(object obj)
+        {
+            DoctorMedicine doctorMedicine = new DoctorMedicine();
+            doctorMedicine.Show();
+        }
         #endregion
 
         public DoctorMainWindowViewModel(NavigationService navService)
@@ -54,6 +62,7 @@ namespace Hospital.ViewModels
             NavigateToMainView = new RelayCommand(Execute_NavigateToMainView, CanExecute_NavigateCommand);
             NavigateToNewExamination = new RelayCommand(Execute_NavigateToNewExamination, CanExecute_NavigateCommand);
             NavigateToNewOperation = new RelayCommand(Execute_NavigateToNewOperation, CanExecute_NavigateCommand);
+            NavigateToMedicine = new RelayCommand(Execute_NavigateToMedicine, CanExecute_NavigateCommand);
         }
     }
 }

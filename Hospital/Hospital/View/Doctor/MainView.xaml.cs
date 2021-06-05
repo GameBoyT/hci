@@ -5,12 +5,12 @@ using System.Windows.Navigation;
 
 namespace Hospital.View.Doctor
 {
-    public partial class DoctorMainView : Page
+    public partial class MainView : Page
     {
-        public DoctorMainView()
+        public MainView()
         {
             InitializeComponent();
-            DataContext = new DoctorWindowViewModel();
+            DataContext = new MainViewModel();
         }
 
         private void UpdateAppointmentBtn_Click(object sender, RoutedEventArgs e)

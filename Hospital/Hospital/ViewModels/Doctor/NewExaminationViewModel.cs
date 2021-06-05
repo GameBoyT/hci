@@ -6,7 +6,7 @@ using System.Windows.Navigation;
 
 namespace Hospital.ViewModels
 {
-    public class ExaminationViewModel : ViewModel
+    public class NewExaminationViewModel : ViewModel
     {
         #region Polja
 
@@ -59,7 +59,7 @@ namespace Hospital.ViewModels
         }
 
         #region Konstruktori
-        public ExaminationViewModel(NavigationService navigationService)
+        public NewExaminationViewModel(NavigationService navigationService)
         {
             NavService = navigationService;
             Inject = new Injector();

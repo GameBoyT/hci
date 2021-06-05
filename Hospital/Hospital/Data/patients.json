@@ -252,6 +252,12 @@
           "Type": "Anamneza",
           "Name": "naziv",
           "Description": "opis "
+        },
+        {
+          "Id": 3,
+          "Type": "a",
+          "Name": "aa",
+          "Description": ""
         }
       ],
       "Referrals": [

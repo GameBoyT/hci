@@ -31,6 +31,13 @@
                 </TextBlock>
             </Button.Content>
         </Button>
-        <Frame x:Name="frame" Source="DoctorMainView.xaml" Margin="0,50,0,0" />
+        <Button Margin="425,0,0,0" VerticalAlignment="Top" Height="31" Width="117" Command="{Binding Path=NavigateToMedicine}">
+            <Button.Content>
+                <TextBlock>
+                    <Underline>M</Underline>edicine
+                </TextBlock>
+            </Button.Content>
+        </Button>
+        <Frame x:Name="frame" Source="MainView.xaml" Margin="0,50,0,0" />
     </Grid>
 </Window>
