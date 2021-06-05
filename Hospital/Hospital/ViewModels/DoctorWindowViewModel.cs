@@ -13,6 +13,8 @@ namespace Hospital.ViewModels
 
         public Injector Inject { get; set; }
 
+        public NavigationService NavService { get; set; }
+
         public ObservableCollection<AppointmentViewModel> Appointments { get; set; }
 
         public ObservableCollection<AppointmentViewModel> SelectedDateAppointments { get; set; }
@@ -51,8 +53,10 @@ namespace Hospital.ViewModels
             }
         }
 
-        public DoctorWindowViewModel()
+        public DoctorWindowViewModel(NavigationService navService)
         {
+            NavService = navService;
+
             Injector injector = new Injector();
             Inject = injector;
             injector.AppointmentConverter.EmployeeConverter = injector.EmployeeConverter;
@@ -61,7 +65,6 @@ namespace Hospital.ViewModels
             injector.AppointmentConverter.PatientService = injector.PatientService;
             injector.AppointmentConverter.RoomConverter = injector.RoomConverter;
             injector.AppointmentConverter.RoomService = injector.RoomService;
-
 
             DeleteCommand = new RelayCommand(Execute_DeleteCommand, CanExecute_DeleteCommand);
             

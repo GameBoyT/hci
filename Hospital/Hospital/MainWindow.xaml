@@ -19,7 +19,7 @@
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Frame x:Name="frame" Source="View/Doctor/DoctorMainView.xaml" Margin="0,50,0,0" />
+        <Frame x:Name="frame" Source="View/Doctor/LoginView.xaml" Margin="0,50,0,0" />
 
     </Grid>
 </Window>
