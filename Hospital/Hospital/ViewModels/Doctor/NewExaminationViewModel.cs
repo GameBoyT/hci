@@ -16,6 +16,8 @@ namespace Hospital.ViewModels
 
         public Injector Inject { get; set; }
 
+        public AppointmentViewModel Appointment { get; set; }
+
         public ObservableCollection<PatientViewModel> Patients { get; set; }
 
         public PatientViewModel SelectedPatient { get; set; }
@@ -29,16 +31,20 @@ namespace Hospital.ViewModels
 
         #endregion
 
-        private bool CanExecute_AddCommand(object obj)
-        {
-            if (StartTime != "" || SelectedPatient != null) return true;
-            return false;
-        }
+        //private bool CanExecute_AddCommand(object obj)
+        //{
+        //    if (StartTime != "" || SelectedPatient != null) return true;
+        //    return false;
+        //}
 
 
         public void Executed_AddCommand(object obj)
         {
-            Inject.AppointmentService.Save(ParseAppointment());
+            Appointment.Validate();
+            if (Appointment.IsValid)
+            {
+                Inject.AppointmentService.Save(ParseAppointment());
+            }
         }
 
         public void Executed_CancelCommand(object obj)
@@ -48,14 +54,12 @@ namespace Hospital.ViewModels
 
         private MedicalAppointment ParseAppointment()
         {
-            PatientViewModel patient = SelectedPatient;
             Employee doctor = Inject.EmployeeService.GetByJmbg("1");
-            DateTime pickedDate = ExaminationDate;
             int hours = int.Parse(StartTime.Split(':')[0]);
             int minutes = int.Parse(StartTime.Split(':')[1]);
-            DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
+            DateTime appointmentDateTime = new DateTime(ExaminationDate.Year, ExaminationDate.Month, ExaminationDate.Day, hours, minutes, 00);
 
-            return new MedicalAppointment(MedicalAppointmentType.examination, appointmentDateTime, 15.0, patient.Jmbg, doctor.User.Jmbg, doctor.RoomId);
+            return new MedicalAppointment(MedicalAppointmentType.examination, appointmentDateTime, 15.0, Appointment.Patient.Jmbg, doctor.User.Jmbg, doctor.RoomId);
         }
 
         #region Konstruktori
@@ -64,8 +68,9 @@ namespace Hospital.ViewModels
             NavService = navigationService;
             Inject = new Injector();
             Patients = new ObservableCollection<PatientViewModel>(Inject.PatientConverter.ConvertCollectionToViewModel(Inject.PatientService.GetAll()));
+            Appointment = new AppointmentViewModel();
 
-            AddCommand = new RelayCommand(Executed_AddCommand, CanExecute_AddCommand);
+            AddCommand = new RelayCommand(Executed_AddCommand);
             CancelCommand = new RelayCommand(Executed_CancelCommand);
 
             ExaminationDate = DateTime.Now;
