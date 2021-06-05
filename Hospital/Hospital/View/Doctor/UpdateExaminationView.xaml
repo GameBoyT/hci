@@ -34,7 +34,7 @@
             <TextBox Grid.Column="1" Grid.Row="4" IsReadOnly="True" Text="{Binding Path=Appointment.Patient.Address}"></TextBox>
         </Grid>
 
-        <Grid Margin="400,75,200,280">
+        <Grid Margin="400,75,0,0" Height="95" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -51,6 +51,6 @@
             <TextBox Text="{Binding StartTime}" Grid.Column="1" Grid.Row="1"/>
         </Grid>
         <Button Content="Update" HorizontalAlignment="Left" Margin="538,190,0,0" VerticalAlignment="Top" Height="27" Width="62" Command="{Binding Path=UpdateCommand}"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="400,190,0,0" VerticalAlignment="Top" Height="27" Width="65" Command="{Binding Path=CancelCommand}"/>
+        <Button Content="Cancel" Margin="400,190,0,0" VerticalAlignment="Top" Width="65" Command="{Binding Path=CancelCommand}" Height="27"/>
     </Grid>
 </Page>

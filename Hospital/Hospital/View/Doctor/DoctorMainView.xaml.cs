@@ -13,17 +13,12 @@ namespace Hospital.View.Doctor
             DataContext = new DoctorWindowViewModel();
         }
 
-        //public DoctorMainView( )
-        //{
-        //    InitializeComponent();
-        //    DataContext = new DoctorWindowViewModel();
-        //}
-        //private void EditAppointmentBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    AppointmentViewModel avm = (AppointmentViewModel)appointmentsDataGrid.SelectedItem;
-        //    UpdateExaminationViewModel vm = new UpdateExaminationViewModel(NavigationService, avm);
-        //    UpdateExaminationView updateExaminationView = new UpdateExaminationView(vm);
-        //    NavigationService.Navigate(updateExaminationView);
-        //}
+        private void UpdateAppointmentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AppointmentViewModel avm = (AppointmentViewModel)appointmentsDataGrid.SelectedItem;
+            UpdateExaminationViewModel vm = new UpdateExaminationViewModel(NavigationService, avm);
+            UpdateExaminationView updateExaminationView = new UpdateExaminationView(vm);
+            NavigationService.Navigate(updateExaminationView);
+        }
     }
 }
