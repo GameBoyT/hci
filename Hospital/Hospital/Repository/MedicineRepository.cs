@@ -39,5 +39,23 @@ namespace Repository
             ReadJson();
             return _objects.Find(obj => string.Equals(obj.Name, name, StringComparison.OrdinalIgnoreCase));
         }
+
+        public List<Medicine> GetAvaliableAlternatives(int id)
+        {
+            ReadJson();
+            Medicine medicine = GetById(id);
+            List<Medicine> verified = GetByVerification(VerificationType.verified);
+            List<Medicine> toReturn = new List<Medicine>();
+            foreach (Medicine med in verified)
+            {
+                if (!medicine.Alternatives.Exists(obj => obj.Id == med.Id))
+                {
+                    toReturn.Add(med);
+                }
+            }
+            return toReturn;
+        }
+
+
     }
 }

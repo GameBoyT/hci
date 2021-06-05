@@ -28,6 +28,12 @@ namespace Service
         {
             return _medicineRepository.GetByVerification(verification);
         }
+
+        public List<Medicine> GetAvaliableAlternatives(int id)
+        {
+            return _medicineRepository.GetAvaliableAlternatives(id);
+        }
+
         public List<Medicine> GetNotRejected()
         {
             return _medicineRepository.GetNotRejected();
