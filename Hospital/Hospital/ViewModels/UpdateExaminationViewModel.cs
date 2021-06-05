@@ -49,7 +49,7 @@ namespace Hospital.ViewModels
             int minutes = int.Parse(StartTime.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
 
-            return new MedicalAppointment(Appointment.Id, MedicalAppointmentType.examination, appointmentDateTime, 15.0, Appointment.Patient.Jmbg, Appointment.Doctor.Jmbg, Appointment.Room.Id);
+            return new MedicalAppointment(Appointment.Id, Appointment.MedicalAppointmentType, appointmentDateTime, Appointment.DurationInMinutes, Appointment.Patient.Jmbg, Appointment.Doctor.Jmbg, Appointment.Room.Id);
         }
 
 
@@ -58,12 +58,12 @@ namespace Hospital.ViewModels
             Inject = new Injector();
             NavService = navigationService;
 
-            UpdateCommand = new RelayCommand(Executed_UpdateCommand);
+            UpdateCommand = new RelayCommand(Executed_UpdateCommand, CanExecute_UpdateCommand);
             CancelCommand = new RelayCommand(Executed_CancelCommand);
 
             Appointment = appointment;
-            ExaminationDate = appointment.StartTime.Date;
-            StartTime = appointment.StartTime.Hour + ":" + appointment.StartTime.Minute;
+            ExaminationDate = Appointment.StartTime.Date;
+            StartTime = Appointment.StartTime.Hour + ":" + Appointment.StartTime.Minute;
         }
 
     }
