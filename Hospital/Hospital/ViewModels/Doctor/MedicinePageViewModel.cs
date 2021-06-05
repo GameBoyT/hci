@@ -35,8 +35,8 @@ namespace Hospital.ViewModels.Doctor
 
         public void Executed_UpdateCommand(object obj)
         {
-            MedicineUpdateViewModel vm = new MedicineUpdateViewModel(NavService, SelectedMedicine);
-            MedicineUpdateView view = new MedicineUpdateView(vm);
+            //MedicineUpdateViewModel vm = new MedicineUpdateViewModel(NavService, SelectedMedicine);
+            MedicineUpdateView view = new MedicineUpdateView(SelectedMedicine);
             NavService.Navigate(view);
         }
 

@@ -38,7 +38,7 @@ namespace Hospital.VMConverters
             return vmMedicines;
         }
 
-        private MedicineAlternativeViewModel ConvertMedicineToAlternativeViewModel(Medicine medicine)
+        public MedicineAlternativeViewModel ConvertMedicineToAlternativeViewModel(Medicine medicine)
         {
             MedicineAlternativeViewModel medicineViewModel = new MedicineAlternativeViewModel
             {
@@ -49,11 +49,34 @@ namespace Hospital.VMConverters
             return medicineViewModel;
         }
 
-        private ObservableCollection<MedicineAlternativeViewModel> ConvertCollectionToAlternativeViewModel(List<Medicine> medicines)
+        public MedicineAlternativeViewModel ConvertMedicineToAlternativeViewModel(MedicineViewModel medicine)
+        {
+            MedicineAlternativeViewModel medicineViewModel = new MedicineAlternativeViewModel
+            {
+                Id = medicine.Id,
+                Name = medicine.Name,
+                _Medicine = medicine._Medicine
+            };
+            return medicineViewModel;
+        }
+
+        public ObservableCollection<MedicineAlternativeViewModel> ConvertCollectionToAlternativeViewModel(List<Medicine> medicines)
         {
             ObservableCollection<MedicineAlternativeViewModel> vmMedicines = new ObservableCollection<MedicineAlternativeViewModel>();
             MedicineAlternativeViewModel medicineViewModel;
             foreach (Medicine medicine in medicines)
+            {
+                medicineViewModel = ConvertMedicineToAlternativeViewModel(medicine);
+                vmMedicines.Add(medicineViewModel);
+            }
+            return vmMedicines;
+        }
+
+        public ObservableCollection<MedicineAlternativeViewModel> ConvertCollectionToAlternativeViewModel(List<MedicineViewModel> medicines)
+        {
+            ObservableCollection<MedicineAlternativeViewModel> vmMedicines = new ObservableCollection<MedicineAlternativeViewModel>();
+            MedicineAlternativeViewModel medicineViewModel;
+            foreach (MedicineViewModel medicine in medicines)
             {
                 medicineViewModel = ConvertMedicineToAlternativeViewModel(medicine);
                 vmMedicines.Add(medicineViewModel);

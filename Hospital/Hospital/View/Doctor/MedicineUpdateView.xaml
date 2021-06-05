@@ -22,9 +22,10 @@
             <ColumnDefinition Width="262*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Alternatives: " HorizontalAlignment="Left" Margin="74,0,0,11" Grid.Column="1" Width="79" Height="19" VerticalAlignment="Bottom"/>
-        <ListView Margin="10,10,0,268" x:Name="lvAlternativesDataBinding"
+        <ListView Margin="10,10,0,268" x:Name="AlternativesListView"
                   BorderThickness="1"
-                  ItemsSource="{Binding Medicine.Alternatives}"
+                  ItemsSource="{Binding Alternatives}"
+                  AllowDrop="True" DragOver="ListView_DragOver" Drop="ListView_Drop"
                   BorderBrush="Black" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Width="284">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -35,9 +36,10 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <ListView Margin="0,157,0,121" x:Name="AllMedicineDataBinding"
+        <ListView Margin="0,157,0,121" x:Name="AllMedicineListView"
                   BorderThickness="1"
                   ItemsSource="{Binding Medicines}"
+                  PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown" MouseMove="ListView_MouseMove"
                   BorderBrush="Black" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Width="283">
             <ListView.ItemTemplate>
                 <DataTemplate>
