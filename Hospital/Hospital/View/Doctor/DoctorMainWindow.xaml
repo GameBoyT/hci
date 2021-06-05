@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="DoctorMainWindow" Height="500" Width="850">
     <Grid>
-        <Button Margin="0,0,0,0" VerticalAlignment="Top" Command="{Binding Path=NavigateToExamination}" Height="35" Width="175" >
+        <Button Margin="0,0,0,0" VerticalAlignment="Top" Command="{Binding Path=NavigateToNewExamination}" Height="35" Width="175" >
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Stethoscope" Width="40" Foreground="#2596be"/>
@@ -15,6 +15,20 @@
                     New <Underline>E</Underline>xamination
                     </TextBlock>
                 </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button Margin="175,0,0,0" VerticalAlignment="Top" Height="31" Width="117" Command="{Binding Path=NavigateToNewOperation}">
+            <Button.Content>
+                <TextBlock>
+                    New <Underline>O</Underline>peration
+                </TextBlock>
+            </Button.Content>
+        </Button>
+        <Button Margin="300,0,0,0" VerticalAlignment="Top" Height="31" Width="117" Command="{Binding Path=NavigateToMainView}">
+            <Button.Content>
+                <TextBlock>
+                    Main <Underline>W</Underline>indow
+                </TextBlock>
             </Button.Content>
         </Button>
         <Frame x:Name="frame" Source="DoctorMainView.xaml" Margin="0,50,0,0" />

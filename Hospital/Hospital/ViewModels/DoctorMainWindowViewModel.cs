@@ -12,7 +12,11 @@ namespace Hospital.ViewModels
         #endregion
 
         #region Komande
-        public RelayCommand NavigateToExamination { get; set; }
+        public RelayCommand NavigateToMainView { get; set; }
+
+        public RelayCommand NavigateToNewExamination { get; set; }
+
+        public RelayCommand NavigateToNewOperation { get; set; }
         #endregion
 
         #region Akcije
@@ -21,18 +25,33 @@ namespace Hospital.ViewModels
             return true;
         }
 
-        private void Execute_NavigateToExamination(object obj)
+        private void Execute_NavigateToMainView(object obj)
+        {
+            DoctorMainView view = new DoctorMainView();
+            NavService.Navigate(view);
+        }
+
+        private void Execute_NavigateToNewExamination(object obj)
         {
             ExaminationViewModel vm = new ExaminationViewModel(NavService);
-            DoctorExaminationView addStudentPage = new DoctorExaminationView(vm);
-            NavService.Navigate(addStudentPage);
+            DoctorExaminationView view = new DoctorExaminationView(vm);
+            NavService.Navigate(view);
+        }
+
+        private void Execute_NavigateToNewOperation(object obj)
+        {
+            NewOperationViewModel vm = new NewOperationViewModel(NavService);
+            NewOperationView view = new NewOperationView(vm);
+            NavService.Navigate(view);
         }
         #endregion
 
         public DoctorMainWindowViewModel(NavigationService navService)
         {
-            NavigateToExamination = new RelayCommand(Execute_NavigateToExamination, CanExecute_NavigateCommand);
             NavService = navService;
+            NavigateToMainView = new RelayCommand(Execute_NavigateToMainView, CanExecute_NavigateCommand);
+            NavigateToNewExamination = new RelayCommand(Execute_NavigateToNewExamination, CanExecute_NavigateCommand);
+            NavigateToNewOperation = new RelayCommand(Execute_NavigateToNewOperation, CanExecute_NavigateCommand);
         }
     }
 }
