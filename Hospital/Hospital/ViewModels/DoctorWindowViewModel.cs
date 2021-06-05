@@ -58,29 +58,8 @@ namespace Hospital.ViewModels
             {
                 appointmentsDate = value;
                 OnPropertyChanged();
-                UpdateSelectedDateAppointmens();
+                DateChange();
             }
-        }
-
-        public DoctorWindowViewModel(NavigationService navService)
-        {
-            NavService = navService;
-
-            Injector injector = new Injector();
-            Inject = injector;
-            injector.AppointmentConverter.EmployeeConverter = injector.EmployeeConverter;
-            injector.AppointmentConverter.PatientConverter = injector.PatientConverter;
-            injector.AppointmentConverter.EmployeeService = injector.EmployeeService;
-            injector.AppointmentConverter.PatientService = injector.PatientService;
-            injector.AppointmentConverter.RoomConverter = injector.RoomConverter;
-            injector.AppointmentConverter.RoomService = injector.RoomService;
-
-            DeleteCommand = new RelayCommand(Execute_DeleteCommand, CanExecute_AppointmentCommand);
-            UpdateCommand = new RelayCommand(Execute_UpdateCommand);
-            
-            Appointments = new ObservableCollection<AppointmentViewModel>(Inject.AppointmentConverter.ConvertCollectionToViewModel(Inject.AppointmentService.GetAllForLoggedInDoctor()));
-            SelectedDateAppointments = new ObservableCollection<AppointmentViewModel>(Appointments.Where(appointment => appointment.StartTime.Date == DateTime.Now.Date));
-            AppointmentsDate = DateTime.Now;
         }
 
         public DoctorWindowViewModel()
@@ -97,13 +76,13 @@ namespace Hospital.ViewModels
             DeleteCommand = new RelayCommand(Execute_DeleteCommand, CanExecute_AppointmentCommand);
             UpdateCommand = new RelayCommand(Execute_UpdateCommand);
 
-            Appointments = new ObservableCollection<AppointmentViewModel>(Inject.AppointmentConverter.ConvertCollectionToViewModel(Inject.AppointmentService.GetAllForLoggedInDoctor()));
-            SelectedDateAppointments = new ObservableCollection<AppointmentViewModel>(Appointments.Where(appointment => appointment.StartTime.Date == DateTime.Now.Date));
+            Appointments = Inject.AppointmentConverter.ConvertCollectionToViewModel(Inject.AppointmentService.GetAllForLoggedInDoctor());
+            SelectedDateAppointments = new ObservableCollection<AppointmentViewModel>();
             AppointmentsDate = DateTime.Now;
         }
 
 
-        private void UpdateSelectedDateAppointmens()
+        private void DateChange()
         {
             try
             {

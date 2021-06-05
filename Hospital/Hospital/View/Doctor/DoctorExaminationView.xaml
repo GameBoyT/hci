@@ -9,7 +9,7 @@
       Title="DoctorExaminationView">
 
     <Grid>
-        <DataGrid x:Name="PatientsListView"
+        <DataGrid x:Name="PatientsDataGrid"
                 AutoGenerateColumns="False"
                 ItemsSource="{Binding Patients}"
                 SelectedItem="{Binding SelectedPatient}"
