@@ -1,4 +1,5 @@
 using Model;
+using Repository;
 using Repository.Interfaces;
 using System.Collections.Generic;
 
@@ -11,6 +12,11 @@ namespace Service
         public MedicineService(IMedicineRepository medicineRepository)
         {
             _medicineRepository = medicineRepository;
+        }
+
+        public MedicineService()
+        {
+            _medicineRepository = new MedicineRepository();
         }
 
         public List<Medicine> GetAll()

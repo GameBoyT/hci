@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Hospital.ViewModels;
+using Hospital.ViewModels.Doctor;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -13,14 +15,12 @@ using System.Windows.Shapes;
 
 namespace Hospital.View.Doctor
 {
-    /// <summary>
-    /// Interaction logic for MedicineView.xaml
-    /// </summary>
     public partial class MedicineView : Page
     {
-        public MedicineView()
+        public MedicineView(MedicinePageViewModel vm)
         {
             InitializeComponent();
+            DataContext = vm;
         }
     }
 }

@@ -9,6 +9,55 @@
       Title="MedicineView">
 
     <Grid>
-        
+        <ListView Margin="10,61,555,133"
+                    ItemsSource="{Binding Medicines}"
+                    SelectedItem="{Binding SelectedMedicine}"
+                    BorderThickness="1"
+                    BorderBrush="Black">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold" />
+                        <TextBlock Text="  | " />
+                        <TextBlock Text="{Binding Verification}" />
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Label Content="Medicine Description: " HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Path=SelectedMedicine.Description}" IsReadOnly="True" HorizontalAlignment="Left" Margin="287,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Height="170"/>
+        <Button Content="Edit Medicine" HorizontalAlignment="Left" Margin="443,286,0,0" VerticalAlignment="Top" Height="35" Width="85" />
+
+        <Label Content="Ingredients: " HorizontalAlignment="Left" Margin="618,61,0,0" VerticalAlignment="Top"/>
+        <ListView Margin="544,92,0,0" Name="lvIngredientsDataBinding"
+                  ItemsSource="{Binding SelectedMedicine.Ingredients}"
+                  BorderThickness="1"
+                    BorderBrush="Black" HorizontalAlignment="Left" Width="224" Height="131" VerticalAlignment="Top">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding}"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Label Content="Alternatives: " HorizontalAlignment="Left" Margin="617,217,0,0" VerticalAlignment="Top"/>
+        <ListView Margin="544,248,0,0" x:Name="lvAlternativesDataBinding"
+                  BorderThickness="1"
+                  ItemsSource="{Binding SelectedMedicine.Alternatives}"
+                    BorderBrush="Black" Height="131" VerticalAlignment="Top" HorizontalAlignment="Left" Width="224">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button x:Name="VerifyButton" Content="Verify" Visibility="Collapsed" HorizontalAlignment="Left" Margin="603,351,0,0" VerticalAlignment="Top" Height="35" Width="97"/>
+        <Button x:Name="RejectButton" Content="Reject" Visibility="Collapsed" HorizontalAlignment="Left" Margin="444,351,0,0" VerticalAlignment="Top" Height="35" Width="96"/>
     </Grid>
 </Page>

@@ -15,6 +15,7 @@ namespace Hospital.VMConverters
             {
                 Id = medicine.Id,
                 Name = medicine.Name,
+                Verification = medicine.Verification,
                 Description = medicine.Description,
                 DoctorComment = medicine.DoctorComment,
                 Alternatives = ConvertCollectionToAlternativeViewModel(medicine.Alternatives),
@@ -37,7 +38,7 @@ namespace Hospital.VMConverters
             return vmMedicines;
         }
 
-        public MedicineAlternativeViewModel ConvertMedicineToAlternativeViewModel(Medicine medicine)
+        private MedicineAlternativeViewModel ConvertMedicineToAlternativeViewModel(Medicine medicine)
         {
             MedicineAlternativeViewModel medicineViewModel = new MedicineAlternativeViewModel
             {
@@ -48,7 +49,7 @@ namespace Hospital.VMConverters
             return medicineViewModel;
         }
 
-        public ObservableCollection<MedicineAlternativeViewModel> ConvertCollectionToAlternativeViewModel(List<Medicine> medicines)
+        private ObservableCollection<MedicineAlternativeViewModel> ConvertCollectionToAlternativeViewModel(List<Medicine> medicines)
         {
             ObservableCollection<MedicineAlternativeViewModel> vmMedicines = new ObservableCollection<MedicineAlternativeViewModel>();
             MedicineAlternativeViewModel medicineViewModel;

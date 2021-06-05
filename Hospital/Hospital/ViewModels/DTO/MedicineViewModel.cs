@@ -12,6 +12,8 @@ namespace Hospital.ViewModels.DTO
 
         private string name;
 
+        private VerificationType verification;
+
         private string description;
 
         private string doctorComment;
@@ -42,6 +44,16 @@ namespace Hospital.ViewModels.DTO
             }
         }
 
+        public VerificationType Verification
+        {
+            get { return verification; }
+            set
+            {
+                verification = value;
+                OnPropertyChanged();
+            }
+        }
+
         public string Description
         {
             get { return description; }
@@ -65,8 +77,8 @@ namespace Hospital.ViewModels.DTO
 
         public MedicineViewModel()
         {
-            Ingredients = new ObservableCollection<string>();
-            Alternatives = new ObservableCollection<MedicineAlternativeViewModel>();
+            //Ingredients = new ObservableCollection<string>();
+            //Alternatives = new ObservableCollection<MedicineAlternativeViewModel>();
             _Medicine = new Medicine();
         }
     }
