@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital.View.Doctor" xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="DoctorMainWindow" Height="500" Width="850">
+        Title="DoctorMainWindow" Height="600" Width="1000">
     <Grid>
         <Button Margin="0,0,0,0" VerticalAlignment="Top" Command="{Binding Path=NavigateToNewExamination}" Height="35" Width="175" >
             <Button.Content>

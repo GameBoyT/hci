@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 using System.Windows.Navigation;
 using Model;
 using Hospital.ViewModels.DTO;
+using Hospital.Commands;
+using Hospital.View.Doctor;
 
 namespace Hospital.ViewModels.Doctor
 {
@@ -28,11 +30,21 @@ namespace Hospital.ViewModels.Doctor
 
         public NavigationService NavService { get; set; }
 
+        public RelayCommand UpdateCommand { get; set; }
+
+
+        public void Executed_UpdateCommand(object obj)
+        {
+            MedicineUpdateViewModel vm = new MedicineUpdateViewModel(NavService, SelectedMedicine);
+            MedicineUpdateView view = new MedicineUpdateView(vm);
+            NavService.Navigate(view);
+        }
 
         public MedicinePageViewModel(NavigationService navigationService)
         {
             Inject = new Injector();
             NavService = navigationService;
+            UpdateCommand = new RelayCommand(Executed_UpdateCommand);
             Medicines = new ObservableCollection<MedicineViewModel>(Inject.MedicineConverter.ConvertCollectionToViewModel(Inject.MedicineService.GetNotRejected()));
             SelectedMedicine = Medicines[0];
         }
