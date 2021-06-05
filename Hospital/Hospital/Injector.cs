@@ -13,10 +13,14 @@ namespace Hospital
 
         private RoomService roomService = new RoomService();
 
+        private MedicineService medicineService = new MedicineService();
+
 
         private EmployeeConverter employeeConverter = new EmployeeConverter();
 
         private RoomConverter roomConverter = new RoomConverter();
+
+        private MedicineConverter medicineConverter = new MedicineConverter();
 
         private PatientConverter patientConverter = new PatientConverter();
 
@@ -43,9 +47,20 @@ namespace Hospital
             get { return roomService; }
         }
 
+        public MedicineService MedicineService
+        {
+            get { return medicineService; }
+        }
+
+
         public RoomConverter RoomConverter
         {
             get { return roomConverter; }
+        }
+
+        public MedicineConverter MedicineConverter
+        {
+            get { return medicineConverter; }
         }
 
         public EmployeeConverter EmployeeConverter

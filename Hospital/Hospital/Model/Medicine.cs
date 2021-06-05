@@ -14,6 +14,10 @@ namespace Model
             Ingredients = new List<string>();
             Alternatives = new List<Medicine>();
         }
+        public Medicine()
+        {
+
+        }
 
         public string Name { get; set; }
 

@@ -11,5 +11,6 @@ namespace Repository.Interfaces
 
         Medicine GetByName(string name);
 
+        List<Medicine> GetAvaliableAlternatives(int id);
     }
 }

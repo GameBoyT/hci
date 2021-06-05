@@ -1,5 +1,6 @@
 ﻿using Hospital.Commands;
 using Hospital.View.Doctor;
+using Hospital.ViewModels.Doctor;
 using System.Windows.Navigation;
 
 namespace Hospital.ViewModels
@@ -51,8 +52,11 @@ namespace Hospital.ViewModels
 
         private void Execute_NavigateToMedicine(object obj)
         {
-            DoctorMedicine doctorMedicine = new DoctorMedicine();
-            doctorMedicine.Show();
+            MedicinePageViewModel vm = new MedicinePageViewModel(NavService);
+            MedicineView view = new MedicineView(vm);
+            NavService.Navigate(view);
+            //DoctorMedicine doctorMedicine = new DoctorMedicine();
+            //doctorMedicine.Show();
         }
         #endregion
 

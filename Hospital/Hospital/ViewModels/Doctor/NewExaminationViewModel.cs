@@ -20,8 +20,6 @@ namespace Hospital.ViewModels
 
         public ObservableCollection<PatientViewModel> Patients { get; set; }
 
-        public PatientViewModel SelectedPatient { get; set; }
-
         public RelayCommand AddCommand { get; set; }
 
         public RelayCommand CancelCommand { get; set; }

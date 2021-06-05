@@ -1,4 +1,5 @@
 using Model;
+using Repository;
 using Repository.Interfaces;
 using System.Collections.Generic;
 
@@ -13,6 +14,11 @@ namespace Service
             _medicineRepository = medicineRepository;
         }
 
+        public MedicineService()
+        {
+            _medicineRepository = new MedicineRepository();
+        }
+
         public List<Medicine> GetAll()
         {
             return _medicineRepository.GetAll();
@@ -22,6 +28,12 @@ namespace Service
         {
             return _medicineRepository.GetByVerification(verification);
         }
+
+        public List<Medicine> GetAvaliableAlternatives(int id)
+        {
+            return _medicineRepository.GetAvaliableAlternatives(id);
+        }
+
         public List<Medicine> GetNotRejected()
         {
             return _medicineRepository.GetNotRejected();
