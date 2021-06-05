@@ -58,7 +58,7 @@ namespace Hospital.ViewModels
             Inject = new Injector();
             NavService = navigationService;
 
-            UpdateCommand = new RelayCommand(Executed_UpdateCommand, CanExecute_UpdateCommand);
+            UpdateCommand = new RelayCommand(Executed_UpdateCommand);
             CancelCommand = new RelayCommand(Executed_CancelCommand);
 
             Appointment = appointment;

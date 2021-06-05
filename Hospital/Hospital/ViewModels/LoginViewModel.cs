@@ -11,14 +11,7 @@ namespace Hospital.ViewModels
 
         public LoginViewModel()
         {
-            Injector injector = new Injector();
-            Inject = injector;
-            injector.AppointmentConverter.EmployeeConverter = injector.EmployeeConverter;
-            injector.AppointmentConverter.PatientConverter = injector.PatientConverter;
-            injector.AppointmentConverter.EmployeeService = injector.EmployeeService;
-            injector.AppointmentConverter.PatientService = injector.PatientService;
-            injector.AppointmentConverter.RoomConverter = injector.RoomConverter;
-            injector.AppointmentConverter.RoomService = injector.RoomService;
+            Inject = new Injector();
         }
     }
 }

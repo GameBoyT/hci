@@ -25,8 +25,10 @@ namespace Hospital.ViewModels
 
         public RelayCommand DeleteCommand { get; set; }
 
+        public RelayCommand UpdateCommand { get; set; }
 
-        private bool CanExecute_DeleteCommand(object obj)
+
+        private bool CanExecute_AppointmentCommand(object obj)
         {
             if (SelectedAppointment != null) return true;
             return false;
@@ -37,6 +39,13 @@ namespace Hospital.ViewModels
             Inject.AppointmentService.Delete(SelectedAppointment.Id);
             Appointments.Remove(SelectedAppointment);
             SelectedDateAppointments.Remove(SelectedAppointment);
+        }
+
+        private void Execute_UpdateCommand(object obj)
+        {
+            UpdateExaminationViewModel vm = new UpdateExaminationViewModel(NavService, SelectedAppointment);
+            UpdateExaminationView updateExaminationView = new UpdateExaminationView(vm);
+            NavService.Navigate(updateExaminationView);
         }
 
         public DateTime AppointmentsDate
@@ -66,12 +75,33 @@ namespace Hospital.ViewModels
             injector.AppointmentConverter.RoomConverter = injector.RoomConverter;
             injector.AppointmentConverter.RoomService = injector.RoomService;
 
-            DeleteCommand = new RelayCommand(Execute_DeleteCommand, CanExecute_DeleteCommand);
+            DeleteCommand = new RelayCommand(Execute_DeleteCommand, CanExecute_AppointmentCommand);
+            UpdateCommand = new RelayCommand(Execute_UpdateCommand);
             
             Appointments = new ObservableCollection<AppointmentViewModel>(Inject.AppointmentConverter.ConvertCollectionToViewModel(Inject.AppointmentService.GetAllForLoggedInDoctor()));
             SelectedDateAppointments = new ObservableCollection<AppointmentViewModel>(Appointments.Where(appointment => appointment.StartTime.Date == DateTime.Now.Date));
             AppointmentsDate = DateTime.Now;
         }
+
+        public DoctorWindowViewModel()
+        {
+            Injector injector = new Injector();
+            Inject = injector;
+            injector.AppointmentConverter.EmployeeConverter = injector.EmployeeConverter;
+            injector.AppointmentConverter.PatientConverter = injector.PatientConverter;
+            injector.AppointmentConverter.EmployeeService = injector.EmployeeService;
+            injector.AppointmentConverter.PatientService = injector.PatientService;
+            injector.AppointmentConverter.RoomConverter = injector.RoomConverter;
+            injector.AppointmentConverter.RoomService = injector.RoomService;
+
+            DeleteCommand = new RelayCommand(Execute_DeleteCommand, CanExecute_AppointmentCommand);
+            UpdateCommand = new RelayCommand(Execute_UpdateCommand);
+
+            Appointments = new ObservableCollection<AppointmentViewModel>(Inject.AppointmentConverter.ConvertCollectionToViewModel(Inject.AppointmentService.GetAllForLoggedInDoctor()));
+            SelectedDateAppointments = new ObservableCollection<AppointmentViewModel>(Appointments.Where(appointment => appointment.StartTime.Date == DateTime.Now.Date));
+            AppointmentsDate = DateTime.Now;
+        }
+
 
         private void UpdateSelectedDateAppointmens()
         {

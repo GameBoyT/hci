@@ -12,6 +12,11 @@ namespace Hospital.View.Doctor
             DataContext = doctorWindowViewModel;
         }
 
+        public DoctorMainView( )
+        {
+            InitializeComponent();
+            DataContext = new DoctorWindowViewModel();
+        }
         //private void EditAppointmentBtn_Click(object sender, RoutedEventArgs e)
         //{
         //    AppointmentViewModel avm = (AppointmentViewModel)appointmentsDataGrid.SelectedItem;
