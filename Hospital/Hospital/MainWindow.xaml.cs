@@ -1,5 +1,4 @@
-﻿using Hospital.View.Doctor;
-using Hospital.ViewModels;
+﻿using Hospital.View;
 using System.Windows;
 
 namespace Hospital
@@ -9,15 +8,10 @@ namespace Hospital
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = this;
-        }
-
-
-        private void LoginBtn_Click(object sender, RoutedEventArgs e)
-        {
-            DoctorMainWindow doctorMainView = new DoctorMainWindow();
-            doctorMainView.Show();
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
             this.Close();
         }
+
     }
 }

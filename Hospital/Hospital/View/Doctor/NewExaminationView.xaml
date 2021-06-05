@@ -13,7 +13,7 @@
             <DataGrid x:Name="PatientsDataGrid"
                 AutoGenerateColumns="False"
                 ItemsSource="{Binding Patients}"
-                SelectedItem="{Binding SelectedPatient}"
+                SelectedItem="{Binding Appointment.Patient}"
                 IsReadOnly="True" Margin="33,55,521,120">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Jmbg"
@@ -41,6 +41,8 @@
                         Grid.Column="1" Grid.Row="0"/>
                 <TextBox Text="{Binding StartTime}"  Grid.Column="1" Grid.Row="1"/>
             </Grid>
+            <TextBlock Text="{Binding Appointment.ValidationErrors[Patient]}"
+                               Foreground="Red" Margin="350,303,336,120"/>
             <Button Content="Add" HorizontalAlignment="Left" Margin="438,185,0,0" VerticalAlignment="Top" Height="27" Width="62" Command="{Binding Path=AddCommand}" />
             <Button Content="Cancel" HorizontalAlignment="Left" Margin="350,185,0,0" VerticalAlignment="Top" Height="27" Width="65" Command="{Binding Path=CancelCommand}"/>
         </Grid>

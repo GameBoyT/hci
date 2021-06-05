@@ -3,7 +3,7 @@ using System;
 
 namespace Hospital.ViewModels
 {
-    public class AppointmentViewModel : ViewModel
+    public class AppointmentViewModel : ValidationBase
     {
 
         private int id;
@@ -89,6 +89,26 @@ namespace Hospital.ViewModels
             {
                 room = value;
                 OnPropertyChanged();
+            }
+        }
+
+        protected override void ValidateSelf()
+        {
+            if (string.IsNullOrWhiteSpace(DurationInMinutes.ToString()))
+            {
+                this.ValidationErrors["Duration"] = "You have to enter a duration.";
+            }
+            if (StartTime.Ticks < DateTime.Now.Ticks)
+            {
+                this.ValidationErrors["StarTime"] = "Appointment time can't be in the past.";
+            }
+            if (Patient == null)
+            {
+                this.ValidationErrors["Patient"] = "You have to select a patient.";
+            }
+            if (Room == null)
+            {
+                this.ValidationErrors["Room"] = "You have to select a room.";
             }
         }
 
