@@ -7,7 +7,7 @@ using System.Windows.Navigation;
 
 namespace Hospital.ViewModels
 {
-    public class DoctorMainViewModel : ViewModel
+    public class MainViewModel : ViewModel
     {
         private DateTime appointmentsDate;
 
@@ -62,7 +62,7 @@ namespace Hospital.ViewModels
             }
         }
 
-        public DoctorMainViewModel()
+        public MainViewModel()
         {
             Injector injector = new Injector();
             Inject = injector;

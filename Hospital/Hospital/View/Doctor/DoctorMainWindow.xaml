@@ -38,6 +38,6 @@
                 </TextBlock>
             </Button.Content>
         </Button>
-        <Frame x:Name="frame" Source="DoctorMainView.xaml" Margin="0,50,0,0" />
+        <Frame x:Name="frame" Source="MainView.xaml" Margin="0,50,0,0" />
     </Grid>
 </Window>
