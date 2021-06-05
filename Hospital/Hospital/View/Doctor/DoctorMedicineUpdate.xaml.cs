@@ -31,17 +31,17 @@ namespace Hospital.View.Doctor
         public ObservableCollection<Medicine> Medicines { get; set; }
 
 
-        private string medicineDescriptionText;
+        private string description;
 
-        public string MedicineDescriptionText
+        public string Description
         {
-            get { return medicineDescriptionText; }
+            get { return description; }
             set
             {
-                if (medicineDescriptionText != value)
+                if (description != value)
                 {
-                    medicineDescriptionText = value;
-                    OnPropertyChanged("medicineDescriptionText");
+                    description = value;
+                    OnPropertyChanged("description");
                 }
             }
         }
@@ -81,11 +81,9 @@ namespace Hospital.View.Doctor
             Ingredients = new ObservableCollection<string>(Medicine.Ingredients);
             Alternatives = new ObservableCollection<Medicine>(Medicine.Alternatives);
 
-            MedicineDescriptionText = Medicine.Description;
+            Description = Medicine.Description;
             lvIngredientsDataBinding.ItemsSource = Ingredients;
             lvAlternativesDataBinding.ItemsSource = Alternatives;
-            MedicinesComboBox.ItemsSource = Medicines;
-            MedicinesComboBox.SelectedIndex = 0;
         }
 
         private void IngredinetAddButton_Click(object sender, RoutedEventArgs e)
@@ -102,24 +100,11 @@ namespace Hospital.View.Doctor
             }
         }
 
-        private void AlternativeAddButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Medicine alternative = (Medicine)MedicinesComboBox.SelectedItem;
-                Alternatives.Add(alternative);
-                Medicine.Alternatives.Add(alternative);
-            }
-            catch
-            {
-                MessageBox.Show("Error");
-            }
-        }
 
 
         private void SaveChangesButton_Click(object sender, RoutedEventArgs e)
         {
-            Medicine.Description = MedicineDescriptionText;
+            Medicine.Description = Description;
             app.medicineController.Update(Medicine);
 
             ParentWindow.UpdateWindow();

@@ -7,12 +7,25 @@
         mc:Ignorable="d"
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True"
-        Title="DoctorMedicineUpdate" Height="450" Width="800">
+        Title="DoctorMedicineUpdate" Height="450" Width="1000">
     <Grid>
-        <Label Content="Alternatives: " HorizontalAlignment="Left" Margin="108,61,0,0" VerticalAlignment="Top"/>
-        <ListView Margin="35,92,541,227" x:Name="lvAlternativesDataBinding"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="393*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="22*"/>
+            <ColumnDefinition Width="243*"/>
+            <ColumnDefinition Width="18*"/>
+            <ColumnDefinition Width="243*"/>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="262*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Alternatives: " HorizontalAlignment="Left" Margin="74,0,0,11" Grid.Column="1" Width="79" Height="19" VerticalAlignment="Bottom"/>
+        <ListView Margin="10,10,0,268" x:Name="lvAlternativesDataBinding"
                   BorderThickness="1"
-                    BorderBrush="Black">
+                  ItemsSource="{Binding Alternatives}"
+                  BorderBrush="Black" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Width="284">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
@@ -22,25 +35,29 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <ComboBox Name="MedicinesComboBox" Margin="35,230,0,0" Width="152" >
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Name}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-
-        <Button Content="Add Alternative" Margin="35,277,0,0" VerticalAlignment="Top" Height="35" Width="122" Click="AlternativeAddButton_Click"/>
-
-        <Label Content="Medicine Description: " HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=MedicineDescriptionText}" HorizontalAlignment="Left" Margin="287,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Height="170"/>
-
-        <Label Content="Ingredients: " HorizontalAlignment="Left" Margin="618,61,0,0" VerticalAlignment="Top"/>
-        <ListView Margin="544,92,32,227" Name="lvIngredientsDataBinding"
+        <ListView Margin="0,157,0,121" x:Name="AllMedicineDataBinding"
                   BorderThickness="1"
-                    BorderBrush="Black">
+                  ItemsSource="{Binding Medicines}"
+                  BorderBrush="Black" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Width="283">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+
+        <Label Content="Medicine Description: " HorizontalAlignment="Left" Margin="48,11,0,11" Grid.Column="3" Width="138"/>
+        <TextBox Text="{Binding Path=Description}" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="170" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" Width="246"/>
+
+        <Label Content="Ingredients: " HorizontalAlignment="Left" Margin="120,0,0,10" Grid.Column="5" Width="76" Height="21" VerticalAlignment="Bottom"/>
+        <ListView Margin="12,10,0,268" Name="lvIngredientsDataBinding"
+                  ItemsSource="{Binding Ingredients}"
+                  BorderThickness="1"
+                    BorderBrush="Black" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Left" Width="256">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
@@ -50,11 +67,11 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Label Content="Enter New Ingredient: " HorizontalAlignment="Left" Margin="544,231,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=Ingredient}" HorizontalAlignment="Left" Margin="687,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87"/>
-        <Button Content="Add Ingredient" Margin="646,277,0,0" VerticalAlignment="Top" Height="35" Width="128" Click="IngredinetAddButton_Click"/>
+        <Label Content="Enter New Ingredient: " HorizontalAlignment="Left" Margin="30,157,0,0" VerticalAlignment="Top" Grid.Column="5" Height="19" Width="138" Grid.Row="1"/>
+        <TextBox Text="{Binding Path=Ingredient, Mode=TwoWay}" HorizontalAlignment="Left" Margin="182,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Grid.Column="5" Height="32" Grid.Row="1"/>
+        <Button Content="Add Ingredient" Margin="140,205,0,0" VerticalAlignment="Top" Height="35" Width="128" Click="IngredinetAddButton_Click" Grid.Column="5" Grid.Row="1"/>
 
-        <Button Content="Save Changes" Margin="646,378,0,0" VerticalAlignment="Top" Height="35" Width="128" Click="SaveChangesButton_Click"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="544,378,0,0" VerticalAlignment="Top" Height="35" Width="84" Click="CancelButton_Click"/>
+        <Button Content="Save Changes" Margin="93,337,0,0" VerticalAlignment="Top" Height="35" Width="128" Click="SaveChangesButton_Click" Grid.Column="5" Grid.Row="1"/>
+        <Button Content="Cancel" Margin="3,337,0,0" VerticalAlignment="Top" Height="35" Width="84" Click="CancelButton_Click" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1"/>
     </Grid>
 </Window>
