@@ -9,17 +9,15 @@
         ui:WindowHelper.UseModernWindowStyle="True"
         Title="MainWindow" Height="500" Width="850">
     <Grid>
-        <Button Margin="0,0,0,0" VerticalAlignment="Top" Command="{Binding Path=NavigateToExamination}" Height="35" Width="175" >
+        <Button Margin="0,191,196,0" VerticalAlignment="Top" Click="LoginBtn_Click" Height="34" HorizontalAlignment="Right" Width="125">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
-                    <fa:ImageAwesome Icon="Stethoscope" Width="40" Foreground="#2596be"/>
+                    <fa:ImageAwesome Icon="Edit" Width="40" Foreground="#2596be"/>
                     <TextBlock>
-                    New <Underline>E</Underline>xamination
+                    <Underline>L</Underline>og in
                     </TextBlock>
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Frame x:Name="frame" Source="View/Doctor/LoginView.xaml" Margin="0,50,0,0" />
-
     </Grid>
 </Window>
