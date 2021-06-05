@@ -13,6 +13,8 @@ namespace Hospital.VMConverters
             {
                 Id = room.Id,
                 Name = room.Name,
+                Floor = room.Floor,
+                Detail = room.Detail,
                 _Room = room
             };
 

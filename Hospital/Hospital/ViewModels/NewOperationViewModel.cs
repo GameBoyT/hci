@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Hospital.Commands;
+using Model;
+using System;
+using System.Collections.ObjectModel;
 using System.Windows.Navigation;
 
 namespace Hospital.ViewModels
@@ -8,55 +9,93 @@ namespace Hospital.ViewModels
     public class NewOperationViewModel
     {
         public Injector Inject { get; set; }
+
         public NavigationService NavService { get; set; }
+
+        public ObservableCollection<PatientViewModel> Patients { get; set; }
+
+        public PatientViewModel SelectedPatient { get; set; }
+
+        public ObservableCollection<RoomViewModel> Rooms { get; set; }
+
+        public RoomViewModel SelectedRoom { get; set; }
+
+        public DateTime ExaminationDate { get; set; }
+
+        public string StartTime { get; set; }
+
+        public double Duration { get; set; }
+
+        public string Equipment { get; set; }
+
+        public RelayCommand AddCommand { get; set; }
+
+        public RelayCommand CancelCommand { get; set; }
+
+        public RelayCommand FilterCommand { get; set; }
+
+
+        private bool CanExecute_AddCommand(object obj)
+        {
+            if (StartTime != "" || SelectedPatient != null) return true;
+            return false;
+        }
+
+        public void Executed_AddCommand(object obj)
+        {
+            Inject.AppointmentService.Save(ParseAppointment());
+        }
+
+        public void Executed_CancelCommand(object obj)
+        {
+            NavService.GoBack();
+        }
+
+        private bool CanExecute_FilterCommand(object obj)
+        {
+            if (Equipment != "") return true;
+            return false;
+        }
+
+
+        public void Executed_FilterCommand(object obj)
+        {
+            ObservableCollection<RoomViewModel> RoomsWithEquipment = Inject.RoomConverter.ConvertCollectionToViewModel(Inject.RoomService.GetRoomsWithEquipmentName(Equipment));
+            Rooms.Clear();
+            foreach (RoomViewModel room in RoomsWithEquipment)
+            {
+                Rooms.Add(room);
+            }
+        }
+
+
+        private MedicalAppointment ParseAppointment()
+        {
+            PatientViewModel patient = SelectedPatient;
+            Employee doctor = Inject.EmployeeService.GetByJmbg("1");
+            DateTime pickedDate = ExaminationDate;
+            int hours = int.Parse(StartTime.Split(':')[0]);
+            int minutes = int.Parse(StartTime.Split(':')[1]);
+            DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
+
+            return new MedicalAppointment(MedicalAppointmentType.examination, appointmentDateTime, Duration, patient.Jmbg, doctor.User.Jmbg, SelectedRoom.Id);
+        }
+
+
         public NewOperationViewModel(NavigationService navigationService)
         {
             Inject = new Injector();
             NavService = navigationService;
 
-            //ParentWindow = parentWindow;
-            //patientsDataGrid.ItemsSource = app.patientController.GetAll();
-            //roomsDataGrid.ItemsSource = app.roomController.GetRoomsByRoomType(RoomType.operating);
-            //new_appointment_date.SelectedDate = DateTime.Today;
+            AddCommand = new RelayCommand(Executed_AddCommand, CanExecute_AddCommand);
+            CancelCommand = new RelayCommand(Executed_CancelCommand);
+            FilterCommand = new RelayCommand(Executed_FilterCommand, CanExecute_FilterCommand);
+
+            ExaminationDate = DateTime.Now;
+            StartTime = "12:00";
+
+            Patients = Inject.PatientConverter.ConvertCollectionToViewModel(Inject.PatientService.GetAll());
+            Rooms = Inject.RoomConverter.ConvertCollectionToViewModel(Inject.RoomService.GetRoomsByRoomType(RoomType.operating));
         }
-
-        //private void FilterButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    roomsDataGrid.ItemsSource = app.roomController.GetRoomsWithEquipmentName(equipmentName.Text);
-        //}
-
-        //private void AddButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        AppointmentDTO appointment = ParseNewAppointment();
-        //        if (ParentWindow.IsAppointmentScheduled(appointment))
-        //            return;
-        //        app.appointmentController.Save(appointment);
-        //        ParentWindow.WindowUpdate();
-        //        this.Close();
-        //    }
-        //    catch
-        //    {
-        //        MessageBox.Show("Chose a patient and fill all the fields!");
-        //    }
-        //}
-        //private void CancelButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Close();
-        //}
-
-        //private AppointmentDTO ParseNewAppointment()
-        //{
-        //    Patient patient = (Patient)patientsDataGrid.SelectedItems[0];
-        //    Room room = (Room)roomsDataGrid.SelectedItems[0];
-        //    DateTime pickedDate = new_appointment_date.SelectedDate.Value;
-        //    int hours = Int32.Parse(startTimeTextBox.Text.Split(':')[0]);
-        //    int minutes = Int32.Parse(startTimeTextBox.Text.Split(':')[1]);
-        //    DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
-        //    double duration = Convert.ToDouble(durationTextBox.Text);
-
-        //    return new AppointmentDTO(MedicalAppointmentType.operation, appointmentDateTime, duration, patient.User.Jmbg, ParentWindow.Doctor.User.Jmbg, room.Id, ParentWindow.Doctor.User.Jmbg);
-        //}
     }
 }

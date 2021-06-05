@@ -24,7 +24,7 @@ namespace Hospital.ViewModels
 
         public RelayCommand CancelCommand { get; set; }
 
-        public NavigationService NavigationService { get; }
+        public NavigationService NavService{ get; set; }
 
 
         #endregion
@@ -43,7 +43,7 @@ namespace Hospital.ViewModels
 
         public void Executed_CancelCommand(object obj)
         {
-            NavigationService.GoBack();
+            NavService.GoBack();
         }
 
         private MedicalAppointment ParseAppointment()
@@ -59,25 +59,13 @@ namespace Hospital.ViewModels
         }
 
         #region Konstruktori
-        public ExaminationViewModel()
+        public ExaminationViewModel(NavigationService navigationService)
         {
+            NavService = navigationService;
             Inject = new Injector();
             Patients = new ObservableCollection<PatientViewModel>(Inject.PatientConverter.ConvertCollectionToViewModel(Inject.PatientService.GetAll()));
 
             AddCommand = new RelayCommand(Executed_AddCommand, CanExecute_AddCommand);
-            CancelCommand = new RelayCommand(Executed_CancelCommand);
-
-            ExaminationDate = DateTime.Now;
-            StartTime = "12:00";
-        }
-
-        public ExaminationViewModel(NavigationService navigationService)
-        {
-            NavigationService = navigationService;
-            Inject = new Injector();
-            Patients = new ObservableCollection<PatientViewModel>(Inject.PatientConverter.ConvertCollectionToViewModel(Inject.PatientService.GetAll()));
-
-            AddCommand = new RelayCommand(Executed_AddCommand);
             CancelCommand = new RelayCommand(Executed_CancelCommand);
 
             ExaminationDate = DateTime.Now;

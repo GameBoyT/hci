@@ -8,6 +8,10 @@ namespace Hospital.ViewModels
 
         private string name;
 
+        private int floor;
+        
+        private string detail;
+
         public Injector Injector { get; set; }
 
         public Room _Room { get; set; }
@@ -28,6 +32,26 @@ namespace Hospital.ViewModels
             set
             {
                 name = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int Floor
+        {
+            get { return floor; }
+            set
+            {
+                floor = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Detail
+        {
+            get { return detail; }
+            set
+            {
+                detail = value;
                 OnPropertyChanged();
             }
         }
