@@ -10,7 +10,7 @@ namespace Hospital.View.Doctor
         public DoctorMainView()
         {
             InitializeComponent();
-            DataContext = new DoctorWindowViewModel();
+            DataContext = new DoctorMainViewModel();
         }
 
         private void UpdateAppointmentBtn_Click(object sender, RoutedEventArgs e)
