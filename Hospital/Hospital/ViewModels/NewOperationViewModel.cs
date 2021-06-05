@@ -78,7 +78,7 @@ namespace Hospital.ViewModels
             int minutes = int.Parse(StartTime.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
 
-            return new MedicalAppointment(MedicalAppointmentType.examination, appointmentDateTime, Duration, patient.Jmbg, doctor.User.Jmbg, SelectedRoom.Id);
+            return new MedicalAppointment(MedicalAppointmentType.operation, appointmentDateTime, Duration, patient.Jmbg, doctor.User.Jmbg, SelectedRoom.Id);
         }
 
 

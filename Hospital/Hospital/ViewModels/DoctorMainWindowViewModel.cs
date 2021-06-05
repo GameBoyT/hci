@@ -27,8 +27,10 @@ namespace Hospital.ViewModels
 
         private void Execute_NavigateToMainView(object obj)
         {
-            DoctorMainView view = new DoctorMainView();
-            NavService.Navigate(view);
+            while (NavService.CanGoBack)
+            {
+                NavService.GoBack();
+            }
         }
 
         private void Execute_NavigateToNewExamination(object obj)
