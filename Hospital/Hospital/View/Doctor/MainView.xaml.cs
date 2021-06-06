@@ -24,12 +24,16 @@ namespace Hospital.View.Doctor
 
         private void ViewAppointmentBtn_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentViewModel avm = (AppointmentViewModel)appointmentsDataGrid.SelectedItem;
-            DoctorViewPatient doctorViewPatient = new DoctorViewPatient(avm);
-            doctorViewPatient.Show();
+            try
+            {
+                AppointmentViewModel avm = (AppointmentViewModel)appointmentsDataGrid.SelectedItem;
+                DoctorViewPatient doctorViewPatient = new DoctorViewPatient(avm);
+                doctorViewPatient.Show();
+            }
+            catch { }
         }
 
-        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        private void OnKeyUpHandler(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.V)
             {
