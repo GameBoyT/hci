@@ -395,7 +395,8 @@ namespace Hospital.View.Doctor
         
         private void GenerateBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            PastAppointmentsReportWindow pastAppointmentsReportWindow = new PastAppointmentsReportWindow(PastAppointments, BeginningDate.SelectedDate.Value, EndDate.SelectedDate.Value);
+            pastAppointmentsReportWindow.Show();
         }
 
         private void InitPastAppointments()
@@ -410,7 +411,7 @@ namespace Hospital.View.Doctor
             Anamnesis b = new Anamnesis
             {
                 Name = "16.2.2021 - Operation",
-                Description = "Uspjesno obavljena operacija srca, pacijent poslat na bolnicko lecenje"
+                Description = "Uspjesno obavljena operacija srca"
             };
             Anamnesis c = new Anamnesis
             {
