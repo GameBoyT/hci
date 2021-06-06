@@ -7,7 +7,26 @@
         mc:Ignorable="d"
         Title="DoctorMainWindow" Height="600" Width="1000">
     <Grid>
-        <Button Margin="0,0,0,0" VerticalAlignment="Top" Command="{Binding Path=NavigateToNewExamination}" Height="35" Width="175" >
+
+
+        <DockPanel>
+            <Menu DockPanel.Dock="Top" Height="40">
+                <MenuItem Header="Main _Window" Command="{Binding Path=NavigateToMainView}"/>
+                <MenuItem Header="New _Examination" Command="{Binding Path=NavigateToNewExamination}">
+                </MenuItem>
+                <MenuItem Header="New _Operation" Command="{Binding Path=NavigateToNewOperation}"/>
+                <MenuItem Header="_Medicine" Command="{Binding Path=NavigateToMedicine}"/>
+                <MenuItem Header="_Demo" Command="{Binding Path=NavigateToMedicine}"/>
+                <MenuItem Header="_Shortcuts" Command="{Binding Path=NavigateToMedicine}"/>
+                <MenuItem Header="_Logout" Command="{Binding Path=NavigateToMedicine}"/>
+
+            </Menu>
+            <Frame x:Name="frame" Source="MainView.xaml" Margin="0,0,0,0" />
+
+        </DockPanel>
+
+
+        <!--<Button Margin="0,0,0,0" VerticalAlignment="Top" Command="{Binding Path=NavigateToNewExamination}" Height="35" Width="175" >
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Stethoscope" Width="40" Foreground="#2596be"/>
@@ -37,7 +56,6 @@
                     <Underline>M</Underline>edicine
                 </TextBlock>
             </Button.Content>
-        </Button>
-        <Frame x:Name="frame" Source="MainView.xaml" Margin="0,50,0,0" />
+        </Button>-->
     </Grid>
 </Window>

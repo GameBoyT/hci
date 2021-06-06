@@ -20,6 +20,8 @@ namespace Hospital.ViewModels
 
         public ObservableCollection<PatientViewModel> Patients { get; set; }
 
+        public Employee Doctor { get; set; }
+
         public RelayCommand AddCommand { get; set; }
 
         public RelayCommand CancelCommand { get; set; }
@@ -38,10 +40,11 @@ namespace Hospital.ViewModels
 
         public void Executed_AddCommand(object obj)
         {
+            MedicalAppointment app = ParseAppointment();
             Appointment.Validate();
             if (Appointment.IsValid)
             {
-                Inject.AppointmentService.Save(ParseAppointment());
+                Inject.AppointmentService.Save(app);
             }
         }
 
@@ -52,12 +55,12 @@ namespace Hospital.ViewModels
 
         private MedicalAppointment ParseAppointment()
         {
-            Employee doctor = Inject.EmployeeService.GetByJmbg("1");
             int hours = int.Parse(StartTime.Split(':')[0]);
             int minutes = int.Parse(StartTime.Split(':')[1]);
             DateTime appointmentDateTime = new DateTime(ExaminationDate.Year, ExaminationDate.Month, ExaminationDate.Day, hours, minutes, 00);
+            Appointment.StartTime = appointmentDateTime;
 
-            return new MedicalAppointment(MedicalAppointmentType.examination, appointmentDateTime, 15.0, Appointment.Patient.Jmbg, doctor.User.Jmbg, doctor.RoomId);
+            return new MedicalAppointment(MedicalAppointmentType.examination, appointmentDateTime, 15.0, Appointment.Patient.Jmbg, Doctor.User.Jmbg, Doctor.RoomId);
         }
 
         #region Konstruktori
@@ -66,13 +69,19 @@ namespace Hospital.ViewModels
             NavService = navigationService;
             Inject = new Injector();
             Patients = new ObservableCollection<PatientViewModel>(Inject.PatientConverter.ConvertCollectionToViewModel(Inject.PatientService.GetAll()));
-            Appointment = new AppointmentViewModel();
-
             AddCommand = new RelayCommand(Executed_AddCommand);
             CancelCommand = new RelayCommand(Executed_CancelCommand);
+            Doctor = Inject.EmployeeService.GetByJmbg("1");
 
             ExaminationDate = DateTime.Now;
             StartTime = "12:00";
+
+            Appointment = new AppointmentViewModel
+            {
+                DurationInMinutes = 15.0,
+                Room = Inject.RoomConverter.ConvertModelToViewModel(Inject.RoomService.GetById(Doctor.RoomId))
+            };
+
         }
 
         #endregion

@@ -178,5 +178,23 @@
     "DurationInMinutes": 22.0,
     "RoomId": 4,
     "Id": 22
+  },
+  {
+    "MedicalAppointmentType": 1,
+    "DoctorJmbg": "1",
+    "PatientJmbg": "5",
+    "StartTime": "2021-06-06T12:00:00",
+    "DurationInMinutes": 22.0,
+    "RoomId": 4,
+    "Id": 23
+  },
+  {
+    "MedicalAppointmentType": 0,
+    "DoctorJmbg": "1",
+    "PatientJmbg": "6",
+    "StartTime": "2021-06-06T12:00:00",
+    "DurationInMinutes": 15.0,
+    "RoomId": 1,
+    "Id": 24
   }
 ]
