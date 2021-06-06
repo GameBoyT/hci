@@ -94,7 +94,7 @@ namespace Hospital.ViewModels
 
         protected override void ValidateSelf()
         {
-            if (string.IsNullOrWhiteSpace(DurationInMinutes.ToString()))
+            if (DurationInMinutes == 0)
             {
                 this.ValidationErrors["Duration"] = "You have to enter a duration.";
             }

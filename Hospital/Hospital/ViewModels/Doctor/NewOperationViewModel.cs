@@ -12,6 +12,11 @@ namespace Hospital.ViewModels
 
         public NavigationService NavService { get; set; }
 
+        public AppointmentViewModel Appointment { get; set; }
+
+        public Employee Doctor { get; set; }
+
+
         public ObservableCollection<PatientViewModel> Patients { get; set; }
 
         public PatientViewModel SelectedPatient { get; set; }
@@ -24,7 +29,7 @@ namespace Hospital.ViewModels
 
         public string StartTime { get; set; }
 
-        public double Duration { get; set; }
+        public string Duration { get; set; }
 
         public string Equipment { get; set; }
 
@@ -35,15 +40,20 @@ namespace Hospital.ViewModels
         public RelayCommand FilterCommand { get; set; }
 
 
-        private bool CanExecute_AddCommand(object obj)
-        {
-            if (StartTime != "" || SelectedPatient != null) return true;
-            return false;
-        }
+        //private bool CanExecute_AddCommand(object obj)
+        //{
+        //    if (StartTime != "" || SelectedPatient != null) return true;
+        //    return false;
+        //}
 
         public void Executed_AddCommand(object obj)
         {
-            Inject.AppointmentService.Save(ParseAppointment());
+            ParseTime();
+            Appointment.Validate();
+            if (Appointment.IsValid)
+            {
+                Inject.AppointmentService.Save(ParseAppointment());
+            }
         }
 
         public void Executed_CancelCommand(object obj)
@@ -57,7 +67,6 @@ namespace Hospital.ViewModels
             return false;
         }
 
-
         public void Executed_FilterCommand(object obj)
         {
             ObservableCollection<RoomViewModel> RoomsWithEquipment = Inject.RoomConverter.ConvertCollectionToViewModel(Inject.RoomService.GetRoomsWithEquipmentName(Equipment));
@@ -69,16 +78,23 @@ namespace Hospital.ViewModels
         }
 
 
+        private void ParseTime()
+        {
+            try
+            {
+                int hours = int.Parse(StartTime.Split(':')[0]);
+                int minutes = int.Parse(StartTime.Split(':')[1]);
+                DateTime appointmentDateTime = new DateTime(ExaminationDate.Year, ExaminationDate.Month, ExaminationDate.Day, hours, minutes, 00);
+                Appointment.StartTime = appointmentDateTime;
+                if (!string.IsNullOrWhiteSpace(Duration))
+                    Appointment.DurationInMinutes = float.Parse(Duration);
+            }
+            catch { }
+        }
+
         private MedicalAppointment ParseAppointment()
         {
-            PatientViewModel patient = SelectedPatient;
-            Employee doctor = Inject.EmployeeService.GetByJmbg("1");
-            DateTime pickedDate = ExaminationDate;
-            int hours = int.Parse(StartTime.Split(':')[0]);
-            int minutes = int.Parse(StartTime.Split(':')[1]);
-            DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
-
-            return new MedicalAppointment(MedicalAppointmentType.operation, appointmentDateTime, Duration, patient.Jmbg, doctor.User.Jmbg, SelectedRoom.Id);
+            return new MedicalAppointment(MedicalAppointmentType.operation, Appointment.StartTime, Appointment.DurationInMinutes, Appointment.Patient.Jmbg, Doctor.User.Jmbg, Appointment.Room.Id);
         }
 
 
@@ -86,13 +102,16 @@ namespace Hospital.ViewModels
         {
             Inject = new Injector();
             NavService = navigationService;
+            Doctor = Inject.EmployeeService.GetByJmbg("1");
 
-            AddCommand = new RelayCommand(Executed_AddCommand, CanExecute_AddCommand);
+            AddCommand = new RelayCommand(Executed_AddCommand);
             CancelCommand = new RelayCommand(Executed_CancelCommand);
             FilterCommand = new RelayCommand(Executed_FilterCommand, CanExecute_FilterCommand);
 
             ExaminationDate = DateTime.Now;
             StartTime = "12:00";
+
+            Appointment = new AppointmentViewModel();
 
             Patients = Inject.PatientConverter.ConvertCollectionToViewModel(Inject.PatientService.GetAll());
             Rooms = Inject.RoomConverter.ConvertCollectionToViewModel(Inject.RoomService.GetRoomsByRoomType(RoomType.operating));
