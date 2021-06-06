@@ -1,17 +1,15 @@
-﻿<Page x:Class="Hospital.View.Doctor.MedicineView"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Hospital.View.Doctor"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="1000"
-      Title="MedicineView">
-
+﻿<Window x:Class="Hospital.View.Doctor.TestPageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital.View.Doctor"
+        mc:Ignorable="d"
+        Title="TestPageWindow" Height="450" Width="1100">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="45"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="1*"/>
@@ -25,8 +23,6 @@
             <RowDefinition Height="4*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <Label Content="Medicines" FontSize="18px" HorizontalAlignment="Center" Grid.Column="1" Width="auto" Height="auto" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
-
         <ListView Margin="10,10,10,10"
                     ItemsSource="{Binding Medicines}"
                     SelectedItem="{Binding SelectedMedicine}"
@@ -43,15 +39,15 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Label Content="Description" FontSize="18px" HorizontalAlignment="Center" Grid.Column="3" Width="auto" Height="auto" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
-        <TextBox Text="{Binding Path=SelectedMedicine.Description}" IsReadOnly="True" Margin="10,10,10,10" TextWrapping="Wrap" Grid.Row="1" Grid.Column="3"/>
+        <Label Content="Medicine Description: " HorizontalAlignment="Center" Margin="0,0,0,6" Grid.Column="3" Width="137" Height="19" VerticalAlignment="Bottom"/>
+        <TextBox Text="{Binding Path=SelectedMedicine.Description}" IsReadOnly="True" Margin="10,10,10,10" TextWrapping="Wrap" Grid.Row="3" Grid.Column="3"/>
         <Button Content="Edit Medicine" Command="{Binding UpdateCommand}" Margin="0,10,10,0" VerticalAlignment="Top" Height="35" Grid.Row="4" Grid.Column="5" HorizontalAlignment="Right" Width="130" />
 
-        <Label Content="Ingredients" HorizontalAlignment="Center" Margin="0,0,0,10" FontSize="18px" Grid.Column="3" Width="auto" Grid.Row="2" Height="auto" VerticalAlignment="Bottom"/>
+        <Label Content="Ingredients: " HorizontalAlignment="Center" Margin="0,0,0,12" Grid.Column="3" Width="77" Grid.Row="2" Height="19" VerticalAlignment="Bottom"/>
         <ListView Margin="10,10,10,10" Name="lvIngredientsDataBinding"
                   ItemsSource="{Binding SelectedMedicine.Ingredients}"
                   BorderThickness="1"
-                    BorderBrush="Black" Grid.Row="3" Grid.Column="3">
+                    BorderBrush="Black" Grid.Row="1" Grid.Column="3">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
@@ -61,7 +57,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Label Content="Alternatives" HorizontalAlignment="Center" Margin="0,0,0,10" FontSize="18px" Grid.Column="5" Width="auto" Height="auto" VerticalAlignment="Bottom"/>
+        <Label Content="Alternatives: " HorizontalAlignment="Center" Margin="0,0,0,6" Grid.Column="5" Width="80" Height="19" VerticalAlignment="Bottom"/>
         <ListView x:Name="lvAlternativesDataBinding"
                   BorderThickness="1"
                   ItemsSource="{Binding SelectedMedicine.Alternatives}"
@@ -78,4 +74,4 @@
         <Button x:Name="VerifyButton" Content="Verify" Visibility="Collapsed" Margin="62,0,0,0" Height="35" Width="97" Grid.Row="4" Grid.Column="5"/>
         <Button x:Name="RejectButton" Content="Reject" Visibility="Collapsed" Margin="170,0,0,0" Height="35" Width="96" Grid.Row="4" Grid.Column="3"/>
     </Grid>
-</Page>
+</Window>
