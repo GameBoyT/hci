@@ -34,7 +34,12 @@ namespace Hospital.ViewModels
 
         public void Executed_UpdateCommand(object obj)
         {
-            Inject.AppointmentService.Update(ParseAppointment());
+            ParseTime();
+            Appointment.Validate();
+            if (Appointment.IsValid)
+            {
+                Inject.AppointmentService.Update(ParseAppointment());
+            }
         }
 
         public void Executed_CancelCommand(object obj)
@@ -42,14 +47,21 @@ namespace Hospital.ViewModels
             NavService.GoBack();
         }
 
+        private void ParseTime()
+        {
+            try
+            {
+                int hours = int.Parse(StartTime.Split(':')[0]);
+                int minutes = int.Parse(StartTime.Split(':')[1]);
+                DateTime appointmentDateTime = new DateTime(ExaminationDate.Year, ExaminationDate.Month, ExaminationDate.Day, hours, minutes, 00);
+                Appointment.StartTime = appointmentDateTime;
+            }
+            catch { }
+        }
+
         private MedicalAppointment ParseAppointment()
         {
-            DateTime pickedDate = ExaminationDate;
-            int hours = int.Parse(StartTime.Split(':')[0]);
-            int minutes = int.Parse(StartTime.Split(':')[1]);
-            DateTime appointmentDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
-
-            return new MedicalAppointment(Appointment.Id, Appointment.MedicalAppointmentType, appointmentDateTime, Appointment.DurationInMinutes, Appointment.Patient.Jmbg, Appointment.Doctor.Jmbg, Appointment.Room.Id);
+            return new MedicalAppointment(Appointment.Id, Appointment.MedicalAppointmentType, Appointment.StartTime, Appointment.DurationInMinutes, Appointment.Patient.Jmbg, Appointment.Doctor.Jmbg, Appointment.Room.Id);
         }
 
 
