@@ -40,11 +40,11 @@ namespace Hospital.ViewModels
 
         public void Executed_AddCommand(object obj)
         {
-            MedicalAppointment app = ParseAppointment();
+            ParseTime();
             Appointment.Validate();
             if (Appointment.IsValid)
             {
-                Inject.AppointmentService.Save(app);
+                Inject.AppointmentService.Save(ParseAppointment());
             }
         }
 
@@ -53,14 +53,21 @@ namespace Hospital.ViewModels
             NavService.GoBack();
         }
 
+        private void ParseTime()
+        {
+            try
+            {
+                int hours = int.Parse(StartTime.Split(':')[0]);
+                int minutes = int.Parse(StartTime.Split(':')[1]);
+                DateTime appointmentDateTime = new DateTime(ExaminationDate.Year, ExaminationDate.Month, ExaminationDate.Day, hours, minutes, 00);
+                Appointment.StartTime = appointmentDateTime;
+            }
+            catch { }
+        }
+
         private MedicalAppointment ParseAppointment()
         {
-            int hours = int.Parse(StartTime.Split(':')[0]);
-            int minutes = int.Parse(StartTime.Split(':')[1]);
-            DateTime appointmentDateTime = new DateTime(ExaminationDate.Year, ExaminationDate.Month, ExaminationDate.Day, hours, minutes, 00);
-            Appointment.StartTime = appointmentDateTime;
-
-            return new MedicalAppointment(MedicalAppointmentType.examination, appointmentDateTime, 15.0, Appointment.Patient.Jmbg, Doctor.User.Jmbg, Doctor.RoomId);
+            return new MedicalAppointment(MedicalAppointmentType.examination, Appointment.StartTime, Appointment.DurationInMinutes, Appointment.Patient.Jmbg, Doctor.User.Jmbg, Doctor.RoomId);
         }
 
         #region Konstruktori

@@ -94,13 +94,13 @@ namespace Hospital.ViewModels
 
         protected override void ValidateSelf()
         {
-            if (string.IsNullOrWhiteSpace(DurationInMinutes.ToString()))
+            if (DurationInMinutes == 0)
             {
                 this.ValidationErrors["Duration"] = "You have to enter a duration.";
             }
             if (StartTime.Ticks < DateTime.Now.Ticks)
             {
-                this.ValidationErrors["StarTime"] = "Appointment time can't be in the past.";
+                this.ValidationErrors["StartTime"] = "New appointment can't be in the past.";
             }
             if (Patient == null)
             {

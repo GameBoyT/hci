@@ -13,6 +13,9 @@ namespace Hospital.ViewModels
         #endregion
 
         #region Komande
+
+        public RelayCommand NavigateBack { get; set; }
+
         public RelayCommand NavigateToMainView { get; set; }
 
         public RelayCommand NavigateToNewExamination { get; set; }
@@ -27,6 +30,12 @@ namespace Hospital.ViewModels
         {
             return true;
         }
+
+        private void Execute_NavigateBack(object obj)
+        {
+            NavService.GoBack();
+        }
+
 
         private void Execute_NavigateToMainView(object obj)
         {
@@ -63,6 +72,7 @@ namespace Hospital.ViewModels
         public DoctorMainWindowViewModel(NavigationService navService)
         {
             NavService = navService;
+            NavigateBack = new RelayCommand(Execute_NavigateBack, CanExecute_NavigateCommand);
             NavigateToMainView = new RelayCommand(Execute_NavigateToMainView, CanExecute_NavigateCommand);
             NavigateToNewExamination = new RelayCommand(Execute_NavigateToNewExamination, CanExecute_NavigateCommand);
             NavigateToNewOperation = new RelayCommand(Execute_NavigateToNewOperation, CanExecute_NavigateCommand);

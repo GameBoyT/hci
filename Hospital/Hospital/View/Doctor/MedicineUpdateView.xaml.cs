@@ -23,7 +23,6 @@ namespace Hospital.View.Doctor
         
         private MedicineViewModel medicine;
 
-
         public Injector Inject { get; set; }
 
         public string Ingredient { get; set; }
@@ -58,7 +57,7 @@ namespace Hospital.View.Doctor
             Medicines = new ObservableCollection<MedicineAlternativeViewModel>(OriginalMedicines);
             Alternatives = new ObservableCollection<MedicineAlternativeViewModel>(medicine.Alternatives);
             Ingredients = new ObservableCollection<string>(medicine.Ingredients);
-            Description = medicine.Description;
+            Description = new string(medicine.Description);
             Medicine = medicine;
 
         }
@@ -122,7 +121,7 @@ namespace Hospital.View.Doctor
             {
                 MedicineAlternativeViewModel medicine = e.Data.GetData("myFormat") as MedicineAlternativeViewModel;
                 Medicines.Remove(medicine);
-                Medicine.Alternatives.Add(medicine);
+                Alternatives.Add(medicine);
                 Medicine._Medicine.Alternatives.Add(Inject.MedicineService.GetById(medicine.Id));
             }
         }
@@ -130,26 +129,38 @@ namespace Hospital.View.Doctor
         private void AddingredientBtnClick(object sender, RoutedEventArgs e)
         {
             Medicine._Medicine.Ingredients.Add(Ingredient);
-            Medicine.Ingredients.Add(Ingredient);
+            Ingredients.Add(Ingredient);
             Ingredient = "";
         }
 
         private void SaveBtnClick(object sender, RoutedEventArgs e)
         {
             Medicine._Medicine.Description = Medicine.Description;
+            Medicine.Description = Description;
+            Medicine.Alternatives.Clear();
+            Medicine.Ingredients.Clear();
+            foreach (MedicineAlternativeViewModel alternative in Alternatives)
+            {
+                Medicine.Alternatives.Add(alternative);
+            }
+            foreach (string ingredient in Ingredients)
+            {
+                Medicine.Ingredients.Add(ingredient);
+            }
             Inject.MedicineService.Update(Medicine._Medicine);
         }
 
         private void CancelBtnClick(object sender, RoutedEventArgs e)
         {
-            Medicine.Alternatives = new ObservableCollection<MedicineAlternativeViewModel>(Alternatives);
-            Medicine.Description = Description;
-            Medicine.Ingredients = new ObservableCollection<string>(Ingredients);
+            Alternatives = new ObservableCollection<MedicineAlternativeViewModel>(Medicine.Alternatives);
+            Description = Medicine.Description;
+            Ingredients = new ObservableCollection<string>(Medicine.Ingredients);
             Medicines = new ObservableCollection<MedicineAlternativeViewModel>(OriginalMedicines);
             Ingredient = "";
 
-            AlternativesListView.ItemsSource = Medicine.Alternatives;
-            IngredientsListView.ItemsSource = Medicine.Ingredients;
+            AlternativesListView.ItemsSource = Alternatives;
+            DescriptionTextBox.Text = Description;
+            IngredientsListView.ItemsSource = Ingredients;
             AllMedicineListView.ItemsSource = Medicines;
         }
     }

@@ -9,8 +9,22 @@
       Title="UpdateExaminationView">
 
     <Grid>
-        <Label Content="Patient Details" HorizontalAlignment="Left" Margin="100,44,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <Grid Margin="30,75,550,160">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="212*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="88*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="32*"/>
+            <ColumnDefinition Width="310*"/>
+            <ColumnDefinition Width="88*"/>
+            <ColumnDefinition Width="317*"/>
+            <ColumnDefinition Width="45"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Patient Details" HorizontalAlignment="Center" Grid.Column="1" Height="auto" Width="auto" FontSize="18px" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
+        <Grid Margin="10,10,32,20" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -34,23 +48,28 @@
             <TextBox Grid.Column="1" Grid.Row="4" IsReadOnly="True" Text="{Binding Path=Appointment.Patient.Address}"></TextBox>
         </Grid>
 
-        <Grid Margin="400,75,0,0" Height="95" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200">
+        <Grid Grid.Row="1" Grid.Column="3" Margin="10,10,10,10">
             <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
                 <RowDefinition />
+                <RowDefinition Height="60" />
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="7*" />
                 <ColumnDefinition Width="12*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="0">Date:</TextBlock>
-            <TextBlock Grid.Column="0" Grid.Row="1">Start Time:</TextBlock>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Date:" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Start Time:" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
             <DatePicker SelectedDate="{Binding
                         Path=ExaminationDate,
-                        Mode=TwoWay}"  Grid.Column="1" Grid.Row="0"/>
-            <TextBox Text="{Binding StartTime}" Grid.Column="1" Grid.Row="1"/>
+                        Mode=TwoWay}"
+                        Grid.Column="1" Margin="10,10,0,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <TextBox Text="{Binding StartTime}"  Grid.Column="1" Margin="10,10,0,10" Grid.Row="2"/>
+            <TextBlock Text="{Binding Appointment.ValidationErrors[StartTime]}"
+                               Foreground="Red" Grid.Row="3" Height="37" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="300"/>
         </Grid>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="538,190,0,0" VerticalAlignment="Top" Height="27" Width="62" Command="{Binding Path=UpdateCommand}"/>
-        <Button Content="Cancel" Margin="400,190,0,0" VerticalAlignment="Top" Width="65" Command="{Binding Path=CancelCommand}" Height="27"/>
+        <Button Content="Update" Margin="0,10,10,0" VerticalAlignment="Top" Height="35" Command="{Binding Path=UpdateCommand}" Grid.Column="3" Grid.Row="4" HorizontalAlignment="Right" Width="125"/>
+        <Button Content="Cancel" Margin="10,10,0,0" VerticalAlignment="Top" Width="125" Command="{Binding Path=CancelCommand}" Height="35" Grid.Column="3" Grid.Row="4"/>
     </Grid>
 </Page>
