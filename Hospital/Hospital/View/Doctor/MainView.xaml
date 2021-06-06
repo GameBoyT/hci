@@ -28,7 +28,7 @@
               BorderBrush="Black"
               AutoGenerateColumns="False"
               IsReadOnly="True" Margin="10,10,10,10" Grid.Column="1" Grid.Row="1"
-              KeyDown="OnKeyDownHandler">
+              KeyUp="OnKeyUpHandler">
             <!--<DataGrid.InputBindings>
                 <KeyBinding Key="Enter" Modifiers="Ctrl" FocusManager.FocusedElement="{Binding ElementName=appointment_date}" />
             </DataGrid.InputBindings>-->

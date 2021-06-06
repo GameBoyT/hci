@@ -150,7 +150,7 @@
     ],
     "StaticEquipments": [
       {
-        "Name": "Anaesthesia",
+        "Name": "Anestezija",
         "RoomId": 3,
         "Quantity": 1,
         "Description": "Anaesthesia machine",
@@ -175,10 +175,10 @@
     "Appointments": [],
     "StaticEquipments": [
       {
-        "Name": "Anaesthesia",
+        "Name": "Rengen",
         "RoomId": 4,
         "Quantity": 1,
-        "Description": "Anaesthesia machine",
+        "Description": "Rengen",
         "Id": 2
       }
     ],

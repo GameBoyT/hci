@@ -45,6 +45,36 @@
             <TextBlock Text="{Binding Appointment.ValidationErrors[Patient]}"
                                Foreground="Red" Margin="10,0,10,0" Grid.Row="2" Grid.Column="1" Height="36" VerticalAlignment="Center"/>
 
+            <Label Content="Equipment needed:" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="120" Grid.Row="3" Grid.Column="3" Height="20"/>
+            <TextBox Text="{Binding Equipment, Mode=TwoWay}" Margin="135,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="3" Grid.Column="3" Height="32">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding FilterCommand}" />
+                </TextBox.InputBindings>
+            </TextBox>
+            
+            <DataGrid x:Name="RoomsDataGrid"
+                ItemsSource="{Binding Rooms}"
+                SelectedItem="{Binding Appointment.Room}"
+                AutoGenerateColumns="False"
+                BorderThickness="1"
+                BorderBrush="Black"
+                IsReadOnly="True" Margin="10,10,10,10" Grid.Row="1" Grid.Column="3">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id"
+                        Binding="{Binding Id}" />
+                    <DataGridTextColumn Header="Name"
+                        Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="Floor"
+                        Binding="{Binding Floor}" />
+                    <DataGridTextColumn Header="Detail"
+                        Binding="{Binding Detail}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBlock Text="{Binding Appointment.ValidationErrors[Room]}"
+                               Foreground="Red" Margin="10,0,10,0" Grid.Row="2" Grid.Column="3" Height="36" VerticalAlignment="Center"/>
+
+            
+
             <Grid Grid.Row="1" Grid.Column="5" Margin="10,10,10,10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60" />
@@ -76,33 +106,7 @@
                 <TextBlock Text="{Binding Appointment.ValidationErrors[Duration]}"
                                Foreground="Red" Grid.Row="5" Grid.Column="0" Height="34" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
             </Grid>
-            <DataGrid x:Name="RoomsDataGrid"
-                ItemsSource="{Binding Rooms}"
-                SelectedItem="{Binding Appointment.Room}"
-                AutoGenerateColumns="False"
-                BorderThickness="1"
-                BorderBrush="Black"
-                IsReadOnly="True" Margin="10,10,10,10" Grid.Row="1" Grid.Column="3">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id"
-                        Binding="{Binding Id}" />
-                    <DataGridTextColumn Header="Name"
-                        Binding="{Binding Name}" />
-                    <DataGridTextColumn Header="Floor"
-                        Binding="{Binding Floor}" />
-                    <DataGridTextColumn Header="Detail"
-                        Binding="{Binding Detail}" />
-                </DataGrid.Columns>
-            </DataGrid>
-            <TextBlock Text="{Binding Appointment.ValidationErrors[Room]}"
-                               Foreground="Red" Margin="10,0,10,0" Grid.Row="2" Grid.Column="3" Height="36" VerticalAlignment="Center"/>
 
-            <Label Content="Equipment needed:" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="120" Grid.Row="3" Grid.Column="3" Height="20"/>
-            <TextBox Text="{Binding Equipment}" Margin="135,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="3" Grid.Column="3" Height="32">
-                <TextBox.InputBindings>
-                    <KeyBinding Key="Enter" Command="{Binding FilterCommand}" />
-                </TextBox.InputBindings>
-            </TextBox>
             <Button Content="Filter" Margin="0,10,10,0" Command="{Binding Path=FilterCommand}" Grid.Row="4" VerticalAlignment="Top" Grid.Column="3" Height="35" HorizontalAlignment="Right" Width="124"/>
             <Button Content="Add" Margin="0,10,10,0" VerticalAlignment="Top" Height="35" Command="{Binding Path=AddCommand}" Grid.Row="4" Grid.Column="5" HorizontalAlignment="Right" Width="125" />
             <Button Content="Cancel" Margin="10,10,0,0" VerticalAlignment="Top" Height="35" Width="125" Command="{Binding Path=CancelCommand}" Grid.Row="4" Grid.Column="5"/>

@@ -118,39 +118,6 @@ namespace Hospital.View.Doctor
             }
         }
 
-        public DoctorViewPatient(AppointmentDTO appointment)
-        {
-            InitializeComponent();
-            this.DataContext = this;
-            app = Application.Current as App;
-
-            Appointment = appointment;
-            if (!app.appointmentController.IsTimeInFuture(Appointment.StartTime))
-                IsAppointmentTime = true;
-            Patient = app.patientController.GetByJmbg(Appointment.PatientJmbg);
-
-            Doctors = app.employeeController.GetDoctors();
-
-            Anamnesis = new ObservableCollection<Anamnesis>(Patient.MedicalRecord.Anamnesis);
-            Prescriptions = new ObservableCollection<Prescription>(Patient.MedicalRecord.Prescription);
-            lvDataBinding.ItemsSource = Anamnesis;
-            lvPrescriptionDataBinding.ItemsSource = app.medicineController.GetByVerification(VerificationType.verified);
-            lvPatientPrescriptionDataBinding.ItemsSource = Prescriptions;
-            doctorsDataGrid.ItemsSource = Doctors;
-
-            if (Patient.MedicalRecord.HospitalStay.Bed == null  || Patient.MedicalRecord.HospitalStay.EndDateTime.Ticks < DateTime.Now.Ticks)
-            {
-                lvHospitalStayRoomsDataBinding.ItemsSource = app.roomController.GetRoomsByRoomType(RoomType.patients);
-                hospitalStayStartDate.SelectedDate = DateTime.Today;
-            }
-            else
-            {
-                NewHospitalStay.Visibility = Visibility.Collapsed;
-                ExtendHospitalStay.Visibility = Visibility.Visible;
-                extendedEndDate.SelectedDate = Patient.MedicalRecord.HospitalStay.EndDateTime;
-            }
-        }
-
         public DoctorViewPatient(AppointmentViewModel appointment)
         {
             InitializeComponent();
@@ -187,17 +154,8 @@ namespace Hospital.View.Doctor
             lvPatientPrescriptionDataBinding.ItemsSource = Prescriptions;
             doctorsDataGrid.ItemsSource = Doctors;
 
-            if (Patient.MedicalRecord.HospitalStay.Bed == null || Patient.MedicalRecord.HospitalStay.EndDateTime.Ticks < DateTime.Now.Ticks)
-            {
-                lvHospitalStayRoomsDataBinding.ItemsSource = app.roomController.GetRoomsByRoomType(RoomType.patients);
-                hospitalStayStartDate.SelectedDate = DateTime.Today;
-            }
-            else
-            {
-                NewHospitalStay.Visibility = Visibility.Collapsed;
-                ExtendHospitalStay.Visibility = Visibility.Visible;
-                extendedEndDate.SelectedDate = Patient.MedicalRecord.HospitalStay.EndDateTime;
-            }
+            lvHospitalStayRoomsDataBinding.ItemsSource = app.roomController.GetRoomsByRoomType(RoomType.patients);
+            hospitalStayStartDate.SelectedDate = DateTime.Today;
 
             InitPastAppointments();
         }
@@ -243,8 +201,6 @@ namespace Hospital.View.Doctor
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            //DoctorWindow doctorWindow = new DoctorWindow();
-            //doctorWindow.Show();
             this.Close();
         }
 
@@ -347,35 +303,7 @@ namespace Hospital.View.Doctor
             try
             {
                 app.patientController.AddHospitalStay(Patient.User.Jmbg, HospitalStayBed, startDate, endDate);
-                NewHospitalStay.Visibility = Visibility.Collapsed;
-                ExtendHospitalStay.Visibility = Visibility.Visible;
                 MessageBox.Show("Hospital stay successfully added!");
-            }
-            catch
-            {
-                MessageBox.Show("You have to select all fields!");
-            }
-        }
-
-        private void HospitalStayExtendButton_Click(object sender, RoutedEventArgs e)
-        {
-            DateTime selectedDate = extendedEndDate.SelectedDate.Value;
-            if (selectedDate.DayOfYear <= Patient.MedicalRecord.HospitalStay.EndDateTime.DayOfYear)
-            {
-                MessageBox.Show("You can't select a date before the curent end date!");
-                return;
-            }
-
-            if (selectedDate.DayOfYear < DateTime.Now.DayOfYear)
-            {
-                MessageBox.Show("You can't select a before today!");
-                return;
-            }
-
-            try
-            {
-                app.patientController.ExtendHospitalStay(Patient.User.Jmbg, selectedDate);
-                MessageBox.Show("Hospital stay successfully extended!");
             }
             catch
             {

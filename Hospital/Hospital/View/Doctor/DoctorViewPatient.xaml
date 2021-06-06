@@ -55,7 +55,7 @@
                         <RowDefinition Height="2*"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Label Content="Patient Details" HorizontalAlignment="Center" FontSize="18px" Margin="0,0,0,10" Grid.Column="1" Height="auto" VerticalAlignment="Bottom"/>
+                    <Label Content="Patient Details" HorizontalAlignment="Left" FontSize="18px" Margin="10,0,0,0" Grid.Column="1" Height="auto" VerticalAlignment="Center"/>
                     <Grid Margin="10,10,10,10" Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition />
@@ -73,11 +73,11 @@
                         <TextBlock Grid.Column="0" Grid.Row="2">Jmbg:</TextBlock>
                         <TextBlock Grid.Column="0" Grid.Row="3">Date of birth:</TextBlock>
                         <TextBlock Grid.Column="0" Grid.Row="4">Address:</TextBlock>
-                        <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" Text="{Binding Path=Patient.User.FirstName}"></TextBox>
-                        <TextBox Grid.Column="1" Grid.Row="1" IsReadOnly="True" Text="{Binding Path=Patient.User.LastName}"></TextBox>
-                        <TextBox Grid.Column="1" Grid.Row="2" IsReadOnly="True" Text="{Binding Path=Patient.User.Jmbg}"></TextBox>
-                        <TextBox Grid.Column="1" Grid.Row="3" IsReadOnly="True" Text="{Binding Path=Patient.User.DateOfBirth, StringFormat='dd-MM-yyyy'}"></TextBox>
-                        <TextBox Grid.Column="1" Grid.Row="4" IsReadOnly="True" Text="{Binding Path=Patient.User.Address}"></TextBox>
+                        <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Path=Patient.User.FirstName}"></TextBlock>
+                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Path=Patient.User.LastName}"></TextBlock>
+                        <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Path=Patient.User.Jmbg}"></TextBlock>
+                        <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Path=Patient.User.DateOfBirth, StringFormat='dd-MM-yyyy'}"></TextBlock>
+                        <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding Path=Patient.User.Address}"></TextBlock>
                     </Grid>
                     <Button Margin="10,0,0,30" VerticalAlignment="Bottom" Width="125" Click="BackButton_Click" Height="35" Grid.Row="2" Grid.Column="1">
                         <Button.Content>
@@ -251,8 +251,6 @@
             </TabItem>
             <TabItem Header="Hospital stay">
                 <Grid>
-                    <Canvas x:Name="NewHospitalStay" Grid.ColumnSpan="5" Grid.RowSpan="3">
-                        <Grid Width="800" Height="414">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="45"/>
                                 <RowDefinition Height="1*"/>
@@ -298,9 +296,8 @@
 
 
                             <Label Content="Start date:" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="74" Grid.Column="5" Grid.Row="1" Height="18"/>
-                            <Label Content="End date:" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="74" Grid.Column="5" Grid.Row="2" Height="18"/>
                             <DatePicker x:Name="hospitalStayStartDate" Grid.Column="6" Grid.Row="1" Margin="10,10,0,0" VerticalAlignment="Top" Height="32" Width="154"/>
-                            <Label HorizontalAlignment="Center" Margin="0,24,0,0" VerticalAlignment="Top" Width="122" Grid.Column="5" Grid.Row="2" Height="0"/>
+                            <Label Content="End date:" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="74" Grid.Column="5" Grid.Row="2" Height="18"/>
                             <DatePicker x:Name="hospitalStayEndDate" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="6" Grid.Row="2" Height="32" Width="152"/>
                             <Button Content="Add Hospital Stay" Click="HospitalStayAddButton_Click" Margin="10,0,0,10" VerticalAlignment="Bottom" Grid.Column="6" Grid.Row="2" Height="35" Width="150" />
                             <Button Width="125" Click="BackButton_Click" Height="35" Grid.Row="3" Grid.Column="1" Margin="10,0,0,30" VerticalAlignment="Bottom">
@@ -313,33 +310,6 @@
                                     </StackPanel>
                                 </Button.Content>
                             </Button>
-                        </Grid>
-                    </Canvas>
-                    <Canvas x:Name="ExtendHospitalStay"  Visibility="Collapsed" Grid.ColumnSpan="5" Grid.RowSpan="3">
-                        <!--<Grid Margin="30,75,550,160">
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Grid.Row="0">Room:</TextBlock>
-                            <TextBlock Grid.Column="0" Grid.Row="1">Bed:</TextBlock>
-                            <TextBlock Grid.Column="0" Grid.Row="2">Start Date:</TextBlock>
-                            <TextBlock Grid.Column="0" Grid.Row="3">End Date:</TextBlock>
-                            <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" Text="{Binding Path=Patient.MedicalRecord.HospitalStay.Room}"></TextBox>
-                            <TextBox Grid.Column="1" Grid.Row="1" IsReadOnly="True" Text="{Binding Path=Patient.User.LastName}"></TextBox>
-                            <TextBox Grid.Column="1" Grid.Row="2" IsReadOnly="True" Text="{Binding Path=Patient.User.Jmbg}"></TextBox>
-                            <TextBox Grid.Column="1" Grid.Row="3" IsReadOnly="True" Text="{Binding Path=Patient.User.DateOfBirth, StringFormat='dd-MM-yyyy'}"></TextBox>
-                        </Grid>-->
-                        <Label Content="Extend hospital stay until date:" Margin="489,165,0,0" Width="187" Canvas.Left="-395" Canvas.Top="-85"/>
-                        <DatePicker x:Name="extendedEndDate" Margin="627,167,0,0" Canvas.Left="-338" Canvas.Top="-86"/>
-                        <Button Content="Extend Hospital Stay" HorizontalAlignment="Left" Margin="604,294,0,0" VerticalAlignment="Top" Height="35" Width="125" Click="HospitalStayExtendButton_Click"/>
-                    </Canvas>
                 </Grid>
             </TabItem>
             <TabItem Header="Past appointments">
