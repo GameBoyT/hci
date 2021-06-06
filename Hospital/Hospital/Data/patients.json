@@ -468,7 +468,7 @@
           "Id": 1,
           "Type": "Licna",
           "Name": "ime anamneze",
-          "Description": "opis anamneze"
+          "Description": null
         },
         {
           "Id": 2,

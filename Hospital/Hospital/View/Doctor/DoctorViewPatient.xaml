@@ -55,7 +55,7 @@
                         <RowDefinition Height="2*"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Label Content="Patient Details" HorizontalAlignment="Center" FontSize="18px" Margin="0,0,0,10" Grid.Column="1" Height="auto" VerticalAlignment="Bottom"/>
+                    <Label Content="Patient Details" HorizontalAlignment="Left" FontSize="18px" Margin="10,0,0,0" Grid.Column="1" Height="auto" VerticalAlignment="Center"/>
                     <Grid Margin="10,10,10,10" Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition />
@@ -73,11 +73,11 @@
                         <TextBlock Grid.Column="0" Grid.Row="2">Jmbg:</TextBlock>
                         <TextBlock Grid.Column="0" Grid.Row="3">Date of birth:</TextBlock>
                         <TextBlock Grid.Column="0" Grid.Row="4">Address:</TextBlock>
-                        <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" Text="{Binding Path=Patient.User.FirstName}"></TextBox>
-                        <TextBox Grid.Column="1" Grid.Row="1" IsReadOnly="True" Text="{Binding Path=Patient.User.LastName}"></TextBox>
-                        <TextBox Grid.Column="1" Grid.Row="2" IsReadOnly="True" Text="{Binding Path=Patient.User.Jmbg}"></TextBox>
-                        <TextBox Grid.Column="1" Grid.Row="3" IsReadOnly="True" Text="{Binding Path=Patient.User.DateOfBirth, StringFormat='dd-MM-yyyy'}"></TextBox>
-                        <TextBox Grid.Column="1" Grid.Row="4" IsReadOnly="True" Text="{Binding Path=Patient.User.Address}"></TextBox>
+                        <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Path=Patient.User.FirstName}"></TextBlock>
+                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Path=Patient.User.LastName}"></TextBlock>
+                        <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Path=Patient.User.Jmbg}"></TextBlock>
+                        <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Path=Patient.User.DateOfBirth, StringFormat='dd-MM-yyyy'}"></TextBlock>
+                        <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding Path=Patient.User.Address}"></TextBlock>
                     </Grid>
                     <Button Margin="10,0,0,30" VerticalAlignment="Bottom" Width="125" Click="BackButton_Click" Height="35" Grid.Row="2" Grid.Column="1">
                         <Button.Content>
