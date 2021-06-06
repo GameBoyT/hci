@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:Hospital.View.Doctor" xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         Title="DoctorMainWindow" Height="600" Width="1000">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding NavigateBack}" Key="Backspace"/>
+        <KeyBinding Command="{Binding NavigateBack}" Key="B"/>
+    </Window.InputBindings>
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top" Height="40">
