@@ -20,8 +20,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="45"/>
                 <RowDefinition Height="254*"/>
-                <RowDefinition Height="40*"/>
-                <RowDefinition Height="221*"/>
+                <RowDefinition Height="97*"/>
+                <RowDefinition Height="164*"/>
             </Grid.RowDefinitions>
             <DataGrid x:Name="PatientsDataGrid"
                 AutoGenerateColumns="False"
@@ -57,6 +57,8 @@
                         Mode=TwoWay}"
                         Grid.Column="1" Margin="10,10,0,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                 <TextBox Text="{Binding StartTime}"  Grid.Column="1" Margin="10,10,0,10" Grid.Row="2"/>
+                <TextBlock Text="{Binding Appointment.ValidationErrors[StartTime]}"
+                               Foreground="Red" Margin="10,10,10,0" Grid.Row="3" Grid.Column="1" Height="37" VerticalAlignment="Top"/>
             </Grid>
             <TextBlock Text="{Binding Appointment.ValidationErrors[Patient]}"
                                Foreground="Red" Margin="10,10,10,0" Grid.Row="3" Grid.Column="1" Height="37" VerticalAlignment="Top"/>

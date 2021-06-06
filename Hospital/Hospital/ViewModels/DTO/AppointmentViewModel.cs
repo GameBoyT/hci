@@ -100,7 +100,7 @@ namespace Hospital.ViewModels
             }
             if (StartTime.Ticks < DateTime.Now.Ticks)
             {
-                this.ValidationErrors["StarTime"] = "Appointment time can't be in the past.";
+                this.ValidationErrors["StartTime"] = "New appointment can't be in the past.";
             }
             if (Patient == null)
             {
