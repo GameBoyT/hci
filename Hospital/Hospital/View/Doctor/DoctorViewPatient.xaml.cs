@@ -243,8 +243,6 @@ namespace Hospital.View.Doctor
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            //DoctorWindow doctorWindow = new DoctorWindow();
-            //doctorWindow.Show();
             this.Close();
         }
 

@@ -462,19 +462,88 @@
         "Alergija na macke",
         "Alergija na pse"
       ],
-      "Prescription": [],
+      "Prescription": [
+        {
+          "Interval": 0,
+          "StartDate": "2021-06-07T00:53:04.3993716+02:00",
+          "EndDate": "0001-01-01T00:00:00",
+          "Description": "Piti 3x dnevno",
+          "Quantity": 15,
+          "Medicine": {
+            "Name": "Aspirin",
+            "Verification": 0,
+            "Description": "opis2aa",
+            "DoctorComment": "",
+            "Ingredients": [
+              "a",
+              "v",
+              "cc",
+              "x"
+            ],
+            "Alternatives": [
+              {
+                "Name": "Amoksicilin",
+                "Verification": 0,
+                "Description": "123",
+                "DoctorComment": "",
+                "Ingredients": [],
+                "Alternatives": [],
+                "Id": 3
+              },
+              {
+                "Name": "Aspirin",
+                "Verification": 0,
+                "Description": "opis2",
+                "DoctorComment": "",
+                "Ingredients": [
+                  "a",
+                  "b"
+                ],
+                "Alternatives": [
+                  {
+                    "Name": "Amoksicilin",
+                    "Verification": 0,
+                    "Description": "123",
+                    "DoctorComment": "",
+                    "Ingredients": [],
+                    "Alternatives": [],
+                    "Id": 3
+                  }
+                ],
+                "Id": 1
+              },
+              {
+                "Name": "Brufen",
+                "Verification": 0,
+                "Description": "opis4",
+                "DoctorComment": "",
+                "Ingredients": [],
+                "Alternatives": [],
+                "Id": 4
+              }
+            ],
+            "Id": 1
+          }
+        }
+      ],
       "Anamnesis": [
         {
           "Id": 1,
           "Type": "Licna",
           "Name": "ime anamneze",
-          "Description": null
+          "Description": "opis 1"
         },
         {
           "Id": 2,
           "Type": "Anamneza",
           "Name": "naziv",
           "Description": "opis "
+        },
+        {
+          "Id": 3,
+          "Type": "novi",
+          "Name": "nova",
+          "Description": "novi opis"
         }
       ],
       "Referrals": []
