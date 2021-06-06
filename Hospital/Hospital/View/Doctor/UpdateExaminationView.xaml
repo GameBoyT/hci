@@ -65,7 +65,11 @@
                         Path=ExaminationDate,
                         Mode=TwoWay}"
                         Grid.Column="1" Margin="10,10,0,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-            <TextBox Text="{Binding StartTime}"  Grid.Column="1" Margin="10,10,0,10" Grid.Row="2"/>
+            <TextBox Text="{Binding StartTime}"  Grid.Column="1" Margin="10,10,0,10" Grid.Row="2">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding UpdateCommand}" />
+                </TextBox.InputBindings>
+            </TextBox>
             <TextBlock Text="{Binding Appointment.ValidationErrors[StartTime]}"
                                Foreground="Red" Grid.Row="3" Height="37" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="300"/>
         </Grid>

@@ -1,6 +1,7 @@
 ﻿using Hospital.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Navigation;
 
 namespace Hospital.View.Doctor
@@ -26,6 +27,22 @@ namespace Hospital.View.Doctor
             AppointmentViewModel avm = (AppointmentViewModel)appointmentsDataGrid.SelectedItem;
             DoctorViewPatient doctorViewPatient = new DoctorViewPatient(avm);
             doctorViewPatient.Show();
+        }
+
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.V)
+            {
+                ViewAppointmentBtn_Click(sender, e);
+            }
+            if (e.Key == Key.U)
+            {
+                UpdateAppointmentBtn_Click(sender, e);
+            }
+            if (e.Key == Key.D)
+            {
+                Keyboard.Focus(appointment_date);
+            }
         }
     }
 }

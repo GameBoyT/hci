@@ -31,9 +31,16 @@ namespace Hospital.ViewModels
             return true;
         }
 
+        private bool CanExecute_NavigateBack(object obj)
+        {
+            return NavService.CanGoBack;
+        }
+
+
         private void Execute_NavigateBack(object obj)
         {
-            NavService.GoBack();
+            if (NavService.CanGoBack)
+                NavService.GoBack();
         }
 
 
@@ -72,7 +79,7 @@ namespace Hospital.ViewModels
         public DoctorMainWindowViewModel(NavigationService navService)
         {
             NavService = navService;
-            NavigateBack = new RelayCommand(Execute_NavigateBack, CanExecute_NavigateCommand);
+            NavigateBack = new RelayCommand(Execute_NavigateBack, CanExecute_NavigateBack);
             NavigateToMainView = new RelayCommand(Execute_NavigateToMainView, CanExecute_NavigateCommand);
             NavigateToNewExamination = new RelayCommand(Execute_NavigateToNewExamination, CanExecute_NavigateCommand);
             NavigateToNewOperation = new RelayCommand(Execute_NavigateToNewOperation, CanExecute_NavigateCommand);

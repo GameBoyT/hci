@@ -7,6 +7,10 @@
         xmlns:local="clr-namespace:Hospital.View" xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         Title="LoginWindow" Height="450" Width="500">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding LoginCommand}" Key="Enter"/>
+        <KeyBinding Command="{Binding LoginCommand}" Modifiers="Ctrl" Key="L"/>
+    </Window.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="37*"/>
@@ -16,11 +20,21 @@
             <ColumnDefinition Width="17*"/>
             <ColumnDefinition Width="83*"/>
         </Grid.ColumnDefinitions>
+        <TextBlock Text="Login" FontSize="22px" Height="auto" Width="auto" Margin="123,0,0,10" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+
         <Label Content="Username:" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
-        <TextBox Text="{Binding User.Username, Mode=TwoWay}" Margin="110,10,0,0" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180" Grid.Column="1" Grid.Row="1"/>
+        <TextBox Text="{Binding User.Username, Mode=TwoWay}" Margin="110,10,0,0" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180" Grid.Column="1" Grid.Row="1">
+            <TextBox.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding LoginCommand}" />
+            </TextBox.InputBindings>
+        </TextBox>
         <TextBlock Text="{Binding User.ValidationErrors[Username]}" Foreground="Red" Margin="10,55,0,0" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="280" Grid.Column="1" Grid.Row="1"/>
         <Label Content="Password:" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
-        <TextBox Text="{Binding User.Password, Mode=TwoWay}" Margin="110,95,0,0" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180" Grid.Column="1" Grid.Row="1"/>
+        <TextBox Text="{Binding User.Password, Mode=TwoWay}" Margin="110,95,0,0" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180" Grid.Column="1" Grid.Row="1">
+            <TextBox.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding LoginCommand}" />
+            </TextBox.InputBindings>
+        </TextBox>
         <TextBlock Text="{Binding User.ValidationErrors[Password]}" Foreground="Red" Margin="10,137,0,0" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="280" Grid.Column="1" Grid.Row="1"/>
         <Button Margin="166,174,0,0" VerticalAlignment="Top" Command="{Binding Path=LoginCommand}" CommandParameter="{Binding ElementName=Login}" Height="34" Width="124" Grid.Column="1" Grid.Row="1">
             <Button.Content>

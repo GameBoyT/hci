@@ -19,7 +19,7 @@
         </ResourceDictionary>
     </Window.Resources>
     <Window.InputBindings>
-        <KeyBinding Key="B" Command="{StaticResource Ctr1}" />
+        <KeyBinding Key="B" Modifiers="Ctrl" Command="{StaticResource Ctr1}" />
         <KeyBinding Key="Backspace" Command="{StaticResource Ctr2}" />
         <!--<KeyBinding Key="D" Command="{StaticResource Ctr3}" />
         <KeyBinding Key="E" Command="{StaticResource Ctr4}" />
@@ -51,7 +51,7 @@
                         <RowDefinition Height="2*"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Label Content="Patient Details" HorizontalAlignment="Center" Margin="0,0,0,10" Grid.Column="1" Height="19" VerticalAlignment="Bottom"/>
+                    <Label Content="Patient Details" HorizontalAlignment="Center" FontSize="18px" Margin="0,0,0,10" Grid.Column="1" Height="auto" VerticalAlignment="Bottom"/>
                     <Grid Margin="10,10,10,10" Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition />
@@ -75,7 +75,7 @@
                         <TextBox Grid.Column="1" Grid.Row="3" IsReadOnly="True" Text="{Binding Path=Patient.User.DateOfBirth, StringFormat='dd-MM-yyyy'}"></TextBox>
                         <TextBox Grid.Column="1" Grid.Row="4" IsReadOnly="True" Text="{Binding Path=Patient.User.Address}"></TextBox>
                     </Grid>
-                    <Button Margin="10,0,0,30" VerticalAlignment="Bottom" Width="80" Click="BackButton_Click" Height="35" Grid.Row="2" Grid.Column="1">
+                    <Button Margin="10,0,0,30" VerticalAlignment="Bottom" Width="125" Click="BackButton_Click" Height="35" Grid.Row="2" Grid.Column="1">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <fa:ImageAwesome Icon="ArrowCircleLeft" Height="18" Width="30" Foreground="#2596be"/>
@@ -118,13 +118,13 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <TextBlock HorizontalAlignment="Center" Margin="0,0,0,10" Text="Anamnesis" TextWrapping="Wrap" Width="68" Grid.Column="1" Height="19" VerticalAlignment="Bottom"/>
-                    <TextBlock HorizontalAlignment="Center" Text="Anamnesis Details" TextWrapping="Wrap" Grid.Column="3" Width="116" Margin="0,16,0,0" Height="19" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Center" Margin="0,0,0,10" FontSize="18px" Height="auto" Width="auto" Text="Anamnesis" TextWrapping="Wrap" Grid.Column="1" VerticalAlignment="Bottom"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Anamnesis Details" TextWrapping="Wrap" Grid.Column="3" FontSize="18px" Height="auto" Width="auto" Margin="0,16,0,0" VerticalAlignment="Top"/>
                     <TextBox Text="{Binding Path=DetailText}" IsEnabled="{Binding Path=IsAppointmentTime}" TextWrapping="Wrap" Grid.Column="3" Grid.Row="1" Margin="10,10,10,10"/>
                     <Button Content="Save Changes" Margin="0,10,10,0" VerticalAlignment="Top" Width="125" Click="SaveChangesButton_Click" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Right" Height="35"/>
                     <Button Content="Add New" Margin="0,10,10,0" VerticalAlignment="Top" Height="35" Click="AddNewButton_Click" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Width="125"/>
                     <Button Content="Cancel" Margin="10,10,0,0" VerticalAlignment="Top" Width="125" Click="CancelButton_Click" Grid.Column="3" Grid.Row="2" Height="35"/>
-                    <Button Margin="10,0,0,30" VerticalAlignment="Bottom" Width="80" Click="BackButton_Click" Height="35" Grid.Row="2" Grid.Column="1">
+                    <Button Margin="10,0,0,30" VerticalAlignment="Bottom" Width="125" Click="BackButton_Click" Height="35" Grid.Row="2" Grid.Column="1">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <fa:ImageAwesome Icon="ArrowCircleLeft" Height="18" Width="30" Foreground="#2596be"/>
@@ -152,7 +152,7 @@
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="45"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock HorizontalAlignment="Center" Text="Patients Prescriptions" TextWrapping="Wrap" VerticalAlignment="Bottom" Grid.Column="1" Height="19" Width="134" Margin="0,0,0,10"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Patients Prescriptions" TextWrapping="Wrap" VerticalAlignment="Bottom" Grid.Column="1" FontSize="18px" Height="auto" Width="auto" Margin="0,0,0,10"/>
                     <ListView x:Name="lvPatientPrescriptionDataBinding"
                               BorderThickness="1"
                               BorderBrush="Black" Grid.Column="1" Grid.Row="1" Margin="10,10,10,10">
@@ -167,7 +167,7 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <TextBlock HorizontalAlignment="Center" Text="Medicine" TextWrapping="Wrap" VerticalAlignment="Bottom" Grid.Column="3" Height="19" Width="58" Margin="0,0,0,10"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Medicine" TextWrapping="Wrap" VerticalAlignment="Bottom" Grid.Column="3" FontSize="18px" Height="auto" Width="auto" Margin="0,0,0,10"/>
                     <ListView Name="lvPrescriptionDataBinding" PreviewMouseLeftButtonUp="listViewPrescription_Click"
                                 BorderThickness="1"
                                 BorderBrush="Black" Grid.Column="3" Margin="10,10,10,10" Grid.Row="1">
@@ -180,12 +180,12 @@
                         </ListView.ItemTemplate>
                     </ListView>
 
-                    <Label Content="Enter Use Description: " HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Column="5" Height="19" Width="140" Margin="0,0,0,10"/>
+                    <Label Content="Use Description" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Column="5" FontSize="18px" Height="auto" Width="auto" Margin="0,0,0,10"/>
                     <TextBox Text="{Binding Path=DescriptionText}" IsEnabled="{Binding Path=IsAppointmentTime}" TextWrapping="Wrap" Grid.Column="5" Margin="10,10,10,75" Grid.Row="1"/>
                     <Label Content="Quantity: " HorizontalAlignment="Left" Margin="10,0,0,16" VerticalAlignment="Bottom" Grid.Column="5" Grid.Row="1" Height="19" Width="58"/>
                     <TextBox Text="{Binding Path=Quantity}"  IsEnabled="{Binding Path=IsAppointmentTime}" Margin="0,0,10,10" TextWrapping="Wrap" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Right" Width="95" Height="32" VerticalAlignment="Bottom"/>
                     <Button Content="Add Prescription" Margin="0,10,10,0" VerticalAlignment="Top" Click="PrescriptionAddButton_Click" Grid.Column="5" Grid.Row="2" Width="125" HorizontalAlignment="Right" Height="35"/>
-                    <Button Margin="10,0,0,30" VerticalAlignment="Bottom" Width="80" Click="BackButton_Click" Height="35" Grid.Row="2" Grid.Column="1">
+                    <Button Margin="10,0,0,30" VerticalAlignment="Bottom" Width="125" Click="BackButton_Click" Height="35" Grid.Row="2" Grid.Column="1">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <fa:ImageAwesome Icon="ArrowCircleLeft" Height="18" Width="30" Foreground="#2596be"/>
@@ -227,13 +227,13 @@
                                 Binding="{Binding Specialization}" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Label Content="Doctors" HorizontalAlignment="Center" Margin="0,0,0,10" Grid.Column="1" Height="19" VerticalAlignment="Bottom"/>
+                    <Label Content="Doctors" HorizontalAlignment="Center" Margin="0,0,0,10" Grid.Column="1" FontSize="18px" Height="auto" Width="auto" VerticalAlignment="Bottom"/>
                     <Label Content="Specialization needed:" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="155" RenderTransformOrigin="0.529,-0.638" Grid.Row="2" Grid.Column="1"/>
                     <TextBox x:Name="specializationName" Margin="170,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="specializationName_TextChanged" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="120"/>
-                    <Label Content="Referral details" HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Bottom" Grid.Column="3"/>
+                    <Label Content="Referral details" HorizontalAlignment="Center" FontSize="18px" Height="auto" Width="auto" Margin="0,0,0,10" VerticalAlignment="Bottom" Grid.Column="3"/>
                     <TextBox Text="{Binding Path=ReferralDescriptionText}" IsEnabled="{Binding Path=IsAppointmentTime}" TextWrapping="Wrap" Grid.Column="3" Margin="10,10,10,10" Grid.Row="1"/>
                     <Button Content="Add Referral" Margin="0,10,10,0" VerticalAlignment="Top" Width="125" Click="ReferralAddButton_Click" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Right" Height="35"/>
-                    <Button Margin="10,0,0,30" VerticalAlignment="Bottom" Width="80" Click="BackButton_Click" Height="35" Grid.Row="2" Grid.Column="1">
+                    <Button Margin="10,0,0,30" VerticalAlignment="Bottom" Width="125" Click="BackButton_Click" Height="35" Grid.Row="2" Grid.Column="1">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <fa:ImageAwesome Icon="ArrowCircleLeft" Height="18" Width="30" Foreground="#2596be"/>
@@ -266,7 +266,7 @@
                                 <ColumnDefinition Width="45"/>
                             </Grid.ColumnDefinitions>
 
-                            <Label Content="Rooms" HorizontalAlignment="Center" VerticalAlignment="Center" Width="46" Grid.Column="1" Height="19"/>
+                            <Label Content="Rooms" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18px" Height="auto" Width="auto" Grid.Column="1" />
                             <ListView Margin="10,10,10,10" x:Name="lvHospitalStayRoomsDataBinding" PreviewMouseLeftButtonUp="listViewHospitalStayRooms_Click"
                                   BorderThickness="1"
                               BorderBrush="Black" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
@@ -279,7 +279,7 @@
                                 </ListView.ItemTemplate>
                             </ListView>
 
-                            <Label Content="Beds" HorizontalAlignment="Center" VerticalAlignment="Center" Width="34" Grid.Column="3" Height="19"/>
+                            <Label Content="Beds" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18px" Height="auto" Width="auto" Grid.Column="3"/>
                             <ListView Margin="10,10,10,10" x:Name="lvRoomBedsDataBinding" PreviewMouseLeftButtonUp="listViewRoomBeds_Click"
                                   BorderThickness="1"
                               BorderBrush="Black" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2">
@@ -299,7 +299,7 @@
                             <Label HorizontalAlignment="Center" Margin="0,24,0,0" VerticalAlignment="Top" Width="122" Grid.Column="5" Grid.Row="2" Height="0"/>
                             <DatePicker x:Name="hospitalStayEndDate" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="6" Grid.Row="2" Height="32" Width="152"/>
                             <Button Content="Add Hospital Stay" Click="HospitalStayAddButton_Click" Margin="10,0,0,10" VerticalAlignment="Bottom" Grid.Column="6" Grid.Row="2" Height="35" Width="150" />
-                            <Button Width="80" Click="BackButton_Click" Height="35" Grid.Row="3" Grid.Column="1" Margin="10,0,0,30" VerticalAlignment="Bottom">
+                            <Button Width="125" Click="BackButton_Click" Height="35" Grid.Row="3" Grid.Column="1" Margin="10,0,0,30" VerticalAlignment="Bottom">
                                 <Button.Content>
                                     <StackPanel Orientation="Horizontal">
                                         <fa:ImageAwesome Icon="ArrowCircleLeft" Height="18" Width="30" Foreground="#2596be"/>
