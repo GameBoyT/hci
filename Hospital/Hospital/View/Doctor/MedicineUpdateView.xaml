@@ -11,10 +11,10 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="187*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="187*"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="28*"/>
@@ -74,9 +74,9 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Label Content="New Ingredient: " HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Grid.Column="5" Height="auto" Width="auto" Grid.Row="2"/>
-        <TextBox Text="{Binding Path=Ingredient, Mode=TwoWay}" Margin="118,10,10,0" TextWrapping="Wrap" Grid.Column="5" Grid.Row="2" Height="auto" VerticalAlignment="Top"/>
-        <Button Content="Add Ingredient" Click="AddingredientBtnClick" Margin="0,10,10,0" Height="35" Grid.Column="5" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Width="128"/>
+        <Label Content="New Ingredient: " HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Grid.Column="5" Height="auto" Width="auto" Grid.Row="3"/>
+        <TextBox Text="{Binding Path=Ingredient, Mode=TwoWay}" Margin="118,10,10,0" TextWrapping="Wrap" Grid.Column="5" Grid.Row="3" Height="auto" VerticalAlignment="Top"/>
+        <Button Content="Add Ingredient" Click="AddingredientBtnClick" Margin="0,59,10,0" Height="35" Grid.Column="5" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Width="128"/>
 
         <Button Content="Save Changes" Click="SaveBtnClick" Margin="0,10,10,0" VerticalAlignment="Top" Height="35" Grid.Column="5" Grid.Row="4" HorizontalAlignment="Right" Width="128"/>
         <Button Content="Cancel"  Click="CancelBtnClick" Margin="10,10,0,0" VerticalAlignment="Top" Height="35" Grid.Column="5" Grid.Row="4" Width="124"/>
