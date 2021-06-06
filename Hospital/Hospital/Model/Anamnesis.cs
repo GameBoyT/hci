@@ -17,6 +17,8 @@ namespace Model
             this.Description = description;
         }
 
-
+        public Anamnesis()
+        {
+        }
     }
 }
