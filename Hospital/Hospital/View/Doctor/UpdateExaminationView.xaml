@@ -11,20 +11,20 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="212*"/>
-            <RowDefinition Height="45*"/>
+            <RowDefinition Height="187*"/>
+            <RowDefinition Height="70*"/>
             <RowDefinition Height="88*"/>
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="32*"/>
-            <ColumnDefinition Width="310*"/>
-            <ColumnDefinition Width="88*"/>
-            <ColumnDefinition Width="317*"/>
+            <ColumnDefinition Width="45"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="45"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Patient Details" HorizontalAlignment="Center" Grid.Column="1" Height="auto" Width="auto" FontSize="18px" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
-        <Grid Margin="10,10,32,20" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
+        <Label Content="Patient Details" HorizontalAlignment="Left" Grid.Column="1" Height="24" Width="114" FontSize="18px" VerticalAlignment="Center" Margin="10,0,0,0"/>
+        <Grid Margin="10,15,10,20" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -41,11 +41,11 @@
             <TextBlock Grid.Column="0" Grid.Row="2">Jmbg:</TextBlock>
             <TextBlock Grid.Column="0" Grid.Row="3">Date of birth:</TextBlock>
             <TextBlock Grid.Column="0" Grid.Row="4">Address:</TextBlock>
-            <TextBox Grid.Column="1" Grid.Row="0" IsReadOnly="True" Text="{Binding Path=Appointment.Patient.FirstName}"></TextBox>
-            <TextBox Grid.Column="1" Grid.Row="1" IsReadOnly="True" Text="{Binding Path=Appointment.Patient.LastName}"></TextBox>
-            <TextBox Grid.Column="1" Grid.Row="2" IsReadOnly="True" Text="{Binding Path=Appointment.Patient.Jmbg}"></TextBox>
-            <TextBox Grid.Column="1" Grid.Row="3" IsReadOnly="True" Text="{Binding Path=Appointment.Patient.DateOfBirth, StringFormat='dd-MM-yyyy'}"></TextBox>
-            <TextBox Grid.Column="1" Grid.Row="4" IsReadOnly="True" Text="{Binding Path=Appointment.Patient.Address}"></TextBox>
+            <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Path=Appointment.Patient.FirstName}"></TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Path=Appointment.Patient.LastName}"></TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Path=Appointment.Patient.Jmbg}"></TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Path=Appointment.Patient.DateOfBirth, StringFormat='dd-MM-yyyy'}"></TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding Path=Appointment.Patient.Address}"></TextBlock>
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="3" Margin="10,10,10,10">
