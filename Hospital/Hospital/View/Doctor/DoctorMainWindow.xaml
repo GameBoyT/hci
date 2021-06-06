@@ -7,8 +7,6 @@
         mc:Ignorable="d"
         Title="DoctorMainWindow" Height="600" Width="1000">
     <Grid>
-
-
         <DockPanel>
             <Menu DockPanel.Dock="Top" Height="40">
                 <MenuItem Header="Main _Window" Command="{Binding Path=NavigateToMainView}"/>
@@ -19,7 +17,6 @@
                 <MenuItem Header="_Demo" Command="{Binding Path=NavigateToMedicine}"/>
                 <MenuItem Header="_Shortcuts" Command="{Binding Path=NavigateToMedicine}"/>
                 <MenuItem Header="_Logout" Command="{Binding Path=NavigateToMedicine}"/>
-
             </Menu>
             <Frame x:Name="frame" Source="MainView.xaml" Margin="0,0,0,0" />
 

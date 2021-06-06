@@ -23,7 +23,6 @@ namespace Hospital.View.Doctor
         
         private MedicineViewModel medicine;
 
-
         public Injector Inject { get; set; }
 
         public string Ingredient { get; set; }
@@ -58,7 +57,7 @@ namespace Hospital.View.Doctor
             Medicines = new ObservableCollection<MedicineAlternativeViewModel>(OriginalMedicines);
             Alternatives = new ObservableCollection<MedicineAlternativeViewModel>(medicine.Alternatives);
             Ingredients = new ObservableCollection<string>(medicine.Ingredients);
-            Description = medicine.Description;
+            Description = new string(medicine.Description);
             Medicine = medicine;
 
         }
@@ -160,6 +159,7 @@ namespace Hospital.View.Doctor
             Ingredient = "";
 
             AlternativesListView.ItemsSource = Alternatives;
+            DescriptionTextBox.Text = Description;
             IngredientsListView.ItemsSource = Ingredients;
             AllMedicineListView.ItemsSource = Medicines;
         }
