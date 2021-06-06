@@ -32,6 +32,9 @@
                     SelectedItem="{Binding SelectedMedicine}"
                     BorderThickness="1"
                     BorderBrush="Black" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3">
+            <ListView.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding UpdateCommand}" />
+            </ListView.InputBindings>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>

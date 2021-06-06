@@ -8,7 +8,7 @@
         Title="DoctorMainWindow" Height="600" Width="1000">
     <Window.InputBindings>
         <KeyBinding Command="{Binding NavigateBack}" Key="Backspace"/>
-        <KeyBinding Command="{Binding NavigateBack}" Key="B"/>
+        <KeyBinding Command="{Binding NavigateBack}" Modifiers="Ctrl" Key="B"/>
     </Window.InputBindings>
     <Grid>
         <DockPanel>

@@ -7,10 +7,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="560" d:DesignWidth="1000"
       Title="NewExaminationView">
-    <Page.InputBindings>
+    <!--<Page.InputBindings>
         <KeyBinding Key="F1" Command="{Binding AddCommand}" />
         <KeyBinding Key="F2" Command="{Binding CancelCommand}" />
-    </Page.InputBindings>
+        <KeyBinding Key="Enter" Command="{Binding AddCommand}" />
+    </Page.InputBindings>-->
 
 
     <Grid>
@@ -61,7 +62,11 @@
                         Path=ExaminationDate,
                         Mode=TwoWay}"
                         Grid.Column="1" Margin="10,10,0,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                <TextBox Text="{Binding StartTime}"  Grid.Column="1" Margin="10,10,0,10" Grid.Row="2"/>
+                <TextBox Text="{Binding StartTime}"  Grid.Column="1" Margin="10,10,0,10" Grid.Row="2">
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Enter" Command="{Binding AddCommand}" />
+                    </TextBox.InputBindings>
+                </TextBox>
                 <TextBlock Text="{Binding Appointment.ValidationErrors[StartTime]}"
                            HorizontalAlignment="Left" VerticalAlignment="Top"
                                Foreground="Red" Grid.Row="3" Grid.ColumnSpan="2"/>
@@ -69,6 +74,7 @@
             <TextBlock Text="{Binding Appointment.ValidationErrors[Patient]}"
                                Foreground="Red" Margin="10,10,10,0" Grid.Row="3" Grid.Column="1" Height="37" VerticalAlignment="Top"/>
             <Button Content="Add" Margin="0,10,10,0" VerticalAlignment="Top" Height="35" Command="{Binding Path=AddCommand}" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Right" Width="125" />
+            
             <Button Content="Cancel" Margin="10,10,0,0" VerticalAlignment="Top" Width="125" Command="{Binding Path=CancelCommand}" Grid.Row="3" Grid.Column="3" Height="35"/>
         </Grid>
     </Grid>

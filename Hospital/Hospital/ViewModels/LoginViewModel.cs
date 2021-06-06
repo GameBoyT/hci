@@ -10,7 +10,17 @@ namespace Hospital.ViewModels
 {
     public class LoginViewModel : ViewModel
     {
-        public UserViewModel User { get; set; }
+        private UserViewModel user;
+
+        public UserViewModel User
+        {
+            get { return user; }
+            set
+            {
+                user = value;
+                OnPropertyChanged();
+            }
+        }
 
         public RelayCommand LoginCommand { get; set; }
 
