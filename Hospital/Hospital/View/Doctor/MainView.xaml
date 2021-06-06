@@ -82,7 +82,7 @@
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Trash" Width="40" Foreground="#2596be"/>
                     <TextBlock>
-                    <Underline>D</Underline>elete
+                        Delete
                     </TextBlock>
                 </StackPanel>
             </Button.Content>

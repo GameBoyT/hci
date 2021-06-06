@@ -1,6 +1,8 @@
 ﻿using Hospital.Commands;
+using Hospital.View;
 using Hospital.View.Doctor;
 using Hospital.ViewModels.Doctor;
+using System.Windows;
 using System.Windows.Navigation;
 
 namespace Hospital.ViewModels
@@ -23,6 +25,8 @@ namespace Hospital.ViewModels
         public RelayCommand NavigateToNewOperation { get; set; }
 
         public RelayCommand NavigateToMedicine { get; set; }
+
+        public RelayCommand LogoutCommand { get; set; }
         #endregion
 
         #region Akcije
@@ -71,12 +75,21 @@ namespace Hospital.ViewModels
             MedicinePageViewModel vm = new MedicinePageViewModel(NavService);
             MedicineView view = new MedicineView(vm);
             NavService.Navigate(view);
-            //DoctorMedicine doctorMedicine = new DoctorMedicine();
-            //doctorMedicine.Show();
         }
+
+        private void Execute_LogoutCommand(object obj)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            foreach (Window item in Application.Current.Windows)
+            {
+                if (item.DataContext == this) item.Close();
+            }
+        }
+
         #endregion
 
-        public DoctorMainWindowViewModel(NavigationService navService)
+    public DoctorMainWindowViewModel(NavigationService navService)
         {
             NavService = navService;
             NavigateBack = new RelayCommand(Execute_NavigateBack, CanExecute_NavigateBack);
@@ -84,6 +97,7 @@ namespace Hospital.ViewModels
             NavigateToNewExamination = new RelayCommand(Execute_NavigateToNewExamination, CanExecute_NavigateCommand);
             NavigateToNewOperation = new RelayCommand(Execute_NavigateToNewOperation, CanExecute_NavigateCommand);
             NavigateToMedicine = new RelayCommand(Execute_NavigateToMedicine, CanExecute_NavigateCommand);
+            LogoutCommand = new RelayCommand(Execute_LogoutCommand, CanExecute_NavigateCommand);
         }
     }
 }

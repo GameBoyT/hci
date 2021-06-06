@@ -18,6 +18,8 @@ namespace Hospital.View.Doctor
         public Medicine Medicine { get; set; }
         public StaticEquipment HospitalStayBed { get; set; }
         public ObservableCollection<Anamnesis> Anamnesis { get; set; }
+        public ObservableCollection<Anamnesis> PastAppointments { get; set; }
+        public Anamnesis PastAppointment { get; set; }
         public ObservableCollection<Prescription> Prescriptions { get; set; }
 
         private List<Employee> Doctors { get; set; }
@@ -28,6 +30,7 @@ namespace Hospital.View.Doctor
         private string descriptionText;
         private string quantity;
         private string referralDescriptionText;
+        private string details;
 
         public string DetailText
         {
@@ -90,6 +93,19 @@ namespace Hospital.View.Doctor
                 {
                     referralDescriptionText = value;
                     OnPropertyChanged("referralDescriptionText");
+                }
+            }
+        }
+
+        public string Details
+        {
+            get { return details; }
+            set
+            {
+                if (details != value)
+                {
+                    details = value;
+                    OnPropertyChanged("detailText");
                 }
             }
         }
@@ -182,6 +198,8 @@ namespace Hospital.View.Doctor
                 ExtendHospitalStay.Visibility = Visibility.Visible;
                 extendedEndDate.SelectedDate = Patient.MedicalRecord.HospitalStay.EndDateTime;
             }
+
+            InitPastAppointments();
         }
 
 
@@ -363,6 +381,46 @@ namespace Hospital.View.Doctor
             {
                 MessageBox.Show("You have to select all fields!");
             }
+        }
+
+        private void PastAppointmentsListView_Click(object sender, RoutedEventArgs e)
+        {
+            var item = (sender as ListView).SelectedItem;
+            if (item != null)
+            {
+                PastAppointment = PastAppointments[PastAppointmentsListView.SelectedIndex];
+                PADescription.Text = PastAppointment.Description;
+            }
+        }
+        
+        private void GenerateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            PastAppointmentsReportWindow pastAppointmentsReportWindow = new PastAppointmentsReportWindow(PastAppointments, BeginningDate.SelectedDate.Value, EndDate.SelectedDate.Value);
+            pastAppointmentsReportWindow.Show();
+        }
+
+        private void InitPastAppointments()
+        {
+            PastAppointments = new ObservableCollection<Anamnesis>();
+            PastAppointment = new Anamnesis();
+            Anamnesis a = new Anamnesis
+            {
+                Name = "23.9.2020 - Examination",
+                Description = "Pacijent je imao glavobolju, propisan andol"
+            };
+            Anamnesis b = new Anamnesis
+            {
+                Name = "16.2.2021 - Operation",
+                Description = "Uspjesno obavljena operacija srca"
+            };
+            Anamnesis c = new Anamnesis
+            {
+                Name = "27.9.2020 - Examination",
+                Description = "Stanje pacijenta se poboljsalo"
+            };
+            PastAppointments.Add(a);
+            PastAppointments.Add(c);
+            PastAppointments.Add(b);
         }
 
 
