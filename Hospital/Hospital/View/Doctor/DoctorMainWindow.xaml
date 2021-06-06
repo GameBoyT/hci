@@ -19,7 +19,7 @@
                 <MenuItem Header="New _Operation" Command="{Binding Path=NavigateToNewOperation}"/>
                 <MenuItem Header="_Medicine" Command="{Binding Path=NavigateToMedicine}"/>
                 <MenuItem Header="_Demo" />
-                <MenuItem Header="_Shortcuts"/>
+                <MenuItem Header="_Shortcuts" Command="{Binding Path=NavigateToShortcuts}"/>
                 <MenuItem Header="_Logout" Command="{Binding Path=LogoutCommand}"/>
             </Menu>
             <Frame x:Name="frame" Source="MainView.xaml" Margin="0,0,0,80"/>

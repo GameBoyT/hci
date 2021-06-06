@@ -26,6 +26,8 @@ namespace Hospital.ViewModels
 
         public RelayCommand NavigateToMedicine { get; set; }
 
+        public RelayCommand NavigateToShortcuts { get; set; }
+
         public RelayCommand LogoutCommand { get; set; }
         #endregion
 
@@ -77,6 +79,12 @@ namespace Hospital.ViewModels
             NavService.Navigate(view);
         }
 
+        private void Execute_NavigateToShortcuts(object obj)
+        {
+            ShortcutsView view = new ShortcutsView();
+            NavService.Navigate(view);
+        }
+
         private void Execute_LogoutCommand(object obj)
         {
             LoginWindow loginWindow = new LoginWindow();
@@ -97,6 +105,7 @@ namespace Hospital.ViewModels
             NavigateToNewExamination = new RelayCommand(Execute_NavigateToNewExamination, CanExecute_NavigateCommand);
             NavigateToNewOperation = new RelayCommand(Execute_NavigateToNewOperation, CanExecute_NavigateCommand);
             NavigateToMedicine = new RelayCommand(Execute_NavigateToMedicine, CanExecute_NavigateCommand);
+            NavigateToShortcuts = new RelayCommand(Execute_NavigateToShortcuts, CanExecute_NavigateCommand);
             LogoutCommand = new RelayCommand(Execute_LogoutCommand, CanExecute_NavigateCommand);
         }
     }
