@@ -24,7 +24,7 @@
         <Label Content="Alternatives: " HorizontalAlignment="Left" Margin="74,0,0,11" Grid.Column="1" Width="79" Height="19" VerticalAlignment="Bottom"/>
         <ListView Margin="10,10,0,268" x:Name="AlternativesListView"
                   BorderThickness="1"
-                  ItemsSource="{Binding Medicine.Alternatives}"
+                  ItemsSource="{Binding Alternatives}"
                   AllowDrop="True" DragOver="ListView_DragOver" Drop="ListView_Drop"
                   BorderBrush="Black" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Width="284">
             <ListView.ItemTemplate>
@@ -53,11 +53,11 @@
 
 
         <Label Content="Medicine Description: " HorizontalAlignment="Left" Margin="48,11,0,11" Grid.Column="3" Width="138"/>
-        <TextBox Text="{Binding Path=Medicine.Description, Mode=TwoWay}" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="170" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" Width="246"/>
+        <TextBox Text="{Binding Path=Description, Mode=TwoWay}" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="170" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" Width="246"/>
 
         <Label Content="Ingredients: " HorizontalAlignment="Left" Margin="120,0,0,10" Grid.Column="5" Width="76" Height="21" VerticalAlignment="Bottom"/>
         <ListView Margin="12,10,0,268" Name="IngredientsListView"
-                  ItemsSource="{Binding Medicine.Ingredients, Mode=TwoWay}"
+                  ItemsSource="{Binding Ingredients, Mode=TwoWay}"
                   BorderThickness="1"
                     BorderBrush="Black" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Left" Width="256">
             <ListView.ItemTemplate>
