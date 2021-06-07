@@ -14,9 +14,10 @@
             ALT key to select the menu bar. <LineBreak/>
             Tab and SHIFT+Tab switches between inputs and buttons. <LineBreak/>
             Enter activates the selected item. <LineBreak/>
+            Delete key to remove the selected item. <LineBreak/>
             Arrow keys navigate items in lists. <LineBreak/>
             CTRL+Tab and CTRL+SHIFT+Tab switches between tabs. <LineBreak/>
-            Backspace returns you to the previous window. <LineBreak/>
+            Backspace or CTRL+B returns you to the previous window. <LineBreak/>
         </TextBlock>
     </Grid>
 </Page>

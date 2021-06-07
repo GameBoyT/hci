@@ -29,9 +29,9 @@
               AutoGenerateColumns="False"
               IsReadOnly="True" Margin="10,10,10,10" Grid.Column="1" Grid.Row="1"
               KeyUp="OnKeyUpHandler">
-            <!--<DataGrid.InputBindings>
-                <KeyBinding Key="Enter" Modifiers="Ctrl" FocusManager.FocusedElement="{Binding ElementName=appointment_date}" />
-            </DataGrid.InputBindings>-->
+            <DataGrid.InputBindings>
+                <KeyBinding Key="Delete" Command="{Binding DeleteCommand}" />
+            </DataGrid.InputBindings>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Type"
                             Binding="{Binding MedicalAppointmentType}" />
