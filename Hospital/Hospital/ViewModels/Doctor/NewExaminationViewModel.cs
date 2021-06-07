@@ -83,7 +83,7 @@ namespace Hospital.ViewModels
             Doctor = Inject.EmployeeService.GetByJmbg("1");
 
             ExaminationDate = DateTime.Now;
-            StartTime = "12:00";
+            StartTime = "";
 
             Appointment = new AppointmentViewModel
             {

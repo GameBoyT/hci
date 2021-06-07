@@ -111,7 +111,7 @@ namespace Hospital.ViewModels
             FilterCommand = new RelayCommand(Executed_FilterCommand, CanExecute_FilterCommand);
 
             ExaminationDate = DateTime.Now;
-            StartTime = "12:00";
+            StartTime = "";
 
             Appointment = new AppointmentViewModel();
 
