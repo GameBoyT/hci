@@ -179,6 +179,7 @@ namespace Hospital.View.Doctor
             Anamnesis selectedAnamnesis = Anamnesis[lvDataBinding.SelectedIndex];
             Anamnesis updatedAnamnesis = app.patientController.UpdateAnamnesisDescription(Patient.User.Jmbg, selectedAnamnesis.Id, DetailText);
             selectedAnamnesis.Description = updatedAnamnesis.Description;
+            MessageBox.Show("Anamnesis successfully updated!");
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -225,6 +226,7 @@ namespace Hospital.View.Doctor
                 DescriptionText = "";
                 Quantity = "";
                 Prescriptions.Add(prescription);
+                MessageBox.Show("Prescription successfully updated!");
             }
             catch
             {
@@ -250,6 +252,7 @@ namespace Hospital.View.Doctor
                 Employee doctor = (Employee)doctorsDataGrid.SelectedItems[0];
                 app.patientController.AddReferral(Appointment.PatientJmbg, doctor.User.Jmbg, ReferralDescriptionText);
                 ReferralDescriptionText = "";
+                MessageBox.Show("Referral successfully updated!");
             }
             catch
             {

@@ -3,6 +3,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 using System.Windows.Navigation;
 
 namespace Hospital.ViewModels
@@ -39,6 +40,7 @@ namespace Hospital.ViewModels
             if (Appointment.IsValid)
             {
                 Inject.AppointmentService.Update(ParseAppointment());
+                MessageBox.Show("Appointment successfully updated!");
             }
         }
 

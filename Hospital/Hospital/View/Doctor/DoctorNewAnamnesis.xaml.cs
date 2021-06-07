@@ -25,6 +25,7 @@ namespace Hospital.View.Doctor
             {
                 Anamnesis anamnesis = app.patientController.AddAnamnesis(ParentWindow.Appointment.PatientJmbg, AnamnesisName, AnamnesisType, "");
                 ParentWindow.Anamnesis.Add(anamnesis);
+                MessageBox.Show("Anamnesis successfully added!");
                 this.Close();
             }
             else

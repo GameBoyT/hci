@@ -2,6 +2,7 @@
 using Model;
 using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Navigation;
 
 namespace Hospital.ViewModels
@@ -45,6 +46,7 @@ namespace Hospital.ViewModels
             if (Appointment.IsValid)
             {
                 Inject.AppointmentService.Save(ParseAppointment());
+                MessageBox.Show("Appointment successfully created!");
             }
         }
 

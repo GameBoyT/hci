@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows;
 using System.Windows.Navigation;
 
 namespace Hospital.ViewModels.Doctor
@@ -60,6 +61,7 @@ namespace Hospital.ViewModels.Doctor
             Medicine._Medicine.Description = Medicine.Description;
             Inject.MedicineService.Update(Medicine._Medicine);
             OriginalMedicine = Medicine;
+            MessageBox.Show("Medicine successfully updated!");
         }
 
         public void Executed_CancelCommand(object obj)

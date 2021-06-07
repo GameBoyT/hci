@@ -3,6 +3,7 @@ using Hospital.View.Doctor;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Navigation;
 
 namespace Hospital.ViewModels
@@ -39,6 +40,8 @@ namespace Hospital.ViewModels
             Inject.AppointmentService.Delete(SelectedAppointment.Id);
             Appointments.Remove(SelectedAppointment);
             SelectedDateAppointments.Remove(SelectedAppointment);
+            MessageBox.Show("Appointment successfully deleted!");
+
         }
 
         private void Execute_UpdateCommand(object obj)

@@ -148,6 +148,7 @@ namespace Hospital.View.Doctor
                 Medicine.Ingredients.Add(ingredient);
             }
             Inject.MedicineService.Update(Medicine._Medicine);
+            MessageBox.Show("Medicine successfully updated!");
         }
 
         private void CancelBtnClick(object sender, RoutedEventArgs e)
