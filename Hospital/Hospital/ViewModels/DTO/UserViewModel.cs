@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Hospital.ViewModels.DTO
+﻿namespace Hospital.ViewModels.DTO
 {
     public class UserViewModel : ValidationBase
     {

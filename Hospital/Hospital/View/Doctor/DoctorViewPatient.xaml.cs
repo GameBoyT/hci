@@ -297,7 +297,7 @@ namespace Hospital.View.Doctor
                 return;
             }
 
-            if (endDate.DayOfYear < startDate.DayOfYear )
+            if (endDate.DayOfYear < startDate.DayOfYear)
             {
                 MessageBox.Show("You can't select a start day before the end date!");
                 return;
@@ -323,7 +323,7 @@ namespace Hospital.View.Doctor
                 PADescription.Text = PastAppointment.Description;
             }
         }
-        
+
         private void GenerateBtn_Click(object sender, RoutedEventArgs e)
         {
             PastAppointmentsReportWindow pastAppointmentsReportWindow = new PastAppointmentsReportWindow(PastAppointments, BeginningDate.SelectedDate.Value, EndDate.SelectedDate.Value);

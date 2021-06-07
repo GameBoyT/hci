@@ -17,7 +17,7 @@ namespace Hospital.ViewModels
         private EmployeeViewModel doctor;
 
         private PatientViewModel patient;
-        
+
         private RoomViewModel room;
 
         public Appointment _Appointment { get; set; }

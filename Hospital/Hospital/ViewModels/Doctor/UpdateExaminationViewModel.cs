@@ -1,8 +1,6 @@
 ﻿using Hospital.Commands;
 using Model;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Navigation;
 
@@ -11,7 +9,7 @@ namespace Hospital.ViewModels
     public class UpdateExaminationViewModel : ViewModel
     {
         public Injector Inject { get; set; }
-        
+
         public NavigationService NavService { get; set; }
 
         public AppointmentViewModel Appointment { get; set; }

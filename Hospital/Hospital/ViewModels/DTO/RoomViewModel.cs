@@ -9,7 +9,7 @@ namespace Hospital.ViewModels
         private string name;
 
         private int floor;
-        
+
         private string detail;
 
         public Injector Injector { get; set; }

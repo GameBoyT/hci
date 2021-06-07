@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Hospital.Commands;
+using Hospital.View.Doctor;
+using Hospital.ViewModels.DTO;
 using System.Collections.ObjectModel;
 using System.Windows.Navigation;
-using Model;
-using Hospital.ViewModels.DTO;
-using Hospital.Commands;
-using Hospital.View.Doctor;
 
 namespace Hospital.ViewModels.Doctor
 {

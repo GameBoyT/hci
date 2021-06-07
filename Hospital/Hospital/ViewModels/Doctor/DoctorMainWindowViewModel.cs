@@ -97,7 +97,7 @@ namespace Hospital.ViewModels
 
         #endregion
 
-    public DoctorMainWindowViewModel(NavigationService navService)
+        public DoctorMainWindowViewModel(NavigationService navService)
         {
             NavService = navService;
             NavigateBack = new RelayCommand(Execute_NavigateBack, CanExecute_NavigateBack);

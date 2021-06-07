@@ -27,7 +27,7 @@ namespace Hospital.ViewModels
 
         public RelayCommand CancelCommand { get; set; }
 
-        public NavigationService NavService{ get; set; }
+        public NavigationService NavService { get; set; }
 
 
         #endregion

@@ -1,9 +1,6 @@
 ﻿using Hospital.Commands;
 using Hospital.ViewModels.DTO;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Navigation;
 
@@ -16,7 +13,7 @@ namespace Hospital.ViewModels.Doctor
         private string ingredient;
 
         public Injector Inject { get; set; }
-        
+
         public NavigationService NavService { get; set; }
 
         public string Ingredient
@@ -46,7 +43,7 @@ namespace Hospital.ViewModels.Doctor
         public RelayCommand AddCommand { get; set; }
 
         public RelayCommand SaveCommand { get; set; }
-        
+
         public RelayCommand CancelCommand { get; set; }
 
         public void Executed_AddCommand(object obj)

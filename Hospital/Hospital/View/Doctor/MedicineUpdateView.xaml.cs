@@ -1,26 +1,19 @@
-﻿using Hospital.ViewModels.Doctor;
-using Hospital.ViewModels.DTO;
+﻿using Hospital.ViewModels.DTO;
 using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Hospital.View.Doctor
 {
     public partial class MedicineUpdateView : Page
     {
         Point startPoint = new Point();
-        
+
         private MedicineViewModel medicine;
 
         public Injector Inject { get; set; }
@@ -43,7 +36,7 @@ namespace Hospital.View.Doctor
         public ObservableCollection<string> Ingredients { get; set; }
 
         public ObservableCollection<MedicineAlternativeViewModel> Medicines { get; set; }
-        
+
         public ObservableCollection<MedicineAlternativeViewModel> OriginalMedicines { get; set; }
 
 
@@ -52,7 +45,7 @@ namespace Hospital.View.Doctor
             InitializeComponent();
             DataContext = this;
             Inject = new Injector();
-            List<Medicine> m =  Inject.MedicineService.GetAvaliableAlternatives(medicine.Id);
+            List<Medicine> m = Inject.MedicineService.GetAvaliableAlternatives(medicine.Id);
             OriginalMedicines = Inject.MedicineConverter.ConvertCollectionToAlternativeViewModel(m);
             Medicines = new ObservableCollection<MedicineAlternativeViewModel>(OriginalMedicines);
             Alternatives = new ObservableCollection<MedicineAlternativeViewModel>(medicine.Alternatives);

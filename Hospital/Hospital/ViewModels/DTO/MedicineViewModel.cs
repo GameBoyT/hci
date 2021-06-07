@@ -1,8 +1,5 @@
 ﻿using Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 
 namespace Hospital.ViewModels.DTO
 {
@@ -73,7 +70,7 @@ namespace Hospital.ViewModels.DTO
                 OnPropertyChanged();
             }
         }
-        
+
 
         public MedicineViewModel()
         {
